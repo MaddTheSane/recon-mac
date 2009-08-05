@@ -31,6 +31,7 @@
 #include <netinet/in.h>
 #include <arpa/inet.h>
 
+
 @implementation MyDocument
 
 @synthesize hostSortDescriptor;
@@ -52,6 +53,22 @@
        
        interfacesDictionary = [[NSMutableDictionary alloc] init];
        
+       // Initialize view controllers
+       viewControllers = [[NSMutableArray alloc] init];
+              
+       BasicViewController *vc;
+       vc = [[BasicViewController alloc] init];
+       [vc setManagedObjectContext:[self managedObjectContext]];
+       [viewControllers addObject:vc];
+       [vc release];       
+       
+       AdvancedViewController *vc;
+       vc = [[AdvancedViewController alloc] init];
+       [vc setManagedObjectContext:[self managedObjectContext]];
+       [viewControllers addObject:vc];
+       [vc release];              
+       
+       [super init];       
     }
     return self;
 }
@@ -70,6 +87,7 @@
    [nmapErrorTimer invalidate];
    [nmapErrorTimer release];
    
+   [viewControllers release];   
    [super dealloc];
 }
 
@@ -105,12 +123,7 @@
     selector:@selector(updateSupportFolder:)
     name:@"BAFupdateSupportFolder"
     object:prefsController];   
-      
-   // Pretty up the profiles drawer
-   NSSize mySize = {155, 90};
-   [profilesDrawer setContentSize:mySize];
-   [profilesDrawer setTrailingOffset:25];
-   
+         
    NSSize mySize2 = {145, 147};
    [sessionsDrawer setContentSize:mySize2];   
    
@@ -155,29 +168,29 @@
    [sessionsTableView setAutosaveTableColumns:YES];   
    [sessionsContextMenu setAutoenablesItems:YES];      
    
-   // ... and the Host TableView
-   [hostsTableView setTarget:self];
-   [hostsTableView setDoubleAction:@selector(hostsTableDoubleClick)];
-
-   // ... and the Services TableView
-   [portsTableView setTarget:self];
-   [portsTableView setDoubleAction:@selector(portsTableDoubleClick)];   
-
-   // ... and the Oses TableView
-   [osesTableView setTarget:self];
-   [osesTableView setDoubleAction:@selector(osesTableDoubleClick)];   
-   
-   // ... and the Ports TableView in the Results Tab
-   [resultsPortsTableView setTarget:self];
-   [resultsPortsTableView setDoubleAction:@selector(resultsPortsTableDoubleClick)];   
+//   // ... and the Host TableView
+//   [hostsTableView setTarget:self];
+//   [hostsTableView setDoubleAction:@selector(hostsTableDoubleClick)];
+//
+//   // ... and the Services TableView
+//   [portsTableView setTarget:self];
+//   [portsTableView setDoubleAction:@selector(portsTableDoubleClick)];   
+//
+//   // ... and the Oses TableView
+//   [osesTableView setTarget:self];
+//   [osesTableView setDoubleAction:@selector(osesTableDoubleClick)];   
+//   
+//   // ... and the Ports TableView in the Results Tab
+//   [resultsPortsTableView setTarget:self];
+//   [resultsPortsTableView setDoubleAction:@selector(resultsPortsTableDoubleClick)];   
 
    // TODO: Move this to Inspector Controller!!!
-   [inspectorResultsPortsTableView setTarget:self];
-   [inspectorResultsPortsTableView setDoubleAction:@selector(resultsPortsTableDoubleClick)];   
+//   [inspectorResultsPortsTableView setTarget:self];
+//   [inspectorResultsPortsTableView setDoubleAction:@selector(resultsPortsTableDoubleClick)];   
    
    // Populate network interfaces Popup Button
-   [self getNetworkInterfaces];
-   [self populateInterfacePopUp];   
+//   [self getNetworkInterfaces];
+//   [self populateInterfacePopUp];   
    
    // Setup Queue buttons
    [queueSegmentedControl setTarget:self];   
@@ -207,17 +220,17 @@
    [modeSwitchBar setSelectedSegment:0];
    
    // NSView retains   
-   [targetBarBasicContent retain];
-   [targetBarAdvancedContent retain];
+//   [targetBarBasicContent retain];
+//   [targetBarAdvancedContent retain];
    [targetBarSettingsContent retain];
    
-   [sideBarAdvancedContent retain];  
+//   [sideBarAdvancedContent retain];  
    [sideBarSettingsContent retain];  
    
-   [workspaceBasicContent retain];
-   [workspaceBasicContentBonjour retain];
-   [workspaceBasicContentNetstat retain];   
-   [workspaceAdvancedContent retain];   
+  // [workspaceBasicContent retain];
+  // [workspaceBasicContentBonjour retain];
+  // [workspaceBasicContentNetstat retain];   
+//   [workspaceAdvancedContent retain];   
    [workspaceSettingsContent retain];   
    
    // Set-up Sidebar
@@ -227,8 +240,9 @@
    [sideBarPlaceholder addSubview:sideBarAdvancedContent];
    
    // Set-up Workspace
-   [workspaceBasicContent setFrame:[workspacePlaceholder frame]];
-   [workspacePlaceholder addSubview:workspaceBasicContent];
+   // TODO: Need to grab basic view from view controller
+//   [workspaceBasicContent setFrame:[workspacePlaceholder frame]];
+//   [workspacePlaceholder addSubview:workspaceBasicContent];
    
    // Set-up Target Bar
    [targetBarPlaceholder setWantsLayer:YES];
@@ -259,9 +273,9 @@
       [[targetBarPlaceholder animator] replaceSubview:[[targetBarPlaceholder subviews] lastObject]   
                                                  with:targetBarBasicContent];
       
-      [workspaceBasicContent setFrame:[workspacePlaceholder frame]];
-      [[workspacePlaceholder animator] replaceSubview:[[workspacePlaceholder subviews] lastObject]
-                                                 with:workspaceBasicContent];
+//      [workspaceBasicContent setFrame:[workspacePlaceholder frame]];
+//      [[workspacePlaceholder animator] replaceSubview:[[workspacePlaceholder subviews] lastObject]
+//                                                 with:workspaceBasicContent];
       
       [self sizeSwitch:nil];
       
@@ -313,60 +327,6 @@
    }  
 }
 
-- (IBAction)workspaceBasicContentSwitch:(id)sender
-{   
-   //NSLog(@"InspectorController: changeInspectorTask: %d", [sender tag]);
-   if ([[sender title] hasPrefix:@"Find Bonjour"])
-   {
-//      self.autoRefresh = NO;
-//      [scanButton setTitle:@"Scan"];      
-//      [autoRefreshButton setEnabled:FALSE];      
-//      [resolveHostnamesButton setEnabled:FALSE]; 
-      
-      [workspaceBasicContentBonjour setFrame:[workspacePlaceholder frame]];
-      [[workspacePlaceholder animator] replaceSubview:[[workspacePlaceholder subviews] lastObject]
-                                                 with:workspaceBasicContentBonjour];      
-      return;
-   }
-   else if ([[sender title] hasPrefix:@"See the machines connected"])
-   {
-//      self.autoRefresh = YES;
-//      [scanButton setTitle:@"Refresh"];
-//      [self refreshConnectionsList:self];
-//      [autoRefreshButton setEnabled:TRUE];
-//      [resolveHostnamesButton setEnabled:TRUE];
-
-      [workspaceBasicContentNetstat setFrame:[workspacePlaceholder frame]];
-      [[workspacePlaceholder animator] replaceSubview:[[workspacePlaceholder subviews] lastObject]
-                                                 with:workspaceBasicContentNetstat];      
-   }  
-   else
-   {
-//      self.autoRefresh = NO;
-//      [scanButton setTitle:@"Scan"];      
-//      [autoRefreshButton setEnabled:FALSE];      
-//      [resolveHostnamesButton setEnabled:FALSE]; 
-      
-   }      
-   
-   if ([[sender title] hasPrefix:@"Find"])
-   {
-      //      [hostsTextField setEnabled:TRUE];
-      //      [hostsTextFieldLabel setEnabled:TRUE];
-      //      [hostsTextField selectText:self];
-      
-      [workspaceBasicContent setFrame:[workspacePlaceholder frame]];
-      [[workspacePlaceholder animator] replaceSubview:[[workspacePlaceholder subviews] lastObject]
-                                                 with:workspaceBasicContent];      
-      
-      return;
-   }
-   else
-   {
-      //      [hostsTextField setEnabled:FALSE];
-      //      [hostsTextFieldLabel setEnabled:FALSE];
-   }      
-}
 
 - (void)turnOffCoreAnimation
 {
