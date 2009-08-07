@@ -6,7 +6,8 @@
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
-#import "InspectorController.h"
+#import "BasicViewController.h"
+
 #import "SessionController.h"
 #import "SessionManager.h"
 #import "NetstatConnection.h"
@@ -26,7 +27,7 @@
 
 #include "NSManagedObjectContext-helper.h"
 
-@interface InspectorController ()
+@interface BasicViewController ()
 
 @property (readwrite, retain) NSTask *task;   
 
@@ -37,7 +38,7 @@
 
 @end
 
-@implementation InspectorController
+@implementation BasicViewController
 
 @synthesize connections;
 @synthesize autoRefresh;
@@ -52,12 +53,20 @@
 @synthesize bonjourListener;
 @synthesize foundServices;
 
-@synthesize root;
+//@synthesize root;
+
+@synthesize targetBarBasicContent;
 
 - (id)init 
 {
    if (self = [super init])
    {
+      if (![super initWithNibName:@"Basic"
+                           bundle:nil]) {
+         return nil;
+      }
+      [self setTitle:@"Basic"];      
+      
       connections = [[NSMutableArray alloc] init];             
       self.autoRefresh = NO;
       self.resolveHostnames = NO;
@@ -71,7 +80,7 @@
                  name:@"BAFfoundBonjourServices"
                object:nil];
       
-      root = [[NSMutableDictionary new] retain];                  
+//      root = [[NSMutableDictionary new] retain];                  
    }
    
    return self;
@@ -81,7 +90,7 @@
 {
    [connections release];
    [foundServices release];
-   [root release];
+//   [root release];
    [super dealloc];
 }
 
@@ -90,61 +99,9 @@
    [taskSelectionPopUp selectItemAtIndex:0];
    [autoRefreshButton setEnabled:FALSE];
    [resolveHostnamesButton setEnabled:FALSE];   
-}
-
-// -------------------------------------------------------------------------------
-//	changeInspectorTask: 
-// -------------------------------------------------------------------------------
-- (IBAction)changeInspectorTask:(id)sender
-{
-   //NSLog(@"InspectorController: changeInspectorTask: %d", [sender tag]);
-   if ([[sender title] hasPrefix:@"Find Bonjour"])
-   {
-      self.autoRefresh = NO;
-      [scanButton setTitle:@"Scan"];      
-      [autoRefreshButton setEnabled:FALSE];      
-      [resolveHostnamesButton setEnabled:FALSE]; 
-      
-      [regularHostsScrollView setHidden:TRUE];
-      [netstatHostsScrollView setHidden:TRUE];      
-      [bonjourHostsScrollView setHidden:FALSE];          
-   }
-   else if ([[sender title] hasPrefix:@"See the machines connected"])
-   {
-      self.autoRefresh = YES;
-      [scanButton setTitle:@"Refresh"];
-      [self refreshConnectionsList:self];
-      [autoRefreshButton setEnabled:TRUE];
-      [resolveHostnamesButton setEnabled:TRUE];
-      
-      [regularHostsScrollView setHidden:TRUE];
-      [netstatHostsScrollView setHidden:FALSE];      
-      [bonjourHostsScrollView setHidden:TRUE];          
-   }  
-   else
-   {
-      self.autoRefresh = NO;
-      [scanButton setTitle:@"Scan"];      
-      [autoRefreshButton setEnabled:FALSE];      
-      [resolveHostnamesButton setEnabled:FALSE]; 
-      
-      [regularHostsScrollView setHidden:FALSE];
-      [netstatHostsScrollView setHidden:TRUE];      
-      [bonjourHostsScrollView setHidden:TRUE];          
-   }
-      
-         
-   if ([[sender title] hasPrefix:@"Check"])
-   {
-      [hostsTextField setEnabled:TRUE];
-      [hostsTextFieldLabel setEnabled:TRUE];
-      [hostsTextField selectText:self];
-   }
-   else
-   {
-      [hostsTextField setEnabled:FALSE];
-      [hostsTextFieldLabel setEnabled:FALSE];
-   }
+   
+   [targetBarBasicContent retain];   
+   [self createNetstatMenu];   
 }
 
 // -------------------------------------------------------------------------------
@@ -152,6 +109,7 @@
 // -------------------------------------------------------------------------------
 - (IBAction)launchScan:(id)sender
 {
+   
    if ([[taskSelectionPopUp titleOfSelectedItem] hasPrefix:@"Find computers"])
    {
       [self searchLocalNetwork:self];
@@ -172,6 +130,60 @@
 }
 
 // -------------------------------------------------------------------------------
+//	changeInspectorTask: 
+// -------------------------------------------------------------------------------
+- (IBAction)changeInspectorTask:(id)sender
+{
+   //NSLog(@"InspectorController: changeInspectorTask: %d", [sender tag]);
+   
+   if ([[sender title] hasPrefix:@"Find Bonjour"])
+   {
+      self.autoRefresh = NO;
+      [scanButton setTitle:@"Scan"];      
+      [autoRefreshButton setEnabled:FALSE];      
+      [resolveHostnamesButton setEnabled:FALSE]; 
+      
+      [workspaceBasicContentBonjour setFrame:[workspacePlaceholder frame]];
+      [[workspacePlaceholder animator] replaceSubview:[[workspacePlaceholder subviews] lastObject]
+                                                 with:workspaceBasicContentBonjour];
+      
+      
+   }
+   else if ([[sender title] hasPrefix:@"See the machines connected"])
+   {
+      self.autoRefresh = YES;
+      [scanButton setTitle:@"Refresh"];
+      [self refreshConnectionsList:self];
+      [autoRefreshButton setEnabled:TRUE];
+      [resolveHostnamesButton setEnabled:TRUE];
+      
+      [workspaceBasicContentNetstat setFrame:[workspacePlaceholder frame]];
+      [[workspacePlaceholder animator] replaceSubview:[[workspacePlaceholder subviews] lastObject]
+                                                 with:workspaceBasicContentNetstat];
+            
+   }  
+   else
+   {
+      self.autoRefresh = NO;
+      [scanButton setTitle:@"Scan"];      
+      [autoRefreshButton setEnabled:FALSE];      
+      [resolveHostnamesButton setEnabled:FALSE]; 
+
+      [workspaceBasicContent setFrame:[workspacePlaceholder frame]];
+      [[workspacePlaceholder animator] replaceSubview:[[workspacePlaceholder subviews] lastObject]
+                                                 with:workspaceBasicContent];
+      
+   }
+   
+   if ([[sender title] hasPrefix:@"Check"])
+   {
+   }
+   else
+   {
+   }
+}
+
+// -------------------------------------------------------------------------------
 //	searchLocalNetwork: Wrapper-function for ping-scanning local subnet
 // -------------------------------------------------------------------------------
 - (IBAction)searchLocalNetwork:(id)sender
@@ -180,7 +192,7 @@
    SessionManager *sessionManager = [SessionManager sharedSessionManager];
 
    // Grab an existing profile
-   NSArray *array = [[sessionManager context] fetchObjectsForEntityName:@"Profile"
+   NSArray *array = [managedObjectContext fetchObjectsForEntityName:@"Profile"
                                                              withPredicate:@"name = 'Quick Scan'"];
    Profile *profile = [array lastObject];
    
@@ -215,7 +227,6 @@
    // Queue and launch the session
    Session *newSession =
    [sessionManager queueSessionWithProfile:profile 
-//                                withTarget:[NSString stringWithFormat:@"192.168.0.1/%d",[self cidrForInterface:@"en0"]]];
                                 withTarget:[NSString stringWithFormat:@"%@/%d", defaultIp, [self cidrForInterface:@"en0"]]];
       
    [sessionManager launchSession:newSession];      
@@ -415,7 +426,7 @@ int bitcount (unsigned int n)
 //   [refreshIndicator stopAnimation:self];
    
    // Clear array
-   [connections removeAllObjects];   
+   [[connectionsController content] removeAllObjects];
    
    // Write the Nmap stdout and stderr buffers out to disk
    NSString *aString =
@@ -524,12 +535,14 @@ int bitcount (unsigned int n)
 {
    NSLog(@"InspectorController: found services");
 
-   NSMutableDictionary *newService = [[[notification object] retain] autorelease];
+   NSMutableDictionary *newService = [[notification object] retain];
    
    NSString *key = [NSString stringWithFormat:@"%@ on %@", 
                     [newService objectForKey:@"Long_Type"], [newService objectForKey:@"Name"]];                    
 //   [root setObject:[[notification object] retain] forKey:key];
-   [root setObject:newService forKey:key];
+//   [root setObject:newService forKey:key];
+   [bonjourConnectionsController addObject:newService];
+   
    [foundServicesOutlineView reloadData];
    
 	[[SPGrowlController sharedGrowlController] 
@@ -554,126 +567,169 @@ int bitcount (unsigned int n)
 //   }
 }
 
-#pragma mark -
-#pragma mark Bonjour Listener OutlineView Delegates   
-
-- (int)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item
+#pragma mark Table click handlers
+// -------------------------------------------------------------------------------
+//	createNetstatMenu: 
+// -------------------------------------------------------------------------------
+- (void)createNetstatMenu
 {
-   // The NSOutlineView calls this when it needs to know how many children
-   // a particular item has. Because we are using a standard tree of NSDictionary,
-   // NSArray, NSString etc objects, we can just return the count.
+   NSArray *array = [[self managedObjectContext] fetchObjectsForEntityName:@"Profile" withPredicate:
+                     @"(parent.name LIKE[c] 'Defaults') OR (parent.name LIKE[c] 'User Profiles')"];   
    
-   // The root node is special; if the NSOutline view asks for the children of nil,
-   // we give it the count of the root dictionary.
+   NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
+                                       initWithKey:@"name" ascending:YES];
    
-   if (item == nil)
+   NSMutableArray *sa = [NSMutableArray arrayWithArray:array];
+   [sa sortUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];    
+   [sortDescriptor release];
+   
+   NSMenuItem *mi = [[NSMenuItem alloc] initWithTitle:@"Queue with"
+                                               action:@selector(handleNetstatMenuClick:)
+                                        keyEquivalent:@""];   
+   NSMenu *submenu = [[NSMenu alloc] initWithTitle:@"Profile"];
+   [mi setSubmenu:submenu];
+   
+   for (id obj in sa)
    {
-      return [root count];
-   }
-   
-   // If it's an NSArray or NSDictionary, return the count.
-   
-   if ([item isKindOfClass:[NSDictionary class]] || [item isKindOfClass:[NSArray class]])
-   {
-      return [item count];
-   }
-   
-   // It can't have children if it's not an NSDictionary or NSArray.
-   
-   return 0;
-}
-
-- (BOOL)outlineView:(NSOutlineView *)outlineView isItemExpandable:(id)item
-{
-   // NSOutlineView calls this when it needs to know if an item can be expanded.
-   // In our case, if an item is an NSArray or NSDictionary AND their count is > 0
-   // then they are expandable.
-   
-   if ([item isKindOfClass:[NSArray class]] || [item isKindOfClass:[NSDictionary class]])
-   {
-      if ([item count] > 0)
-         return YES;
-   }
-   
-   // Return NO in all other cases.
-   
-   return NO;
-}
-
-- (id)outlineView:(NSOutlineView *)outlineView child:(int)index ofItem:(id)item
-{
-   // NSOutlineView will iterate over every child of every item, recursively asking
-   // for the entry at each index. We return the item at a given array index,
-   // or at the given dictionary key index.
-   if (item == nil)
-   {
-      item = root;
-   }
-   
-   if ([item isKindOfClass:[NSArray class]])
-   {
-      return [item objectAtIndex:index];
-   }
-   else if ([item isKindOfClass:[NSDictionary class]])
-   {
-      return [item objectForKey:[[item allKeys] objectAtIndex:index]];
-   }
-   
-   return nil;
-}
-
-- (id)outlineView:(NSOutlineView *)outlineView objectValueForTableColumn:(NSTableColumn *)tableColumn byItem:(id)item
-{
-   // NSOutlineView calls this for each column in your NSOutlineView, for each item.
-   // You need to work out what you want displayed in each column; in our case we
-   // create in Interface Builder two columns, one called "Key" and the other "Value".
-   //
-   // If the NSOutlineView is after the key for an item, we use either the NSDictionary
-   // key for that item, or we count from 0 for NSArrays.
-   //
-   // Note that you can find the parent of a given item using [outlineView parentForItem:item];
-   
-   if ([[[tableColumn headerCell] stringValue] compare:@"Key"] == NSOrderedSame)
-   {
-      // Return the key for this item. First, get the parent array or dictionary.
-      // If the parent is nil, then that must be root, so we'll get the root
-      // dictionary.
+      NSMenuItem *mi = [[NSMenuItem alloc] initWithTitle:[obj name]
+                                                  action:@selector(handleNetstatMenuClick:)
+                                           keyEquivalent:@""];
+      [mi setTag:10];
+      [submenu addItem:mi];
+      [mi release];      
       
-      id parentObject = [outlineView parentForItem:item] ? [outlineView parentForItem:item] : root;
+   }
+   [netstatContextMenu addItem:mi];
+}
+
+// -------------------------------------------------------------------------------
+//	handleNetstatMenuClick: 
+// -------------------------------------------------------------------------------
+- (IBAction)handleNetstatMenuClick:(id)sender
+{
+   //ANSLog(@"MyDocument: handleHostsMenuClick: %@", [sender title]);
+   
+   // If we want to queue selected hosts... (10 is a magic number specified in IB)
+   if ([sender tag] == 10)
+   {
+      // Grab the desired profile...
+      NSArray *s = [[self managedObjectContext] fetchObjectsForEntityName:@"Profile" withPredicate:
+                    @"(name LIKE[c] %@)", [sender title]]; 
+      Profile *p = [s lastObject];
       
-      if ([parentObject isKindOfClass:[NSDictionary class]])
+      // Grab the selected hosts from the hostsController
+      NSArray *selectedHosts = [connectionsController selectedObjects];
+      
+      NSString *hostsIpCSV = [[NSString alloc] init];
+      
+      // Create a comma-seperated string of target ip's
+      if ([selectedHosts count] > 1)
       {
-         // Dictionaries have keys, so we can return the key name. We'll assume
-         // here that keys/objects have a one to one relationship.
-         return [[parentObject allKeysForObject:item] objectAtIndex:0];
-      }
-      else if ([parentObject isKindOfClass:[NSArray class]])
-      {
-         // Arrays don't have keys (usually), so we have to use a name
-         // based on the index of the object.
+         NetstatConnection *lastHost = [selectedHosts lastObject];
          
-         return [NSString stringWithFormat:@"Item %d", [parentObject indexOfObject:item]];
+         for (NetstatConnection *host in selectedHosts)
+         {
+            if (host == lastHost)
+               break;
+            hostsIpCSV = [hostsIpCSV stringByAppendingFormat:@"%@ ", [host remoteIP]];
+         }
       }
-   }
-   else
-   {
-      // Return the value for the key. If this is a string, just return that.
       
-      if ([item isKindOfClass:[NSString class]])
-      {
-         return item;
-      }
-      else if ([item isKindOfClass:[NSDictionary class]])
-      {
-         return [NSString stringWithFormat:@"%d items", [item count]];
-      }
-      else if ([item isKindOfClass:[NSArray class]])
-      {
-         return [NSString stringWithFormat:@"%d items", [item count]];
-      }
+      hostsIpCSV = [hostsIpCSV stringByAppendingString:[[selectedHosts lastObject] remoteIP]];
+      
+      //      // Create a Target string based on the hosts ip's
+      //      NSString *ip = [[a lastObject] ipv4Address];
+      
+      // BEAUTIFIER: When queueing up a new host, keep the selection on the current Session
+      Session *currentSession = [[sessionsController selectedObjects] lastObject];      
+      
+      // Grab the Session Manager object
+      SessionManager *sessionManager = [SessionManager sharedSessionManager];
+      
+      [sessionManager queueSessionWithProfile:p withTarget:hostsIpCSV];
+      
+      // BEAUTIFIER
+      [sessionsController setSelectedObjects:[NSArray arrayWithObject:currentSession]];
+   }
+}
+
+
+#pragma mark -
+#pragma mark Sort Descriptors
+
+// -------------------------------------------------------------------------------
+//	Sort Descriptors for the various table views
+// -------------------------------------------------------------------------------
+
+// http://fadeover.org/blog/archives/13
+- (NSArray *)hostSortDescriptor
+{
+	if(hostSortDescriptor == nil){
+		hostSortDescriptor = [NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"ipv4Address" ascending:YES]];
    }
    
-   return nil;
+	return hostSortDescriptor;
+}
+
+- (void)setHostSortDescriptor:(NSArray *)newSortDescriptor
+{
+	hostSortDescriptor = newSortDescriptor;
+}
+
+- (NSArray *)portSortDescriptor
+{
+	if(portSortDescriptor == nil){
+		portSortDescriptor = [NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"number" ascending:YES]];
+   }
+   
+	return portSortDescriptor;
+}
+
+- (void)setPortSortDescriptor:(NSArray *)newSortDescriptor
+{
+	portSortDescriptor = newSortDescriptor;
+}
+
+- (NSArray *)profileSortDescriptor
+{
+	if(profileSortDescriptor == nil){
+		profileSortDescriptor = [NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES]];
+   }
+   
+	return profileSortDescriptor;
+}
+
+- (void)setProfileSortDescriptor:(NSArray *)newSortDescriptor
+{
+	profileSortDescriptor = newSortDescriptor;
+}
+
+- (NSArray *)sessionSortDescriptor
+{
+	if(sessionSortDescriptor == nil){
+		sessionSortDescriptor = [NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO]];
+   }
+   
+	return sessionSortDescriptor;
+}
+
+- (void)setSessionSortDescriptor:(NSArray *)newSortDescriptor
+{
+	sessionSortDescriptor = newSortDescriptor;
+}
+
+- (NSArray *)osSortDescriptor
+{
+	if(osSortDescriptor == nil){
+		osSortDescriptor = [NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"name" ascending:NO]];
+   }
+   
+	return osSortDescriptor;
+}
+
+- (void)setOsSortDescriptor:(NSArray *)newSortDescriptor
+{
+	osSortDescriptor = newSortDescriptor;
 }
 
 @end

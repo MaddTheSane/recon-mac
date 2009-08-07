@@ -240,6 +240,7 @@
    if (dictValue != nil)
       [nmapArgs addObject:[nmapArgsTimingString valueForKey:[dictValue stringValue]]];
    
+   
    // -------------------------------------------------------------------------------
    //	/END hacky code...
    // -------------------------------------------------------------------------------
@@ -249,8 +250,12 @@
    [nmapArgs addObject:@"50"];   
    [nmapArgs addObject:@"-oX"];
    [nmapArgs addObject:nmapOutput];
-   [nmapArgs addObject:target];
-
+   
+   // Multiple targets must be added separately
+   NSArray *targetArray = [target componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+   
+   for (NSString *targetString in targetArray)
+      [nmapArgs addObject:targetString];
    return nmapArgs;
 }
 

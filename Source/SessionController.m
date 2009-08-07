@@ -82,7 +82,7 @@
    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
    [nc removeObserver:self];
 
-   [session release];
+//   [session release];
    [sessionUUID release];   
    [sessionDirectory release];   
    [sessionOutputFile release];
@@ -108,14 +108,13 @@ inManagedObjectContext:(NSManagedObjectContext *)context
    
    // Create new session in managedObjectContext
    session = [NSEntityDescription insertNewObjectForEntityForName:@"Session" 
-                                                    inManagedObjectContext:context];
-   
+                                                    inManagedObjectContext:context];   
    [session setTarget:sessionTarget];     // Store session target
    [session setDate:[NSDate date]];       // Store session start date
    [session setUUID:[self sessionUUID]];  // Store session UUID
    [session setStatus:@"Queued"];         // Store session status
    session.profile = profileCopy;         // Store session profile
-      
+   
    // Send signals to View to update sorting/selections
    [context processPendingChanges];
       

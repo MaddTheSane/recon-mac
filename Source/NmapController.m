@@ -205,8 +205,9 @@
    //ANSLog(@"NmapController: Received task termination!");
  
    // Write stdout and stderr to file
-   BOOL writeOK = [self writeNmapOutputToFile];
-
+//   BOOL writeOK = [self writeNmapOutputToFile];
+   [self writeNmapOutputToFile];
+   
    int taskReturnValue = [[notification object] terminationStatus];   
    //ANSLog(@"NmapController: Return value: %i", taskReturnValue);
 

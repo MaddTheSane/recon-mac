@@ -38,13 +38,18 @@
 		8CAA7D8A101CF83E00EF43A3 /* IpIdSeqValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CAA7D87101CF83E00EF43A3 /* IpIdSeqValue.m */; };
 		8CAA7DEA101D037800EF43A3 /* Port_Script.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CAA7DE9101D037800EF43A3 /* Port_Script.m */; };
 		8CC32789100CDCA700483939 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CC32788100CDCA700483939 /* Security.framework */; };
-		8CC3278F100CDCF000483939 /* InspectorController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CC3278E100CDCF000483939 /* InspectorController.m */; };
+		8CC3278F100CDCF000483939 /* BasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CC3278E100CDCF000483939 /* BasicViewController.m */; };
 		8CC32794100CDFE400483939 /* NetstatConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CC32793100CDFE400483939 /* NetstatConnection.m */; };
 		8CC329D1100DF9D700483939 /* BonjourListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CC329D0100DF9D700483939 /* BonjourListener.m */; };
+		8CC70CF51029839100743F1F /* Basic.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CC70CF41029839100743F1F /* Basic.xib */; };
+		8CC70D0F10298B1000743F1F /* ManagingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CC70D0C10298B1000743F1F /* ManagingViewController.m */; };
+		8CC70D8E1029911A00743F1F /* Advanced.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CC70D8D1029911A00743F1F /* Advanced.xib */; };
 		8CC73CFE102290F100296388 /* NSManagedObjectContext-helper.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CC73CFD102290F100296388 /* NSManagedObjectContext-helper.m */; };
 		8CD980E61024BFA200492108 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CD980E41024BFA200492108 /* Quartz.framework */; };
 		8CD980E71024BFA200492108 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CD980E51024BFA200492108 /* QuartzCore.framework */; };
-		8CD9819A1024F3E100492108 /* NSTreeController-DMExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CD981991024F3E100492108 /* NSTreeController-DMExtensions.m */; };
+		8CDEBDC21029974500765DF6 /* AdvancedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CDEBDC11029974500765DF6 /* AdvancedViewController.m */; };
+		8CDEBE3C1029A1D800765DF6 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CDEBE3B1029A1D800765DF6 /* SettingsViewController.m */; };
+		8CDEC0EB1029C39500765DF6 /* Settings.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CDEC0EA1029C39500765DF6 /* Settings.xib */; };
 		8D15AC2C0486D014006FF6A4 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2A37F4B9FDCFA73011CA2CEA /* Credits.rtf */; };
 		8D15AC2F0486D014006FF6A4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165FFE840EACC02AAC07 /* InfoPlist.strings */; };
 		8D15AC310486D014006FF6A4 /* MyDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A37F4ACFDCFA73011CA2CEA /* MyDocument.m */; settings = {ATTRIBUTES = (); }; };
@@ -133,18 +138,25 @@
 		8CAA7DE8101D037800EF43A3 /* Port_Script.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Port_Script.h; path = "Source/Managed Objects/Port_Script.h"; sourceTree = "<group>"; };
 		8CAA7DE9101D037800EF43A3 /* Port_Script.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Port_Script.m; path = "Source/Managed Objects/Port_Script.m"; sourceTree = "<group>"; };
 		8CC32788100CDCA700483939 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
-		8CC3278D100CDCF000483939 /* InspectorController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InspectorController.h; path = Source/InspectorController.h; sourceTree = "<group>"; };
-		8CC3278E100CDCF000483939 /* InspectorController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InspectorController.m; path = Source/InspectorController.m; sourceTree = "<group>"; };
+		8CC3278D100CDCF000483939 /* BasicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BasicViewController.h; path = Source/BasicViewController.h; sourceTree = "<group>"; };
+		8CC3278E100CDCF000483939 /* BasicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BasicViewController.m; path = Source/BasicViewController.m; sourceTree = "<group>"; };
 		8CC32792100CDFE400483939 /* NetstatConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NetstatConnection.h; path = Source/NetstatConnection.h; sourceTree = "<group>"; };
 		8CC32793100CDFE400483939 /* NetstatConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NetstatConnection.m; path = Source/NetstatConnection.m; sourceTree = "<group>"; };
 		8CC329CF100DF9D700483939 /* BonjourListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BonjourListener.h; path = Source/BonjourListener.h; sourceTree = "<group>"; };
 		8CC329D0100DF9D700483939 /* BonjourListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BonjourListener.m; path = Source/BonjourListener.m; sourceTree = "<group>"; };
+		8CC70CF41029839100743F1F /* Basic.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Basic.xib; path = Resources/Basic.xib; sourceTree = "<group>"; };
+		8CC70D0C10298B1000743F1F /* ManagingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ManagingViewController.m; path = Source/ManagingViewController.m; sourceTree = "<group>"; };
+		8CC70D0D10298B1000743F1F /* ManagingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ManagingViewController.h; path = Source/ManagingViewController.h; sourceTree = "<group>"; };
+		8CC70D8D1029911A00743F1F /* Advanced.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Advanced.xib; path = Resources/Advanced.xib; sourceTree = "<group>"; };
 		8CC73CFD102290F100296388 /* NSManagedObjectContext-helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSManagedObjectContext-helper.m"; path = "Source/NSManagedObjectContext-helper.m"; sourceTree = "<group>"; };
 		8CD980E41024BFA200492108 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = /System/Library/Frameworks/Quartz.framework; sourceTree = "<absolute>"; };
 		8CD980E51024BFA200492108 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = /System/Library/Frameworks/QuartzCore.framework; sourceTree = "<absolute>"; };
-		8CD981981024F3E100492108 /* NSTreeController-DMExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSTreeController-DMExtensions.h"; path = "Source/NSTreeController-DMExtensions.h"; sourceTree = "<group>"; };
-		8CD981991024F3E100492108 /* NSTreeController-DMExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSTreeController-DMExtensions.m"; path = "Source/NSTreeController-DMExtensions.m"; sourceTree = "<group>"; };
-		8D15AC370486D014006FF6A4 /* Recon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Recon.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CDEBDC01029974500765DF6 /* AdvancedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AdvancedViewController.h; path = Source/AdvancedViewController.h; sourceTree = "<group>"; };
+		8CDEBDC11029974500765DF6 /* AdvancedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AdvancedViewController.m; path = Source/AdvancedViewController.m; sourceTree = "<group>"; };
+		8CDEBE3A1029A1D800765DF6 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsViewController.h; path = Source/SettingsViewController.h; sourceTree = "<group>"; };
+		8CDEBE3B1029A1D800765DF6 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsViewController.m; path = Source/SettingsViewController.m; sourceTree = "<group>"; };
+		8CDEC0EA1029C39500765DF6 /* Settings.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Settings.xib; path = Resources/Settings.xib; sourceTree = "<group>"; };
+		8D15AC370486D014006FF6A4 /* recon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = recon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,7 +200,7 @@
 		19C28FB0FE9D524F11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8D15AC370486D014006FF6A4 /* Recon.app */,
+				8D15AC370486D014006FF6A4 /* recon.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -210,29 +222,13 @@
 		2A37F4ABFDCFA73011CA2CEA /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				8C79E4D50FFE9FA500A4648B /* Managed Objects */,
 				2A37F4AEFDCFA73011CA2CEA /* MyDocument.h */,
 				2A37F4ACFDCFA73011CA2CEA /* MyDocument.m */,
-				8C55E43610052E72002F5013 /* SessionManager.h */,
-				8C55E43710052E72002F5013 /* SessionManager.m */,
-				8C79E22E0FFC23D800A4648B /* SessionController.h */,
-				8C79E22F0FFC23D800A4648B /* SessionController.m */,
-				8C79E1940FFBC09600A4648B /* ArgumentListGenerator.h */,
-				8C79E1950FFBC09600A4648B /* ArgumentListGenerator.m */,
-				8C79E2310FFC23E000A4648B /* NmapController.h */,
-				8C79E2320FFC23E000A4648B /* NmapController.m */,
-				8C79E1930FFBC09600A4648B /* XMLController.h */,
-				8C79E1920FFBC09600A4648B /* XMLController.m */,
-				8C79E2B20FFCF0FF00A4648B /* PrefsController.h */,
-				8C79E2B30FFCF0FF00A4648B /* PrefsController.m */,
-				8C79F30910033EF200A4648B /* SPGrowlController.h */,
-				8C79F30A10033EF200A4648B /* SPGrowlController.m */,
-				8CD981981024F3E100492108 /* NSTreeController-DMExtensions.h */,
-				8CD981991024F3E100492108 /* NSTreeController-DMExtensions.m */,
-				8C7E9C731014D34E00762319 /* NSManagedObjectContext-helper.h */,
-				8CC73CFD102290F100296388 /* NSManagedObjectContext-helper.m */,
-				8C55E41E100524A5002F5013 /* NSTask+OneLineTasksWithOutput.m */,
-				8CC3297F100DEE3E00483939 /* Inspector */,
+				8CDEC3A9102A2BF800765DF6 /* Shared */,
+				8CC3297F100DEE3E00483939 /* Basic Views */,
+				8CDEBDEC102998E600765DF6 /* Advanced View */,
+				8CDEBE501029A1F600765DF6 /* Settings View */,
+				8C79E4D50FFE9FA500A4648B /* Managed Objects */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -249,8 +245,11 @@
 		2A37F4B8FDCFA73011CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				8C79F4C41003E3BA00A4648B /* MainMenu.xib */,
 				8C79F7891004908600A4648B /* MyDocument.xib */,
+				8CC70CF41029839100743F1F /* Basic.xib */,
+				8CC70D8D1029911A00743F1F /* Advanced.xib */,
+				8CDEC0EA1029C39500765DF6 /* Settings.xib */,
+				8C79F4C41003E3BA00A4648B /* MainMenu.xib */,
 				8C79F67E1004235900A4648B /* button_pane_show_icon.tif */,
 				8C79F67F1004235900A4648B /* button_pane_hide_icon.tif */,
 				8C79F4C31003E3BA00A4648B /* Info.plist */,
@@ -290,17 +289,17 @@
 			name = "Managed Objects";
 			sourceTree = "<group>";
 		};
-		8CC3297F100DEE3E00483939 /* Inspector */ = {
+		8CC3297F100DEE3E00483939 /* Basic Views */ = {
 			isa = PBXGroup;
 			children = (
-				8CC3278D100CDCF000483939 /* InspectorController.h */,
-				8CC3278E100CDCF000483939 /* InspectorController.m */,
+				8CC3278D100CDCF000483939 /* BasicViewController.h */,
+				8CC3278E100CDCF000483939 /* BasicViewController.m */,
 				8CC32792100CDFE400483939 /* NetstatConnection.h */,
 				8CC32793100CDFE400483939 /* NetstatConnection.m */,
 				8CC329CF100DF9D700483939 /* BonjourListener.h */,
 				8CC329D0100DF9D700483939 /* BonjourListener.m */,
 			);
-			name = Inspector;
+			name = "Basic Views";
 			sourceTree = "<group>";
 		};
 		8CD132C4101D433700E7E515 /* Host Children */ = {
@@ -327,6 +326,50 @@
 				8CAA7DE9101D037800EF43A3 /* Port_Script.m */,
 			);
 			name = "Port Children";
+			sourceTree = "<group>";
+		};
+		8CDEBDEC102998E600765DF6 /* Advanced View */ = {
+			isa = PBXGroup;
+			children = (
+				8CDEBDC01029974500765DF6 /* AdvancedViewController.h */,
+				8CDEBDC11029974500765DF6 /* AdvancedViewController.m */,
+			);
+			name = "Advanced View";
+			sourceTree = "<group>";
+		};
+		8CDEBE501029A1F600765DF6 /* Settings View */ = {
+			isa = PBXGroup;
+			children = (
+				8CDEBE3A1029A1D800765DF6 /* SettingsViewController.h */,
+				8CDEBE3B1029A1D800765DF6 /* SettingsViewController.m */,
+			);
+			name = "Settings View";
+			sourceTree = "<group>";
+		};
+		8CDEC3A9102A2BF800765DF6 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				8C55E43610052E72002F5013 /* SessionManager.h */,
+				8C55E43710052E72002F5013 /* SessionManager.m */,
+				8C79E22E0FFC23D800A4648B /* SessionController.h */,
+				8C79E22F0FFC23D800A4648B /* SessionController.m */,
+				8C79E1940FFBC09600A4648B /* ArgumentListGenerator.h */,
+				8C79E1950FFBC09600A4648B /* ArgumentListGenerator.m */,
+				8C79E2310FFC23E000A4648B /* NmapController.h */,
+				8C79E2320FFC23E000A4648B /* NmapController.m */,
+				8C79E1930FFBC09600A4648B /* XMLController.h */,
+				8C79E1920FFBC09600A4648B /* XMLController.m */,
+				8C79E2B20FFCF0FF00A4648B /* PrefsController.h */,
+				8C79E2B30FFCF0FF00A4648B /* PrefsController.m */,
+				8CC70D0D10298B1000743F1F /* ManagingViewController.h */,
+				8CC70D0C10298B1000743F1F /* ManagingViewController.m */,
+				8C79F30910033EF200A4648B /* SPGrowlController.h */,
+				8C79F30A10033EF200A4648B /* SPGrowlController.m */,
+				8C7E9C731014D34E00762319 /* NSManagedObjectContext-helper.h */,
+				8CC73CFD102290F100296388 /* NSManagedObjectContext-helper.m */,
+				8C55E41E100524A5002F5013 /* NSTask+OneLineTasksWithOutput.m */,
+			);
+			name = Shared;
 			sourceTree = "<group>";
 		};
 		E1B74B1A0667B4A90069E3BA /* Models */ = {
@@ -357,7 +400,7 @@
 			name = Recon;
 			productInstallPath = "$(HOME)/Applications";
 			productName = "nmapX-coredata";
-			productReference = 8D15AC370486D014006FF6A4 /* Recon.app */;
+			productReference = 8D15AC370486D014006FF6A4 /* recon.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -390,6 +433,9 @@
 				8C79F6811004235900A4648B /* button_pane_hide_icon.tif in Resources */,
 				8C79F78A1004908600A4648B /* MyDocument.xib in Resources */,
 				8C5FF41F101B6F5B00856055 /* reconwithwall-darker-zoom.icns in Resources */,
+				8CC70CF51029839100743F1F /* Basic.xib in Resources */,
+				8CC70D8E1029911A00743F1F /* Advanced.xib in Resources */,
+				8CDEC0EB1029C39500765DF6 /* Settings.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,7 +461,7 @@
 				8C55E43810052E72002F5013 /* SessionManager.m in Sources */,
 				8CAA1231100A078B0084C6D5 /* Profile.m in Sources */,
 				8C2A17B5100B2A6E0060D931 /* Host.m in Sources */,
-				8CC3278F100CDCF000483939 /* InspectorController.m in Sources */,
+				8CC3278F100CDCF000483939 /* BasicViewController.m in Sources */,
 				8CC32794100CDFE400483939 /* NetstatConnection.m in Sources */,
 				8CC329D1100DF9D700483939 /* BonjourListener.m in Sources */,
 				8CAA7CB6101CD00700EF43A3 /* OsClass.m in Sources */,
@@ -425,7 +471,9 @@
 				8CAA7D8A101CF83E00EF43A3 /* IpIdSeqValue.m in Sources */,
 				8CAA7DEA101D037800EF43A3 /* Port_Script.m in Sources */,
 				8CC73CFE102290F100296388 /* NSManagedObjectContext-helper.m in Sources */,
-				8CD9819A1024F3E100492108 /* NSTreeController-DMExtensions.m in Sources */,
+				8CC70D0F10298B1000743F1F /* ManagingViewController.m in Sources */,
+				8CDEBDC21029974500765DF6 /* AdvancedViewController.m in Sources */,
+				8CDEBE3C1029A1D800765DF6 /* SettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

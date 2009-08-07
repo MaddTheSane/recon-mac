@@ -55,7 +55,7 @@
 
 - (Session *)initWithProfile:(Profile *)profile 
                    withTarget:(NSString *)sessionTarget     
-       inManagedObjectContext:(NSManagedObjectContext *)context;
+      inManagedObjectContext:(NSManagedObjectContext *)context;
 
 - (Session *)initWithSession:(Session *)s;
 

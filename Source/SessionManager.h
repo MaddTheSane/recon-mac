@@ -17,10 +17,12 @@
 	NSMutableDictionary *sessionControllers;   
    BOOL processingQueue;
 
+   NSArrayController *sessionsArrayController;
 }
 
 + (SessionManager *)sharedSessionManager;
 @property (readonly) NSManagedObjectContext *context;
+@property (readwrite, retain)NSArrayController *sessionsArrayController;
 
 - (void)setContext:(NSManagedObjectContext *)c;
 

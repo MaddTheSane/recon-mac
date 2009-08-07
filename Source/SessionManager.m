@@ -27,6 +27,7 @@
 
    @synthesize sessionControllers;
    @synthesize processingQueue;
+   @synthesize sessionsArrayController;
 
 static NSManagedObjectContext *context;
 static SessionManager *sharedSessionManager = nil;
@@ -46,8 +47,6 @@ static SessionManager *sharedSessionManager = nil;
 
 - (void)dealloc
 {
-   //ANSLog(@"");
-   //ANSLog(@"SessionManager: deallocating");   
    [[NSNotificationCenter defaultCenter] removeObserver:self];   
    
    [sessionControllers release];
@@ -67,8 +66,8 @@ static SessionManager *sharedSessionManager = nil;
    Session *newSession =
    [newSessionController initWithProfile:profile 
                               withTarget:target 
-                  inManagedObjectContext:[profile managedObjectContext]];     
-   
+                  inManagedObjectContext:[profile managedObjectContext]];
+      
    // Register to receive notifications from the new Session Controller
    [self registerNotificationsFromSessionController:newSessionController];
 
@@ -143,7 +142,7 @@ static SessionManager *sharedSessionManager = nil;
    
    // Grab a reference to the Session Controller
    SessionController *sc = [sessionControllers valueForKey:sessionUUID];
-   
+      
    // If a Session Controller exists for this session...
    if (sc != nil)
    {
@@ -305,6 +304,9 @@ static SessionManager *sharedSessionManager = nil;
    NSString *sessionUUID = [[notification object] sessionUUID];
    SessionController *sc = [sessionControllers objectForKey:sessionUUID];
    
+   Session *newSession = [[notification object] session];
+   [sessionsArrayController setSelectedObjects:[NSArray arrayWithObject:newSession]];   
+   
 	[[SPGrowlController sharedGrowlController] 
     notifyWithTitle:@"Session complete"                                                   
     description:[NSString stringWithFormat: @"Target: %@", [[sc session] target]]     
@@ -327,6 +329,9 @@ static SessionManager *sharedSessionManager = nil;
    NSString *sessionUUID = [[notification object] sessionUUID];   
    SessionController *sc = [sessionControllers objectForKey:sessionUUID];
    
+   Session *newSession = [[notification object] session];
+   [sessionsArrayController setSelectedObjects:[NSArray arrayWithObject:newSession]];      
+   
 	[[SPGrowlController sharedGrowlController] 
     notifyWithTitle:@"Session aborted"                                                   
     description:[NSString stringWithFormat: @"Target: %@", [[sc session] target]]     
@@ -348,6 +353,9 @@ static SessionManager *sharedSessionManager = nil;
 {   
    NSString *sessionUUID = [[notification object] sessionUUID];
    SessionController *sc = [sessionControllers objectForKey:sessionUUID];
+   
+   Session *newSession = [[notification object] session];
+   [sessionsArrayController setSelectedObjects:[NSArray arrayWithObject:newSession]];      
    
 	[[SPGrowlController sharedGrowlController] 
     notifyWithTitle:@"Session ended unsuccessfully"     
@@ -397,11 +405,10 @@ static SessionManager *sharedSessionManager = nil;
 
 - (void)setContext:(NSManagedObjectContext *)c
 {
-//   [context autorelease];
-//   context = [c retain];
    if (context == nil)
       context = c;
 }
+
 
 - (NSManagedObjectContext *)context
 {

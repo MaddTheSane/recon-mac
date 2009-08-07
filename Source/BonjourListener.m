@@ -45,6 +45,9 @@
    [super dealloc];
 }
 
+// -------------------------------------------------------------------------------
+//	search: 
+// -------------------------------------------------------------------------------
 -(IBAction)search:(id)sender {
    NSLog(@"BonjourListener: search");
    [self.primaryBrowser stop];

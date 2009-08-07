@@ -6,7 +6,8 @@
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+//#import <Cocoa/Cocoa.h>
+#import "ManagingViewController.h"
 
 @class NetstatConnection;
 @class SessionController;
@@ -14,7 +15,7 @@
 
 @class BonjourListener;
 
-@interface InspectorController : NSObject {
+@interface BasicViewController : ManagingViewController {
 
    // Global outlets
    IBOutlet NSPopUpButton *taskSelectionPopUp;
@@ -22,7 +23,6 @@
    IBOutlet NSProgressIndicator *refreshIndicator;
    
    // Find computers mode  
-   SessionManager *SessionManager;
    IBOutlet NSArrayController *sessionsController;
    
    // See connected computers mode
@@ -51,11 +51,28 @@
    BonjourListener *bonjourListener;
    NSMutableArray *foundServices;
    IBOutlet NSArrayController *foundServicesController;
-   NSMutableDictionary *root;   
+//   NSMutableDictionary *root;   
+   IBOutlet NSArrayController *bonjourConnectionsController;
    IBOutlet NSOutlineView *foundServicesOutlineView;
 	NSRect bigFramePosition;
 	NSRect smallFramePosition;
    IBOutlet NSView *hider;
+
+   IBOutlet NSView *workspaceBasicContent;   
+   IBOutlet NSView *workspaceBasicContentBonjour;   
+   IBOutlet NSView *workspaceBasicContentNetstat;     
+   
+   IBOutlet NSView *targetBarBasicContent;
+   
+   IBOutlet NSMenu *netstatContextMenu;   
+   
+   
+   // Sort-descriptors for the various table views
+   NSArray *osSortDescriptor;
+   NSArray *hostSortDescriptor;
+   NSArray *portSortDescriptor;   
+   NSArray *profileSortDescriptor;      
+   NSArray *sessionSortDescriptor;           
 }
 
 @property (readwrite, retain)NSMutableArray *connections;
@@ -67,14 +84,25 @@
 
 @property (assign,readonly) NSMutableDictionary *root;
 
-- (IBAction)changeInspectorTask:(id)sender;
+@property (readonly) NSArray *osSortDescriptor;
+@property (readonly) NSArray *hostSortDescriptor;
+@property (readonly) NSArray *portSortDescriptor;
+@property (readonly) NSArray *profileSortDescriptor;
+@property (readonly) NSArray *sessionSortDescriptor;
+
+@property (readonly) NSView *targetBarBasicContent;
+
+- (IBAction)workspaceBasicContentSwitch:(id)sender;
 - (IBAction)launchScan:(id)sender;
+- (IBAction)changeInspectorTask:(id)sender;
 
 // Find computers mode
 int bitcount (unsigned int n);
 - (int)cidrForInterface:(NSString *)ifName;
 - (IBAction)searchLocalNetwork:(id)sender;
 - (IBAction)checkForServices:(id)sender;
+
+- (void)createNetstatMenu;
 
 // See connected computers mode
 - (IBAction)refreshConnectionsList:(id)sender;
