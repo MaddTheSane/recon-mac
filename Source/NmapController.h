@@ -12,14 +12,13 @@
 
 @interface NmapController : NSObject {
    
+   BOOL hasRun;
 	NSTask *task;   
    
 	NSMutableData *standardOutput;
 	NSMutableData *standardError;
    
    NSString *outputFilePath;
-   
-   BOOL hasRun;
 }
 
 @property(readonly) BOOL hasRun;

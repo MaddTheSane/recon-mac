@@ -82,15 +82,17 @@
    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
    [nc removeObserver:self];
 
-//   [session release];
+   [session release];
    [sessionUUID release];   
    [sessionDirectory release];   
    [sessionOutputFile release];
+   
    [nmapArguments release];       
    [nmapController release];
-   [xmlController release];
+
    [resultsTimer invalidate];   
    [resultsTimer release];
+   [xmlController release];
    [super dealloc];
 }
 
@@ -102,9 +104,9 @@
 inManagedObjectContext:(NSManagedObjectContext *)context
 {
 //   NSLog(@"SessionController: initWithProfile!");
-      
+   
    // Make a copy of the selected profile
-   Profile *profileCopy = [[self copyProfile:profile] autorelease];
+   Profile *profileCopy = [self copyProfile:profile];
    
    // Create new session in managedObjectContext
    session = [NSEntityDescription insertNewObjectForEntityForName:@"Session" 
@@ -114,10 +116,7 @@ inManagedObjectContext:(NSManagedObjectContext *)context
    [session setUUID:[self sessionUUID]];  // Store session UUID
    [session setStatus:@"Queued"];         // Store session status
    session.profile = profileCopy;         // Store session profile
-   
-   // Send signals to View to update sorting/selections
-   [context processPendingChanges];
-      
+         
    [self createSessionDirectory:sessionUUID];
          
    ArgumentListGenerator *a = [[ArgumentListGenerator alloc] init];
@@ -135,25 +134,18 @@ inManagedObjectContext:(NSManagedObjectContext *)context
 // -------------------------------------------------------------------------------
 //	initWithSession: 
 // -------------------------------------------------------------------------------
-- (Session *)initWithSession:(Session *)s
+- (Session *)initWithSession:(Session *)existingSession
 {
-   Profile *profile = [s profile];
+   Profile *profile = [existingSession profile];
    
-//   // Make sure profile is a copied profile
-//   if ([[profile name] hasPrefix:@"Copy"] == NO)
-//   {
-//      profile = [[self copyProfile:profile] autorelease];
-//      s.profile = profile;
-//   }
+   self.session = existingSession;
+   self.sessionUUID = [existingSession UUID];
 
-   self.session = s;
-   self.sessionUUID = [s UUID];
-
-   [self createSessionDirectory:[s UUID]];
+   [self createSessionDirectory:[existingSession UUID]];
 
    // Convert selected profile to nmap arguments   
    ArgumentListGenerator *a = [[ArgumentListGenerator alloc] init];
-   self.nmapArguments = [a convertProfileToArgs:profile withTarget:[s target] withOutputFile:sessionOutputFile];   
+   self.nmapArguments = [a convertProfileToArgs:profile withTarget:[existingSession target] withOutputFile:sessionOutputFile];   
 
    [self initNmapController];   
    
@@ -174,8 +166,8 @@ inManagedObjectContext:(NSManagedObjectContext *)context
    Profile *savedSessions = [array lastObject];
    
    // Make a copy of the selected profile
-   Profile *profileCopy = [[NSEntityDescription insertNewObjectForEntityForName:@"Profile" 
-                                                         inManagedObjectContext:[profile managedObjectContext]] retain];
+   Profile *profileCopy = [NSEntityDescription insertNewObjectForEntityForName:@"Profile" 
+                                                         inManagedObjectContext:[profile managedObjectContext]];
    NSDictionary *values = [profile dictionaryWithValuesForKeys:[[profileCopy entity] attributeKeys]];      
    [profileCopy setValuesForKeysWithDictionary:values];      
    [profileCopy setName:[NSString stringWithFormat:@"Copy of %@",[profile name]]];
@@ -218,7 +210,7 @@ inManagedObjectContext:(NSManagedObjectContext *)context
                                                            withArgs:nmapArguments 
                                                  withOutputFilePath:sessionDirectory];   
 
-   // Register to receive notifications from NmapController
+   // Register to receive notifications from the initialized NmapController
    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
    [nc addObserver:self
           selector:@selector(successfulRunNotification:)

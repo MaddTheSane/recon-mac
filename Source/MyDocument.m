@@ -15,11 +15,9 @@
 // Helper categories from the interwebs
 #import "NSManagedObjectContext-helper.h"
 
-#import "Host.h"
-#import "Port.h"
 #import "Profile.h"
 #import "Session.h"
-#import "OsMatch.h"
+
 
 @implementation MyDocument
 
@@ -29,10 +27,8 @@
 {
     if (self = [super init])
     {
-       // The Session Manager is a singleton instance
-//       sessionManager = [SessionManager sharedSessionManager];
-//       [sessionManager setContext:[self managedObjectContext]];
-              
+       // Insert initialization code here...
+       
        [super init];       
     }
     return self;
@@ -69,7 +65,6 @@
 // -------------------------------------------------------------------------------
 - (void)awakeFromNib
 {
-   //NSLog(@"MyDocument: awakeFromNib!");
    [NSApp setDelegate: self];
 }
 
@@ -82,7 +77,6 @@
    //ANSLog(@"windowControllerDidLoadNib");
    
    sessionManager = [SessionManager sharedSessionManager];
-   [sessionManager setContext:[self managedObjectContext]];
    
    [sessionManager setSessionsArrayController:sessionsArrayController];   
    
@@ -180,6 +174,7 @@
    [vc release];                     
    
    // Set-up Workspace
+   
    // Grab Basic view from controller
    vc = [viewControllers objectAtIndex:0];
 
@@ -225,8 +220,6 @@
       [[workspacePlaceholder animator] replaceSubview:[[workspacePlaceholder subviews] lastObject]
                                                  with:workspaceBasicContent];
       
-      [sessionsDrawer close]; 
-      
    }
    // Advanced
    if ([sender selectedSegment] == 1) 
@@ -242,8 +235,7 @@
       [workspaceAdvancedContent setFrame:[workspacePlaceholder frame]];
       [[workspacePlaceholder animator] replaceSubview:[[workspacePlaceholder subviews] lastObject]
                                                  with:workspaceAdvancedContent];
-      
-      [sessionsDrawer open]; 
+   
    }
    // Settings
    if ([sender selectedSegment] == 2) 
@@ -261,7 +253,6 @@
       [[workspacePlaceholder animator] replaceSubview:[[workspacePlaceholder subviews] lastObject]
                                                  with:workspaceSettingsContent];
 
-      [sessionsDrawer open]; 
    }  
 }
 
@@ -357,6 +348,25 @@ static float vigourOfShake = 0.01f;
    shakeAnimation.path = shakePath;
    shakeAnimation.duration = durationOfShake;
    return shakeAnimation;
+}
+
+
+#pragma mark -
+#pragma mark Segmented Control click-handlers
+
+// -------------------------------------------------------------------------------
+//	segControlClicked: Delete/Play/Add segmented control in the lower-right
+// -------------------------------------------------------------------------------
+- (IBAction)segControlClicked:(id)sender
+{
+   int clickedSegment = [sender selectedSegment];
+   
+   if (clickedSegment == 0)
+      [self dequeueSession:self];
+   if (clickedSegment == 1)
+      [self processQueue:self];
+   if (clickedSegment == 2)
+      [self queueSession:self];
 }
 
 #pragma mark -
@@ -473,8 +483,8 @@ static float vigourOfShake = 0.01f;
 // -------------------------------------------------------------------------------
 - (void)addQueuedSessions
 {   
-   NSArray *array = [[self managedObjectContext] fetchObjectsForEntityName:@"Session" withPredicate:
-                     @"(status LIKE[c] 'Queued')"];   
+   NSArray *array = [[self managedObjectContext] fetchObjectsForEntityName:@"Session" 
+                                                             withPredicate:@"(status LIKE[c] 'Queued')"];                        
    
    if ([array count] > 0)
       [sessionManager queueExistingSessions:array];
@@ -626,28 +636,6 @@ static float vigourOfShake = 0.01f;
 }
 
 // -------------------------------------------------------------------------------
-//	Segmented Control click-handlers
-// -------------------------------------------------------------------------------
-#pragma mark -
-#pragma mark Segmented Control click-handlers
-
-// -------------------------------------------------------------------------------
-//	segControlClicked: Delete/Play/Add segmented control in the lower-right
-// -------------------------------------------------------------------------------
-- (IBAction)segControlClicked:(id)sender
-{
-   int clickedSegment = [sender selectedSegment];
-   
-   if (clickedSegment == 0)
-      [self dequeueSession:self];
-   if (clickedSegment == 1)
-      [self processQueue:self];
-   if (clickedSegment == 2)
-      [self queueSession:self];
-}
-
-
-// -------------------------------------------------------------------------------
 //	Session Drawer Menu click-handlers
 // -------------------------------------------------------------------------------
 #pragma mark Session Drawer Menu click-handlers
@@ -655,7 +643,7 @@ static float vigourOfShake = 0.01f;
 {
    // Find clicked row from sessionsTableView
    NSInteger clickedRow = [sessionsTableView clickedRow];
-   // Get selected object from sessionsArrayController 
+
    return [[sessionsArrayController arrangedObjects] objectAtIndex:clickedRow];
 }
 
@@ -663,7 +651,7 @@ static float vigourOfShake = 0.01f;
 {
    // Find clicked row from sessionsTableView
    NSInteger selectedRow = [sessionsTableView selectedRow];
-   // Get selected object from sessionsArrayController 
+
    return [[sessionsArrayController arrangedObjects] objectAtIndex:selectedRow];   
 }
 

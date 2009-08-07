@@ -489,7 +489,6 @@
 												</object>
 												<string key="NSFrame">{{1, 17}, {633, 180}}</string>
 												<reference key="NSSuperview" ref="935824638"/>
-												<reference key="NSNextKeyView" ref="378487233"/>
 												<reference key="NSDocView" ref="378487233"/>
 												<reference key="NSBGColor" ref="993871619"/>
 												<int key="NScvFlags">4</int>
@@ -523,7 +522,6 @@
 												</object>
 												<string key="NSFrame">{{1, 0}, {633, 17}}</string>
 												<reference key="NSSuperview" ref="935824638"/>
-												<reference key="NSNextKeyView" ref="220434150"/>
 												<reference key="NSDocView" ref="220434150"/>
 												<reference key="NSBGColor" ref="993871619"/>
 												<int key="NScvFlags">4</int>
@@ -532,7 +530,6 @@
 										</object>
 										<string key="NSFrame">{{20, 19}, {635, 198}}</string>
 										<reference key="NSSuperview" ref="126343541"/>
-										<reference key="NSNextKeyView" ref="951725431"/>
 										<int key="NSsFlags">530</int>
 										<reference key="NSVScroller" ref="727287225"/>
 										<reference key="NSHScroller" ref="373407710"/>
@@ -811,7 +808,6 @@
 												</object>
 												<string key="NSFrame">{{1, 17}, {633, 228}}</string>
 												<reference key="NSSuperview" ref="280710146"/>
-												<reference key="NSNextKeyView" ref="723258768"/>
 												<reference key="NSDocView" ref="723258768"/>
 												<reference key="NSBGColor" ref="993871619"/>
 												<int key="NScvFlags">4</int>
@@ -844,7 +840,6 @@
 												</object>
 												<string key="NSFrame">{{1, 0}, {633, 17}}</string>
 												<reference key="NSSuperview" ref="280710146"/>
-												<reference key="NSNextKeyView" ref="130878441"/>
 												<reference key="NSDocView" ref="130878441"/>
 												<reference key="NSBGColor" ref="993871619"/>
 												<int key="NScvFlags">4</int>
@@ -853,7 +848,6 @@
 										</object>
 										<string key="NSFrame">{{20, 20}, {635, 246}}</string>
 										<reference key="NSSuperview" ref="785666303"/>
-										<reference key="NSNextKeyView" ref="411177968"/>
 										<int key="NSsFlags">530</int>
 										<reference key="NSVScroller" ref="471306923"/>
 										<reference key="NSHScroller" ref="751536245"/>
@@ -2341,14 +2335,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
-						<string key="label">sessionsController</string>
-						<reference key="source" ref="488872867"/>
-						<reference key="destination" ref="596541794"/>
-					</object>
-					<int key="connectionID">101020</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBOutletConnection" key="connection">
 						<string key="label">delegate</string>
 						<reference key="source" ref="1056315952"/>
 						<reference key="destination" ref="488872867"/>
@@ -3006,6 +2992,14 @@
 						</object>
 					</object>
 					<int key="connectionID">106547</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">nextKeyView</string>
+						<reference key="source" ref="962778911"/>
+						<reference key="destination" ref="458469329"/>
+					</object>
+					<int key="connectionID">106548</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -4282,7 +4276,7 @@
 					<string>{{14, 806}, {64, 6}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{513, 496}, {524, 45}}</string>
+					<string>{{489, 496}, {524, 45}}</string>
 					<reference ref="6"/>
 					<string>{{378, 131}, {675, 568}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -4387,7 +4381,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">106547</int>
+			<int key="maxID">106549</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -4439,7 +4433,6 @@
 							<string>regularHostsScrollView</string>
 							<string>resolveHostnamesButton</string>
 							<string>scanButton</string>
-							<string>sessionsController</string>
 							<string>targetBarBasicContent</string>
 							<string>taskSelectionPopUp</string>
 							<string>workspaceBasicContent</string>
@@ -4463,7 +4456,6 @@
 							<string>NSScrollView</string>
 							<string>NSButton</string>
 							<string>NSButton</string>
-							<string>NSArrayController</string>
 							<string>NSView</string>
 							<string>NSPopUpButton</string>
 							<string>NSView</string>

@@ -6,7 +6,6 @@
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
-//#import <Cocoa/Cocoa.h>
 #import "ManagingViewController.h"
 
 @class NetstatConnection;
@@ -21,10 +20,7 @@
    IBOutlet NSPopUpButton *taskSelectionPopUp;
    IBOutlet NSButton *scanButton;
    IBOutlet NSProgressIndicator *refreshIndicator;
-   
-   // Find computers mode  
-   IBOutlet NSArrayController *sessionsController;
-   
+      
    // See connected computers mode
    NSMutableArray *connections;
 
@@ -51,7 +47,7 @@
    BonjourListener *bonjourListener;
    NSMutableArray *foundServices;
    IBOutlet NSArrayController *foundServicesController;
-//   NSMutableDictionary *root;   
+
    IBOutlet NSArrayController *bonjourConnectionsController;
    IBOutlet NSOutlineView *foundServicesOutlineView;
 	NSRect bigFramePosition;
@@ -82,8 +78,6 @@
 @property (readwrite, assign)BOOL doneRefresh;
 @property (readwrite, assign)BOOL showSpinner;
 
-@property (assign,readonly) NSMutableDictionary *root;
-
 @property (readonly) NSArray *osSortDescriptor;
 @property (readonly) NSArray *hostSortDescriptor;
 @property (readonly) NSArray *portSortDescriptor;
@@ -92,7 +86,6 @@
 
 @property (readonly) NSView *targetBarBasicContent;
 
-- (IBAction)workspaceBasicContentSwitch:(id)sender;
 - (IBAction)launchScan:(id)sender;
 - (IBAction)changeInspectorTask:(id)sender;
 

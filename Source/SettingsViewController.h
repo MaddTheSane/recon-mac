@@ -6,9 +6,7 @@
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
-
 #import "ManagingViewController.h"
-
 
 @interface SettingsViewController : ManagingViewController {
    

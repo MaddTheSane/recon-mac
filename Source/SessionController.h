@@ -57,7 +57,7 @@
                    withTarget:(NSString *)sessionTarget     
       inManagedObjectContext:(NSManagedObjectContext *)context;
 
-- (Session *)initWithSession:(Session *)s;
+- (Session *)initWithSession:(Session *)existingSession;
 
 - (Profile *)copyProfile:(Profile *)profile;
 - (BOOL)createSessionDirectory:(NSString *)uuid;

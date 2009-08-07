@@ -2957,55 +2957,6 @@
 				<string key="NSFrameSize">{743, 835}</string>
 				<string key="NSClassName">NSView</string>
 			</object>
-			<object class="NSArrayController" id="596541794">
-				<object class="NSMutableArray" key="NSDeclaredKeys">
-					<bool key="EncodedWithXMLCoder">YES</bool>
-					<string>date</string>
-					<string>name</string>
-					<string>profile.name</string>
-					<string>ipv4Address</string>
-					<string>hosts</string>
-					<string>target</string>
-					<string>status</string>
-					<string>ports</string>
-					<string>hosts.ports</string>
-					<string>selection</string>
-					<string>progress</string>
-					<object class="NSMutableString">
-						<characters key="NS.bytes">number</characters>
-					</object>
-					<string>@distinctUnionOfSets.hosts</string>
-					<string>@distinctUnionOfSets.hosts.name</string>
-					<string>@distinctUnionOfSets.hosts.ipv4Address</string>
-					<string>@distinctUnionOfObjects.hosts.ipv4Address</string>
-					<string>@distinctUnionOfObjects.hosts</string>
-					<object class="NSMutableString">
-						<characters key="NS.bytes">@distinctUnionOfSets.ports</characters>
-					</object>
-					<string>minRttTimeout</string>
-					<string>minHostgroup</string>
-					<string>scanDelay</string>
-					<string>initialRttTimeoutString</string>
-					<string>maxHostgroup</string>
-					<string>minHostgroupString</string>
-					<string>maxParallelismString</string>
-					<string>is</string>
-					<string>hosts.@distinctUnionOfArrays.ports</string>
-					<string>@distinctUnionOfSets.target</string>
-					<string>hostsUp</string>
-					<string>hostsDown</string>
-					<string>hostsTotal</string>
-					<string>nmapOutput</string>
-					<string>nmapOutputStdout</string>
-					<string>nmapOutputStderr</string>
-					<string>nmapOutputXml</string>
-				</object>
-				<object class="_NSManagedProxy" key="_NSManagedProxy">
-					<string key="NSEntityName">Session</string>
-				</object>
-				<bool key="_NSIsUsingManagedProxy">YES</bool>
-				<bool key="NSFilterRestrictsInsertion">YES</bool>
-			</object>
 			<object class="NSTreeController" id="992770007">
 				<object class="NSMutableArray" key="NSDeclaredKeys">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -6299,54 +6250,6 @@
 					</object>
 					<int key="connectionID">106477</int>
 				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBBindingConnection" key="connection">
-						<string key="label">contentValues: arrangedObjects.target</string>
-						<reference key="source" ref="206285202"/>
-						<reference key="destination" ref="596541794"/>
-						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="206285202"/>
-							<reference key="NSDestination" ref="596541794"/>
-							<string key="NSLabel">contentValues: arrangedObjects.target</string>
-							<string key="NSBinding">contentValues</string>
-							<string key="NSKeyPath">arrangedObjects.target</string>
-							<int key="NSNibBindingConnectorVersion">2</int>
-						</object>
-					</object>
-					<int key="connectionID">106483</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBBindingConnection" key="connection">
-						<string key="label">contentArray: sessionsArrayController.arrangedObjects</string>
-						<reference key="source" ref="596541794"/>
-						<reference key="destination" ref="488872867"/>
-						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="596541794"/>
-							<reference key="NSDestination" ref="488872867"/>
-							<string key="NSLabel">contentArray: sessionsArrayController.arrangedObjects</string>
-							<string key="NSBinding">contentArray</string>
-							<string key="NSKeyPath">sessionsArrayController.arrangedObjects</string>
-							<int key="NSNibBindingConnectorVersion">2</int>
-						</object>
-					</object>
-					<int key="connectionID">106489</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBBindingConnection" key="connection">
-						<string key="label">selectionIndexes: sessionsArrayController.selectionIndexes</string>
-						<reference key="source" ref="596541794"/>
-						<reference key="destination" ref="488872867"/>
-						<object class="NSNibBindingConnector" key="connector">
-							<reference key="NSSource" ref="596541794"/>
-							<reference key="NSDestination" ref="488872867"/>
-							<string key="NSLabel">selectionIndexes: sessionsArrayController.selectionIndexes</string>
-							<string key="NSBinding">selectionIndexes</string>
-							<string key="NSKeyPath">sessionsArrayController.selectionIndexes</string>
-							<int key="NSNibBindingConnectorVersion">2</int>
-						</object>
-					</object>
-					<int key="connectionID">106490</int>
-				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -6376,12 +6279,6 @@
 						<reference key="object" ref="1056315952"/>
 						<reference key="parent" ref="0"/>
 						<string key="objectName">Application</string>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">100400</int>
-						<reference key="object" ref="596541794"/>
-						<reference key="parent" ref="0"/>
-						<string key="objectName">Sessions</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">101546</int>
@@ -8283,7 +8180,6 @@
 					<string>-1.IBPluginDependency</string>
 					<string>-2.IBPluginDependency</string>
 					<string>-3.IBPluginDependency</string>
-					<string>100400.IBPluginDependency</string>
 					<string>101546.IBPluginDependency</string>
 					<string>101559.IBPluginDependency</string>
 					<string>101560.IBPluginDependency</string>
@@ -8541,7 +8437,6 @@
 				</object>
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
-					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>

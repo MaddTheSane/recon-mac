@@ -9,14 +9,15 @@
 #import "ManagingViewController.h"
 #import "NSManagedObjectContext-helper.h"
 
-
-
 @interface AdvancedViewController : ManagingViewController {
 
    IBOutlet NSView *workspaceAdvancedContent;   
    IBOutlet NSView *targetBarAdvancedContent;   
    IBOutlet NSView *sideBarAdvancedContent;   
    
+   IBOutlet NSView *outputPlaceholder;
+   IBOutlet NSView *portsInHostView;
+   IBOutlet NSView *scriptOutputView;
    
    // Various Results Outlets
    IBOutlet NSTableView *hostsTableView;
@@ -32,10 +33,7 @@
    IBOutlet NSArrayController *hostsInSessionController;
    IBOutlet NSArrayController *portsInSessionController;
    IBOutlet NSArrayController *osesInSessionController;
-   
-//   IBOutlet NSArrayController *profilesArrayController;
-   IBOutlet NSArrayController *sessionsController;
-   
+      
    // Sort-descriptors for the various table views
    NSArray *osSortDescriptor;
    NSArray *hostSortDescriptor;
@@ -55,5 +53,7 @@
 @property (readonly) NSView *targetBarAdvancedContent;
 
 - (void)createHostsMenu;
+
+- (IBAction)modeSwitch:(id)sender;
 
 @end
