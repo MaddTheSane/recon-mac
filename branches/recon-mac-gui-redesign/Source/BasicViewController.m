@@ -8,7 +8,6 @@
 
 #import "BasicViewController.h"
 
-#import "SessionController.h"
 #import "SessionManager.h"
 #import "NetstatConnection.h"
 #import "Profile.h"
@@ -29,12 +28,12 @@
 
 @interface BasicViewController ()
 
-@property (readwrite, retain) NSTask *task;   
+   @property (readwrite, retain) NSTask *task;   
 
-@property (readwrite, retain) NSMutableData *standardOutput;
-@property (readwrite, retain) NSMutableData *standardError;
+   @property (readwrite, retain) NSMutableData *standardOutput;
+   @property (readwrite, retain) NSMutableData *standardError;
 
-@property (readwrite, retain)BonjourListener *bonjourListener;
+   @property (readwrite, retain)BonjourListener *bonjourListener;
 
 @end
 
@@ -53,8 +52,6 @@
 @synthesize bonjourListener;
 @synthesize foundServices;
 
-//@synthesize root;
-
 @synthesize targetBarBasicContent;
 
 - (id)init 
@@ -67,7 +64,7 @@
       }
       [self setTitle:@"Basic"];      
       
-      connections = [[NSMutableArray alloc] init];             
+      self.connections = [[NSMutableArray alloc] init];             
       self.autoRefresh = NO;
       self.resolveHostnames = NO;
       self.showSpinner = NO;
@@ -79,8 +76,7 @@
              selector:@selector(foundBonjourServices:)
                  name:@"BAFfoundBonjourServices"
                object:nil];
-      
-//      root = [[NSMutableDictionary new] retain];                  
+                  
    }
    
    return self;
@@ -88,9 +84,11 @@
 
 - (void)dealloc
 {
+   [task release];
+   
    [connections release];
    [foundServices release];
-//   [root release];
+   
    [super dealloc];
 }
 
@@ -184,14 +182,14 @@
 }
 
 // -------------------------------------------------------------------------------
-//	searchLocalNetwork: Wrapper-function for ping-scanning local subnet
+//	searchLocalNetwork: Wrapper-function for Quick Scan-ing local subnet
 // -------------------------------------------------------------------------------
 - (IBAction)searchLocalNetwork:(id)sender
 {
    // Grab the Session Manager object
    SessionManager *sessionManager = [SessionManager sharedSessionManager];
 
-   // Grab an existing profile
+   // Grab the Quick Scan profile
    NSArray *array = [managedObjectContext fetchObjectsForEntityName:@"Profile"
                                                              withPredicate:@"name = 'Quick Scan'"];
    Profile *profile = [array lastObject];
@@ -237,9 +235,9 @@
    // Grab the Session Manager object
    SessionManager *sessionManager = [SessionManager sharedSessionManager];
    
-   // Grab an existing profile
-   NSArray *array = [[sessionManager context] fetchObjectsForEntityName:@"Profile"
-                                                          withPredicate:@"name = 'Quick Scan'"];
+   // Grab the Quick Scan profile
+   NSArray *array = [managedObjectContext fetchObjectsForEntityName:@"Profile"
+                                                      withPredicate:@"name = 'Quick Scan'"];
    Profile *profile = [array lastObject];
    
    // Queue and launch the session
@@ -255,7 +253,8 @@
 //	cidrForInterface: Gets the CIDR for the passed IP address 
 //   TODO: Doing this the lazy way using ifconfig, fix this!!!
 // -------------------------------------------------------------------------------
-- (int)cidrForInterface:(NSString *)ifName {
+- (int)cidrForInterface:(NSString *)ifName 
+{
    NSAssert(nil != ifName, @"Interface name cannot be nil");
    
    // Prepare a task object
@@ -282,7 +281,6 @@
    // Convert to a string
    NSString *aString = [[NSString alloc] initWithData:data
                                              encoding:NSUTF8StringEncoding];
-
    
    // Convert hexadecimal to int
    int p;
@@ -339,8 +337,6 @@ int bitcount (unsigned int n)
    self.doneRefresh = NO;
       
    self.task = [[[NSTask alloc] init] autorelease];
-   
-   //ANSLog(@"InspectorController: launchNetstat");
    
    [task setLaunchPath:@"/bin/tcsh"];      
    if (self.resolveHostnames == NO)
@@ -518,9 +514,7 @@ int bitcount (unsigned int n)
                                                  object:nil];
    [[NSNotificationCenter defaultCenter] removeObserver:self
                                                    name:NSTaskDidTerminateNotification
-                                                 object:nil];   
-//   [task release];
-   
+                                                 object:nil];      
    
    if (self.autoRefresh == YES)
       [self performSelector:@selector(refreshConnectionsList:) withObject:self afterDelay:2];
@@ -539,8 +533,7 @@ int bitcount (unsigned int n)
    
    NSString *key = [NSString stringWithFormat:@"%@ on %@", 
                     [newService objectForKey:@"Long_Type"], [newService objectForKey:@"Name"]];                    
-//   [root setObject:[[notification object] retain] forKey:key];
-//   [root setObject:newService forKey:key];
+
    [bonjourConnectionsController addObject:newService];
    
    [foundServicesOutlineView reloadData];
@@ -641,7 +634,7 @@ int bitcount (unsigned int n)
       //      NSString *ip = [[a lastObject] ipv4Address];
       
       // BEAUTIFIER: When queueing up a new host, keep the selection on the current Session
-      Session *currentSession = [[sessionsController selectedObjects] lastObject];      
+      Session *currentSession = [[sessionsArrayController selectedObjects] lastObject];      
       
       // Grab the Session Manager object
       SessionManager *sessionManager = [SessionManager sharedSessionManager];
@@ -649,7 +642,7 @@ int bitcount (unsigned int n)
       [sessionManager queueSessionWithProfile:p withTarget:hostsIpCSV];
       
       // BEAUTIFIER
-      [sessionsController setSelectedObjects:[NSArray arrayWithObject:currentSession]];
+      [sessionsArrayController setSelectedObjects:[NSArray arrayWithObject:currentSession]];
    }
 }
 

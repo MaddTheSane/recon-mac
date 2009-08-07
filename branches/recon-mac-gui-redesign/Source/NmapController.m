@@ -10,12 +10,13 @@
 
 @interface NmapController ()
 
+   @property (readwrite, assign) BOOL hasRun;
    @property (readwrite, retain) NSTask *task;   
 
    @property (readwrite, assign) NSMutableData *standardOutput;
    @property (readwrite, assign) NSMutableData *standardError;
+
    @property (readwrite, retain) NSString *outputFilePath;
-   @property (readwrite, assign) BOOL hasRun;
 
 @end
 

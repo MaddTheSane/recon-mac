@@ -12,21 +12,18 @@
 @class Session;
 @class SessionController;
 
-@interface SessionManager : NSObject
-{
-	NSMutableDictionary *sessionControllers;   
+@interface SessionManager : NSObject {
+   
    BOOL processingQueue;
-
+   
+	NSMutableDictionary *sessionControllerQueue;   
    NSArrayController *sessionsArrayController;
 }
 
 + (SessionManager *)sharedSessionManager;
-@property (readonly) NSManagedObjectContext *context;
 @property (readwrite, retain)NSArrayController *sessionsArrayController;
 
-- (void)setContext:(NSManagedObjectContext *)c;
-
-- (Session *)queueSessionWithProfile:(Profile *)profile withTarget:(NSString *)target;
+- (Session *)queueSessionWithProfile:(Profile *)profile withTarget:(NSString *)sessionTarget;
 - (Session *)queueExistingSession:(Session *)session withGrowl:(BOOL)notify;
 - (void)queueExistingSessions:(NSArray *)sessions;
 

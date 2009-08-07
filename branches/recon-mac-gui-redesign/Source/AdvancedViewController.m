@@ -31,6 +31,9 @@
       }
       [self setTitle:@"Advanced"];      
    }   
+   
+   [portsInHostView retain];
+   [scriptOutputView retain];
    return self;
 }
 
@@ -41,6 +44,10 @@
 // -------------------------------------------------------------------------------
 - (void)awakeFromNib
 {
+   // Set-up Ports in Host and Scripts Output view
+   [portsInHostView setFrame:[outputPlaceholder bounds]];
+   [outputPlaceholder addSubview:portsInHostView];
+   
    // ... and the Host TableView
    [hostsTableView setTarget:self];
    [hostsTableView setDoubleAction:@selector(hostsTableDoubleClick)];
@@ -66,6 +73,23 @@
    [[ipTextField cell] setBackgroundStyle:NSBackgroundStyleRaised];   
 }   
 
+- (IBAction)modeSwitch:(id)sender
+{
+   if ([sender selectedSegment] == 0)
+   {
+      [portsInHostView setFrame:[outputPlaceholder bounds]];
+      [[outputPlaceholder animator] replaceSubview:[[outputPlaceholder subviews] lastObject] 
+                                              with:portsInHostView];      
+   }
+   else if ([sender selectedSegment] == 1)
+   {
+      [scriptOutputView setFrame:[outputPlaceholder bounds]];
+      [[outputPlaceholder animator] replaceSubview:[[outputPlaceholder subviews] lastObject] 
+                                              with:scriptOutputView];      
+   }
+   
+}
+
 
 #pragma mark Table click handlers
 // -------------------------------------------------------------------------------
@@ -74,7 +98,7 @@
 // -------------------------------------------------------------------------------
 - (void)createHostsMenu
 {
-   NSArray *array = [[self managedObjectContext] fetchObjectsForEntityName:@"Profile" withPredicate:
+   NSArray *array = [managedObjectContext fetchObjectsForEntityName:@"Profile" withPredicate:
                      @"(parent.name LIKE[c] 'Defaults') OR (parent.name LIKE[c] 'User Profiles')"];   
    
    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc]
@@ -114,7 +138,7 @@
    if ([sender tag] == 10)
    {
       // Grab the desired profile...
-      NSArray *s = [[self managedObjectContext] fetchObjectsForEntityName:@"Profile" withPredicate:
+      NSArray *s = [managedObjectContext fetchObjectsForEntityName:@"Profile" withPredicate:
                     @"(name LIKE[c] %@)", [sender title]]; 
       Profile *p = [s lastObject];
       
@@ -142,7 +166,7 @@
       //      NSString *ip = [[a lastObject] ipv4Address];
       
       // BEAUTIFIER: When queueing up a new host, keep the selection on the current Session
-      Session *currentSession = [[sessionsController selectedObjects] lastObject];      
+      Session *currentSession = [[sessionsArrayController selectedObjects] lastObject];      
       
       // Grab the Session Manager object
       SessionManager *sessionManager = [SessionManager sharedSessionManager];
@@ -150,7 +174,7 @@
       [sessionManager queueSessionWithProfile:p withTarget:hostsIpCSV];
       
       // BEAUTIFIER
-      [sessionsController setSelectedObjects:[NSArray arrayWithObject:currentSession]];
+      [sessionsArrayController setSelectedObjects:[NSArray arrayWithObject:currentSession]];
    }
 }
 
@@ -192,7 +216,7 @@
 {
    // Find clicked row from sessionsTableView
    NSInteger selectedRow = [resultsPortsTableView selectedRow];
-   // Get selected object from sessionsController 
+   // Get selected object from sessionsArrayController 
    Port *selectedPort = [[portsInHostController arrangedObjects] objectAtIndex:selectedRow];
    Host *selectedHost = [selectedPort host];
    
