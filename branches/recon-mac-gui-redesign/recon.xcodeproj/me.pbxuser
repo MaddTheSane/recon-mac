@@ -122,16 +122,15 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 271407320;
-			PBXWorkspaceStateSaveDate = 271407320;
+			PBXPerProjectTemplateStateSaveDate = 271408417;
+			PBXWorkspaceStateSaveDate = 271408417;
 		};
 		perUserProjectItems = {
 			8C014BA6102D523A00FEEBB7 = 8C014BA6102D523A00FEEBB7 /* PBXTextBookmark */;
-			8C014BA9102D523A00FEEBB7 = 8C014BA9102D523A00FEEBB7 /* PBXTextBookmark */;
-			8C014BBF102D530000FEEBB7 = 8C014BBF102D530000FEEBB7 /* PBXTextBookmark */;
-			8C014C7D102D58E300FEEBB7 /* PBXTextBookmark */ = 8C014C7D102D58E300FEEBB7 /* PBXTextBookmark */;
-			8C014D1A102D593600FEEBB7 /* PBXTextBookmark */ = 8C014D1A102D593600FEEBB7 /* PBXTextBookmark */;
-			8C014D9D102D59F600FEEBB7 /* PBXTextBookmark */ = 8C014D9D102D59F600FEEBB7 /* PBXTextBookmark */;
+			8C014DB1102D5C7E00FEEBB7 = 8C014DB1102D5C7E00FEEBB7 /* PBXTextBookmark */;
+			8C014DB2102D5C7E00FEEBB7 = 8C014DB2102D5C7E00FEEBB7 /* PBXBookmark */;
+			8C014DB3102D5C7E00FEEBB7 = 8C014DB3102D5C7E00FEEBB7 /* PBXTextBookmark */;
+			8C014DB4102D5C7E00FEEBB7 = 8C014DB4102D5C7E00FEEBB7 /* PBXTextBookmark */;
 			8C02499E101335B400F13BCE = 8C02499E101335B400F13BCE /* PBXTextBookmark */;
 			8C2A15AB100AC4A50060D931 = 8C2A15AB100AC4A50060D931 /* PBXTextBookmark */;
 			8C33C61D1028847700EFC743 = 8C33C61D1028847700EFC743 /* PBXTextBookmark */;
@@ -146,6 +145,7 @@
 			8C5FF467101B7CF600856055 = 8C5FF467101B7CF600856055 /* PBXBookmark */;
 			8C655379101196E70051953F = 8C655379101196E70051953F /* XDModelBookmark */;
 			8C65537E101196E70051953F = 8C65537E101196E70051953F /* XDModelBookmark */;
+			8C68686A102D5D2300EDF799 /* PBXTextBookmark */ = 8C68686A102D5D2300EDF799 /* PBXTextBookmark */;
 			8C79E1C90FFBD7F600A4648B = 8C79E1C90FFBD7F600A4648B /* PBXTextBookmark */;
 			8C79E1CB0FFBD7F600A4648B = 8C79E1CB0FFBD7F600A4648B /* PBXTextBookmark */;
 			8C79E1D10FFBD7F600A4648B = 8C79E1D10FFBD7F600A4648B /* PBXTextBookmark */;
@@ -465,7 +465,14 @@
 		vrLen = 1303;
 		vrLoc = 0;
 	};
-	8C014BA9102D523A00FEEBB7 /* PBXTextBookmark */ = {
+	8C014C81102D58F900FEEBB7 /* MyTerminalView.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {790, 616}}";
+			sepNavSelRange = "{314, 0}";
+			sepNavVisRange = "{0, 900}";
+		};
+	};
+	8C014DB1102D5C7E00FEEBB7 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 8CC329CF100DF9D700483939 /* BonjourListener.h */;
 		name = "BonjourListener.h: 4";
@@ -475,7 +482,11 @@
 		vrLen = 329;
 		vrLoc = 0;
 	};
-	8C014BBF102D530000FEEBB7 /* PBXTextBookmark */ = {
+	8C014DB2102D5C7E00FEEBB7 /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 8C014C81102D58F900FEEBB7 /* MyTerminalView.m */;
+	};
+	8C014DB3102D5C7E00FEEBB7 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 8CC329CF100DF9D700483939 /* BonjourListener.h */;
 		name = "BonjourListener.h: 4";
@@ -485,34 +496,14 @@
 		vrLen = 329;
 		vrLoc = 0;
 	};
-	8C014C7D102D58E300FEEBB7 /* PBXTextBookmark */ = {
+	8C014DB4102D5C7E00FEEBB7 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
-		fRef = 8CC329CF100DF9D700483939 /* BonjourListener.h */;
-		name = "BonjourListener.h: 4";
-		rLen = 7;
-		rLoc = 37;
+		fRef = 8C014C81102D58F900FEEBB7 /* MyTerminalView.m */;
+		name = "MyTerminalView.m: 12";
+		rLen = 0;
+		rLoc = 314;
 		rType = 0;
-		vrLen = 329;
-		vrLoc = 0;
-	};
-	8C014D1A102D593600FEEBB7 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 8CC329CF100DF9D700483939 /* BonjourListener.h */;
-		name = "BonjourListener.h: 4";
-		rLen = 7;
-		rLoc = 37;
-		rType = 0;
-		vrLen = 329;
-		vrLoc = 0;
-	};
-	8C014D9D102D59F600FEEBB7 /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 8CC329CF100DF9D700483939 /* BonjourListener.h */;
-		name = "BonjourListener.h: 4";
-		rLen = 7;
-		rLoc = 37;
-		rType = 0;
-		vrLen = 329;
+		vrLen = 900;
 		vrLoc = 0;
 	};
 	8C02499E101335B400F13BCE /* PBXTextBookmark */ = {
@@ -733,6 +724,16 @@
 		name = "CoreRecipes-End.xcdatamodel";
 		path = "/Users/me/Desktop/Downloads/CoreRecipes/Hands-On Examples/Example 1 - Working with a Core Data Model/CoreRecipes-End.xcdatamodel";
 		sourceTree = "<absolute>";
+	};
+	8C68686A102D5D2300EDF799 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 8C014C81102D58F900FEEBB7 /* MyTerminalView.m */;
+		name = "MyTerminalView.m: 12";
+		rLen = 0;
+		rLoc = 314;
+		rType = 0;
+		vrLen = 900;
+		vrLoc = 0;
 	};
 	8C79E0E50FFBADAD00A4648B /* Recon */ = {
 		isa = PBXExecutable;
