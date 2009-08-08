@@ -9,6 +9,8 @@
 #import "ManagingViewController.h"
 #import "NSManagedObjectContext-helper.h"
 
+#import <WebKit/WebKit.h>
+
 @interface AdvancedViewController : ManagingViewController {
 
    IBOutlet NSView *workspaceAdvancedContent;   
@@ -42,6 +44,7 @@
    NSArray *sessionSortDescriptor;        
    
    IBOutlet NSTextField *ipTextField;
+   IBOutlet WebView *webby;
 }
 
 @property (readonly) NSArray *osSortDescriptor;

@@ -71,6 +71,10 @@
    [self createHostsMenu];   
    
    [[ipTextField cell] setBackgroundStyle:NSBackgroundStyleRaised];   
+   
+//   NSString *urlText = [NSString stringWithString:@"http://127.0.0.1:55555/"];      
+//   [[webby mainFrame] loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlText]]];               
+   
 }   
 
 - (IBAction)modeSwitch:(id)sender

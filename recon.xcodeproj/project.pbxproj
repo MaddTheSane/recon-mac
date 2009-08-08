@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		775BDEF1067A8BF0009058FE /* MyDocument.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 775BDEF0067A8BF0009058FE /* MyDocument.xcdatamodel */; };
 		775DFF38067A968500C5B868 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
+		8C014C82102D58F900FEEBB7 /* MyTerminalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C014C81102D58F900FEEBB7 /* MyTerminalView.m */; };
+		8C014C8D102D591B00FEEBB7 /* CocoatechCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C014C8A102D591B00FEEBB7 /* CocoatechCore.framework */; };
+		8C014C8E102D591B00FEEBB7 /* CocoaTechStrings.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C014C8B102D591B00FEEBB7 /* CocoaTechStrings.framework */; };
+		8C014C8F102D591B00FEEBB7 /* iTerm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C014C8C102D591B00FEEBB7 /* iTerm.framework */; };
+		8C014D16102D592A00FEEBB7 /* CocoatechCore.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8C014C8A102D591B00FEEBB7 /* CocoatechCore.framework */; };
+		8C014D17102D592A00FEEBB7 /* CocoaTechStrings.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8C014C8B102D591B00FEEBB7 /* CocoaTechStrings.framework */; };
+		8C014D18102D592A00FEEBB7 /* iTerm.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8C014C8C102D591B00FEEBB7 /* iTerm.framework */; };
 		8C2A17B5100B2A6E0060D931 /* Host.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C2A17B4100B2A6E0060D931 /* Host.m */; };
 		8C4163861010D6310066A4F8 /* BWToolkitFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C4163851010D6310066A4F8 /* BWToolkitFramework.framework */; };
 		8C4163891010D6340066A4F8 /* BWToolkitFramework.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8C4163851010D6310066A4F8 /* BWToolkitFramework.framework */; };
@@ -37,6 +44,7 @@
 		8CAA7D89101CF83E00EF43A3 /* TcpTsSeqValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CAA7D85101CF83E00EF43A3 /* TcpTsSeqValue.m */; };
 		8CAA7D8A101CF83E00EF43A3 /* IpIdSeqValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CAA7D87101CF83E00EF43A3 /* IpIdSeqValue.m */; };
 		8CAA7DEA101D037800EF43A3 /* Port_Script.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CAA7DE9101D037800EF43A3 /* Port_Script.m */; };
+		8CB29083102CCF54004A577E /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CB29082102CCF54004A577E /* WebKit.framework */; };
 		8CC32789100CDCA700483939 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CC32788100CDCA700483939 /* Security.framework */; };
 		8CC3278F100CDCF000483939 /* BasicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CC3278E100CDCF000483939 /* BasicViewController.m */; };
 		8CC32794100CDFE400483939 /* NetstatConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 8CC32793100CDFE400483939 /* NetstatConnection.m */; };
@@ -73,6 +81,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				8C014D16102D592A00FEEBB7 /* CocoatechCore.framework in CopyFiles */,
+				8C014D17102D592A00FEEBB7 /* CocoaTechStrings.framework in CopyFiles */,
+				8C014D18102D592A00FEEBB7 /* iTerm.framework in CopyFiles */,
 				8C79F2F810033E3C00A4648B /* Growl.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -91,9 +102,14 @@
 		32DBCF750370BD2300C91783 /* recon_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = recon_Prefix.pch; path = Source/recon_Prefix.pch; sourceTree = "<group>"; };
 		775BDEF0067A8BF0009058FE /* MyDocument.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; name = MyDocument.xcdatamodel; path = Models/MyDocument.xcdatamodel; sourceTree = "<group>"; };
 		7788DA0506752A1600599AAD /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
+		8C014C80102D58F900FEEBB7 /* MyTerminalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTerminalView.h; sourceTree = "<group>"; };
+		8C014C81102D58F900FEEBB7 /* MyTerminalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTerminalView.m; sourceTree = "<group>"; };
+		8C014C8A102D591B00FEEBB7 /* CocoatechCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoatechCore.framework; path = Frameworks/CocoatechCore.framework; sourceTree = "<group>"; };
+		8C014C8B102D591B00FEEBB7 /* CocoaTechStrings.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaTechStrings.framework; path = Frameworks/CocoaTechStrings.framework; sourceTree = "<group>"; };
+		8C014C8C102D591B00FEEBB7 /* iTerm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iTerm.framework; path = Frameworks/iTerm.framework; sourceTree = "<group>"; };
 		8C2A17B3100B2A6E0060D931 /* Host.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Host.h; path = "Source/Managed Objects/Host.h"; sourceTree = "<group>"; };
 		8C2A17B4100B2A6E0060D931 /* Host.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Host.m; path = "Source/Managed Objects/Host.m"; sourceTree = "<group>"; };
-		8C4163851010D6310066A4F8 /* BWToolkitFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BWToolkitFramework.framework; path = ../../../Library/Frameworks/BWToolkitFramework.framework; sourceTree = SOURCE_ROOT; };
+		8C4163851010D6310066A4F8 /* BWToolkitFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BWToolkitFramework.framework; path = Frameworks/BWToolkitFramework.framework; sourceTree = "<group>"; };
 		8C55E41E100524A5002F5013 /* NSTask+OneLineTasksWithOutput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSTask+OneLineTasksWithOutput.m"; path = "Source/NSTask+OneLineTasksWithOutput.m"; sourceTree = "<group>"; };
 		8C55E43610052E72002F5013 /* SessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SessionManager.h; path = Source/SessionManager.h; sourceTree = "<group>"; };
 		8C55E43710052E72002F5013 /* SessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SessionManager.m; path = Source/SessionManager.m; sourceTree = "<group>"; };
@@ -137,6 +153,7 @@
 		8CAA7D87101CF83E00EF43A3 /* IpIdSeqValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IpIdSeqValue.m; path = "Source/Managed Objects/IpIdSeqValue.m"; sourceTree = "<group>"; };
 		8CAA7DE8101D037800EF43A3 /* Port_Script.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Port_Script.h; path = "Source/Managed Objects/Port_Script.h"; sourceTree = "<group>"; };
 		8CAA7DE9101D037800EF43A3 /* Port_Script.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Port_Script.m; path = "Source/Managed Objects/Port_Script.m"; sourceTree = "<group>"; };
+		8CB29082102CCF54004A577E /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = /System/Library/Frameworks/WebKit.framework; sourceTree = "<absolute>"; };
 		8CC32788100CDCA700483939 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
 		8CC3278D100CDCF000483939 /* BasicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BasicViewController.h; path = Source/BasicViewController.h; sourceTree = "<group>"; };
 		8CC3278E100CDCF000483939 /* BasicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BasicViewController.m; path = Source/BasicViewController.m; sourceTree = "<group>"; };
@@ -170,6 +187,10 @@
 				8C4163861010D6310066A4F8 /* BWToolkitFramework.framework in Frameworks */,
 				8CD980E61024BFA200492108 /* Quartz.framework in Frameworks */,
 				8CD980E71024BFA200492108 /* QuartzCore.framework in Frameworks */,
+				8CB29083102CCF54004A577E /* WebKit.framework in Frameworks */,
+				8C014C8D102D591B00FEEBB7 /* CocoatechCore.framework in Frameworks */,
+				8C014C8E102D591B00FEEBB7 /* CocoaTechStrings.framework in Frameworks */,
+				8C014C8F102D591B00FEEBB7 /* iTerm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -179,6 +200,9 @@
 		1058C7A6FEA54F5311CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8C014C8A102D591B00FEEBB7 /* CocoatechCore.framework */,
+				8C014C8B102D591B00FEEBB7 /* CocoaTechStrings.framework */,
+				8C014C8C102D591B00FEEBB7 /* iTerm.framework */,
 				8C4163851010D6310066A4F8 /* BWToolkitFramework.framework */,
 				8CC32788100CDCA700483939 /* Security.framework */,
 				8C79F2ED10033DF200A4648B /* Growl.framework */,
@@ -264,6 +288,7 @@
 		2A37F4C3FDCFA73011CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8CB29082102CCF54004A577E /* WebKit.framework */,
 				8CD980E41024BFA200492108 /* Quartz.framework */,
 				8CD980E51024BFA200492108 /* QuartzCore.framework */,
 				1058C7A6FEA54F5311CA2CBB /* Linked Frameworks */,
@@ -349,6 +374,8 @@
 		8CDEC3A9102A2BF800765DF6 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				8C014C80102D58F900FEEBB7 /* MyTerminalView.h */,
+				8C014C81102D58F900FEEBB7 /* MyTerminalView.m */,
 				8C55E43610052E72002F5013 /* SessionManager.h */,
 				8C55E43710052E72002F5013 /* SessionManager.m */,
 				8C79E22E0FFC23D800A4648B /* SessionController.h */,
@@ -474,6 +501,7 @@
 				8CC70D0F10298B1000743F1F /* ManagingViewController.m in Sources */,
 				8CDEBDC21029974500765DF6 /* AdvancedViewController.m in Sources */,
 				8CDEBE3C1029A1D800765DF6 /* SettingsViewController.m in Sources */,
+				8C014C82102D58F900FEEBB7 /* MyTerminalView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
