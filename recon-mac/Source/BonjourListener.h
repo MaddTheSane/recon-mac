@@ -1,7 +1,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface BonjourListener : NSObject {
+@interface BonjourListener : NSObject <NSNetServiceBrowserDelegate> {
    NSNetServiceBrowser *primaryBrowser;
    NSNetServiceBrowser *secondaryBrowser;
    NSMutableArray *services;   

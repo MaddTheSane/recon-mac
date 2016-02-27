@@ -192,7 +192,7 @@ inManagedObjectContext:(NSManagedObjectContext *)context
    self.sessionDirectory = [[prefs reconSessionFolder] stringByAppendingPathComponent:uuid];
    self.sessionOutputFile = [sessionDirectory stringByAppendingPathComponent:@"nmap-output.xml"];
    
-   if ([NSFm createDirectoryAtPath:sessionDirectory attributes: nil] == NO) {
+	if ([NSFm createDirectoryAtPath:sessionDirectory attributes: @{}] == NO) {
       //ANSLog (@"Couldn't create directory!\n");
       // TODO: Notify SessionManager of file creation error
       return NO;

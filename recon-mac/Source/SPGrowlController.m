@@ -77,7 +77,7 @@ static SPGrowlController *sharedGrowlController = nil;
 
 - (id)autorelease { return self; }
 
-- (void)release { }
+- (oneway void)release { }
 
 /**
  * Posts a Growl notification using the supplied details and default values.

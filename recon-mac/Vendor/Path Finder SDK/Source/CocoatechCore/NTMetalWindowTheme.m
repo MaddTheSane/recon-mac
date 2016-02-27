@@ -72,7 +72,7 @@ static const int kGradientHeight = 120;
 			[[self window] setBackgroundColor:[self newBackground]];
 			
 			// invalidate views
-			NSRect invalidateRect = [[[self window] contentView] bounds];
+			NSRect invalidateRect = [(NSView*)[[self window] contentView] bounds];
 			invalidateRect.origin.y = NSMaxY(invalidateRect) - kGradientHeight;
 			invalidateRect.size.height = kGradientHeight;
 			[[[self window] contentView] setNeedsDisplayInRect:invalidateRect];

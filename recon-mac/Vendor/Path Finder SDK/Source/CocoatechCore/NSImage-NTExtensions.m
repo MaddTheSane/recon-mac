@@ -13,6 +13,9 @@
 #import "NSShadow-NTExtensions.h"
 #import "NTImageMaker.h"
 #import "NSWindow-NTExtensions.h"
+#include <stdlib.h>
+#include <memory.h>
+
 
 @interface NSImage (NTExtensionsPrivate)
 - (NSRect)tileRectForBounds:(NSRect)bounds;
@@ -781,9 +784,6 @@ typedef struct
 {
     [self drawFlippedInRect:rect operation:op fraction:1.0];
 }
-
-#include <stdlib.h>
-#include <memory.h>
 
 - (NSData *)bmpData;
 {

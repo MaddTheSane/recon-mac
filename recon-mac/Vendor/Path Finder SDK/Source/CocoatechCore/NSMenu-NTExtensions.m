@@ -448,12 +448,6 @@
     return [NSString pathWithComponents:components];
 }
 
-- (void)removeAllItems;
-{
-    while ([self numberOfItems])
-        [self removeItemAtIndex: 0];
-}
-
 - (NSMenuItem*)itemWithPath:(NSString*)path;
 {
     NSEnumerator* enumerator = [[path pathComponents] objectEnumerator];

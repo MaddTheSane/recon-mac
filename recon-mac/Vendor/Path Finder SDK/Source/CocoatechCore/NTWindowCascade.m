@@ -154,7 +154,7 @@ static NSRect NTLargestMarginRectInRectAvoidingRectAndFitSize(NSRect containingR
     screen = [NTWindowCascade _screenForPoint:startingFrame.origin];
     screenRect = [screen visibleFrame];
     // Adjust the starting frame to fit on the screen
-    startingFrame = [isa _adjustWindowRect:startingFrame forScreenRect:screenRect];
+    startingFrame = [[self class] _adjustWindowRect:startingFrame forScreenRect:screenRect];
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"NTWindowCascadeDisabled"])
         return startingFrame;
 	
@@ -211,7 +211,7 @@ static NSRect NTLargestMarginRectInRectAvoidingRectAndFitSize(NSRect containingR
             nextWindowFrame.origin.y -= WINDOW_TILE_STEP;
         }
     }
-    nextWindowFrame = [isa _adjustWindowRect:nextWindowFrame forScreenRect:screenRect];
+    nextWindowFrame = [[self class] _adjustWindowRect:nextWindowFrame forScreenRect:screenRect];
     lastWindowOrigin = nextWindowFrame.origin;
     return nextWindowFrame;
 }

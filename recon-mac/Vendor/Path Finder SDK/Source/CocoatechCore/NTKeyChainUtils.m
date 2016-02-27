@@ -37,7 +37,7 @@
 			CFRelease(itemRef);
 	}
 	else if (error != errKCItemNotFound)  // normal error
-		NSLog(@"SecKeychainFindGenericPassword error: %d", error);
+		NSLog(@"SecKeychainFindGenericPassword error: %d", (int)error);
 	
 	return result;
 }

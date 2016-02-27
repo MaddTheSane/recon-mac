@@ -480,12 +480,12 @@ static SessionManager *sharedSessionManager = nil;
    return self;   
 }
 
-- (unsigned)retainCount
+- (NSUInteger)retainCount
 {   
-   return UINT_MAX;  //denotes an object that cannot be released   
+   return NSUIntegerMax;  //denotes an object that cannot be released
 }
 
-- (void)release
+- (oneway void)release
 {
    //do nothing   
 }

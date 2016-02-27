@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 45;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -21,7 +21,6 @@
 		20147BB30B670351004D8B48 /* NSStringITerm.h in Headers */ = {isa = PBXBuildFile; fileRef = 20147BAF0B670351004D8B48 /* NSStringITerm.h */; };
 		20147BB40B670351004D8B48 /* PreferencePanel.h in Headers */ = {isa = PBXBuildFile; fileRef = 20147BB00B670351004D8B48 /* PreferencePanel.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		20147BB50B670351004D8B48 /* ITTerminalView.h in Headers */ = {isa = PBXBuildFile; fileRef = 20147BB10B670351004D8B48 /* ITTerminalView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		20147BB60B670351004D8B48 /* VT100Terminal.h in Headers */ = {isa = PBXBuildFile; fileRef = 20147BB20B670351004D8B48 /* VT100Terminal.h */; };
 		205034470B76ED1400AFF542 /* ITSharedActionHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 205034450B76ED1400AFF542 /* ITSharedActionHandler.h */; };
 		205034480B76ED1400AFF542 /* ITSharedActionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 205034460B76ED1400AFF542 /* ITSharedActionHandler.m */; };
 		20616FD10B69D16300342BC2 /* MyTerminalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20616FCF0B69D16300342BC2 /* MyTerminalView.m */; };
@@ -48,7 +47,7 @@
 		874206050564168A00CFC3F1 /* PTToolbarController.h in Headers */ = {isa = PBXBuildFile; fileRef = 2076B15704E8817300000106 /* PTToolbarController.h */; };
 		874206060564168A00CFC3F1 /* ITAddressBookMgr.h in Headers */ = {isa = PBXBuildFile; fileRef = 20E74F4804E9089700000106 /* ITAddressBookMgr.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		874206070564168A00CFC3F1 /* ITViewLocalizer.h in Headers */ = {isa = PBXBuildFile; fileRef = 20B8892A04E9342100000106 /* ITViewLocalizer.h */; };
-		874206080564168A00CFC3F1 /* ITConfigPanelController.h in Headers */ = {isa = PBXBuildFile; fileRef = 20B8891904E924CD00000106 /* ITConfigPanelController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		874206080564168A00CFC3F1 /* ITConfigPanelController.h in Headers */ = {isa = PBXBuildFile; fileRef = 20B8891904E924CD00000106 /* ITConfigPanelController.h */; };
 		8742060C0564168A00CFC3F1 /* Misc.nib in Resources */ = {isa = PBXBuildFile; fileRef = E813FB86029754BB03A80106 /* Misc.nib */; };
 		8742060D0564168A00CFC3F1 /* iTerm.png in Resources */ = {isa = PBXBuildFile; fileRef = FBBB8B60039FC04E01F955DB /* iTerm.png */; };
 		8742060E0564168A00CFC3F1 /* addressbook.png in Resources */ = {isa = PBXBuildFile; fileRef = FB094A14033D58AE01F955DB /* addressbook.png */; };
@@ -87,7 +86,7 @@
 		874206520564169600CFC3F1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0464AB30006CD2EC7F000001 /* Foundation.framework */; };
 		874206530564169600CFC3F1 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0464AB2F006CD2EC7F000001 /* AppKit.framework */; };
 		8742069E056416F600CFC3F1 /* iTerm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 874206430564168A00CFC3F1 /* iTerm.framework */; };
-		8742069F0564170000CFC3F1 /* iTerm.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 874206430564168A00CFC3F1 /* iTerm.framework */; };
+		8742069F0564170000CFC3F1 /* iTerm.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 874206430564168A00CFC3F1 /* iTerm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		8787B0DA05FD160F00901149 /* iTermProfileWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8787B0D805FD160F00901149 /* iTermProfileWindowController.m */; };
 		8C3D2F46102FBED60007B87E /* CocoaTechStrings.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C3D2F45102FBED60007B87E /* CocoaTechStrings.framework */; };
 		8C3D2F47102FBED60007B87E /* CocoaTechStrings.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C3D2F45102FBED60007B87E /* CocoaTechStrings.framework */; };
@@ -742,7 +741,6 @@
 				20147BB30B670351004D8B48 /* NSStringITerm.h in Headers */,
 				20147BB40B670351004D8B48 /* PreferencePanel.h in Headers */,
 				20147BB50B670351004D8B48 /* ITTerminalView.h in Headers */,
-				20147BB60B670351004D8B48 /* VT100Terminal.h in Headers */,
 				206C9AD90B673A34002128A0 /* ITTerminalWindowController.h in Headers */,
 				206C9B450B673FB3002128A0 /* ITMiscNibController.h in Headers */,
 				2005EF4B0B73E42500CBF08D /* ITPopUpButton.h in Headers */,
@@ -804,9 +802,10 @@
 		0464AB0C006CD2EC7F000001 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastUpgradeCheck = 0720;
 			};
 			buildConfigurationList = BB024D39096EE4080021E793 /* Build configuration list for PBXProject "iTerm" */;
-			compatibilityVersion = "Xcode 3.1";
+			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
@@ -1070,7 +1069,9 @@
 		BB024D32096EE4080021E793 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/";
+				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1082,10 +1083,8 @@
 				GCC_PREFIX_HEADER = iTerm_Prefix.pch;
 				INFOPLIST_FILE = iTerm_Framework.plist;
 				INSTALL_PATH = "@executable_path/../Frameworks";
-				OBJROOT = build/;
 				OTHER_LDFLAGS = "-lncurses";
 				PRODUCT_NAME = iTerm;
-				SYMROOT = ../../../../Frameworks;
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Debug;
@@ -1093,7 +1092,9 @@
 		BB024D33096EE4080021E793 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/";
+				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1105,10 +1106,8 @@
 				GCC_PREFIX_HEADER = iTerm_Prefix.pch;
 				INFOPLIST_FILE = iTerm_Framework.plist;
 				INSTALL_PATH = "@executable_path/../Frameworks";
-				OBJROOT = build/;
 				OTHER_LDFLAGS = "-lncurses";
 				PRODUCT_NAME = iTerm;
-				SYMROOT = ../../../../Frameworks;
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Release;
@@ -1116,6 +1115,7 @@
 		BB024D36096EE4080021E793 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/";
 				COPY_PHASE_STRIP = NO;
 				DEBUGGING_SYMBOLS = YES;
@@ -1146,6 +1146,7 @@
 				LINK_WITH_STANDARD_LIBRARIES = YES;
 				OTHER_LDFLAGS = "-ltermcap";
 				OTHER_REZFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = iTerm;
 				PRODUCT_NAME = iTerm;
 				REZ_EXECUTABLE = YES;
 				SECTORDER_FLAGS = "";
@@ -1160,6 +1161,7 @@
 		BB024D37096EE4080021E793 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1187,6 +1189,7 @@
 				INFOPLIST_FILE = iTerm.plist;
 				OTHER_LDFLAGS = "";
 				OTHER_REZFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = iTerm;
 				PRODUCT_NAME = iTerm;
 				REZ_EXECUTABLE = YES;
 				SECTORDER_FLAGS = "";
@@ -1204,6 +1207,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 20881DB10EF8D917008D9CB9 /* Debug.xcconfig */;
 			buildSettings = {
+				ENABLE_TESTABILITY = YES;
 			};
 			name = Debug;
 		};

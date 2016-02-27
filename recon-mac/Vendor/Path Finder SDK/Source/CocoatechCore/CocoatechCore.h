@@ -119,6 +119,7 @@
 #import <CocoatechCore/NTTimeIntervalMeter.h>
 #import <CocoatechCore/NTAnimationDelegate.h>
 #import <CocoatechCore/NTSavePanel.h>
+#import <CocoatechCore/NTAquaButtonCell.h>
 
 // some common defines
 #define kFinderApplicationName @"Finder.app"

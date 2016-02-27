@@ -28,7 +28,7 @@ static int kWindowSize = 400;
     [result setExcludedFromWindowsMenu:YES];
     [result setBackgroundColor:[NSColor clearColor]];
 	
-	[result setImageView:[NTAnimationsZoomView view:[[result contentView] bounds]]];
+	[result setImageView:[NTAnimationsZoomView view:[(NSView*)[result contentView] bounds]]];
 	[[result contentView] addSubview:[result imageView]];
 	
     return [result autorelease];

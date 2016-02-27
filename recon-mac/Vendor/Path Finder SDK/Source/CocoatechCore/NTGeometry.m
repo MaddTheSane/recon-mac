@@ -6,6 +6,8 @@
 //  Copyright (c) 2002 CocoaTech. All rights reserved.
 //
 
+#include <math.h>
+#include <tgmath.h>
 #import "NTGeometry.h"
 
 // could not be a category since there is no NSGeometry class
@@ -13,7 +15,7 @@
 
 + (NSRect)rectFromPoint:(NSPoint)one andPoint:(NSPoint)two;
 {
-    return NSMakeRect(MIN(one.x, two.x), MIN(one.y, two.y), abs(one.x - two.x), abs(one.y - two.y));
+    return NSMakeRect(MIN(one.x, two.x), MIN(one.y, two.y), fabs(one.x - two.x), fabs(one.y - two.y));
 }
 
 + (NSRect)rect:(NSRect)rect centeredIn:(NSRect)containerRect scaleToFitContainer:(BOOL)scaleToFit;

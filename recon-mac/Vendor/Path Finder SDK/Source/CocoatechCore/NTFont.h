@@ -17,11 +17,11 @@
 }
 
 @property (retain) NSFont* normal;
-@property (retain) NSFont* bold;
-@property (retain) NSFont* italic;
-@property (retain) NSFont* boldItalic;
+@property (nonatomic, retain) NSFont* bold;
+@property (nonatomic, retain) NSFont* italic;
+@property (nonatomic, retain) NSFont* boldItalic;
 
-+ (id)fontWithFont:(NSFont*)font;
++ (instancetype)fontWithFont:(NSFont*)font;
 
 // Helvetica Bold - 12pt
 - (NSString*)displayString;

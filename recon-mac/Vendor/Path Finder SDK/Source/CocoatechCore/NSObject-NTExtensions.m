@@ -28,7 +28,7 @@
 
 - (NSBundle *)bundle;
 {
-    return [isa bundle];
+    return [[self class] bundle];
 }
 
 - (BOOL)tryToPerform:(SEL)selector outResult:(id*)outResult;

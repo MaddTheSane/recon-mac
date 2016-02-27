@@ -202,11 +202,11 @@
          dictValue = [nmapArgsString valueForKey:dictKey];
          
          //  NOTE: Nmap is picky with spaces after arguments...
-         if ((dictValue == @"-PA") ||
-            (dictValue == @"-PS") ||
-            (dictValue == @"-PU") ||
-            (dictValue == @"-PO") ||
-            (dictValue == @"-p"))
+         if (([dictValue isEqual: @"-PA"]) ||
+            ([dictValue isEqual: @"-PS"]) ||
+            ([dictValue isEqual: @"-PU"]) ||
+            ([dictValue isEqual: @"-PO"]) ||
+            ([dictValue isEqual: @"-p"]))
          {
             id dictValue2 = [profile valueForKey:[dictKey stringByAppendingString:@"String"]];
             if (dictValue2 != nil)

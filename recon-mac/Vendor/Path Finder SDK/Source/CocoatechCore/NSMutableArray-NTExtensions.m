@@ -46,7 +46,7 @@
 
 - (void)insertObjectsFromArray:(NSArray *)anArray atIndex:(unsigned int)anIndex
 {
-    [self replaceObjectsInRange:(NSRange){ location:anIndex, length:0 } withObjectsFromArray:anArray];
+    [self replaceObjectsInRange:(NSRange){ .location = anIndex, .length = 0 } withObjectsFromArray:anArray];
 }
 
 typedef NSComparisonResult (*comparisonMethodIMPType)(id rcvr, SEL _cmd, id other);

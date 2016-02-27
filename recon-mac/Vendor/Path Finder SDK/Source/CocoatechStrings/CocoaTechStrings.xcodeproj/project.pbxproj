@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 42;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -566,9 +566,10 @@
 		F9613FE503A6BEDB014F6B84 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastUpgradeCheck = 0720;
 			};
 			buildConfigurationList = AA31AF7608554EFC00EB35A6 /* Build configuration list for PBXProject "CocoaTechStrings" */;
-			compatibilityVersion = "Xcode 2.4";
+			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
@@ -1163,7 +1164,9 @@
 		AA31AF7308554EFC00EB35A6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/";
+				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
@@ -1171,9 +1174,7 @@
 				GCC_PREFIX_HEADER = CocoatechStrings.pch;
 				INFOPLIST_FILE = "Info-CocoaTechStrings__Native_.plist";
 				INSTALL_PATH = "@executable_path/../Frameworks";
-				OBJROOT = build/;
 				PRODUCT_NAME = CocoaTechStrings;
-				SYMROOT = ../../../../Frameworks;
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Debug;
@@ -1181,7 +1182,9 @@
 		AA31AF7408554EFC00EB35A6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/";
+				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
@@ -1189,9 +1192,7 @@
 				GCC_PREFIX_HEADER = CocoatechStrings.pch;
 				INFOPLIST_FILE = "Info-CocoaTechStrings__Native_.plist";
 				INSTALL_PATH = "@executable_path/../Frameworks";
-				OBJROOT = build/;
 				PRODUCT_NAME = CocoaTechStrings;
-				SYMROOT = ../../../../Frameworks;
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Release;
@@ -1200,6 +1201,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 20F80D85092365DE00CE4EE9 /* Debug.xcconfig */;
 			buildSettings = {
+				ENABLE_TESTABILITY = YES;
 			};
 			name = Debug;
 		};

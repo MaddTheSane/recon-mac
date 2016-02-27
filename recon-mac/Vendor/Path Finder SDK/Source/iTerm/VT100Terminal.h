@@ -157,7 +157,7 @@ typedef enum {
     COLORCODE_WATER=6,
     COLORCODE_WHITE=7,
 	COLORCODE_256=8,
-    COLORS
+    COLORS_ALL
 } colorCode;
 
 // 8 color support
@@ -240,13 +240,13 @@ enum {
     TERMINFO_KEYS 
 };
     
-typedef enum {
+typedef NS_ENUM(NSInteger, mouseMode) {
 	MOUSE_REPORTING_NONE = -1,
 	MOUSE_REPORTING_NORMAL = 0,
 	MOUSE_REPORTING_HILITE,
 	MOUSE_REPORTING_BUTTON_MOTION,
 	MOUSE_REPORTING_ALL_MOTION,
-} mouseMode;
+};
 
 @interface VT100Terminal : NSObject
 {
@@ -296,23 +296,17 @@ typedef enum {
 
 + (void)initialize;
 
-- (id)init;
-- (void)dealloc;
+- (instancetype)init;
 
-- (NSString *)termtype;
-- (void)setTermType:(NSString *)termtype;
+@property (copy, getter=termtype) NSString *termType;
 
-- (BOOL)trace;
-- (void)setTrace:(BOOL)flag;
+@property BOOL trace;
 
-- (BOOL)strictAnsiMode;
-- (void)setStrictAnsiMode: (BOOL)flag;
+@property BOOL strictAnsiMode;
 
-- (BOOL)allowColumnMode;
-- (void)setAllowColumnMode: (BOOL)flag;
+@property BOOL allowColumnMode;
 
-- (NSStringEncoding)encoding;
-- (void)setEncoding:(NSStringEncoding)encoding;
+@property NSStringEncoding encoding;
 
 - (void)cleanStream;
 - (void)putStreamData:(char *)data length: (int)length;
@@ -352,10 +346,10 @@ typedef enum {
 - (BOOL)insertMode;
 - (int)charset;
 - (BOOL)xon;
-- (mouseMode)mouseMode;
+@property (readonly) mouseMode mouseMode;
 
-- (int)foregroundColorCode;
-- (int)backgroundColorCode;
+@property (readonly) int foregroundColorCode;
+@property (readonly) int backgroundColorCode;
 
 - (NSData *)reportActivePositionWithX:(int)x Y:(int)y;
 - (NSData *)reportStatus;

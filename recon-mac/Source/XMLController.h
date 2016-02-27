@@ -20,7 +20,7 @@
 @class TcpTsSeqValue;
 @class Port_Script;
 
-@interface XMLController : NSObject 
+@interface XMLController : NSObject <NSXMLParserDelegate>
 {
    NSXMLParser *addressParser;
    NSMutableString *currentStringValue;

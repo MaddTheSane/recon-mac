@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <QuartzCore/CATextLayer.h>
 
 @interface CATextLayer (NTExtensions)
 + (CATextLayer *)layerWithText:(NSString *)string;

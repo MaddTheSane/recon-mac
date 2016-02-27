@@ -14,6 +14,7 @@
 #import "OsClass.h"
 #import "OsMatch.h"
 #import "Port_Script.h"
+#import "IpIdSeqValue.h"
 
 @interface XMLController ()
 

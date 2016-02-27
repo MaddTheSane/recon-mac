@@ -71,7 +71,7 @@
    NSArray *sessionSortDescriptor;           
 }
 
-@property (readwrite, retain)NSMutableArray *connections;
+@property (nonatomic, readwrite, retain)NSMutableArray *connections;
 @property (readwrite, retain)NSMutableArray *foundServices;
 @property (readwrite, assign)BOOL autoRefresh;
 @property (readwrite, assign)BOOL resolveHostnames;

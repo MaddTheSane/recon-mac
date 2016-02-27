@@ -523,11 +523,13 @@
    
    if ([menuItem action] == @selector(handleHostsMenuClick:))
    {
-      if ([[hostsInSessionController selectedObjects] count] == 0)
-      if ([hostsTableView clickedRow] == -1)
-         enabled = NO;
-      else
-         enabled = YES;
+      if ([[hostsInSessionController selectedObjects] count] == 0) {
+         if ([hostsTableView clickedRow] == -1) {
+            enabled = NO;
+         } else {
+            enabled = YES;
+         }
+      }
    }
    else
    {

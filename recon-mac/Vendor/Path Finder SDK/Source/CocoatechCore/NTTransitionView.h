@@ -16,7 +16,7 @@
 
 @interface NTTransitionView : NSView
 {
-	id<NTTransitionViewDelegateProtocol> delegate;
+	__unsafe_unretained id<NTTransitionViewDelegateProtocol> delegate;
 	
 	NSImageView* imageView;
 	NSImageView* newImageView;
@@ -25,6 +25,8 @@
 @property (assign) id<NTTransitionViewDelegateProtocol> delegate;  // not retained
 @property (retain) NSImageView* imageView;
 @property (retain) NSImageView* newImageView;
+
+- (NSImageView*)newImageView __attribute__((objc_method_family(none)));
 
 + (NTTransitionView*)transitionView:(NSView*)theView 
 				  newView:(NSView*)theNewView

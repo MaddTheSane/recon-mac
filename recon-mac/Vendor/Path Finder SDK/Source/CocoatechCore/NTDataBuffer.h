@@ -339,7 +339,7 @@ NTDataBufferAppendString(NTDataBuffer *dataBuffer, CFStringRef string, CFStringE
     CFIndex charactersWritten = CFStringGetBytes(string, CFRangeMake(0, characterCount), encoding, 0/*lossByte*/, false/*isExternalRepresentation*/, ptr, 4 * characterCount, &usedBufLen);
     if (charactersWritten != characterCount) {
         [NSException raise: NSInternalInconsistencyException
-                    format: @"NTDataBufferAppendString was supposed to write %d characters but only wrote %d", characterCount, charactersWritten];
+                    format: @"NTDataBufferAppendString was supposed to write %ld characters but only wrote %ld", characterCount, charactersWritten];
     }
     
     NTDataBufferDidAppend(dataBuffer, usedBufLen);
@@ -357,7 +357,7 @@ NTDataBufferAppendBytecountedUTF8String(NTDataBuffer *dataBuffer, NTDataBuffer *
     charactersWritten = CFStringGetBytes(string, CFRangeMake(0, stringLength), kCFStringEncodingUTF8, 0/*lossByte*/, false/*isExternalRepresentation*/, bytePointer, maximumLength, &stringLengthInBuffer);
     if (charactersWritten != stringLength)
         [NSException raise: NSInternalInconsistencyException
-                    format: @"NTDataBufferAppendBytecountedUTF8String was supposed to write %d characters but only wrote %d", stringLength, charactersWritten];
+                    format: @"NTDataBufferAppendBytecountedUTF8String was supposed to write %ld characters but only wrote %ld", stringLength, charactersWritten];
     NTDataBufferAppendCompressedLongInt(dataBuffer, stringLengthInBuffer);
     NTDataBufferAppendBytes(dataBuffer, bytePointer, stringLengthInBuffer);
 }
@@ -373,7 +373,7 @@ NTDataBufferAppendUnicodeString(NTDataBuffer *dataBuffer, CFStringRef string)
     CFIndex charactersWritten = CFStringGetBytes(string, CFRangeMake(0, characterCount), kCFStringEncodingUnicode, 0/*lossByte*/, false/*isExternalRepresentation*/, ptr, sizeof(unichar) * characterCount, &usedBufLen);
     if (charactersWritten != characterCount) {
         [NSException raise: NSInternalInconsistencyException
-                    format: @"NTDataBufferAppendUnicodeString was supposed to write %d characters but only wrote %d", characterCount, charactersWritten];
+                    format: @"NTDataBufferAppendUnicodeString was supposed to write %ld characters but only wrote %ld", characterCount, charactersWritten];
     }
 	
     NTDataBufferDidAppend(dataBuffer, usedBufLen);

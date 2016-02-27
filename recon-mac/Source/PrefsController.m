@@ -132,7 +132,7 @@ static PrefsController *sharedPrefsController = nil;
    NSString *applicationSupportFolder = [self reconSupportFolder];   
    
    if ( ![fileManager fileExistsAtPath:applicationSupportFolder isDirectory:NULL] ) {
-      [fileManager createDirectoryAtPath:applicationSupportFolder attributes:nil];
+      [fileManager createDirectoryAtPath:applicationSupportFolder attributes:@{}];
    }
    
    // Create sessions folder, if needed
@@ -140,7 +140,7 @@ static PrefsController *sharedPrefsController = nil;
    
    applicationSessionsFolder = [self reconSessionFolder];      
    if ( ![fileManager fileExistsAtPath:applicationSessionsFolder isDirectory:NULL] ) {
-      [fileManager createDirectoryAtPath:applicationSessionsFolder attributes:nil];
+      [fileManager createDirectoryAtPath:applicationSessionsFolder attributes:@{}];
    }
    
    //ANSLog(@"PrefsController: checkDirectories!");   
@@ -247,16 +247,16 @@ static PrefsController *sharedPrefsController = nil;
    
    // Display the dialog.  If the OK button was pressed,
    // process the files.
-   if ( [openDlg runModalForDirectory:nil file:nil] == NSOKButton )
+   if ( [openDlg runModal] == NSOKButton )
    {
       // Get an array containing the full filenames of all
       // files and directories selected.
-      NSArray* files = [openDlg filenames];
+      NSArray* files = [openDlg URLs];
       
       // Loop through all the files and process them.
-      for(int i = 0; i < [files count]; i++ )
+      for(NSURL *fileURL in files)
       {
-         NSString* fileName = [files objectAtIndex:i];
+         NSString* fileName = [fileURL path];
 
          self.nmapBinary = fileName;            // Save new binary location
          [self checkPermsOnNmap];               // Check file permissions
@@ -281,16 +281,16 @@ static PrefsController *sharedPrefsController = nil;
    
    // Display the dialog.  If the OK button was pressed,
    // process the files.
-   if ( [openDlg runModalForDirectory:nil file:nil] == NSOKButton )
+   if ( [openDlg runModal] == NSOKButton )
    {
       // Get an array containing the full filenames of all
       // files and directories selected.
-      NSArray* files = [openDlg filenames];
+      NSArray* files = [openDlg URLs];
       
       // Loop through all the files and process them.
-      for(int i = 0; i < [files count]; i++ )
+      for(NSURL *fileURL in files)
       {
-         NSString* fileName = [files objectAtIndex:i];
+         NSString* fileName = [fileURL path];
          
          self.supportDirectory = fileName;            // Save the new directory
          [self checkDirectories];                     // Create subdirectories
@@ -345,16 +345,16 @@ static PrefsController *sharedPrefsController = nil;
       return myStatus;
    
    char *myToolPath = {"/bin/chmod"};
-   const char *myBinaryPath = [nmapBinary cStringUsingEncoding:NSUTF8StringEncoding];
-   char *myArguments[] = {"4777", myBinaryPath, NULL};   
+   const char *myBinaryPath = [nmapBinary fileSystemRepresentation];
+   const char *myArguments[] = {"4777", myBinaryPath, NULL};
    FILE *myCommunicationsPipe = NULL;
    
    myFlags = kAuthorizationFlagDefaults;
    myStatus = AuthorizationExecuteWithPrivileges(myAuthorizationRef, myToolPath, myFlags, myArguments, &myCommunicationsPipe);
    
    char *myToolPath2 = {"/usr/sbin/chown"};
-   const char *myBinaryPath2 = [nmapBinary cStringUsingEncoding:NSUTF8StringEncoding];   
-   char *myArguments2[] = {"root", myBinaryPath2, NULL};   
+   const char *myBinaryPath2 = [nmapBinary fileSystemRepresentation];
+   const char *myArguments2[] = {"root", myBinaryPath2, NULL};
    myCommunicationsPipe = NULL;
    
    myFlags = kAuthorizationFlagDefaults;
@@ -390,16 +390,16 @@ static PrefsController *sharedPrefsController = nil;
       return myStatus;
    
    char *myToolPath = {"/bin/chmod"};
-   const char *myBinaryPath = [nmapBinary cStringUsingEncoding:NSUTF8StringEncoding];      
-   char *myArguments[] = {"770", myBinaryPath, NULL};
+   const char *myBinaryPath = [nmapBinary fileSystemRepresentation];
+   const char *myArguments[] = {"770", myBinaryPath, NULL};
    FILE *myCommunicationsPipe = NULL;
    
    myFlags = kAuthorizationFlagDefaults;
    myStatus = AuthorizationExecuteWithPrivileges(myAuthorizationRef, myToolPath, myFlags, myArguments, &myCommunicationsPipe);
    
    char *myToolPath2 = {"/usr/sbin/chown"};
-   const char *myBinaryPath2 = [nmapBinary cStringUsingEncoding:NSUTF8StringEncoding];   
-   char *myArguments2[] = {"me:staff", myBinaryPath2, NULL};   
+   const char *myBinaryPath2 = [nmapBinary fileSystemRepresentation];
+   const char *myArguments2[] = {"me:staff", myBinaryPath2, NULL};
    myCommunicationsPipe = NULL;
    
    myFlags = kAuthorizationFlagDefaults;
@@ -500,12 +500,12 @@ static PrefsController *sharedPrefsController = nil;
    return self;   
 }
 
-- (unsigned)retainCount
+- (NSUInteger)retainCount
 {   
-   return UINT_MAX;  //denotes an object that cannot be released   
+   return NSUIntegerMax;  //denotes an object that cannot be released
 }
 
-- (void)release
+- (oneway void)release
 {
    //do nothing   
 }

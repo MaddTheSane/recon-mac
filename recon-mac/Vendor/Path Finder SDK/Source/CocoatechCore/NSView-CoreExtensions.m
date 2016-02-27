@@ -64,7 +64,7 @@
 {
 	NSView *view=self;
 	
-	while (view = [view superview])
+	while ((view = [view superview]))
 	{
 		if ([view isKindOfClass:class])
 			return view;
@@ -394,7 +394,7 @@
 {
 	NSView *view=self;
 	
-	while (view = [view superview])
+	while ((view = [view superview]))
 	{
 		if ([view respondsToSelector:sel])
 			return view;
@@ -411,7 +411,7 @@
 {
 	NSView *view=self;
 	
-	while (view = [view superview])
+	while ((view = [view superview]))
 	{
 		if (view == parent)
 			return YES;

@@ -723,7 +723,7 @@ static float vigourOfShake = 0.01f;
    }
    @catch (NSException *e)
    {
-      NSLog(@"Exception:%@");
+      NSLog(@"Exception:%@", e);
    }   
 }
 

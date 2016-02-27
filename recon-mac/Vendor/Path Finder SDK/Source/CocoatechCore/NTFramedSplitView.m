@@ -7,8 +7,8 @@
 //
 
 #import "NTFramedSplitView.h"
-#import "NTStandardColors.h";
-#import "NSWindow-NTExtensions.h";
+#import "NTStandardColors.h"
+#import "NSWindow-NTExtensions.h"
 
 @implementation NTFramedSplitView
 

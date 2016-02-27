@@ -25,7 +25,6 @@
 - (void)cleanSeparators;  // remove unnecessary separators
 
 - (void)removeItemsInRange:(NSRange)range;
-- (void)removeAllItems;
 
 + (void)copyMenuItemsFrom:(NSMenu*)newMenu toMenu:(NSMenu*)menu;
 + (void)removeAllItems:(NSMenu*)menu;
