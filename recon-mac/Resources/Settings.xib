@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9532"/>
     </dependencies>
     <objects>
@@ -19,7 +20,7 @@
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <customObject id="-3" userLabel="Application"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="105621" userLabel="Main - Target Bar - Settings Content">
             <rect key="frame" x="0.0" y="0.0" width="524" height="45"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
@@ -65,10 +66,10 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <clipView key="contentView" id="Lwj-Y7-Mh9">
                                         <rect key="frame" x="1" y="1" width="187" height="813"/>
-                                        <autoresizingMask key="autoresizingMask"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <outlineView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveColumns="NO" indentationPerLevel="11" autoresizesOutlineColumn="YES" outlineTableColumn="101564" id="101562">
-                                                <rect key="frame" x="0.0" y="0.0" width="187" height="813"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="147" height="20"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <size key="intercellSpacing" width="2" height="3"/>
                                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -141,7 +142,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <popUpButtonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" pullsDown="YES" selectedItem="106067" id="106063" customClass="BWAnchoredPopUpButtonCell">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" metaFont="system"/>
+                                                <font key="font" metaFont="menu"/>
                                                 <menu key="menu" title="OtherViews" id="106064">
                                                     <items>
                                                         <menuItem state="on" image="NSActionTemplate" hidden="YES" id="106067"/>
@@ -169,7 +170,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="ku0-o5-Y97">
                                         <rect key="frame" x="1" y="1" width="554" height="835"/>
-                                        <autoresizingMask key="autoresizingMask"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <customView id="105632">
                                                 <rect key="frame" x="0.0" y="0.0" width="570" height="1250"/>
@@ -228,7 +229,7 @@
                                                     <button id="104822">
                                                         <rect key="frame" x="19" y="136" width="238" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Min hosts in parallel (--min-hostgroup)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" imageScaling="proportionallyDown" inset="2" id="104861">
+                                                        <buttonCell key="cell" type="check" title="Min hosts in parallel (--min-hostgroup)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="104861">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="smallSystem"/>
                                                         </buttonCell>
@@ -266,7 +267,7 @@
                                                     <button id="104825">
                                                         <rect key="frame" x="19" y="58" width="232" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Max scan delay (--max-scan-delay)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" imageScaling="proportionallyDown" inset="2" id="104858">
+                                                        <buttonCell key="cell" type="check" title="Max scan delay (--max-scan-delay)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="104858">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="smallSystem"/>
                                                         </buttonCell>
@@ -304,7 +305,7 @@
                                                     <button id="104828">
                                                         <rect key="frame" x="19" y="32" width="258" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Min delay between probes (--scan-delay)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" imageScaling="proportionallyDown" inset="2" id="104855">
+                                                        <buttonCell key="cell" type="check" title="Min delay between probes (--scan-delay)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="104855">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="smallSystem"/>
                                                         </buttonCell>
@@ -316,7 +317,7 @@
                                                     <button id="104829">
                                                         <rect key="frame" x="19" y="110" width="264" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Max outstanding probes (--max-parallelism)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" imageScaling="proportionallyDown" inset="2" id="104854">
+                                                        <buttonCell key="cell" type="check" title="Max outstanding probes (--max-parallelism)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="104854">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="smallSystem"/>
                                                         </buttonCell>
@@ -341,7 +342,7 @@
                                                     <button id="104831">
                                                         <rect key="frame" x="19" y="161" width="253" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Max hosts in parallel (--max-hostgroup)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" imageScaling="proportionallyDown" inset="2" id="104852">
+                                                        <buttonCell key="cell" type="check" title="Max hosts in parallel (--max-hostgroup)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="104852">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="smallSystem"/>
                                                         </buttonCell>
@@ -366,7 +367,7 @@
                                                     <button id="104833">
                                                         <rect key="frame" x="19" y="84" width="258" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Min outstanding probes (--min-parallelism)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" imageScaling="proportionallyDown" inset="2" id="104850">
+                                                        <buttonCell key="cell" type="check" title="Min outstanding probes (--min-parallelism)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="104850">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="smallSystem"/>
                                                         </buttonCell>
@@ -378,7 +379,7 @@
                                                     <button id="104834">
                                                         <rect key="frame" x="19" y="238" width="238" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Max probe timeout (--max-rtt-timeout)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" imageScaling="proportionallyDown" inset="2" id="104849">
+                                                        <buttonCell key="cell" type="check" title="Max probe timeout (--max-rtt-timeout)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="104849">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="smallSystem"/>
                                                         </buttonCell>
@@ -416,7 +417,7 @@
                                                     <button id="104837">
                                                         <rect key="frame" x="19" y="212" width="226" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Min probe timeout (-min-rtt-timeout)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" imageScaling="proportionallyDown" inset="2" id="104846">
+                                                        <buttonCell key="cell" type="check" title="Min probe timeout (-min-rtt-timeout)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="104846">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="smallSystem"/>
                                                         </buttonCell>
@@ -434,14 +435,14 @@
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                         <connections>
-                                                            <binding destination="101546" name="enabled" keyPath="selection.isEnabled" id="105305"/>
                                                             <binding destination="101546" name="value" keyPath="selection.initialProbeTimeoutString" id="105327"/>
+                                                            <binding destination="101546" name="enabled" keyPath="selection.isEnabled" id="105305"/>
                                                         </connections>
                                                     </textField>
                                                     <button id="104839">
                                                         <rect key="frame" x="19" y="263" width="253" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Max time to scan a target (--host-timeout)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" imageScaling="proportionallyDown" inset="2" id="104844">
+                                                        <buttonCell key="cell" type="check" title="Max time to scan a target (--host-timeout)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="104844">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="smallSystem"/>
                                                         </buttonCell>
@@ -466,25 +467,25 @@
                                                     <button id="104841">
                                                         <rect key="frame" x="19" y="186" width="252" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Initial probe timeout (--initial-rtt-timeout)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" imageScaling="proportionallyDown" inset="2" id="104842">
+                                                        <buttonCell key="cell" type="check" title="Initial probe timeout (--initial-rtt-timeout)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="104842">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="smallSystem"/>
                                                         </buttonCell>
                                                         <connections>
-                                                            <binding destination="101546" name="enabled" keyPath="selection.isEnabled" id="105323"/>
                                                             <binding destination="101546" name="value" keyPath="selection.initialProbeTimeout" id="105328"/>
+                                                            <binding destination="101546" name="enabled" keyPath="selection.isEnabled" id="105323"/>
                                                         </connections>
                                                     </button>
                                                     <button id="104791">
                                                         <rect key="frame" x="19" y="425" width="223" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Extra options defined by user" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" imageScaling="proportionallyDown" inset="2" id="104810">
+                                                        <buttonCell key="cell" type="check" title="Extra options defined by user" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="104810">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="smallSystem"/>
                                                         </buttonCell>
                                                         <connections>
-                                                            <binding destination="101546" name="enabled" keyPath="selection.isEnabled" id="105277"/>
                                                             <binding destination="101546" name="value" keyPath="selection.extraOptions" id="105299"/>
+                                                            <binding destination="101546" name="enabled" keyPath="selection.isEnabled" id="105277"/>
                                                         </connections>
                                                     </button>
                                                     <textField verticalHuggingPriority="750" id="104792">
@@ -503,7 +504,7 @@
                                                     <button id="104793">
                                                         <rect key="frame" x="19" y="374" width="151" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Verbosity level (-v)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" imageScaling="proportionallyDown" inset="2" id="104808">
+                                                        <buttonCell key="cell" type="check" title="Verbosity level (-v)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="104808">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="smallSystem"/>
                                                         </buttonCell>
@@ -528,7 +529,7 @@
                                                     <button id="104795">
                                                         <rect key="frame" x="19" y="324" width="223" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Max retries (--max-retries)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" imageScaling="proportionallyDown" inset="2" id="104806">
+                                                        <buttonCell key="cell" type="check" title="Max retries (--max-retries)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="104806">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="smallSystem"/>
                                                         </buttonCell>
@@ -546,14 +547,14 @@
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                         <connections>
-                                                            <binding destination="101546" name="enabled" keyPath="selection.isEnabled" id="105272"/>
                                                             <binding destination="101546" name="value" keyPath="selection.debuggingLevelString" id="105294"/>
+                                                            <binding destination="101546" name="enabled" keyPath="selection.isEnabled" id="105272"/>
                                                         </connections>
                                                     </textField>
                                                     <button id="104797">
                                                         <rect key="frame" x="19" y="400" width="223" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Set IPv4 TTL (--ttl)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" imageScaling="proportionallyDown" inset="2" id="104804">
+                                                        <buttonCell key="cell" type="check" title="Set IPv4 TTL (--ttl)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="104804">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="smallSystem"/>
                                                         </buttonCell>
@@ -578,13 +579,13 @@
                                                     <button id="104799">
                                                         <rect key="frame" x="19" y="349" width="223" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Debugging level (-d)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" imageScaling="proportionallyDown" inset="2" id="104802">
+                                                        <buttonCell key="cell" type="check" title="Debugging level (-d)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="104802">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="smallSystem"/>
                                                         </buttonCell>
                                                         <connections>
-                                                            <binding destination="101546" name="enabled" keyPath="selection.isEnabled" id="105269"/>
                                                             <binding destination="101546" name="value" keyPath="selection.debuggingLevel" id="105290"/>
+                                                            <binding destination="101546" name="enabled" keyPath="selection.isEnabled" id="105269"/>
                                                         </connections>
                                                     </button>
                                                     <textField verticalHuggingPriority="750" id="104800">
@@ -596,14 +597,14 @@
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                         <connections>
-                                                            <binding destination="101546" name="enabled" keyPath="selection.isEnabled" id="105268"/>
                                                             <binding destination="101546" name="value" keyPath="selection.extraOptionsString" id="105289"/>
+                                                            <binding destination="101546" name="enabled" keyPath="selection.isEnabled" id="105268"/>
                                                         </connections>
                                                     </textField>
                                                     <button id="104781">
                                                         <rect key="frame" x="19" y="539" width="223" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Set source IP address (-S)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" imageScaling="proportionallyDown" inset="2" id="104820">
+                                                        <buttonCell key="cell" type="check" title="Set source IP address (-S)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="104820">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="smallSystem"/>
                                                         </buttonCell>
@@ -641,7 +642,7 @@
                                                     <button id="104784">
                                                         <rect key="frame" x="19" y="513" width="191" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Set source port (--source-port)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" imageScaling="proportionallyDown" inset="2" id="104817">
+                                                        <buttonCell key="cell" type="check" title="Set source port (--source-port)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="104817">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="smallSystem"/>
                                                         </buttonCell>
@@ -666,7 +667,7 @@
                                                     <button id="104786">
                                                         <rect key="frame" x="19" y="564" width="223" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Use decoys to hide identity (-D)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" imageScaling="proportionallyDown" inset="2" id="104815">
+                                                        <buttonCell key="cell" type="check" title="Use decoys to hide identity (-D)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="104815">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="smallSystem"/>
                                                         </buttonCell>
@@ -691,7 +692,7 @@
                                                     <button id="104788">
                                                         <rect key="frame" x="19" y="487" width="158" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Set network interface (-e)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" imageScaling="proportionallyDown" inset="2" id="104813">
+                                                        <buttonCell key="cell" type="check" title="Set network interface (-e)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="104813">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="smallSystem"/>
                                                         </buttonCell>
@@ -703,7 +704,7 @@
                                                     <button id="105353">
                                                         <rect key="frame" x="19" y="750" width="223" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Packet trace (--packet-trace)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" imageScaling="proportionallyDown" inset="2" id="105354">
+                                                        <buttonCell key="cell" type="check" title="Packet trace (--packet-trace)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="105354">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="smallSystem"/>
                                                         </buttonCell>
@@ -715,13 +716,13 @@
                                                     <button id="105352">
                                                         <rect key="frame" x="251" y="750" width="217" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="IPv6 support (-6)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" imageScaling="proportionallyDown" inset="2" id="105355">
+                                                        <buttonCell key="cell" type="check" title="IPv6 support (-6)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="105355">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="smallSystem"/>
                                                         </buttonCell>
                                                         <connections>
-                                                            <binding destination="101546" name="enabled" keyPath="selection.isEnabled" id="105359"/>
                                                             <binding destination="101546" name="value" keyPath="selection.ipv6Support" id="105358"/>
+                                                            <binding destination="101546" name="enabled" keyPath="selection.isEnabled" id="105359"/>
                                                         </connections>
                                                     </button>
                                                     <textField verticalHuggingPriority="750" id="104761">
@@ -733,15 +734,15 @@
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                         <connections>
-                                                            <binding destination="101546" name="enabled" keyPath="selection.isEnabled" id="105207"/>
                                                             <binding destination="101546" name="value" keyPath="selection.excludeHostsString" id="105223"/>
+                                                            <binding destination="101546" name="enabled" keyPath="selection.isEnabled" id="105207"/>
                                                             <outlet property="nextKeyView" destination="104766" id="104990"/>
                                                         </connections>
                                                     </textField>
                                                     <button id="104762">
                                                         <rect key="frame" x="19" y="673" width="130" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Target list file (-ILA)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" imageScaling="proportionallyDown" inset="2" id="104777">
+                                                        <buttonCell key="cell" type="check" title="Target list file (-ILA)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="104777">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="smallSystem"/>
                                                         </buttonCell>
@@ -754,7 +755,7 @@
                                                     <button id="104763">
                                                         <rect key="frame" x="19" y="648" width="151" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Scan random hosts (-iR)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" imageScaling="proportionallyDown" inset="2" id="104776">
+                                                        <buttonCell key="cell" type="check" title="Scan random hosts (-iR)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="104776">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="smallSystem"/>
                                                         </buttonCell>
@@ -780,7 +781,7 @@
                                                     <button id="104765">
                                                         <rect key="frame" x="19" y="623" width="151" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Ports to scan (-p)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" imageScaling="proportionallyDown" inset="2" id="104774">
+                                                        <buttonCell key="cell" type="check" title="Ports to scan (-p)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="104774">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="smallSystem"/>
                                                         </buttonCell>
@@ -793,13 +794,13 @@
                                                     <button id="104766">
                                                         <rect key="frame" x="19" y="699" width="223" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Exclusion file (--excludefile)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" imageScaling="proportionallyDown" inset="2" id="104773">
+                                                        <buttonCell key="cell" type="check" title="Exclusion file (--excludefile)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="104773">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="smallSystem"/>
                                                         </buttonCell>
                                                         <connections>
-                                                            <binding destination="101546" name="enabled" keyPath="selection.isEnabled" id="105202"/>
                                                             <binding destination="101546" name="value" keyPath="selection.excludeFile" id="105217"/>
+                                                            <binding destination="101546" name="enabled" keyPath="selection.isEnabled" id="105202"/>
                                                             <outlet property="nextKeyView" destination="104760" id="105016"/>
                                                         </connections>
                                                     </button>
@@ -820,13 +821,13 @@
                                                     <button id="104769">
                                                         <rect key="frame" x="19" y="724" width="223" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Excluded hosts/networks (--exclude)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" imageScaling="proportionallyDown" inset="2" id="104770">
+                                                        <buttonCell key="cell" type="check" title="Excluded hosts/networks (--exclude)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="104770">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="smallSystem"/>
                                                         </buttonCell>
                                                         <connections>
-                                                            <binding destination="101546" name="enabled" keyPath="selection.isEnabled" id="105200"/>
                                                             <binding destination="101546" name="value" keyPath="selection.excludeHosts" id="105215"/>
+                                                            <binding destination="101546" name="enabled" keyPath="selection.isEnabled" id="105200"/>
                                                             <outlet property="nextKeyView" destination="104761" id="104989"/>
                                                         </connections>
                                                     </button>
@@ -853,8 +854,8 @@
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                         <connections>
-                                                            <binding destination="101546" name="enabled" keyPath="selection.isEnabled" id="105198"/>
                                                             <binding destination="101546" name="value" keyPath="selection.excludeFileString" id="105213"/>
+                                                            <binding destination="101546" name="enabled" keyPath="selection.isEnabled" id="105198"/>
                                                             <outlet property="nextKeyView" destination="104762" id="104985"/>
                                                         </connections>
                                                     </textField>
@@ -875,7 +876,7 @@
                                                     <button id="104749">
                                                         <rect key="frame" x="19" y="836" width="148" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Scripts to run (--script)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" imageScaling="proportionallyDown" inset="2" id="104758">
+                                                        <buttonCell key="cell" type="check" title="Scripts to run (--script)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="104758">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="smallSystem"/>
                                                         </buttonCell>
@@ -888,7 +889,7 @@
                                                     <button id="104750">
                                                         <rect key="frame" x="19" y="862" width="227" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Trace script execution (--script-trace)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" imageScaling="proportionallyDown" inset="2" id="104757">
+                                                        <buttonCell key="cell" type="check" title="Trace script execution (--script-trace)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="104757">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="smallSystem"/>
                                                         </buttonCell>
@@ -915,7 +916,7 @@
                                                     <button id="104752">
                                                         <rect key="frame" x="19" y="808" width="196" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Script arguments (--script-args)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" imageScaling="proportionallyDown" inset="2" id="104755">
+                                                        <buttonCell key="cell" type="check" title="Script arguments (--script-args)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="104755">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="smallSystem"/>
                                                         </buttonCell>
@@ -928,7 +929,7 @@
                                                     <button id="105067">
                                                         <rect key="frame" x="19" y="922" width="217" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Trace route (--traceroute)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" imageScaling="proportionallyDown" inset="2" id="105068">
+                                                        <buttonCell key="cell" type="check" title="Trace route (--traceroute)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="105068">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="smallSystem"/>
                                                         </buttonCell>
@@ -940,37 +941,37 @@
                                                     <button id="104655">
                                                         <rect key="frame" x="338" y="917" width="186" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Disable randomizing ports (-r)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" imageScaling="proportionallyDown" inset="2" id="104744">
+                                                        <buttonCell key="cell" type="check" title="Disable randomizing ports (-r)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="104744">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="smallSystem"/>
                                                         </buttonCell>
                                                         <connections>
-                                                            <binding destination="101546" name="enabled" keyPath="selection.isEnabled" id="105141"/>
                                                             <binding destination="101546" name="value" keyPath="selection.disableRandom" id="105169"/>
+                                                            <binding destination="101546" name="enabled" keyPath="selection.isEnabled" id="105141"/>
                                                         </connections>
                                                     </button>
                                                     <button id="104656">
                                                         <rect key="frame" x="338" y="937" width="151" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Fragment IP packets (-f)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" imageScaling="proportionallyDown" inset="2" id="104743">
+                                                        <buttonCell key="cell" type="check" title="Fragment IP packets (-f)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="104743">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="smallSystem"/>
                                                         </buttonCell>
                                                         <connections>
-                                                            <binding destination="101546" name="enabled" keyPath="selection.isEnabled" id="105140"/>
                                                             <binding destination="101546" name="value" keyPath="selection.fragmentIP" id="105168"/>
+                                                            <binding destination="101546" name="enabled" keyPath="selection.isEnabled" id="105140"/>
                                                         </connections>
                                                     </button>
                                                     <button id="104657">
                                                         <rect key="frame" x="338" y="1180" width="95" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Fast scan (-F)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" imageScaling="proportionallyDown" inset="2" id="104742">
+                                                        <buttonCell key="cell" type="check" title="Fast scan (-F)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="104742">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="smallSystem"/>
                                                         </buttonCell>
                                                         <connections>
-                                                            <binding destination="101546" name="enabled" keyPath="selection.isEnabled" id="105139"/>
                                                             <binding destination="101546" name="value" keyPath="selection.fastScan" id="105137"/>
+                                                            <binding destination="101546" name="enabled" keyPath="selection.isEnabled" id="105139"/>
                                                         </connections>
                                                     </button>
                                                     <popUpButton verticalHuggingPriority="750" id="104658">
@@ -1090,21 +1091,21 @@
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                         <connections>
-                                                            <binding destination="101546" name="enabled" keyPath="selection.isEnabled" id="105164"/>
                                                             <binding destination="101546" name="value" keyPath="selection.ipprotoProbeString" id="105193"/>
+                                                            <binding destination="101546" name="enabled" keyPath="selection.isEnabled" id="105164"/>
                                                             <outlet property="nextKeyView" destination="104686" id="105013"/>
                                                         </connections>
                                                     </textField>
                                                     <button id="104662">
                                                         <rect key="frame" x="19" y="947" width="126" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="IPProto probe (-PO)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" imageScaling="proportionallyDown" inset="2" id="104714">
+                                                        <buttonCell key="cell" type="check" title="IPProto probe (-PO)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="104714">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="smallSystem"/>
                                                         </buttonCell>
                                                         <connections>
-                                                            <binding destination="101546" name="enabled" keyPath="selection.isEnabled" id="105163"/>
                                                             <binding destination="101546" name="value" keyPath="selection.ipprotoProbe" id="105192"/>
+                                                            <binding destination="101546" name="enabled" keyPath="selection.isEnabled" id="105163"/>
                                                             <outlet property="nextKeyView" destination="104661" id="104994"/>
                                                         </connections>
                                                     </button>
@@ -1125,7 +1126,7 @@
                                                     <button id="104664">
                                                         <rect key="frame" x="19" y="973" width="115" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="UDP probes (-PU)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" imageScaling="proportionallyDown" inset="2" id="104712">
+                                                        <buttonCell key="cell" type="check" title="UDP probes (-PU)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="104712">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="smallSystem"/>
                                                         </buttonCell>
@@ -1152,7 +1153,7 @@
                                                     <button id="104666">
                                                         <rect key="frame" x="19" y="999" width="108" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="SYN ping (-PS)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" imageScaling="proportionallyDown" inset="2" id="104710">
+                                                        <buttonCell key="cell" type="check" title="SYN ping (-PS)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="104710">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="smallSystem"/>
                                                         </buttonCell>
@@ -1185,21 +1186,21 @@
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                         <connections>
-                                                            <binding destination="101546" name="enabled" keyPath="selection.isEnabled" id="105158"/>
                                                             <binding destination="101546" name="value" keyPath="selection.ackPingString" id="105187"/>
+                                                            <binding destination="101546" name="enabled" keyPath="selection.isEnabled" id="105158"/>
                                                             <outlet property="nextKeyView" destination="104666" id="104999"/>
                                                         </connections>
                                                     </textField>
                                                     <button id="104670">
                                                         <rect key="frame" x="19" y="1025" width="108" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="ACK ping (-PA)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" imageScaling="proportionallyDown" inset="2" id="104708">
+                                                        <buttonCell key="cell" type="check" title="ACK ping (-PA)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="104708">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="smallSystem"/>
                                                         </buttonCell>
                                                         <connections>
-                                                            <binding destination="101546" name="enabled" keyPath="selection.isEnabled" id="105157"/>
                                                             <binding destination="101546" name="value" keyPath="selection.ackPing" id="105186"/>
+                                                            <binding destination="101546" name="enabled" keyPath="selection.isEnabled" id="105157"/>
                                                             <outlet property="nextKeyView" destination="104669" id="105017"/>
                                                         </connections>
                                                     </button>
@@ -1212,8 +1213,8 @@
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                         <connections>
-                                                            <binding destination="101546" name="enabled" keyPath="selection.isEnabled" id="105156"/>
                                                             <binding destination="101546" name="value" keyPath="selection.ftpBounceString" id="105185"/>
+                                                            <binding destination="101546" name="enabled" keyPath="selection.isEnabled" id="105156"/>
                                                             <outlet property="nextKeyView" destination="104670" id="105004"/>
                                                         </connections>
                                                     </textField>
@@ -1226,8 +1227,8 @@
                                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                         </textFieldCell>
                                                         <connections>
-                                                            <binding destination="101546" name="enabled" keyPath="selection.isEnabled" id="105155"/>
                                                             <binding destination="101546" name="value" keyPath="selection.idleScanString" id="105184"/>
+                                                            <binding destination="101546" name="enabled" keyPath="selection.isEnabled" id="105155"/>
                                                             <outlet property="nextKeyView" destination="104675" id="104998"/>
                                                         </connections>
                                                     </textField>
@@ -1248,97 +1249,97 @@
                                                     <button id="104675">
                                                         <rect key="frame" x="19" y="1063" width="108" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="FTP bounce (-b)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" imageScaling="proportionallyDown" inset="2" id="104705">
+                                                        <buttonCell key="cell" type="check" title="FTP bounce (-b)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="104705">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="smallSystem"/>
                                                         </buttonCell>
                                                         <connections>
-                                                            <binding destination="101546" name="enabled" keyPath="selection.isEnabled" id="105154"/>
                                                             <binding destination="101546" name="value" keyPath="selection.ftpBounce" id="105183"/>
+                                                            <binding destination="101546" name="enabled" keyPath="selection.isEnabled" id="105154"/>
                                                             <outlet property="nextKeyView" destination="104671" id="105010"/>
                                                         </connections>
                                                     </button>
                                                     <button id="104676">
                                                         <rect key="frame" x="19" y="1088" width="96" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Idle Scan (-sl)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" imageScaling="proportionallyDown" inset="2" id="104704">
+                                                        <buttonCell key="cell" type="check" title="Idle Scan (-sl)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="104704">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="smallSystem"/>
                                                         </buttonCell>
                                                         <connections>
-                                                            <binding destination="101546" name="enabled" keyPath="selection.isEnabled" id="105153"/>
                                                             <binding destination="101546" name="value" keyPath="selection.idleScan" id="105182"/>
+                                                            <binding destination="101546" name="enabled" keyPath="selection.isEnabled" id="105153"/>
                                                             <outlet property="nextKeyView" destination="104672" id="104983"/>
                                                         </connections>
                                                     </button>
                                                     <button id="104677">
                                                         <rect key="frame" x="338" y="968" width="144" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Default ping type (-PB)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" imageScaling="proportionallyDown" inset="2" id="104703">
+                                                        <buttonCell key="cell" type="check" title="Default ping type (-PB)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="104703">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="smallSystem"/>
                                                         </buttonCell>
                                                         <connections>
-                                                            <binding destination="101546" name="enabled" keyPath="selection.isEnabled" id="105152"/>
                                                             <binding destination="101546" name="value" keyPath="selection.defaultPing" id="105181"/>
+                                                            <binding destination="101546" name="enabled" keyPath="selection.isEnabled" id="105152"/>
                                                         </connections>
                                                     </button>
                                                     <button id="104678">
                                                         <rect key="frame" x="338" y="988" width="174" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="ICMP netmask request (-PM)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" imageScaling="proportionallyDown" inset="2" id="104702">
+                                                        <buttonCell key="cell" type="check" title="ICMP netmask request (-PM)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="104702">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="smallSystem"/>
                                                         </buttonCell>
                                                         <connections>
-                                                            <binding destination="101546" name="enabled" keyPath="selection.isEnabled" id="105151"/>
                                                             <binding destination="101546" name="value" keyPath="selection.icmpNetmask" id="105180"/>
+                                                            <binding destination="101546" name="enabled" keyPath="selection.isEnabled" id="105151"/>
                                                             <outlet property="nextKeyView" destination="104677" id="104984"/>
                                                         </connections>
                                                     </button>
                                                     <button id="104679">
                                                         <rect key="frame" x="338" y="1008" width="182" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="ICMP timestamp request (-PP)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" imageScaling="proportionallyDown" inset="2" id="104701">
+                                                        <buttonCell key="cell" type="check" title="ICMP timestamp request (-PP)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="104701">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="smallSystem"/>
                                                         </buttonCell>
                                                         <connections>
-                                                            <binding destination="101546" name="enabled" keyPath="selection.isEnabled" id="105150"/>
                                                             <binding destination="101546" name="value" keyPath="selection.icmpTimeStamp" id="105179"/>
+                                                            <binding destination="101546" name="enabled" keyPath="selection.isEnabled" id="105150"/>
                                                             <outlet property="nextKeyView" destination="104678" id="105014"/>
                                                         </connections>
                                                     </button>
                                                     <button id="104680">
                                                         <rect key="frame" x="338" y="1028" width="105" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="ICMP ping (-PE)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" imageScaling="proportionallyDown" inset="2" id="104700">
+                                                        <buttonCell key="cell" type="check" title="ICMP ping (-PE)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="104700">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="smallSystem"/>
                                                         </buttonCell>
                                                         <connections>
-                                                            <binding destination="101546" name="enabled" keyPath="selection.isEnabled" id="105149"/>
                                                             <binding destination="101546" name="value" keyPath="selection.icmpPing" id="105178"/>
+                                                            <binding destination="101546" name="enabled" keyPath="selection.isEnabled" id="105149"/>
                                                             <outlet property="nextKeyView" destination="104679" id="105012"/>
                                                         </connections>
                                                     </button>
                                                     <button id="104681">
                                                         <rect key="frame" x="338" y="1048" width="175" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Don't ping before scan (-PN)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" imageScaling="proportionallyDown" inset="2" id="104699">
+                                                        <buttonCell key="cell" type="check" title="Don't ping before scan (-PN)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="104699">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="smallSystem"/>
                                                         </buttonCell>
                                                         <connections>
-                                                            <binding destination="101546" name="enabled" keyPath="selection.isEnabled" id="105148"/>
                                                             <binding destination="101546" name="value" keyPath="selection.dontPing" id="105177"/>
+                                                            <binding destination="101546" name="enabled" keyPath="selection.isEnabled" id="105148"/>
                                                             <outlet property="nextKeyView" destination="104680" id="104997"/>
                                                         </connections>
                                                     </button>
                                                     <button id="104682">
                                                         <rect key="frame" x="338" y="1079" width="110" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Script scan (-sC)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" imageScaling="proportionallyDown" inset="2" id="104698">
+                                                        <buttonCell key="cell" type="check" title="Script scan (-sC)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="104698">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="smallSystem"/>
                                                         </buttonCell>
@@ -1351,20 +1352,20 @@
                                                     <button id="104683">
                                                         <rect key="frame" x="338" y="1099" width="153" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Disable reverse DNS (-n)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" imageScaling="proportionallyDown" inset="2" id="104697">
+                                                        <buttonCell key="cell" type="check" title="Disable reverse DNS (-n)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="104697">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="smallSystem"/>
                                                         </buttonCell>
                                                         <connections>
-                                                            <binding destination="101546" name="enabled" keyPath="selection.isEnabled" id="105146"/>
                                                             <binding destination="101546" name="value" keyPath="selection.disableReverseDNS" id="105175"/>
+                                                            <binding destination="101546" name="enabled" keyPath="selection.isEnabled" id="105146"/>
                                                             <outlet property="nextKeyView" destination="104682" id="104992"/>
                                                         </connections>
                                                     </button>
                                                     <button id="104684">
                                                         <rect key="frame" x="338" y="1119" width="146" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Version detection (-sV)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" imageScaling="proportionallyDown" inset="2" id="104696">
+                                                        <buttonCell key="cell" type="check" title="Version detection (-sV)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="104696">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="smallSystem"/>
                                                         </buttonCell>
@@ -1377,7 +1378,7 @@
                                                     <button id="104685">
                                                         <rect key="frame" x="338" y="1139" width="195" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Operating system detection (-O)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" imageScaling="proportionallyDown" inset="2" id="104695">
+                                                        <buttonCell key="cell" type="check" title="Operating system detection (-O)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="104695">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="smallSystem"/>
                                                         </buttonCell>
@@ -1390,13 +1391,13 @@
                                                     <button id="104686">
                                                         <rect key="frame" x="338" y="1159" width="186" height="18"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
-                                                        <buttonCell key="cell" type="check" title="Enable aggressive options (-A)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" imageScaling="proportionallyDown" inset="2" id="104694">
+                                                        <buttonCell key="cell" type="check" title="Enable aggressive options (-A)" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="104694">
                                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                             <font key="font" metaFont="smallSystem"/>
                                                         </buttonCell>
                                                         <connections>
-                                                            <binding destination="101546" name="enabled" keyPath="selection.isEnabled" id="105143"/>
                                                             <binding destination="101546" name="value" keyPath="selection.enableAggressive" id="105171"/>
+                                                            <binding destination="101546" name="enabled" keyPath="selection.isEnabled" id="105143"/>
                                                             <outlet property="nextKeyView" destination="104685" id="105007"/>
                                                         </connections>
                                                     </button>
@@ -1692,7 +1693,7 @@
                                         <rect key="frame" x="-100" y="-100" width="581" height="15"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                     </scroller>
-                                    <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="105630">
+                                    <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="105630">
                                         <rect key="frame" x="539" y="1" width="16" height="835"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                     </scroller>

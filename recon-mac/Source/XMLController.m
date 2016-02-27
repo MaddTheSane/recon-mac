@@ -15,6 +15,8 @@
 #import "OsMatch.h"
 #import "Port_Script.h"
 #import "IpIdSeqValue.h"
+#import "TcpSeqValue.h"
+#import "TcpTsSeqValue.h"
 
 @interface XMLController ()
 
@@ -131,7 +133,7 @@
       if (!currentHost) {
          
          // Create new host object in managedObjectContext 
-         self.currentHost = [[NSManagedObject alloc] initWithEntity:hostEntity insertIntoManagedObjectContext:temporaryContext];         
+         self.currentHost = [[Host alloc] initWithEntity:hostEntity insertIntoManagedObjectContext:temporaryContext];
          
          // Point back to current session
          [currentHost setSession:currentSession];

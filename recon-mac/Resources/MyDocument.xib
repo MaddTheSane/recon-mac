@@ -28,7 +28,7 @@
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <customObject id="-3" userLabel="Application">
+        <customObject id="-3" userLabel="Application" customClass="NSObject">
             <connections>
                 <outlet property="delegate" destination="-2" id="101684"/>
             </connections>
@@ -106,12 +106,12 @@
                     <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="106679"/>
                     <toolbarItem implicitItemIdentifier="1EBBDB49-FC9F-4BB7-99F3-F4D6E558CCC9" label="Mode" paletteLabel="Mode" id="106683">
                         <nil key="toolTip"/>
-                        <size key="minSize" width="71" height="25"/>
+                        <size key="minSize" width="71" height="24"/>
                         <size key="maxSize" width="71" height="25"/>
                         <segmentedControl key="view" verticalHuggingPriority="750" id="106681">
-                            <rect key="frame" x="0.0" y="14" width="71" height="25"/>
+                            <rect key="frame" x="0.0" y="14" width="71" height="24"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedRounded" trackingMode="selectOne" id="106682">
+                            <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="106682">
                                 <font key="font" metaFont="system"/>
                                 <segments>
                                     <segment image="NSRevealFreestandingTemplate" width="32" selected="YES"/>
@@ -296,7 +296,7 @@
                         <rect key="frame" x="-100" y="-100" width="404" height="15"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
-                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="37" horizontal="NO" id="100379">
+                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="100379">
                         <rect key="frame" x="405" y="17" width="15" height="195"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
@@ -381,7 +381,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                             <popUpButtonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" alignment="center" controlSize="small" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" pullsDown="YES" selectedItem="106592" id="106590" customClass="BWAnchoredPopUpButtonCell">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                <font key="font" metaFont="system"/>
+                                                <font key="font" metaFont="menu"/>
                                                 <menu key="menu" title="OtherViews" id="106591">
                                                     <items>
                                                         <menuItem state="on" image="NSActionTemplate" hidden="YES" id="106592"/>
@@ -722,7 +722,7 @@
                     <button id="103527">
                         <rect key="frame" x="166" y="208" width="103" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="check" title="Root Nmap" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" imageScaling="proportionallyDown" inset="2" id="103540">
+                        <buttonCell key="cell" type="check" title="Root Nmap" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="103540">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="smallSystem"/>
                         </buttonCell>
@@ -734,7 +734,7 @@
                     <button id="103526">
                         <rect key="frame" x="166" y="158" width="212" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="check" title="Automatically set/de-set UID?" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" imageScaling="proportionallyDown" inset="2" id="103541">
+                        <buttonCell key="cell" type="check" title="Automatically set/de-set UID?" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="103541">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="smallSystem"/>
                         </buttonCell>
@@ -815,7 +815,7 @@
                     <button id="103583">
                         <rect key="frame" x="121" y="25" width="262" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="check" title="Show this screen again." bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" imageScaling="proportionallyDown" inset="2" id="103584">
+                        <buttonCell key="cell" type="check" title="Show this screen again." bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="103584">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="smallSystem"/>
                         </buttonCell>
@@ -935,9 +935,9 @@
                 <string>text</string>
             </declaredKeys>
             <connections>
-                <binding destination="106625" name="contentSet" keyPath="selection.notes" id="106627"/>
                 <binding destination="-2" name="managedObjectContext" keyPath="managedObjectContext" id="106634"/>
                 <binding destination="-2" name="sortDescriptors" keyPath="notesSortDescriptor" id="106642"/>
+                <binding destination="106625" name="contentSet" keyPath="selection.notes" id="106627"/>
             </connections>
         </arrayController>
         <arrayController mode="entity" entityName="Host" editable="NO" automaticallyPreparesContent="YES" preservesSelection="NO" selectsInsertedObjects="NO" clearsFilterPredicateOnInsertion="NO" automaticallyRearrangesObjects="YES" id="106625" userLabel="Hosts in Session">
@@ -979,8 +979,8 @@
                 <string>notes</string>
             </declaredKeys>
             <connections>
-                <binding destination="100400" name="contentSet" keyPath="selection.hosts" id="106626"/>
                 <binding destination="-2" name="sortDescriptors" keyPath="hostSortDescriptor" id="106646"/>
+                <binding destination="100400" name="contentSet" keyPath="selection.hosts" id="106626"/>
             </connections>
         </arrayController>
     </objects>
