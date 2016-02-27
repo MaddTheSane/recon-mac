@@ -18,6 +18,7 @@
 #import "Profile.h"
 #import "Session.h"
 #import "HostNote.h"
+#import "MyTerminalView.h"
 
 #import <ScriptingBridge/SBApplication.h>
 #import "Mail.h"
@@ -132,7 +133,7 @@
                                      stringByAppendingPathComponent: @"Library.sessions"]];       
       
       // Set a custom Persistent Store location
-      [self configurePersistentStoreCoordinatorForURL:url ofType:NSSQLiteStoreType error:&error];              
+      [self configurePersistentStoreCoordinatorForURL:url ofType:NSSQLiteStoreType modelConfiguration:nil storeOptions:nil error:&error];
       
       // Add some default scanning profiles   
       [self addDefaultProfiles];   
@@ -275,7 +276,7 @@
    }
    
    // Set a custom Persistent Store location
-   [self configurePersistentStoreCoordinatorForURL:url ofType:NSSQLiteStoreType error:&error];              
+   [self configurePersistentStoreCoordinatorForURL:url ofType:NSSQLiteStoreType modelConfiguration:nil storeOptions:nil error:&error];
    
    // Add some default profiles   
    [self addDefaultProfiles];   
@@ -300,7 +301,7 @@
                                          stringByAppendingPathComponent: @"Library.sessions"]];       
    
    // Set a custom Persistent Store location
-   [self configurePersistentStoreCoordinatorForURL:url ofType:NSSQLiteStoreType error:&error];              
+   [self configurePersistentStoreCoordinatorForURL:url ofType:NSSQLiteStoreType modelConfiguration:nil storeOptions:nil error:&error];
    
    // Add some default scanning profiles   
    [self addDefaultProfiles];   

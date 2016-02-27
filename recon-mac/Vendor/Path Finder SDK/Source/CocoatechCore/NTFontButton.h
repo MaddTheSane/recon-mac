@@ -9,22 +9,23 @@
 #import <Cocoa/Cocoa.h>
 
 @class NTFont;
+@protocol NTFontButtonDelegate;
 
 @interface NTFontButton : NSButton
 {
-    IBOutlet id delegate;
+    __unsafe_unretained IBOutlet id<NTFontButtonDelegate> delegate;
 
     NTFont* displayedFont;
 }
 
-@property (assign) IBOutlet id delegate;  // not retained
-@property (retain) NTFont* displayedFont;
+@property (assign) IBOutlet id<NTFontButtonDelegate> delegate;  // not retained
+@property (nonatomic, retain) NTFont* displayedFont;
 
 - (IBAction)setFontUsingFontPanel:(id)sender;
 
 @end
 
-@interface NSObject (NTFontButtonDelegate)
+@protocol NTFontButtonDelegate <NSObject>
 - (void)fontButton:(NTFontButton *)fontButton didChangeToFont:(NTFont *)newFont;
 @end
 

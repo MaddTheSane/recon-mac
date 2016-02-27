@@ -18,7 +18,7 @@
 - (id<NTThreadRunnerDelegateProtocol>)delegate;
 - (void)setDelegate:(id<NTThreadRunnerDelegateProtocol>)theDelegate;
 
-- (NTThreadHelper *)threadHelper;
+//- (NTThreadHelper *)threadHelper;
 - (void)setThreadHelper:(NTThreadHelper *)theThreadHelper;
 
 - (float)priority;
@@ -138,10 +138,10 @@
 //---------------------------------------------------------- 
 //  threadHelper 
 //---------------------------------------------------------- 
-- (NTThreadHelper *)threadHelper
-{
-    return mv_threadHelper; 
-}
+//- (NTThreadHelper *)threadHelper
+//{
+//    return mv_threadHelper;
+//}
 
 - (void)setThreadHelper:(NTThreadHelper *)theThreadHelper
 {

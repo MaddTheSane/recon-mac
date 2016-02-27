@@ -21,7 +21,7 @@
 			subMessage = @"";
 		
 		NSBeginAlertSheet(message, [NTLocalizedString localize:@"OK" table:@"CocoaTechBase"], nil, nil,
-						  window, nil, NULL, NULL, nil, subMessage);
+						  window, nil, NULL, NULL, nil, @"%@", subMessage);
 	}
 }
 
@@ -36,7 +36,7 @@
 			subMessage = @"";
 		
 		NSBeginCriticalAlertSheet(message, [NTLocalizedString localize:@"OK" table:@"CocoaTechBase"], nil, nil,
-								  window, nil, NULL, NULL, nil, subMessage);
+								  window, nil, NULL, NULL, nil, @"%@", subMessage);
 	}
 }
 	
@@ -51,7 +51,7 @@
 			subMessage = @"";
 		
 		NSBeginInformationalAlertSheet(message, [NTLocalizedString localize:@"OK" table:@"CocoaTechBase"], nil, nil,
-									   window, nil, NULL, NULL, nil, subMessage);
+									   window, nil, NULL, NULL, nil, @"%@", subMessage);
 	}
 }
 
@@ -61,7 +61,7 @@
     if (subMessage == nil)
         subMessage = @"";
 
-    NSRunAlertPanel(message, subMessage, [NTLocalizedString localize:@"OK" table:@"CocoaTechBase"], nil, nil);
+    NSRunAlertPanel(message, @"%@", [NTLocalizedString localize:@"OK" table:@"CocoaTechBase"], nil, nil, subMessage);
 }
 
 + (void)criticalAlertPanel:(NSString*)message subMessage:(NSString*)subMessage;
@@ -70,7 +70,7 @@
     if (subMessage == nil)
         subMessage = @"";
 
-    NSRunCriticalAlertPanel(message, subMessage, [NTLocalizedString localize:@"OK" table:@"CocoaTechBase"], nil, nil);
+    NSRunCriticalAlertPanel(message, @"%@", [NTLocalizedString localize:@"OK" table:@"CocoaTechBase"], nil, nil, subMessage);
 }
 
 + (void)infoPanel:(NSString*)message subMessage:(NSString*)subMessage;
@@ -79,7 +79,7 @@
     if (subMessage == nil)
         subMessage = @"";
 
-    NSRunInformationalAlertPanel(message, subMessage, [NTLocalizedString localize:@"OK" table:@"CocoaTechBase"], nil, nil);
+    NSRunInformationalAlertPanel(message, @"%@", [NTLocalizedString localize:@"OK" table:@"CocoaTechBase"], nil, nil, subMessage);
 }
 
 @end
