@@ -565,8 +565,11 @@
 /* Begin PBXProject section */
 		F9613FE503A6BEDB014F6B84 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = AA31AF7608554EFC00EB35A6 /* Build configuration list for PBXProject "CocoaTechStrings" */;
 			compatibilityVersion = "Xcode 2.4";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				English,

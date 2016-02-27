@@ -2,7 +2,7 @@ OTHER_CFLAGS = -fconstant-cfstrings
 
 ARCHS = $(NATIVE_ARCH)
 
-SDKROOT = /Developer/SDKs/MacOSX10.5.sdk
+SDKROOT = macosx
 MACOSX_DEPLOYMENT_TARGET = 10.5
 
 // Statics are thread safe
@@ -57,4 +57,4 @@ GCC_WARN_UNUSED_FUNCTION = YES
 // GCC_WARN_MISSING_PARENTHESES = YES
 // GCC_TREAT_NONCONFORMANT_CODE_ERRORS_AS_WARNINGS = YES
 
-GCC_VERSION = com.apple.compilers.llvmgcc42
+//GCC_VERSION = com.apple.compilers.llvmgcc42

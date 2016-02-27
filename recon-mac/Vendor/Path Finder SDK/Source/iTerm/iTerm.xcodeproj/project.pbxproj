@@ -277,6 +277,7 @@
 		20D5CC6404E7AA0500000106 /* iTermApplicationDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iTermApplicationDelegate.m; sourceTree = "<group>"; };
 		20E74F4804E9089700000106 /* ITAddressBookMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITAddressBookMgr.h; sourceTree = "<group>"; };
 		20E74F4904E9089700000106 /* ITAddressBookMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITAddressBookMgr.m; sourceTree = "<group>"; };
+		55597E0F1C811D590080944E /* Common.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Common.xcconfig; path = ../Configurations/Common.xcconfig; sourceTree = "<group>"; };
 		870BCD84047070AC0073D10E /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/FindPanel.nib; sourceTree = "<group>"; };
 		870EAAB604325A880073D10E /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/PreferencePanel.nib; sourceTree = "<group>"; };
 		8723EDED04EAADBB0073D10E /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/ITConfigPanel.nib; sourceTree = "<group>"; };
@@ -414,7 +415,7 @@
 				DD02571D09CB9363008F320C /* PSMTabBarControl */,
 				0464AB22006CD2EC7F000001 /* Resources */,
 				0464AB27006CD2EC7F000001 /* Supporting Files */,
-				0464AB2E006CD2EC7F000001 /* External Frameworks and Libraries */,
+				0464AB2E006CD2EC7F000001 /* Frameworks */,
 				0464AB32006CD2EC7F000001 /* Products */,
 			);
 			name = JTerminal;
@@ -423,6 +424,7 @@
 		0464AB0E006CD2EC7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				55597E0F1C811D590080944E /* Common.xcconfig */,
 				20881DB10EF8D917008D9CB9 /* Debug.xcconfig */,
 				20881DB20EF8D917008D9CB9 /* Release.xcconfig */,
 				206042C10B66FD8300FD2068 /* Application */,
@@ -507,7 +509,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		0464AB2E006CD2EC7F000001 /* External Frameworks and Libraries */ = {
+		0464AB2E006CD2EC7F000001 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				8C3D2F48102FBEE40007B87E /* CocoatechCore.framework */,
@@ -516,7 +518,7 @@
 				0464AB2F006CD2EC7F000001 /* AppKit.framework */,
 				0464AB30006CD2EC7F000001 /* Foundation.framework */,
 			);
-			name = "External Frameworks and Libraries";
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		0464AB32006CD2EC7F000001 /* Products */ = {
@@ -801,8 +803,11 @@
 /* Begin PBXProject section */
 		0464AB0C006CD2EC7F000001 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = BB024D39096EE4080021E793 /* Build configuration list for PBXProject "iTerm" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				English,

@@ -49,7 +49,7 @@
 			[self makeKeyWindow];
 	}
 	
-	if (super) [super sendEvent:event];
+	[super sendEvent:event];
 }
 
 @end
