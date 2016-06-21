@@ -37,17 +37,18 @@
 @class PSMRolloverButton;
 @class PSMTabBarCell;
 @protocol PSMTabStyle;
+@protocol TabBarControlDelegate;
 
 typedef enum {
 	PSMTabBarHorizontalOrientation,
 	PSMTabBarVerticalOrientation
 } PSMTabBarOrientation;
 
-enum {
-    PSMTab_SelectedMask                 = 1 << 1,
+typedef NS_OPTIONS(UInt32, PSMTabState) {
+    PSMTab_SelectedMask             = 1 << 1,
     PSMTab_LeftIsSelectedMask       = 1 << 2,
-    PSMTab_RightIsSelectedMask          = 1 << 3,
-    PSMTab_PositionLeftMask     = 1 << 4,
+    PSMTab_RightIsSelectedMask      = 1 << 3,
+    PSMTab_PositionLeftMask         = 1 << 4,
     PSMTab_PositionMiddleMask       = 1 << 5,
     PSMTab_PositionRightMask        = 1 << 6,
     PSMTab_PositionSingleMask       = 1 << 7
@@ -107,7 +108,7 @@ enum {
 	BOOL						_closeClicked;
     
     // MVC help
-    IBOutlet id                 delegate;
+    IBOutlet id<TabBarControlDelegate> delegate;
     
     // orientation, top or bottom
     int                         _tabLocation;
@@ -118,16 +119,17 @@ enum {
 + (NSBundle *)bundle;
 
 // control configuration
+@property PSMTabBarOrientation orientation;
 - (PSMTabBarOrientation)orientation;
 - (void)setOrientation:(PSMTabBarOrientation)value;
 - (BOOL)canCloseOnlyTab;
 - (void)setCanCloseOnlyTab:(BOOL)value;
 - (BOOL)disableTabClose;
 - (void)setDisableTabClose:(BOOL)value;
+@property (retain) id<PSMTabStyle> style;
 - (id<PSMTabStyle>)style;
 - (void)setStyle:(id <PSMTabStyle>)newStyle;
-- (NSString *)styleName;
-- (void)setStyleNamed:(NSString *)name;
+@property (assign, setter=setStyleNamed:) NSString *styleName;
 - (BOOL)hideForSingleTab;
 - (void)setHideForSingleTab:(BOOL)value;
 - (BOOL)showAddTabButton;
@@ -154,12 +156,11 @@ enum {
 - (void)setTabLocation:(int)value;
 
 // accessors
-- (NSTabView *)tabView;
-- (void)setTabView:(NSTabView *)view;
-- (id)delegate;
-- (void)setDelegate:(id)object;
-- (id)partnerView;
-- (void)setPartnerView:(id)view;
+@property (retain) NSTabView *tabView;
+- (id<TabBarControlDelegate>)delegate;
+- (void)setDelegate:(id<TabBarControlDelegate>)object;
+@property (assign) id<TabBarControlDelegate> delegate;
+@property (retain) id partnerView;
 
 // the buttons
 - (PSMRolloverButton *)addTabButton;
@@ -167,11 +168,11 @@ enum {
 
 // tab information
 - (NSMutableArray *)representedTabViewItems;
-- (int)numberOfVisibleTabs;
+- (NSInteger)numberOfVisibleTabs;
 
 // special effects
 - (void)hideTabBar:(BOOL)hide animate:(BOOL)animate;
-- (BOOL)isTabBarHidden;
+@property (readonly, getter=isTabBarHidden) BOOL tabBarHidden;
 
 // internal bindings methods also used by the tab drag assistant
 - (void)bindPropertiesForCell:(PSMTabBarCell *)cell andTabViewItem:(NSTabViewItem *)item;
@@ -180,7 +181,9 @@ enum {
 @end
 
 
-@interface NSObject (TabBarControlDelegateMethods)
+@protocol TabBarControlDelegate <NSObject>
+
+@optional
 
 //Standard NSTabView methods
 - (BOOL)tabView:(NSTabView *)aTabView shouldCloseTabViewItem:(NSTabViewItem *)tabViewItem;

@@ -175,7 +175,7 @@ static TreeNode *defaultBookmark = nil;
 
 // Model for NSOutlineView tree structure
 
-- (id)child:(int)index ofItem:(id)item
+- (id)child:(NSInteger)index ofItem:(id)item
 {	
 	return ([SAFENODE(item) childAtIndex: index]);
 }
@@ -186,7 +186,7 @@ static TreeNode *defaultBookmark = nil;
 	return (![SAFENODE(item) isLeaf]);
 }
 
-- (int) numberOfChildrenOfItem:(id)item
+- (NSInteger) numberOfChildrenOfItem:(id)item
 {
 	//NSLog(@"%s", __PRETTY_FUNCTION__);
 	return ([SAFENODE(item) numberOfChildren]);
@@ -386,12 +386,12 @@ static TreeNode *defaultBookmark = nil;
 	
 }
 
-- (int) indexForBookmark: (NSDictionary *)bookmark
+- (NSInteger) indexForBookmark: (NSDictionary *)bookmark
 {
 	return [[self rootNode] indexForNode: bookmark];
 }
 
-- (NSDictionary *) bookmarkForIndex: (int)index
+- (NSDictionary *) bookmarkForIndex: (NSInteger)index
 {
 	return [[self rootNode] nodeForIndex: index];
 }

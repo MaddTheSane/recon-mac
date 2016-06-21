@@ -34,7 +34,7 @@ static NSString* APPLICATION_SUPPORT_DIRECTORY = @"~/Library/Application Support
 static NSString *SUPPORT_DIRECTORY = @"~/Library/Application Support/iTerm";
 static NSString *SCRIPT_DIRECTORY = @"~/Library/Application Support/iTerm/Scripts";
 
-static int _compareEncodingByLocalizedName(id a, id b, void *unused);
+static NSInteger _compareEncodingByLocalizedName(id a, id b, void *unused);
 
 @interface iTermController (Private)
 - (ITTerminalView*)launchBookmark: (NSDictionary *) bookmarkData
@@ -357,7 +357,7 @@ static int _compareEncodingByLocalizedName(id a, id b, void *unused);
 @end
 
 // Comparator for sorting encodings
-static int _compareEncodingByLocalizedName(id a, id b, void *unused)
+static NSInteger _compareEncodingByLocalizedName(id a, id b, void *unused)
 {
 	NSString *sa = [NSString localizedNameOfStringEncoding: [a unsignedIntValue]];
 	NSString *sb = [NSString localizedNameOfStringEncoding: [b unsignedIntValue]];

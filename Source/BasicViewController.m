@@ -24,7 +24,7 @@
 #include <ifaddrs.h>
 #include <stdio.h>
 
-#include "NSManagedObjectContext-helper.h"
+#import "NSManagedObjectContext-helper.h"
 
 @interface BasicViewController ()
 
@@ -689,7 +689,7 @@ int bitcount (unsigned int n)
       // Grab the selected hosts from the hostsController
       NSArray *selectedHosts = [connectionsController selectedObjects];
       
-      NSString *hostsIpCSV = [[NSString alloc] init];
+      NSString *hostsIpCSV = @"";
       
       // Create a comma-seperated string of target ip's
       if ([selectedHosts count] > 1)
@@ -718,7 +718,7 @@ int bitcount (unsigned int n)
       [sessionManager queueSessionWithProfile:p withTarget:hostsIpCSV];
       
       // BEAUTIFIER
-      [sessionsArrayController setSelectedObjects:[NSArray arrayWithObject:currentSession]];
+      [sessionsArrayController setSelectedObjects:@[currentSession]];
    }
 }
 
@@ -746,7 +746,7 @@ int bitcount (unsigned int n)
 - (NSArray *)hostSortDescriptor
 {
 	if(hostSortDescriptor == nil){
-		hostSortDescriptor = [NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"ipv4Address" ascending:YES]];
+		hostSortDescriptor = @[[[NSSortDescriptor alloc] initWithKey:@"ipv4Address" ascending:YES]];
    }
    
 	return hostSortDescriptor;
@@ -760,7 +760,7 @@ int bitcount (unsigned int n)
 - (NSArray *)portSortDescriptor
 {
 	if(portSortDescriptor == nil){
-		portSortDescriptor = [NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"number" ascending:YES]];
+		portSortDescriptor = @[[[NSSortDescriptor alloc] initWithKey:@"number" ascending:YES]];
    }
    
 	return portSortDescriptor;
@@ -774,7 +774,7 @@ int bitcount (unsigned int n)
 - (NSArray *)profileSortDescriptor
 {
 	if(profileSortDescriptor == nil){
-		profileSortDescriptor = [NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES]];
+		profileSortDescriptor = @[[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES]];
    }
    
 	return profileSortDescriptor;
@@ -788,7 +788,7 @@ int bitcount (unsigned int n)
 - (NSArray *)sessionSortDescriptor
 {
 	if(sessionSortDescriptor == nil){
-		sessionSortDescriptor = [NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO]];
+		sessionSortDescriptor = @[[[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO]];
    }
    
 	return sessionSortDescriptor;
@@ -802,7 +802,7 @@ int bitcount (unsigned int n)
 - (NSArray *)osSortDescriptor
 {
 	if(osSortDescriptor == nil){
-		osSortDescriptor = [NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"name" ascending:NO]];
+		osSortDescriptor = @[[[NSSortDescriptor alloc] initWithKey:@"name" ascending:NO]];
    }
    
 	return osSortDescriptor;

@@ -245,6 +245,8 @@
     _lastMouseDownEvent = event;
 }
 
+@synthesize delegate;
+
 - (id)delegate
 {
     return delegate;
@@ -264,17 +266,8 @@
 	[self registerForDraggedTypes:types];
 }
 
-- (NSTabView *)tabView
-{
-    return tabView;
-}
-
-- (void)setTabView:(NSTabView *)view
-{
-    [view retain];
-    [tabView release];
-    tabView = view;
-}
+@synthesize tabView;
+@synthesize style;
 
 - (id<PSMTabStyle>)style
 {
@@ -803,22 +796,8 @@
     [[self window] display];
 }
 
-- (BOOL)isTabBarHidden
-{
-	return _isHidden;
-}
-
-- (id)partnerView
-{
-    return partnerView;
-}
-
-- (void)setPartnerView:(id)view
-{
-    [partnerView release];
-    [view retain];
-    partnerView = view;
-}
+@synthesize tabBarHidden = _isHidden;
+@synthesize partnerView;
 
 #pragma mark -
 #pragma mark Drawing
@@ -1160,7 +1139,7 @@
 	// Set up cells with frames and rects
     for (i = 0; i < cellCount; i++) {
         PSMTabBarCell *cell = [_cells objectAtIndex:i];
-        int tabState = 0;
+        PSMTabState tabState = 0;
         if (i < numberOfVisibleCells) {
             // set cell frame
 			if ([self orientation] == PSMTabBarHorizontalOrientation) {
@@ -2062,7 +2041,7 @@
     return [_cells objectAtIndex:(cellCount - 1)];
 }
 
-- (int)numberOfVisibleTabs
+- (NSInteger)numberOfVisibleTabs
 {
     int i, cellCount = [_cells count];
     for (i = 0; i < cellCount; i++){

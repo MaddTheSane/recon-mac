@@ -48,7 +48,7 @@ static int cacheSize;
 - (void)setPreviousWindowSize:(NSSize)thePreviousWindowSize;
 
 - (unsigned int) _checkForSupportedDragTypes:(id <NSDraggingInfo>) sender;
-- (void)_savePanelDidEnd: (NSSavePanel *) theSavePanel returnCode: (int) theReturnCode contextInfo: (void *) theContextInfo;
+- (void)_savePanelDidEnd: (NSSavePanel *) theSavePanel returnCode: (NSInteger) theReturnCode contextInfo: (void *) theContextInfo;
 
 - (void)_scrollToLine:(int)line;
 - (void)_selectFromX:(int)startx Y:(int)starty toX:(int)endx Y:(int)endy;

@@ -15,7 +15,7 @@
 #import "PTYSession.h"
 #import "PTYTask.h"
 #import "PTYTextView.h"
-#import "PTYScrollView.h";
+#import "PTYScrollView.h"
 #import "VT100Screen.h"
 #import "VT100Terminal.h"
 #import "PreferencePanel.h"

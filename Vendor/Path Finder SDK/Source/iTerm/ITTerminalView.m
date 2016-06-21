@@ -68,6 +68,10 @@
 - (void)setInitialized:(BOOL)flag;
 @end
 
+@interface ITTerminalView () <TabBarControlDelegate>
+
+@end
+
 @interface ITTerminalView (hidden)
 - (void)setTabView:(PTYTabView *)theTabView;
 - (void)setTabBarControl:(PSMTabBarControl *)theTabBarControl;
@@ -306,7 +310,7 @@
         [aSession setDefaultName: theSessionName];
     }
     else {
-        NSString *progpath = [NSString stringWithFormat: @"%@ #%d", [[[[aSession SHELL] path] pathComponents] lastObject], [[self tabView] indexOfTabViewItem:[[self tabView] selectedTabViewItem]]];
+        NSString *progpath = [NSString stringWithFormat: @"%@ #%ld", [[[[aSession SHELL] path] pathComponents] lastObject], (long)[[self tabView] indexOfTabViewItem:[[self tabView] selectedTabViewItem]]];
 		
         if ([aSession exited])
             [title appendString:@"Finish"];

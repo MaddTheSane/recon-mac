@@ -145,7 +145,7 @@ static BOOL editingBookmark = NO;
 
 // NSOutlineView data source methods
 // required
-- (id)outlineView:(NSOutlineView *)ov child:(int)index ofItem:(id)item
+- (id)outlineView:(NSOutlineView *)ov child:(NSInteger)index ofItem:(id)item
 {
     //NSLog(@"%s", __PRETTY_FUNCTION__);
     return [[ITAddressBookMgr sharedInstance] child:index ofItem: item];
@@ -157,7 +157,7 @@ static BOOL editingBookmark = NO;
     return [[ITAddressBookMgr sharedInstance] isExpandable: item];
 }
 
-- (int)outlineView:(NSOutlineView *)ov numberOfChildrenOfItem:(id)item
+- (NSInteger)outlineView:(NSOutlineView *)ov numberOfChildrenOfItem:(id)item
 {
     //NSLog(@"%s: ov = 0x%x; item = 0x%x; numChildren: %d", __PRETTY_FUNCTION__, ov, item,
 	//	  [[ITAddressBookMgr sharedInstance] numberOfChildrenOfItem: item]);
@@ -194,7 +194,7 @@ static BOOL editingBookmark = NO;
     return YES;
 }
 
-- (NSDragOperation)outlineView:(NSOutlineView*)olv validateDrop:(id <NSDraggingInfo>)info proposedItem:(id)item proposedChildIndex:(int)childIndex
+- (NSDragOperation)outlineView:(NSOutlineView*)olv validateDrop:(id <NSDraggingInfo>)info proposedItem:(id)item proposedChildIndex:(NSInteger)childIndex
 {
     // This method validates whether or not the proposal is a valid one. Returns NO if the drop should not be allowed.
     TreeNode *targetNode = item;
@@ -220,7 +220,7 @@ static BOOL editingBookmark = NO;
     return targetNodeIsValid ? NSDragOperationGeneric : NSDragOperationNone;
 }
 
-- (BOOL)outlineView:(NSOutlineView*)olv acceptDrop:(id <NSDraggingInfo>)info item:(id)targetItem childIndex:(int)childIndex 
+- (BOOL)outlineView:(NSOutlineView*)olv acceptDrop:(id <NSDraggingInfo>)info item:(id)targetItem childIndex:(NSInteger)childIndex
 {
 	TreeNode *parentNode;
 	

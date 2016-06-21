@@ -109,14 +109,14 @@
     [super removeTabViewItem: aTabViewItem];
 }
 
-- (void)insertTabViewItem: (NSTabViewItem *) tabViewItem atIndex: (int) index
+- (void)insertTabViewItem: (NSTabViewItem *) tabViewItem atIndex: (NSInteger) index
 {
     // Let our delegate know
     id delegate = [self delegate];
 
     // Check the boundary
     if (index>[super numberOfTabViewItems]) {
-        NSLog(@"Warning: index(%d) > numberOfTabViewItems(%d)", index, [super numberOfTabViewItems]);
+        NSLog(@"Warning: index(%ld) > numberOfTabViewItems(%ld)", (long)index, (long)[super numberOfTabViewItems]);
         index = [super numberOfTabViewItems];
     }
     

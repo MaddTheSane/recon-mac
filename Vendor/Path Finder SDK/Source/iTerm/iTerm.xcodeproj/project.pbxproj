@@ -79,7 +79,7 @@
 		874206350564168A00CFC3F1 /* ITConfigPanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B8891A04E924CD00000106 /* ITConfigPanelController.m */; };
 		874206390564168A00CFC3F1 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0464AB2F006CD2EC7F000001 /* AppKit.framework */; };
 		8742063A0564168A00CFC3F1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0464AB30006CD2EC7F000001 /* Foundation.framework */; };
-		8742064B0564169600CFC3F1 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = E813FB7D0297522703A80106 /* MainMenu.nib */; };
+		8742064B0564169600CFC3F1 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E813FB7D0297522703A80106 /* MainMenu.xib */; };
 		8742064D0564169600CFC3F1 /* iTerm.icns in Resources */ = {isa = PBXBuildFile; fileRef = E8EDCE69015E0A5703000001 /* iTerm.icns */; };
 		8742064F0564169600CFC3F1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E8CF757F026DDAD703A80106 /* main.m */; };
 		874206500564169600CFC3F1 /* iTermApplicationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D5CC6404E7AA0500000106 /* iTermApplicationDelegate.m */; };
@@ -557,7 +557,7 @@
 		206042C10B66FD8300FD2068 /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				E813FB7D0297522703A80106 /* MainMenu.nib */,
+				E813FB7D0297522703A80106 /* MainMenu.xib */,
 				20D5CC6304E7AA0500000106 /* iTermApplicationDelegate.h */,
 				20C667900B67020000533B48 /* iTerm.h */,
 				20788CF10BE129A60013A705 /* iTerm_Prefix.pch */,
@@ -908,7 +908,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8742064B0564169600CFC3F1 /* MainMenu.nib in Resources */,
+				8742064B0564169600CFC3F1 /* MainMenu.xib in Resources */,
 				8742064D0564169600CFC3F1 /* iTerm.icns in Resources */,
 				F6CDC4E70AE6D3E2005E7D4F /* folder.png in Resources */,
 			);
@@ -1032,7 +1032,7 @@
 			name = ITConfigPanel.xib;
 			sourceTree = "<group>";
 		};
-		E813FB7D0297522703A80106 /* MainMenu.nib */ = {
+		E813FB7D0297522703A80106 /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				E813FB7E0297522703A80106 /* English */,
@@ -1070,6 +1070,7 @@
 		BB024D32096EE4080021E793 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
@@ -1094,6 +1095,7 @@
 		BB024D33096EE4080021E793 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;

@@ -1318,7 +1318,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 20EF87010988603D006FA8BB /* Debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				ENABLE_TESTABILITY = YES;
 			};
 			name = Debug;
@@ -1327,7 +1326,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 20EF87020988603D006FA8BB /* Release.xcconfig */;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 			};
 			name = Release;
 		};

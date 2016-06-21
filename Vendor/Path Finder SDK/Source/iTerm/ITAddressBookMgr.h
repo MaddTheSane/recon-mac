@@ -48,9 +48,9 @@
 - (void)migrateOldBookmarks;
 
 // Model for NSOutlineView tree structure
-- (id)child:(int)index ofItem:(id)item;
+- (id)child:(NSInteger)index ofItem:(id)item;
 - (BOOL) isExpandable:(id)item;
-- (int) numberOfChildrenOfItem:(id)item;
+- (NSInteger) numberOfChildrenOfItem:(id)item;
 - (id)objectForKey:(id)key inItem:(id)item;
 - (void)setObjectValue:(id)object forKey:(id)key inItem:(id)item;
 - (void)addFolder: (NSString *) folderName toNode: (TreeNode *) aNode;
@@ -65,8 +65,8 @@
 - (NSDictionary *) defaultBookmarkData;
 - (NSDictionary *) dataForBookmarkWithName: (NSString *) bookmarkName;
 
-- (int) indexForBookmark: (NSDictionary *)bookmark;
-- (NSDictionary *) bookmarkForIndex: (int)index;
+- (NSInteger) indexForBookmark: (NSDictionary *)bookmark;
+- (NSDictionary *) bookmarkForIndex: (NSInteger)index;
 
 @end
 

@@ -19,7 +19,7 @@
 	// if NSError returns nil, we add our own local error string (someday NSError will probably add the strings)
 	if (!reason)
 	{
-		NSString* errorString = [NSString stringWithFormat:@"%d", [self code]];
+		NSString* errorString = [NSString stringWithFormat:@"%ld", (long)[self code]];
 		reason = [NTLocalizedString localize:errorString table:@"macErrors"];
 		
 		// did it fail to localize?

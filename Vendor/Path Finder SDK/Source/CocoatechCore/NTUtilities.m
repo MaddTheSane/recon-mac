@@ -433,7 +433,7 @@ NSString* NSErrorString(OSStatus err)
 														tag:&tag];	
 		
 		if (tag < 0)
-			NSLog(@"move to trash failed: %d path: %@", tag, path);
+			NSLog(@"move to trash failed: %ld path: %@", (long)tag, path);
 	}
 }
 
