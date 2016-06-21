@@ -491,6 +491,7 @@
 				20CD1C320546675B00A37B05 /* Info-CocoaTechStrings__Native_.plist */,
 			);
 			sourceTree = "<group>";
+			usesTabs = 0;
 		};
 		F9613FEC03A6BEE9014F6B84 /* Products */ = {
 			isa = PBXGroup;
