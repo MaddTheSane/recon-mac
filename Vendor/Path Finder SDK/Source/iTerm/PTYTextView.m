@@ -89,10 +89,10 @@ static int cacheSize;
     [reverseCursorImage lockFocus];
     [[NSColor whiteColor] set];
     NSRectFill(NSMakeRect(0,0,[reverseCursorImage size].width,[reverseCursorImage size].height));
-    [ibeamImage compositeToPoint:NSMakePoint(0,0) operation:NSCompositeDestinationIn];
+    [ibeamImage drawAtPoint:NSMakePoint(0,0) fromRect:NSZeroRect operation:NSCompositeDestinationIn fraction:1];
     [reverseCursorImage unlockFocus];
     [aCursorImage lockFocus];
-    [reverseCursorImage compositeToPoint:NSMakePoint(2,0) operation:NSCompositePlusLighter];
+    [reverseCursorImage drawAtPoint:NSMakePoint(2,0) fromRect:NSZeroRect operation:NSCompositePlusLighter fraction:1];
     [aCursorImage unlockFocus];
     textViewCursor = [[NSCursor alloc] initWithImage:aCursorImage hotSpot:hotspot];
     strokeWidth = [[PreferencePanel sharedInstance] strokeWidth];
@@ -2116,15 +2116,12 @@ static int cacheSize;
     // initialize a save panel
     aSavePanel = [NSSavePanel savePanel];
     [aSavePanel setAccessoryView: nil];
-    [aSavePanel setRequiredFileType: @""];
+    //[aSavePanel setRequiredFileType: @""];
     
     // Run the save panel as a sheet
-    [aSavePanel beginSheetForDirectory: @""
-                                  file: @"Unknown"
-                        modalForWindow: [self window]
-                         modalDelegate: self
-                        didEndSelector: @selector(_savePanelDidEnd: returnCode: contextInfo:)
-                           contextInfo: aData];
+    [aSavePanel beginSheetModalForWindow:self.window completionHandler:^(NSInteger result) {
+        [self _savePanelDidEnd:aSavePanel returnCode:result contextInfo:aData];
+    }];
 }
 
 // Print
@@ -2686,7 +2683,7 @@ static int cacheSize;
 					  doubleWidth:dw];
 		
 		// SNG CRASHED HERE!!
-		[image compositeToPoint:NSMakePoint(X,Y) operation: (bg & SELECTION_MASK) || bg==-1 ? NSCompositeSourceOver:NSCompositeCopy];
+		[image drawAtPoint:NSMakePoint(X,Y) fromRect:NSZeroRect operation: (bg & SELECTION_MASK) || bg==-1 ? NSCompositeSourceOver:NSCompositeCopy fraction:1];
 	}
 }	
 
@@ -3046,13 +3043,13 @@ static int cacheSize;
 }
 
 - (void)_savePanelDidEnd: (NSSavePanel *) theSavePanel
-			  returnCode: (int) theReturnCode
+			  returnCode: (NSInteger) theReturnCode
 			 contextInfo: (void *) theContextInfo
 {
     // If successful, save file under designated name
     if (theReturnCode == NSOKButton)
     {
-        if ( ![(NSData *)theContextInfo writeToFile: [theSavePanel filename] atomically: YES] )
+        if ( ![(NSData *)theContextInfo writeToFile: [[theSavePanel URL] path] atomically: YES] )
             NSBeep();
     }
     // release our hold on the data

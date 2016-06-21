@@ -66,7 +66,7 @@
     }
 }
 
-- (void)drawRect:(NSRect)rect;
+- (void)drawRect:(__unused NSRect)rect;
 {
 	NSRect toRect = [self bounds];
 	NSRect fromRect = [self bounds];
@@ -123,7 +123,7 @@
         [mContentImage release];
         mContentImage = [theContentImage retain];
 		
-		[mContentImage setScalesWhenResized:YES];
+		//[mContentImage setScalesWhenResized:YES];
 		[mContentImage setFlipped:YES];
 		[mContentImage setSize:[self bounds].size];
     }

@@ -345,7 +345,7 @@ ITGetMachTaskEvents(task_t task, int *faults, int *pageins, int *cow_faults, int
 	count = length / sizeof(struct kinfo_proc);
 		
 	for (i = 0; i < count; i++) {
-		if (proc = [[self alloc] initWithProcessIdentifier:info[i].kp_proc.p_pid])
+		if ((proc = [[self alloc] initWithProcessIdentifier:info[i].kp_proc.p_pid]))
 		[processes addObject:proc];
 		[proc release];
 	}
@@ -518,7 +518,7 @@ ITGetMachTaskEvents(task_t task, int *faults, int *pageins, int *cow_faults, int
 			command = [[[NSString alloc] init] autorelease];
 			//NSLog(@"ITProcess: doProcArgs: no command");
 		} else {
-			command = [[[NSString alloc] initWithCString:info.kp_proc.p_comm] autorelease];
+			command = @(info.kp_proc.p_comm);
 			//NSLog(@"ITProcess: doProcArgs: info.kp_proc.p_comm = %s", info.kp_proc.p_comm);
 		}
 	}

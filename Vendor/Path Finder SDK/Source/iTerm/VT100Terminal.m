@@ -970,7 +970,7 @@ static VT100TCC decode_euccn(unsigned char *datap,
 	
     while (len > 0) {
         if (iseuccn(*p)&&len>1) {
-            if ((*(p+1)>=0x40&&*(p+1)<=0x7e)||*(p+1)>=0x80&&*(p+1)<=0xfe) {
+            if ((*(p+1)>=0x40&&*(p+1)<=0x7e)||(*(p+1)>=0x80&&*(p+1)<=0xfe)) {
                 p += 2;
                 len -= 2;
             }
@@ -1004,7 +1004,7 @@ static VT100TCC decode_big5(unsigned char *datap,
     
     while (len > 0) {
         if (isbig5(*p)&&len>1) {
-            if ((*(p+1)>=0x40&&*(p+1)<=0x7e)||*(p+1)>=0xa1&&*(p+1)<=0xfe) {
+            if ((*(p+1)>=0x40&&*(p+1)<=0x7e)||(*(p+1)>=0xa1&&*(p+1)<=0xfe)) {
                 p += 2;
                 len -= 2;
             }

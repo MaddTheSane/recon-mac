@@ -275,10 +275,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0867D69BFE84028FC02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
-		0867D6A5FE840307C02AAC07 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		0867D69BFE84028FC02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		0867D6A5FE840307C02AAC07 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		089C1667FE841158C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		200745690DBC4D1300668B22 /* NTBoxView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTBoxView.h; sourceTree = "<group>"; };
 		2007456A0DBC4D1300668B22 /* NTBoxView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTBoxView.m; sourceTree = "<group>"; };
 		2007456D0DBC4D2000668B22 /* NTBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTBackgroundView.h; sourceTree = "<group>"; };
@@ -303,7 +303,7 @@
 		202F64660AA7CDE30026E5AD /* CocoaTechStrings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CocoaTechStrings.xcodeproj; path = ../CocoatechStrings/CocoaTechStrings.xcodeproj; sourceTree = SOURCE_ROOT; };
 		2034463E0D6F623E000B5495 /* NSAnimationContext-NTExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAnimationContext-NTExtensions.h"; sourceTree = "<group>"; };
 		2034463F0D6F623E000B5495 /* NSAnimationContext-NTExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAnimationContext-NTExtensions.m"; sourceTree = "<group>"; };
-		2039E1430ADF20DA00584208 /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = /System/Library/Frameworks/QuickTime.framework; sourceTree = "<absolute>"; };
+		2039E1430ADF20DA00584208 /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = System/Library/Frameworks/QuickTime.framework; sourceTree = SDKROOT; };
 		2040125E0BCC758900102A61 /* NTTableHeaderImages.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = NTTableHeaderImages.h; sourceTree = "<group>"; };
 		2040125F0BCC758900102A61 /* NTTableHeaderImages.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = NTTableHeaderImages.m; sourceTree = "<group>"; };
 		204012800BCC762A00102A61 /* NTAquaButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTAquaButtonCell.h; sourceTree = "<group>"; };
@@ -314,8 +314,8 @@
 		204861990D7CEB5B0083D964 /* NTStringView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTStringView.m; sourceTree = "<group>"; };
 		204A625E0D441E8200B6EB88 /* NSNumber-NTExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber-NTExtensions.h"; sourceTree = "<group>"; };
 		204A625F0D441E8200B6EB88 /* NSNumber-NTExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber-NTExtensions.m"; sourceTree = "<group>"; };
-		204CEC150ADCB0F200B25AD4 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = /System/Library/Frameworks/AddressBook.framework; sourceTree = "<absolute>"; };
-		204CEC160ADCB0F200B25AD4 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
+		204CEC150ADCB0F200B25AD4 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		204CEC160ADCB0F200B25AD4 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		204CEE0C0ADCBC5C00B25AD4 /* NTSizeFormatter.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = NTSizeFormatter.h; sourceTree = "<group>"; };
 		204CEE0D0ADCBC5C00B25AD4 /* NTSizeFormatter.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = NTSizeFormatter.m; sourceTree = "<group>"; };
 		204CEE5D0ADCBDAF00B25AD4 /* NTSimpleAlert.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = NTSimpleAlert.h; sourceTree = "<group>"; };
@@ -368,7 +368,7 @@
 		208A8D5E0B756AD300490432 /* NSWindow-NTExtensions.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = "NSWindow-NTExtensions.m"; sourceTree = "<group>"; };
 		208A9E470D2C55BD00738198 /* NTAnimationsZoomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTAnimationsZoomView.h; sourceTree = "<group>"; };
 		208A9E480D2C55BD00738198 /* NTAnimationsZoomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTAnimationsZoomView.m; sourceTree = "<group>"; };
-		2090BEC70E07384200BBBCA1 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = /System/Library/Frameworks/SystemConfiguration.framework; sourceTree = "<absolute>"; };
+		2090BEC70E07384200BBBCA1 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		2094A1510DA4058A0024A7F6 /* NTDoubleClickHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTDoubleClickHandler.h; sourceTree = "<group>"; };
 		2094A1520DA4058A0024A7F6 /* NTDoubleClickHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTDoubleClickHandler.m; sourceTree = "<group>"; };
 		2094A1930DA406380024A7F6 /* NTRevealParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTRevealParameters.h; sourceTree = "<group>"; };
@@ -433,7 +433,7 @@
 		209E3FBA0ADCA34300DC888E /* NSMenu-NTExtensions.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = "NSMenu-NTExtensions.m"; sourceTree = "<group>"; };
 		209E3FBB0ADCA34300DC888E /* NSMenuItem-NTExtensions.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = "NSMenuItem-NTExtensions.h"; sourceTree = "<group>"; };
 		209E3FBC0ADCA34300DC888E /* NSMenuItem-NTExtensions.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = "NSMenuItem-NTExtensions.m"; sourceTree = "<group>"; };
-		209E3FE20ADCA40500DC888E /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
+		209E3FE20ADCA40500DC888E /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		209E40090ADCA4C500DC888E /* NTThreadHelper.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = NTThreadHelper.h; sourceTree = "<group>"; };
 		209E400A0ADCA4C500DC888E /* NTThreadHelper.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = NTThreadHelper.m; sourceTree = "<group>"; };
 		209E400B0ADCA4C500DC888E /* NTThreadRunner.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = NTThreadRunner.h; sourceTree = "<group>"; };
@@ -466,7 +466,7 @@
 		20B2D7850BCE290E00CDD55A /* NTGradientDraw.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTGradientDraw.m; sourceTree = "<group>"; };
 		20B79A2F0DDD39E400A3D6BB /* CATextLayer-NTExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CATextLayer-NTExtensions.h"; sourceTree = "<group>"; };
 		20B79A300DDD39E400A3D6BB /* CATextLayer-NTExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CATextLayer-NTExtensions.m"; sourceTree = "<group>"; };
-		20B79B080DDD3E0F00A3D6BB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = /System/Library/Frameworks/QuartzCore.framework; sourceTree = "<absolute>"; };
+		20B79B080DDD3E0F00A3D6BB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		20BF00D50E2DD249008D723C /* NTSCPrefsListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTSCPrefsListener.h; sourceTree = "<group>"; };
 		20BF00D60E2DD249008D723C /* NTSCPrefsListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTSCPrefsListener.m; sourceTree = "<group>"; };
 		20BF75E50D28C33600ADA999 /* NSDrawer-NTExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDrawer-NTExtensions.h"; sourceTree = "<group>"; };
@@ -488,7 +488,7 @@
 		20DBC4500D2B212E0030C890 /* NTAnimations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTAnimations.m; sourceTree = "<group>"; };
 		20DBC4510D2B212E0030C890 /* NTAnimationsWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTAnimationsWindow.h; sourceTree = "<group>"; };
 		20DBC4520D2B212E0030C890 /* NTAnimationsWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTAnimationsWindow.m; sourceTree = "<group>"; };
-		20DBC4800D2B254F0030C890 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = /System/Library/Frameworks/Quartz.framework; sourceTree = "<absolute>"; };
+		20DBC4800D2B254F0030C890 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 		20DE4CB90B52224F005B967B /* NSDate-NTExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate-NTExtensions.h"; sourceTree = "<group>"; };
 		20DE4CBA0B52224F005B967B /* NSDate-NTExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate-NTExtensions.m"; sourceTree = "<group>"; };
 		20DFD5F70ADDF09800BB6ACC /* NSShadow-NTExtensions.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = "NSShadow-NTExtensions.h"; sourceTree = "<group>"; };
@@ -519,7 +519,7 @@
 		20E5FC310B4F63CB0042CD80 /* NTKeyChainUtils.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = NTKeyChainUtils.m; sourceTree = "<group>"; };
 		20E5FF080B4F6A810042CD80 /* NSMatrix-CoreExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMatrix-CoreExtensions.h"; sourceTree = "<group>"; };
 		20E5FF090B4F6A810042CD80 /* NSMatrix-CoreExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMatrix-CoreExtensions.m"; sourceTree = "<group>"; };
-		20E87F0E0EF90D3F00BD6893 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = ../../../../../Leopard/System/Library/Frameworks/Security.framework; sourceTree = SOURCE_ROOT; };
+		20E87F0E0EF90D3F00BD6893 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		20EBB5F00DE0ECB7008AD4F7 /* NTSpaceKeyPoll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTSpaceKeyPoll.h; sourceTree = "<group>"; };
 		20EBB5F10DE0ECB7008AD4F7 /* NTSpaceKeyPoll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTSpaceKeyPoll.m; sourceTree = "<group>"; };
 		20EF58920E89840000A8CE26 /* NTPointerObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTPointerObject.h; sourceTree = "<group>"; };
@@ -531,7 +531,7 @@
 		32DBCF5E0370ADEE00C91783 /* CocoatechCore_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoatechCore_Prefix.pch; sourceTree = "<group>"; };
 		8DC2EF5A0486A6940098B216 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8DC2EF5B0486A6940098B216 /* CocoatechCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CocoatechCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D2F7E79907B2D74100F64583 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
+		D2F7E79907B2D74100F64583 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -572,20 +572,21 @@
 				20EF87050988604D006FA8BB /* Configurations */,
 				08FB77AEFE84172EC02AAC07 /* Classes */,
 				089C1665FE841158C02AAC07 /* Resources */,
-				0867D69AFE84028FC02AAC07 /* External Frameworks and Libraries */,
+				0867D69AFE84028FC02AAC07 /* Frameworks */,
 				034768DFFF38A50411DB9C8B /* Products */,
 			);
 			name = CocoatechCore;
 			sourceTree = "<group>";
 		};
-		0867D69AFE84028FC02AAC07 /* External Frameworks and Libraries */ = {
+		0867D69AFE84028FC02AAC07 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */,
+				209E3FE20ADCA40500DC888E /* Carbon.framework */,
 				20C10B0A0A3F6D9900291B79 /* CocoaTechStrings.framework */,
-				1058C7B0FEA5585E11CA2CBB /* Linked Frameworks */,
 				1058C7B2FEA5585E11CA2CBB /* Other Frameworks */,
 			);
-			name = "External Frameworks and Libraries";
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		089C1665FE841158C02AAC07 /* Resources */ = {
@@ -712,15 +713,6 @@
 				209E3E590ADC9CAE00DC888E /* NTTaskController.m */,
 			);
 			name = Classes;
-			sourceTree = "<group>";
-		};
-		1058C7B0FEA5585E11CA2CBB /* Linked Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */,
-				209E3FE20ADCA40500DC888E /* Carbon.framework */,
-			);
-			name = "Linked Frameworks";
 			sourceTree = "<group>";
 		};
 		1058C7B2FEA5585E11CA2CBB /* Other Frameworks */ = {
@@ -1081,7 +1073,7 @@
 		0867D690FE84028FC02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0730;
 			};
 			buildConfigurationList = 1DEB91B108733DA50010E9CD /* Build configuration list for PBXProject "CocoatechCore" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1325,6 +1317,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 20EF87010988603D006FA8BB /* Debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ENABLE_TESTABILITY = YES;
 			};
 			name = Debug;
@@ -1333,6 +1326,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 20EF87020988603D006FA8BB /* Release.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 			};
 			name = Release;
 		};

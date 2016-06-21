@@ -28,7 +28,7 @@
 @dynamic profile;
 
 
-- (NSNumber *)nameForSelectedProfile
+- (NSString *)nameForSelectedProfile
 {
    return [[self profile] name];
 }

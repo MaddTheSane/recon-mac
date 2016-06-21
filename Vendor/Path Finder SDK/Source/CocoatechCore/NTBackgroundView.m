@@ -129,7 +129,7 @@
 		{
 			mv_backImage = [image retain];
 			
-			[mv_backImage setScalesWhenResized:YES];
+			//[mv_backImage setScalesWhenResized:YES];
 		}
 	}
 }
@@ -250,7 +250,7 @@
                 // turn on high image interpolation level so image draws high quality
                 [[NSGraphicsContext currentContext] setImageInterpolation:NSImageInterpolationHigh];
                 
-                [image compositeToPoint:scaledRect.origin operation:NSCompositeSourceOver fraction:fraction];
+                [image drawAtPoint:scaledRect.origin fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:fraction];
             }
             else if (imageDrawingMode == kTileImageMode)
                 [image tileInView:view fraction:fraction clipRect:clipRect];
@@ -261,7 +261,7 @@
                 
                 drawRect = [NTGeometry rect:drawRect centeredIn:rect scaleToFitContainer:NO];
                 
-                [image compositeToPoint:drawRect.origin operation:NSCompositeSourceOver fraction:fraction];
+                [image drawAtPoint:drawRect.origin fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:fraction];
             }
         }
     }
@@ -308,7 +308,7 @@
 			[image normalizeSize];  // Dan Woods suggestion?
 			
 			[image setCacheMode:NSImageCacheNever];
-			[image setScalesWhenResized:YES];
+			//[image setScalesWhenResized:YES];
 			[self drawBackgroundImageInView:view
 								   clipRect:clipRect
 									  image:image 

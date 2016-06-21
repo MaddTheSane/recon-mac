@@ -944,7 +944,7 @@
         if ([[PreferencePanel sharedInstance] tabViewType] == PSMTab_BottomTab) {
             viewRect.origin.y += tabHeight;
         }
-        [tabViewImage compositeToPoint:viewRect.origin operation:NSCompositeSourceOver];
+        [tabViewImage drawAtPoint:viewRect.origin fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1];
         [viewImage unlockFocus];
 
         //draw over where the tab bar would usually be
@@ -999,7 +999,7 @@
         if ([[PreferencePanel sharedInstance] tabViewType] == PSMTab_BottomTab) {
             viewRect.origin.y += tabHeight;
         }
-        [textviewImage compositeToPoint:viewRect.origin operation:NSCompositeSourceOver];
+        [textviewImage drawAtPoint:viewRect.origin fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1];
         [viewImage unlockFocus];
         
         //draw over where the tab bar would usually be
@@ -1712,10 +1712,10 @@
     }
     
 	return NSRunAlertPanel(title,
-						   message,
+						   @"%@",
 						   NSLocalizedStringFromTableInBundle(@"OK",@"iTerm", [NSBundle bundleForClass: [self class]], @"OK"),
 						   NSLocalizedStringFromTableInBundle(@"Cancel",@"iTerm", [NSBundle bundleForClass: [self class]], @"Cancel")
-						   , nil);	
+						   , nil, message);
 }
 
 @end

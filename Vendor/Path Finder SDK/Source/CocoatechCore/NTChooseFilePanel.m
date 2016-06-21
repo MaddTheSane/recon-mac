@@ -122,12 +122,12 @@
 
 @implementation NTChooseFilePanel (Private)
 
-- (void)openPanelDidEnd:(NSOpenPanel *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo
+- (void)openPanelDidEnd:(NSOpenPanel *)sheet returnCode:(NSInteger)returnCode contextInfo:(__unused void *)contextInfo
 {
     if (returnCode == NSOKButton)
     {
 		[self setUserClickedOK:YES];
-        [self setPath:[sheet filename]];
+        [self setPath:[[sheet URL] path]];
 	}
 	
 	[sheet orderOut:self];
@@ -144,35 +144,41 @@
     [op setCanChooseDirectories:(fileType == kFilesAndFoldersType) ? YES : NO];
     [op setCanChooseFiles:YES];
     [op setAllowsMultipleSelection:NO];
-	[op setShowsHiddenFiles:showInvisibleFiles];
-	
+    [op setShowsHiddenFiles:showInvisibleFiles];
+    
     if (fileType == kApplicationFileType)
         [op setPrompt:[NTLocalizedString localize:@"Choose Application" table:@"CocoaTechBase"]];
     else if (fileType == kImageFileType)
         [op setPrompt:[NTLocalizedString localize:@"Choose Image" table:@"CocoaTechBase"]];
     else if (fileType == kGenericFileType || fileType == kTextFileType || fileType == kFilesAndFoldersType)
         [op setPrompt:[NTLocalizedString localize:@"Choose File" table:@"CocoaTechBase"]];
-	
+    
     // window is not wide enough, the buttons overlap
     [op setMinSize:NSMakeSize(480, [op minSize].height)];
-	
-    if (window)
-        [op beginSheetForDirectory:startPath file:nil types:nil modalForWindow:window modalDelegate:self didEndSelector:@selector(openPanelDidEnd:returnCode:contextInfo:) contextInfo:nil];
+    if (startPath) {
+        op.directoryURL = [NSURL fileURLWithPath:startPath];
+    }
+    
+    if (window) {
+        [op beginSheetModalForWindow:window completionHandler:^(NSInteger result) {
+            [self openPanelDidEnd:op returnCode:result contextInfo:NULL];
+        }];
+    }
     else
     {
-        int result = [op runModalForDirectory:startPath file:nil types:nil];
+        int result = [op runModal];
         if (result == NSOKButton)
         {
-			[self setUserClickedOK:YES];
-			[self setPath:[op filename]];
-		}
-		
-		// must hide the sheet before we send out the action, otherwise our window wont get the action
-		[op orderOut:nil];
-		
-		// send out the selector
-		[[self target] performSelector:[self selector] withObject:self];
-		
+            [self setUserClickedOK:YES];
+            [self setPath:[[op URL] path]];
+        }
+        
+        // must hide the sheet before we send out the action, otherwise our window wont get the action
+        [op orderOut:nil];
+        
+        // send out the selector
+        [[self target] performSelector:[self selector] withObject:self];
+        
         [self autorelease];
     }
 }

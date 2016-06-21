@@ -127,8 +127,8 @@ static BOOL addingKBEntry;
                       nil, [self window], self, 
                       @selector(_deleteProfileSheetDidEnd:returnCode:contextInfo:), 
                       NULL, NULL, 
-                      [NSString stringWithFormat:NTLocalizedStringFromTableInBundle(@"Are you sure that you want to delete %@? There is no way to undo this action.",@"iTerm", [NSBundle bundleForClass: [self class]], @"Profiles"),
-                          selectedProfile]);
+                      NTLocalizedStringFromTableInBundle(@"Are you sure that you want to delete %@? There is no way to undo this action.",@"iTerm", [NSBundle bundleForClass: [self class]], @"Profiles"),
+                           selectedProfile);
 }
 
 - (IBAction)profileAddConfirm:(id)sender
@@ -635,9 +635,9 @@ static BOOL addingKBEntry;
 	}
 }
 
-- (IBAction)displayChangeColor:(id)sender
+- (IBAction)displayChangeColor:(NSColorWell*)sender
 {
-	int type;
+	NSInteger type;
 	
 	type = [sender tag];
 	

@@ -194,7 +194,7 @@ static BOOL editingBookmark = NO;
     return YES;
 }
 
-- (unsigned int)outlineView:(NSOutlineView*)olv validateDrop:(id <NSDraggingInfo>)info proposedItem:(id)item proposedChildIndex:(int)childIndex 
+- (NSDragOperation)outlineView:(NSOutlineView*)olv validateDrop:(id <NSDraggingInfo>)info proposedItem:(id)item proposedChildIndex:(int)childIndex
 {
     // This method validates whether or not the proposal is a valid one. Returns NO if the drop should not be allowed.
     TreeNode *targetNode = item;
@@ -291,8 +291,8 @@ static BOOL editingBookmark = NO;
                       nil, [self window], self, 
                       @selector(_deleteBookmarkSheetDidEnd:returnCode:contextInfo:), 
                       NULL, NULL, 
-                      [NSString stringWithFormat:NTLocalizedStringFromTableInBundle(@"Are you sure that you want to delete %@? There is no way to undo this action.",@"iTerm", [NSBundle bundleForClass: [self class]], @"Profiles"),
-                          [[ITAddressBookMgr sharedInstance] objectForKey:@"Name" inItem: [bookmarksView itemAtRow: [bookmarksView selectedRow]]] ]);
+                      NTLocalizedStringFromTableInBundle(@"Are you sure that you want to delete %@? There is no way to undo this action.",@"iTerm", [NSBundle bundleForClass: [self class]], @"Profiles"),
+                          [[ITAddressBookMgr sharedInstance] objectForKey:@"Name" inItem: [bookmarksView itemAtRow: [bookmarksView selectedRow]]]);
 /*	[NSApp beginSheet: deleteBookmarkPanel
 	   modalForWindow: [self window]
 		modalDelegate: self
@@ -409,7 +409,7 @@ static BOOL editingBookmark = NO;
 
 @implementation iTermBookmarkController (Private)
 
-- (void)_addBookmarkFolderSheetDidEnd:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo
+- (void)_addBookmarkFolderSheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo
 {
 	TreeNode *parentNode;
 	int selectedRow;
@@ -438,7 +438,7 @@ static BOOL editingBookmark = NO;
 	[addBookmarkFolderPanel close];
 }
 
-- (void)_deleteBookmarkSheetDidEnd:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo
+- (void)_deleteBookmarkSheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo
 {
 	
 	if (returnCode == NSAlertDefaultReturn)
@@ -452,7 +452,7 @@ static BOOL editingBookmark = NO;
 	[sheet close];
 }
 
-- (void)_editBookmarkSheetDidEnd:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo
+- (void)_editBookmarkSheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo
 {
 	NSMutableDictionary *aDict;
 	TreeNode *targetNode;

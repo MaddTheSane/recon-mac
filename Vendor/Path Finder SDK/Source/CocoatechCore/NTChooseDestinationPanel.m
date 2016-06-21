@@ -56,7 +56,7 @@
     [panel startPanel:startPath window:window showInvisibleFiles:showInvisibleFiles];
 }
 
-- (void)openPanelDidEnd:(NSOpenPanel *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo
+- (void)openPanelDidEnd:(NSOpenPanel *)sheet returnCode:(NSInteger)returnCode contextInfo:(__unused void *)contextInfo
 {
     [self handleResult:returnCode openPanel:sheet];
 }
@@ -68,7 +68,7 @@
 - (void)startPanel:(NSString*)startPath window:(NSWindow*)window showInvisibleFiles:(BOOL)inShowInvisibleFiles;
 {
     NSOpenPanel *op = [NSOpenPanel openPanel];
-
+    
     [op setCanChooseDirectories:YES];
     [op setCanChooseFiles:NO];
     [op setAllowsMultipleSelection:NO];
@@ -76,18 +76,23 @@
     [op setPrompt:[NTLocalizedString localize:@"Choose Folder"]];
     
     [op setCanCreateDirectories:YES];
-	
-	[op setShowsHiddenFiles:inShowInvisibleFiles];
+    
+    [op setShowsHiddenFiles:inShowInvisibleFiles];
     
     // window is not wide enough, the buttons overlap
     [op setMinSize:NSMakeSize(480, [op minSize].height)];
-
-    if (window)
-        [op beginSheetForDirectory:startPath file:nil types:nil modalForWindow:window modalDelegate:self didEndSelector:@selector(openPanelDidEnd:returnCode:contextInfo:) contextInfo:nil];
-    else
+    if (startPath) {
+        op.directoryURL = [NSURL fileURLWithPath:startPath];
+    }
+    
+    if (window) {
+        [op beginSheetModalForWindow:window completionHandler:^(NSInteger result) {
+            [self openPanelDidEnd:op returnCode:result contextInfo:NULL];
+        }];
+    } else
     {
-        int returnCode = [op runModalForDirectory:startPath file:nil types:nil];
-
+        int returnCode = [op runModal];
+        
         [self handleResult:returnCode openPanel:op];
     }
 }
@@ -97,7 +102,7 @@
     self.userClickedOK = (result == NSOKButton);
 
     if (self.userClickedOK)
-        self.path = [openPanel filename];
+        self.path = [[openPanel URL] path];
 
     // must hide the sheet before we send out the action, otherwise our window wont get the action
     [openPanel orderOut:nil];

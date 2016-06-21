@@ -802,7 +802,7 @@
 		0464AB0C006CD2EC7F000001 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0730;
 			};
 			buildConfigurationList = BB024D39096EE4080021E793 /* Build configuration list for PBXProject "iTerm" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1084,6 +1084,7 @@
 				INFOPLIST_FILE = iTerm_Framework.plist;
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				OTHER_LDFLAGS = "-lncurses";
+				PRODUCT_BUNDLE_IDENTIFIER = com.iterm2.iTerm.framework;
 				PRODUCT_NAME = iTerm;
 				WRAPPER_EXTENSION = framework;
 			};
@@ -1107,6 +1108,7 @@
 				INFOPLIST_FILE = iTerm_Framework.plist;
 				INSTALL_PATH = "@executable_path/../Frameworks";
 				OTHER_LDFLAGS = "-lncurses";
+				PRODUCT_BUNDLE_IDENTIFIER = com.iterm2.iTerm.framework;
 				PRODUCT_NAME = iTerm;
 				WRAPPER_EXTENSION = framework;
 			};
@@ -1146,7 +1148,7 @@
 				LINK_WITH_STANDARD_LIBRARIES = YES;
 				OTHER_LDFLAGS = "-ltermcap";
 				OTHER_REZFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = iTerm;
+				PRODUCT_BUNDLE_IDENTIFIER = com.iterm2.iTerm;
 				PRODUCT_NAME = iTerm;
 				REZ_EXECUTABLE = YES;
 				SECTORDER_FLAGS = "";
@@ -1189,7 +1191,7 @@
 				INFOPLIST_FILE = iTerm.plist;
 				OTHER_LDFLAGS = "";
 				OTHER_REZFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = iTerm;
+				PRODUCT_BUNDLE_IDENTIFIER = com.iterm2.iTerm;
 				PRODUCT_NAME = iTerm;
 				REZ_EXECUTABLE = YES;
 				SECTORDER_FLAGS = "";
@@ -1228,7 +1230,7 @@
 				BB024D33096EE4080021E793 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 		BB024D35096EE4080021E793 /* Build configuration list for PBXNativeTarget "iTerm" */ = {
 			isa = XCConfigurationList;
@@ -1237,7 +1239,7 @@
 				BB024D37096EE4080021E793 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 		BB024D39096EE4080021E793 /* Build configuration list for PBXProject "iTerm" */ = {
 			isa = XCConfigurationList;
@@ -1246,7 +1248,7 @@
 				BB024D3B096EE4080021E793 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

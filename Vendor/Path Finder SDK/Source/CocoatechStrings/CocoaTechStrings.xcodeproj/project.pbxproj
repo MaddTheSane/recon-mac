@@ -566,7 +566,7 @@
 		F9613FE503A6BEDB014F6B84 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0730;
 			};
 			buildConfigurationList = AA31AF7608554EFC00EB35A6 /* Build configuration list for PBXProject "CocoaTechStrings" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1201,6 +1201,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 20F80D85092365DE00CE4EE9 /* Debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ENABLE_TESTABILITY = YES;
 			};
 			name = Debug;
@@ -1209,6 +1210,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 20F80D86092365DE00CE4EE9 /* Release.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 			};
 			name = Release;
 		};
@@ -1222,7 +1224,7 @@
 				AA31AF7408554EFC00EB35A6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 		AA31AF7608554EFC00EB35A6 /* Build configuration list for PBXProject "CocoaTechStrings" */ = {
 			isa = XCConfigurationList;
@@ -1231,7 +1233,7 @@
 				AA31AF7808554EFC00EB35A6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

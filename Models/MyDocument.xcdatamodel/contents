@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15F34" minimumToolsVersion="Xcode 7.0">
+    <entity name="Host" representedClassName="Host" syncable="YES">
+        <attribute name="distance" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hostname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ipIdSequenceClass" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ipv4Address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isSelected" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="macAddress" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="statusReason" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tcpSequenceDifficulty" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tcpSequenceIndex" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tcpTsSequenceClass" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uptimeLastBoot" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uptimeSeconds" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="ipidsequencevalues" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="IpIdSeqValue" inverseName="host" inverseEntity="IpIdSeqValue" indexed="YES" syncable="YES"/>
+        <relationship name="notes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="HostNote" inverseName="host" inverseEntity="HostNote" indexed="YES" syncable="YES"/>
+        <relationship name="osclasses" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="OsClass" inverseName="host" inverseEntity="OsClass" indexed="YES" syncable="YES"/>
+        <relationship name="osmatches" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="OsMatch" inverseName="host" inverseEntity="OsMatch" indexed="YES" syncable="YES"/>
+        <relationship name="ports" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Port" inverseName="host" inverseEntity="Port" indexed="YES" syncable="YES"/>
+        <relationship name="session" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Session" inverseName="hosts" inverseEntity="Session" indexed="YES" syncable="YES"/>
+        <relationship name="tcpsequencevalues" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TcpSeqValue" inverseName="host" inverseEntity="TcpSeqValue" indexed="YES" syncable="YES"/>
+        <relationship name="tcptssequencevalues" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TcpTsSeqValue" inverseName="host" inverseEntity="TcpTsSeqValue" indexed="YES" syncable="YES"/>
+    </entity>
+    <entity name="HostNote" representedClassName="HostNote" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="Binary" syncable="YES"/>
+        <relationship name="host" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Host" inverseName="notes" inverseEntity="Host" indexed="YES" syncable="YES"/>
+    </entity>
+    <entity name="IpIdSeqValue" representedClassName="IpIdSeqValue" syncable="YES">
+        <attribute name="value" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="host" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Host" inverseName="ipidsequencevalues" inverseEntity="Host" indexed="YES" syncable="YES"/>
+    </entity>
+    <entity name="OsClass" representedClassName="OsClass" syncable="YES">
+        <attribute name="accuracy" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="family" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="gen" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vendor" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="host" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Host" inverseName="osclasses" inverseEntity="Host" indexed="YES" syncable="YES"/>
+    </entity>
+    <entity name="OsMatch" representedClassName="OsMatch" syncable="YES">
+        <attribute name="accuracy" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="line" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="host" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Host" inverseName="osmatches" inverseEntity="Host" indexed="YES" syncable="YES"/>
+    </entity>
+    <entity name="Port" representedClassName="Port" syncable="YES">
+        <attribute name="number" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="protocol" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="serviceConf" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="serviceDeviceType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="serviceMethod" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="serviceName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="serviceOsType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="serviceProduct" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="serviceVersion" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="stateReason" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="stateReasonTTL" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="host" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Host" inverseName="ports" inverseEntity="Host" indexed="YES" syncable="YES"/>
+        <relationship name="scripts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Port_Script" inverseName="port" inverseEntity="Port_Script" indexed="YES" syncable="YES"/>
+    </entity>
+    <entity name="Port_Script" representedClassName="Port_Script" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="output" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="port" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Port" inverseName="scripts" inverseEntity="Port" indexed="YES" syncable="YES"/>
+    </entity>
+    <entity name="Profile" representedClassName="Profile" syncable="YES">
+        <attribute name="ackPing" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="ackPingString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="debuggingLevel" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="debuggingLevelString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="defaultPing" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="disableRandom" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="disableReverseDNS" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="dontPing" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="enableAggressive" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="excludeFile" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="excludeFileString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="excludeHosts" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="excludeHostsString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="extraOptions" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="extraOptionsString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fastScan" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="fragmentIP" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="ftpBounce" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="ftpBounceString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="hostTimeout" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="hostTimeoutString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="icmpNetmask" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="icmpPing" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="icmpTimeStamp" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="idleScan" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="idleScanString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="initialProbeTimeout" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="initialProbeTimeoutString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="initialRttTimeout" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="initialRttTimeoutString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ipprotoProbe" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="ipprotoProbeString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ipv6Support" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="isEnabled" optional="YES" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
+        <attribute name="lastAccessDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="maxHostgroup" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="maxHostgroupString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="maxHostsParallel" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="maxHostsParallelString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="maxOutstandingProbes" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="maxOutstandingProbesString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="maxParallelism" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="maxParallelismString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="maxProbeTimeout" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="maxProbeTimeoutString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="maxRetries" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="maxRetriesString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="maxRttTimeout" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="maxRttTimeoutString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="maxScanDelay" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="maxScanDelayString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="maxTimeToScan" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="maxTimeToScanString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="minDelayBetweenProbes" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="minDelayBetweenProbesString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="minHostgroup" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="minHostgroupString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="minHostsParallel" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="minHostsParallelString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="minOutstandingProbes" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="minOutstandingProbesString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="minParallelism" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="minParallelismString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="minProbeTimeout" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="minProbeTimeoutString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="minRttTimeout" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="minRttTimeoutString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" defaultValueString="Defaults" syncable="YES"/>
+        <attribute name="nonTcpScanTag" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="osDetection" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="packetTrace" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="portsToScan" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="portsToScanString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="scanDelay" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="scanDelayString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="scanRandom" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="scanRandomString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="scriptArgs" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="scriptArgsString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="scriptScan" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="scriptsToRun" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="scriptsToRunString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sessionTarget" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="setIPv4TTL" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="setIPv4TTLString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="setNetworkInterface" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="setNetworkInterfaceString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="setSourceIP" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="setSourceIPString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="setSourcePort" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="setSourcePortString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="synPing" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="synPingString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="targetList" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="targetListString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tcpScanTag" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="timingTemplateTag" optional="YES" attributeType="Integer 16" defaultValueString="4" syncable="YES"/>
+        <attribute name="traceRoute" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="traceScript" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="udpProbe" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="udpProbeString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="useDecoys" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="useDecoysString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="verbosity" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="verbosityString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="versionDetection" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <relationship name="children" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Profile" inverseName="parent" inverseEntity="Profile" indexed="YES" syncable="YES"/>
+        <relationship name="parent" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Profile" inverseName="children" inverseEntity="Profile" indexed="YES" syncable="YES"/>
+        <relationship name="sessions" optional="YES" toMany="YES" minCount="1" deletionRule="Deny" destinationEntity="Session" inverseName="profile" inverseEntity="Session" indexed="YES" syncable="YES"/>
+    </entity>
+    <entity name="Session" representedClassName="Session" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="hostsDown" optional="YES" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="hostsTotal" optional="YES" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="hostsUp" optional="YES" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="nmapOutputStderr" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nmapOutputStdout" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nmapOutputXml" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="progress" optional="YES" attributeType="Float" syncable="YES"/>
+        <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="target" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="UUID" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="hosts" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Host" inverseName="session" inverseEntity="Host" indexed="YES" syncable="YES"/>
+        <relationship name="profile" optional="YES" minCount="1" maxCount="1" deletionRule="Cascade" destinationEntity="Profile" inverseName="sessions" inverseEntity="Profile" indexed="YES" syncable="YES"/>
+    </entity>
+    <entity name="TcpSeqValue" representedClassName="TcpSeqValue" syncable="YES">
+        <attribute name="value" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="host" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Host" inverseName="tcpsequencevalues" inverseEntity="Host" indexed="YES" syncable="YES"/>
+    </entity>
+    <entity name="TcpTsSeqValue" representedClassName="TcpTsSeqValue" syncable="YES">
+        <attribute name="value" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="host" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Host" inverseName="tcptssequencevalues" inverseEntity="Host" indexed="YES" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="TcpTsSeqValue" positionX="675" positionY="1998" width="128" height="75"/>
+        <element name="Session" positionX="232" positionY="1476" width="128" height="240"/>
+        <element name="IpIdSeqValue" positionX="657" positionY="2097" width="128" height="75"/>
+        <element name="HostNote" positionX="673" positionY="1197" width="128" height="105"/>
+        <element name="Host" positionX="423" positionY="1413" width="128" height="360"/>
+        <element name="Profile" positionX="72" positionY="849" width="128" height="1680"/>
+        <element name="OsMatch" positionX="727" positionY="1476" width="128" height="105"/>
+        <element name="TcpSeqValue" positionX="700" positionY="1905" width="128" height="75"/>
+        <element name="OsClass" positionX="700" positionY="1326" width="128" height="135"/>
+        <element name="Port" positionX="727" positionY="1611" width="128" height="255"/>
+        <element name="Port_Script" positionX="943" positionY="1800" width="128" height="90"/>
+    </elements>
+</model>

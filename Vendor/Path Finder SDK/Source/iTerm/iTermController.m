@@ -65,7 +65,7 @@ static int _compareEncodingByLocalizedName(id a, id b, void *unused);
 		
 		// if we got no profiles, load from our embedded plist
 		plistFile = [[NSBundle bundleForClass: [self class]] pathForResource:@"Profiles" ofType:@"plist"];
-		profilesDictionary = [NSDictionary dictionaryWithContentsOfFile: plistFile];
+		profilesDictionary = [NSMutableDictionary dictionaryWithContentsOfFile: plistFile];
 		if ([keybindingProfiles count] == 0)
 			keybindingProfiles = [profilesDictionary objectForKey: @"iTermKeyBindings"];
 		if ([displayProfiles count] == 0)

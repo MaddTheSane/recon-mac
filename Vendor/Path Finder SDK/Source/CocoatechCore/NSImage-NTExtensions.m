@@ -15,6 +15,7 @@
 #import "NSWindow-NTExtensions.h"
 #include <stdlib.h>
 #include <memory.h>
+#include <tgmath.h>
 
 
 @interface NSImage (NTExtensionsPrivate)
@@ -86,7 +87,7 @@
 								
 				// compositeToPoint is broken.  0.0 fraction draws as 1.0
 				if (fraction > 0.0)
-					[self compositeToPoint:drawPoint fromRect:fromRect operation:NSCompositeSourceOver fraction:fraction];
+					[self drawAtPoint:drawPoint fromRect:fromRect operation:NSCompositeSourceOver fraction:fraction];
             }
             
             x += ceil(imageSize.width);
@@ -121,7 +122,7 @@
             if (isFlipped)
                 drawPoint.y += imageRect.size.height;
 
-            [self compositeToPoint:drawPoint operation:operation fraction:fraction];
+            [self drawAtPoint:drawPoint fromRect:NSZeroRect operation:operation fraction:fraction];
             
             x += imageSize.width;
         }
@@ -162,7 +163,7 @@
 	else
 		point.y += (NSHeight(frame) - [self size].height) / 2;
 		
-	[self compositeToPoint:point operation:op fraction:fraction];
+	[self drawAtPoint:point fromRect:NSZeroRect operation:op fraction:fraction];
 }
 
 - (void)compositeToPointHQ:(NSPoint)point operation:(NSCompositingOperation)op fraction:(float)delta;
@@ -174,7 +175,7 @@
     imageInterpolation = [currentContext imageInterpolation];
     [currentContext setImageInterpolation:NSImageInterpolationHigh];
     
-    [self compositeToPoint:point operation:op fraction:delta];
+    [self drawAtPoint:point fromRect:NSZeroRect operation:op fraction:delta];
     
     [currentContext setImageInterpolation:imageInterpolation];
 }
@@ -428,7 +429,7 @@ typedef struct
             if (closestRep)
             {
                 // is this a closer match?
-                if (abs([rep size].width - size) < abs([closestRep size].width - size))
+                if (fabs([rep size].width - size) < fabs([closestRep size].width - size))
                 {
                     // is it bigger than the size passed in?
                     if ([rep size].width > size)
@@ -494,7 +495,7 @@ typedef struct
             if (closestRep)
             {
                 // is this a closer match?
-                if (abs([rep size].width - size) < abs([closestRep size].width - size))
+                if (fabs([rep size].width - size) < fabs([closestRep size].width - size))
                 {
                     // is it bigger than the size passed in?
                     if ([rep size].width > size)
@@ -571,7 +572,7 @@ typedef struct
 	{
 		NTImageMaker* imageMaker = [NTImageMaker maker:[self size]];
 		[imageMaker lockFocus];
-		[self compositeToPoint:NSMakePoint(0,0) operation:NSCompositeCopy];
+		[self drawAtPoint:NSMakePoint(0,0) fromRect:NSZeroRect operation:NSCompositeCopy fraction:1];
 		newImage = [imageMaker unlockFocus];
 	}
 	

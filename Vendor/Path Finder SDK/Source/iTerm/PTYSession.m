@@ -1334,12 +1334,13 @@ static NSColor *deadStateColor;
 - (void)logStart
 {
     NSSavePanel *panel;
-    int sts;
+    NSInteger sts;
 	
     panel = [NSSavePanel savePanel];
-    sts = [panel runModalForDirectory:NSHomeDirectory() file:@""];
+    panel.directoryURL = [NSURL fileURLWithPath:NSHomeDirectory()];
+    sts = [panel runModal];
     if (sts == NSOKButton) {
-        BOOL logsts = [SHELL loggingStartWithPath:[panel filename]];
+        BOOL logsts = [SHELL loggingStartWithPath:[[panel URL] path]];
         if (logsts == NO)
             NSBeep();
     }
@@ -1570,14 +1571,14 @@ static NSColor *deadStateColor;
 		
 		[SCREEN acquireLock];
 		NSString *newTitle;
-		if (newTitle=[SCREEN newWinTitle]) 
+		if ((newTitle=[SCREEN newWinTitle])) 
 		{
 			//NSLog(@"setting window title to %@", token.u.string);
 			if ([[iTermTerminalProfileMgr singleInstance] appendTitleForProfile:[addressBookEntry objectForKey: @"Terminal Profile"]]) 
 				newTitle = [NSString stringWithFormat:@"%@: %@", defaultName, newTitle];
 			[self setWindowTitle: newTitle];
 		}
-		if (newTitle=[SCREEN newIconTitle])
+		if ((newTitle=[SCREEN newIconTitle]))
 		{
 			//NSLog(@"setting session title to %@", token.u.string);
 			if ([[iTermTerminalProfileMgr singleInstance] appendTitleForProfile:[addressBookEntry objectForKey: @"Terminal Profile"]]) 

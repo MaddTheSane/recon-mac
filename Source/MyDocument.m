@@ -181,31 +181,31 @@
    [viewControllers addObject:vc];   
    [vc release];       
    
-   vc = [[AdvancedViewController alloc] init];
-   [vc setManagedObjectContext:[self managedObjectContext]];
-   [vc setSessionsArrayController:sessionsArrayController];   
-   [vc setProfilesArrayController:profilesArrayController];   
-   [vc setNotesInHostArrayController:notesInHostArrayController];    
-   [vc setHostsInSessionArrayController:hostsInSessionArrayController];         
-   [vc setWorkspacePlaceholder:workspacePlaceholder];
-   [viewControllers addObject:vc];
+   AdvancedViewController *vc1 = [[AdvancedViewController alloc] init];
+   [vc1 setManagedObjectContext:[self managedObjectContext]];
+   [vc1 setSessionsArrayController:sessionsArrayController];
+   [vc1 setProfilesArrayController:profilesArrayController];
+   [vc1 setNotesInHostArrayController:notesInHostArrayController];
+   [vc1 setHostsInSessionArrayController:hostsInSessionArrayController];
+   [vc1 setWorkspacePlaceholder:workspacePlaceholder];
+   [viewControllers addObject:vc1];
 
    // Patch in the AdvancedViewController
    aNextResponder = [windowController nextResponder];
-	[windowController setNextResponder:vc];
-	[vc setNextResponder:aNextResponder];
+	[windowController setNextResponder:vc1];
+	[vc1 setNextResponder:aNextResponder];
    
-   [vc release];              
+   [vc1 release];
    
-   vc = [[SettingsViewController alloc] init];
-   [vc setManagedObjectContext:[self managedObjectContext]];
-   [vc setSessionsArrayController:sessionsArrayController];   
-   [vc setProfilesArrayController:profilesArrayController];   
-   [vc setNotesInHostArrayController:notesInHostArrayController]; 
-   [vc setHostsInSessionArrayController:hostsInSessionArrayController];       
-   [vc setWorkspacePlaceholder:workspacePlaceholder];
-   [viewControllers addObject:vc];
-   [vc release];                        
+   SettingsViewController *vc2 = [[SettingsViewController alloc] init];
+   [vc2 setManagedObjectContext:[self managedObjectContext]];
+   [vc2 setSessionsArrayController:sessionsArrayController];
+   [vc2 setProfilesArrayController:profilesArrayController];
+   [vc2 setNotesInHostArrayController:notesInHostArrayController];
+   [vc2 setHostsInSessionArrayController:hostsInSessionArrayController];
+   [vc2 setWorkspacePlaceholder:workspacePlaceholder];
+   [viewControllers addObject:vc2];
+   [vc2 release];
    
    //------------------------------------------------------| Set-up Workspace
    

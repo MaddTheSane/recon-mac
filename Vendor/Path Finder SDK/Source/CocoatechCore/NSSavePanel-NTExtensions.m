@@ -17,7 +17,7 @@
 		BOOL isDirectory;
 		
 		// replace file
-		if (![[NSFileManager defaultManager] fileExistsAtPath:[self filename] isDirectory:&isDirectory])
+		if (![[NSFileManager defaultManager] fileExistsAtPath:[[self URL] path] isDirectory:&isDirectory])
 			return YES;  // file doesn't exist, return YES for success
 		else
 		{
@@ -26,7 +26,7 @@
 			{
 				NSError *error=nil;
 				
-				[[NSFileManager defaultManager] removeItemAtPath:[self filename] error:&error];
+				[[NSFileManager defaultManager] removeItemAtPath:[[self URL] path] error:&error];
 				
 				if (error)
 					NSLog(@"%@", [error description]);

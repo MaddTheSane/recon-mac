@@ -265,7 +265,7 @@ static PSMTabDragAssistant *sharedDragAssistant = nil;
 					//_dragWindowOffset.width -= ([control frame].size.width - [tabImage size].width) + 1;
 				}
 				
-				[tabImage compositeToPoint:drawPoint operation:NSCompositeSourceOver];
+				[tabImage drawAtPoint:drawPoint fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1];
 				
 				[viewImage unlockFocus];
 			} else {

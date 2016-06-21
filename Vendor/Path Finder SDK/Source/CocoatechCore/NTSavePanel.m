@@ -11,7 +11,7 @@
 
 @interface NTSavePanel (Private)
 - (void)showSavePanel:(NSString*)startPath sheetWindow:(NSWindow*)sheetWindow;
-- (void)handleResult:(NSSavePanel *)savePanel returnCode:(int)returnCode;
+- (void)handleResult:(NSSavePanel *)savePanel returnCode:(NSInteger)returnCode;
 @end
 
 @implementation NTSavePanel
@@ -50,34 +50,39 @@
 
 - (void)showSavePanel:(NSString*)startPath sheetWindow:(NSWindow*)sheetWindow;
 {
-	NSSavePanel *sp = [NSSavePanel savePanel];
-	
+    NSSavePanel *sp = [NSSavePanel savePanel];
+    
     [sp setCanSelectHiddenExtension:NO];  // SNG - add support for this if possible
     
-    [sp setDirectory:startPath];
+    if (startPath) {
+        sp.directoryURL = [[NSURL fileURLWithPath:startPath] URLByDeletingLastPathComponent];
+        sp.nameFieldStringValue = startPath.lastPathComponent;
+    }
     
     // if the desktop, we need a modal dialog, not a sheet
-    if (sheetWindow)
-        [sp beginSheetForDirectory:[startPath stringByDeletingLastPathComponent] file:[startPath lastPathComponent] modalForWindow:sheetWindow modalDelegate:self didEndSelector:@selector(savePanelDidEnd:returnCode:contextInfo:) contextInfo:nil];
+    if (sheetWindow) {
+        [sp beginSheetModalForWindow:sheetWindow completionHandler:^(NSInteger result) {
+            [self savePanelDidEnd:sp returnCode:result contextInfo:NULL];
+        }];
+    }
     else
     {
-        int result = [sp runModalForDirectory:[startPath stringByDeletingLastPathComponent] file:[startPath lastPathComponent]];
+        NSInteger result = [sp runModal];
         
         [self handleResult:sp returnCode:result];
     }
-	
 }
 
-- (void)savePanelDidEnd:(NSSavePanel *)savePanel returnCode:(int)returnCode contextInfo:(void *)contextInfo
+- (void)savePanelDidEnd:(NSSavePanel *)savePanel returnCode:(NSInteger)returnCode contextInfo:(__unused void *)contextInfo
 {
 	[self handleResult:savePanel returnCode:returnCode];
 }
 
-- (void)handleResult:(NSSavePanel *)savePanel returnCode:(int)returnCode;
+- (void)handleResult:(NSSavePanel *)savePanel returnCode:(NSInteger)returnCode;
 {
 	if ([savePanel handleSavePanelOK:returnCode])
     {
-		self.resultPath = [savePanel filename];
+		self.resultPath = [[savePanel URL] path];
 		self.userClickedOK = YES;
 	}
 	
