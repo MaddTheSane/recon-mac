@@ -28,7 +28,7 @@
 //   [super drawBackgroundInClipRect:clipRect];
 //}
 
-- (void)drawRow:(int)row clipRect:(NSRect)rect;
+- (void)drawRow:(NSInteger)row clipRect:(NSRect)rect;
 {
 	[[alternatingColors objectAtIndex:(row % 2)] setFill];
 	NSRectFill([self rectOfRow:row]);

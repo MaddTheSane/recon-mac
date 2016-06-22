@@ -177,11 +177,12 @@ enum {
 // internal bindings methods also used by the tab drag assistant
 - (void)bindPropertiesForCell:(PSMTabBarCell *)cell andTabViewItem:(NSTabViewItem *)item;
 - (void)removeTabForCell:(PSMTabBarCell *)cell;
+- (void)setLabelColor:(NSColor *)aColor forTabViewItem:(NSTabViewItem *) tabViewItem;
 
 @end
 
 
-@protocol TabBarControlDelegate <NSObject>
+@protocol TabBarControlDelegate <NSObject, NSTabViewDelegate>
 
 @optional
 

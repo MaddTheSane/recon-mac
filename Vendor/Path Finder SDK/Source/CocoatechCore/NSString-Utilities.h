@@ -3,19 +3,19 @@
 @interface NSString (Utilities)
 + (NSString*)stringWithFileSystemRepresentation:(const char*)path;
 + (NSString*)stringWithPString:(Str255)pString;
-+ (id)stringWithUTF8String:(const void *)bytes length:(unsigned)length;
-+ (id)stringWithMacOSRomanString:(const char *)nullTerminatedCString;
-+ (id)stringWithBytes:(const void *)bytes length:(unsigned)len encoding:(NSStringEncoding)encoding;
++ (NSString*)stringWithUTF8String:(const void *)bytes length:(NSInteger)length;
++ (NSString*)stringWithMacOSRomanString:(const char *)nullTerminatedCString;
++ (id)stringWithBytes:(const void *)bytes length:(NSInteger)len encoding:(NSStringEncoding)encoding;
 
-- (void)getPString:(Str255)outString;
-- (void)getUTF8String:(char*)outString maxLength:(int)maxLength;
+- (void)getPString:(out Str255)outString;
+- (void)getUTF8String:(char*)outString maxLength:(NSInteger)maxLength;
 
-// not for filesystem names, use fileNameWithHFSUniStr255
-+ (NSString*)stringWithHFSUniStr255:(const HFSUniStr255*)hfsString;
-- (void)HFSUniStr255:(HFSUniStr255*)hfsString;
+/// not for filesystem names, use fileNameWithHFSUniStr255
++ (NSString*)stringWithHFSUniStr255:(in const HFSUniStr255*)hfsString;
+- (void)HFSUniStr255:(out HFSUniStr255*)hfsString;
 
-// will convert : to / and / to : so if they are paths
-+ (NSString*)fileNameWithHFSUniStr255:(const HFSUniStr255*)hfsString;
+/// will convert : to / and / to : so if they are paths
++ (NSString*)fileNameWithHFSUniStr255:(in const HFSUniStr255*)hfsString;
 
 - (NSString*)stringByReplacing:(NSString *)value with:(NSString *)newValue;
 - (NSString*)stringByReplacingValuesInArray:(NSArray *)values withValuesInArray:(NSArray *)newValues;
@@ -57,10 +57,10 @@
 // converts a POSIX path to a Windows path
 - (NSString*)windowsPath;
 
-- (BOOL)isEndOfWordAtIndex:(unsigned)index;
-- (BOOL)isStartOfWordAtIndex:(unsigned)index;
+- (BOOL)isEndOfWordAtIndex:(NSInteger)index;
+- (BOOL)isStartOfWordAtIndex:(NSInteger)index;
 
-- (NSString*)stringByTruncatingToLength:(unsigned)length;
+- (NSString*)stringByTruncatingToLength:(NSInteger)length;
 
 - (NSString*)stringByDecryptingString;
 - (NSString*)stringByEncryptingString;

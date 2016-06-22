@@ -518,7 +518,7 @@
 
 - (void)removeTabForCell:(PSMTabBarCell *)cell
 {
-	NSObjectController *item = [[cell representedObject] identifier];
+	NSObjectController *item = [(NSTabViewItem*)[cell representedObject] identifier];
 	
     // unbind
     [[cell indicator] unbind:@"animate"];
@@ -1237,7 +1237,7 @@
 			}
 			
             if ([cell hasIcon]) {
-                [menuItem setImage:[[[cell representedObject] identifier] icon]];
+                [menuItem setImage:[[(NSTabViewItem*)[cell representedObject] identifier] icon]];
 			}
 			
             if ([cell count] > 0) {
@@ -1962,7 +1962,7 @@
     // bind the indicator to the represented object's status (if it exists)
     [[cell indicator] setHidden:YES];
     if ([item identifier] != nil) {
-		if ([[[cell representedObject] identifier] respondsToSelector:@selector(isProcessing)]) {
+		if ([[(NSTabViewItem*)[cell representedObject] identifier] respondsToSelector:@selector(isProcessing)]) {
 			NSMutableDictionary *bindingOptions = [NSMutableDictionary dictionary];
 			[bindingOptions setObject:NSNegateBooleanTransformerName forKey:@"NSValueTransformerName"];
 			[[cell indicator] bind:@"animate" toObject:[item identifier] withKeyPath:@"isProcessing" options:nil];
@@ -1974,7 +1974,7 @@
     // bind for the existence of an icon
     [cell setHasIcon:NO];
     if ([item identifier] != nil) {
-		if ([[[cell representedObject] identifier] respondsToSelector:@selector(icon)]) {
+		if ([[(NSTabViewItem*)[cell representedObject] identifier] respondsToSelector:@selector(icon)]) {
 			NSMutableDictionary *bindingOptions = [NSMutableDictionary dictionary];
 			[bindingOptions setObject:NSIsNotNilTransformerName forKey:@"NSValueTransformerName"];
 			[cell bind:@"hasIcon" toObject:[item identifier] withKeyPath:@"icon" options:bindingOptions];
@@ -1985,7 +1985,7 @@
     // bind for the existence of a counter
     [cell setCount:0];
     if ([item identifier] != nil) {
-		if ([[[cell representedObject] identifier] respondsToSelector:@selector(objectCount)]) {
+		if ([[(NSTabViewItem*)[cell representedObject] identifier] respondsToSelector:@selector(objectCount)]) {
 			[cell bind:@"count" toObject:[item identifier] withKeyPath:@"objectCount" options:nil];
 			[[item identifier] addObserver:cell forKeyPath:@"objectCount" options:0 context:nil];
 		}

@@ -318,10 +318,10 @@
 - (BOOL)askUserToCloseWindow
 {		
 	return (NSRunAlertPanel(NTLocalizedStringFromTableInBundle(@"Close Window?",@"iTerm", [NSBundle bundleForClass: [self class]], @"Close window"),
-                            NTLocalizedStringFromTableInBundle(@"All sessions will be closed",@"iTerm", [NSBundle bundleForClass: [self class]], @"Close window"),
+                            @"%@",
 							NTLocalizedStringFromTableInBundle(@"OK",@"iTerm", [NSBundle bundleForClass: [self class]], @"OK"),
                             NTLocalizedStringFromTableInBundle(@"Cancel",@"iTerm", [NSBundle bundleForClass: [self class]], @"Cancel")
-							,nil)==NSAlertDefaultReturn);
+							,nil, NTLocalizedStringFromTableInBundle(@"All sessions will be closed",@"iTerm", [NSBundle bundleForClass: [self class]], @"Close window"))==NSAlertDefaultReturn);
 }
 
 @end

@@ -657,9 +657,9 @@ static float vigourOfShake = 0.01f;
 
    NSString *subject = nil;
    if ([sessions count] == 1)
-      subject = [NSString stringWithFormat:@"Recon scan results: %d session", [sessions count]];
+      subject = [NSString stringWithFormat:@"Recon scan results: %lu session", (unsigned long)[sessions count]];
    else
-      subject = [NSString stringWithFormat:@"Recon scan results: %d sessions", [sessions count]];
+      subject = [NSString stringWithFormat:@"Recon scan results: %lu sessions", (unsigned long)[sessions count]];
    
    // Create the body for the email
    NSString *body = @"";

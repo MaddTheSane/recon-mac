@@ -144,7 +144,7 @@
 #warning user reported hang here
 
 // does not dequeue the mouseUp event
-+ (BOOL)isDragEvent:(NSEvent *)event forView:(NSView*)view dragSlop:(float)dragSlop timeOut:(NSDate*)timeOut;
++ (BOOL)isDragEvent:(NSEvent *)event forView:(NSView*)view dragSlop:(CGFloat)dragSlop timeOut:(NSDate*)timeOut;
 {    
 	// check on mouseDown only
     if ([event type] == NSLeftMouseDown);

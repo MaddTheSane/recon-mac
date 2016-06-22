@@ -34,7 +34,7 @@
 
     // does not dequeue the mouseUp event
 // pass nil for timeout to loop forever making sure that mouse is down so it doesn't endless loop
-+ (BOOL)isDragEvent:(NSEvent *)event forView:(NSView*)view dragSlop:(float)dragSlop timeOut:(NSDate*)date;
++ (BOOL)isDragEvent:(NSEvent *)event forView:(NSView*)view dragSlop:(CGFloat)dragSlop timeOut:(NSDate*)date;
 
 // these examine clickCount%2 so the 3rd click becomes a single click and the 4th becomes another double click
 // you have to do this if the user clicks 4 times expecting events 1,2,1,2 rather than 1,2,3,4

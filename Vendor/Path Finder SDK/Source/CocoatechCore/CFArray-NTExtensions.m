@@ -30,14 +30,14 @@ Boolean NTNSObjectIsEqual(const void *value1, const void *value2)
 
 CFStringRef NTPointerCopyDescription(const void *ptr)
 {
-    return (CFStringRef)[[NSString alloc] initWithFormat: @"<0x%08x>", ptr];
+    return (CFStringRef)[[NSString alloc] initWithFormat: @"<%p>", ptr];
 }
 
 CFStringRef NTIntegerCopyDescription(const void *ptr)
 {
     NSInteger i = (NSInteger)ptr;
     assert(sizeof(ptr) >= sizeof(i));
-    return (CFStringRef)[[NSString alloc] initWithFormat: @"%d", i];
+    return (CFStringRef)[[NSString alloc] initWithFormat: @"%ld", (long)i];
 }
 
 const CFArrayCallBacks NTNonOwnedPointerArrayCallbacks = {

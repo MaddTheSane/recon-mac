@@ -80,7 +80,7 @@
 - (void)animationDidStop:(CAAnimation *)animation finished:(BOOL)flag 
 {
 	// animation is retaining us
-	[self setAnimations:nil];
+    [self setAnimations:@{}];
 	
 	[self.delegate transitionViewDone:self];
 	

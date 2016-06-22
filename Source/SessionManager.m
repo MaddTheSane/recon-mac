@@ -152,7 +152,7 @@ static SessionManager *sharedSessionManager = nil;
    
    [[SPGrowlController sharedGrowlController] 
     notifyWithTitle:@"Queued Nmap Sessions" 
-    description:[NSString stringWithFormat: @"Total Sessions: %d", [sessions count]] 
+    description:[NSString stringWithFormat: @"Total Sessions: %ld", (long)[sessions count]]
     notificationName:@"Connected"];         
 }
 

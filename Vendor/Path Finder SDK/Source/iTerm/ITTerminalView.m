@@ -897,7 +897,7 @@
 { 
 	//NSLog(@"didDropTabViewItem: %@ inTabBar: %@", [tabViewItem label], aTabBarControl);
 	PTYSession *aSession = [tabViewItem identifier];
-	ITTerminalView *term = [aTabBarControl delegate];
+	ITTerminalView *term = (id)[aTabBarControl delegate];
     
     [[aSession SCREEN] resizeWidth:[term width] height:[term height]];
     [[aSession SHELL] setWidth:[term width]  height:[term height]];
@@ -963,7 +963,7 @@
         [transform scaleXBy:1.0 yBy:-1.0];
         [transform concat];
         tabFrame.origin.y = -tabFrame.origin.y - tabFrame.size.height;
-        [(id <PSMTabStyle>)[[aTabView delegate] style] drawBackgroundInRect:tabFrame drawLineAtBottom:NO];
+        [(id <PSMTabStyle>)[(PSMTabBarControl*)[aTabView delegate] style] drawBackgroundInRect:tabFrame drawLineAtBottom:NO];
         [transform invert];
         [transform concat];
 
@@ -1018,7 +1018,7 @@
         [transform scaleXBy:1.0 yBy:-1.0];
         [transform concat];
         tabFrame.origin.y = -tabFrame.origin.y - tabFrame.size.height;
-        [(id <PSMTabStyle>)[[aTabView delegate] style] drawBackgroundInRect:tabFrame drawLineAtBottom:NO];
+        [(id <PSMTabStyle>)[(PSMTabBarControl*)[aTabView delegate] style] drawBackgroundInRect:tabFrame drawLineAtBottom:NO];
         [transform invert];
         [transform concat];
         

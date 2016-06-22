@@ -32,7 +32,7 @@ typedef NSString*(* string_IMP)(id,SEL,...);
     outString[0] = len;
 }
 
-- (void)getUTF8String:(char*)outString maxLength:(int)maxLength;
+- (void)getUTF8String:(char*)outString maxLength:(NSInteger)maxLength;
 {
 	int len = MIN((unsigned)maxLength, strlen([self UTF8String]));
 	
@@ -50,7 +50,7 @@ typedef NSString*(* string_IMP)(id,SEL,...);
 	return [self stringByReplacing:@":" with:@"/"];
 }
 
-+ (NSString*)stringWithHFSUniStr255:(const HFSUniStr255*)hfsString;
++ (NSString*)stringWithHFSUniStr255:(in const HFSUniStr255*)hfsString;
 {
 	CFStringRef stringRef = FSCreateStringFromHFSUniStr(nil, hfsString);
     
@@ -61,7 +61,7 @@ typedef NSString*(* string_IMP)(id,SEL,...);
     return result;
 }
 
-+ (NSString*)fileNameWithHFSUniStr255:(const HFSUniStr255*)hfsString;
++ (NSString*)fileNameWithHFSUniStr255:(in const HFSUniStr255*)hfsString;
 {
 	CFStringRef stringRef = FSCreateStringFromHFSUniStr(nil, hfsString);
     
@@ -73,7 +73,7 @@ typedef NSString*(* string_IMP)(id,SEL,...);
     return result;
 }
 
-- (void)HFSUniStr255:(HFSUniStr255*)hfsString
+- (void)HFSUniStr255:(out HFSUniStr255*)hfsString
 {
 	FSGetHFSUniStrFromString((CFStringRef)self, hfsString);
 }
@@ -102,12 +102,12 @@ typedef NSString*(* string_IMP)(id,SEL,...);
     return tempString;
 }
 
-+ (id)stringWithBytes:(const void *)bytes length:(unsigned)len encoding:(NSStringEncoding)encoding;
++ (id)stringWithBytes:(const void *)bytes length:(NSInteger)len encoding:(NSStringEncoding)encoding;
 {
 	return [[[NSString alloc] initWithBytes:bytes length:len encoding:encoding] autorelease];
 }
 
-+ (id)stringWithUTF8String:(const void *)bytes length:(unsigned)length;
++ (id)stringWithUTF8String:(const void *)bytes length:(NSInteger)length;
 {
 	NSString *result = [[NSString alloc] initWithBytes:bytes length:length encoding:NSUTF8StringEncoding];
 
@@ -430,7 +430,7 @@ typedef NSString*(* string_IMP)(id,SEL,...);
     return [self substringToIndex:[self length] - [suffix length]];
 }
 
-- (BOOL)isEndOfWordAtIndex:(unsigned)index;
+- (BOOL)isEndOfWordAtIndex:(NSInteger)index;
 {
     if (index == [self length])
         return YES;
@@ -453,7 +453,7 @@ typedef NSString*(* string_IMP)(id,SEL,...);
     return NO;
 }
 
-- (BOOL)isStartOfWordAtIndex:(unsigned)index;
+- (BOOL)isStartOfWordAtIndex:(NSInteger)index;
 {
     if (index == 0)
         return YES;
@@ -480,7 +480,7 @@ typedef NSString*(* string_IMP)(id,SEL,...);
     return NO;
 }
 
-- (NSString*)stringByTruncatingToLength:(unsigned)length;
+- (NSString*)stringByTruncatingToLength:(NSInteger)length;
 {
     NSString* result = self;
 

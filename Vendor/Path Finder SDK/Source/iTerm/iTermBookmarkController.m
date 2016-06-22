@@ -210,7 +210,7 @@ static BOOL editingBookmark = NO;
 	// Check to make sure we don't allow a node to be inserted into one of its descendants!
 	if (targetNodeIsValid && ([info draggingSource]==bookmarksView) && [[info draggingPasteboard] availableTypeFromArray:[NSArray arrayWithObject: iTermOutlineViewPboardType]] != nil) 
 	{
-		NSArray *_draggedNodes = [[[info draggingSource] dataSource] _draggedNodes];
+		NSArray *_draggedNodes = [(iTermBookmarkController*)[[info draggingSource] dataSource] _draggedNodes];
 		targetNodeIsValid = ![targetNode isDescendantOfNodeInArray: _draggedNodes];
 	}
     

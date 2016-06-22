@@ -132,7 +132,7 @@ static PrefsController *sharedPrefsController = nil;
    NSString *applicationSupportFolder = [self reconSupportFolder];   
    
    if ( ![fileManager fileExistsAtPath:applicationSupportFolder isDirectory:NULL] ) {
-      [fileManager createDirectoryAtPath:applicationSupportFolder attributes:@{}];
+      [fileManager createDirectoryAtPath:applicationSupportFolder withIntermediateDirectories:YES attributes:@{} error:NULL];
    }
    
    // Create sessions folder, if needed
@@ -140,7 +140,7 @@ static PrefsController *sharedPrefsController = nil;
    
    applicationSessionsFolder = [self reconSessionFolder];      
    if ( ![fileManager fileExistsAtPath:applicationSessionsFolder isDirectory:NULL] ) {
-      [fileManager createDirectoryAtPath:applicationSessionsFolder attributes:@{}];
+      [fileManager createDirectoryAtPath:applicationSessionsFolder withIntermediateDirectories:YES attributes:@{} error:NULL];
    }
    
    //ANSLog(@"PrefsController: checkDirectories!");   
@@ -350,7 +350,7 @@ static PrefsController *sharedPrefsController = nil;
    FILE *myCommunicationsPipe = NULL;
    
    myFlags = kAuthorizationFlagDefaults;
-   myStatus = AuthorizationExecuteWithPrivileges(myAuthorizationRef, myToolPath, myFlags, myArguments, &myCommunicationsPipe);
+   myStatus = AuthorizationExecuteWithPrivileges(myAuthorizationRef, myToolPath, myFlags, (char * __nonnull const * __nonnull)myArguments, &myCommunicationsPipe);
    
    char *myToolPath2 = {"/usr/sbin/chown"};
    const char *myBinaryPath2 = [nmapBinary fileSystemRepresentation];
@@ -358,7 +358,7 @@ static PrefsController *sharedPrefsController = nil;
    myCommunicationsPipe = NULL;
    
    myFlags = kAuthorizationFlagDefaults;
-   myStatus = AuthorizationExecuteWithPrivileges(myAuthorizationRef, myToolPath2, myFlags, myArguments2, &myCommunicationsPipe);
+   myStatus = AuthorizationExecuteWithPrivileges(myAuthorizationRef, myToolPath2, myFlags, (char * __nonnull const * __nonnull)myArguments2, &myCommunicationsPipe);
    
    //ANSLog(@"AuthHelperTool called AEWP");   
    return myStatus;
@@ -395,7 +395,7 @@ static PrefsController *sharedPrefsController = nil;
    FILE *myCommunicationsPipe = NULL;
    
    myFlags = kAuthorizationFlagDefaults;
-   myStatus = AuthorizationExecuteWithPrivileges(myAuthorizationRef, myToolPath, myFlags, myArguments, &myCommunicationsPipe);
+   myStatus = AuthorizationExecuteWithPrivileges(myAuthorizationRef, myToolPath, myFlags, (char * __nonnull const * __nonnull)myArguments, &myCommunicationsPipe);
    
    char *myToolPath2 = {"/usr/sbin/chown"};
    const char *myBinaryPath2 = [nmapBinary fileSystemRepresentation];
@@ -403,7 +403,7 @@ static PrefsController *sharedPrefsController = nil;
    myCommunicationsPipe = NULL;
    
    myFlags = kAuthorizationFlagDefaults;
-   myStatus = AuthorizationExecuteWithPrivileges(myAuthorizationRef, myToolPath2, myFlags, myArguments2, &myCommunicationsPipe);
+   myStatus = AuthorizationExecuteWithPrivileges(myAuthorizationRef, myToolPath2, myFlags, (char * __nonnull const * __nonnull)myArguments2, &myCommunicationsPipe);
    
    //ANSLog(@"AuthHelperTool called AEWP");   
    return myStatus;

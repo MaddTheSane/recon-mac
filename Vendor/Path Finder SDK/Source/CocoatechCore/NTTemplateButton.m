@@ -64,9 +64,9 @@
     [result setBordered:NO];
 	
 	[result.cell setTitle:nil];
-	[result.cell setAlternateTitle:nil];
+	[result.cell setAlternateTitle:@""];
 	[result.cell setAttributedTitle:nil];
-	[result.cell setAttributedAlternateTitle:nil];
+	[result.cell setAttributedAlternateTitle:[[[NSAttributedString alloc] initWithString:@""] autorelease]];
 		
 	[result setEnabled:YES];
 	
