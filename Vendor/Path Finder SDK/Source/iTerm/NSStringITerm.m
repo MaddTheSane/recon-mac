@@ -363,7 +363,7 @@ static const unichar ambiguous_chars[] = {
 // 
 - (NSMutableString *) stringReplaceSubstringFrom:(NSString *)oldSubstring to:(NSString *)newSubstring
 {
-    unsigned int     len;
+    NSUInteger       len;
     NSMutableString *mstr;
     NSRange          searchRange;
     NSRange          resultRange;

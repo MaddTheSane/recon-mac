@@ -716,7 +716,7 @@ static float vigourOfShake = 0.01f;
                                sessionXMLpath, @"filename",                               
 //                               [a nmapOutputXml], @"filename",
                                nil]] autorelease];
-         [[[mailMessage content] paragraphs] addObject:attachment];
+         [[[mailMessage content] attachments] addObject:attachment];
 
       }
       
@@ -740,7 +740,7 @@ static float vigourOfShake = 0.01f;
    
    if (array != nil) {
       
-      int count = [array count]; // may be 0 if the object has been deleted   
+      NSInteger count = [array count]; // may be 0 if the object has been deleted
       
       if (count == 0)
       {

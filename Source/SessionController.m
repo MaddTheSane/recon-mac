@@ -174,7 +174,7 @@ inManagedObjectContext:(NSManagedObjectContext *)context
    NSDictionary *values = [profile dictionaryWithValuesForKeys:[[profileCopy entity] attributeKeys]];      
    [profileCopy setValuesForKeysWithDictionary:values];      
    [profileCopy setName:[NSString stringWithFormat:@"Copy of %@",[profile name]]];
-   [profileCopy setIsEnabled:NO];   
+   [profileCopy setIsEnabled:@NO];   
    [profileCopy setParent:savedSessions];
    
    return profileCopy;

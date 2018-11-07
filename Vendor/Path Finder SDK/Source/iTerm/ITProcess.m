@@ -715,7 +715,7 @@ ITGetMachTaskEvents(task_t task, int *faults, int *pageins, int *cow_faults, int
 - (NSArray *)children {
 	NSArray *all = [[self class] allProcesses];
 	NSMutableArray *children = [NSMutableArray array];
-	int i, count = [all count];
+	NSInteger i, count = [all count];
 	for (i = 0; i < count; i++)
 		if ([[all objectAtIndex:i] parentProcessIdentifier] == process)
 			[children addObject:[all objectAtIndex:i]];
@@ -725,7 +725,7 @@ ITGetMachTaskEvents(task_t task, int *faults, int *pageins, int *cow_faults, int
 - (NSArray *)siblings {
 	NSArray *all = [[self class] allProcesses];
 	NSMutableArray *siblings = [NSMutableArray array];
-	int i, count = [all count], ppid = [self parentProcessIdentifier];
+	NSInteger i, count = [all count], ppid = [self parentProcessIdentifier];
 	for (i = 0; i < count; i++) {
         ITProcess *p = [all objectAtIndex:i];
 		if ([p parentProcessIdentifier] == ppid && [p processIdentifier] != process)

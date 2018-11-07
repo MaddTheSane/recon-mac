@@ -19,22 +19,22 @@ typedef NSString*(* string_IMP)(id,SEL,...);
 
 + (NSString*)stringWithPString:(Str255)pString;
 {
-	NSString* result = [[NSString alloc] initWithBytes:(const char *)pString+1 length:pString[0] encoding:NSMacOSRomanStringEncoding];
+    CFStringRef result = CFStringCreateWithPascalString(NULL, pString, kCFStringEncodingMacRoman);
 
-    return [result autorelease];
+    return CFBridgingRelease(result);
 }
 
 - (void)getPString:(Str255)outString
 {
-	int len = MIN((unsigned)255, strlen([self UTF8String]));
+	size_t len = MIN((size_t)255, strlen([self cStringUsingEncoding:NSMacOSRomanStringEncoding]));
 
-	memcpy(outString+1, [self UTF8String], len);
+	memcpy(outString+1, [self cStringUsingEncoding:NSMacOSRomanStringEncoding], len);
     outString[0] = len;
 }
 
 - (void)getUTF8String:(char*)outString maxLength:(NSInteger)maxLength;
 {
-	int len = MIN((unsigned)maxLength, strlen([self UTF8String]));
+	size_t len = MIN((size_t)maxLength, strlen([self UTF8String]));
 	
 	memcpy(outString, [self UTF8String], len);
     outString[len] = 0;
@@ -54,11 +54,7 @@ typedef NSString*(* string_IMP)(id,SEL,...);
 {
 	CFStringRef stringRef = FSCreateStringFromHFSUniStr(nil, hfsString);
     
-	NSString* result = [[(NSString*)stringRef retain] autorelease];
-	
-	CFRelease(stringRef);
-	
-    return result;
+    return CFBridgingRelease(stringRef);
 }
 
 + (NSString*)fileNameWithHFSUniStr255:(in const HFSUniStr255*)hfsString;
@@ -89,7 +85,7 @@ typedef NSString*(* string_IMP)(id,SEL,...);
 
 - (NSString*)stringByReplacingValuesInArray:(NSArray *)values withValuesInArray:(NSArray *)newValues;
 {
-    unsigned i, cnt = [values count];
+    NSInteger i, cnt = [values count];
     NSString *tempString=self;
 
     for (i=0; i < cnt; i++)
@@ -189,7 +185,7 @@ typedef NSString*(* string_IMP)(id,SEL,...);
 - (NSArray*)linesFromString:(NSString**)outRemainder;
 {
     NSMutableArray* result = [NSMutableArray arrayWithCapacity:20];
-    unsigned length = [self length];
+    NSInteger length = [self length];
     NSString *line;
     NSRange range = NSMakeRange(0, 1);
     NSUInteger start, end, contentsEnd;
@@ -486,7 +482,7 @@ typedef NSString*(* string_IMP)(id,SEL,...);
 
     if ([self length] > length)
     {
-        int segmentLen = (length/2) - 2;
+        NSInteger segmentLen = (length/2) - 2;
 
         result = [self substringToIndex:segmentLen];
         result = [result stringByAppendingString:@"..."];
@@ -500,7 +496,7 @@ typedef NSString*(* string_IMP)(id,SEL,...);
 
 - (NSString*)stringByEncryptingString;
 {
-    int i, cnt=[self length];
+    NSInteger i, cnt=[self length];
     NSMutableString *result = [NSMutableString string];
 
     for (i=0;i<cnt;i++)
@@ -515,7 +511,7 @@ typedef NSString*(* string_IMP)(id,SEL,...);
 
 - (NSString*)stringByDecryptingString;
 {
-    int i, cnt=[self length];
+    NSInteger i, cnt=[self length];
     NSMutableString *result = [NSMutableString string];
 
     for (i=0;i<cnt;i++)

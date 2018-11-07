@@ -67,7 +67,7 @@
 - (void)localizeView:(NSView*)inView;
 {
     NSArray* items;
-    int i, cnt;
+    NSInteger i, cnt;
     NSTabViewItem* tabViewItem;
     id view = inView; // just to avoid compiler warnings
     

@@ -21,6 +21,7 @@
 
 #import "MyTerminalView.h"
 #import "ColorGradientView.h"
+#import "MyDocument.h"
 
 @class NotesTableView;
 
@@ -655,7 +656,7 @@
    NSArray *a = [notesInHostController arrangedObjects];
    
    // Find the object just added
-   int row = [a indexOfObjectIdenticalTo:h];
+   NSInteger row = [a indexOfObjectIdenticalTo:h];
    //   NSLog(@"starting edit of %@ in row %d", h, row);
    
    // Begin the edit in the first column
@@ -674,7 +675,7 @@
    
    for (id h in a)
    {
-      [h setIsSelected:[NSNumber numberWithBool:YES]];
+      [h setIsSelected:@YES];
    }
 }
 
@@ -684,7 +685,7 @@
    
    for (id h in a)
    {
-      [h setIsSelected:[NSNumber numberWithBool:NO]];
+      [h setIsSelected:@NO];
    }
 }
 
@@ -694,7 +695,7 @@
    
    for (id h in a)
    {
-      [h setIsSelected:[NSNumber numberWithBool:YES]];
+      [h setIsSelected:@YES];
    }
 }
 
@@ -710,7 +711,7 @@
    // Prepend the string to the target combo box
    for (Host *h in a)
    {  
-      if ([[h isSelected] isEqualToNumber:[NSNumber numberWithInt:1]])
+      if ([[h isSelected] isEqualToNumber:@1])
       {
          if ([h hostname] == nil)
             selectedText = [h ipv4Address];

@@ -46,7 +46,6 @@
 - (void)readUserDefaults;
 - (void)checkDirectories;
 - (void)checkPermsOnNmap;
-- (void)checkDirectories;
 
 - (IBAction)showPrefWindow:(id)sender;
 - (IBAction)endPrefWindow:(id)sender;

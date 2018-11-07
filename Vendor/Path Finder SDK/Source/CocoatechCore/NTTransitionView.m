@@ -9,6 +9,10 @@
 #import "NTTransitionView.h"
 #import "NSView-CoreExtensions.h"
 
+@interface NTTransitionView () <CAAnimationDelegate>
+
+@end
+
 @implementation NTTransitionView
 
 @synthesize imageView;

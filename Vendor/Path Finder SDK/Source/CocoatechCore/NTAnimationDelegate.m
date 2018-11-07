@@ -8,6 +8,10 @@
 
 #import "NTAnimationDelegate.h"
 
+@interface NTAnimationDelegate () <CAAnimationDelegate>
+
+@end
+
 @implementation NTAnimationDelegate
 
 @synthesize animations, delegate;
