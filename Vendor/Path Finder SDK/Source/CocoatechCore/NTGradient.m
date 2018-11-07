@@ -23,7 +23,7 @@ typedef enum NTGradientFunctionID
 	NTGradient_labelFunctionID
 } NTGradientFunctionID;
 
-@interface NTGradient (Private)
+@interface NTGradient ()
 - (CGFunctionRef)createFunction:(NTGradientFunctionID)functionID;
 - (void)drawGradientInRect:(NSRect)bounds;
 - (void)setColor:(NSColor*)color;
@@ -143,10 +143,6 @@ typedef enum NTGradientFunctionID
 	
 	return nil;
 }
-
-@end
-
-@implementation NTGradient (Private)
 
 - (void)setColor:(NSColor*)color
 {

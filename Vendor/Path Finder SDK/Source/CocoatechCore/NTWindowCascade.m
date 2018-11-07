@@ -15,11 +15,11 @@
 #define AVOID_INSET (8.0)
 #define MAXIMUM_TRIES (200.0)
 
-@interface NTWindowCascade (Private)
+@interface NTWindowCascade ()
 + (NSRect)_adjustWindowRect:(NSRect)windowRect forScreenRect:(NSRect)screenRect;
 + (NSRect)_screen:(NSScreen *)screen closestRectTo:(NSRect)originalRect avoidingWindows:(NSArray *)windows;
 + (NSScreen *)_screenForPoint:(NSPoint)aPoint;
-+ (NSArray *)_windowsToAvoidIncluding:(NSArray *)additionalWindows;
++ (NSArray<NSWindow*> *)_windowsToAvoidIncluding:(NSArray<NSWindow*> *)additionalWindows;
 @end
 
 @implementation NTWindowCascade
@@ -133,7 +133,7 @@ static NSRect NTLargestMarginRectInRectAvoidingRectAndFitSize(NSRect containingR
     NSRect screenRect;
     NSRect firstFrame, nextWindowFrame;
     NSRect avoidRect, availableRect;
-    unsigned int windowIndex;
+    NSUInteger windowIndex;
     NSWindow *window;
     BOOL restartedAlready = NO;
     unsigned int triesRemaining = MAXIMUM_TRIES; // Let's just be absolutely certain we can't loop forever
@@ -221,10 +221,6 @@ static NSRect NTLargestMarginRectInRectAvoidingRectAndFitSize(NSRect containingR
     lastStartingFrame = NSZeroRect;
 }
 
-@end
-
-@implementation NTWindowCascade (Private)
-
 + (NSRect)_adjustWindowRect:(NSRect)windowRect forScreenRect:(NSRect)screenRect;
 {
     // Adjust the window rect to fit on the screen
@@ -250,7 +246,7 @@ static NSRect NTLargestMarginRectInRectAvoidingRectAndFitSize(NSRect containingR
     BOOL needsToMove = NO;
 	
     topRect = bottomRect = leftRect = rightRect = visibleRect;
-    int windowIndex = [windows count];
+    NSInteger windowIndex = [windows count];
     NSMutableArray *availableRects = [NSMutableArray arrayWithObject:[NSValue valueWithRect:visibleRect]];
     while (windowIndex-- > 0) {
         NSWindow *window = [windows objectAtIndex:windowIndex];
@@ -270,7 +266,7 @@ static NSRect NTLargestMarginRectInRectAvoidingRectAndFitSize(NSRect containingR
 + (NSScreen *)_screenForPoint:(NSPoint)aPoint;
 {
     NSArray *screens;
-    unsigned int screenIndex, screenCount;
+    NSUInteger screenIndex, screenCount;
 	
     screens = [NSScreen screens];
     screenCount = [screens count];
@@ -290,7 +286,7 @@ static NSRect NTLargestMarginRectInRectAvoidingRectAndFitSize(NSRect containingR
     if (additionalWindows != nil) {
         [windows addObjectsFromArray:additionalWindows];
     }
-    int dataSourceIndex = [dataSources count];
+    NSInteger dataSourceIndex = [dataSources count];
     while (dataSourceIndex-- > 0) {
         [windows addObjectsFromArray:[[dataSources objectAtIndex:dataSourceIndex] windowsThatShouldBeAvoided]];
     }

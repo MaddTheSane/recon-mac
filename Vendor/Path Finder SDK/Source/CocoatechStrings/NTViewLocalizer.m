@@ -176,9 +176,9 @@
 	// if has subviews, localize them too
 	if ([[view subviews] count])
 	{
-		NSEnumerator* enumerator = [[view subviews] objectEnumerator];
+		NSArray* enumerator = [view subviews];
 		
-		while (view = [enumerator nextObject])
+		for (NSView *view in enumerator)
 			[self localizeView:view];
 	}
 }

@@ -35,5 +35,5 @@
 
 
 @protocol NTWindowCascadeDataSource <NSObject>
-- (NSArray *)windowsThatShouldBeAvoided;
+- (NSArray<NSWindow*> *)windowsThatShouldBeAvoided;
 @end

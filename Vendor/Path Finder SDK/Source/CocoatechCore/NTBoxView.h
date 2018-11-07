@@ -28,8 +28,7 @@ typedef NS_OPTIONS(NSUInteger, NTFrameType)
 
 - (NSRect)contentBounds;
 
-@property  NTFrameType frameType;
-- (void)setFrameType:(NTFrameType)theFrameType;
+@property NTFrameType frameType;
 
 + (void)drawWithFrameType:(NTFrameType)frameType inRect:(NSRect)rect inView:(NSView*)inView;
 @end
