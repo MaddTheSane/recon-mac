@@ -18,7 +18,7 @@
 
 @property (assign) BOOL mouseOver;
 @property (retain) NSMenu* menu;
-@property (retain) NSString* mouseDownNotification;
+@property (retain) NSNotificationName mouseDownNotification;
 
 + (NTTemplateButton*)button:(NSImage*)image; // toggleButton == NO by default
 + (NTTemplateButton*)button:(NSImage*)image toggleButton:(BOOL)toggleButton;

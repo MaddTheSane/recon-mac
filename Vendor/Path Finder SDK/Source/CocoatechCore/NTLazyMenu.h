@@ -25,8 +25,7 @@
 - (unsigned)buildID;
 - (void)setBuildID:(unsigned)set;
 
-- (id)target;
-- (void)setTarget:(id)theTarget;
+@property (assign) id target;
 
 - (SEL)action;
 - (void)setAction:(SEL)theAction;

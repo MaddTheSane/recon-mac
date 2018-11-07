@@ -14,7 +14,7 @@
 + (double)degrees:(double)radians;
 
 // rotate the current context
-+ (void)rotateContext:(float)degrees inRect:(NSRect)inRect;
++ (void)rotateContext:(CGFloat)degrees inRect:(NSRect)inRect;
 
 @end
 

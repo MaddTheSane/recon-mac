@@ -55,9 +55,9 @@
 - (void)drawFlippedInRect:(NSRect)rect operation:(NSCompositingOperation)op;
 
 	// must release
-+ (CGImageRef)CGImageFromData:(NSData*)data;
-+ (CGImageRef)CGImageFromNSImage:(NSImage*)image;
-+ (NSImage*)imageFromCGImageRef:(CGImageRef)image;
++ (CGImageRef)CGImageFromData:(NSData*)data CF_RETURNS_RETAINED;
++ (CGImageRef)CGImageFromNSImage:(NSImage*)image CF_RETURNS_RETAINED;
++ (NSImage*)imageFromCGImageRef:(CGImageRef)image NS_DEPRECATED_MAC(10_0, 10_6, "use initWithCGImage:size: instead");
 
 - (NSImage*)imageWithControlImage:(NSImage*)image;
 

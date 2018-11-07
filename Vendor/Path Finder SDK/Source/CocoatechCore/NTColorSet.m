@@ -10,7 +10,7 @@
 #import "NTStandardColors.h"
 #import "NSShadow-NTExtensions.h"
 
-@interface NTColorSet (Private)
+@interface NTColorSet ()
 - (NSMutableDictionary *)colors;
 - (void)setColors:(NSMutableDictionary *)theColors;
 @end
@@ -58,10 +58,6 @@
 	return [self colorForKey:kNTCS_blackAccent];	
 }
 
-@end
-
-@implementation NTColorSet (Private)
-
 //---------------------------------------------------------- 
 //  colors 
 //---------------------------------------------------------- 
@@ -90,7 +86,7 @@
 {
 	NTColorSet* result = [[NTColorSet alloc] init];
 	
-	float textAlpha = 0.80;
+	CGFloat textAlpha = 0.80;
 	
 	// colors
 	[result setColor:[NSColor colorWithCalibratedWhite:0.0 alpha:textAlpha] forKey:kNTCS_text];

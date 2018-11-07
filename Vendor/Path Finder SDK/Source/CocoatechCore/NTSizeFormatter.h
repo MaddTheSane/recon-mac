@@ -9,13 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "NTSingletonObject.h"
 
-typedef enum NTSizeUnit
+typedef NS_ENUM(NSInteger, NTSizeUnit) 
 {
 	kByteUnit,
 	kKiloBytesUnit,
 	kMegaBytesUnit,
 	kGigaBytesUnit
-} NTSizeUnit;
+};
 
 @interface NTSizeFormatter : NTSingletonObject
 {

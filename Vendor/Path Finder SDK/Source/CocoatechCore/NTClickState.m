@@ -13,12 +13,12 @@
 
 - (id)initWithEvent:(NSEvent*)event;
 {
-    self = [super init];
-
-    _handled = NO;
-    _renameOnMouseUpIndex = -1;
-    _event = [event retain];
-
+    if (self = [super init]) {
+        _handled = NO;
+        _renameOnMouseUpIndex = -1;
+        _event = [event retain];
+    }
+    
     return self;
 }
 
@@ -84,27 +84,27 @@
 
 - (BOOL)anyModifierDown;
 {
-	return ([self isShiftDown] || [self isControlDown] || [self isOptionDown] || [self isCommandDown]);
+	return (([_event modifierFlags] & (NSEventModifierFlagShift | NSEventModifierFlagControl | NSEventModifierFlagOption | NSEventModifierFlagCommand)) ? YES : NO);
 }
 
 - (BOOL)isShiftDown;
 {
-    return (([_event modifierFlags] & NSShiftKeyMask) ? YES : NO);
+    return (([_event modifierFlags] & NSEventModifierFlagShift) ? YES : NO);
 }
 
 - (BOOL)isControlDown;
 {
-    return (([_event modifierFlags] & NSControlKeyMask) ? YES : NO);
+    return (([_event modifierFlags] & NSEventModifierFlagControl) ? YES : NO);
 }
 
 - (BOOL)isCommandDown;
 {
-    return (([_event modifierFlags] & NSCommandKeyMask) ? YES : NO);
+    return (([_event modifierFlags] & NSEventModifierFlagCommand) ? YES : NO);
 }
 
 - (BOOL)isOptionDown;
 {
-    return (([_event modifierFlags] & NSAlternateKeyMask) ? YES : NO);
+    return (([_event modifierFlags] & NSEventModifierFlagOption) ? YES : NO);
 }
 
 - (BOOL)tryRenameOnMouseUp;
@@ -112,14 +112,6 @@
     return (_renameOnMouseUpIndex != -1);
 }
 
-- (void)setTryRenameOnMouseUpIndex:(int)index;
-{
-    _renameOnMouseUpIndex = index;
-}
-
-- (int)renameOnMouseUpIndex;
-{
-    return _renameOnMouseUpIndex;
-}
+@synthesize renameOnMouseUpIndex=_renameOnMouseUpIndex;
 
 @end

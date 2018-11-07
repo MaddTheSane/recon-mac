@@ -9,14 +9,13 @@
 #import "NTTaskController.h"
 #import "NSThread-NTExtensions.h"
 
-@interface NTTaskController (Private)
+@interface NTTaskController ()
 - (void)sendOutputToDelegate;
 - (BOOL)processOutput:(NSData*)output;
 - (void)setNotifications;
 - (void)finished;
 
-- (id<NTTaskControllerDelegateProtocol>)delegate;
-- (void)setDelegate:(id<NTTaskControllerDelegateProtocol>)theDelegate;
+@property (assign) id<NTTaskControllerDelegateProtocol> delegate;
 @end
 
 @implementation NTTaskController
@@ -186,20 +185,8 @@
     return result;
 }
 
-- (BOOL)taskResult;
-{
-    return _result;
-}
-
-- (BOOL)readTilEndOfFile
-{
-    return mv_readTilEndOfFile;
-}
-
-- (void)setReadTilEndOfFile:(BOOL)flag
-{
-    mv_readTilEndOfFile = flag;
-}
+@synthesize taskResult=_result;
+@synthesize readTilEndOfFile=mv_readTilEndOfFile;
 
 - (BOOL)isRunning
 {
@@ -212,19 +199,7 @@
         [_task terminate];
 }
 
-- (void)setBufferOutputToDelegateWithDelay:(BOOL)set;
-{
-    _bufferOutputToDelegateWithDelay = set;
-}
-
-- (BOOL)bufferOutputToDelegateWithDelay;
-{
-    return _bufferOutputToDelegateWithDelay;
-}
-
-@end
-
-@implementation NTTaskController (Private)
+@synthesize bufferOutputToDelegateWithDelay=_bufferOutputToDelegateWithDelay;
 
 - (BOOL)processOutput:(NSData*)output;
 {
@@ -323,20 +298,7 @@
 //---------------------------------------------------------- 
 //  delegate 
 //---------------------------------------------------------- 
-- (id<NTTaskControllerDelegateProtocol>)delegate
-{
-    return mDelegate; 
-}
-
-- (void)setDelegate:(id<NTTaskControllerDelegateProtocol>)theDelegate
-{
-    if (mDelegate != theDelegate)
-        mDelegate = theDelegate; // not retained
-}
-
-@end
-
-@implementation NTTaskController (Notifications)
+@synthesize delegate=mDelegate;
 
 - (void)taskOutputAvailable:(NSNotification*)note
 {

@@ -47,7 +47,7 @@ NTSINGLETONOBJECT_STORAGE;
 - (BOOL)finderDesktopEnabled;
 {
 	Boolean exists;
-	BOOL result = CFPreferencesGetAppBooleanValue((CFStringRef)@"CreateDesktop", (CFStringRef)@"com.apple.finder", &exists);
+	BOOL result = CFPreferencesGetAppBooleanValue(CFSTR("CreateDesktop"), CFSTR("com.apple.finder"), &exists);
 
 	if (!exists)
 		result = YES; // by default it's on I assume
@@ -62,8 +62,8 @@ NTSINGLETONOBJECT_STORAGE;
 	if ([[NTGlobalPreferences sharedInstance] finderDesktopEnabled] != set)
 	{
 		// "defaults write com.apple.finder CreateDesktop 0"	
-		CFPreferencesSetAppValue((CFStringRef)@"CreateDesktop", set ? kCFBooleanTrue : kCFBooleanFalse, (CFStringRef)@"com.apple.finder");
-		CFPreferencesAppSynchronize((CFStringRef)@"com.apple.finder");
+		CFPreferencesSetAppValue(CFSTR("CreateDesktop"), set ? kCFBooleanTrue : kCFBooleanFalse, CFSTR("com.apple.finder"));
+		CFPreferencesAppSynchronize(CFSTR("com.apple.finder"));
 				
 		result = YES;
 	}
@@ -76,13 +76,11 @@ NTSINGLETONOBJECT_STORAGE;
 {
 	NSArray* result = nil;
 	
-	CFPreferencesAppSynchronize((CFStringRef)@"com.apple.finder");
-	CFArrayRef ref = CFPreferencesCopyAppValue((CFStringRef)@"FXToolbarItems", (CFStringRef)@"com.apple.finder");
+	CFPreferencesAppSynchronize(CFSTR("com.apple.finder"));
+	CFArrayRef ref = CFPreferencesCopyAppValue(CFSTR("FXToolbarItems"), CFSTR("com.apple.finder"));
 	if (ref)
 	{
-		result = [NSArray arrayWithArray:(NSArray*)ref];
-		
-		CFRelease(ref);
+		result = CFBridgingRelease(ref);
 	}
 		
 	return result;
@@ -90,8 +88,8 @@ NTSINGLETONOBJECT_STORAGE;
 
 - (void)setFinderToolbarItems:(NSArray*)items;
 {
-	CFPreferencesSetAppValue((CFStringRef)@"FXToolbarItems", (CFPropertyListRef)items, (CFStringRef)@"com.apple.finder");
-	CFPreferencesAppSynchronize((CFStringRef)@"com.apple.finder");
+	CFPreferencesSetAppValue(CFSTR("FXToolbarItems"), (CFPropertyListRef)items, CFSTR("com.apple.finder"));
+	CFPreferencesAppSynchronize(CFSTR("com.apple.finder"));
 }
 
 // sets NSFileViewer pref to "com.cocoatech.pathfinder"
@@ -99,7 +97,7 @@ NTSINGLETONOBJECT_STORAGE;
 {
 	BOOL result = NO;
 	
-	CFStringRef prefResult = CFPreferencesCopyAppValue((CFStringRef)@"NSFileViewer", (CFStringRef)bundleID);
+	CFStringRef prefResult = CFPreferencesCopyAppValue(CFSTR("NSFileViewer"), (CFStringRef)bundleID);
 	if (prefResult)
 	{
 		NSString* str = (NSString*)bundleID;
@@ -116,9 +114,9 @@ NTSINGLETONOBJECT_STORAGE;
 - (void)setFileViewerPref:(BOOL)set forBundleID:(NSString*)bundleID;
 {	
 	if (set)
-		CFPreferencesSetAppValue((CFStringRef)@"NSFileViewer", (CFPropertyListRef)@"com.cocoatech.pathfinder", (CFStringRef)bundleID);
+		CFPreferencesSetAppValue(CFSTR("NSFileViewer"), CFSTR("com.cocoatech.pathfinder"), (CFStringRef)bundleID);
 	else
-		CFPreferencesSetAppValue((CFStringRef)@"NSFileViewer", NULL, (CFStringRef)bundleID);
+		CFPreferencesSetAppValue(CFSTR("NSFileViewer"), NULL, (CFStringRef)bundleID);
 	
 	CFPreferencesAppSynchronize((CFStringRef)bundleID);
 }
@@ -156,7 +154,7 @@ NTSINGLETONOBJECT_STORAGE;
 {
 #if SNOWLEOPARD
 	return [NSEvent doubleClickInterval];
-#endif
+#else
 	
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 	NSTimeInterval doubleClickTime = [[defaults objectForKey:@"com.apple.mouse.doubleClickThreshold"] floatValue];
@@ -169,6 +167,7 @@ NTSINGLETONOBJECT_STORAGE;
 		doubleClickTime = .8;  // assume messed up and give a reasonable value
 	
 	return doubleClickTime;
+#endif
 }
 
 @end

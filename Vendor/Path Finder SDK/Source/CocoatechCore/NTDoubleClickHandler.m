@@ -33,19 +33,7 @@
 //---------------------------------------------------------- 
 //  delegate 
 //---------------------------------------------------------- 
-- (id <NTDoubleClickDelegateProtocol>)delegate
-{
-    return mDelegate; 
-}
-
-- (void)setDelegate:(id <NTDoubleClickDelegateProtocol>)theDelegate
-{
-    if (mDelegate != theDelegate)
-    {
-        [mDelegate release];
-        mDelegate = [theDelegate retain];
-    }
-}
+@synthesize delegate=mDelegate;
 
 - (void)handleDoubleClick:(id)object startRect:(NSRect)startRect window:(NSWindow*)window params:(NTRevealParameters*)params;
 {

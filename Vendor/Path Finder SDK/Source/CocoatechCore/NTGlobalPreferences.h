@@ -16,14 +16,14 @@
 
 - (UInt32)systemColorVersion;
 
-- (BOOL)useGraphiteAppearance;
+@property (readonly) BOOL useGraphiteAppearance;
 
-- (BOOL)playSoundEffects;
-- (BOOL)playBezelSoundEffect;
+@property (readonly) BOOL playSoundEffects;
+@property (readonly) BOOL playBezelSoundEffect;
 
 - (NSTimeInterval)doubleClickTime;
 
-- (BOOL)finderDesktopEnabled;
+@property (readonly) BOOL finderDesktopEnabled;
 
 // returns YES if changed
 - (BOOL)setFinderDesktopEnabled:(BOOL)set;
@@ -32,8 +32,7 @@
 - (BOOL)fileViewerPrefForBundleID:(NSString*)bundleID;
 - (void)setFileViewerPref:(BOOL)set forBundleID:(NSString*)bundleID;
 
-- (NSArray*)finderToolbarItems;
-- (void)setFinderToolbarItems:(NSArray*)items;
+@property (copy) NSArray<NSString*>* finderToolbarItems;
 
 @end
 

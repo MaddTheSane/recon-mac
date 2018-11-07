@@ -11,7 +11,7 @@
 @class NTThreadRunner, NTThreadRunnerParam, NTThreadHelper;
 
 @protocol NTThreadRunnerDelegateProtocol <NSObject>
-// called on main thread
+//! called on main thread
 - (void)threadRunner_complete:(NTThreadRunner*)threadRunner;
 @end
 
@@ -29,10 +29,10 @@
 				 priority:(float)priority
 				 delegate:(id<NTThreadRunnerDelegateProtocol>)delegate;  // state is kNormalThreadState
 
-- (void)clearDelegate; // also kills the thread if still running
+- (void)clearDelegate; //!< also kills the thread if still running
 
-- (NTThreadRunnerParam *)param;
-- (NTThreadHelper*)threadHelper;
+@property (nonatomic, readonly, retain) NTThreadRunnerParam *param;
+@property (readonly, retain) NTThreadHelper *threadHelper;
 
 @end
 
@@ -43,12 +43,12 @@
 	NTThreadRunner* mv_runner;
 }
 
-// must subclass to do work
+//! must subclass to do work
 - (BOOL)doThreadProc;
 
-- (NTThreadRunner *)runner;
-- (NTThreadHelper *)helper;
+@property (readonly, assign) NTThreadRunner *runner;
+@property (readonly, assign) NTThreadHelper *helper;
 
-- (id<NTThreadRunnerDelegateProtocol>)delegate;
+@property (readonly, assign) id<NTThreadRunnerDelegateProtocol> delegate;
 
 @end

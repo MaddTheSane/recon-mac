@@ -8,7 +8,7 @@
 
 #import "NTBackgroundView.h"
 
-typedef enum NTFrameType
+typedef NS_OPTIONS(NSUInteger, NTFrameType)
 {
 	NTFrame_none =   0,
 	
@@ -19,7 +19,7 @@ typedef enum NTFrameType
 	
 	NTFrame_all =    0x0000000F,
 	
-} NTFrameType;
+};
 
 @interface NTBoxView : NTBackgroundView
 {
@@ -28,7 +28,7 @@ typedef enum NTFrameType
 
 - (NSRect)contentBounds;
 
-- (NTFrameType)frameType;
+@property  NTFrameType frameType;
 - (void)setFrameType:(NTFrameType)theFrameType;
 
 + (void)drawWithFrameType:(NTFrameType)frameType inRect:(NSRect)rect inView:(NSView*)inView;

@@ -10,8 +10,6 @@
 
 // could not be a category since there is no NSGeometry class
 @interface NTGeometry : NSObject
-{
-}
 
 + (NSRect)rectFromPoint:(NSPoint)one andPoint:(NSPoint)two;
 

@@ -22,8 +22,7 @@
 
 + (NTDoubleClickHandler*)sharedInstance;
 
-- (id <NTDoubleClickDelegateProtocol>)delegate;
-- (void)setDelegate:(id <NTDoubleClickDelegateProtocol>)theDelegate;
+@property (retain) id<NTDoubleClickDelegateProtocol> delegate;
 
 - (void)handleDoubleClick:(id)object startRect:(NSRect)startRect window:(NSWindow*)window params:(NTRevealParameters*)params;
 

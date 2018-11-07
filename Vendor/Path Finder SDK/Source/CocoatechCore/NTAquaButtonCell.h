@@ -8,7 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface NTAquaButtonCell : NSButtonCell {
-}
+@interface NTAquaButtonCell : NSButtonCell
 
 @end

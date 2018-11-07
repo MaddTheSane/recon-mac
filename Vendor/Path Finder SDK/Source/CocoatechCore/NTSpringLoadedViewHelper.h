@@ -16,7 +16,7 @@
 @end
 
 @interface NTSpringLoadedViewHelper : NSObject {
-	id<NTSpringLoadedViewHelperDelegateProtocol> mDelegate;
+	__unsafe_unretained id<NTSpringLoadedViewHelperDelegateProtocol> mDelegate;
 	
 	NTSpaceKeyPoll* spaceKeyPoll;
 	BOOL mSpringLoadedRunning;

@@ -132,9 +132,9 @@
 	return result;
 }
 
-- (unsigned)safeCount;
+- (NSUInteger)safeCount;
 {
-	unsigned result = 0;
+	NSUInteger result = 0;
 	
     @synchronized(self) {
 		result = [self count];

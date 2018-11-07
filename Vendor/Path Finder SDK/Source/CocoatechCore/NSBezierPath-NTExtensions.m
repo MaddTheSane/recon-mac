@@ -18,7 +18,7 @@
 
 - (BOOL)isClosed
 {
-    int elements = [self elementCount];
+    NSInteger elements = [self elementCount];
     
     if (elements)
     {
@@ -42,7 +42,7 @@
 }
 
 - (void)appendBezierPathWithBottomRoundedCorners: (NSRect) aRect
-									   radius: (float) radius
+									   radius: (CGFloat) radius
 {
 	NSPoint bottomMid = NSMakePoint(NSMidX(aRect), NSMinY(aRect));
 	NSPoint rightMid = NSMakePoint(NSMaxX(aRect), NSMidY(aRect));
@@ -64,14 +64,14 @@
 	[self closePath];
 }
 
-- (void)appendBezierPathWithRoundedRectangle:(NSRect)aRect radius:(float)radius;
+- (void)appendBezierPathWithRoundedRectangle:(NSRect)aRect radius:(CGFloat)radius;
 {
 	radius = MIN(radius, 0.5 * MIN(aRect.size.width, aRect.size.height));	
 
 	[self appendBezierPathWithRoundedRect:aRect xRadius:radius yRadius:radius];
 }
 
-- (void)appendBezierPathWithRoundedRectangle:(NSRect)aRect topRadius:(float)topRadius bottomRadius:(float)bottomRadius;
+- (void)appendBezierPathWithRoundedRectangle:(NSRect)aRect topRadius:(CGFloat)topRadius bottomRadius:(CGFloat)bottomRadius;
 {
 	[self appendBezierPathWithRoundedRectangle:aRect
 								 topLeftRadius:topRadius
@@ -80,9 +80,9 @@
 							 bottomRightRadius:bottomRadius];
 }
 
-- (void)appendBezierPathWithRoundedRectangle:(NSRect)aRect topLeftRadius:(float)topLeftRadius topRightRadius:(float)topRightRadius bottomLeftRadius:(float)bottomLeftRadius bottomRightRadius:(float)bottomRightRadius;
+- (void)appendBezierPathWithRoundedRectangle:(NSRect)aRect topLeftRadius:(CGFloat)topLeftRadius topRightRadius:(CGFloat)topRightRadius bottomLeftRadius:(CGFloat)bottomLeftRadius bottomRightRadius:(CGFloat)bottomRightRadius;
 {
-	float maxRadius =  0.5 * MIN(aRect.size.width, aRect.size.height);
+	CGFloat maxRadius =  0.5 * MIN(aRect.size.width, aRect.size.height);
 	
 	topLeftRadius = MIN(topLeftRadius, maxRadius);	
 	bottomLeftRadius = MIN(bottomLeftRadius, maxRadius);	
@@ -117,7 +117,7 @@
     [self closePath];
 }
 
-- (void)appendBezierPathWithRoundedRectangle:(NSRect)aRect radius:(float)radius leftSideOnly:(BOOL)leftSideOnly;
+- (void)appendBezierPathWithRoundedRectangle:(NSRect)aRect radius:(CGFloat)radius leftSideOnly:(BOOL)leftSideOnly;
 {
 	radius = MIN(radius, 0.5 * MIN(aRect.size.width, aRect.size.height));	
 
@@ -416,12 +416,12 @@
     return path;
 }
 
-+ (NSBezierPath*)roundRectPath:(NSRect)rect radius:(float)radius;
++ (NSBezierPath*)roundRectPath:(NSRect)rect radius:(CGFloat)radius;
 {
 	return [self roundRectPath:rect topRadius:radius bottomRadius:radius];
 }
 
-+ (NSBezierPath*)roundRectPath:(NSRect)rect topLeftRadius:(float)topLeftRadius topRightRadius:(float)topRightRadius bottomLeftRadius:(float)bottomLeftRadius bottomRightRadius:(float)bottomRightRadius;
++ (NSBezierPath*)roundRectPath:(NSRect)rect topLeftRadius:(CGFloat)topLeftRadius topRightRadius:(CGFloat)topRightRadius bottomLeftRadius:(CGFloat)bottomLeftRadius bottomRightRadius:(CGFloat)bottomRightRadius;
 {
 	NSBezierPath *path = [NSBezierPath newPath];
 	[path appendBezierPathWithRoundedRectangle:rect topLeftRadius:topLeftRadius topRightRadius:topRightRadius bottomLeftRadius:bottomLeftRadius bottomRightRadius:bottomRightRadius];
@@ -429,7 +429,7 @@
 	return path;	
 }
 
-+ (NSBezierPath*)roundRectPath:(NSRect)rect topRadius:(float)topRadius bottomRadius:(float)bottomRadius;
++ (NSBezierPath*)roundRectPath:(NSRect)rect topRadius:(CGFloat)topRadius bottomRadius:(CGFloat)bottomRadius;
 {
 	NSBezierPath *path = [NSBezierPath newPath];
 	[path appendBezierPathWithRoundedRectangle:rect topRadius:topRadius bottomRadius:bottomRadius];
@@ -437,7 +437,7 @@
 	return path;
 }
 
-+ (NSBezierPath*)bottomRoundRectPath:(NSRect)rect radius:(float)radius;
++ (NSBezierPath*)bottomRoundRectPath:(NSRect)rect radius:(CGFloat)radius;
 {
 	NSBezierPath *path = [NSBezierPath newPath];
 	[path appendBezierPathWithBottomRoundedCorners:rect radius:radius];
@@ -445,12 +445,12 @@
 	return path;
 }
 
-+ (void)fillRoundRect:(NSRect)rect radius:(float)radius;
++ (void)fillRoundRect:(NSRect)rect radius:(CGFloat)radius;
 {
 	[self fillRoundRect:rect radius:radius frameColor:nil];
 }
 
-+ (void)frameRoundRect:(NSRect)rect radius:(float)radius;
++ (void)frameRoundRect:(NSRect)rect radius:(CGFloat)radius;
 {
 	NSBezierPath *path = [NSBezierPath roundRectPath:rect radius:radius];
 	
@@ -463,12 +463,12 @@
 	RGS;
 }
 
-+ (void)fillRoundRect:(NSRect)rect radius:(float)radius frameColor:(NSColor*)frameColor;
++ (void)fillRoundRect:(NSRect)rect radius:(CGFloat)radius frameColor:(NSColor*)frameColor;
 {
 	[self fillRoundRect:rect radius:radius frameColor:frameColor frameWidth:1.0];
 }
 
-+ (void)fillRoundRect:(NSRect)rect radius:(float)radius frameColor:(NSColor*)frameColor frameWidth:(float)frameWidth;
++ (void)fillRoundRect:(NSRect)rect radius:(CGFloat)radius frameColor:(NSColor*)frameColor frameWidth:(CGFloat)frameWidth;
 {
 	NSBezierPath *path = [NSBezierPath roundRectPath:rect radius:radius];
 	
@@ -616,7 +616,7 @@
 // caller must release
 - (CGPathRef)CGPath
 {
-    int i, numElements;
+    NSInteger i, numElements;
 	
     // Need to begin a path here.
     CGPathRef immutablePath = NULL;

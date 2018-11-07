@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
+typedef NSString* NTColorSetKey NS_TYPED_EXTENSIBLE_ENUM;
 // NSColor objects
 #define kNTCS_text @"NTCS_text"
 #define kNTCS_unselectedText @"NTCS_unselectedText"
@@ -34,11 +35,11 @@
 
 @interface NTColorSet : NSObject
 {
-	NSMutableDictionary *mColors;
+	NSMutableDictionary<NTColorSetKey,NSColor*> *mColors;
 }
 
-- (NSColor*)colorForKey:(NSString*)key;
-- (void)setColor:(NSColor*)color forKey:(NSString*)key;
+- (NSColor*)colorForKey:(NTColorSetKey)key;
+- (void)setColor:(NSColor*)color forKey:(NTColorSetKey)key;
 
 - (NSColor*)frameColor:(BOOL)dimControls;
 - (NSColor*)blackAccentColor:(BOOL)dimControls;

@@ -8,9 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface NTUtilities : NSObject {
-
-}
+@interface NTUtilities : NSObject
 
 + (NSString*)OSVersionString;
 + (NSString*)OSVersionDescription;
@@ -32,12 +30,12 @@
 + (BOOL)runningOnLeopard;
 + (BOOL)runningOnSnowLeopard;
 
-	// 0x1047 == 10.4.7
-+ (BOOL)osVersionIsAtLeast:(unsigned)osVersion;
+// 0x1047 == 10.4.7
++ (BOOL)osVersionIsAtLeast:(unsigned)osVersion __OSX_AVAILABLE_BUT_DEPRECATED_MSG(__MAC_10_0, __MAC_10_8, __IPHONE_NA, __IPHONE_NA, "Use NSProcessInfo's operatingSystemVersion property instead.");
 
     // OSType code conversion
-+ (unsigned int)stringToInt:(NSString*)stringValue;
-+ (NSString*)intToString:(unsigned int)intValue;
++ (OSType)stringToInt:(NSString*)stringValue;
++ (NSString*)intToString:(OSType)intValue;
 + (NSString*)MACAddress;
 
 + (BOOL)runningInDebugger;
@@ -49,5 +47,5 @@
 @end
 
 void NSLogRect(NSString* title, NSRect rect);
-void NSLogErr(NSString* title, int err);
+void NSLogErr(NSString* title, OSStatus err);
 NSString* NSErrorString(OSStatus error);

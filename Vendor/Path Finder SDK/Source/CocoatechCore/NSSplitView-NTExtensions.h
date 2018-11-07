@@ -11,16 +11,16 @@
 @interface NSSplitView (AnimationExtensions)
 
 - (void)setPosition:(CGFloat)position ofDividerAtIndex:(NSInteger)dividerIndex animate:(BOOL)animate;
-- (float)position;
+@property (readonly) CGFloat position;
 
-- (float)splitFraction;
-- (void)setSplitFraction:(float)newFract animate:(BOOL)animate;
+@property (readonly) CGFloat splitFraction;
+- (void)setSplitFraction:(CGFloat)newFract animate:(BOOL)animate;
 
 // sets the autosave name and the default fraction
 - (void)setupSplitView:(NSString*)autosaveName 
-	   defaultFraction:(float)defaultFraction;
+	   defaultFraction:(CGFloat)defaultFraction;
 
 - (void)savePositionPreference;
-- (float)positionFromPreference;
+@property (readonly) CGFloat positionFromPreference;
 @end
 

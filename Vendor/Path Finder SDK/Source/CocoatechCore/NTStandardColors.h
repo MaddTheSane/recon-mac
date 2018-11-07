@@ -8,9 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface NTStandardColors : NSObject 
-{
-}
+@interface NTStandardColors : NSObject
 
 + (NSColor*)frameColor:(BOOL)dimControls;
 + (NSColor*)frameAccentLineColor:(BOOL)dimControls;

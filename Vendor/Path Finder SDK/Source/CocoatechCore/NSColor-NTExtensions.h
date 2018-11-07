@@ -7,15 +7,14 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import <Carbon/Carbon.h>
 
 @interface NSColor (NTExtensions)
 
-- (BOOL)isDarkerThan:(float)lightness;
+- (BOOL)isDarkerThan:(CGFloat)lightness;
 
 - (NSColor*)darkerColor;
 - (NSColor*)lighterColor;
-- (NSColor*)lighterColor:(float)percent;
+- (NSColor*)lighterColor:(CGFloat)percent;
 
 // converts a color to an image, draws color on white background incase of alpha component
 - (NSColor*)imageColor;

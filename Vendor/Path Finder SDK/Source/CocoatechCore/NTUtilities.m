@@ -147,7 +147,7 @@ void NSLogRect(NSString* title, NSRect rect)
     NSLog(@"%@: %@", title, NSStringFromRect(rect));
 }
 
-void NSLogErr(NSString* title, int err)
+void NSLogErr(NSString* title, OSStatus err)
 {
 	NSLog(@"%@: %d, %s, %s", title, err, GetMacOSStatusErrorString(err), GetMacOSStatusCommentString(err));
 }
@@ -254,19 +254,19 @@ NSString* NSErrorString(OSStatus err)
 	return (shared == 1);
 }
 
-+ (NSString*)intToString:(unsigned int)intValue
++ (NSString*)intToString:(OSType)intValue
 {
-	NSString* result = (NSString*) UTCreateStringForOSType((OSType) intValue);
+	CFStringRef result = UTCreateStringForOSType((OSType) intValue);
 	
-	return [result autorelease];
+	return CFBridgingRelease(result);
 }
 
-+ (unsigned int)stringToInt:(NSString*)stringValue
++ (OSType)stringToInt:(NSString*)stringValue
 {
 	OSType result=0;
 
 	// pad with spaces if less than 4
-	int len = [stringValue length];
+	NSInteger len = [stringValue length];
 	if (len > 0)
 	{
 		while (len < 4)

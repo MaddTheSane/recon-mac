@@ -16,7 +16,7 @@
 
 #define NTSINGLETON_INITIALIZE + (void)initialize { NTINITIALIZE; [self sharedInstance]; }
 
-@interface NTSingletonObject : NSObject 
+@interface NTSingletonObject : NSObject <NSCopying>
 {
 }
 

@@ -9,9 +9,9 @@
 #import <Cocoa/Cocoa.h>
 
 @interface NSThread (NTExtensions)
-+ (NSArray*)defaultRunLoopModes;
++ (NSArray<NSRunLoopMode>*)defaultRunLoopModes;
 
-+ (BOOL)inMainThread;
+@property (class, readonly) BOOL inMainThread;
 @end
 
 @interface NSObject (NSThreadNTExtensions)

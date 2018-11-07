@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 
 @interface NSSavePanel (NTExtensions)
-- (BOOL)handleSavePanelOK:(int)returnCode;
+- (BOOL)handleSavePanelOK:(NSModalResponse)returnCode;
 @end
 
 #if NOTSNOWLEOPARD

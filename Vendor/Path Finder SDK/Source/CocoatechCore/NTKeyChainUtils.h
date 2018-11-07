@@ -9,9 +9,7 @@
 #import <Foundation/Foundation.h>
 
 
-@interface NTKeyChainUtils : NSObject {
-
-}
+@interface NTKeyChainUtils : NSObject
 
 + (NSString*)passwordForService:(NSString*)service accountName:(NSString*)accountName;
 

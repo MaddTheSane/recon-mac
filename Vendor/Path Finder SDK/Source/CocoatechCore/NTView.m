@@ -8,7 +8,9 @@
 
 #import "NTView.h"
 
-@interface NTView (Private)
+NSNotificationName const NTViewFrameDidChangeNotification = @"NTViewFrameDidChangeNotification";
+
+@interface NTView ()
 - (void)sendFrameDidChange;
 - (void)sendFrameDidChangeNotification;
 - (void)autoresizeSubview;
@@ -54,15 +56,7 @@
 	[self autoresizeSubview];
 }
 
-- (void)setFrameDidChangeEnabled:(BOOL)set;
-{
-    _frameDidChangeEnabled = set;
-}
-
-- (BOOL)frameDidChangeEnabled;
-{
-    return _frameDidChangeEnabled;
-}
+@synthesize frameDidChangeEnabled=_frameDidChangeEnabled;
 
 - (void)setAutomaticallyResizeSubviewToFit:(BOOL)set;
 {
@@ -71,10 +65,7 @@
 	[self autoresizeSubview];
 }
 
-- (BOOL)automaticallyResizeSubviewToFit;
-{
-	return _automaticallyResizeSubviewToFit;
-}
+@synthesize automaticallyResizeSubviewToFit=_automaticallyResizeSubviewToFit;
 
 // subclasses can override frameDidChange to respond to frame changes rather than registering for NSViewFrameDidChangeNotification
 - (void)frameDidChange;
@@ -87,15 +78,7 @@
 	return [self bounds];
 }
 
-- (void)setPostsFrameDidChangeNotification:(BOOL)set;
-{
-	_postsFrameDidChangeNotifications = set;
-}
-
-- (BOOL)postsFrameDidChangeNotification;
-{
-	return _postsFrameDidChangeNotifications;
-}
+@synthesize postsFrameDidChangeNotification=_postsFrameDidChangeNotifications;
 
 // default is 0,0 - the amount to inset any view that we are autoresizing (-1, -1 to hide a frame for example)
 - (void)setAutomaticResizeInset:(NSSize)inset;
@@ -105,40 +88,19 @@
 	[self autoresizeSubview];
 }
 
-- (NSSize)automaticResizeInset
-{
-	return _autoresizeInset;
-}
+@synthesize automaticResizeInset=_autoresizeInset;
 
 //---------------------------------------------------------- 
 //  automaticResizeSizeAdjustment 
 //---------------------------------------------------------- 
-- (NSSize)automaticResizeSizeAdjustment
-{
-    return mv_automaticResizeSizeAdjustment;
-}
-
-- (void)setAutomaticResizeSizeAdjustment:(NSSize)theAutomaticResizeSizeAdjustment
-{
-    mv_automaticResizeSizeAdjustment = theAutomaticResizeSizeAdjustment;
-}
+@synthesize automaticResizeSizeAdjustment=mv_automaticResizeSizeAdjustment;
 
 //---------------------------------------------------------- 
 //  automaticResizeOriginAdjustment 
 //---------------------------------------------------------- 
-- (NSPoint)automaticResizeOriginAdjustment
-{
-    return mv_automaticResizeOriginAdjustment;
-}
+@synthesize automaticResizeOriginAdjustment=mv_automaticResizeOriginAdjustment;
 
-- (void)setAutomaticResizeOriginAdjustment:(NSPoint)theAutomaticResizeOriginAdjustment
-{
-    mv_automaticResizeOriginAdjustment = theAutomaticResizeOriginAdjustment;
-}
-
-@end
-
-@implementation NTView (PatchPointsForFrameDidChange)
+#pragma mark PatchPointsForFrameDidChange
 
 - (void)setFrameOrigin:(NSPoint)newOrigin;
 {
@@ -239,10 +201,6 @@
     else
         [super setFrameRotation:angle];
 }
-
-@end
-
-@implementation NTView (Private)
 
 - (void)sendFrameDidChange;
 {    

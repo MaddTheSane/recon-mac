@@ -10,9 +10,9 @@
 
 @implementation NSSavePanel (NTExtensions)
 
-- (BOOL)handleSavePanelOK:(int)returnCode;
+- (BOOL)handleSavePanelOK:(NSModalResponse)returnCode;
 {
-	if (returnCode == NSOKButton)
+	if (returnCode == NSModalResponseOK)
 	{
 		BOOL isDirectory;
 		

@@ -50,7 +50,7 @@
 	return [self defaultShadowWithColor:[[NSColor blackColor] colorWithAlphaComponent:.2]];
 }
 
-+ (NSShadow*)shadowWithColor:(NSColor*)color offset:(NSSize)offset blurRadius:(float)blurRadius;
++ (NSShadow*)shadowWithColor:(NSColor*)color offset:(NSSize)offset blurRadius:(CGFloat)blurRadius;
 {
     NSShadow* result = [[self alloc] init];
 		

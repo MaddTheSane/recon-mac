@@ -13,8 +13,8 @@
 @interface NSSplitView (NTExtensionsPrivate)
 - (NSString*)positionAutosaveName;
 - (NSNumber*)positionPreference;
-- (float)positionForFraction:(float)fraction;
-- (void)savePositionPreference:(float)position;
+- (CGFloat)positionForFraction:(CGFloat)fraction;
+- (void)savePositionPreference:(CGFloat)position;
 @end
 
 @implementation NSSplitView (NTExtensions)
@@ -30,7 +30,7 @@
 	return [self position] / [self frame].size.height;
 }
 
-- (void)setSplitFraction:(float)fraction animate:(BOOL)animate;
+- (void)setSplitFraction:(CGFloat)fraction animate:(BOOL)animate;
 {
 	[self setPosition:[self positionForFraction:fraction] ofDividerAtIndex:0 animate:animate];
 }
@@ -73,7 +73,7 @@
 	}
 }
 
-- (float)position;
+- (CGFloat)position;
 {
 	if ([[self subviews] count] == 2)
 	{
@@ -89,7 +89,7 @@
 }
 
 - (void)setupSplitView:(NSString*)autosaveName 
-	   defaultFraction:(float)defaultFraction;
+	   defaultFraction:(CGFloat)defaultFraction;
 {
 	[self setAutosaveName:autosaveName];
 	
@@ -107,12 +107,12 @@
 	[self savePositionPreference:[self splitFraction]];
 }
 
-- (float)positionFromPreference;
+- (CGFloat)positionFromPreference;
 {	
-	float fraction = .5;
+	CGFloat fraction = .5;
 	NSNumber* prefFraction = [self positionPreference];
 	if (prefFraction)
-		fraction = [prefFraction floatValue];
+		fraction = [prefFraction doubleValue];
 	
 	return [self positionForFraction:fraction];
 }
@@ -121,9 +121,9 @@
 
 @implementation NSSplitView (NTExtensionsPrivate)
 
-- (void)savePositionPreference:(float)position;
+- (void)savePositionPreference:(CGFloat)position;
 {
-	[[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithFloat:position] forKey:[self positionAutosaveName]];
+	[[NSUserDefaults standardUserDefaults] setObject:@(position) forKey:[self positionAutosaveName]];
 }
 
 - (NSString*)positionAutosaveName;
@@ -136,7 +136,7 @@
 	return [[NSUserDefaults standardUserDefaults] objectForKey:[self positionAutosaveName]];
 }
 
-- (float)positionForFraction:(float)fraction;
+- (CGFloat)positionForFraction:(CGFloat)fraction;
 {
 	if ([self isVertical])
 		return ([self frame].size.width - [self dividerThickness]) * fraction;

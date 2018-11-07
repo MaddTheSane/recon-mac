@@ -8,6 +8,8 @@
 
 #import "NSWindow-NTExtensions.h"
 
+NSNotificationName const kNTSetDefaultFirstResponderNotification = @"NTSetDefaultFirstResponderNotification";
+
 @interface NSWindow (NSDrawerWindowUndocumented)
 - (NSWindow*)_parentWindow;
 @end

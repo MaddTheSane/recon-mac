@@ -7,28 +7,19 @@
 //
 
 #import "NSBundle-NTExtensions.h"
-
+#import <AppKit/AppKit.h>
 
 @implementation NSBundle (NTExtensions)
 
 - (NSImage*)imageWithName:(NSString*)imageName;
 {
-    NSString* path = [self pathForImageResource:imageName];
-	
-    if (path)
-        return [[[NSImage alloc] initWithContentsOfFile:path] autorelease];
-	
-    return nil;
+    return [self imageForResource:[imageName stringByDeletingPathExtension]];
 }
 
 - (NSImage*)imageWithName:(NSString*)imageName inDirectory:(NSString*)directory;
 {
-    NSString* path = [self pathForResource:[imageName stringByDeletingPathExtension] ofType:[imageName pathExtension] inDirectory:directory];
-	
-    if (path)
-        return [[[NSImage alloc] initWithContentsOfFile:path] autorelease];
-	
-    return nil;
+    NSString *path = [directory stringByAppendingPathComponent:[imageName stringByDeletingPathExtension]];
+    return [self imageForResource:path];
 }
 
 @end

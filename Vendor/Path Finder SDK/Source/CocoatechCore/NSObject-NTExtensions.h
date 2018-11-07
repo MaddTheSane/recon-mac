@@ -26,6 +26,6 @@
 + (NSBundle *)bundle;
 - (NSBundle *)bundle;
 
-+ (id)newAuto;
++ (id)newAuto NS_RETURNS_NOT_RETAINED;
 
 @end

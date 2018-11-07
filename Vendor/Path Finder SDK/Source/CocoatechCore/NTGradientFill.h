@@ -8,14 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
-typedef enum _NTGradientType
+typedef NS_ENUM(NSInteger, NTGradientType)
 {
     kNTLightGradient,
     kNTMediumGradient,
     kNTHeavyGradient,
 	
 	kHeaderGradient,  // like an NSTableView header
-} NTGradientType;
+};
 
 @interface NTGradientFill : NSObject 
 {

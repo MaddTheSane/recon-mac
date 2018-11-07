@@ -198,7 +198,7 @@ XX,XX,XX,XX, XX,XX,XX,XX, XX,XX,XX,XX, XX,XX,XX,XX,
 {
     NSData *base64Data;
     const char *bytes;
-    unsigned int length;
+    NSUInteger length;
     NTDataBuffer dataBuffer, *buffer;
     NSData *decodedData;
     NSData *returnValue;

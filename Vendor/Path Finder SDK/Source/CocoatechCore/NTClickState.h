@@ -12,7 +12,7 @@
 {
     BOOL _handled;  // set to true when click doesn't require any more processing
 
-    int _renameOnMouseUpIndex;
+    NSInteger _renameOnMouseUpIndex;
     
     NSEvent* _event;
 }
@@ -21,27 +21,26 @@
 
 @property (getter=isHandled) BOOL handled;
 
-- (BOOL)tryRenameOnMouseUp;
-- (void)setTryRenameOnMouseUpIndex:(int)index;
-- (int)renameOnMouseUpIndex;
+@property (readonly) BOOL tryRenameOnMouseUp;
+@property (setter=setTryRenameOnMouseUpIndex:) NSInteger renameOnMouseUpIndex;
 
 @property (readonly, retain) NSEvent *event;
 
-- (BOOL)isDoubleClick;
-- (BOOL)isSingleClick;
+@property (readonly,getter=isDoubleClick) BOOL doubleClick;
+@property (readonly,getter=isSingleClick) BOOL singleClick;
 
-- (BOOL)isRightClick;
-- (BOOL)isLeftClick;
+@property (readonly,getter=isRightClick) BOOL rightClick;
+@property (readonly,getter=isLeftClick) BOOL leftClick;
 
-- (BOOL)isContextualMenuClick;  //!< either rightMouseDown, or leftMouseDown and controlKeyDown
+@property (readonly,getter=isContextualMenuClick) BOOL contextualMenuClick;  //!< either rightMouseDown, or leftMouseDown and controlKeyDown
 
-- (BOOL)anyModifierDown;
-- (BOOL)isShiftDown;
-- (BOOL)isControlDown;
-- (BOOL)isCommandDown;
-- (BOOL)isOptionDown;
+@property (readonly) BOOL anyModifierDown;
+@property (readonly,getter=isShiftDown) BOOL shiftDown;
+@property (readonly,getter=isControlDown) BOOL controlDown;
+@property (readonly,getter=isCommandDown) BOOL commandDown;
+@property (readonly,getter=isOptionDown) BOOL optionDown;
 
 - (NSPoint)mousePointForView:(NSView*)view;  //!< in views coordinates
-- (NSPoint)mousePointInWindow;  //!< in window coordinates
+@property (readonly) NSPoint mousePointInWindow;  //!< in window coordinates
 
 @end

@@ -13,7 +13,6 @@
 		200745700DBC4D2000668B22 /* NTBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2007456E0DBC4D2000668B22 /* NTBackgroundView.m */; };
 		200747CF0DBC774600668B22 /* NTStandardImages.h in Headers */ = {isa = PBXBuildFile; fileRef = 200747CD0DBC774600668B22 /* NTStandardImages.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		200747D00DBC774600668B22 /* NTStandardImages.m in Sources */ = {isa = PBXBuildFile; fileRef = 200747CE0DBC774600668B22 /* NTStandardImages.m */; };
-		200747DA0DBC775800668B22 /* images in Resources */ = {isa = PBXBuildFile; fileRef = 200747D70DBC775800668B22 /* images */; };
 		200747EE0DBC77BB00668B22 /* NSBundle-NTExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 200747EC0DBC77BB00668B22 /* NSBundle-NTExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		200747EF0DBC77BB00668B22 /* NSBundle-NTExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 200747ED0DBC77BB00668B22 /* NSBundle-NTExtensions.m */; };
 		200B4A450D28B3930072FCB0 /* NTImageButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 200B4A430D28B3930072FCB0 /* NTImageButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -251,6 +250,7 @@
 		20F113FE0D3C6D82002D5AC1 /* NSView-NSSplitViewExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 20F113FC0D3C6D82002D5AC1 /* NSView-NSSplitViewExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		20F113FF0D3C6D82002D5AC1 /* NSView-NSSplitViewExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F113FD0D3C6D82002D5AC1 /* NSView-NSSplitViewExtensions.m */; };
 		55B995BD2192CF5600342A80 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 55B995BC2192CF5600342A80 /* libz.tbd */; };
+		55D1E1462193656600A6002B /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55D1E1452193656600A6002B /* Media.xcassets */; };
 		8DC2EF530486A6940098B216 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C1666FE841158C02AAC07 /* InfoPlist.strings */; };
 		8DC2EF570486A6940098B216 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
@@ -283,7 +283,6 @@
 		2007456E0DBC4D2000668B22 /* NTBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTBackgroundView.m; sourceTree = "<group>"; };
 		200747CD0DBC774600668B22 /* NTStandardImages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTStandardImages.h; sourceTree = "<group>"; };
 		200747CE0DBC774600668B22 /* NTStandardImages.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTStandardImages.m; sourceTree = "<group>"; };
-		200747D70DBC775800668B22 /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = images; sourceTree = "<group>"; };
 		200747EC0DBC77BB00668B22 /* NSBundle-NTExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle-NTExtensions.h"; sourceTree = "<group>"; };
 		200747ED0DBC77BB00668B22 /* NSBundle-NTExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle-NTExtensions.m"; sourceTree = "<group>"; };
 		200B4A430D28B3930072FCB0 /* NTImageButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTImageButton.h; sourceTree = "<group>"; };
@@ -525,6 +524,7 @@
 		20F113FD0D3C6D82002D5AC1 /* NSView-NSSplitViewExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView-NSSplitViewExtensions.m"; sourceTree = "<group>"; };
 		32DBCF5E0370ADEE00C91783 /* CocoatechCore_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoatechCore_Prefix.pch; sourceTree = "<group>"; };
 		55B995BC2192CF5600342A80 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		55D1E1452193656600A6002B /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		8DC2EF5A0486A6940098B216 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8DC2EF5B0486A6940098B216 /* CocoatechCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CocoatechCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2F7E79907B2D74100F64583 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -590,9 +590,9 @@
 		089C1665FE841158C02AAC07 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				200747D70DBC775800668B22 /* images */,
 				8DC2EF5A0486A6940098B216 /* Info.plist */,
 				089C1666FE841158C02AAC07 /* InfoPlist.strings */,
+				55D1E1452193656600A6002B /* Media.xcassets */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1108,7 +1108,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DC2EF530486A6940098B216 /* InfoPlist.strings in Resources */,
-				200747DA0DBC775800668B22 /* images in Resources */,
+				55D1E1462193656600A6002B /* Media.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

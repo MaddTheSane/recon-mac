@@ -10,7 +10,7 @@
 #import "NTGeometry.h"
 #import "NSImage-NTExtensions.h"
 
-@interface NTBackgroundView (Private)
+@interface NTBackgroundView ()
 + (void)drawBackgroundColorInView:(NSView*)view
 							color:(NSColor*)color 
 						   inRect:(NSRect)rect
@@ -19,7 +19,7 @@
 + (void)drawBackgroundImageInView:(NSView*)view
 						 clipRect:(NSRect)clipRect
 							image:(NSImage*)image
-						 fraction:(float)fraction
+						 fraction:(CGFloat)fraction
 				 imageDrawingMode:(NTImageDrawingMode)imageDrawingMode;
 @end
 
@@ -63,24 +63,8 @@
     return [super isOpaque];
 }
 
-- (void)setImageDrawingMode:(NTImageDrawingMode)mode;
-{
-    mv_drawingMode = mode;
-}
-
-- (void)setBackgroundColor:(NSColor*)backColor;
-{
-	if (mv_backColor != backColor)
-	{
-		[mv_backColor release];
-		mv_backColor = [backColor retain];
-	}
-}
-
-- (NSColor*)backgroundColor;
-{
-	return mv_backColor;
-}
+@synthesize imageDrawingMode=mv_drawingMode;
+@synthesize backgroundColor=mv_backColor;
 
 - (void)drawRect:(NSRect)rect;
 {    
@@ -134,46 +118,13 @@
 	}
 }
 
-- (BOOL)whiteWhenBackgroundColorIsTransparent
-{
-    return mv_whiteWhenBackgroundColorIsTransparent;
-}
-
-- (void)setWhiteWhenBackgroundColorIsTransparent:(BOOL)flag
-{
-    mv_whiteWhenBackgroundColorIsTransparent = flag;
-}
-
-- (NSString *)imagePath
-{
-    return mv_imagePath; 
-}
-
-- (void)setImagePath:(NSString *)theImagePath
-{
-    if (mv_imagePath != theImagePath)
-    {
-        [mv_imagePath release];
-        mv_imagePath = [theImagePath retain];
-    }
-}
+@synthesize whiteWhenBackgroundColorIsTransparent=mv_whiteWhenBackgroundColorIsTransparent;
+@synthesize imagePath=mv_imagePath;
 
 //---------------------------------------------------------- 
 //  imageOpacity 
-//---------------------------------------------------------- 
-- (float)imageOpacity
-{
-    return mv_imageOpacity;
-}
-
-- (void)setImageOpacity:(float)theImageOpacity
-{
-    mv_imageOpacity = theImageOpacity;
-}
-
-@end
-
-@implementation NTBackgroundView (Private)
+//----------------------------------------------------------
+@synthesize imageOpacity=mv_imageOpacity;
 
 + (void)drawBackgroundColorInView:(NSView*)view
 							color:(NSColor*)color 
@@ -203,7 +154,7 @@
 + (void)drawBackgroundImageInView:(NSView*)view
 						 clipRect:(NSRect)clipRect
 							image:(NSImage*)image
-						 fraction:(float)fraction
+						 fraction:(CGFloat)fraction
 				 imageDrawingMode:(NTImageDrawingMode)imageDrawingMode;
 {
     if (image)
@@ -277,7 +228,7 @@
 	 eraseWhiteIfTransparent:(BOOL)eraseWhiteIfTransparent
 					   image:(NSImage*)image
 				   imagePath:(NSString*)imagePath
-					fraction:(float)fraction
+					fraction:(CGFloat)fraction
 			imageDrawingMode:(NTImageDrawingMode)imageDrawingMode;
 {
 	[self drawBackgroundColorInView:view

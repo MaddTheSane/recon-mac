@@ -10,7 +10,7 @@
 
 @interface NSBundle (NTExtensions)
 
-- (NSImage*)imageWithName:(NSString*)imageName;
-- (NSImage*)imageWithName:(NSString*)imageName inDirectory:(NSString*)directory;
+- (NSImage*)imageWithName:(NSString*)imageName NS_DEPRECATED_WITH_REPLACEMENT_MAC("imageForResource:", 10_0, 10_7);
+- (NSImage*)imageWithName:(NSString*)imageName inDirectory:(NSString*)directory NS_DEPRECATED_MAC(10_0, 10_7, "Use -imageForResource: instead");
 
 @end

@@ -10,18 +10,23 @@
 
 // =================================================================
 
-@interface NTNameAndID (hidden)
-- (void)setIdentifierNumber:(NSNumber *)theIdentifier;
-- (void)setName:(NSString *)theName;
+@interface NTNameAndID ()
+@property (readwrite, retain) NSNumber *identifierNumber;
+@property (readwrite, copy) NSString *name;
 @end
 
 @implementation NTNameAndID
 
+- (instancetype)init
+{
+    return self = [super init];
+}
+
 + (NTNameAndID*)nameAndID:(NSString*)name identifier:(int)identifier;
 {
-    NTNameAndID* result = [[NTNameAndID alloc] init];
+    NTNameAndID* result = [[self alloc] init];
 	
-    [result setIdentifierNumber:[NSNumber numberWithInt:identifier]];
+    [result setIdentifierNumber:@(identifier)];
     [result setName:name];
 	
     return [result autorelease];
@@ -46,34 +51,12 @@
 //---------------------------------------------------------- 
 //  identifierNumber 
 //---------------------------------------------------------- 
-- (NSNumber *)identifierNumber
-{
-    return mIdentifierNumber; 
-}
-
-- (void)setIdentifierNumber:(NSNumber *)theIdentifierNumber
-{
-    if (mIdentifierNumber != theIdentifierNumber) {
-        [mIdentifierNumber release];
-        mIdentifierNumber = [theIdentifierNumber retain];
-    }
-}
+@synthesize identifierNumber=mIdentifierNumber;
 
 //---------------------------------------------------------- 
 //  name 
 //---------------------------------------------------------- 
-- (NSString *)name
-{
-    return mName; 
-}
-
-- (void)setName:(NSString *)theName
-{
-    if (mName != theName) {
-        [mName release];
-        mName = [theName retain];
-    }
-}
+@synthesize name=mName;
 
 - (BOOL)isEqual:(NTNameAndID*)right;
 {
@@ -115,7 +98,7 @@
 	NTNameAndID *nameID;
 	
 	for (nameID in nameIDArray)
-		[result addObject:[NSNumber numberWithInt:[nameID identifier]]];
+		[result addObject:@([nameID identifier])];
 	
 	return result;
 }

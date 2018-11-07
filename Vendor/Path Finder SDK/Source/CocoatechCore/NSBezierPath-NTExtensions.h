@@ -18,13 +18,13 @@ typedef enum NTTrianglePathDirection
 - (BOOL)isClosed;
 - (NSBezierPath *)closedPath;
 
-- (void)appendBezierPathWithRoundedRectangle:(NSRect)aRect radius:(float)radius;
-- (void)appendBezierPathWithRoundedRectangle:(NSRect)aRect topRadius:(float)topRadius bottomRadius:(float)bottomRadius;
-- (void)appendBezierPathWithRoundedRectangle:(NSRect)aRect radius:(float)radius leftSideOnly:(BOOL)leftSideOnly;
-- (void)appendBezierPathWithBottomRoundedCorners:(NSRect)aRect radius:(float)radius;
-- (void)appendBezierPathWithRoundedRectangle:(NSRect)rect topLeftRadius:(float)topLeftRadius topRightRadius:(float)topRightRadius bottomLeftRadius:(float)bottomLeftRadius bottomRightRadius:(float)bottomRightRadius;
+- (void)appendBezierPathWithRoundedRectangle:(NSRect)aRect radius:(CGFloat)radius;
+- (void)appendBezierPathWithRoundedRectangle:(NSRect)aRect topRadius:(CGFloat)topRadius bottomRadius:(float)bottomRadius;
+- (void)appendBezierPathWithRoundedRectangle:(NSRect)aRect radius:(CGFloat)radius leftSideOnly:(BOOL)leftSideOnly;
+- (void)appendBezierPathWithBottomRoundedCorners:(NSRect)aRect radius:(CGFloat)radius;
+- (void)appendBezierPathWithRoundedRectangle:(NSRect)rect topLeftRadius:(CGFloat)topLeftRadius topRightRadius:(CGFloat)topRightRadius bottomLeftRadius:(CGFloat)bottomLeftRadius bottomRightRadius:(CGFloat)bottomRightRadius;
 
-- (NSImage*)convertToImage:(NSColor*)color frameColor:(NSColor*)frameColor template:(BOOL)template;
+- (NSImage*)convertToImage:(NSColor*)color frameColor:(NSColor*)frameColor template:(BOOL)isTemplate;
 
 + (NSImage*)downTriangleImage:(NSRect)inRect flipped:(BOOL)flipped;
 + (NSImage*)rightTriangleImage:(NSRect)inRect;
@@ -54,23 +54,23 @@ typedef enum NTTrianglePathDirection
 + (NSBezierPath*)ovalPath:(NSRect)rect;
 + (NSBezierPath*)rectPath:(NSRect)rect;
 + (NSBezierPath*)trianglePath:(NSRect)rect direction:(NTTrianglePathDirection)direction flipped:(BOOL)inFlipped;
-+ (NSBezierPath*)roundRectPath:(NSRect)rect radius:(float)radius;
-+ (NSBezierPath*)roundRectPath:(NSRect)rect topRadius:(float)topRadius bottomRadius:(float)bottomRadius;
-+ (NSBezierPath*)roundRectPath:(NSRect)rect topLeftRadius:(float)topLeftRadius topRightRadius:(float)topRightRadius bottomLeftRadius:(float)bottomLeftRadius bottomRightRadius:(float)bottomRightRadius;
++ (NSBezierPath*)roundRectPath:(NSRect)rect radius:(CGFloat)radius;
++ (NSBezierPath*)roundRectPath:(NSRect)rect topRadius:(CGFloat)topRadius bottomRadius:(CGFloat)bottomRadius;
++ (NSBezierPath*)roundRectPath:(NSRect)rect topLeftRadius:(CGFloat)topLeftRadius topRightRadius:(CGFloat)topRightRadius bottomLeftRadius:(CGFloat)bottomLeftRadius bottomRightRadius:(CGFloat)bottomRightRadius;
 + (NSBezierPath*)chevronPath:(NSRect)imageBounds pointingRight:(BOOL)pointingRight;
 
-+ (void)fillRoundRect:(NSRect)rect radius:(float)radius;
-+ (void)fillRoundRect:(NSRect)rect radius:(float)radius frameColor:(NSColor*)frameColor;
-+ (void)fillRoundRect:(NSRect)rect radius:(float)radius frameColor:(NSColor*)frameColor frameWidth:(float)frameWidth;
++ (void)fillRoundRect:(NSRect)rect radius:(CGFloat)radius;
++ (void)fillRoundRect:(NSRect)rect radius:(CGFloat)radius frameColor:(NSColor*)frameColor;
++ (void)fillRoundRect:(NSRect)rect radius:(CGFloat)radius frameColor:(NSColor*)frameColor frameWidth:(CGFloat)frameWidth;
 + (void)fillTriangle:(NSRect)rect direction:(NTTrianglePathDirection)direction flipped:(BOOL)inFlipped;
 + (void)fillOval:(NSRect)rect;
 + (void)strokeOval:(NSRect)rect;
 + (void)fillOval:(NSRect)rect frameColor:(NSColor*)frameColor;
-+ (void)frameRoundRect:(NSRect)rect radius:(float)radius;
-+ (NSBezierPath*)bottomRoundRectPath:(NSRect)rect radius:(float)radius;
++ (void)frameRoundRect:(NSRect)rect radius:(CGFloat)radius;
++ (NSBezierPath*)bottomRoundRectPath:(NSRect)rect radius:(CGFloat)radius;
 - (void)transformPathForView:(NSView*)theView bounds:(NSRect)bounds;
 
 // caller must release
-- (CGPathRef)CGPath;
+- (CGPathRef)CGPath CF_RETURNS_RETAINED;
 
 @end

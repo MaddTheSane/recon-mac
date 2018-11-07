@@ -23,6 +23,6 @@
 
 + (NSShadow*)defaultShadowWithColor:(NSColor*)color;
 
-+ (NSShadow*)shadowWithColor:(NSColor*)color offset:(NSSize)offset blurRadius:(float)blurRadius;
++ (NSShadow*)shadowWithColor:(NSColor*)color offset:(NSSize)offset blurRadius:(CGFloat)blurRadius;
 
 @end

@@ -11,10 +11,11 @@
 #import "NSView-CoreExtensions.h"
 #import "NSMenu-NTExtensions.h"
 
-@interface NTTemplateButton (Private)
+@interface NTTemplateButton ()
 - (void)installMouseTracker;
 - (void)displayMenu;
 - (void)postMouseDownNotification;
+- (void)windowStateChangedNotification:(NSNotification*)notification;
 @end
 
 @interface NTTemplateButtonCell : NSButtonCell
@@ -63,9 +64,9 @@
 	
     [result setBordered:NO];
 	
-	[result.cell setTitle:nil];
+	[result.cell setTitle:@""];
 	[result.cell setAlternateTitle:@""];
-	[result.cell setAttributedTitle:nil];
+	[result.cell setAttributedTitle:[[[NSAttributedString alloc] initWithString:@""] autorelease]];
 	[result.cell setAttributedAlternateTitle:[[[NSAttributedString alloc] initWithString:@""] autorelease]];
 		
 	[result setEnabled:YES];
@@ -101,8 +102,8 @@
 	else
 		[self setEnabled:YES];
 	
-	unsigned savedState = [[self cell] state];
-	unsigned savedShowsStateBy = [[self cell] showsStateBy];
+	NSControlStateValue savedState = [[self cell] state];
+	NSCellStyleMask savedShowsStateBy = [[self cell] showsStateBy];
 	if (self.mouseOver)
 	{
 		[(NTTemplateButtonCell*)[self cell] setTheState:(savedState == NSOnState) ? NSOffState : NSOnState];
@@ -146,10 +147,6 @@
 {
     return [[self image] size];
 }
-
-@end
-
-@implementation NTTemplateButton (Private)
 
 - (void)postMouseDownNotification;
 {

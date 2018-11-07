@@ -9,8 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "NSBezierPath-NTExtensions.h"
 
-@interface NTStandardImages : NSObject {
-}
+@interface NTStandardImages : NSObject
 
 + (NSImage*)resizeIndicator;
 

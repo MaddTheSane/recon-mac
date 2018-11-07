@@ -16,64 +16,70 @@
 #if SNOWLEOPARD
 	NSUInteger leftMouse = (1 << 0);
 	return (([NSEvent pressedMouseButtons] & leftMouse) == leftMouse);  // left mouse button
-#endif
+#else
 	return (GetCurrentButtonState() & 0x01) != 0;  // primary mouse button?
+#endif
 }
 
 + (BOOL)controlKeyDownNow
 {
 #if SNOWLEOPARD
-	return (([NSEvent modifierFlags] & NSControlKeyMask) == NSControlKeyMask);
-#endif
+	return (([NSEvent modifierFlags] & NSEventModifierFlagControl) == NSEventModifierFlagControl);
+#else
     return ((GetCurrentKeyModifiers() & controlKey) != 0);
+#endif
 }
 
 + (BOOL)optionKeyDownNow
 {
 #if SNOWLEOPARD
-	return (([NSEvent modifierFlags] & NSAlternateKeyMask) == NSAlternateKeyMask);
-#endif	
+	return (([NSEvent modifierFlags] & NSEventModifierFlagOption) == NSEventModifierFlagOption);
+#else
     return ((GetCurrentKeyModifiers() & optionKey) != 0);
+#endif
 }
 
 + (BOOL)commandKeyDownNow
 {
 #if SNOWLEOPARD
-	return (([NSEvent modifierFlags] & NSCommandKeyMask) == NSCommandKeyMask);
-#endif	
+	return (([NSEvent modifierFlags] & NSEventModifierFlagCommand) == NSEventModifierFlagCommand);
+#else
     return ((GetCurrentKeyModifiers() & cmdKey) != 0);
+#endif
 }
 
 + (BOOL)shiftKeyDownNow
 {
 #if SNOWLEOPARD
-	return (([NSEvent modifierFlags] & NSShiftKeyMask) == NSShiftKeyMask);
-#endif	
+	return (([NSEvent modifierFlags] & NSEventModifierFlagShift) == NSEventModifierFlagShift);
+#else
     return ((GetCurrentKeyModifiers() & shiftKey) != 0);
+#endif
 }
 
 + (BOOL)capsLockDownNow
 {
 #if SNOWLEOPARD
-	return (([NSEvent modifierFlags] & NSAlphaShiftKeyMask) == NSAlphaShiftKeyMask);
-#endif	
+	return (([NSEvent modifierFlags] & NSEventModifierFlagCapsLock) == NSEventModifierFlagCapsLock);
+#else
     return ((GetCurrentKeyModifiers() & alphaLock) != 0);
+#endif
 }
 
-+ (unsigned)carbonModifierFlagsToCocoaModifierFlags:(unsigned)aModifierFlags;
++ (NSEventModifierFlags)carbonModifierFlagsToCocoaModifierFlags:(unsigned)aModifierFlags;
 {
-	unsigned theCocoaModifierFlags = 0;
+	NSEventModifierFlags theCocoaModifierFlags = 0;
 	
 	if (aModifierFlags & shiftKey)
-		theCocoaModifierFlags |= NSShiftKeyMask;
+		theCocoaModifierFlags |= NSEventModifierFlagShift;
 	if (aModifierFlags & controlKey)
-		theCocoaModifierFlags |= NSControlKeyMask;
+		theCocoaModifierFlags |= NSEventModifierFlagControl;
 	if (aModifierFlags & optionKey)
-		theCocoaModifierFlags |= NSAlternateKeyMask;
+		theCocoaModifierFlags |= NSEventModifierFlagOption;
 	if (aModifierFlags & cmdKey)
-		theCocoaModifierFlags |= NSCommandKeyMask;
+		theCocoaModifierFlags |= NSEventModifierFlagCommand;
 	if (aModifierFlags & 0x20000)
-		theCocoaModifierFlags |= NSFunctionKeyMask;
+		theCocoaModifierFlags |= NSEventModifierFlagFunction;
 	
 	return theCocoaModifierFlags;
 }
@@ -89,16 +95,12 @@
 // a simple way of looking at the event modifier flags
 - (BOOL)controlKeyDown;
 {
-    return (([self modifierFlags] & NSControlKeyMask) != 0);
+    return (([self modifierFlags] & NSEventModifierFlagControl) != 0);
 }
 
 - (BOOL)modifierIsDown;
 {
-	
-	if ((([self modifierFlags] & NSControlKeyMask) == NSControlKeyMask) ||
-		(([self modifierFlags] & NSShiftKeyMask) == NSShiftKeyMask) ||
-		(([self modifierFlags] & NSCommandKeyMask) == NSCommandKeyMask) ||
-		(([self modifierFlags] & NSAlternateKeyMask) == NSAlternateKeyMask))
+	if (([self modifierFlags] & (NSEventModifierFlagControl | NSEventModifierFlagShift | NSEventModifierFlagCommand | NSEventModifierFlagOption)) != 0)
 		return YES;
 	
 	return NO;
@@ -106,17 +108,17 @@
 
 - (BOOL)optionKeyDown;
 {
-    return (([self modifierFlags] & NSAlternateKeyMask) != 0);
+    return (([self modifierFlags] & NSEventModifierFlagOption) != 0);
 }
 
 - (BOOL)commandKeyDown;
 {
-    return (([self modifierFlags] & NSCommandKeyMask) != 0);
+    return (([self modifierFlags] & NSEventModifierFlagCommand) != 0);
 }
 
 - (BOOL)shiftKeyDown;
 {
-    return (([self modifierFlags] & NSShiftKeyMask) != 0);
+    return (([self modifierFlags] & NSEventModifierFlagShift) != 0);
 }
 
 - (BOOL)optionXOrCommandKeyDown;

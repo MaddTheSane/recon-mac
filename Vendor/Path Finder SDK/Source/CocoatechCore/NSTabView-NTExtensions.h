@@ -14,6 +14,6 @@
 + (NSNumber*)uniqueTabItemIdentifier;
 
     // NSNotFound if not found
-- (NSInteger)indexOfSelectedTabViewItem;
+@property (readonly) NSInteger indexOfSelectedTabViewItem;
 
 @end

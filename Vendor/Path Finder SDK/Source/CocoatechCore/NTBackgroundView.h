@@ -8,12 +8,12 @@
 
 #import "NTView.h"
 
-typedef enum
+typedef NS_ENUM(NSInteger, NTImageDrawingMode)
 {
-    kTileImageMode,
-    kScaleImageMode,
-    kCenterImageMode
-} NTImageDrawingMode;
+    NTImageDrawingModeTile,
+    NTImageDrawingModeScale,
+    NTImageDrawingModeCenter
+};
 
 // you can set an image or backcolor
 @interface NTBackgroundView : NTView
@@ -22,44 +22,45 @@ typedef enum
     
     NSColor* mv_backColor;
 
-	float mv_imageOpacity;
+	CGFloat mv_imageOpacity;
 	NSImage* mv_backImage;
 	NSString* mv_imagePath;
 	
 	BOOL mv_whiteWhenBackgroundColorIsTransparent;
 }
 
-- (void)setBackgroundColor:(NSColor*)backColor;
-- (NSColor*)backgroundColor;
+@property (retain) NSColor *backgroundColor;
 
 - (void)setImage:(NSImage*)image;
 
-// for images that only need to draw infrequently.  Loads the image, draws and releases it.  saves ram for huge images
-- (NSString *)imagePath;
-- (void)setImagePath:(NSString *)theImagePath;
+//! for images that only need to draw infrequently.  Loads the image, draws and releases it.  saves ram for huge images
+@property (copy) NSString *imagePath;
 
-- (float)imageOpacity;
-- (void)setImageOpacity:(float)theImageOpacity;
+@property CGFloat imageOpacity;
 
-    // the default is to tile
-- (void)setImageDrawingMode:(NTImageDrawingMode)mode;
+//! the default is to tile
+@property NTImageDrawingMode imageDrawingMode;
 
 // default is YES
-- (BOOL)whiteWhenBackgroundColorIsTransparent;
-- (void)setWhiteWhenBackgroundColorIsTransparent:(BOOL)flag;
+@property BOOL whiteWhenBackgroundColorIsTransparent;
 
 @end
 
-// non NTBackgroundView subclasses can reused the technology of drawing the background
+//! non \c NTBackgroundView subclasses can reuse the technology of drawing the background
 @interface NTBackgroundView (Utilities)
 
+//! non \c NTBackgroundView subclasses can reuse the technology of drawing the background
 + (void)drawBackgroundInView:(NSView*)view
 					clipRect:(NSRect)clipRect
 					   color:(NSColor*)color 
 	 eraseWhiteIfTransparent:(BOOL)eraseWhiteIfTransparent
 					   image:(NSImage*)image
 				   imagePath:(NSString*)imagePath
-					fraction:(float)fraction
+					fraction:(CGFloat)fraction
 			imageDrawingMode:(NTImageDrawingMode)imageDrawingMode;
 
 @end
+
+static const NTImageDrawingMode kTileImageMode NS_DEPRECATED_WITH_REPLACEMENT_MAC("NTImageDrawingModeTile", 10_0, 10_7) = NTImageDrawingModeTile;
+static const NTImageDrawingMode kScaleImageMode NS_DEPRECATED_WITH_REPLACEMENT_MAC("NTImageDrawingModeScale", 10_0, 10_7) = NTImageDrawingModeScale;
+static const NTImageDrawingMode kCenterImageMode NS_DEPRECATED_WITH_REPLACEMENT_MAC("NTImageDrawingModeCenter", 10_0, 10_7) = NTImageDrawingModeCenter;

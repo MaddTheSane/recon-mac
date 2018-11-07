@@ -26,10 +26,7 @@ typedef NSString*(* string_IMP)(id,SEL,...);
 
 - (void)getPString:(Str255)outString
 {
-	size_t len = MIN((size_t)255, strlen([self cStringUsingEncoding:NSMacOSRomanStringEncoding]));
-
-	memcpy(outString+1, [self cStringUsingEncoding:NSMacOSRomanStringEncoding], len);
-    outString[0] = len;
+    CFStringGetPascalString((CFStringRef)self, outString, 255, kCFStringEncodingMacRoman);
 }
 
 - (void)getUTF8String:(char*)outString maxLength:(NSInteger)maxLength;
@@ -334,9 +331,7 @@ typedef NSString*(* string_IMP)(id,SEL,...);
 		if (hfsRef)
 		{
 			// copy into an autoreleased NSString
-			hfsPath = [NSString stringWithString:(NSString*)hfsRef];
-			
-			CFRelease(hfsRef);
+			hfsPath = [NSString stringWithString:CFBridgingRelease(hfsRef)];
 		}
 		
 		CFRelease(fileURL);
@@ -360,9 +355,7 @@ typedef NSString*(* string_IMP)(id,SEL,...);
         if (posixRef)
         {
             // copy into an autoreleased NSString
-            posixPath = [NSString stringWithString:(NSString*)posixRef];
-
-            CFRelease(posixRef);
+            posixPath = [NSString stringWithString:CFBridgingRelease(posixRef)];
         }
 
         CFRelease(fileURL);
@@ -485,7 +478,7 @@ typedef NSString*(* string_IMP)(id,SEL,...);
         NSInteger segmentLen = (length/2) - 2;
 
         result = [self substringToIndex:segmentLen];
-        result = [result stringByAppendingString:@"..."];
+        result = [result stringByAppendingString:@"…"];
         result = [result stringByAppendingString:[self substringFromIndex:([self length] - segmentLen)]];
     }
 
@@ -561,6 +554,9 @@ typedef NSString*(* string_IMP)(id,SEL,...);
 
 - (BOOL)FSSpec:(FSSpec*)fsSpec createFileIfNecessary:(BOOL)createFile;
 {
+#if __LP64__
+    return NO;
+#else
     FSRef fsRef;
 
     if (![self FSRef:&fsRef createFileIfNecessary:createFile])
@@ -577,6 +573,7 @@ typedef NSString*(* string_IMP)(id,SEL,...);
     }
 
     return YES;
+#endif
 }
 
 // doesn't allow extensions with spaces
@@ -630,11 +627,12 @@ typedef NSString*(* string_IMP)(id,SEL,...);
 {
 #if SNOWLEOPARD
 	return [self localizedStandardCompare:rightString];
-#endif
+#else
 	return [self compare:rightString
 				 options:NSCaseInsensitiveSearch|NSNumericSearch|NSWidthInsensitiveSearch|NSForcedOrderingSearch
 				   range:NSMakeRange(0, [self length])
 				  locale:[NSLocale currentLocale]];
+#endif
 }
 
 - (NSString*)stringInStringsFileFormat;

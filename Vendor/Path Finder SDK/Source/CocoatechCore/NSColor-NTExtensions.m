@@ -11,7 +11,7 @@
 
 @implementation NSColor (NTExtensions)
 
-- (BOOL)isDarkerThan:(float)lightness
+- (BOOL)isDarkerThan:(CGFloat)lightness
 {
     NSColor *monoColor = [self colorUsingColorSpaceName:@"NSCalibratedWhiteColorSpace"];
     
@@ -42,7 +42,7 @@
     return [NSColor colorWithCalibratedHue:hue saturation:saturation brightness:brightness alpha:alpha];
 }
 
-- (NSColor*)lighterColor:(float)percent;
+- (NSColor*)lighterColor:(CGFloat)percent;
 {
     CGFloat hue, saturation, brightness, alpha;
     NSColor* converted = [self colorUsingColorSpaceName:NSCalibratedRGBColorSpace];

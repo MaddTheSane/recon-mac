@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-#define kNTSetDefaultFirstResponderNotification @"NTSetDefaultFirstResponderNotification"  // object is the window, must check
+//! object is the window, must check
+extern NSNotificationName const kNTSetDefaultFirstResponderNotification;
 
 @interface NSWindow (Utilities)
 

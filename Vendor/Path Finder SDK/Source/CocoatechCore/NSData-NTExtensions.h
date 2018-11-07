@@ -13,15 +13,15 @@
 - (NSData *)inflate;
 + (NSData*)inflateFile:(NSString*)path;
 
-+ (NSData*)dataWithCarbonHandle:(Handle)handle;
-- (Handle)carbonHandle;
++ (NSData*)dataWithCarbonHandle:(Handle)handle __OSX_AVAILABLE_BUT_DEPRECATED(__MAC_10_0, __MAC_10_8, __IPHONE_NA, __IPHONE_NA);
+- (Handle)carbonHandle __OSX_AVAILABLE_BUT_DEPRECATED(__MAC_10_0, __MAC_10_8, __IPHONE_NA, __IPHONE_NA);
 
 - (NSData*)encrypt;
 - (NSData*)decrypt;
 
 - (NSData *)md5Signature;
-+ (id)dataWithBase64String:(NSString *)base64String;
-- initWithBase64String:(NSString *)base64String;
++ (instancetype)dataWithBase64String:(NSString *)base64String;
+- (instancetype)initWithBase64String:(NSString *)base64String;
 - (NSString *)base64String;
 
 @end

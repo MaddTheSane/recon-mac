@@ -9,10 +9,9 @@
 #import <Cocoa/Cocoa.h>
 #import "NTSingletonObject.h"
 
-@interface NTTableHeaderImages : NTSingletonObject {
-}
+@interface NTTableHeaderImages : NTSingletonObject
 
-- (float)height;
+@property (readonly) CGFloat height;
 
 - (void)drawInFrame:(NSRect)frame 
 		highlighted:(BOOL)highlighted

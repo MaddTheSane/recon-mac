@@ -7,34 +7,38 @@
  *
  */
 
-#include <Carbon/Carbon.h>
+#include <Foundation/Foundation.h>
 
-@interface NSArray (NTExtensions)
+NS_ASSUME_NONNULL_BEGIN
 
-// not very efficient, but useful when your not dealing with a mutable array and need to make an ocasional change
-- (NSArray*)arrayByReplacingObjectAtIndex:(int)index withObject:(id)newItem;
+@interface NSArray<__covariant ObjectType> (NTExtensions)
 
-- (id)safeObjectAtIndex:(NSUInteger)index;
+//! not very efficient, but useful when your not dealing with a mutable array and need to make an ocasional change
+- (NSArray<ObjectType>*)arrayByReplacingObjectAtIndex:(NSInteger)index withObject:(ObjectType)newItem;
+
+- (nullable ObjectType)safeObjectAtIndex:(NSUInteger)index;
 
 - (BOOL)validIndex:(NSUInteger)index;
 - (BOOL)validInsertIndex:(NSUInteger)index;
 
-- (NSArray*)arrayByRemovingDuplicates;  // returns same pointer if no changes needed
+- (NSArray<ObjectType>*)arrayByRemovingDuplicates;  //!< returns same pointer if no changes needed
 
-- (NSArray *)arrayByAddingObjectToFront:(id)anObject;
+- (NSArray<ObjectType> *)arrayByAddingObjectToFront:(ObjectType)anObject;
 
-	// used in tabView, we want to reorder the "tab array" while preserving the selection
+//! used in tabView, we want to reorder the "tab array" while preserving the selection
 + (BOOL)moveSource:(NSUInteger*)ioSrcIndex 
 			toDest:(NSUInteger*)ioDestIndex
 		 selection:(NSUInteger*)ioSelectionIndex;
 
-- (NSArray *)arrayByRemovingObjectIdenticalTo:(id)anObject;
-- (NSArray *)arrayByRemovingObject:(id)anObject;
+- (NSArray<ObjectType> *)arrayByRemovingObjectIdenticalTo:(ObjectType)anObject;
+- (NSArray<ObjectType> *)arrayByRemovingObject:(ObjectType)anObject;
 
 - (NSMutableArray *)deepMutableCopy;
 - (NSArray *)arrayByPerformingSelector:(SEL)aSelector;
 - (NSArray *)arrayByPerformingSelector:(SEL)aSelector withObject:(id)anObject;
 
-- (NSArray *)reversedArray;
+- (NSArray<ObjectType> *)reversedArray;
 
 @end
+
+NS_ASSUME_NONNULL_END

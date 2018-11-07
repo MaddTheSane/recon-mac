@@ -21,7 +21,7 @@
 - (NSString*)stringByReplacingValuesInArray:(NSArray *)values withValuesInArray:(NSArray *)newValues;
 - (NSString*)stringByDeletingSuffix:(NSString *)suffix;
 - (NSString*)stringByDeletingPrefix:(NSString *)prefix;
-- (BOOL)stringContainsValueFromArray:(NSArray *)theValues;
+- (BOOL)stringContainsValueFromArray:(NSArray<NSString*> *)theValues;
 - (BOOL)isEqualToStringCaseInsensitive:(NSString *)str;
 
 // variants with caseSensitive option
@@ -35,7 +35,7 @@
 - (NSString*)stringFromStringsFileFormat;  // reverse of above
 - (NSString*)stringPairInStringsFileFormat:(NSString*)right addNewLine:(BOOL)addNewLine;
 
-- (NSArray*)linesFromString:(NSString**)outRemainder;
+- (NSArray<NSString*>*)linesFromString:(NSString**)outRemainder;
 - (NSString*)getFirstLine;
 // notInQuotes YES if your not going to quote the string for the terminal
 - (NSString*)stringWithShellCharactersEscaped:(BOOL)notInQuotes;
@@ -65,8 +65,8 @@
 - (NSString*)stringByDecryptingString;
 - (NSString*)stringByEncryptingString;
 
-- (BOOL)FSRef:(FSRef*)fsRef createFileIfNecessary:(BOOL)createFile;
-- (BOOL)FSSpec:(FSSpec*)fsSpec createFileIfNecessary:(BOOL)createFile;
+- (BOOL)FSRef:(FSRef*)fsRef createFileIfNecessary:(BOOL)createFile API_DEPRECATED("Not supported", macos(10.0,10.9));
+- (BOOL)FSSpec:(FSSpec*)fsSpec createFileIfNecessary:(BOOL)createFile API_DEPRECATED("Not supported", macos(10.0,10.9));
 
 - (NSString*)URLEncodedString;
 

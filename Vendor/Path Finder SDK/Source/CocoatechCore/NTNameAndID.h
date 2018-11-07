@@ -15,17 +15,18 @@
     NSString *mName;
 }
 
-+ (NTNameAndID*)nameAndID:(NSString*)name identifier:(int)identifier;
++ (instancetype)nameAndID:(NSString*)name identifier:(int)identifier;
+- (instancetype)init;
 
-- (int)identifier;
-- (NSNumber*)identifierNumber;
-- (NSString*)name;
+@property (readonly) int identifier;
+@property (readonly, retain) NSNumber *identifierNumber;
+@property (readonly, copy) NSString *name;
 
 @end
 
 @interface NTNameAndID (Utilities)
 
-+ (NSArray*)names:(NSArray*)nameIDArray;
-+ (NSArray*)identifiers:(NSArray*)nameIDArray;
++ (NSArray<NSString*>*)names:(NSArray<NTNameAndID*>*)nameIDArray;
++ (NSArray<NSNumber*>*)identifiers:(NSArray<NTNameAndID*>*)nameIDArray;
 
 @end

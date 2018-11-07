@@ -12,7 +12,7 @@
 @implementation NSArray (NTExtensions)
 
 // not very efficient, but useful when your not dealing with a mutable array and need to make an ocasional change
-- (NSArray*)arrayByReplacingObjectAtIndex:(int)index withObject:(id)newItem;
+- (NSArray*)arrayByReplacingObjectAtIndex:(NSInteger)index withObject:(id)newItem;
 {
 	NSMutableArray *result = [NSMutableArray arrayWithArray:self];
 	
@@ -50,19 +50,19 @@
 
 - (NSArray*)arrayByRemovingDuplicates;  // returns same pointer if no changes needed
 {
-	NSMutableSet* set = [NSMutableSet set];
+	NSMutableOrderedSet* set = [NSMutableOrderedSet orderedSetWithCapacity:self.count];
 	BOOL foundDuplicates = NO;
 	
 	for (id obj in self)
 	{
-		if ([set member:obj] != nil)
+		if ([set containsObject:obj])
 			foundDuplicates = YES;
 		else
 			[set addObject:obj];
 	}
 	
 	if (foundDuplicates)
-		return [set allObjects];
+		return [set array];
 	
 	return self;
 }

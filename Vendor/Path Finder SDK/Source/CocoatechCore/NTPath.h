@@ -17,14 +17,15 @@
     UInt8* mv_UTF8Path;
 }
 
-- (id)initWithPath:(NSString*)path;
-- (id)initWithFileSystemPath:(const char*)fileSystemPath length:(int)length;
+- (instancetype)initWithPath:(NSString*)path;
+- (instancetype)initWithFileSystemPath:(const char*)fileSystemPath length:(int)length;
 
-+ (id)pathWithPath:(NSString*)path;
++ (instancetype)pathWithPath:(NSString*)path;
 
 - (NSString*)path;
-- (const char *)fileSystemPath;
-- (const UInt8 *)UTF8Path;
+- (const char *)fileSystemPath NS_RETURNS_INNER_POINTER;
+- (const char *)fileSystemRepresentation NS_RETURNS_INNER_POINTER;
+- (const UInt8 *)UTF8Path NS_RETURNS_INNER_POINTER;
 
 - (NSString*)name;
 - (NSString*)parentPath;

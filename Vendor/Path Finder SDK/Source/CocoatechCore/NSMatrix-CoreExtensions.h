@@ -12,14 +12,14 @@
 @interface NSMatrix (CoreExtensions)
 
 - (NSRect)rectOfCell:(NSCell*)cell;
-- (NSRect)rectOfSelectedCells;
+@property (readonly) NSRect rectOfSelectedCells;
 - (NSRect)rectOfCells:(NSArray*)cells;
 - (BOOL)isCellSelected:(NSCell*)cell;
-- (NSInteger)numberOfSelectedCells;
+@property (readonly) NSInteger numberOfSelectedCells;
 
 	// returns NSNotFound if no row selected
-- (NSUInteger)firstSelectedRow;
-- (NSUInteger)lastSelectedRow;
+@property (readonly) NSUInteger firstSelectedRow;
+@property (readonly) NSUInteger lastSelectedRow;
 - (NSIndexSet *)selectedIndexes;
 
 - (NTCoordinate)coordinateAtPoint:(NSPoint)point;

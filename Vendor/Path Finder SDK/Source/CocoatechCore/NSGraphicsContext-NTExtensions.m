@@ -21,9 +21,9 @@
 }
 
 // rotate graphics context state before drawing
-+ (void)rotateContext:(float)degrees inRect:(NSRect)inRect;
++ (void)rotateContext:(CGFloat)degrees inRect:(NSRect)inRect;
 {
-	float angle = [self radians:degrees];
+	CGFloat angle = [self radians:degrees];
 	NSGraphicsContext *currentContext;
 	CGContextRef graphicsContext;
 	

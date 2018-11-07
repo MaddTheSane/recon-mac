@@ -11,12 +11,10 @@
 #import "NSImage-NTExtensions.h"
 #import "NTGradient.h"
 
-@interface NTGradientImage (Private)
-- (int)imageHeight;
-- (void)setImageHeight:(int)theImageHeight;
+@interface NTGradientImage ()
+@property (nonatomic) int imageHeight;
 
-- (NSImage *)image;
-- (void)setImage:(NSImage *)theImage;
+@property (nonatomic, retain) NSImage *image;
 @end
 
 static const int kImageWidth = 10;
@@ -52,7 +50,7 @@ static const int kImageWidth = 10;
     [super dealloc];
 }
 
-- (void)drawInRect:(NSRect)rect rotation:(float)rotation;
+- (void)drawInRect:(NSRect)rect rotation:(CGFloat)rotation;
 {
 	SGS;
 	[NSGraphicsContext rotateContext:rotation inRect:rect];			
@@ -77,7 +75,7 @@ static const int kImageWidth = 10;
 	}
 }
 
-- (void)drawInPath:(NSBezierPath*)path inRect:(NSRect)inRect rotation:(float)rotation;
+- (void)drawInPath:(NSBezierPath*)path inRect:(NSRect)inRect rotation:(CGFloat)rotation;
 {
 	SGS;
 	[NSGraphicsContext rotateContext:rotation inRect:inRect];			
@@ -106,10 +104,7 @@ static const int kImageWidth = 10;
 //---------------------------------------------------------- 
 //  gradient 
 //---------------------------------------------------------- 
-- (NTGradient *)gradient
-{
-    return mv_gradient; 
-}
+@synthesize gradient=mv_gradient;
 
 - (void)setGradient:(NTGradient *)theGradient
 {
@@ -125,10 +120,7 @@ static const int kImageWidth = 10;
 //---------------------------------------------------------- 
 //  color 
 //---------------------------------------------------------- 
-- (NSColor *)color
-{
-    return mv_color; 
-}
+@synthesize color=mv_color;
 
 - (void)setColor:(NSColor *)theColor
 {
@@ -144,10 +136,7 @@ static const int kImageWidth = 10;
 //---------------------------------------------------------- 
 //  backColor 
 //---------------------------------------------------------- 
-- (NSColor *)backColor
-{
-    return mBackColor; 
-}
+@synthesize backColor=mBackColor;
 
 - (void)setBackColor:(NSColor *)theBackColor
 {
@@ -160,17 +149,10 @@ static const int kImageWidth = 10;
     }
 }
 
-@end
-
-@implementation NTGradientImage (Private)
-
 //---------------------------------------------------------- 
 //  imageHeight 
 //---------------------------------------------------------- 
-- (int)imageHeight
-{
-    return mv_imageHeight;
-}
+@synthesize imageHeight=mv_imageHeight;
 
 - (void)setImageHeight:(int)theImageHeight
 {
@@ -192,13 +174,7 @@ static const int kImageWidth = 10;
     return mv_image; 
 }
 
-- (void)setImage:(NSImage *)theImage
-{
-    if (mv_image != theImage) {
-        [mv_image release];
-        mv_image = [theImage retain];
-    }
-}
+@synthesize image=mv_image;
 
 @end
 

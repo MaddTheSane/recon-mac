@@ -11,7 +11,8 @@
 #import "NSWindow-NTExtensions.h"
 #import "NSView-CoreExtensions.h"
 
-@interface NTBoxView (Private)
+@interface NTBoxView ()
+- (void)windowStateChangedNotification:(NSNotification*)notification;
 @end
 
 @implementation NTBoxView
@@ -43,15 +44,7 @@
 //---------------------------------------------------------- 
 //  frameType 
 //---------------------------------------------------------- 
-- (NTFrameType)frameType
-{
-    return mv_frameType;
-}
-
-- (void)setFrameType:(NTFrameType)theFrameType
-{
-    mv_frameType = theFrameType;
-}
+@synthesize frameType=mv_frameType;
 
 - (NSRect)contentBounds;
 {
@@ -136,10 +129,6 @@
 		NSFrameRectWithWidth(result, 1);
 	}
 }
-
-@end
-
-@implementation NTBoxView (Private)
 
 - (void)windowStateChangedNotification:(NSNotification*)notification;
 {

@@ -28,11 +28,30 @@
 - (NSEnumerator*)safeKeyEnumerator;
 - (NSEnumerator*)safeObjectEnumerator;
 
-- (unsigned)safeCount;
+@property (readonly) NSUInteger safeCount;
 
-- (NSString*)safeKeyForObjectIdenticalTo:(id)anObject;
+- (id)safeKeyForObjectIdenticalTo:(id)anObject;
 
 @end
 
-@interface NSMutableDictionary (ThreadSafe) <NSMutableDictionaryThreadSafeProtocol>
+@interface NSMutableDictionary<KeyType, ObjectType> (ThreadSafe) <NSMutableDictionaryThreadSafeProtocol>
+- (ObjectType)safeObjectForKey:(KeyType)aKey;
+
+- (void)safeRemoveObjectForKey:(KeyType)aKey;
+- (void)safeRemoveObjectsForKeys:(NSArray<KeyType>*)keys;
+- (void)safeRemoveAllObjects;
+- (void)safeRemoveObject:(ObjectType)anObject;
+- (void)safeRemoveObjects:(NSArray<ObjectType>*)objects;
+
+- (void)safeSetObject:(ObjectType)anObject
+               forKey:(KeyType)aKey;
+
+// returns a copy of the array
+- (NSArray<ObjectType>*)safeAllValues;
+- (NSArray<KeyType>*)safeAllKeys;
+
+- (NSEnumerator<KeyType>*)safeKeyEnumerator;
+- (NSEnumerator<ObjectType>*)safeObjectEnumerator;
+
+- (KeyType)safeKeyForObjectIdenticalTo:(ObjectType)anObject;
 @end

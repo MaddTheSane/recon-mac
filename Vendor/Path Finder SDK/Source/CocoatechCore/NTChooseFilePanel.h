@@ -8,14 +8,14 @@
 
 #import <Cocoa/Cocoa.h>
 
-typedef enum
+typedef NS_ENUM(NSInteger, ChooseFileTypeEnum)
 {
     kApplicationFileType,
     kImageFileType,
     kTextFileType,
     kGenericFileType,
 	kFilesAndFoldersType
-} ChooseFileTypeEnum;
+};
 
 // this will autodelete itself when done.
 @interface NTChooseFilePanel : NSObject
@@ -30,7 +30,7 @@ typedef enum
 + (void)openFile:(NSString*)startPath window:(NSWindow*)window target:(id)target selector:(SEL)inSelector fileType:(ChooseFileTypeEnum)fileType;
 + (void)openFile:(NSString*)startPath window:(NSWindow*)window target:(id)target selector:(SEL)inSelector fileType:(ChooseFileTypeEnum)fileType showInvisibleFiles:(BOOL)showInvisibleFiles;
 
-- (NSString *)path;
-- (BOOL)userClickedOK;
+@property (readonly, copy) NSString *path;
+@property (readonly) BOOL userClickedOK;
 
 @end

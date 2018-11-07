@@ -25,18 +25,13 @@
 + (NTGradientImage*)gradientImage:(NTGradient*)gradient color:(NSColor*)color backColor:(NSColor*)backColor;
 
 - (void)drawInRect:(NSRect)rect;
-- (void)drawInRect:(NSRect)rect rotation:(float)rotation;
+- (void)drawInRect:(NSRect)rect rotation:(CGFloat)rotation;
 - (void)drawInPath:(NSBezierPath*)path;
 - (void)drawInPath:(NSBezierPath*)path inRect:(NSRect)inRect;
-- (void)drawInPath:(NSBezierPath*)path inRect:(NSRect)inRect rotation:(float)rotation;
+- (void)drawInPath:(NSBezierPath*)path inRect:(NSRect)inRect rotation:(CGFloat)rotation;
 
-- (NTGradient *)gradient;
-- (void)setGradient:(NTGradient *)theGradient;
-
-- (NSColor *)color;
-- (void)setColor:(NSColor *)theColor;
-
-- (NSColor *)backColor;
-- (void)setBackColor:(NSColor *)theBackColor;
+@property (nonatomic, retain) NTGradient *gradient;
+@property (nonatomic, retain) NSColor *color;
+@property (nonatomic, retain) NSColor *backColor;
 
 @end

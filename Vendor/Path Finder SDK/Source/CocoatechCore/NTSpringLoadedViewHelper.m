@@ -13,13 +13,12 @@
 @interface NTSpringLoadedViewHelper (Protocols) <NTSpaceKeyPollDelegate>
 @end
 
-@interface NTSpringLoadedViewHelper (Private)
-- (id<NTSpringLoadedViewHelperDelegateProtocol>)delegate;
-- (void)setDelegate:(id<NTSpringLoadedViewHelperDelegateProtocol>)theDelegate;
+@interface NTSpringLoadedViewHelper ()
+@property (assign) id<NTSpringLoadedViewHelperDelegateProtocol> delegate;
 - (void)performSpringAction;
 
-- (BOOL)springLoadedRunning;
-- (void)setSpringLoadedRunning:(BOOL)flag;
+@property BOOL springLoadedRunning;
+- (void)springLoadedSelector:(NSNumber*)springNumber;
 @end
 
 @implementation NTSpringLoadedViewHelper
@@ -63,7 +62,7 @@
 		
 		[self.spaceKeyPoll start];
 
-		[self performSelector:@selector(springLoadedSelector:) withObject:[NSNumber numberWithInt:0] afterDelay:.25 inModes:[NSArray arrayWithObjects:NSDefaultRunLoopMode, NSEventTrackingRunLoopMode, NSModalPanelRunLoopMode , nil]];
+		[self performSelector:@selector(springLoadedSelector:) withObject:@0 afterDelay:.25 inModes:@[NSDefaultRunLoopMode, NSEventTrackingRunLoopMode, NSModalPanelRunLoopMode]];
 	}
 }
 
@@ -78,10 +77,6 @@
 		[self safeCancelPreviousPerformRequests];
 	}
 }
-
-@end
-
-@implementation NTSpringLoadedViewHelper (Private)
 
 - (void)springLoadedSelector:(NSNumber*)springNumber;
 {
@@ -111,29 +106,12 @@
 //---------------------------------------------------------- 
 //  delegate 
 //---------------------------------------------------------- 
-- (id<NTSpringLoadedViewHelperDelegateProtocol>)delegate
-{
-    return mDelegate; 
-}
-
-- (void)setDelegate:(id<NTSpringLoadedViewHelperDelegateProtocol>)theDelegate
-{
-    if (mDelegate != theDelegate)
-        mDelegate = theDelegate;  // not retained
-}
+@synthesize delegate=mDelegate;
 
 //---------------------------------------------------------- 
 //  springLoadedRunning 
 //---------------------------------------------------------- 
-- (BOOL)springLoadedRunning
-{
-    return mSpringLoadedRunning;
-}
-
-- (void)setSpringLoadedRunning:(BOOL)flag
-{
-    mSpringLoadedRunning = flag;
-}
+@synthesize springLoadedRunning=mSpringLoadedRunning;
 
 - (void)performSpringAction;
 {

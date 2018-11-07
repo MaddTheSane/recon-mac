@@ -10,7 +10,5 @@
 
 
 @interface NTEnablingTextFieldCell : NSTextFieldCell
-{
-}
 
 @end

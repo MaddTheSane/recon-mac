@@ -10,27 +10,27 @@
 
 @interface NSEvent (Utilities)
 
-+ (BOOL)isMouseButtonDown;
+@property (class, readonly, getter=isMouseButtonDown) BOOL mouseButtonDown;
 
 // look at the state of the hardware
-+ (BOOL)controlKeyDownNow;
-+ (BOOL)optionKeyDownNow;
-+ (BOOL)commandKeyDownNow;
-+ (BOOL)shiftKeyDownNow;
-+ (BOOL)spaceKeyDownNow;
-+ (BOOL)capsLockDownNow;
-+ (unsigned)carbonModifierFlagsToCocoaModifierFlags:(unsigned)aModifierFlags;
+@property (class, readonly) BOOL controlKeyDownNow;
+@property (class, readonly) BOOL optionKeyDownNow;
+@property (class, readonly) BOOL commandKeyDownNow;
+@property (class, readonly) BOOL shiftKeyDownNow;
+@property (class, readonly) BOOL spaceKeyDownNow;
+@property (class, readonly) BOOL capsLockDownNow;
++ (NSEventModifierFlags)carbonModifierFlagsToCocoaModifierFlags:(unsigned)aModifierFlags;
 
 // a simple way of looking at the event modifier flags
-- (BOOL)modifierIsDown;
-- (BOOL)controlKeyDown;
-- (BOOL)optionKeyDown;
-- (BOOL)commandKeyDown;
-- (BOOL)shiftKeyDown;
+@property (readonly) BOOL modifierIsDown;
+@property (readonly) BOOL controlKeyDown;
+@property (readonly) BOOL optionKeyDown;
+@property (readonly) BOOL commandKeyDown;
+@property (readonly) BOOL shiftKeyDown;
 
 // option key or control key but not both
-- (BOOL)optionXOrCommandKeyDown;
-- (BOOL)openInNewWindowEvent;  // command key down
+@property (readonly) BOOL optionXOrCommandKeyDown;
+@property (readonly) BOOL openInNewWindowEvent;  // command key down
 
     // does not dequeue the mouseUp event
 // pass nil for timeout to loop forever making sure that mouse is down so it doesn't endless loop
@@ -38,26 +38,26 @@
 
 // these examine clickCount%2 so the 3rd click becomes a single click and the 4th becomes another double click
 // you have to do this if the user clicks 4 times expecting events 1,2,1,2 rather than 1,2,3,4
-- (BOOL)isSingleClick;
-- (BOOL)isDoubleClick;
+@property (readonly, getter=isSingleClick) BOOL singleClick;
+@property (readonly, getter=isDoubleClick) BOOL doubleClick;
 
-- (BOOL)isArrowEvent;
-- (BOOL)isLeftArrowEvent;
-- (BOOL)isRightArrowEvent;
-- (BOOL)isUpArrowEvent;
-- (BOOL)isDownArrowEvent;
+@property (readonly, getter=isArrowEvent) BOOL arrowEvent;
+@property (readonly, getter=isLeftArrowEvent) BOOL leftArrowEvent;
+@property (readonly, getter=isRightArrowEvent) BOOL rightArrowEvent;
+@property (readonly, getter=isUpArrowEvent) BOOL upArrowEvent;
+@property (readonly, getter=isDownArrowEvent) BOOL downArrowEvent;
 
-- (BOOL)isHomeKeyEvent;
-- (BOOL)isEndKeyEvent;
+@property (readonly, getter=isHomeKeyEvent) BOOL homeKeyEvent;
+@property (readonly, getter=isEndKeyEvent) BOOL endKeyEvent;
 
-- (BOOL)isPageUpKeyEvent;
-- (BOOL)isPageDownKeyEvent;
+@property (readonly, getter=isPageUpKeyEvent) BOOL pageUpKeyEvent;
+@property (readonly, getter=isPageDownKeyEvent) BOOL pageDownKeyEvent;
 
-- (BOOL)isDeleteKeyEvent;
-- (BOOL)isReturnKeyEvent;
-- (BOOL)isEscKeyEvent;
-- (BOOL)isTabKeyEvent;
-- (BOOL)isShiftTabKeyEvent;
+@property (readonly, getter=isDeleteKeyEvent) BOOL deleteKeyEvent;
+@property (readonly, getter=isReturnKeyEvent) BOOL returnKeyEvent;
+@property (readonly, getter=isEscKeyEvent) BOOL escKeyEvent;
+@property (readonly, getter=isTabKeyEvent) BOOL tabKeyEvent;
+@property (readonly, getter=isShiftTabKeyEvent) BOOL shiftTabKeyEvent;
 
 - (BOOL)characterIsDown:(unichar)theCharacter;
 @end

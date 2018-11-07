@@ -33,6 +33,6 @@
 		  dimmedImage:(NSImage*)dimmedImage;
 
 // returns the image size, make sure the button is at least this big so it doesn't scale
-- (NSSize)size;
+@property (readonly) NSSize size;
 
 @end

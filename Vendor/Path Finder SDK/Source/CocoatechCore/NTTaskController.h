@@ -8,12 +8,14 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class NTTaskController;
+
 // to convert output data to a string
 // NSString* outString = [[[NSString alloc] initWithData:output encoding:NSUTF8StringEncoding] autorelease];
 @protocol NTTaskControllerDelegateProtocol <NSObject>
-- (void)task_handleTask:(id)task output:(NSData*)output;
-- (void)task_handleTask:(id)task errors:(NSData*)output;
-- (void)task_handleTask:(id)task finished:(NSNumber*)result;
+- (void)task_handleTask:(NTTaskController*)task output:(NSData*)output;
+- (void)task_handleTask:(NTTaskController*)task errors:(NSData*)output;
+- (void)task_handleTask:(NTTaskController*)task finished:(NSNumber*)result;
 @end
 
 // a tool can be run synchonously or asynchronously
@@ -48,14 +50,13 @@
 - (void)runTask:(BOOL)sync toolPath:(NSString*)toolPath directory:(NSString*)currentDirectory withArgs:(NSArray*)args;
 - (void)runTask:(BOOL)sync toolPath:(NSString*)toolPath directory:(NSString*)currentDirectory withArgs:(NSArray*)args input:(NSData*)input;
 
-- (BOOL)taskResult;
-- (BOOL)isRunning;
+@property (readonly) BOOL taskResult;
+@property (readonly, getter=isRunning) BOOL running;
 - (void)stopTask;
 
 - (void)setBufferOutputToDelegateWithDelay:(BOOL)set;
-- (BOOL)bufferOutputToDelegateWithDelay;
-- (BOOL)readTilEndOfFile;
-- (void)setReadTilEndOfFile:(BOOL)flag;
+@property BOOL bufferOutputToDelegateWithDelay;
+@property BOOL readTilEndOfFile;
 
     // pass nil for directory if not needed
 + (BOOL)synchronousTask:(id<NTTaskControllerDelegateProtocol>)delegate toolPath:(NSString*)toolPath directory:(NSString*)currentDirectory withArgs:(NSArray*)args;

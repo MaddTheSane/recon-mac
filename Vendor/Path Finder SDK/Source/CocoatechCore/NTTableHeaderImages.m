@@ -9,7 +9,7 @@
 #import "NTTableHeaderImages.h"
 #import "NSGraphicsContext-NTExtensions.h"
 
-@interface NTTableHeaderImages (Private)
+@interface NTTableHeaderImages ()
 - (void)drawButton:(CGContextRef)cgContext
 			  kind:(ThemeButtonKind)inKind
 			  rect:(NSRect)inBoxRect
@@ -33,7 +33,7 @@ NTSINGLETONOBJECT_STORAGE;
     [super dealloc];
 }
 
-- (float)height;
+- (CGFloat)height;
 {
 	return 17.0;
 }
@@ -62,10 +62,6 @@ NTSINGLETONOBJECT_STORAGE;
 	}
 	RGS;
 }
-
-@end
-
-@implementation NTTableHeaderImages (Private)
 
 - (void)drawButton:(CGContextRef)cgContext
 			  kind:(ThemeButtonKind)inKind

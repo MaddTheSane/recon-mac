@@ -9,7 +9,7 @@
 #import "NTPath.h"
 #import "NSString-Utilities.h"
 
-@interface NTPath (Private)
+@interface NTPath ()
 - (void)setUTF8Path:(const char *)cstr length:(int)length;
 - (void)setFileSystemPath:(const char *)cstr length:(int)length;
 - (void)setPath:(NSString *)thePath;
@@ -76,6 +76,11 @@
 
 - (const char *)fileSystemPath;
 {
+    return [self fileSystemRepresentation];
+}
+
+- (const char *)fileSystemRepresentation
+{
 	@synchronized(self) {
 		if (!mv_fileSystemPath)
 		{
@@ -119,10 +124,6 @@
 	
     return mv_name; 
 }
-
-@end
-
-@implementation NTPath (Private)
 
 - (void)setUTF8Path:(const char *)cstr length:(int)length;
 {

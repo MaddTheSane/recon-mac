@@ -48,15 +48,7 @@
 	return copy;
 }
 
-- (id)target
-{
-    return mv_target; 
-}
-
-- (void)setTarget:(id)theTarget
-{
-	mv_target = theTarget; // not retained
-}
+@synthesize target=mv_target;
 
 - (SEL)action
 {

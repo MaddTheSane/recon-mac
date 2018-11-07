@@ -19,7 +19,7 @@
 
 // convert to NSDate
 - (NSDate*)date;
-- (struct timespec)timespec;
+@property (readonly) struct timespec timespec;
 
 - (NSComparisonResult)compare:(NTTime *)right;
 - (NSComparisonResult)compareSeconds:(NTTime *)right;  // less accurate compare

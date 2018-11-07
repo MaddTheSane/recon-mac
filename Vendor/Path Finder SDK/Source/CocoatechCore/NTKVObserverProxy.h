@@ -16,7 +16,7 @@
 
 @interface NTKVObserverProxy : NSObject
 {
-	id<NTKVObserverProxyDelegateProtocol> delegate;
+	__unsafe_unretained id<NTKVObserverProxyDelegateProtocol> delegate;
 }
 
 @property (assign) id<NTKVObserverProxyDelegateProtocol> delegate;  // owner must clear before release

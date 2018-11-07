@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 
 
+NS_CALENDAR_DEPRECATED(10_4, 10_10, 2_0, 8_0, "Use NSCalendar and NSDateComponents and NSDateFormatter instead")
 @interface NSCalendarDate (NTExtensions)
 
 + (NSCalendarDate*)today; // begining of day

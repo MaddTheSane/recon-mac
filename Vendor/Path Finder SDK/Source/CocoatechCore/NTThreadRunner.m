@@ -10,21 +10,17 @@
 #import "NTThreadHelper.h"
 #import "NSThread-NTExtensions.h"
 
-@interface NTThreadRunnerParam (Private)
-- (void)setRunner:(NTThreadRunner *)theRunner;
+@interface NTThreadRunnerParam ()
+@property (readwrite, assign) NTThreadRunner *runner;
 @end
 
-@interface NTThreadRunner (Private)
-- (id<NTThreadRunnerDelegateProtocol>)delegate;
-- (void)setDelegate:(id<NTThreadRunnerDelegateProtocol>)theDelegate;
+@interface NTThreadRunner ()
+@property (assign) id<NTThreadRunnerDelegateProtocol> delegate;
+@property (readwrite, retain) NTThreadHelper *threadHelper;
 
-//- (NTThreadHelper *)threadHelper;
-- (void)setThreadHelper:(NTThreadHelper *)theThreadHelper;
+@property float priority;
 
-- (float)priority;
-- (void)setPriority:(float)thePriority;
-
-- (void)setParam:(NTThreadRunnerParam *)theParam;
+@property (nonatomic, readwrite, retain) NTThreadRunnerParam *param;
 
 @end
 
@@ -52,10 +48,7 @@
 	[[self threadHelper] resume];
 }
 
-- (NTThreadHelper*)threadHelper;
-{
-	return mv_threadHelper;
-}
+@synthesize threadHelper=mv_threadHelper;
 
 + (NTThreadRunner*)thread:(NTThreadRunnerParam*)param
 				 priority:(float)priority
@@ -76,14 +69,7 @@
 //---------------------------------------------------------- 
 //  param 
 //---------------------------------------------------------- 
-- (NTThreadRunnerParam *)param
-{
-    return mv_param; 
-}
-
-@end
-
-@implementation NTThreadRunner (Thread)
+@synthesize param=mv_param;
 
 - (void)threadProc:(NTThreadRunnerParam*)param;
 {
@@ -104,10 +90,6 @@
 	[[self delegate] threadRunner_complete:self];
 }
 
-@end
-
-@implementation NTThreadRunner (Private)
-
 - (void)setParam:(NTThreadRunnerParam *)theParam
 {
     if (mv_param != theParam) {
@@ -123,46 +105,12 @@
 //---------------------------------------------------------- 
 //  delegate 
 //---------------------------------------------------------- 
-- (id<NTThreadRunnerDelegateProtocol>)delegate
-{
-    return mv_delegate; 
-}
-
-- (void)setDelegate:(id<NTThreadRunnerDelegateProtocol>)theDelegate
-{
-    if (mv_delegate != theDelegate) {
-        mv_delegate = theDelegate;
-    }
-}
-
-//---------------------------------------------------------- 
-//  threadHelper 
-//---------------------------------------------------------- 
-//- (NTThreadHelper *)threadHelper
-//{
-//    return mv_threadHelper;
-//}
-
-- (void)setThreadHelper:(NTThreadHelper *)theThreadHelper
-{
-    if (mv_threadHelper != theThreadHelper) {
-        [mv_threadHelper release];
-        mv_threadHelper = [theThreadHelper retain];
-    }
-}
+@synthesize delegate=mv_delegate;
 
 //---------------------------------------------------------- 
 //  priority 
 //---------------------------------------------------------- 
-- (float)priority
-{
-    return mv_priority;
-}
-
-- (void)setPriority:(float)thePriority
-{
-    mv_priority = thePriority;
-}
+@synthesize priority=mv_priority;
 
 @end
 
@@ -182,10 +130,7 @@
 //---------------------------------------------------------- 
 //  threadRunner 
 //---------------------------------------------------------- 
-- (NTThreadRunner *)runner
-{
-    return mv_runner; 
-}
+@synthesize runner=mv_runner;
 
 //---------------------------------------------------------- 
 //  threadRunner 
@@ -204,17 +149,6 @@
 - (BOOL)doThreadProc;
 {
 	return NO;
-}
-
-@end
-
-@implementation NTThreadRunnerParam (Private)
-
-- (void)setRunner:(NTThreadRunner *)theRunner
-{
-    if (mv_runner != theRunner) {
-        mv_runner = theRunner;  // not retained, runner owns us
-    }
 }
 
 @end

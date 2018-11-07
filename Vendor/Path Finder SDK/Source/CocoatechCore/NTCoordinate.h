@@ -13,14 +13,14 @@ typedef NSPoint NTCoordinate;
 
 extern const NTCoordinate NTInvalidCoordinate;
 
-FOUNDATION_STATIC_INLINE NSPoint NTMakeCoordinate(float x, float y) {
+FOUNDATION_STATIC_INLINE NSPoint NTMakeCoordinate(CGFloat x, CGFloat y) {
     NTCoordinate p;
     p.x = x;
     p.y = y;
     return p;
 }
 
-	FOUNDATION_STATIC_INLINE BOOL NTEqualCoordinates(NTCoordinate aPoint, NTCoordinate bPoint) {
+FOUNDATION_STATIC_INLINE BOOL NTEqualCoordinates(NTCoordinate aPoint, NTCoordinate bPoint) {
     return ((aPoint.x == bPoint.x) && (aPoint.y == bPoint.y));
 }
 

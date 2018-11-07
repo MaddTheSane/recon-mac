@@ -13,25 +13,25 @@
 #import "NTColorSet.h"
 #import "NSImage-NTExtensions.h"
 
-@interface NTImageButton (Private)
-- (BOOL)mouseOver;
-- (void)setMouseOver:(BOOL)newMouseOver;
-- (void)buildButton:(NSImage*)image 
+@interface NTImageButton ()
+@property (nonatomic) BOOL mouseOver;
+- (void)buildButton:(NSImage*)image
 	 mouseOverImage:(NSImage*)mouseOverImage 
 		dimmedImage:(NSImage*)dimmedImage;
 
-- (NSImage *)mouseOverImage;
-- (void)setMouseOverImage:(NSImage *)theMouseOverImage;
+@property (nonatomic, copy) NSImage *mouseOverImage;
 - (void)installMouseTracker;
 
 - (void)displayMenu;
+
+- (void)windowStateChangedNotification:(NSNotification*)notification;
 @end
 
 @implementation NTImageButton
 
 @synthesize menu, clickedImage, normalImage, dimmedImage;
 
-- (id)initWithFrame:(NSRect)frame;
+- (id)initWithFrame:(NSRect)frame
 {
     self = [super initWithFrame:frame];
 		
@@ -49,7 +49,7 @@
     return self;
 }
 
-- (void)dealloc;
+- (void)dealloc
 {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 
@@ -62,27 +62,27 @@
     [super dealloc];
 }
 
-- (void)windowStateChangedNotification:(NSNotification*)notification;
+- (void)windowStateChangedNotification:(NSNotification*)notification
 {
     // make sure the window is our window
     if ([notification object] == [self contentWindow])        
         [self setNeedsDisplay:YES];
 }
 
-- (NSSize)size;
+- (NSSize)size
 {
     return [[self normalImage] size];
 }
 
 + (NTImageButton*)button:(NSImage*)image 
-		  mouseOverImage:(NSImage*)mouseOverImage;
+		  mouseOverImage:(NSImage*)mouseOverImage
 {
 	return [self button:image mouseOverImage:mouseOverImage dimmedImage:nil];
 }
 
 + (NTImageButton*)button:(NSImage*)image 
 		  mouseOverImage:(NSImage*)mouseOverImage
-			 dimmedImage:(NSImage*)dimmedImage;
+			 dimmedImage:(NSImage*)dimmedImage
 {
 	NSRect buttonBounds = NSZeroRect;
 	buttonBounds.size = [image size];
@@ -93,7 +93,7 @@
     return [result autorelease];
 }
 
-- (void)drawRect:(NSRect)rect;
+- (void)drawRect:(NSRect)rect
 {
 	[super drawRect:rect];  // subclass can draw background if needed
 	
@@ -109,12 +109,12 @@
 	[image drawInRect:[self bounds] inView:self highlighted:[[self cell] isHighlighted] backgroundStyle:NSBackgroundStyleRaised];
 }
 
-- (BOOL)acceptsFirstMouse:(NSEvent *)theEvent;
+- (BOOL)acceptsFirstMouse:(NSEvent *)theEvent
 {
     return YES;
 }
 
-- (void)mouseDown:(NSEvent*)event;
+- (void)mouseDown:(NSEvent*)event
 {
 	if ([self menu])
 		[self displayMenu];
@@ -125,7 +125,7 @@
 	[self setMouseOver:NO];
 }
 
-- (void)rightMouseDown:(NSEvent*)event;
+- (void)rightMouseDown:(NSEvent*)event
 {
 	if ([self menu])
 		[self displayMenu];
@@ -133,16 +133,12 @@
 		[super rightMouseDown:event];
 }
 
-@end
-
-@implementation NTImageButton (Private)
-
-- (BOOL)mouseDownCanMoveWindow;
+- (BOOL)mouseDownCanMoveWindow
 {
 	return NO;
 }
 
-- (void)displayMenu;
+- (void)displayMenu
 {
 	[[self cell] setHighlighted:YES];
 	[[self menu] popupMenuBelowRect:[self bounds] inView:self];
@@ -152,16 +148,13 @@
 //---------------------------------------------------------- 
 //  mouseOverImage 
 //---------------------------------------------------------- 
-- (NSImage *)mouseOverImage
-{
-    return mMouseOverImage; 
-}
+@synthesize mouseOverImage=mMouseOverImage;
 
 - (void)setMouseOverImage:(NSImage *)theMouseOverImage
 {
     if (mMouseOverImage != theMouseOverImage) {
         [mMouseOverImage release];
-        mMouseOverImage = [theMouseOverImage retain];
+        mMouseOverImage = [theMouseOverImage copy];
 		
 		[mMouseOverImage setTemplate:NO];  // prevent from drawing black
     }
@@ -169,7 +162,7 @@
 
 - (void)buildButton:(NSImage*)theImage
 	 mouseOverImage:(NSImage*)theMouseOverImage
-		dimmedImage:(NSImage*)theDimmedImage;
+		dimmedImage:(NSImage*)theDimmedImage
 {
 	NTColorSet *colorSet = [NTColorSet standardSet];
 
@@ -191,12 +184,9 @@
 	[self setDimmedImage:theDimmedImage];
 }
 
-- (BOOL)mouseOver;
-{
-	return mv_mouseOver;
-}
+@synthesize mouseOver=mv_mouseOver;
 
-- (void)setMouseOver:(BOOL)newMouseOver;
+- (void)setMouseOver:(BOOL)newMouseOver
 {
 	if (newMouseOver != mv_mouseOver)
 	{
@@ -205,9 +195,9 @@
 	}
 }
 
-- (void)installMouseTracker;
+- (void)installMouseTracker
 {    
-	unsigned options = NSTrackingMouseEnteredAndExited | NSTrackingActiveInActiveApp | NSTrackingActiveInKeyWindow | NSTrackingInVisibleRect;
+	NSTrackingAreaOptions options = NSTrackingMouseEnteredAndExited | NSTrackingActiveInActiveApp | NSTrackingActiveInKeyWindow | NSTrackingInVisibleRect;
 		
 	if ([self mouseInRectNow])
 	{

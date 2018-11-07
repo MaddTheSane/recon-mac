@@ -9,19 +9,15 @@
 #import "NTChooseFilePanel.h"
 #import "NSSavePanel-NTExtensions.h"
 
-@interface NTChooseFilePanel (Private)
+@interface NTChooseFilePanel ()
 - (void)startPanel:(NSString*)startPath window:(NSWindow*)window fileType:(ChooseFileTypeEnum)fileType showInvisibleFiles:(BOOL)showInvisibleFiles;
 @end
 
-@interface NTChooseFilePanel (hidden)
-- (void)setPath:(NSString *)thePath;
-- (void)setUserClickedOK:(BOOL)flag;
-
-- (SEL)selector;
-- (void)setSelector:(SEL)theSelector;
-
-- (id)target;
-- (void)setTarget:(id)theTarget;
+@interface NTChooseFilePanel ()
+@property (readwrite, copy) NSString *path;
+@property (readwrite) BOOL userClickedOK;
+@property SEL selector;
+@property (retain) id target;
 @end
 
 @implementation NTChooseFilePanel
@@ -61,66 +57,22 @@
 //---------------------------------------------------------- 
 //  path 
 //---------------------------------------------------------- 
-- (NSString *)path
-{
-    return mPath; 
-}
-
-- (void)setPath:(NSString *)thePath
-{
-    if (mPath != thePath)
-    {
-        [mPath release];
-        mPath = [thePath retain];
-    }
-}
+@synthesize path=mPath;
 
 //---------------------------------------------------------- 
 //  selector 
 //---------------------------------------------------------- 
-- (SEL)selector
-{
-    return mSelector;
-}
-
-- (void)setSelector:(SEL)theSelector
-{
-    mSelector = theSelector;
-}
+@synthesize selector=mSelector;
 
 //---------------------------------------------------------- 
 //  target 
 //---------------------------------------------------------- 
-- (id)target
-{
-    return mTarget; 
-}
-
-- (void)setTarget:(id)theTarget
-{
-    if (mTarget != theTarget)
-    {
-        [mTarget release];
-        mTarget = [theTarget retain];
-    }
-}
+@synthesize target=mTarget;
 
 //---------------------------------------------------------- 
 //  userClickedOK 
 //---------------------------------------------------------- 
-- (BOOL)userClickedOK
-{
-    return mUserClickedOK;
-}
-
-- (void)setUserClickedOK:(BOOL)flag
-{
-    mUserClickedOK = flag;
-}
-
-@end
-
-@implementation NTChooseFilePanel (Private)
+@synthesize userClickedOK=mUserClickedOK;
 
 - (void)openPanelDidEnd:(NSOpenPanel *)sheet returnCode:(NSInteger)returnCode contextInfo:(__unused void *)contextInfo
 {
@@ -166,7 +118,7 @@
     }
     else
     {
-        int result = [op runModal];
+        NSModalResponse result = [op runModal];
         if (result == NSOKButton)
         {
             [self setUserClickedOK:YES];

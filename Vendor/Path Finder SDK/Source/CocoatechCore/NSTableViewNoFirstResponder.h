@@ -3,8 +3,6 @@
 #import <Cocoa/Cocoa.h>
 
 @interface NSTableViewNoFirstResponder : NSTableView
-{
-}
 
 @end
 

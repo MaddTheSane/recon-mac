@@ -27,7 +27,7 @@
 
 - (void)lockFocus;
 - (NSImage*)unlockFocus;
-- (NSImage*)unlockFocus:(BOOL)template;
+- (NSImage*)unlockFocus:(BOOL)asTemplate;
 
 - (NSBitmapImageRep*)imageRep;  // a copy of the imagerep added to image in unlockFocus
 

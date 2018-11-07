@@ -9,13 +9,13 @@
 #import <Cocoa/Cocoa.h>
 #import "NTSingletonObject.h"
 
-typedef enum
+typedef NS_ENUM(NSInteger, NTDateFormat)
 {
     kShortDate,
     kMediumDate,
     kLongDate,  
     kFullDate,   
-} NTDateFormat;
+};
 
 @interface NTDateFormatter : NTSingletonObject
 {
