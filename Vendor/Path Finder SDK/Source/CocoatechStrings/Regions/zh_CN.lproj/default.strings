@@ -1,4 +1,4 @@
-﻿"##RevealToolbarItemMessage##" = "打开一个 Finder 窗口并将此图标拖到 Finder 的工具栏。您随时可以在  Finder 中点按这个工具栏项切换到 Path Finder。";
+"##RevealToolbarItemMessage##" = "打开一个 Finder 窗口并将此图标拖到 Finder 的工具栏。您随时可以在  Finder 中点按这个工具栏项切换到 Path Finder。";
 "%@ available, %@ used" = "%@ 可用, %@ 已用";
 "%@, %@ free" = "%@, %@ 可用";
 "%d Applications" = "%d 个应用程序";

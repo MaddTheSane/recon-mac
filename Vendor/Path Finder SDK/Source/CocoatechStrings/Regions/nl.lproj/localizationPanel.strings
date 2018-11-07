@@ -1,4 +1,4 @@
-﻿"##INSTRUCTIONS##" = "1) Kies uw taal\n2) Klik \"Onvertaalde termen\" voor een te vertalen lijst\n2) Typ de Engelse term\n3) Typ de vertaling\n4) Druk op Return of klik op de knop \"Vertaal\" voor de vertaling\n5) Om te testen dient u Path Finder opnieuw te starten\n6) De vertaling wordt in CocoaTechStrings.framework geschreven.\n7) Om de vertaling op te sturen klik op de knop \"E-mail lokalisatie\". Dit comprimeert het Framework en verstuurt het naar Cocoatech.";
+"##INSTRUCTIONS##" = "1) Kies uw taal\n2) Klik \"Onvertaalde termen\" voor een te vertalen lijst\n2) Typ de Engelse term\n3) Typ de vertaling\n4) Druk op Return of klik op de knop \"Vertaal\" voor de vertaling\n5) Om te testen dient u Path Finder opnieuw te starten\n6) De vertaling wordt in CocoaTechStrings.framework geschreven.\n7) Om de vertaling op te sturen klik op de knop \"E-mail lokalisatie\". Dit comprimeert het Framework en verstuurt het naar Cocoatech.";
 "Close" = "Sluit";
 "Email Localization" = "E-mail vertaling";
 "English:" = "Engels:";

@@ -1,4 +1,4 @@
-﻿" bytes" = " byte";
+" bytes" = " byte";
 " of " = " van ";
 " was not found." = " niet gevonden.";
 "%@ named \"%@\" already exists in this location.  Do you want to replace it with the %@ you are moving?" = "%@ genaamd \"%@\" bestaat al op deze locatie. Wilt u het vervangen door %@ die u wilt verplaatsen?";

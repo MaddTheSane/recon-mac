@@ -1,4 +1,4 @@
-﻿" bytes" = " bytů";
+" bytes" = " bytů";
 " of " = " z ";
 " was not found." = " nebyla nalezena.";
 "%@ named \"%@\" already exists in this location.  Do you want to replace it with the %@ you are moving?" = "%@ se jménem \"%@\" již existuje.  Chcete ho opravdu přepsat %@ při přesunu?";

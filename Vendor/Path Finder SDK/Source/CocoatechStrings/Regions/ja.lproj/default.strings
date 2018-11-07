@@ -1,4 +1,4 @@
-﻿"##RevealToolbarItemMessage##" = "Finder のウインドウを開き、この項目を Finder のツールバーにドラッグします。このツールバー項目をクリックすると、いつでも Finder から Path Finder へスイッチできます。";
+"##RevealToolbarItemMessage##" = "Finder のウインドウを開き、この項目を Finder のツールバーにドラッグします。このツールバー項目をクリックすると、いつでも Finder から Path Finder へスイッチできます。";
 "%@ available, %@ used" = "%@ 空き、%@ 使用済み";
 "%@, %@ free" = "%@、%@ 空き";
 "%d Applications" = "%d アプリケーション";

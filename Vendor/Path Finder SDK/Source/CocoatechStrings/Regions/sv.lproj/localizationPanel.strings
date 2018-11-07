@@ -1,4 +1,4 @@
-﻿"##INSTRUCTIONS##" = "1) Choose your region\n2) Click \"View Unlocalized Strings\" for a list of string to localize\n2) Type in the English\n3) Type in the localization\n4) Type return or click the \"Localize\" button to set the localization\n5) To test, you must quit and relaunch the application\n6) The localized strings are written to the applications internal CocoaTechStrings.framework.\n7) To submit your localization, click the \"Email Localization\" button. This will compress the Framework and email it to Cocoatech.";
+"##INSTRUCTIONS##" = "1) Choose your region\n2) Click \"View Unlocalized Strings\" for a list of string to localize\n2) Type in the English\n3) Type in the localization\n4) Type return or click the \"Localize\" button to set the localization\n5) To test, you must quit and relaunch the application\n6) The localized strings are written to the applications internal CocoaTechStrings.framework.\n7) To submit your localization, click the \"Email Localization\" button. This will compress the Framework and email it to Cocoatech.";
 "Close" = "Stäng";
 "Email Localization" = "Maila översättning";
 "English:" = "Engelska:";

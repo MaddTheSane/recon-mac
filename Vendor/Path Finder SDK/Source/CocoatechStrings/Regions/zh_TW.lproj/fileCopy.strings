@@ -1,4 +1,4 @@
-﻿" bytes" = " 位元組";
+" bytes" = " 位元組";
 " of " = " / ";
 " was not found." = " 沒有找到。";
 "%@ named \"%@\" already exists in this location.  Do you want to replace it with the %@ you are moving?" = "%@ (名稱為“%@”) 已經存在於此位置。您是否想要以您正在搬移的 %@ 取代它？";

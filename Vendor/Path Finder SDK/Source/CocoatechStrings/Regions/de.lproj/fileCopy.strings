@@ -1,4 +1,4 @@
-﻿" bytes" = " Bytes";
+" bytes" = " Bytes";
 " of " = " von ";
 " was not found." = " wurde nicht gefunden.";
 "%@ named \"%@\" already exists in this location.  Do you want to replace it with the %@ you are moving?" = "%@ mit dem Namen \"%@\" existiert bereits an dieser Stelle. Wollen Sie es wirklich mit %@ ersetzen?";

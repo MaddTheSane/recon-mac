@@ -1,4 +1,4 @@
-﻿" bytes" = " 字节";
+" bytes" = " 字节";
 " of " = " / ";
 " was not found." = " 未找到。";
 "%@ named \"%@\" already exists in this location.  Do you want to replace it with the %@ you are moving?" = "%@ 名为 \"%@\" 的文件已经存在于该位置。您要用正在移动的 %@ 替换它吗？";

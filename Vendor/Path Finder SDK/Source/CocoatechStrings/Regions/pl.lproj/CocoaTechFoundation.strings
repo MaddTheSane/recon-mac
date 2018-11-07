@@ -1,4 +1,4 @@
-﻿" was not found." = " nie został znaleziony.";
+" was not found." = " nie został znaleziony.";
 "%@ named \"%@\" already exists in this location.  Do you want to replace it with the %@ you are moving?" = "%@ o nazwie \"%@\" już istnieje w tym miejscu.  Chcesz zastąpić go  %@ , który przenosisz?";
 "A newer item" = "Nowszy element";
 "An error occurred while deleting." = "Wystąpił błąd podczas kasowania.";

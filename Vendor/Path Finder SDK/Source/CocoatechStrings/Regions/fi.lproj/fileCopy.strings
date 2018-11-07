@@ -1,4 +1,4 @@
-﻿" bytes" = " tavua";
+" bytes" = " tavua";
 " of " = "/";
 " was not found." = " ei löytynyt.";
 "%@ named \"%@\" already exists in this location.  Do you want to replace it with the %@ you are moving?" = "%@ nimeltä \"%@\" sijaitsee jo tässä paikassa.  Haluatko korvata sen siirrettävällä %@?";

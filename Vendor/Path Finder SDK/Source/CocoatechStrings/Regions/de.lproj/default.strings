@@ -1,4 +1,4 @@
-﻿"##RevealToolbarItemMessage##" = "Öffnen Sie ein Finder Fenster und ziehen Sie dieses Icon in die Symbolleiste des Finders. Immer wenn Sie sich im Finder befinden, können Sie dieses Icon klicken um zum Path Finder zu wechseln.";
+"##RevealToolbarItemMessage##" = "Öffnen Sie ein Finder Fenster und ziehen Sie dieses Icon in die Symbolleiste des Finders. Immer wenn Sie sich im Finder befinden, können Sie dieses Icon klicken um zum Path Finder zu wechseln.";
 "%@ available, %@ used" = "%@ verfügbar, %@ belegt";
 "%@, %@ free" = "%@, %@ frei";
 "%d Applications" = "%d Anwendungen";

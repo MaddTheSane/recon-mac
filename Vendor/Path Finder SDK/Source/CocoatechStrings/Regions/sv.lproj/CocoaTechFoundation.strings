@@ -1,4 +1,4 @@
-﻿" bytes" = " byte";
+" bytes" = " byte";
 " of " = " av ";
 " was not found." = " hittades ej.";
 "%@ named \"%@\" already exists in this location.  Do you want to replace it with the %@ you are moving?" = "%@ med namnet \"%@\" existerar redan. Vill du ersätta det med objektet du flyttar?";

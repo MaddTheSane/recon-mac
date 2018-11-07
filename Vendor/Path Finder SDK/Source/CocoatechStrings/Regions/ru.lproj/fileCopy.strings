@@ -1,4 +1,4 @@
-﻿" bytes" = " байт";
+" bytes" = " байт";
 " of " = " из ";
 " was not found." = " не найдено.";
 "%@ named \"%@\" already exists in this location.  Do you want to replace it with the %@ you are moving?" = "%@ с именем \"%@\" уже существует в этой папке. Хотите ли Вы заменить его %@, который Вы перемещаете?";

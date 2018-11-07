@@ -1,4 +1,4 @@
-﻿" bytes" = " バイト";
+" bytes" = " バイト";
 " of " = " / ";
 " was not found." = " は見つかりませんでした。";
 "%@ named \"%@\" already exists in this location.  Do you want to replace it with the %@ you are moving?" = "“%2$@”という名前の %1$@ がこの場所にすでに存在しています。移動中の %3$@ で置き換えますか？";

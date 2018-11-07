@@ -1,4 +1,4 @@
-﻿"##RevealToolbarItemMessage##" = "Open a Finder window and drag this icon into the Finder's toolbar.  Anytime you find yourself in the Finder, click this toolbar item and switch to Path Finder.";
+"##RevealToolbarItemMessage##" = "Open a Finder window and drag this icon into the Finder's toolbar.  Anytime you find yourself in the Finder, click this toolbar item and switch to Path Finder.";
 "%@ available, %@ used" = "%@ vapaana, %@ käytetty";
 "%@, %@ free" = "%@, %@ vapaana";
 "%d Applications" = "%d ohjelmaa";
