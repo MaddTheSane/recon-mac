@@ -16,12 +16,12 @@
 
 - (BOOL)isSwitchButton;  // I have no idea why this is not public already
 {
-    NSButtonCell* cell = [self cell];
+	NSButtonCell* cell = [self cell];
 	
-    if ([cell respondsToSelector:@selector(_buttonType)])
-        return ([cell _buttonType] == NSSwitchButton);
+	if ([cell respondsToSelector:@selector(_buttonType)])
+		return ([cell _buttonType] == NSSwitchButton);
 	
-    return NO;
+	return NO;
 }
 
 @end
@@ -30,10 +30,10 @@
 
 - (BOOL)isSwitchButtonCell;  // I have no idea why this is not public already
 {	
-    if ([self respondsToSelector:@selector(_buttonType)])
-        return ([self _buttonType] == NSSwitchButton);
+	if ([self respondsToSelector:@selector(_buttonType)])
+		return ([self _buttonType] == NSSwitchButton);
 	
-    return NO;
+	return NO;
 }
 
 @end

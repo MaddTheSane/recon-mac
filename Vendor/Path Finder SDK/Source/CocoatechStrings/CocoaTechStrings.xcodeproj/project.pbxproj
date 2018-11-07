@@ -44,8 +44,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		200AB2B605BE24D300CA5EEC /* NTMenuBarLocalizer.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = NTMenuBarLocalizer.h; sourceTree = "<group>"; };
-		200AB2B705BE24D300CA5EEC /* NTMenuBarLocalizer.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = NTMenuBarLocalizer.m; sourceTree = "<group>"; usesTabs = 0; };
+		200AB2B605BE24D300CA5EEC /* NTMenuBarLocalizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = NTMenuBarLocalizer.h; sourceTree = "<group>"; };
+		200AB2B705BE24D300CA5EEC /* NTMenuBarLocalizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = NTMenuBarLocalizer.m; sourceTree = "<group>"; usesTabs = 0; };
 		201BDCA00ECA3E2600DF5D2E /* cs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = cs; path = Regions/cs.lproj/OmniAppKit.strings; sourceTree = "<group>"; };
 		201BDCA10ECA3E2600DF5D2E /* da */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = da; path = Regions/da.lproj/OmniAppKit.strings; sourceTree = "<group>"; };
 		201BDCA20ECA3E2600DF5D2E /* de */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = de; path = Regions/de.lproj/OmniAppKit.strings; sourceTree = "<group>"; };
@@ -392,8 +392,8 @@
 		20C426D309CD03E600EFB286 /* zh_CN */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = zh_CN; path = Regions/zh_CN.lproj/crashReporter.strings; sourceTree = "<group>"; };
 		20CD1C320546675B00A37B05 /* Info-CocoaTechStrings__Native_.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Info-CocoaTechStrings__Native_.plist"; sourceTree = "<group>"; };
 		20CD1C330546675C00A37B05 /* CocoaTechStrings.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CocoaTechStrings.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		20D8947506157798002EBFE9 /* NTMacErrorString.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = NTMacErrorString.h; sourceTree = "<group>"; };
-		20D8947606157798002EBFE9 /* NTMacErrorString.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = NTMacErrorString.m; sourceTree = "<group>"; };
+		20D8947506157798002EBFE9 /* NTMacErrorString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = NTMacErrorString.h; sourceTree = "<group>"; };
+		20D8947606157798002EBFE9 /* NTMacErrorString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = NTMacErrorString.m; sourceTree = "<group>"; };
 		20DAAA5F08FB10AD008777D7 /* CocoatechStrings.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoatechStrings.pch; sourceTree = "<group>"; };
 		20DBFFAB0C2F198E001180F0 /* cs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = cs; path = Regions/cs.lproj/modulePlugins.strings; sourceTree = "<group>"; };
 		20DBFFAC0C2F198E001180F0 /* da */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = da; path = Regions/da.lproj/modulePlugins.strings; sourceTree = "<group>"; };
@@ -413,14 +413,14 @@
 		20DBFFBA0C2F198E001180F0 /* sv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = sv; path = Regions/sv.lproj/modulePlugins.strings; sourceTree = "<group>"; };
 		20DBFFBB0C2F198E001180F0 /* zh_CN */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = zh_CN; path = Regions/zh_CN.lproj/modulePlugins.strings; sourceTree = "<group>"; };
 		20DBFFBC0C2F198E001180F0 /* zh_TW */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = zh_TW; path = Regions/zh_TW.lproj/modulePlugins.strings; sourceTree = "<group>"; };
-		20E976E005F1C665002909FE /* NTViewLocalizer.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = NTViewLocalizer.h; sourceTree = "<group>"; };
-		20E976E105F1C665002909FE /* NTViewLocalizer.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = NTViewLocalizer.m; sourceTree = "<group>"; };
-		20E976E605F1C6CC002909FE /* NSButton-Extensions.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = "NSButton-Extensions.h"; sourceTree = "<group>"; };
-		20E976E705F1C6CC002909FE /* NSButton-Extensions.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = "NSButton-Extensions.m"; sourceTree = "<group>"; };
+		20E976E005F1C665002909FE /* NTViewLocalizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = NTViewLocalizer.h; sourceTree = "<group>"; };
+		20E976E105F1C665002909FE /* NTViewLocalizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = NTViewLocalizer.m; sourceTree = "<group>"; };
+		20E976E605F1C6CC002909FE /* NSButton-Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "NSButton-Extensions.h"; sourceTree = "<group>"; };
+		20E976E705F1C6CC002909FE /* NSButton-Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = "NSButton-Extensions.m"; sourceTree = "<group>"; };
 		20F80D85092365DE00CE4EE9 /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xcconfig; name = Debug.xcconfig; path = ../Configurations/Debug.xcconfig; sourceTree = SOURCE_ROOT; };
 		20F80D86092365DE00CE4EE9 /* Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.xcconfig; name = Release.xcconfig; path = ../Configurations/Release.xcconfig; sourceTree = SOURCE_ROOT; };
-		F9613FF003A6BF12014F6B84 /* NTLocalizedString.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = NTLocalizedString.h; sourceTree = "<group>"; };
-		F9613FF103A6BF12014F6B84 /* NTLocalizedString.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = NTLocalizedString.m; sourceTree = "<group>"; };
+		F9613FF003A6BF12014F6B84 /* NTLocalizedString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = NTLocalizedString.h; sourceTree = "<group>"; };
+		F9613FF103A6BF12014F6B84 /* NTLocalizedString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = NTLocalizedString.m; sourceTree = "<group>"; };
 		F9613FF903A6BF4D014F6B84 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -437,18 +437,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		200AB2BC05BE24DB00CA5EEC /* Headers */ = {
-			isa = PBXGroup;
-			children = (
-				20E976E605F1C6CC002909FE /* NSButton-Extensions.h */,
-				F9613FF003A6BF12014F6B84 /* NTLocalizedString.h */,
-				200AB2B605BE24D300CA5EEC /* NTMenuBarLocalizer.h */,
-				20D8947506157798002EBFE9 /* NTMacErrorString.h */,
-				20E976E005F1C665002909FE /* NTViewLocalizer.h */,
-			);
-			name = Headers;
-			sourceTree = "<group>";
-		};
 		207D334C05608B1E0017B6DA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -483,8 +471,7 @@
 				20F80D86092365DE00CE4EE9 /* Release.xcconfig */,
 				202253CF0565C8F900066B11 /* CocoaTechStrings.h */,
 				20DAAA5F08FB10AD008777D7 /* CocoatechStrings.pch */,
-				F9613FF303A6BF1C014F6B84 /* Source */,
-				200AB2BC05BE24DB00CA5EEC /* Headers */,
+				F9613FF303A6BF1C014F6B84 /* Classes */,
 				207D334C05608B1E0017B6DA /* Resources */,
 				F9613FF803A6BF31014F6B84 /* Frameworks */,
 				F9613FEC03A6BEE9014F6B84 /* Products */,
@@ -501,16 +488,21 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		F9613FF303A6BF1C014F6B84 /* Source */ = {
+		F9613FF303A6BF1C014F6B84 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				F9613FF103A6BF12014F6B84 /* NTLocalizedString.m */,
-				200AB2B705BE24D300CA5EEC /* NTMenuBarLocalizer.m */,
-				20E976E105F1C665002909FE /* NTViewLocalizer.m */,
-				20D8947606157798002EBFE9 /* NTMacErrorString.m */,
+				20E976E605F1C6CC002909FE /* NSButton-Extensions.h */,
 				20E976E705F1C6CC002909FE /* NSButton-Extensions.m */,
+				F9613FF003A6BF12014F6B84 /* NTLocalizedString.h */,
+				F9613FF103A6BF12014F6B84 /* NTLocalizedString.m */,
+				20D8947506157798002EBFE9 /* NTMacErrorString.h */,
+				20D8947606157798002EBFE9 /* NTMacErrorString.m */,
+				200AB2B605BE24D300CA5EEC /* NTMenuBarLocalizer.h */,
+				200AB2B705BE24D300CA5EEC /* NTMenuBarLocalizer.m */,
+				20E976E005F1C665002909FE /* NTViewLocalizer.h */,
+				20E976E105F1C665002909FE /* NTViewLocalizer.m */,
 			);
-			name = Source;
+			name = Classes;
 			sourceTree = "<group>";
 		};
 		F9613FF803A6BF31014F6B84 /* Frameworks */ = {
