@@ -16,7 +16,7 @@
 	return [self layerWithText:string fontSize:13];
 }
 
-+ (CATextLayer *)layerWithText:(NSString *)string fontSize:(float)size
++ (CATextLayer *)layerWithText:(NSString *)string fontSize:(CGFloat)size
 {
 	CATextLayer *result = [self layer];
 	[result setString:string];

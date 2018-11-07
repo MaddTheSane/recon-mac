@@ -9,7 +9,7 @@
 #import <Cocoa/Cocoa.h>
 
 @protocol NTPasteboardHelperOwnerProtocol <NSObject>
-- (void)pasteboard:(NSPasteboard *)sender provideDataForType:(NSString *)type;
+- (void)pasteboard:(NSPasteboard *)sender provideDataForType:(NSPasteboardType)type;
 @end
 
 @interface NTPasteboardHelper : NSObject

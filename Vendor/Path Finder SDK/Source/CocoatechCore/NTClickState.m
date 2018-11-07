@@ -35,20 +35,8 @@
     return [result autorelease];
 }
 
-- (NSEvent*)event;
-{
-    return _event;
-}
-
-- (BOOL)isHandled;
-{
-    return _handled;
-}
-
-- (void)setHandled:(BOOL)set;
-{
-    _handled = set;
-}
+@synthesize event=_event;
+@synthesize handled=_handled;
 
 - (BOOL)isDoubleClick;
 {

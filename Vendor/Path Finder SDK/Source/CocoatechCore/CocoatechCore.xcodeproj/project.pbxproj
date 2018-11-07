@@ -107,8 +107,6 @@
 		2095521F0EC93FED001FA347 /* NTWindowCascade.m in Sources */ = {isa = PBXBuildFile; fileRef = 2095521D0EC93FED001FA347 /* NTWindowCascade.m */; };
 		209552270EC940D9001FA347 /* CFArray-NTExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 209552250EC940D9001FA347 /* CFArray-NTExtensions.h */; };
 		209552280EC940D9001FA347 /* CFArray-NTExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 209552260EC940D9001FA347 /* CFArray-NTExtensions.m */; };
-		209554000EC955C3001FA347 /* md5.h in Headers */ = {isa = PBXBuildFile; fileRef = 209553FE0EC955C3001FA347 /* md5.h */; };
-		209554010EC955C3001FA347 /* md5.c in Sources */ = {isa = PBXBuildFile; fileRef = 209553FF0EC955C3001FA347 /* md5.c */; };
 		209556400EC966EC001FA347 /* NTDataBuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = 2095563E0EC966EC001FA347 /* NTDataBuffer.h */; };
 		209556410EC966EC001FA347 /* NTDataBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2095563F0EC966EC001FA347 /* NTDataBuffer.m */; };
 		209556D90EC96D60001FA347 /* NTObjcRuntimeTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 209556D70EC96D60001FA347 /* NTObjcRuntimeTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -380,8 +378,6 @@
 		2095521D0EC93FED001FA347 /* NTWindowCascade.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTWindowCascade.m; sourceTree = "<group>"; };
 		209552250EC940D9001FA347 /* CFArray-NTExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CFArray-NTExtensions.h"; sourceTree = "<group>"; };
 		209552260EC940D9001FA347 /* CFArray-NTExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CFArray-NTExtensions.m"; sourceTree = "<group>"; };
-		209553FE0EC955C3001FA347 /* md5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = md5.h; sourceTree = "<group>"; };
-		209553FF0EC955C3001FA347 /* md5.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = md5.c; sourceTree = "<group>"; };
 		2095563E0EC966EC001FA347 /* NTDataBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTDataBuffer.h; sourceTree = "<group>"; };
 		2095563F0EC966EC001FA347 /* NTDataBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTDataBuffer.m; sourceTree = "<group>"; };
 		209556D70EC96D60001FA347 /* NTObjcRuntimeTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTObjcRuntimeTools.h; sourceTree = "<group>"; };
@@ -638,7 +634,6 @@
 				2094C9CE0BCDB339007D1E6E /* NSTabView-NTExtensions.m */,
 				204861990D7CEB5B0083D964 /* NTStringView.m */,
 				20631EBC0DE266E800AFE50A /* NTHotKeyManager.m */,
-				209553FF0EC955C3001FA347 /* md5.c */,
 				20139B000D826EF100DC615B /* NTStaticImageView.m */,
 				2095563F0EC966EC001FA347 /* NTDataBuffer.m */,
 				208A8D5E0B756AD300490432 /* NSWindow-NTExtensions.m */,
@@ -786,7 +781,6 @@
 				2064CAFC0EDB8A9400DCD342 /* NSDateFormatter-NTExtensions.h */,
 				209556D70EC96D60001FA347 /* NTObjcRuntimeTools.h */,
 				2095563E0EC966EC001FA347 /* NTDataBuffer.h */,
-				209553FE0EC955C3001FA347 /* md5.h */,
 				209552250EC940D9001FA347 /* CFArray-NTExtensions.h */,
 				209551130EC9313F001FA347 /* NTPasteboardHelper.h */,
 				2095521C0EC93FED001FA347 /* NTWindowCascade.h */,
@@ -1032,7 +1026,6 @@
 				209551150EC9313F001FA347 /* NTPasteboardHelper.h in Headers */,
 				2095521E0EC93FED001FA347 /* NTWindowCascade.h in Headers */,
 				209552270EC940D9001FA347 /* CFArray-NTExtensions.h in Headers */,
-				209554000EC955C3001FA347 /* md5.h in Headers */,
 				209556400EC966EC001FA347 /* NTDataBuffer.h in Headers */,
 				209556D90EC96D60001FA347 /* NTObjcRuntimeTools.h in Headers */,
 				2064CAFE0EDB8A9400DCD342 /* NSDateFormatter-NTExtensions.h in Headers */,
@@ -1233,7 +1226,6 @@
 				209551160EC9313F001FA347 /* NTPasteboardHelper.m in Sources */,
 				2095521F0EC93FED001FA347 /* NTWindowCascade.m in Sources */,
 				209552280EC940D9001FA347 /* CFArray-NTExtensions.m in Sources */,
-				209554010EC955C3001FA347 /* md5.c in Sources */,
 				209556410EC966EC001FA347 /* NTDataBuffer.m in Sources */,
 				209556DA0EC96D60001FA347 /* NTObjcRuntimeTools.m in Sources */,
 				2064CAFF0EDB8A9400DCD342 /* NSDateFormatter-NTExtensions.m in Sources */,

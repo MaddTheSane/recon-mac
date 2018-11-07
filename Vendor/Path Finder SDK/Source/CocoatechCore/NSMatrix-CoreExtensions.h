@@ -15,7 +15,7 @@
 - (NSRect)rectOfSelectedCells;
 - (NSRect)rectOfCells:(NSArray*)cells;
 - (BOOL)isCellSelected:(NSCell*)cell;
-- (int)numberOfSelectedCells;
+- (NSInteger)numberOfSelectedCells;
 
 	// returns NSNotFound if no row selected
 - (NSUInteger)firstSelectedRow;

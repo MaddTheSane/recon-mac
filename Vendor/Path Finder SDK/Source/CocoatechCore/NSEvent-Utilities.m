@@ -147,7 +147,7 @@
 + (BOOL)isDragEvent:(NSEvent *)event forView:(NSView*)view dragSlop:(CGFloat)dragSlop timeOut:(NSDate*)timeOut;
 {    
 	// check on mouseDown only
-    if ([event type] == NSLeftMouseDown);
+    if ([event type] == NSLeftMouseDown)
 	{
 		NSPoint eventLocation;
 		NSRect slopRect;
@@ -197,14 +197,14 @@
 // you have to do this if the user clicks 4 times expecting events 1,2,1,2 rather than 1,2,3,4
 - (BOOL)isSingleClick;
 {
-	int cnt = [self clickCount];
+	NSInteger cnt = [self clickCount];
 
 	return ((cnt % 2) == 1);
 }
 
 - (BOOL)isDoubleClick;
 {
-	int cnt = [self clickCount];
+	NSInteger cnt = [self clickCount];
 	
 	return (cnt && ((cnt % 2) == 0));
 }

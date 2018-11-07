@@ -11,5 +11,5 @@
 
 @interface CATextLayer (NTExtensions)
 + (CATextLayer *)layerWithText:(NSString *)string;
-+ (CATextLayer *)layerWithText:(NSString *)string fontSize:(float)size;
++ (CATextLayer *)layerWithText:(NSString *)string fontSize:(CGFloat)size;
 @end

@@ -10,7 +10,7 @@
 #import "NSString-Utilities.h"
 #import "NTDataBuffer.h"
 #import <zlib.h>
-#import "md5.h"
+#import <CommonCrypto/CommonCrypto.h>
 
 @implementation NSData (NTExtensions)
 
@@ -19,14 +19,16 @@
 
 - (NSData *)md5Signature;
 {
-    MD5_CTX md5context;
-    unsigned char signature[MD5_SIGNATURE_LENGTH];
+    __block CC_MD5_CTX md5context;
+    unsigned char signature[CC_MD5_DIGEST_LENGTH];
 	
-    MD5Init(&md5context);
-    MD5Update(&md5context, [self bytes], [self length]);
-    MD5Final(signature, &md5context);
+    CC_MD5_Init(&md5context);
+    [self enumerateByteRangesUsingBlock:^(const void * _Nonnull bytes, NSRange byteRange, BOOL * _Nonnull stop) {
+        CC_MD5_Update(&md5context, bytes, byteRange.length);
+    }];
+    CC_MD5_Final(signature, &md5context);
 	
-    return [NSData dataWithBytes:signature length:MD5_SIGNATURE_LENGTH];
+    return [NSData dataWithBytes:signature length:CC_MD5_DIGEST_LENGTH];
 }
 
 - (NSData *)inflate
@@ -34,8 +36,8 @@
 	if ([self length] == 0) 
 		return self;
 	
-	unsigned full_length = [self length];
-	unsigned half_length = [self length] / 2;
+	NSUInteger full_length = [self length];
+	NSUInteger half_length = [self length] / 2;
 	
 	NSMutableData *decompressed = [NSMutableData dataWithLength: full_length + half_length];
 	BOOL done = NO;
@@ -87,7 +89,7 @@
 	NSMutableData *mData = [NSMutableData data];
 	
 	// inflate the focker
-	gzFile file =  gzopen([path UTF8String], "rb");
+	gzFile file =  gzopen([path fileSystemRepresentation], "rb");
 	if (file)
 	{
 		char *buf = malloc(16*1024);
@@ -142,7 +144,7 @@ static unsigned sEncryptionKeyLength = 4;
 	unsigned char* keyPtr=(unsigned char*)&sEncryptionKey;
 	unsigned keyIndex=0;
 	
-	unsigned i, cnt = [mutableData length];
+	NSUInteger i, cnt = [mutableData length];
 	for (i=0;i<cnt;i++)
 	{
 		ptr[i] ^= keyPtr[keyIndex++]; // xor the bytes
@@ -288,7 +290,7 @@ static inline void output64chunk(int c1, int c2, int c3, int pads, NTDataBuffer 
     NSString *string;
     NSData *data;
     const unsigned char *bytes;
-    unsigned int length;
+    NSUInteger length;
     NTDataBuffer dataBuffer, *buffer;
     unsigned int c1, c2, c3;
 	

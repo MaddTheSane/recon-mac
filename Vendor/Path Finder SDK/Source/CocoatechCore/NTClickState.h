@@ -19,14 +19,13 @@
 
 + (NTClickState*)clickState:(NSEvent*)event;
 
-- (BOOL)isHandled;
-- (void)setHandled:(BOOL)set;
+@property (getter=isHandled) BOOL handled;
 
 - (BOOL)tryRenameOnMouseUp;
 - (void)setTryRenameOnMouseUpIndex:(int)index;
 - (int)renameOnMouseUpIndex;
 
-- (NSEvent*)event;
+@property (readonly, retain) NSEvent *event;
 
 - (BOOL)isDoubleClick;
 - (BOOL)isSingleClick;
@@ -34,7 +33,7 @@
 - (BOOL)isRightClick;
 - (BOOL)isLeftClick;
 
-- (BOOL)isContextualMenuClick;  // either rightMouseDown, or leftMouseDown and controlKeyDown
+- (BOOL)isContextualMenuClick;  //!< either rightMouseDown, or leftMouseDown and controlKeyDown
 
 - (BOOL)anyModifierDown;
 - (BOOL)isShiftDown;
@@ -42,7 +41,7 @@
 - (BOOL)isCommandDown;
 - (BOOL)isOptionDown;
 
-- (NSPoint)mousePointForView:(NSView*)view;  // in views coordinates
-- (NSPoint)mousePointInWindow;  // in window coordinates
+- (NSPoint)mousePointForView:(NSView*)view;  //!< in views coordinates
+- (NSPoint)mousePointInWindow;  //!< in window coordinates
 
 @end

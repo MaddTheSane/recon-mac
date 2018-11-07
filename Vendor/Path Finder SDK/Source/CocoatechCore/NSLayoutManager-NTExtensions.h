@@ -8,10 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface NSLayoutManager (Undocumented)
-- (void)setUsesFontLeading:(BOOL)flag;
-@end
-
 @interface NSLayoutManager (NTExtensions)
 + (CGFloat)defaultLineHeightForFont:(NSFont *)theFont;
 @end

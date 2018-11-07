@@ -9,6 +9,6 @@
 #import <Cocoa/Cocoa.h>
 
 // Convenience functions
-extern NSMutableArray *NTCreateNonOwnedPointerArray(void);
-extern NSMutableArray *NTCreateIntegerArray(void);
+extern NSMutableArray *NTCreateNonOwnedPointerArray(void) NS_RETURNS_RETAINED;
+extern NSMutableArray *NTCreateIntegerArray(void) NS_RETURNS_RETAINED;
 

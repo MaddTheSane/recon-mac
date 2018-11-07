@@ -30,17 +30,17 @@
 + (void)removeAllItems:(NSMenu*)menu;
 
 + (NSArray*)everyItemInMenu:(NSMenu*)menu;
-- (NSArray*)itemsWithTag:(int)tag;
+- (NSArray<NSMenuItem*>*)itemsWithTag:(NSInteger)tag;
 
-+ (NSMenuItem*)itemWithTag:(int)tag menu:(NSMenu*)menu;
++ (NSMenuItem*)itemWithTag:(NSInteger)tag menu:(NSMenu*)menu;
 + (NSMenuItem*)itemWithAction:(SEL)action menu:(NSMenu*)menu;
 + (NSMenuItem*)itemWithKeyEquivalent:(NSString*)key modifiersMask:(unsigned)modifiersMask menu:(NSMenu*)menu;
 + (NSMenuItem*)itemWithSubmenu:(NSMenu*)inMenu menu:(NSMenu*)menu;
 
-+ (void)removeAllItemsBelowTag:(int)tag;
-- (void)removeAllItemsBelowTag:(int)tag;
++ (void)removeAllItemsBelowTag:(NSInteger)tag;
+- (void)removeAllItemsBelowTag:(NSInteger)tag;
 - (void)removeAllItemsBelowItem:(NSMenuItem*)item;
-- (void)removeAllItemsAfterIndex:(unsigned)index;
+- (void)removeAllItemsAfterIndex:(NSUInteger)index;
 
 // returns a 16,12 image with the color passed in
 + (NSImage*)menuColorImage:(NSColor*)color;

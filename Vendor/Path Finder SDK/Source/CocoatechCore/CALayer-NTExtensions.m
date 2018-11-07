@@ -42,7 +42,7 @@
 		[[self superlayer] debugLayers:showSubviews];
 }
 
-- (void)scale:(float)theScale;
+- (void)scale:(CGFloat)theScale;
 {
 	CATransform3D transform = CATransform3DMakeScale(theScale, theScale, theScale);
 	[self setTransform:transform];

@@ -12,7 +12,7 @@
 
 - (int)lineHeight;
 {
- 	float result;
+ 	CGFloat result;
 	
 	result = [self ascender] + (-[self descender]) + [self leading];
 			

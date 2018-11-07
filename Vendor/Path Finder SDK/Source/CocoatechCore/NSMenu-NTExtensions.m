@@ -17,7 +17,7 @@
 - (void)doPopupMenuBelowRect_SNOWLEOPARD:(NSRect)rect inView:(NSView*)controlView centerMenu:(BOOL)centerMenu;
 + (void)recursiveHelper:(NSMenu*)menu array:(NSMutableArray*)resultArray;
 + (void)recursiveHelper:(NSMenu*)menu
-			matchingTag:(int)tag
+			matchingTag:(NSInteger)tag
 				  array:(NSMutableArray*)resultArray;
 @end
 
@@ -119,9 +119,9 @@
 
 - (void)removeItemsInRange:(NSRange)range;
 {
-	int numItems = [self numberOfItems];
-	int index, cnt = MIN(numItems, NSMaxRange(range));
-	int firstIndex = range.location;
+	NSInteger numItems = [self numberOfItems];
+	NSInteger index, cnt = MIN(numItems, NSMaxRange(range));
+	NSInteger firstIndex = range.location;
 	
 	if (cnt)
 	{
@@ -286,7 +286,7 @@
     return result;
 }
 
-- (NSArray*)itemsWithTag:(int)tag;
+- (NSArray*)itemsWithTag:(NSInteger)tag;
 {
 	NSMutableArray* result = [NSMutableArray arrayWithCapacity:50];
     
@@ -294,7 +294,7 @@
     return result;	
 }
 
-+ (void)removeAllItemsBelowTag:(int)tag
++ (void)removeAllItemsBelowTag:(NSInteger)tag
 {
     NSMenuItem* rootItem = [self itemWithTag:tag menu:[NSApp mainMenu]];
     NSMenu* itemsMenu = [rootItem menu];
@@ -302,7 +302,7 @@
     [itemsMenu removeAllItemsBelowTag:tag];
 }
 
-- (void)removeAllItemsBelowTag:(int)tag
+- (void)removeAllItemsBelowTag:(NSInteger)tag
 {
     NSMenuItem* rootItem = [self itemWithTag:tag];
     
@@ -315,16 +315,16 @@
 	[self removeAllItemsAfterIndex:[self indexOfItem:item]];
 }
 
-- (void)removeAllItemsAfterIndex:(unsigned)index;
+- (void)removeAllItemsAfterIndex:(NSUInteger)index;
 {
-	int i, cnt = [self numberOfItems];
+	NSInteger i, cnt = [self numberOfItems];
 	
 	for (i=cnt-1;i>index;i--)
 		[self removeItemAtIndex:i];
 }
 
 // called recursively on all submenus, start with itemWithTag:[NSApp mainMenu] tag:
-+ (NSMenuItem*)itemWithTag:(int)tag menu:(NSMenu*)menu;
++ (NSMenuItem*)itemWithTag:(NSInteger)tag menu:(NSMenu*)menu;
 {
     NSMenuItem* result = [menu itemWithTag:tag];
     
@@ -392,7 +392,7 @@
 + (NSDictionary*)infoAttributes:(float)fontSize;
 {
 	static NSDictionary* sharedDictionary = nil;
-	static float sharedSize = 0;
+	static CGFloat sharedSize = 0;
 	
 	if (fontSize != sharedSize)
 	{
@@ -421,7 +421,7 @@
     
     if (supermenu)
     {
-        int itemIndex = [supermenu indexOfItemWithSubmenu:self];
+        NSInteger itemIndex = [supermenu indexOfItemWithSubmenu:self];
         return (NSMenuItem*)[supermenu itemAtIndex:itemIndex];
     }
     
@@ -522,7 +522,7 @@
 }
 
 + (void)recursiveHelper:(NSMenu*)menu 
-			matchingTag:(int)tag
+			matchingTag:(NSInteger)tag
 				  array:(NSMutableArray*)resultArray
 {
     NSEnumerator* enumerator = [[menu itemArray] objectEnumerator];

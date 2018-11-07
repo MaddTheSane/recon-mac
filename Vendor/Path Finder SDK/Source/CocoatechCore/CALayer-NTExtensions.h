@@ -13,9 +13,8 @@
 
 - (NSString*)longDescription;
 - (void)debugLayers:(BOOL)showSubviews;
-- (void)scale:(float)theScale;
+- (void)scale:(CGFloat)theScale;
 
-- (CGPoint)scrollPositionAsPercentage;
-- (void)setScrollPositionAsPercentage:(CGPoint)scrollPosition;
+@property CGPoint scrollPositionAsPercentage;
 
 @end

@@ -13,7 +13,7 @@
 
 @interface NTFontButton : NSButton
 {
-    __unsafe_unretained IBOutlet id<NTFontButtonDelegate> delegate;
+    __unsafe_unretained id<NTFontButtonDelegate> delegate;
 
     NTFont* displayedFont;
 }

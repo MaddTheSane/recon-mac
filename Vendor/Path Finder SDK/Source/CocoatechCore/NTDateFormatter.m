@@ -71,7 +71,7 @@ NTSINGLETONOBJECT_STORAGE;
         if (relative)
         {
 			NSString *result=nil;
-			int todaysDayOfCommonEra, datesDayOfCommonEra;
+			NSInteger todaysDayOfCommonEra, datesDayOfCommonEra;
 			NSCalendarDate* calendardate = [[[NSCalendarDate alloc] initWithTimeIntervalSinceReferenceDate:[date timeIntervalSinceReferenceDate]] autorelease];
 			
 			todaysDayOfCommonEra = [[NSCalendarDate calendarDate] dayOfCommonEra];

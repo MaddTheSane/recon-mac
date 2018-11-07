@@ -47,7 +47,7 @@
 	return ([[self selectedCells] indexOfObjectIdenticalTo:cell] != NSNotFound);
 }
 
-- (int)numberOfSelectedCells;
+- (NSInteger)numberOfSelectedCells;
 {
 	return [[self selectedCells] count];
 }
