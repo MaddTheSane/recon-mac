@@ -9,7 +9,7 @@ static id<NTLocalizedStringFilterProtocol> sLocalizedStringFilter = nil;
 
 + (NSString*)localize:(NSString*)str;
 {
-    return [self localize:str table:nil];
+	return [self localize:str table:nil];
 }
 
 + (NSString*)localize:(NSString*)str table:(NSString*)table;
@@ -42,22 +42,22 @@ static id<NTLocalizedStringFilterProtocol> sLocalizedStringFilter = nil;
 
 + (void)localizeWindow:(NSWindow*)window;
 {
-    [NTViewLocalizer localizeWindow:window table:@"default" bundle:[NSBundle bundleForClass:self]];
+	[NTViewLocalizer localizeWindow:window table:@"default" bundle:[NSBundle bundleForClass:self]];
 }
 
 + (void)localizeWindow:(NSWindow*)window table:(NSString*)table;
 {
-    [NTViewLocalizer localizeWindow:window table:table bundle:[NSBundle bundleForClass:self]];
+	[NTViewLocalizer localizeWindow:window table:table bundle:[NSBundle bundleForClass:self]];
 }
 
 + (void)localizeView:(NSView*)view;
 {
-    [NTViewLocalizer localizeView:view table:@"default" bundle:[NSBundle bundleForClass:self]];
+	[NTViewLocalizer localizeView:view table:@"default" bundle:[NSBundle bundleForClass:self]];
 }
 
 + (void)localizeView:(NSView*)view table:(NSString*)table;
 {
-    [NTViewLocalizer localizeView:view table:table bundle:[NSBundle bundleForClass:self]];
+	[NTViewLocalizer localizeView:view table:table bundle:[NSBundle bundleForClass:self]];
 }
 
 @end
@@ -104,8 +104,6 @@ static id<NTLocalizedStringFilterProtocol> sLocalizedStringFilter = nil;
 		shared = @":";
 		if ([region isEqualToString:@"fr"])
 			shared = @" :";
-		
-		shared = [shared retain];
 	}
 	
 	return shared;
@@ -134,12 +132,12 @@ static id<NTLocalizedStringFilterProtocol> sLocalizedStringFilter = nil;
 					break;
 				}
 			}
-		}	
+		}
 		
 		if (!result)
 			result = @"en";
 		
-		shared = [result retain];
+		shared = result;
 	}
 	
 	return shared;
@@ -156,10 +154,10 @@ static id<NTLocalizedStringFilterProtocol> sLocalizedStringFilter = nil;
 		// NSBundle is not toll free bridged
 		// convert to a CFBundle.
 		NSBundle* nsBundle = [NSBundle bundleForClass:self];
-		CFBundleRef bundle = CFBundleCreate(kCFAllocatorDefault, (CFURLRef) [NSURL fileURLWithPath:[nsBundle bundlePath]]);
+		CFBundleRef bundle = CFBundleCreate(kCFAllocatorDefault, (CFURLRef) [nsBundle bundleURL]);
 		if (bundle)
 		{
-			NSArray* regionArray = [(NSArray*)CFBundleCopyBundleLocalizations(bundle) autorelease];
+			NSArray* regionArray = CFBridgingRelease(CFBundleCopyBundleLocalizations(bundle));
 			NSString* region;
 			
 			for (region in regionArray)

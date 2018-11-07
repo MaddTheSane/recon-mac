@@ -9,8 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface NTMacErrorString : NSObject
-{
-}
 
 + (NSString*)macErrorString:(int)err;
 

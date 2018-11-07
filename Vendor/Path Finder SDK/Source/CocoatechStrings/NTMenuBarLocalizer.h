@@ -8,8 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface NTMenuBarLocalizer : NSObject {
-}
+@interface NTMenuBarLocalizer : NSObject
 
 + (void)localizeMenu:(NSMenu*)menu;
 

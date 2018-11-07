@@ -45,7 +45,7 @@
 
 /* Begin PBXFileReference section */
 		200AB2B605BE24D300CA5EEC /* NTMenuBarLocalizer.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = NTMenuBarLocalizer.h; sourceTree = "<group>"; };
-		200AB2B705BE24D300CA5EEC /* NTMenuBarLocalizer.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = NTMenuBarLocalizer.m; sourceTree = "<group>"; };
+		200AB2B705BE24D300CA5EEC /* NTMenuBarLocalizer.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = NTMenuBarLocalizer.m; sourceTree = "<group>"; usesTabs = 0; };
 		201BDCA00ECA3E2600DF5D2E /* cs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = cs; path = Regions/cs.lproj/OmniAppKit.strings; sourceTree = "<group>"; };
 		201BDCA10ECA3E2600DF5D2E /* da */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = da; path = Regions/da.lproj/OmniAppKit.strings; sourceTree = "<group>"; };
 		201BDCA20ECA3E2600DF5D2E /* de */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = de; path = Regions/de.lproj/OmniAppKit.strings; sourceTree = "<group>"; };
@@ -491,7 +491,7 @@
 				20CD1C320546675B00A37B05 /* Info-CocoaTechStrings__Native_.plist */,
 			);
 			sourceTree = "<group>";
-			usesTabs = 0;
+			usesTabs = 1;
 		};
 		F9613FEC03A6BEE9014F6B84 /* Products */ = {
 			isa = PBXGroup;
@@ -567,7 +567,9 @@
 		F9613FE503A6BEDB014F6B84 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = NT;
 				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = Cocoatech;
 			};
 			buildConfigurationList = AA31AF7608554EFC00EB35A6 /* Build configuration list for PBXProject "CocoaTechStrings" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1166,6 +1168,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -1186,6 +1189,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;

@@ -10,7 +10,7 @@
 #import "NSButton-Extensions.h"
 #import "NTLocalizedString.h"
 
-@interface NTViewLocalizer (Private)
+@interface NTViewLocalizer ()
 - (NSString*)localizedString:(NSString*)string;
 - (void)localizeWindow:(NSWindow*)window;
 - (void)localizeView:(NSView*)view;
@@ -22,36 +22,25 @@
 {
     self = [super init];
 
-    _table = [table retain];
-    _bundle = [bundle retain];
+    _table = [table copy];
+    _bundle = bundle;
     
     return self;
 }
 
-- (void)dealloc;
-{
-    [_table release];
-    [_bundle release];
-    [super dealloc];
-}
-
 + (void)localizeWindow:(NSWindow*)window table:(NSString*)table bundle:(NSBundle*)bundle;
 {
-    NTViewLocalizer* localizer = [[[NTViewLocalizer alloc] initWithTable:table bundle:bundle] autorelease];
+    NTViewLocalizer* localizer = [[NTViewLocalizer alloc] initWithTable:table bundle:bundle];
 
     [localizer localizeWindow:window];
 }
 
 + (void)localizeView:(NSView*)view table:(NSString*)table bundle:(NSBundle*)bundle;
 {
-    NTViewLocalizer* localizer = [[[NTViewLocalizer alloc] initWithTable:table bundle:bundle] autorelease];
+    NTViewLocalizer* localizer = [[NTViewLocalizer alloc] initWithTable:table bundle:bundle];
 
     [localizer localizeView:view];    
 }
-
-@end
-
-@implementation NTViewLocalizer (Private)
 
 - (void)localizeWindow:(NSWindow*)window;
 {
@@ -159,8 +148,8 @@
         // must also set the attributedString, if it exists, we don't want to wipe out attributes
 		if (attributes)
 		{			
-			[view setAttributedStringValue:[[[NSAttributedString alloc] initWithString:[view stringValue] // already localized above
-																		 attributes:attributes] autorelease]];
+			[view setAttributedStringValue:[[NSAttributedString alloc] initWithString:[view stringValue] // already localized above
+																		 attributes:attributes]];
 		}
 		
         // localize place holder string

@@ -3,8 +3,6 @@
 #import <Cocoa/Cocoa.h>
 
 @interface NTLocalizedString : NSObject
-{
-}
 
 + (NSString*)localize:(NSString*)str; // default table
 + (NSString*)localize:(NSString*)str table:(NSString*)table;
@@ -25,7 +23,7 @@
 + (NSString*)colon; // ":" = english, " :" = french
 
 + (NSString*)region;
-+ (NSArray*)regions;
++ (NSArray<NSString*>*)regions;
 
 @end
 
