@@ -22,6 +22,7 @@
 
 #import <ScriptingBridge/SBApplication.h>
 #import "Mail.h"
+#import "AdvancedViewController.h"
 
 
 @implementation MyDocument
@@ -751,7 +752,7 @@ static float vigourOfShake = 0.01f;
          // Add Defaults parent folder
          profileParent = [NSEntityDescription insertNewObjectForEntityForName:@"Profile" inManagedObjectContext:context]; 
          [profileParent setValue: @"Defaults" forKey: @"name"]; 
-         [profileParent setIsEnabled:NO];            
+         [profileParent setIsEnabled:@NO];
 
          // Add defaults         
          plistPath = [[NSBundle mainBundle] pathForResource:@"Default Advanced Profiles" ofType:@"plist"];                  
@@ -772,7 +773,7 @@ static float vigourOfShake = 0.01f;
          // Add Defaults parent folder
          profileParent = [NSEntityDescription insertNewObjectForEntityForName:@"Profile" inManagedObjectContext:context]; 
          [profileParent setValue: @"_Internal Defaults" forKey: @"name"]; 
-         [profileParent setIsEnabled:NO];            
+         [profileParent setIsEnabled:@NO];
          
          // Add defaults         
          plistPath = [[NSBundle mainBundle] pathForResource:@"Default Basic Profiles" ofType:@"plist"];                  
@@ -788,7 +789,7 @@ static float vigourOfShake = 0.01f;
          // Add Saved Sessions parent folder
          profileParent = [NSEntityDescription insertNewObjectForEntityForName:@"Profile" inManagedObjectContext:context]; 
          [profileParent setValue: @"_Saved Sessions" forKey: @"name"]; 
-         [profileParent setIsEnabled:NO];                  
+         [profileParent setIsEnabled:@NO];
       }
    }
 }
@@ -1178,7 +1179,7 @@ static float vigourOfShake = 0.01f;
             
             else {
                
-               int alertReturn = NSRunAlertPanel(nil, @"Could not save changes while quitting. Quit anyway?" , @"Quit anyway", @"Cancel", nil);
+               NSInteger alertReturn = NSRunAlertPanel(nil, @"Could not save changes while quitting. Quit anyway?" , @"Quit anyway", @"Cancel", nil);
                if (alertReturn == NSAlertAlternateReturn) {
                   reply = NSTerminateCancel;	
                }

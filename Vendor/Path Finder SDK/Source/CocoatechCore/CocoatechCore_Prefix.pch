@@ -10,7 +10,7 @@
 #import <Quartz/Quartz.h>
 #import <Security/Security.h>
 #import <QuartzCore/QuartzCore.h>
-#import <QuickTime/QuickTime.h>
+//#import <QuickTime/QuickTime.h>
 #import <CocoaTechStrings/CocoaTechStrings.h>
 #import "NTCoreMacros.h"
 #endif

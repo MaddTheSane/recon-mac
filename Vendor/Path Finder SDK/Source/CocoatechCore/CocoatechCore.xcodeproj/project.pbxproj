@@ -30,7 +30,6 @@
 		20230C420D35AF4200C6553E /* NSSplitView-NTExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 20230C400D35AF4200C6553E /* NSSplitView-NTExtensions.m */; };
 		203446400D6F623E000B5495 /* NSAnimationContext-NTExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 2034463E0D6F623E000B5495 /* NSAnimationContext-NTExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		203446410D6F623E000B5495 /* NSAnimationContext-NTExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2034463F0D6F623E000B5495 /* NSAnimationContext-NTExtensions.m */; };
-		2039E1440ADF20DA00584208 /* QuickTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2039E1430ADF20DA00584208 /* QuickTime.framework */; };
 		204012600BCC758900102A61 /* NTTableHeaderImages.h in Headers */ = {isa = PBXBuildFile; fileRef = 2040125E0BCC758900102A61 /* NTTableHeaderImages.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		204012610BCC758900102A61 /* NTTableHeaderImages.m in Sources */ = {isa = PBXBuildFile; fileRef = 2040125F0BCC758900102A61 /* NTTableHeaderImages.m */; };
 		204012820BCC762A00102A61 /* NTAquaButtonCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 204012800BCC762A00102A61 /* NTAquaButtonCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -253,6 +252,7 @@
 		20EF58950E89840000A8CE26 /* NTPointerObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 20EF58930E89840000A8CE26 /* NTPointerObject.m */; };
 		20F113FE0D3C6D82002D5AC1 /* NSView-NSSplitViewExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 20F113FC0D3C6D82002D5AC1 /* NSView-NSSplitViewExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		20F113FF0D3C6D82002D5AC1 /* NSView-NSSplitViewExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F113FD0D3C6D82002D5AC1 /* NSView-NSSplitViewExtensions.m */; };
+		55B995BD2192CF5600342A80 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 55B995BC2192CF5600342A80 /* libz.tbd */; };
 		8DC2EF530486A6940098B216 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C1666FE841158C02AAC07 /* InfoPlist.strings */; };
 		8DC2EF570486A6940098B216 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
@@ -303,7 +303,6 @@
 		202F64660AA7CDE30026E5AD /* CocoaTechStrings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CocoaTechStrings.xcodeproj; path = ../CocoatechStrings/CocoaTechStrings.xcodeproj; sourceTree = SOURCE_ROOT; };
 		2034463E0D6F623E000B5495 /* NSAnimationContext-NTExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAnimationContext-NTExtensions.h"; sourceTree = "<group>"; };
 		2034463F0D6F623E000B5495 /* NSAnimationContext-NTExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAnimationContext-NTExtensions.m"; sourceTree = "<group>"; };
-		2039E1430ADF20DA00584208 /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = System/Library/Frameworks/QuickTime.framework; sourceTree = SDKROOT; };
 		2040125E0BCC758900102A61 /* NTTableHeaderImages.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = NTTableHeaderImages.h; sourceTree = "<group>"; };
 		2040125F0BCC758900102A61 /* NTTableHeaderImages.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = NTTableHeaderImages.m; sourceTree = "<group>"; };
 		204012800BCC762A00102A61 /* NTAquaButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NTAquaButtonCell.h; sourceTree = "<group>"; };
@@ -471,7 +470,7 @@
 		20BF00D60E2DD249008D723C /* NTSCPrefsListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NTSCPrefsListener.m; sourceTree = "<group>"; };
 		20BF75E50D28C33600ADA999 /* NSDrawer-NTExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDrawer-NTExtensions.h"; sourceTree = "<group>"; };
 		20BF75E60D28C33600ADA999 /* NSDrawer-NTExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDrawer-NTExtensions.m"; sourceTree = "<group>"; };
-		20C10B0A0A3F6D9900291B79 /* CocoaTechStrings.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaTechStrings.framework; path = ../../../../../../Frameworks/CocoaTechStrings.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		20C10B0A0A3F6D9900291B79 /* CocoaTechStrings.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CocoaTechStrings.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		20CA61BD0D72AA2C00697F7F /* NSArray-NTExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray-NTExtensions.h"; sourceTree = "<group>"; };
 		20CA61BE0D72AA2C00697F7F /* NSArray-NTExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray-NTExtensions.m"; sourceTree = "<group>"; };
 		20CCEAAC0CC56021009C75A5 /* NSEvent-Utilities.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = "NSEvent-Utilities.h"; sourceTree = "<group>"; };
@@ -529,6 +528,7 @@
 		20F113FC0D3C6D82002D5AC1 /* NSView-NSSplitViewExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSView-NSSplitViewExtensions.h"; sourceTree = "<group>"; };
 		20F113FD0D3C6D82002D5AC1 /* NSView-NSSplitViewExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSView-NSSplitViewExtensions.m"; sourceTree = "<group>"; };
 		32DBCF5E0370ADEE00C91783 /* CocoatechCore_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CocoatechCore_Prefix.pch; sourceTree = "<group>"; };
+		55B995BC2192CF5600342A80 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		8DC2EF5A0486A6940098B216 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8DC2EF5B0486A6940098B216 /* CocoatechCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CocoatechCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2F7E79907B2D74100F64583 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -539,12 +539,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55B995BD2192CF5600342A80 /* libz.tbd in Frameworks */,
 				8DC2EF570486A6940098B216 /* Cocoa.framework in Frameworks */,
 				20C10B0B0A3F6D9A00291B79 /* CocoaTechStrings.framework in Frameworks */,
 				209E3FE30ADCA40500DC888E /* Carbon.framework in Frameworks */,
 				204CEC170ADCB0F200B25AD4 /* AddressBook.framework in Frameworks */,
 				204CEC180ADCB0F200B25AD4 /* IOKit.framework in Frameworks */,
-				2039E1440ADF20DA00584208 /* QuickTime.framework in Frameworks */,
 				20DBC4810D2B254F0030C890 /* Quartz.framework in Frameworks */,
 				20B79B090DDD3E0F00A3D6BB /* QuartzCore.framework in Frameworks */,
 				2090BEC80E07384200BBBCA1 /* SystemConfiguration.framework in Frameworks */,
@@ -584,6 +584,7 @@
 			children = (
 				1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */,
 				209E3FE20ADCA40500DC888E /* Carbon.framework */,
+				55B995BC2192CF5600342A80 /* libz.tbd */,
 				20C10B0A0A3F6D9900291B79 /* CocoaTechStrings.framework */,
 				1058C7B2FEA5585E11CA2CBB /* Other Frameworks */,
 			);
@@ -726,7 +727,6 @@
 				0867D6A5FE840307C02AAC07 /* AppKit.framework */,
 				204CEC150ADCB0F200B25AD4 /* AddressBook.framework */,
 				204CEC160ADCB0F200B25AD4 /* IOKit.framework */,
-				2039E1430ADF20DA00584208 /* QuickTime.framework */,
 				D2F7E79907B2D74100F64583 /* CoreData.framework */,
 				0867D69BFE84028FC02AAC07 /* Foundation.framework */,
 			);
@@ -1074,7 +1074,7 @@
 		0867D690FE84028FC02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 1010;
 			};
 			buildConfigurationList = 1DEB91B108733DA50010E9CD /* Build configuration list for PBXProject "CocoatechCore" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1276,15 +1276,14 @@
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = CocoatechCore_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "@executable_path/../Frameworks";
-				OTHER_LDFLAGS = (
-					"-lz",
-					"-headerpad_max_install_names",
-				);
+				OTHER_LDFLAGS = "-headerpad_max_install_names";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cocoatech.cocoatechcore;
 				PRODUCT_NAME = CocoatechCore;
 				WRAPPER_EXTENSION = framework;
@@ -1299,15 +1298,14 @@
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = CocoatechCore_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "@executable_path/../Frameworks";
-				OTHER_LDFLAGS = (
-					"-lz",
-					"-headerpad_max_install_names",
-				);
+				OTHER_LDFLAGS = "-headerpad_max_install_names";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cocoatech.cocoatechcore;
 				PRODUCT_NAME = CocoatechCore;
 				WRAPPER_EXTENSION = framework;
@@ -1318,7 +1316,29 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 20EF87010988603D006FA8BB /* Debug.xcconfig */;
 			buildSettings = {
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 			};
 			name = Debug;
 		};
@@ -1326,6 +1346,28 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 20EF87020988603D006FA8BB /* Release.xcconfig */;
 			buildSettings = {
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 			};
 			name = Release;
 		};

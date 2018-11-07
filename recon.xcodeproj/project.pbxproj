@@ -8,12 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		55597E121C811E6F0080944E /* iTerm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C3D2B63102FABD60007B87E /* iTerm.framework */; };
-		55597E171C811E760080944E /* iTerm.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8C3D2B63102FABD60007B87E /* iTerm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		55AABB301D19D218002E4D16 /* CocoatechCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55AABB2F1D19D1F0002E4D16 /* CocoatechCore.framework */; };
-		55AABB311D19D218002E4D16 /* CocoatechCore.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 55AABB2F1D19D1F0002E4D16 /* CocoatechCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		55AABB411D19D247002E4D16 /* CocoaTechStrings.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55AABB401D19D23C002E4D16 /* CocoaTechStrings.framework */; };
-		55AABB421D19D247002E4D16 /* CocoaTechStrings.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 55AABB401D19D23C002E4D16 /* CocoaTechStrings.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		55597E171C811E760080944E /* iTerm.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 8C3D2B63102FABD60007B87E /* iTerm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		55B1E5691C824F2B003EA816 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55B1E5681C824F2B003EA816 /* Images.xcassets */; };
+		55D1E1432192D56600A6002B /* CocoatechCore.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 55597E131C811E700080944E /* CocoatechCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		55D1E1442192D56B00A6002B /* CocoaTechStrings.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 55597E141C811E700080944E /* CocoaTechStrings.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		775BDEF1067A8BF0009058FE /* MyDocument.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 775BDEF0067A8BF0009058FE /* MyDocument.xcdatamodel */; };
 		775DFF38067A968500C5B868 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
 		8C014C82102D58F900FEEBB7 /* MyTerminalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C014C81102D58F900FEEBB7 /* MyTerminalView.m */; };
@@ -22,17 +20,14 @@
 		8C2DAC971037A9FC0053FACE /* HostNote.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C2DAC961037A9FC0053FACE /* HostNote.m */; };
 		8C3D26F9102E26E80007B87E /* PathTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C3D26F8102E26E80007B87E /* PathTransformer.m */; };
 		8C4163861010D6310066A4F8 /* BWToolkitFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C4163851010D6310066A4F8 /* BWToolkitFramework.framework */; };
-		8C4163891010D6340066A4F8 /* BWToolkitFramework.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8C4163851010D6310066A4F8 /* BWToolkitFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		8C4163891010D6340066A4F8 /* BWToolkitFramework.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 8C4163851010D6310066A4F8 /* BWToolkitFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		8C55E41F100524A5002F5013 /* NSTask+OneLineTasksWithOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C55E41E100524A5002F5013 /* NSTask+OneLineTasksWithOutput.m */; };
 		8C55E43810052E72002F5013 /* SessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C55E43710052E72002F5013 /* SessionManager.m */; };
 		8C5613BE103628F00030B321 /* ColorGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C5613BD103628F00030B321 /* ColorGradientView.m */; };
 		8C5613EA103638340030B321 /* NotesTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C5613E9103638340030B321 /* NotesTableView.m */; };
 		8C5909F81038F8870074656C /* Default Basic Profiles.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8C5909F71038F8870074656C /* Default Basic Profiles.plist */; };
 		8C77C410103963CD003D6589 /* Default Advanced Profiles.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8C77C40F103963CD003D6589 /* Default Advanced Profiles.plist */; };
-		8C77C55B1039DAF4003D6589 /* Recon - Object Graph.graffle in Resources */ = {isa = PBXBuildFile; fileRef = 8C77C5591039DAF4003D6589 /* Recon - Object Graph.graffle */; };
-		8C77C55C1039DAF4003D6589 /* Recon-template-new.dmg in Resources */ = {isa = PBXBuildFile; fileRef = 8C77C55A1039DAF4003D6589 /* Recon-template-new.dmg */; };
 		8C77C64E103A33F1003D6589 /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C77C64D103A33F1003D6589 /* ScriptingBridge.framework */; };
-		8C77C659103A348C003D6589 /* Mail.app in Resources */ = {isa = PBXBuildFile; fileRef = 8C77C658103A348C003D6589 /* Mail.app */; };
 		8C77C65A103A349F003D6589 /* Mail.app in Sources */ = {isa = PBXBuildFile; fileRef = 8C77C658103A348C003D6589 /* Mail.app */; };
 		8C79E1960FFBC09600A4648B /* XMLController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C79E1920FFBC09600A4648B /* XMLController.m */; };
 		8C79E1970FFBC09600A4648B /* ArgumentListGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C79E1950FFBC09600A4648B /* ArgumentListGenerator.m */; };
@@ -42,7 +37,7 @@
 		8C79E889100117BF00A4648B /* Port.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C79E884100117BF00A4648B /* Port.m */; };
 		8C79E88A100117BF00A4648B /* Session.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C79E886100117BF00A4648B /* Session.m */; };
 		8C79F2EE10033DF200A4648B /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C79F2ED10033DF200A4648B /* Growl.framework */; };
-		8C79F2F810033E3C00A4648B /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8C79F2ED10033DF200A4648B /* Growl.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		8C79F2F810033E3C00A4648B /* Growl.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 8C79F2ED10033DF200A4648B /* Growl.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		8C79F30B10033EF200A4648B /* SPGrowlController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C79F30A10033EF200A4648B /* SPGrowlController.m */; };
 		8C79F4C81003E3BA00A4648B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C79F4C41003E3BA00A4648B /* MainMenu.xib */; };
 		8C79F4C91003E3BA00A4648B /* Growl Registration Ticket.growlRegDict in Resources */ = {isa = PBXBuildFile; fileRef = 8C79F4C51003E3BA00A4648B /* Growl Registration Ticket.growlRegDict */; };
@@ -84,39 +79,11 @@
 			outputFiles = (
 				"$(DERIVED_FILES_DIR)/$(INPUT_FILE_BASE).h",
 			);
-			script = "sdef \"$INPUT_FILE_PATH\" | sdp -fh -o \"$DERIVED_FILES_DIR\" --basename \"$INPUT_FILE_BASE\" --bundleid `defaults read \"$INPUT_FILE_PATH/Contents/Info\" CFBundleIdentifier`";
+			script = "sdef \"$INPUT_FILE_PATH\" | sdp -fh -o \"$DERIVED_FILES_DIR\" --basename \"$INPUT_FILE_BASE\" --bundleid `defaults read \"$INPUT_FILE_PATH/Contents/Info\" CFBundleIdentifier`\n";
 		};
 /* End PBXBuildRule section */
 
 /* Begin PBXContainerItemProxy section */
-		55AABB2E1D19D1F0002E4D16 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 55AABB2A1D19D1EF002E4D16 /* CocoatechCore.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 8DC2EF5B0486A6940098B216;
-			remoteInfo = CocoatechCore;
-		};
-		55AABB321D19D218002E4D16 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 55AABB2A1D19D1EF002E4D16 /* CocoatechCore.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
-			remoteInfo = CocoatechCore;
-		};
-		55AABB3F1D19D23C002E4D16 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 55AABB3B1D19D23C002E4D16 /* CocoaTechStrings.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 20CD1C330546675C00A37B05;
-			remoteInfo = CocoaTechStrings;
-		};
-		55AABB431D19D247002E4D16 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 55AABB3B1D19D23C002E4D16 /* CocoaTechStrings.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 20CD1C280546675B00A37B05;
-			remoteInfo = CocoaTechStrings;
-		};
 		8C3D2B60102FABD60007B87E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8C3D2B50102FABD60007B87E /* iTerm.xcodeproj */;
@@ -141,18 +108,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		8C79F2F510033E1B00A4648B /* CopyFiles */ = {
+		8C79F2F510033E1B00A4648B /* Copy Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				55AABB421D19D247002E4D16 /* CocoaTechStrings.framework in CopyFiles */,
-				55597E171C811E760080944E /* iTerm.framework in CopyFiles */,
-				55AABB311D19D218002E4D16 /* CocoatechCore.framework in CopyFiles */,
-				8C4163891010D6340066A4F8 /* BWToolkitFramework.framework in CopyFiles */,
-				8C79F2F810033E3C00A4648B /* Growl.framework in CopyFiles */,
+				55D1E1442192D56B00A6002B /* CocoaTechStrings.framework in Copy Frameworks */,
+				55D1E1432192D56600A6002B /* CocoatechCore.framework in Copy Frameworks */,
+				55597E171C811E760080944E /* iTerm.framework in Copy Frameworks */,
+				8C4163891010D6340066A4F8 /* BWToolkitFramework.framework in Copy Frameworks */,
+				8C79F2F810033E3C00A4648B /* Growl.framework in Copy Frameworks */,
 			);
+			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -167,8 +135,8 @@
 		2A37F4C4FDCFA73011CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		2A37F4C5FDCFA73011CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		32DBCF750370BD2300C91783 /* recon_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.h; path = recon_Prefix.pch; sourceTree = "<group>"; };
-		55AABB2A1D19D1EF002E4D16 /* CocoatechCore.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CocoatechCore.xcodeproj; path = "Vendor/Path Finder SDK/Source/CocoatechCore/CocoatechCore.xcodeproj"; sourceTree = "<group>"; };
-		55AABB3B1D19D23C002E4D16 /* CocoaTechStrings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CocoaTechStrings.xcodeproj; path = "Vendor/Path Finder SDK/Source/CocoatechStrings/CocoaTechStrings.xcodeproj"; sourceTree = "<group>"; };
+		55597E131C811E700080944E /* CocoatechCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CocoatechCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		55597E141C811E700080944E /* CocoaTechStrings.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CocoaTechStrings.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		55B1E5681C824F2B003EA816 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		775BDEF0067A8BF0009058FE /* MyDocument.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = MyDocument.xcdatamodel; sourceTree = "<group>"; };
 		7788DA0506752A1600599AAD /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -193,8 +161,6 @@
 		8C5613E9103638340030B321 /* NotesTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesTableView.m; sourceTree = "<group>"; };
 		8C5909F71038F8870074656C /* Default Basic Profiles.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Default Basic Profiles.plist"; sourceTree = "<group>"; };
 		8C77C40F103963CD003D6589 /* Default Advanced Profiles.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Default Advanced Profiles.plist"; sourceTree = "<group>"; };
-		8C77C5591039DAF4003D6589 /* Recon - Object Graph.graffle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Recon - Object Graph.graffle"; sourceTree = "<group>"; };
-		8C77C55A1039DAF4003D6589 /* Recon-template-new.dmg */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Recon-template-new.dmg"; sourceTree = "<group>"; };
 		8C77C64D103A33F1003D6589 /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
 		8C77C658103A348C003D6589 /* Mail.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; name = Mail.app; path = /Applications/Mail.app; sourceTree = "<absolute>"; };
 		8C79E1920FFBC09600A4648B /* XMLController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLController.m; sourceTree = "<group>"; };
@@ -262,12 +228,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55AABB301D19D218002E4D16 /* CocoatechCore.framework in Frameworks */,
 				55597E121C811E6F0080944E /* iTerm.framework in Frameworks */,
 				775DFF38067A968500C5B868 /* Cocoa.framework in Frameworks */,
 				8C79F2EE10033DF200A4648B /* Growl.framework in Frameworks */,
 				8CC32789100CDCA700483939 /* Security.framework in Frameworks */,
-				55AABB411D19D247002E4D16 /* CocoaTechStrings.framework in Frameworks */,
 				8C4163861010D6310066A4F8 /* BWToolkitFramework.framework in Frameworks */,
 				8CD980E61024BFA200492108 /* Quartz.framework in Frameworks */,
 				8CD980E71024BFA200492108 /* QuartzCore.framework in Frameworks */,
@@ -282,7 +246,6 @@
 		1058C7A6FEA54F5311CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8C77C64D103A33F1003D6589 /* ScriptingBridge.framework */,
 				8C4163851010D6310066A4F8 /* BWToolkitFramework.framework */,
 				8C79F2ED10033DF200A4648B /* Growl.framework */,
 			);
@@ -315,8 +278,6 @@
 		2A37F4AAFDCFA73011CA2CEA /* nmapX-coredata */ = {
 			isa = PBXGroup;
 			children = (
-				55AABB3B1D19D23C002E4D16 /* CocoaTechStrings.xcodeproj */,
-				55AABB2A1D19D1EF002E4D16 /* CocoatechCore.xcodeproj */,
 				8C3D2B50102FABD60007B87E /* iTerm.xcodeproj */,
 				2A37F4ABFDCFA73011CA2CEA /* Classes */,
 				E1B74B1A0667B4A90069E3BA /* Models */,
@@ -367,8 +328,6 @@
 				8C79F4C31003E3BA00A4648B /* Info.plist */,
 				8C79F4C51003E3BA00A4648B /* Growl Registration Ticket.growlRegDict */,
 				2A37F4B9FDCFA73011CA2CEA /* Credits.rtf */,
-				8C77C5591039DAF4003D6589 /* Recon - Object Graph.graffle */,
-				8C77C55A1039DAF4003D6589 /* Recon-template-new.dmg */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -376,26 +335,13 @@
 		2A37F4C3FDCFA73011CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8C77C64D103A33F1003D6589 /* ScriptingBridge.framework */,
+				55597E131C811E700080944E /* CocoatechCore.framework */,
+				55597E141C811E700080944E /* CocoaTechStrings.framework */,
 				1058C7A6FEA54F5311CA2CBB /* Linked Frameworks */,
 				1058C7A8FEA54F5311CA2CBB /* Other Frameworks */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		55AABB2B1D19D1EF002E4D16 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				55AABB2F1D19D1F0002E4D16 /* CocoatechCore.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		55AABB3C1D19D23C002E4D16 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				55AABB401D19D23C002E4D16 /* CocoaTechStrings.framework */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		8C126DAF1037EA3900654B65 /* XIBs */ = {
@@ -566,15 +512,13 @@
 				8D15AC2B0486D014006FF6A4 /* Resources */,
 				8D15AC300486D014006FF6A4 /* Sources */,
 				8D15AC330486D014006FF6A4 /* Frameworks */,
-				8C79F2F510033E1B00A4648B /* CopyFiles */,
+				8C79F2F510033E1B00A4648B /* Copy Frameworks */,
 			);
 			buildRules = (
 				8C77C652103A340D003D6589 /* PBXBuildRule */,
 			);
 			dependencies = (
 				8C3D2C26102FAC990007B87E /* PBXTargetDependency */,
-				55AABB331D19D218002E4D16 /* PBXTargetDependency */,
-				55AABB441D19D247002E4D16 /* PBXTargetDependency */,
 			);
 			name = Recon;
 			productInstallPath = "$(HOME)/Applications";
@@ -588,7 +532,7 @@
 		2A37F4A9FDCFA73011CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 1010;
 			};
 			buildConfigurationList = 26FC0AA90875C8B900E6366F /* Build configuration list for PBXProject "recon" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -600,14 +544,6 @@
 			mainGroup = 2A37F4AAFDCFA73011CA2CEA /* nmapX-coredata */;
 			projectDirPath = "";
 			projectReferences = (
-				{
-					ProductGroup = 55AABB2B1D19D1EF002E4D16 /* Products */;
-					ProjectRef = 55AABB2A1D19D1EF002E4D16 /* CocoatechCore.xcodeproj */;
-				},
-				{
-					ProductGroup = 55AABB3C1D19D23C002E4D16 /* Products */;
-					ProjectRef = 55AABB3B1D19D23C002E4D16 /* CocoaTechStrings.xcodeproj */;
-				},
 				{
 					ProductGroup = 8C3D2B51102FABD60007B87E /* Products */;
 					ProjectRef = 8C3D2B50102FABD60007B87E /* iTerm.xcodeproj */;
@@ -621,20 +557,6 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		55AABB2F1D19D1F0002E4D16 /* CocoatechCore.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = CocoatechCore.framework;
-			remoteRef = 55AABB2E1D19D1F0002E4D16 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		55AABB401D19D23C002E4D16 /* CocoaTechStrings.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = CocoaTechStrings.framework;
-			remoteRef = 55AABB3F1D19D23C002E4D16 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		8C3D2B61102FABD60007B87E /* iTerm.app */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.application;
@@ -667,9 +589,6 @@
 				8CDEC0EB1029C39500765DF6 /* Settings.xib in Resources */,
 				8C5909F81038F8870074656C /* Default Basic Profiles.plist in Resources */,
 				8C77C410103963CD003D6589 /* Default Advanced Profiles.plist in Resources */,
-				8C77C55B1039DAF4003D6589 /* Recon - Object Graph.graffle in Resources */,
-				8C77C55C1039DAF4003D6589 /* Recon-template-new.dmg in Resources */,
-				8C77C659103A348C003D6589 /* Mail.app in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -721,16 +640,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		55AABB331D19D218002E4D16 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = CocoatechCore;
-			targetProxy = 55AABB321D19D218002E4D16 /* PBXContainerItemProxy */;
-		};
-		55AABB441D19D247002E4D16 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = CocoaTechStrings;
-			targetProxy = 55AABB431D19D247002E4D16 /* PBXContainerItemProxy */;
-		};
 		8C3D2C26102FAC990007B87E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "iTerm Framework";
@@ -762,6 +671,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "reconwithwall-darker-zoom";
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -771,7 +681,6 @@
 					"$(PROJECT_DIR)/Frameworks",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -790,6 +699,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "reconwithwall-darker-zoom";
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -815,12 +725,33 @@
 		26FC0AAA0875C8B900E6366F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
@@ -831,11 +762,32 @@
 		26FC0AAB0875C8B900E6366F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				SDKROOT = macosx;

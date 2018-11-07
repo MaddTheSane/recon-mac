@@ -126,5 +126,6 @@
 - (IBAction)hostsInSessionCheckNone:(id)sender;
 - (IBAction)hostsInSessionCheckSelected:(id)sender;
 - (IBAction)hostsInSessionQueueSelected:(id)sender;
+- (IBAction)handleHostsMenuClick:(id)sender;
 
 @end
