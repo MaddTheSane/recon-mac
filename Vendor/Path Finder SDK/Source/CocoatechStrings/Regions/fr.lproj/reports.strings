@@ -1,4 +1,4 @@
-﻿"%@ logical, %@ physical" = "%@ logique, %@ physique";
+"%@ logical, %@ physical" = "%@ logique, %@ physique";
 "%d attributes" = "%d attributs";
 "'%@', Offset: %d, Size: %d" = "'%@', Décalage : %d, Taille : %d";
 "Access Date:" = "Date d'accès :";

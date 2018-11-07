@@ -1,4 +1,4 @@
-﻿"An exception occurred.  In some cases exceptions are harmless, but if you want to be safe, relaunch %@. Please help us improve %@ by sending this report and telling us what happened." = "例外エラーが発生しました。例外エラーは無害な場合もありますが、安全を期する場合は、%1$@ を再起動してください。%2$@ 改善のために、ぜひこのレポートをご送信いただき、何が起きたのかお知らせください。";
+"An exception occurred.  In some cases exceptions are harmless, but if you want to be safe, relaunch %@. Please help us improve %@ by sending this report and telling us what happened." = "例外エラーが発生しました。例外エラーは無害な場合もありますが、安全を期する場合は、%1$@ を再起動してください。%2$@ 改善のために、ぜひこのレポートをご送信いただき、何が起きたのかお知らせください。";
 "Crash log information:" = "クラッシュログ情報：";
 "Don't Send" = "送信しない";
 "Error!" = "エラー！";

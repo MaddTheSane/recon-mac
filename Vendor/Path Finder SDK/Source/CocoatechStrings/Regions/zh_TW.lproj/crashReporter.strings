@@ -1,4 +1,4 @@
-﻿"An exception occurred.  In some cases exceptions are harmless, but if you want to be safe, relaunch %@. Please help us improve %@ by sending this report and telling us what happened." = "發生例外。某些情形下，例外是不會造成傷害的，但為了安全起見，請重新啟動 %@。請協助我們改善 %@，您可以寄送報告並告訴我們發生的問題。";
+"An exception occurred.  In some cases exceptions are harmless, but if you want to be safe, relaunch %@. Please help us improve %@ by sending this report and telling us what happened." = "發生例外。某些情形下，例外是不會造成傷害的，但為了安全起見，請重新啟動 %@。請協助我們改善 %@，您可以寄送報告並告訴我們發生的問題。";
 "Crash log information:" = "程式突然結束日誌資訊：";
 "Don't Send" = "不要傳送";
 "Error!" = "發生錯誤！";

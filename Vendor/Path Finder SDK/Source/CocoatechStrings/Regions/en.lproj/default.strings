@@ -1,4 +1,4 @@
-﻿"##RevealToolbarItemMessage##" = "Open a Finder window and drag this icon into the Finder's toolbar.  Anytime you find yourself in the Finder, click this toolbar item and switch to Path Finder.";
+"##RevealToolbarItemMessage##" = "Open a Finder window and drag this icon into the Finder's toolbar.  Anytime you find yourself in the Finder, click this toolbar item and switch to Path Finder.";
 "%@ available, %@ used" = "%@ available, %@ used";
 "%@, %@ free" = "%@, %@ free";
 "%d Applications" = "%d Applications";
@@ -24,10 +24,10 @@
 "Aliases" = "Aliases";
 "All" = "All";
 "All monitors" = "All monitors";
-"An error occurred while trying to eject \"%@\"." = "An error occurred while trying to eject \"%@\".";
-"An error occurred while trying to mount \"%@\"." = "An error occurred while trying to mount \"%@\".";
-"An error occurred while trying to open \"%@\"." = "An error occurred while trying to open \"%@\".";
-"An error occurred while trying to unmount \"%@\"." = "An error occurred while trying to unmount \"%@\".";
+"An error occurred while trying to eject \"%@\"." = "An error occurred while trying to eject “%@”.";
+"An error occurred while trying to mount \"%@\"." = "An error occurred while trying to mount “%@”.";
+"An error occurred while trying to open \"%@\"." = "An error occurred while trying to open “%@”.";
+"An error occurred while trying to unmount \"%@\"." = "An error occurred while trying to unmount “%@”.";
 "Application" = "Application";
 "Application:" = "Application:";
 "Applications" = "Applications";
@@ -36,7 +36,7 @@
 "Are you sure you want to apply the selected owner, group, and permissions to all the enclosed items?" = "Are you sure you want to apply the selected owner, group, and permissions to all the enclosed items?";
 "Are you sure you want to close this window?" = "Are you sure you want to close this window?";
 "Are you sure you want to remove the items in the Trash permanently?" = "Are you sure you want to remove the items in the Trash permanently?";
-"Are you sure you want to remove the shelf named \"%@\"?" = "Are you sure you want to remove the shelf named \"%@\"?";
+"Are you sure you want to remove the shelf named \"%@\"?" = "Are you sure you want to remove the shelf named “%@”?";
 "Attributes" = "Attributes";
 "Audio" = "Audio";
 "Back" = "Back";
@@ -51,7 +51,7 @@
 "Busy" = "Busy";
 "Buy Later" = "Buy Later";
 "Buy Now" = "Buy Now";
-"Calculating..." = "Calculating...";
+"Calculating..." = "Calculating…";
 "Cancel" = "Cancel";
 "Cancels interactive screen shot mode" = "Cancels interactive screen shot mode";
 "Capacity:" = "Capacity:";
@@ -258,7 +258,7 @@
 "New" = "New";
 "New File" = "New File";
 "New Folder" = "New Folder";
-"New Shelf..." = "New Shelf...";
+"New Shelf..." = "New Shelf…";
 "New Tab" = "New Tab";
 "Next" = "Next";
 "No" = "No";
@@ -273,8 +273,8 @@
 "Open with %@" = "Open with %@";
 "Orange" = "Orange";
 "Other" = "Other";
-"Other..." = "Other...";
-"Others..." = "Others...";
+"Other..." = "Other…";
+"Others..." = "Others…";
 "Owner" = "Owner";
 "Owner:" = "Owner:";
 "PDF" = "PDF";
@@ -399,13 +399,13 @@
 "Text Editor" = "Text Editor";
 "Thank you for registering Path Finder!" = "Thank you for registering Path Finder!";
 "The device containing \"%@\" also contains %d other volume that will not be ejected. Are you sure you want to eject \"%@\"?" = "The device containing \"%@\" also contains %d other volume that will not be ejected. Are you sure you want to eject \"%@\"?";
-"The device containing \"%@\" also contains %d other volumes that will not be ejected. Are you sure you want to eject \"%@\"?" = "The device containing \"%@\" also contains %d other volumes that will not be ejected. Are you sure you want to eject \"%@\"?";
+"The device containing \"%@\" also contains %d other volumes that will not be ejected. Are you sure you want to eject \"%@\"?" = "The device containing “%@” also contains %d other volumes that will not be ejected. Are you sure you want to eject “%@”?";
 "The item \"%@\" could not be moved to the trash." = "The item \"%@\" could not be moved to the trash.";
-"The name \"%@\" with extension \"%@\" is already taken.\nPlease choose a different name." = "The name \"%@\" with extension \"%@\" is already taken.\nPlease choose a different name.";
+"The name \"%@\" with extension \"%@\" is already taken.\nPlease choose a different name." = "The name “%@” with extension “%@” is already taken.\nPlease choose a different name.";
 "The original file may have been moved or deleted." = "The original file may have been moved or deleted.";
 "Theme" = "Theme";
 "There are %d tabs in this window.  Do you want to close the window anyway?" = "There are %d tabs in this window.  Do you want to close the window anyway?";
-"There is no application available to open the document \"%@\"." = "There is no application available to open the document \"%@\".";
+"There is no application available to open the document \"%@\"." = "There is no application available to open the document “%@”.";
 "This PDF is password protected.  Without a password, some operations with this document will be restricted." = "This PDF is password protected.  Without a password, some operations with this document will be restricted.";
 "This action bypasses the Trash.  You cannot undo this action." = "This action bypasses the Trash.  You cannot undo this action.";
 "This beta version of Path Finder has expired.  Download the latest version from cocoatech.com." = "This beta version of Path Finder has expired.  Download the latest version from cocoatech.com.";

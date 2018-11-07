@@ -1,4 +1,4 @@
-﻿"FAX_MESSAGE" = "You can pay by credit card, check, or purchase order.\n\nPrint out the form and mail your order to:\n\nCocoatech\n4255 24th St.\nSan Francisco, CA 94114";
+"FAX_MESSAGE" = "You can pay by credit card, check, or purchase order.\n\nPrint out the form and mail your order to:\n\nCocoatech\n4255 24th St.\nSan Francisco, CA 94114";
 "PAYPAL_MESSAGE" = "Purchasing with PayPal is very simple. Click the button below, and a sheet will appear where you can login to PayPal and make a payment.\n\nIf you feel more comfortable using your default internet browser to make a payment using PayPal, <a href=\"mkcl://kMKCShowPayPalInDefaultBrowser\">click here</a>.\nIf you use your default internet browser, you will have to enter your license key by hand once you receive the email.";
 "PREPAID_MESSAGE" = "If you received a prepaid coupon code, enter it here.";
 "Quit" = "Zamknij";

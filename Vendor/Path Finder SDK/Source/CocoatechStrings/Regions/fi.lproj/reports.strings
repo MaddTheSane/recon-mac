@@ -1,4 +1,4 @@
-﻿"%@ logical, %@ physical" = "%@ looginen, %@ fyysinen";
+"%@ logical, %@ physical" = "%@ looginen, %@ fyysinen";
 "%d attributes" = "%d attribuutteja";
 "'%@', Offset: %d, Size: %d" = "'%@', Haarauma: %d, koko: %d";
 "Access Date:" = "Avattu:";

@@ -1,4 +1,4 @@
-﻿"%@ logical, %@ physical" = "%@ logiska, %@ fysiska";
+"%@ logical, %@ physical" = "%@ logiska, %@ fysiska";
 "%d attributes" = "%d attribut";
 "'%@', Offset: %d, Size: %d" = "'%@', Offset: %d, Storlek: %d";
 "Access Date:" = "Åtkomstdatum:";

@@ -1,4 +1,4 @@
-﻿"Automatic" = "Automatic";
+"Automatic" = "Automatic";
 "Black" = "Black";
 "Blue" = "Blue";
 "Brown" = "Brown";
@@ -6,10 +6,10 @@
 "Choose Application" = "Choose Application";
 "Choose File" = "Choose File";
 "Choose Image" = "Choose Image";
-"Choose..." = "Choose...";
+"Choose..." = "Choose…";
 "Clear All" = "Clear All";
 "Cyan" = "Cyan";
-"Edit Encodings Menu..." = "Edit Encodings Menu...";
+"Edit Encodings Menu..." = "Edit Encodings Menu…";
 "Encoding:" = "Encoding:";
 "Green" = "Green";
 "Ignore HTML Commands" = "Ignore HTML Commands";
@@ -17,7 +17,7 @@
 "Magenta" = "Magenta";
 "OK" = "OK";
 "Orange" = "Orange";
-"Processed %d items to \"%@\"" = "Processed %d items to \"%@\"";
+"Processed %d items to \"%@\"" = "Processed %d items to “%@”";
 "Purple" = "Purple";
 "Red" = "Red";
 "Revert to Default" = "Revert to Default";

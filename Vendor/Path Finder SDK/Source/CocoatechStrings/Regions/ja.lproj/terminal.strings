@@ -1,4 +1,4 @@
-﻿" When idle, sends" = "待機時に次の文字を送信";
+" When idle, sends" = "待機時に次の文字を送信";
 "%@ copy" = "%@ のコピー";
 "%@'s display profile %@ and terminal profile %@ have been updated" = "%@ のディスプレイプロファイル %@ とターミナルプロファイル %@ が変更されました。";
 "-> Browser" = "-> ブラウザ";

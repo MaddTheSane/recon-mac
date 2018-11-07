@@ -1,10 +1,10 @@
-﻿" bytes" = " bytes";
+" bytes" = " bytes";
 " items" = " items";
 "Alert!" = "Alert!";
 "Alias bit" = "Alias bit";
 "Application:" = "Application:";
-"Apply to enclosed items..." = "Apply to enclosed items...";
-"Are you sure you want to change all your %@ documents to open with the application \"%@\"?" = "Are you sure you want to change all your %@ documents to open with the application \"%@\"?";
+"Apply to enclosed items..." = "Apply to enclosed items…";
+"Are you sure you want to change all your %@ documents to open with the application \"%@\"?" = "Are you sure you want to change all your %@ documents to open with the application “%@”?";
 "Artist" = "Artist";
 "Artists" = "Artists";
 "Attributes" = "Attributes";
@@ -72,7 +72,7 @@
 "Stationery Pad" = "Stationery Pad";
 "Swap Forks" = "Swap Forks";
 "Swapping forks can be undone by swapping again.  Are you sure you want to swap the forks?" = "Swapping forks can be undone by swapping again.  Are you sure you want to swap the forks?";
-"This change will apply to all %@ documents with %@ \"%@\"." = "This change will apply to all %@ documents with %@ \"%@\".";
+"This change will apply to all %@ documents with %@ \"%@\"." = "This change will apply to all %@ documents with %@ “%@”.";
 "Time" = "Time";
 "Type:" = "Type:";
 "Use this application to open all documents like this." = "Use this application to open all documents like this.";

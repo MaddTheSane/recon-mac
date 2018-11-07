@@ -1,7 +1,7 @@
-﻿" bytes" = " bytes";
+" bytes" = " bytes";
 " of " = " of ";
 " was not found." = " was not found.";
-"%@ named \"%@\" already exists in this location.  Do you want to replace it with the %@ you are moving?" = "%@ named \"%@\" already exists in this location.  Do you want to replace it with the %@ you are moving?";
+"%@ named \"%@\" already exists in this location.  Do you want to replace it with the %@ you are moving?" = "%@ named “%@” already exists in this location.  Do you want to replace it with the %@ you are moving?";
 "A newer item" = "A newer item";
 "An error occurred while deleting." = "An error occurred while deleting.";
 "An item" = "An item";
@@ -10,13 +10,13 @@
 "Choose Folder" = "Choose Folder";
 "Computer" = "Computer";
 "Continue" = "Continue";
-"Copied %u items to \"%@\"" = "Copied %u items to \"%@\"";
+"Copied %u items to \"%@\"" = "Copied %u items to “%@”";
 "Copied: " = "Copied: ";
 "Copy" = "Copy";
-"Copying %u items to \"%@\"" = "Copying %u items to \"%@\"";
+"Copying %u items to \"%@\"" = "Copying %u items to “%@”";
 "Count: %u" = "Count: %u";
 "Delete" = "Delete";
-"Deleting from \"%@\"." = "Deleting from \"%@\".";
+"Deleting from \"%@\"." = "Deleting from “%@”.";
 "Document" = "Document";
 "Error deleting item." = "Error deleting item.";
 "Error!" = "Error!";
@@ -29,7 +29,7 @@
 "Not enough free space at destination.  %@ of additional free space required." = "Not enough free space at destination.  %@ of additional free space required.";
 "Package" = "Package";
 "Permission error.  File is not readable." = "Permission error.  File is not readable.";
-"Preparing to copy to \"%@\"" = "Preparing to copy to \"%@\"";
+"Preparing to copy to \"%@\"" = "Preparing to copy to “%@”";
 "Replace" = "Replace";
 "Replace All" = "Replace All";
 "Replace?" = "Replace?";
@@ -38,7 +38,7 @@
 "Symbolic Link" = "Symbolic Link";
 "This folder must be indexed before you can search by content.  Indexing will take several minutes, but it will run silently in the background.  Would you like to build the index now?" = "This folder must be indexed before you can search by content.  Indexing will take several minutes, but it will run silently in the background.  Would you like to build the index now?";
 "Volume" = "Volume";
-"You don't have write permission at \"%@\"" = "You don't have write permission at \"%@\"";
+"You don't have write permission at \"%@\"" = "You don't have write permission at “%@”";
 "copy" = "copy";
 "newer one" = "newer one";
 "older one" = "older one";

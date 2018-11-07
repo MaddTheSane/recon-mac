@@ -1,4 +1,4 @@
-﻿" When idle, sends" = " When idle, sends";
+" When idle, sends" = " When idle, sends";
 "%@ copy" = "%@ copy";
 "%@'s display profile %@ and terminal profile %@ have been updated" = "%@'s display profile %@ and terminal profile %@ have been updated";
 "+Esc" = "+Esc";
@@ -40,8 +40,8 @@
 "Cancel" = "Cancel";
 "Character Spacing" = "Character Spacing";
 "Characters considered part of word:" = "Characters considered part of word:";
-"Check For Update..." = "Check For Update...";
-"Choose a profile on the left..." = "Choose a profile on the left...";
+"Check For Update..." = "Check For Update…";
+"Choose a profile on the left..." = "Choose a profile on the left…";
 "Clear Buffer" = "Clear Buffer";
 "Clear Scrollback Buffer" = "Clear Scrollback Buffer";
 "Close" = "Close";
@@ -158,7 +158,7 @@
 "Option" = "Option";
 "Option Key as" = "Option Key as";
 "OtherViews" = "OtherViews";
-"Page Setup..." = "Page Setup...";
+"Page Setup..." = "Page Setup…";
 "Panel" = "Panel";
 "Paste" = "Paste";
 "Paste Selection" = "Paste Selection";
@@ -172,7 +172,7 @@
 "Press Option for New Window" = "Press Option for New Window";
 "Previous" = "Previous";
 "Print" = "Print";
-"Print Selection..." = "Print Selection...";
+"Print Selection..." = "Print Selection…";
 "Print..." = "Print...";
 "Profiles" = "Profiles";
 "Prompt when quitting or closing window" = "Prompt when quitting or closing window";
@@ -185,7 +185,7 @@
 "Reset" = "Reset";
 "Row" = "Row";
 "Save" = "Save";
-"Save Text As..." = "Save Text As...";
+"Save Text As..." = "Save Text As…";
 "Screen" = "Screen";
 "Script" = "Script";
 "Scrollback Buffer Size:" = "Scrollback Buffer Size:";
@@ -217,7 +217,7 @@
 "Show All" = "Show All";
 "Show Bookmark Drawer" = "Show Bookmark Drawer";
 "Show Bookmarks Drawer" = "Show Bookmarks Drawer";
-"Show Session Info..." = "Show Session Info...";
+"Show Session Info..." = "Show Session Info…";
 "Silence terminal bell" = "Silence terminal bell";
 "Slowest" = "Slowest";
 "Smaller Font" = "Smaller Font";

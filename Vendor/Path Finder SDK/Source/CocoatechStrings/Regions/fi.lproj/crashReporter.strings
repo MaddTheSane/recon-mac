@@ -1,4 +1,4 @@
-﻿"An exception occurred.  In some cases exceptions are harmless, but if you want to be safe, relaunch %@. Please help us improve %@ by sending this report and telling us what happened." = "Tapahtui poikkeus. Joissain tapauksissa poikkeukset ovat harmittomia, mutta jos haluat olla varma käynnista %@ uudelleen. Ole hyvä ja auta meitä parantamaan %@-ohjelmaa lähettämällä meille tämä raportti ja kertomalla meille mitä tapahtui.";
+"An exception occurred.  In some cases exceptions are harmless, but if you want to be safe, relaunch %@. Please help us improve %@ by sending this report and telling us what happened." = "Tapahtui poikkeus. Joissain tapauksissa poikkeukset ovat harmittomia, mutta jos haluat olla varma käynnista %@ uudelleen. Ole hyvä ja auta meitä parantamaan %@-ohjelmaa lähettämällä meille tämä raportti ja kertomalla meille mitä tapahtui.";
 "Crash log information:" = "Kaatumisraportin tietoja:";
 "Don't Send" = "Älä lähetä";
 "Error!" = "Virhe!";

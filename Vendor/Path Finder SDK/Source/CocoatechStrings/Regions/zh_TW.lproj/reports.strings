@@ -1,4 +1,4 @@
-﻿"%@ logical, %@ physical" = "%@ 邏輯，%@ 實體";
+"%@ logical, %@ physical" = "%@ 邏輯，%@ 實體";
 "%d attributes" = "%d 個屬性";
 "'%@', Offset: %d, Size: %d" = "'%@'，偏移：%d，大小：%d";
 "Access Date:" = "存取日期：";

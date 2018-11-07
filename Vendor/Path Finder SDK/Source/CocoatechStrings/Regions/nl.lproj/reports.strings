@@ -1,4 +1,4 @@
-﻿"%@ logical, %@ physical" = "%@ logisch, %@ fysiek";
+"%@ logical, %@ physical" = "%@ logisch, %@ fysiek";
 "%d attributes" = "%d attributen";
 "'%@', Offset: %d, Size: %d" = "'%@', Start: %d, Grootte: %d";
 "Access Date:" = "Laatst gebruikt:";

@@ -1,4 +1,4 @@
-﻿"%@ logical, %@ physical" = "%@ 逻辑, %@ 物理";
+"%@ logical, %@ physical" = "%@ 逻辑, %@ 物理";
 "%d attributes" = "%d 属性";
 "'%@', Offset: %d, Size: %d" = "'%@', 偏移: %d, 大小: %d";
 "Access Date:" = "访问日期:";

@@ -1,4 +1,4 @@
-﻿"%@ %@" = "%1$@ %2$@";
+"%@ %@" = "%1$@ %2$@";
 "%@, %@ %@" = "%1$@, %2$@ %3$@";
 "Error editing InternetConfig preferences for key %@: %@" = "Error editing InternetConfig preferences for key %1$@: %2$@";
 "Error reading InternetConfig preference for key %@: %@" = "Error reading InternetConfig preference for key %1$@: %2$@";
