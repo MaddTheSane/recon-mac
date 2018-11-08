@@ -25,15 +25,14 @@
 
 @class VT100Screen;
 
-typedef struct 
-{
-	int code;
-	unsigned int color;
-	unsigned int bgColor;
-	NSImage *image;
-	int count;
-} CharCache;
-	
+@interface CharCache: NSObject
+@property int code;
+@property unsigned int color;
+@property unsigned int bgColor;
+@property (strong) NSImage *image;
+@property int count;
+@end
+
 enum { SELECT_CHAR, SELECT_WORD, SELECT_LINE };
 
 @interface PTYTextView : NSView <NSTextInput, NSDraggingDestination>
@@ -111,7 +110,7 @@ enum { SELECT_CHAR, SELECT_WORD, SELECT_LINE };
 	BOOL reportingMouseDown;
 	
 	//cache
-	CharCache	*charImages;
+	NSArray<CharCache*>	*charImages;
 	
 	// blinking cursor
 	BOOL blinkingCursor;

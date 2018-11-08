@@ -37,9 +37,6 @@
     heightOffset = aRect.size.height - contentRect.size.height;
     //NSLog(@"widthOffset = %f; heightOffset = %f", widthOffset, heightOffset);
 
-    // release the temporary tabview
-    [aTabView release];
-
     // Apply the offset to the given frame size
     return (NSMakeSize(frameSize.width - widthOffset, frameSize.height - heightOffset));
 }
@@ -63,9 +60,6 @@
     widthOffset = aRect.size.width - contentRect.size.width;
     heightOffset = aRect.size.height - contentRect.size.height;
     //NSLog(@"widthOffset = %f; heightOffset = %f", widthOffset, heightOffset);
-
-    // release the temporary tabview
-    [aTabView release];
 
     // Apply the offset to the given content size
     return (NSMakeSize(contentSize.width + widthOffset, contentSize.height + heightOffset));

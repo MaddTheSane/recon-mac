@@ -95,17 +95,9 @@ static NSColor *deadStateColor;
 	// release the data processing semaphore
 	MPDeleteSemaphore(updateSemaphore);
 
-	[icon release];
-    [TERM_VALUE release];
-    [name release];
-    [windowTitle release];
-    [addressBookEntry release];	
 	
-    [SHELL release];
     SHELL = nil;
-	[SCREEN release];
     SCREEN = nil;
-    [TERMINAL release];
     TERMINAL = nil;    
     
 	[self setScrollView:nil];
@@ -113,7 +105,6 @@ static NSColor *deadStateColor;
 
 	[[NSNotificationCenter defaultCenter] removeObserver: self];
 	
-    [super dealloc];    
 }
 
 - (NSImage*)warningImage;
@@ -146,13 +137,13 @@ static NSColor *deadStateColor;
     [SCREEN setSession:self];
 		
     // Allocate a scrollview
-    [self setScrollView:[[[PTYScrollView alloc] initWithFrame: NSMakeRect(0, 0, aRect.size.width, aRect.size.height)] autorelease]];
+    [self setScrollView:[[PTYScrollView alloc] initWithFrame: NSMakeRect(0, 0, aRect.size.width, aRect.size.height)]];
     [[self scrollView] setHasVerticalScroller:YES];
     [[self scrollView] setAutoresizingMask: NSViewWidthSizable|NSViewHeightSizable];
 		    
     // Allocate a text view
     aSize = [[self scrollView] contentSize];
-    [self setTextView:[[[PTYTextView alloc] initWithFrame: NSMakeRect(0, 0, aSize.width, aSize.height)] autorelease]];
+    [self setTextView:[[PTYTextView alloc] initWithFrame: NSMakeRect(0, 0, aSize.width, aSize.height)]];
 	[[self textView] setAutoresizingMask: NSViewWidthSizable | NSViewHeightSizable];
 	
     // assign terminal and task objects
@@ -218,12 +209,11 @@ static NSColor *deadStateColor;
 	
 	//stop the timer;
 	if (updateTimer) {
-		[updateTimer invalidate]; [updateTimer release]; updateTimer = nil;
+		[updateTimer invalidate];  updateTimer = nil;
 	}
 	// final update of display
 	[self updateDisplay];
     
-    [addressBookEntry release];
     addressBookEntry = nil;
 	
     [[self textView] setScreen: nil];
@@ -719,7 +709,7 @@ static NSColor *deadStateColor;
 		
     board = [NSPasteboard generalPasteboard];
     NSParameterAssert(board != nil );
-    str = [[[NSMutableString alloc] initWithString:[board stringForType:NSStringPboardType]] autorelease];
+    str = [[NSMutableString alloc] initWithString:[board stringForType:NSStringPboardType]];
 	if ([sender tag]) // paste with escape;
 	{
 		[str replaceOccurrencesOfString:@"\\" withString:@"\\\\" options:NSLiteralSearch range:NSMakeRange(0, [str length])];
@@ -932,7 +922,6 @@ static NSColor *deadStateColor;
     aMenuItem = [[NSMenuItem alloc] initWithTitle:NTLocalizedStringFromTableInBundle(@"Clear Buffer",@"iTerm", [NSBundle bundleForClass: [self class]], @"Context menu") action:@selector(clearBuffer:) keyEquivalent:@""];
     [aMenuItem setTarget: [self parent]];
     [theMenu addItem: aMenuItem];
-    [aMenuItem release];
     
     // Ask the parent if it has anything to add
     if ([[self parent] respondsToSelector:@selector(menuForEvent: menu:)])
@@ -984,13 +973,12 @@ static NSColor *deadStateColor;
 		// clear the window title if it is not different
 		if ([self windowTitle] == nil || [name isEqualToString: [self windowTitle]])
 			[self setWindowTitle: nil];
-        [defaultName release];
         defaultName = nil;
     }
     if (!theName)
 		theName = NTLocalizedStringFromTableInBundle(@"Untitled",@"iTerm", [NSBundle bundleForClass: [self class]], @"Profiles");
 	
-	defaultName = [theName retain];
+	defaultName = theName;
 }
 
 - (NSString *) name
@@ -1008,13 +996,12 @@ static NSColor *deadStateColor;
 		// clear the window title if it is not different
 		if ([self windowTitle] == nil || [name isEqualToString: [self windowTitle]])
 			[self setWindowTitle: nil];
-        [name release];
         name = nil;
     }
     if (!theName)
 		theName = NTLocalizedStringFromTableInBundle(@"Untitled",@"iTerm", [NSBundle bundleForClass: [self class]], @"Profiles");
 	
-	name = [theName retain];
+	name = theName;
 	// sync the window title if it is not set to something else
 	if ([self windowTitle] == nil)
 		[self setWindowTitle: theName];
@@ -1033,12 +1020,11 @@ static NSColor *deadStateColor;
 {
 	if ([theTitle isEqualToString:windowTitle]) return;
 	
-    [windowTitle autorelease];
     windowTitle = nil;
     
     if (theTitle != nil)
     {
-		windowTitle = [theTitle retain];
+		windowTitle = theTitle;
 		if ([[self parent] currentSession] == self)
             [[self parent] setWindowTitle: theTitle];
     }
@@ -1051,8 +1037,7 @@ static NSColor *deadStateColor;
 
 - (void)setSHELL: (PTYTask *) theSHELL
 {
-    [SHELL autorelease];
-    SHELL = [theSHELL retain];
+    SHELL = theSHELL;
 }
 
 - (VT100Terminal *) TERMINAL
@@ -1062,8 +1047,7 @@ static NSColor *deadStateColor;
 
 - (void)setTERMINAL: (VT100Terminal *) theTERMINAL
 {
-    [TERMINAL autorelease];
-    TERMINAL = [theTERMINAL retain];
+    TERMINAL = theTERMINAL;
 }
 
 - (NSString *) TERM_VALUE
@@ -1073,8 +1057,7 @@ static NSColor *deadStateColor;
 
 - (void)setTERM_VALUE: (NSString *) theTERM_VALUE
 {
-    [TERM_VALUE autorelease];
-    TERM_VALUE = [theTERM_VALUE retain];
+    TERM_VALUE = theTERM_VALUE;
     [TERMINAL setTermType: theTERM_VALUE];
 }
 
@@ -1085,8 +1068,7 @@ static NSColor *deadStateColor;
 
 - (void)setSCREEN: (VT100Screen *) theSCREEN
 {
-    [SCREEN autorelease];
-    SCREEN = [theSCREEN retain];
+    SCREEN = theSCREEN;
 }
 
 - (NSView *) view
@@ -1138,8 +1120,6 @@ static NSColor *deadStateColor;
 
 - (void)setIcon: (NSImage *) anIcon
 {
-	[anIcon retain];
-	[icon release];
 	icon = anIcon;
 }
 
@@ -1390,8 +1370,7 @@ static NSColor *deadStateColor;
 
 - (void)setAddressBookEntry:(NSDictionary*) entry
 {
-    [addressBookEntry release];
-    addressBookEntry = [entry retain];
+    addressBookEntry = entry;
 }
 
 - (NSDictionary *)addressBookEntry
@@ -1452,25 +1431,25 @@ static NSColor *deadStateColor;
 {	
 	//stop the timer;
 	if (updateTimer || EXIT) {
-		[updateTimer invalidate]; [updateTimer release]; updateTimer = nil;
+		[updateTimer invalidate];  updateTimer = nil;
 		if (EXIT) return;
 	}
 
 	switch (mode) {
 		case FAST_MODE:
-			updateTimer = [[NSTimer scheduledTimerWithTimeInterval:0.002 * [[PreferencePanel sharedInstance] refreshRate]
+			updateTimer = [NSTimer scheduledTimerWithTimeInterval:0.002 * [[PreferencePanel sharedInstance] refreshRate]
 															target:self
 														  selector:@selector(_updateTimerTick:)
 														  userInfo:nil
-														   repeats:YES] retain]; 
+														   repeats:YES]; 
 			
 			break;
 		case SLOW_MODE:
-			updateTimer = [[NSTimer scheduledTimerWithTimeInterval:0.25
+			updateTimer = [NSTimer scheduledTimerWithTimeInterval:0.25
 															target:self
 														  selector:@selector(_updateTimerTick:)
 														  userInfo:nil
-														   repeats:YES] retain]; 
+														   repeats:YES]; 
 			
 			break;
 	}
@@ -1501,8 +1480,7 @@ static NSColor *deadStateColor;
 {
     if (mScrollView != theScrollView)
     {
-        [mScrollView release];
-        mScrollView = [theScrollView retain];
+        mScrollView = theScrollView;
     }
 }
 
@@ -1518,8 +1496,7 @@ static NSColor *deadStateColor;
 {
     if (mTextView != theTextView)
     {
-        [mTextView release];
-        mTextView = [theTextView retain];
+        mTextView = theTextView;
     }
 }
 
@@ -1530,21 +1507,21 @@ static NSColor *deadStateColor;
 // this is only used for non keyboard events
 - (void)_processWriteDataThread: (NSData *) data
 {
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+	@autoreleasepool {
 	
     // check if we want to send this input to all the sessions
-    if ([parent sendInputToAllSessions] == NO)
-    {
+        if ([parent sendInputToAllSessions] == NO)
+        {
 		if (!EXIT)
 			[SHELL writeTask: data];
-    }
-    else
-    {
+        }
+        else
+        {
 		// send to all sessions
 		[parent sendInputToAllSessions: data];
-    }
+        }
 	
-	[pool release];
+	}
 }
 
 
@@ -1559,7 +1536,7 @@ static NSColor *deadStateColor;
 		}
 		else
 		{
-			[updateTimer invalidate]; [updateTimer release]; updateTimer = nil;
+			[updateTimer invalidate];  updateTimer = nil;
 			[self updateDisplay];
 		}
 	}

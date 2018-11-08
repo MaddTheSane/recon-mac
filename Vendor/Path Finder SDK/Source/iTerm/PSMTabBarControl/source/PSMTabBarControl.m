@@ -197,18 +197,8 @@
 	while ( (nextCell = [enumerator nextObject]) ) {
 		[self removeTabForCell:nextCell];
 	}
-	
-    [_overflowPopUpButton release];
-    [_cells release];
-    [tabView release];
-    [_addTabButton release];
-    [partnerView release];
-    [_lastMouseDownEvent release];
-    [style release];
     
     [self unregisterDraggedTypes];
-	
-    [super dealloc];
 }
 
 - (void)awakeFromNib
@@ -240,8 +230,6 @@
 
 - (void)setLastMouseDownEvent:(NSEvent *)event
 {
-    [event retain];
-    [_lastMouseDownEvent release];
     _lastMouseDownEvent = event;
 }
 
@@ -281,8 +269,7 @@
 
 - (void)setStyle:(id <PSMTabStyle>)newStyle
 {
-    [style release];
-    style = [newStyle retain];
+    style = newStyle;
     
     // restyle add tab button
     if (_addTabButton){
@@ -314,7 +301,6 @@
     }
    
     [self setStyle:newStyle];
-    [newStyle release];
 }
 
 - (PSMTabBarOrientation)orientation
@@ -511,7 +497,6 @@
     
     // bind it up
     [self bindPropertiesForCell:cell andTabViewItem:item];
-	[cell release];
     
     //[self update]; 
 }
@@ -1224,7 +1209,7 @@
             // set up menu items
             NSMenuItem *menuItem;
             if (overflowMenu == nil) {
-                overflowMenu = [[[NSMenu alloc] initWithTitle:@"TITLE"] autorelease];
+                overflowMenu = [[NSMenu alloc] initWithTitle:@"TITLE"];
                 [overflowMenu insertItemWithTitle:@"FIRST" action:nil keyEquivalent:@"" atIndex:0]; // Because the overflowPupUpButton is a pull down menu
             }
             menuItem = [[NSMenuItem alloc] initWithTitle:[[cell attributedStringValue] string] action:@selector(overflowMenuAction:) keyEquivalent:@""];
@@ -1245,7 +1230,6 @@
 			}
 			
             [overflowMenu addItem:menuItem];
-            [menuItem release];
         }
     }
 	
@@ -1591,7 +1575,6 @@
 - (void)closeTabClick:(id)sender
 {
 	NSTabViewItem *item = [sender representedObject];
-    [sender retain];
     if (([_cells count] == 1) && (![self canCloseOnlyTab]))
         return;
     
@@ -1603,13 +1586,9 @@
         }
     }
 	
-    [item retain];
     if (([self delegate]) && ([[self delegate] respondsToSelector:@selector(closeSession:)])){
         [[self delegate] closeSession: [item identifier]];
     } 
-        
-    [item release];
-    [sender release];
 }
 
 - (void)tabClick:(id)sender
@@ -1828,7 +1807,7 @@
 {
     NSArray *tabItems = [tabView tabViewItems];
     // go through cells, remove any whose representedObjects are not in [tabView tabViewItems]
-	NSArray* cellsCopy = [[_cells copy] autorelease];
+	NSArray* cellsCopy = [_cells copy];
     NSEnumerator *e = [cellsCopy objectEnumerator];
     PSMTabBarCell *cell;
     while ( (cell = [e nextObject]) ) {
@@ -1914,11 +1893,11 @@
     self = [super initWithCoder:aDecoder];
     if (self) {
         if ([aDecoder allowsKeyedCoding]) {
-            _cells = [[aDecoder decodeObjectForKey:@"PSMcells"] retain];
-            tabView = [[aDecoder decodeObjectForKey:@"PSMtabView"] retain];
-            _overflowPopUpButton = [[aDecoder decodeObjectForKey:@"PSMoverflowPopUpButton"] retain];
-            _addTabButton = [[aDecoder decodeObjectForKey:@"PSMaddTabButton"] retain];
-            style = [[aDecoder decodeObjectForKey:@"PSMstyle"] retain];
+            _cells = [aDecoder decodeObjectForKey:@"PSMcells"];
+            tabView = [aDecoder decodeObjectForKey:@"PSMtabView"];
+            _overflowPopUpButton = [aDecoder decodeObjectForKey:@"PSMoverflowPopUpButton"];
+            _addTabButton = [aDecoder decodeObjectForKey:@"PSMaddTabButton"];
+            style = [aDecoder decodeObjectForKey:@"PSMstyle"];
 			_orientation = [aDecoder decodeIntForKey:@"PSMorientation"];
             _canCloseOnlyTab = [aDecoder decodeBoolForKey:@"PSMcanCloseOnlyTab"];
 			_disableTabClose = [aDecoder decodeBoolForKey:@"PSMdisableTabClose"];
@@ -1934,12 +1913,12 @@
             _currentStep = [aDecoder decodeIntForKey:@"PSMcurrentStep"];
             _isHidden = [aDecoder decodeBoolForKey:@"PSMisHidden"];
             _hideIndicators = [aDecoder decodeBoolForKey:@"PSMhideIndicators"];
-            partnerView = [[aDecoder decodeObjectForKey:@"PSMpartnerView"] retain];
+            partnerView = [aDecoder decodeObjectForKey:@"PSMpartnerView"];
             _awakenedFromNib = [aDecoder decodeBoolForKey:@"PSMawakenedFromNib"];
-            _lastMouseDownEvent = [[aDecoder decodeObjectForKey:@"PSMlastMouseDownEvent"] retain];
+            _lastMouseDownEvent = [aDecoder decodeObjectForKey:@"PSMlastMouseDownEvent"];
 			_useOverflowMenu = [aDecoder decodeBoolForKey:@"PSMuseOverflowMenu"];
 			_automaticallyAnimates = [aDecoder decodeBoolForKey:@"PSMautomaticallyAnimates"];
-            delegate = [[aDecoder decodeObjectForKey:@"PSMdelegate"] retain];
+            delegate = [aDecoder decodeObjectForKey:@"PSMdelegate"];
         }
     }
     return self;

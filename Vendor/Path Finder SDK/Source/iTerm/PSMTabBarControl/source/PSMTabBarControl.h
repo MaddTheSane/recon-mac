@@ -126,10 +126,10 @@ enum {
 - (void)setCanCloseOnlyTab:(BOOL)value;
 - (BOOL)disableTabClose;
 - (void)setDisableTabClose:(BOOL)value;
-@property (retain) id<PSMTabStyle> style;
+@property (strong) id<PSMTabStyle> style;
 - (id<PSMTabStyle>)style;
 - (void)setStyle:(id <PSMTabStyle>)newStyle;
-@property (assign, setter=setStyleNamed:) NSString *styleName;
+@property (weak, setter=setStyleNamed:) NSString *styleName;
 - (BOOL)hideForSingleTab;
 - (void)setHideForSingleTab:(BOOL)value;
 - (BOOL)showAddTabButton;
@@ -156,11 +156,11 @@ enum {
 - (void)setTabLocation:(int)value;
 
 // accessors
-@property (retain) NSTabView *tabView;
+@property (strong) NSTabView *tabView;
 - (id<TabBarControlDelegate>)delegate;
 - (void)setDelegate:(id<TabBarControlDelegate>)object;
-@property (assign) id<TabBarControlDelegate> delegate;
-@property (retain) id partnerView;
+@property  id<TabBarControlDelegate> delegate;
+@property (strong) id partnerView;
 
 // the buttons
 - (PSMRolloverButton *)addTabButton;

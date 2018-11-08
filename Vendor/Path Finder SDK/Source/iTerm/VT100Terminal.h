@@ -123,7 +123,7 @@ typedef struct {
     unsigned char *position;
     int length;
     union {
-	NSString *string;
+	CFStringRef string;
 	unsigned char code;
 	struct {
 	    int p[VT100CSIPARAM_MAX];

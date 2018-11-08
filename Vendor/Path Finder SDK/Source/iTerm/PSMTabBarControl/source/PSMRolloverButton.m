@@ -15,17 +15,13 @@
 
 @implementation PSMRolloverButton
 
-- (void)dealloc 
+- (void)dealloc
 {
-    [_rolloverImage release];
 	_rolloverImage = nil;
 	
-    [_usualImage release];
 	_usualImage = nil;
 	
 	[self removeTrackingRect];
-	
-	[super dealloc];
 }
 
 - (void)drawRect:(NSRect)rect;
@@ -41,8 +37,6 @@
 // the regular image
 - (void)setUsualImage:(NSImage *)newImage
 {
-    [newImage retain];
-    [_usualImage release];
     _usualImage = newImage;
     [self setImage:_usualImage];
 }
@@ -54,8 +48,6 @@
 
 - (void)setRolloverImage:(NSImage *)newImage
 {
-    [newImage retain];
-    [_rolloverImage release];
     _rolloverImage = newImage;
 }
 
@@ -69,7 +61,7 @@
 	[self setImage:_usualImage];
 
 	NSPoint mouse = [NSEvent mouseLocation];
-	mouse = [[self window] convertPointFromScreen:mouse];
+	mouse = [[self window] convertScreenToBase:mouse];
 	mouse = [self convertPoint:mouse fromView:nil];
 	
 	BOOL mouseInsideNow = NSMouseInRect(mouse, [self bounds], [self isFlipped]);
@@ -119,9 +111,9 @@
 
 @implementation PSMRolloverButton (Private)
 
-//---------------------------------------------------------- 
-//  mouseOver 
-//---------------------------------------------------------- 
+//----------------------------------------------------------
+//  mouseOver
+//----------------------------------------------------------
 - (BOOL)mouseOver
 {
     return mMouseOver;

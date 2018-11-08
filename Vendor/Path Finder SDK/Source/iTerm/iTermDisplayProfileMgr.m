@@ -37,12 +37,6 @@ static iTermDisplayProfileMgr *singleInstance = nil;
 	return (self);
 }
 
-- (void)dealloc
-{
-	[profiles release];
-	[super dealloc];
-}
-
 - (NSMutableDictionary *)profiles
 {
 	return (profiles);
@@ -64,7 +58,6 @@ static iTermDisplayProfileMgr *singleInstance = nil;
 			sourceDict = [aDict objectForKey: profileName];
 			mappingDict = [[NSMutableDictionary alloc] initWithDictionary: sourceDict];
 			[profiles setObject: mappingDict forKey: profileName];
-			[mappingDict release];
 		}
 	}
     else  // if we don't have any profile, create a default profile
@@ -77,7 +70,6 @@ static iTermDisplayProfileMgr *singleInstance = nil;
 		
 		aProfile = [[NSMutableDictionary alloc] init];
 		[profiles setObject: aProfile forKey: defaultName];
-		[aProfile release];
 		
 		[aProfile setObject: @"Yes" forKey: @"Default Profile"];
 		
@@ -154,7 +146,6 @@ static iTermDisplayProfileMgr *singleInstance = nil;
 		aMutableDict = [[NSMutableDictionary alloc] initWithDictionary: aProfile];
 		[aMutableDict removeObjectForKey: @"Default Profile"];
 		[profiles setObject: aMutableDict forKey: newProfile];
-		[aMutableDict release];
 	}
 }
 
@@ -345,7 +336,6 @@ static iTermDisplayProfileMgr *singleInstance = nil;
 		[colorDict setObject: [NSNumber numberWithFloat: [rgbColor blueComponent]] forKey: @"Blue Component"];
 
 		[aProfile setObject: colorDict forKey: key];
-		[colorDict release];
 	}
 	
 }

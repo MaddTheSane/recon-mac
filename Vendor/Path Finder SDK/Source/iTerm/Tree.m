@@ -49,7 +49,7 @@
 
 + (id)treeFromDictionary:(NSDictionary*)dict {
 		
-    return [[[TreeNode alloc] initFromDictionary:dict] autorelease];
+    return [[TreeNode alloc] initFromDictionary:dict];
 }
 
 
@@ -58,7 +58,7 @@
     if (self==nil) return nil;
     
     nodeData = [[NSMutableDictionary alloc] initWithDictionary: data];
-    nodeChildren = [[NSMutableArray arrayWithArray:children] retain];
+    nodeChildren = [NSMutableArray arrayWithArray:children];
     nodeParent = parent;
     
     return self;
@@ -90,7 +90,7 @@
         else 
 		{
 			data = [entry objectForKey: KEY_DATA];
-            child = [[[TreeNode alloc] initWithData: data parent:nil children: [NSArray array]] autorelease];
+            child = [[TreeNode alloc] initWithData: data parent:nil children: [NSArray array]];
 			[child setIsLeaf: YES];
 		}
         [self insertChild: child atIndex: [self numberOfChildren]];
@@ -124,7 +124,7 @@
 	
 	[aDict setObject: aMutableArray forKey: KEY_ENTRIES];
 	
-	return ([aDict autorelease]);
+	return (aDict);
 	
 }
 
@@ -152,11 +152,8 @@
 
 
 - (void)dealloc {
-    [nodeData release];
-    [nodeChildren release];
     nodeData = nil;
     nodeChildren = nil;
-    [super dealloc];
 }
 
 // ================================================================
@@ -164,7 +161,6 @@
 // ================================================================
 
 - (void)setNodeData:(NSDictionary *)data { 
-    [nodeData release]; 
     nodeData = [[NSMutableDictionary alloc] initWithDictionary: data]; 
 }
 

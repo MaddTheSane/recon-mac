@@ -115,11 +115,6 @@ static NSInteger _compareEncodingByLocalizedName(id a, id b, void *unused);
     return (self);
 }
 
-- (void)dealloc
-{        
-    [super dealloc];
-}
-
 - (void)newWindowWithDirectory:(NSString*)path;
 {
 	ITTerminalView* term = [self launchBookmark:nil inTerminal:nil withCommand:nil];
@@ -229,8 +224,8 @@ static NSInteger _compareEncodingByLocalizedName(id a, id b, void *unused);
 		
 		if ([childNode isGroup])
 		{
-			aMenuItem = [[[NSMenuItem alloc] initWithTitle: [dataDict objectForKey: KEY_NAME] action:@selector(newSessionInTabAtIndex:) keyEquivalent:@""] autorelease];
-			subMenu = [[[NSMenu alloc] init] autorelease];
+			aMenuItem = [[NSMenuItem alloc] initWithTitle: [dataDict objectForKey: KEY_NAME] action:@selector(newSessionInTabAtIndex:) keyEquivalent:@""];
+			subMenu = [[NSMenu alloc] init];
             [self alternativeMenu: subMenu forNode: childNode target: aTarget]; 
 			[aMenuItem setSubmenu: subMenu];
 			[aMenuItem setAction:0];
@@ -239,13 +234,13 @@ static NSInteger _compareEncodingByLocalizedName(id a, id b, void *unused);
 		}
 		else
 		{			
-			aMenuItem = [[[NSMenuItem alloc] initWithTitle: [dataDict objectForKey: KEY_NAME] action:@selector(newSessionInTabAtIndex:) keyEquivalent:@""] autorelease];
+			aMenuItem = [[NSMenuItem alloc] initWithTitle: [dataDict objectForKey: KEY_NAME] action:@selector(newSessionInTabAtIndex:) keyEquivalent:@""];
             [aMenuItem setRepresentedObject:dataDict];
 			[aMenuItem setTarget: aTarget];
 			[aMenuItem setKeyEquivalentModifierMask: NSCommandKeyMask];
 			[aMenu addItem: aMenuItem];
 			
-			aMenuItem = [[[NSMenuItem alloc] initWithTitle: [dataDict objectForKey: KEY_NAME] action:@selector(newSessionInWindowAtIndex:) keyEquivalent:@""] autorelease];
+			aMenuItem = [[NSMenuItem alloc] initWithTitle: [dataDict objectForKey: KEY_NAME] action:@selector(newSessionInWindowAtIndex:) keyEquivalent:@""];
 			[aMenuItem setKeyEquivalentModifierMask: NSCommandKeyMask | NSAlternateKeyMask];
 			[aMenuItem setRepresentedObject:dataDict];
 			[aMenuItem setTarget: aTarget];
@@ -256,12 +251,12 @@ static NSInteger _compareEncodingByLocalizedName(id a, id b, void *unused);
 	
 	if (count>1) {
 		[aMenu addItem:[NSMenuItem separatorItem]];
-		aMenuItem = [[[NSMenuItem alloc] initWithTitle: @"Open All" action:@selector(newSessionsInWindow:) keyEquivalent:@""] autorelease];
+		aMenuItem = [[NSMenuItem alloc] initWithTitle: @"Open All" action:@selector(newSessionsInWindow:) keyEquivalent:@""];
 		[aMenuItem setKeyEquivalentModifierMask: modifierMask];
 		[aMenuItem setRepresentedObject: theNode];
 		[aMenuItem setTarget: self];
 		[aMenu addItem: aMenuItem];
-		aMenuItem = [[aMenuItem copy] autorelease];
+		aMenuItem = [aMenuItem copy];
 		[aMenuItem setKeyEquivalentModifierMask: modifierMask | NSAlternateKeyMask];
 		[aMenuItem setAlternate:YES];
 		[aMenuItem setAction: @selector(newSessionsInNewWindow:)];
@@ -314,7 +309,6 @@ static NSInteger _compareEncodingByLocalizedName(id a, id b, void *unused);
 		
 		script = [[NSAppleScript alloc] initWithContentsOfURL: aURL error: &errorInfo];
 		[script executeAndReturnError: &errorInfo];
-		[script release];
 	}
 	else {
 		[[NSWorkspace sharedWorkspace] launchApplication:fullPath];

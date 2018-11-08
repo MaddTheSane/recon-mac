@@ -348,7 +348,6 @@ ITGetMachTaskEvents(task_t task, int *faults, int *pageins, int *cow_faults, int
 	for (i = 0; i < count; i++) {
 		if ((proc = [[self alloc] initWithProcessIdentifier:info[i].kp_proc.p_pid]))
 		[processes addObject:proc];
-		[proc release];
 	}
 	
 	NSZoneFree(NULL, info);
@@ -516,7 +515,7 @@ ITGetMachTaskEvents(task_t task, int *faults, int *pageins, int *cow_faults, int
 		int mib[4] = { CTL_KERN, KERN_PROC, KERN_PROC_PID, process };
 		
 		if (sysctl(mib, 4, &info, &length, NULL, 0) < 0) {
-			command = [[[NSString alloc] init] autorelease];
+			command = [[NSString alloc] init];
 			//NSLog(@"ITProcess: doProcArgs: no command");
 		} else {
 			command = @(info.kp_proc.p_comm);
@@ -525,14 +524,11 @@ ITGetMachTaskEvents(task_t task, int *faults, int *pageins, int *cow_faults, int
 	}
 
 	//NSLog(@"ITProcess: doProcArgs: command = '%@', annotation = '%@', args = %@, env = %@", command, annotation, [args description], [env description]);
-	
-	[command retain];
-	[annotation retain];
 		
 	free(buffer);
 	
-	arguments = [args retain];
-	environment = [env retain];
+	arguments = args;
+	environment = env;
 }    
 
 @end
@@ -550,7 +546,6 @@ ITGetMachTaskEvents(task_t task, int *faults, int *pageins, int *cow_faults, int
 		if (task_for_pid(mach_task_self(), process, &task) != KERN_SUCCESS)
 			task = MACH_PORT_NULL;
 		if ([self state] == ITProcessStateExited) {
-			[self release];
 			return nil;
 		}
 	}
@@ -570,7 +565,7 @@ ITGetMachTaskEvents(task_t task, int *faults, int *pageins, int *cow_faults, int
 }
 
 + (ITProcess *)processForProcessIdentifier:(int)pid {
-	return [[[self alloc] initWithProcessIdentifier:pid] autorelease];
+	return [[self alloc] initWithProcessIdentifier:pid];
 }
 	
 + (NSArray *)processesForProcessGroup:(int)pgid {
@@ -816,10 +811,6 @@ ITGetMachTaskEvents(task_t task, int *faults, int *pageins, int *cow_faults, int
 	
 - (void)dealloc {
 	mach_port_deallocate(mach_task_self(), task);
-	[command release];
-	[arguments release];
-	[environment release];
-	[super dealloc];
 }
 	
 @end

@@ -73,15 +73,6 @@
     return self;
 }
 
-- (void)dealloc
-{
-    [_indicator release];
-    if (_labelColor)
-        [_labelColor release];
-    
-    [super dealloc];
-}
-
 #pragma mark -
 #pragma mark Accessors
 
@@ -146,7 +137,7 @@
 
 - (NSAttributedString *)attributedStringValue
 {
-    NSMutableAttributedString *aString = [[[NSMutableAttributedString alloc] initWithAttributedString:[(id <PSMTabStyle>)[(PSMTabBarControl*)_controlView style] attributedStringValueForTabCell:self]] autorelease];
+    NSMutableAttributedString *aString = [[NSMutableAttributedString alloc] initWithAttributedString:[(id <PSMTabStyle>)[(PSMTabBarControl*)_controlView style] attributedStringValueForTabCell:self]];
     
     if (_labelColor) {
         [aString addAttribute:NSForegroundColorAttributeName value:_labelColor range:NSMakeRange(0, [aString length])];
@@ -359,9 +350,9 @@
     [_controlView lockFocus];
     NSBitmapImageRep *rep = [[NSBitmapImageRep alloc] initWithFocusedViewRect:cellFrame];
     [(NSView*)_controlView unlockFocus];
-    NSImage *image = [[[NSImage alloc] initWithSize:[rep size]] autorelease];
+    NSImage *image = [[NSImage alloc] initWithSize:[rep size]];
     [image addRepresentation:rep];
-    NSImage *returnImage = [[[NSImage alloc] initWithSize:[rep size]] autorelease];
+    NSImage *returnImage = [[NSImage alloc] initWithSize:[rep size]];
     [returnImage lockFocus];
     [image drawAtPoint:NSMakePoint(0.0, 0.0) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
     [returnImage unlockFocus];
@@ -371,7 +362,6 @@
         NSPoint indicatorPoint = NSMakePoint([self frame].size.width - MARGIN_X - kPSMTabBarIndicatorWidth, MARGIN_Y);
         [pi drawAtPoint:indicatorPoint fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
         [returnImage unlockFocus];
-        [pi release];
     }
     return returnImage;
 }
@@ -414,7 +404,7 @@
             _cellTrackingTag = [aDecoder decodeIntegerForKey:@"cellTrackingTag"];
             _closeButtonOver = [aDecoder decodeBoolForKey:@"closeButtonOver"];
             _closeButtonPressed = [aDecoder decodeBoolForKey:@"closeButtonPressed"];
-            _indicator = [[aDecoder decodeObjectForKey:@"indicator"] retain];
+            _indicator = [aDecoder decodeObjectForKey:@"indicator"];
             _isInOverflowMenu = [aDecoder decodeBoolForKey:@"isInOverflowMenu"];
             _hasCloseButton = [aDecoder decodeBoolForKey:@"hasCloseButton"];
             _isCloseButtonSuppressed = [aDecoder decodeBoolForKey:@"isCloseButtonSuppressed"];
@@ -499,10 +489,7 @@
 - (void)setLabelColor:(NSColor *)aColor
 {
     if (_labelColor != aColor) {
-        if (_labelColor) {
-            [_labelColor release];
-        }
-        _labelColor = aColor ? [aColor retain] : nil;
+        _labelColor = aColor ? aColor : nil;
     }
 }
 

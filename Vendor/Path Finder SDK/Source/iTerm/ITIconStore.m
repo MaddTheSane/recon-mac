@@ -31,14 +31,12 @@
 {
 	NSString* path = [self iconFromSystemIconsBundleWithName:identifier];
 	
-	return [[[NSImage alloc] initWithContentsOfFile:path] autorelease];
+	return [[NSImage alloc] initWithContentsOfFile:path];
 }
 
 - (void)dealloc;
 {
 	[self setCoreTypesBundle:nil];
-	
-    [super dealloc];
 }
 
 - (NSImage*)popupArrowImage:(NSColor*)color 
@@ -63,7 +61,7 @@
 	
 	NSSize arrowSize = arrowRect.size;
 	
-    result = [[[NSImage alloc] initWithSize:arrowSize] autorelease];
+    result = [[NSImage alloc] initWithSize:arrowSize];
     
     [result lockFocus];
 	{
@@ -100,8 +98,7 @@
 - (void)setCoreTypesBundle:(NSBundle *)theCoreTypesBundle
 {
     if (mCoreTypesBundle != theCoreTypesBundle) {
-        [mCoreTypesBundle release];
-        mCoreTypesBundle = [theCoreTypesBundle retain];
+        mCoreTypesBundle = theCoreTypesBundle;
     }
 }
 

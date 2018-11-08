@@ -47,6 +47,7 @@
 #import "iTermProfileWindowController.h"
 #import "ITProcess.h"
 #import "ITSharedActionHandler.h"
+#import "PSMRolloverButton.h"
 
 @interface ITTerminalView (Private)
 - (BOOL)beingResized;
@@ -99,7 +100,6 @@
 	[self setTabBarControl:nil];
     [self setNibController:nil];
 
-    [super dealloc];
 }
 
 // Utility
@@ -152,7 +152,6 @@
     }
     
     *path = [NSArray arrayWithArray:p];
-    [p release];
 }
 
 + (ITTerminalView*)view:(NSDictionary *)entry;
@@ -163,7 +162,7 @@
 
     [result setAutoresizingMask: NSViewWidthSizable|NSViewHeightSizable];
 	
-    return [result autorelease];
+    return result;
 }
 
 - (void)setupSession: (PTYSession *) aSession
@@ -251,7 +250,6 @@
 		[aTabViewItem setView: [aSession view]];
         [[self tabView] insertTabViewItem: aTabViewItem atIndex: index];
 		
-        [aTabViewItem release];
 		[[self tabView] selectTabViewItemAtIndex: index];
 		
 		[self setWindowSize];
@@ -633,11 +631,7 @@
 {
 	int i;
 	
-    [FONT autorelease];
-    [font retain];
     FONT=font;
-    [NAFONT autorelease];
-    [nafont retain];
     NAFONT=nafont;
 	[self setCharSizeUsingFont: FONT];
     for (i=0;i<[[self tabView] numberOfTabViewItems]; i++) 
@@ -783,10 +777,8 @@
 			[aMenuItem setRepresentedObject: [[[self tabView] tabViewItemAtIndex: i] identifier]];
 			[aMenuItem setTarget: [self tabView]];
 			[tabMenu addItem: aMenuItem];
-			[aMenuItem release];
 		}
 		[theMenu setSubmenu: tabMenu forItem: [theMenu itemAtIndex: nextIndex]];
-		[tabMenu release];
 		nextIndex++;
     }
 	
@@ -799,15 +791,15 @@
     [theMenu insertItem:[NSMenuItem separatorItem] atIndex: nextIndex];
 	
     // Build the bookmarks menu
-	NSMenu *aMenu = [[[NSMenu alloc] init] autorelease];
+	NSMenu *aMenu = [[NSMenu alloc] init];
     [[iTermController sharedInstance] alternativeMenu: aMenu 
                                               forNode: [[ITAddressBookMgr sharedInstance] rootNode] 
                                                target: self];
     [aMenu addItem: [NSMenuItem separatorItem]];
-    NSMenuItem *tip = [[[NSMenuItem alloc] initWithTitle: NSLocalizedStringFromTableInBundle(@"Press Option for New Window",@"iTerm", [NSBundle bundleForClass: [self class]], @"Toolbar Item: New") action:@selector(xyz) keyEquivalent: @""] autorelease];
+    NSMenuItem *tip = [[NSMenuItem alloc] initWithTitle: NSLocalizedStringFromTableInBundle(@"Press Option for New Window",@"iTerm", [NSBundle bundleForClass: [self class]], @"Toolbar Item: New") action:@selector(xyz) keyEquivalent: @""];
     [tip setKeyEquivalentModifierMask: NSCommandKeyMask];
     [aMenu addItem: tip];
-    tip = [[tip copy] autorelease];
+    tip = [tip copy];
     [tip setTitle:NSLocalizedStringFromTableInBundle(@"Open In New Window",@"iTerm", [NSBundle bundleForClass: [self class]], @"Toolbar Item: New")];
     [tip setKeyEquivalentModifierMask: NSCommandKeyMask | NSAlternateKeyMask];
     [tip setAlternate:YES];
@@ -822,7 +814,6 @@
     aMenuItem = [[NSMenuItem alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"Info...",@"iTerm", [NSBundle bundleForClass: [self class]], @"Context menu") action:@selector(showConfigWindow:) keyEquivalent:@""];
 	[aMenuItem setTarget:[ITSharedActionHandler sharedInstance]];
     [theMenu addItem: aMenuItem];
-    [aMenuItem release];
 
     // Separator
     [theMenu addItem:[NSMenuItem separatorItem]];
@@ -831,7 +822,6 @@
     aMenuItem = [[NSMenuItem alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"Close",@"iTerm", [NSBundle bundleForClass: [self class]], @"Context menu") action:@selector(closeTabAction:) keyEquivalent:@""];
     [aMenuItem setTarget: self];
     [theMenu addItem: aMenuItem];
-    [aMenuItem release];
 }
 
 // NSTabView
@@ -935,11 +925,11 @@
         contentFrame.size.height += tabHeight;
 
         // grabs whole tabview image
-        viewImage = [[[NSImage alloc] initWithSize:contentFrame.size] autorelease];
-        NSImage *tabViewImage = [[[NSImage alloc] init] autorelease];
+        viewImage = [[NSImage alloc] initWithSize:contentFrame.size];
+        NSImage *tabViewImage = [[NSImage alloc] init];
 
         [textview lockFocus];
-        NSBitmapImageRep *tabviewRep = [[[NSBitmapImageRep alloc] initWithFocusedViewRect:viewRect] autorelease];
+        NSBitmapImageRep *tabviewRep = [[NSBitmapImageRep alloc] initWithFocusedViewRect:viewRect];
         [tabViewImage addRepresentation:tabviewRep];
         [textview unlockFocus];
 
@@ -988,8 +978,8 @@
         contentFrame.size.height += tabHeight;
         
         // grabs whole tabview image
-        viewImage = [[[NSImage alloc] initWithSize:contentFrame.size] autorelease];
-        NSImage *textviewImage = [[[NSImage alloc] initWithSize:viewRect.size] autorelease];
+        viewImage = [[NSImage alloc] initWithSize:contentFrame.size];
+        NSImage *textviewImage = [[NSImage alloc] initWithSize:viewRect.size];
         
         [textviewImage lockFocusFlipped:YES];
         //draw the background flipped, which is actually the right way up
@@ -1062,7 +1052,7 @@
 { 
     NSMenuItem *aMenuItem;
 	
-    NSMenu *theMenu = [[[NSMenu alloc] init] autorelease];
+    NSMenu *theMenu = [[NSMenu alloc] init];
 	
     // Create a menu with a submenu to navigate between tabs if there are more than one
     if ([[self tabView] numberOfTabViewItems] > 1)
@@ -1080,10 +1070,8 @@
 			[aMenuItem setRepresentedObject: [[[self tabView] tabViewItemAtIndex: i] identifier]];
 			[aMenuItem setTarget: [self tabView]];
 			[tabMenu addItem: aMenuItem];
-			[aMenuItem release];
 		}
 		[theMenu setSubmenu: tabMenu forItem: [theMenu itemAtIndex: nextIndex]];
-		[tabMenu release];
 		nextIndex++;
         [theMenu addItem: [NSMenuItem separatorItem]];
    }
@@ -1092,13 +1080,11 @@
     aMenuItem = [[NSMenuItem alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"Close Tab",@"iTerm", [NSBundle bundleForClass: [self class]], @"Context Menu") action:@selector(closeTabContextualMenuAction:) keyEquivalent:@""];
     [aMenuItem setRepresentedObject: tabViewItem];
     [theMenu addItem: aMenuItem];
-    [aMenuItem release];
     if ([[self tabView] numberOfTabViewItems] > 1)
     {
 		aMenuItem = [[NSMenuItem alloc] initWithTitle:NSLocalizedStringFromTableInBundle(@"Move to new window",@"iTerm", [NSBundle bundleForClass: [self class]], @"Context Menu") action:@selector(moveTabToNewWindowContextualMenuAction:) keyEquivalent:@""];
 		[aMenuItem setRepresentedObject: tabViewItem];
 		[theMenu addItem: aMenuItem];
-		[aMenuItem release];
     }
     
     return theMenu;
@@ -1157,8 +1143,7 @@
 {
     if (mTabView != theTabView)
     {
-        [mTabView release];
-        mTabView = [theTabView retain];
+        mTabView = theTabView;
     }
 }
 
@@ -1176,8 +1161,7 @@
     {
 		[mTabBarControl setDelegate:nil];
 
-        [mTabBarControl release];
-        mTabBarControl = [theTabBarControl retain];
+        mTabBarControl = theTabBarControl;
 		
 		[mTabBarControl setDelegate:self];
     }
@@ -1202,7 +1186,6 @@
     term = [[ITTerminalWindowController controller:[aSession addressBookEntry]] term];	
 	
     // temporarily retain the tabViewItem
-    [aTabViewItem retain];
 	
     // remove from our window
     [[self tabView] removeTabViewItem: aTabViewItem];
@@ -1217,7 +1200,6 @@
     [term setWindowSize];
 	
     // release the tabViewItem
-    [aTabViewItem release];
 }
 
 - (IBAction)closeWindow:(id)sender
@@ -1407,7 +1389,6 @@
 			 arguments:arg 
 		   environment:env];
 	
-    [aSession release];
 }
 
 - (void)appendSession:(PTYSession *)object
@@ -1547,8 +1528,7 @@
 {
     if (mNibController != theNibController)
     {
-        [mNibController release];
-        mNibController = [theNibController retain];
+        mNibController = theNibController;
     }
 }
 
@@ -1586,7 +1566,7 @@
 
 	// create the tabview
 	aRect = [self bounds];
-    [self setTabView:[[[PTYTabView alloc] initWithFrame: aRect] autorelease]];
+    [self setTabView:[[PTYTabView alloc] initWithFrame: aRect]];
     [[self tabView] setAutoresizingMask: NSViewWidthSizable|NSViewHeightSizable];
 	[[self tabView] setAutoresizesSubviews: YES];
     [[self tabView] setAllowsTruncatedLabels: NO];
@@ -1599,7 +1579,7 @@
 	// create the tab bar control
 	aRect = [self bounds];
 	aRect.size.height = 22;
-	[self setTabBarControl:[[[PSMTabBarControl alloc] initWithFrame: aRect] autorelease]];
+	[self setTabBarControl:[[PSMTabBarControl alloc] initWithFrame: aRect]];
 	[[self tabBarControl] setAutoresizingMask: (NSViewWidthSizable | NSViewMinYMargin)];
 	[[self tabBarControl] setShowAddTabButton:YES];
 	[[[self tabBarControl] addTabButton] setAction:@selector(newTabAction:)];
@@ -1815,7 +1795,7 @@
 // closes a tab
 - (void)closeTabContextualMenuAction:(id)sender
 {
-    [self closeTabAction: [[sender representedObject] identifier]];
+    [self closeTabAction: [(NSTabViewItem*)[sender representedObject] identifier]];
 }
 
 - (void)newSessionInTabAtIndex:(id)sender

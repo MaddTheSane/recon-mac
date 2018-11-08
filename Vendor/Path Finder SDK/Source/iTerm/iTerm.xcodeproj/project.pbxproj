@@ -26,7 +26,7 @@
 		20616FD10B69D16300342BC2 /* MyTerminalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20616FCF0B69D16300342BC2 /* MyTerminalView.m */; };
 		20616FD20B69D16300342BC2 /* MyTerminalView.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 20616FD00B69D16300342BC2 /* MyTerminalView.h */; };
 		206C9AD90B673A34002128A0 /* ITTerminalWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = 206C9AD70B673A34002128A0 /* ITTerminalWindowController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		206C9ADA0B673A34002128A0 /* ITTerminalWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 206C9AD80B673A34002128A0 /* ITTerminalWindowController.m */; };
+		206C9ADA0B673A34002128A0 /* ITTerminalWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 206C9AD80B673A34002128A0 /* ITTerminalWindowController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		206C9B450B673FB3002128A0 /* ITMiscNibController.h in Headers */ = {isa = PBXBuildFile; fileRef = 206C9B430B673FB3002128A0 /* ITMiscNibController.h */; };
 		206C9B460B673FB3002128A0 /* ITMiscNibController.m in Sources */ = {isa = PBXBuildFile; fileRef = 206C9B440B673FB3002128A0 /* ITMiscNibController.m */; };
 		20788CF20BE129A60013A705 /* iTerm_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 20788CF10BE129A60013A705 /* iTerm_Prefix.pch */; };
@@ -57,18 +57,18 @@
 		874206220564168A00CFC3F1 /* PTYTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = E8CF7561026DDA6303A80106 /* PTYTextView.m */; };
 		874206230564168A00CFC3F1 /* PTYTask.m in Sources */ = {isa = PBXBuildFile; fileRef = E8CF7560026DDA6303A80106 /* PTYTask.m */; };
 		874206240564168A00CFC3F1 /* VT100Screen.m in Sources */ = {isa = PBXBuildFile; fileRef = E8CF7562026DDA6303A80106 /* VT100Screen.m */; };
-		874206250564168A00CFC3F1 /* VT100Terminal.m in Sources */ = {isa = PBXBuildFile; fileRef = E8CF7563026DDA6303A80106 /* VT100Terminal.m */; };
+		874206250564168A00CFC3F1 /* VT100Terminal.m in Sources */ = {isa = PBXBuildFile; fileRef = E8CF7563026DDA6303A80106 /* VT100Terminal.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		874206260564168A00CFC3F1 /* iTermController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8A66F030272453F03A80106 /* iTermController.m */; };
 		874206270564168A00CFC3F1 /* NSStringITerm.m in Sources */ = {isa = PBXBuildFile; fileRef = E8E901A202743CA303A80106 /* NSStringITerm.m */; };
 		874206280564168A00CFC3F1 /* PreferencePanel.m in Sources */ = {isa = PBXBuildFile; fileRef = FB019DE103670C6501F955DB /* PreferencePanel.m */; };
 		874206290564168A00CFC3F1 /* PTYSession.m in Sources */ = {isa = PBXBuildFile; fileRef = F52ED8DD037F0A7D01A8A066 /* PTYSession.m */; };
 		8742062A0564168A00CFC3F1 /* PTYTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = F5E533B403B2959201A8A066 /* PTYTabView.m */; };
 		8742062C0564168A00CFC3F1 /* PTYWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = F56B230B03A1B36701A8A066 /* PTYWindow.m */; };
-		8742062E0564168A00CFC3F1 /* FindPanelWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4BAB7C0470C44C00A8A065 /* FindPanelWindowController.m */; };
+		8742062E0564168A00CFC3F1 /* FindPanelWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = DD4BAB7C0470C44C00A8A065 /* FindPanelWindowController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		874206320564168A00CFC3F1 /* PTToolbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2076B15804E8817300000106 /* PTToolbarController.m */; };
 		874206330564168A00CFC3F1 /* ITAddressBookMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 20E74F4904E9089700000106 /* ITAddressBookMgr.m */; };
 		874206340564168A00CFC3F1 /* ITViewLocalizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B8892B04E9342100000106 /* ITViewLocalizer.m */; };
-		874206350564168A00CFC3F1 /* ITConfigPanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B8891A04E924CD00000106 /* ITConfigPanelController.m */; };
+		874206350564168A00CFC3F1 /* ITConfigPanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B8891A04E924CD00000106 /* ITConfigPanelController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		874206390564168A00CFC3F1 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0464AB2F006CD2EC7F000001 /* AppKit.framework */; };
 		8742063A0564168A00CFC3F1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0464AB30006CD2EC7F000001 /* Foundation.framework */; };
 		8742064B0564169600CFC3F1 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E813FB7D0297522703A80106 /* MainMenu.xib */; };
@@ -1032,6 +1032,7 @@
 		BB024D32096EE4080021E793 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -1052,6 +1053,7 @@
 		BB024D33096EE4080021E793 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;

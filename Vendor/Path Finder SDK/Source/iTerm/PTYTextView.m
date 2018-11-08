@@ -37,6 +37,10 @@ static NSCursor* textViewCursor =  nil;
 static float strokeWidth, boldStrokeWidth;
 static int cacheSize;
 
+@implementation CharCache
+
+@end
+
 //
 // private methods
 //
@@ -129,9 +133,12 @@ static int cacheSize;
         nil]];
 	
 	// init the cache
-	charImages = (CharCache *)malloc(sizeof(CharCache)*cacheSize);
-	memset(charImages, 0, cacheSize*sizeof(CharCache));	
-    
+	NSMutableArray *arr = [NSMutableArray arrayWithCapacity:cacheSize];
+	for (NSInteger i = 0; i < cacheSize; i++) {
+		[arr addObject:[CharCache new]];
+	}
+	charImages = [arr copy];
+	
 	[self setCharWidth:12];
 	
     oldCursorX = oldCursorY = -1;
@@ -161,7 +168,6 @@ static int cacheSize;
     
 	if (mouseDownEvent != nil)
     {
-		[mouseDownEvent release];
 		mouseDownEvent = nil;
     }
 	
@@ -171,23 +177,9 @@ static int cacheSize;
 	
     [[NSNotificationCenter defaultCenter] removeObserver:self];    
     for (i=0;i<16;i++) {
-        [colorTable[i] release];
     }
-    [defaultFGColor release];
-    [defaultBGColor release];
-    [defaultBoldColor release];
-    [selectionColor release];
-	[defaultCursorColor release];
-	
-    [font release];
-	[nafont release];
-    [markedTextAttributes release];
-	[markedText release];
 	
     [self resetCharCache];
-	free(charImages);
-	
-    [super dealloc];
 }
 
 - (BOOL)shouldDrawInsertionPoint
@@ -249,15 +241,11 @@ static int cacheSize;
 
 - (void)setMarkedTextAttributes: (NSDictionary *) attr
 {
-    [markedTextAttributes release];
-    [attr retain];
     markedTextAttributes=attr;
 }
 
 - (void)setFGColor:(NSColor*)color
 {
-    [defaultFGColor release];
-    [color retain];
     defaultFGColor=color;
 	[self resetCharCache];
 	[self setForceUpdate:YES];
@@ -267,8 +255,6 @@ static int cacheSize;
 
 - (void)setBGColor:(NSColor*)color
 {
-    [defaultBGColor release];
-    [color retain];
     defaultBGColor=color;
 	//    bg = [bg colorWithAlphaComponent: [[SESSION backgroundColor] alphaComponent]];
 	//    fg = [fg colorWithAlphaComponent: [[SESSION foregroundColor] alphaComponent]];
@@ -279,8 +265,6 @@ static int cacheSize;
 
 - (void)setBoldColor: (NSColor*)color
 {
-    [defaultBoldColor release];
-    [color retain];
     defaultBoldColor=color;
 	[self resetCharCache];
 	[self setForceUpdate:YES];
@@ -289,8 +273,6 @@ static int cacheSize;
 
 - (void)setCursorColor: (NSColor*)color
 {
-    [defaultCursorColor release];
-    [color retain];
     defaultCursorColor=color;
 	[self setForceUpdate:YES];
 	[self setNeedsDisplay: YES];
@@ -298,8 +280,6 @@ static int cacheSize;
 
 - (void)setSelectedTextColor: (NSColor *) aColor
 {
-	[selectedTextColor release];
-	[aColor retain];
 	selectedTextColor = aColor;
 	[self _clearCacheForColor: SELECTED_TEXT];
 	[self _clearCacheForColor: SELECTED_TEXT | BOLD_MASK];
@@ -310,8 +290,6 @@ static int cacheSize;
 
 - (void)setCursorTextColor:(NSColor*) aColor
 {
-	[cursorTextColor release];
-	[aColor retain];
 	cursorTextColor = aColor;
 	[self _clearCacheForColor: CURSOR_TEXT];
 	
@@ -353,8 +331,6 @@ static int cacheSize;
 {
 	int idx=(hili?1:0)*8+index;
 	
-    [colorTable[idx] release];
-    [c retain];
     colorTable[idx]=c;
 	[self _clearCacheForColor: idx];
 	[self _clearCacheForColor: (BOLD_MASK | idx)];
@@ -421,8 +397,6 @@ static int cacheSize;
 
 - (void)setSelectionColor: (NSColor *) aColor
 {    
-    [selectionColor release];
-    [aColor retain];
     selectionColor=aColor;
 	[self setForceUpdate:YES];
 	[self setNeedsDisplay: YES];
@@ -450,11 +424,7 @@ static int cacheSize;
 	[self setCharWidthWithoutSpacing:sz.width];
 	[self setCharHeightWithoutSpacing:[aFont lineHeight]];
 	
-    [font release];
-    [aFont retain];
     font=aFont;
-    [nafont release];
-    [naFont retain];
     nafont=naFont;
     [self setMarkedTextAttributes:
         [NSDictionary dictionaryWithObjectsAndKeys:
@@ -481,7 +451,7 @@ static int cacheSize;
 	int loop;
 	for (loop=0;loop<cacheSize;loop++)
     {
-		[charImages[loop].image release];
+		charImages[loop].image;
 		charImages[loop].image=nil;
     }
 }
@@ -1372,10 +1342,8 @@ static int cacheSize;
 	
 	if (mouseDownEvent != nil)
     {
-		[mouseDownEvent release];
 		mouseDownEvent = nil;
     }	
-    [event retain];
     mouseDownEvent = event;
 	
 	
@@ -1923,7 +1891,7 @@ static int cacheSize;
     if ([[self delegate] respondsToSelector:@selector(menuForEvent: menu:)])
         [[self delegate] menuForEvent:theEvent menu: cMenu];
     
-    return [cMenu autorelease];
+    return cMenu;
 }
 
 - (void)mail:(id)sender
@@ -2064,7 +2032,6 @@ static int cacheSize;
 
 	[delegate pasteString: aMutableString];
 	[delegate pasteString: @" "];
-	[aMutableString release];
                     }
 
                 }
@@ -2111,7 +2078,6 @@ static int cacheSize;
             dataUsingEncoding: NSASCIIStringEncoding
          allowLossyConversion: YES];
     // retain here so that is does not go away...
-    [aData retain];
     
     // initialize a save panel
     aSavePanel = [NSSavePanel savePanel];
@@ -2120,7 +2086,7 @@ static int cacheSize;
     
     // Run the save panel as a sheet
     [aSavePanel beginSheetModalForWindow:self.window completionHandler:^(NSInteger result) {
-        [self _savePanelDidEnd:aSavePanel returnCode:result contextInfo:aData];
+		[self _savePanelDidEnd:aSavePanel returnCode:result contextInfo:CFBridgingRetain(aData)];
     }];
 }
 
@@ -2173,11 +2139,9 @@ static int cacheSize;
 		[NSFont userFixedPitchFontOfSize: 0], NSFontAttributeName, NULL]
 						 range: NSMakeRange(0, [theContents length])];
     [[tempView textStorage] setAttributedString: theContents];
-    [theContents release];
 	
     // now print the temporary view
     [[NSPrintOperation printOperationWithView: tempView  printInfo: aPrintInfo] runOperation];
-    [tempView release];    
 }
 
 /// NSTextInput stuff
@@ -2196,7 +2160,6 @@ static int cacheSize;
 {    
     if ([self hasMarkedText]) {
         IM_INPUT_MARKEDRANGE = NSMakeRange(0, 0);
-        [markedText release];
 		markedText=nil;
     }
 	
@@ -2213,7 +2176,6 @@ static int cacheSize;
 
 - (void)setMarkedText:(id)aString selectedRange:(NSRange)selRange
 {
-	[markedText release];
     if ([aString isKindOfClass:[NSAttributedString class]]) {
         markedText=[[NSAttributedString alloc] initWithString:[aString string] attributes:[self markedTextAttributes]];
     }
@@ -2644,7 +2606,6 @@ static int cacheSize;
 			if (charImages[i-j].count < charImages[i-t].count) t = j;
 		}
 		t = i - t;
-		[charImages[t].image release];
 		image=charImages[t].image=[[NSImage alloc]initWithSize:NSMakeSize([self charWidth]*(dw?2:1), [self lineHeight])];
 		charImages[t].code=code;
 		charImages[i].bgColor=bg;
@@ -3046,14 +3007,13 @@ static int cacheSize;
 			  returnCode: (NSInteger) theReturnCode
 			 contextInfo: (void *) theContextInfo
 {
+	NSData *contextData = (NSData *)CFBridgingRelease(theContextInfo);
     // If successful, save file under designated name
     if (theReturnCode == NSOKButton)
     {
-        if ( ![(NSData *)theContextInfo writeToFile: [[theSavePanel URL] path] atomically: YES] )
+        if ( ![contextData writeToFile: [[theSavePanel URL] path] atomically: YES] )
             NSBeep();
     }
-    // release our hold on the data
-    [(NSData *)theContextInfo release];
 }
 
 - (BOOL) _isBlankLine: (int) y
@@ -3105,7 +3065,6 @@ static int cacheSize;
 	
 	for ( i = 0 ; i < cacheSize; i++) {
 		if (charImages[i].color == colorIndex) {
-			[charImages[i].image release];
 			charImages[i].image = nil;
 		}
 	}
@@ -3117,7 +3076,6 @@ static int cacheSize;
 	
 	for ( i = 0 ; i < cacheSize; i++) {
 		if (charImages[i].bgColor == colorIndex) {
-			[charImages[i].image release];
 			charImages[i].image = nil;
 		}
 	}
@@ -3277,7 +3235,6 @@ static int cacheSize;
 	
     [tmpString drawInRect: NSMakeRect(0, 0, [self charWidth]*length, [self lineHeight]) withAttributes: nil];
     [anImage unlockFocus];
-    [anImage autorelease];
 	
 	// get the pasteboard
     pboard = [NSPasteboard pasteboardWithName:NSDragPboard];

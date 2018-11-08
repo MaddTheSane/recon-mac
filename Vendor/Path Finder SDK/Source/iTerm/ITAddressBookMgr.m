@@ -29,7 +29,7 @@
 static NSString* ADDRESS_BOOK_FILE = @"~/Library/Application Support/iTerm/AddressBook";
 
 
-static TreeNode *defaultBookmark = nil;
+static __unsafe_unretained TreeNode *defaultBookmark = nil;
 
 @implementation ITAddressBookMgr
 
@@ -52,19 +52,11 @@ static TreeNode *defaultBookmark = nil;
 
 - (void)dealloc;
 {
-	[bookmarks release];
-	[bonjourGroup release];	
 	[bonjourServices removeAllObjects];
-	[bonjourServices release];
 	
 	[sshBonjourBrowser stop];
 	[ftpBonjourBrowser stop];
-	[telnetBonjourBrowser stop];	
-	[sshBonjourBrowser release];
-	[ftpBonjourBrowser release];
-	[telnetBonjourBrowser release];
-	
-    [super dealloc];
+	[telnetBonjourBrowser stop];
 }
 
 - (void)locateBonjourServices
@@ -87,13 +79,12 @@ static TreeNode *defaultBookmark = nil;
 - (void)setBookmarks: (NSDictionary *) aDict
 {
 	//NSLog(@"%s: %@", __PRETTY_FUNCTION__, aDict);
-	[bookmarks release];
 	bookmarks = [TreeNode treeFromDictionary: aDict];
 	[bookmarks setIsLeaf: NO];
-	[bookmarks retain];
+	TreeNode *tmpDefault = nil;
 	
 	// make sure we have a default bookmark
-	if ([self _checkForDefaultBookmark: bookmarks defaultBookmark: &defaultBookmark] == NO)
+	if ([self _checkForDefaultBookmark: bookmarks defaultBookmark: &tmpDefault] == NO)
 	{
 		NSMutableDictionary *aDict;
 		char *userShell, *thisUser;
@@ -126,11 +117,13 @@ static TreeNode *defaultBookmark = nil;
 		childNode = [[TreeNode alloc] initWithData: aDict parent: nil children: [NSArray array]];
 		[childNode setIsLeaf: YES];
 		[bookmarks insertChild: childNode atIndex: [bookmarks numberOfChildren]];
-		[aDict release];
-		[childNode release];
 		
 		defaultBookmark = childNode;
 		
+	}
+	else
+	{
+		defaultBookmark = tmpDefault;
 	}
 	
 	// add any bonjour services if we have any
@@ -150,12 +143,10 @@ static TreeNode *defaultBookmark = nil;
 	
 	// remove bonjour group since we do not want to save that
 	anIndex = [[bookmarks children] indexOfObject: bonjourGroup];
-	[bonjourGroup retain];
 	[bookmarks  removeChild: bonjourGroup];	
 	aDict = [bookmarks dictionary];
 	if (anIndex != NSNotFound)
 		[bookmarks insertChild: bonjourGroup atIndex: anIndex];	
-	[bonjourGroup release];
 	
 	return (aDict);
 }
@@ -206,7 +197,6 @@ static TreeNode *defaultBookmark = nil;
 	aDict = [[NSMutableDictionary alloc] initWithDictionary: [SAFENODE(item) nodeData]];
 	[aDict setObject: object forKey: key];
 	[SAFENODE(item) setNodeData: aDict];
-	[aDict release];
 	
 	// Post a notification for all listeners that bookmarks have changed
 	[[NSNotificationCenter defaultCenter] postNotificationName: @"iTermReloadAddressBook" object: nil userInfo: nil];    		
@@ -228,8 +218,6 @@ static TreeNode *defaultBookmark = nil;
 	childNode = [[TreeNode alloc] initWithData: aDict parent: nil children: [NSArray array]];
 	[childNode setIsLeaf: NO];
 	[targetNode insertChild: childNode atIndex: [targetNode numberOfChildren]];
-	[aDict release];
-	[childNode release];
 	
 	// Post a notification for all listeners that bookmarks have changed
 	[[NSNotificationCenter defaultCenter] postNotificationName: @"iTermReloadAddressBook" object: nil userInfo: nil];    		
@@ -252,8 +240,6 @@ static TreeNode *defaultBookmark = nil;
 	childNode = [[TreeNode alloc] initWithData: aDict parent: nil children: [NSArray array]];
 	[childNode setIsLeaf: YES];
 	[targetNode insertChild: childNode atIndex: [targetNode numberOfChildren]];
-	[aDict release];
-	[childNode release];
 	
 
 	// Post a notification for all listeners that bookmarks have changed
@@ -267,7 +253,6 @@ static TreeNode *defaultBookmark = nil;
 	aDict = [[NSMutableDictionary alloc] initWithDictionary: [SAFENODE(aNode) nodeData]];
 	[aDict addEntriesFromDictionary: data];
 	[SAFENODE(aNode) setNodeData: aDict];
-	[aDict release];
 	
 	// Post a notification for all listeners that bookmarks have changed
 	[[NSNotificationCenter defaultCenter] postNotificationName: @"iTermReloadAddressBook" object: nil userInfo: nil];    		
@@ -342,7 +327,7 @@ static TreeNode *defaultBookmark = nil;
 // migrate any old bookmarks in the old format we might have
 - (void)migrateOldBookmarks
 {
-	NSMutableArray *_addressBookArray = [[NSUnarchiver unarchiveObjectWithFile: [ADDRESS_BOOK_FILE stringByExpandingTildeInPath]] retain];
+	NSMutableArray *_addressBookArray = [NSUnarchiver unarchiveObjectWithFile: [ADDRESS_BOOK_FILE stringByExpandingTildeInPath]];
 	NSDictionary *_adEntry;
 	NSMutableDictionary *aBookmarkData;
 	int i;
@@ -373,8 +358,6 @@ static TreeNode *defaultBookmark = nil;
 			childNode = [[TreeNode alloc] initWithData: aBookmarkData parent: nil children: [NSArray array]];
 			[childNode setIsLeaf: YES];
 			[bookmarks insertChild: childNode atIndex: [bookmarks numberOfChildren]];
-			[childNode release];						
-			[aBookmarkData release];
 		}
 		
 	}
@@ -412,7 +395,6 @@ static TreeNode *defaultBookmark = nil;
 						
 		bonjourGroup = [[TreeNode alloc] initWithData: aDict parent: nil children: [NSArray array]];
 		[bonjourGroup setIsLeaf: NO];
-		[aDict release];
 	}
 	
 	// add a subgroup for this service if it does not already exist
@@ -556,7 +538,6 @@ static TreeNode *defaultBookmark = nil;
 		[[ITAddressBookMgr sharedInstance] addBookmarkWithData: aDict toNode: serviceNode];
 	}
 	
-	[aDict release];
 	
 	// remove from array now that resolving is done
 	if ([bonjourServices containsObject: sender])
@@ -681,10 +662,8 @@ static TreeNode *defaultBookmark = nil;
 		
 		childNode = [[TreeNode alloc] initWithData: aDict parent: nil children: [NSArray array]];
 		[childNode setIsLeaf: NO];
-		[aDict release];
 		
 		[bonjourGroup insertChild: childNode atIndex: [bonjourGroup numberOfChildren]];
-		[childNode release];		
 
 	}
 	

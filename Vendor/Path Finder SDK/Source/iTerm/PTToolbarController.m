@@ -64,13 +64,11 @@ NSString *CommandToolbarItem = @"Command";
 	
     [self setToolbar:nil];
 	[self setTerm:nil];
-
-    [super dealloc];
 }
 
 - (NSArray *)toolbarDefaultItemIdentifiers: (NSToolbar *) toolbar
 {
-    NSMutableArray* itemIdentifiers= [[[NSMutableArray alloc]init] autorelease];
+    NSMutableArray* itemIdentifiers= [[NSMutableArray alloc]init];
     
     [itemIdentifiers addObject: NewToolbarItem];
     [itemIdentifiers addObject: SettingsToolbarItem];
@@ -86,7 +84,7 @@ NSString *CommandToolbarItem = @"Command";
 
 - (NSArray *)toolbarAllowedItemIdentifiers: (NSToolbar *) toolbar
 {
-    NSMutableArray* itemIdentifiers = [[[NSMutableArray alloc]init] autorelease];
+    NSMutableArray* itemIdentifiers = [[NSMutableArray alloc]init];
     
     [itemIdentifiers addObject: NewToolbarItem];
 //	[itemIdentifiers addObject: BookmarksToolbarItem];
@@ -103,7 +101,7 @@ NSString *CommandToolbarItem = @"Command";
 
 - (NSToolbarItem *)toolbar: (NSToolbar *)toolbar itemForItemIdentifier: (NSString *) itemIdent willBeInsertedIntoToolbar:(BOOL) willBeInserted
 {
-    NSToolbarItem *toolbarItem = [[[NSToolbarItem alloc] initWithItemIdentifier: itemIdent] autorelease];
+    NSToolbarItem *toolbarItem = [[NSToolbarItem alloc] initWithItemIdentifier: itemIdent];
     NSBundle *thisBundle = [NSBundle bundleForClass: [self class]];
     NSString *imagePath;
     NSImage *anImage;
@@ -117,7 +115,6 @@ NSString *CommandToolbarItem = @"Command";
                                          ofType:@"png"];
         anImage = [[NSImage alloc] initByReferencingFile: imagePath];
         [toolbarItem setImage: anImage];
-        [anImage release];
         [toolbarItem setTarget:nil];
         [toolbarItem setAction: @selector(closeTabAction:)];
     }
@@ -132,9 +129,9 @@ NSString *CommandToolbarItem = @"Command";
 			size = NSMakeSize(30.0, 30.0);
 		
         if ([toolbar sizeMode] == NSToolbarSizeModeSmall)
-            aPopUpButton = [[[ITPopUpButton alloc] initWithFrame: NSMakeRect(0.0, 0.0, 24.0, 24.0) pullsDown: YES] autorelease];
+            aPopUpButton = [[ITPopUpButton alloc] initWithFrame: NSMakeRect(0.0, 0.0, 24.0, 24.0) pullsDown: YES];
         else
-            aPopUpButton = [[[ITPopUpButton alloc] initWithFrame: NSMakeRect(0.0, 0.0, 32.0, 32.0) pullsDown: YES] autorelease];
+            aPopUpButton = [[ITPopUpButton alloc] initWithFrame: NSMakeRect(0.0, 0.0, 32.0, 32.0) pullsDown: YES];
 		
 		// build the menu
       	[aPopUpButton setMenu:[self buildConfigPopupMenu:YES]];
@@ -159,7 +156,7 @@ NSString *CommandToolbarItem = @"Command";
 		
 		// text only mode menu
 		{
-			NSMenuItem *menuItem = [[[NSMenuItem alloc] initWithTitle:[toolbarItem label] action:0 keyEquivalent: @""] autorelease];
+			NSMenuItem *menuItem = [[NSMenuItem alloc] initWithTitle:[toolbarItem label] action:0 keyEquivalent: @""];
 			
 			[menuItem setTarget:nil];
 			[menuItem setSubmenu:[self buildConfigPopupMenu:NO]];
@@ -176,7 +173,6 @@ NSString *CommandToolbarItem = @"Command";
                                          ofType:@"png"];
         anImage = [[NSImage alloc] initByReferencingFile: imagePath];
         [toolbarItem setImage: anImage];
-        [anImage release];
         [toolbarItem setTarget: nil];
         [toolbarItem setAction: @selector(toggleBookmarksView:)];
     } 	
@@ -191,9 +187,9 @@ NSString *CommandToolbarItem = @"Command";
 			size = NSMakeSize(30.0, 30.0);
 		
         if ([toolbar sizeMode] == NSToolbarSizeModeSmall)
-            aPopUpButton = [[[ITPopUpButton alloc] initWithFrame: NSMakeRect(0.0, 0.0, 24.0, 24.0) pullsDown: YES] autorelease];
+            aPopUpButton = [[ITPopUpButton alloc] initWithFrame: NSMakeRect(0.0, 0.0, 24.0, 24.0) pullsDown: YES];
         else
-            aPopUpButton = [[[ITPopUpButton alloc] initWithFrame: NSMakeRect(0.0, 0.0, 32.0, 32.0) pullsDown: YES] autorelease];
+            aPopUpButton = [[ITPopUpButton alloc] initWithFrame: NSMakeRect(0.0, 0.0, 32.0, 32.0) pullsDown: YES];
         		
 		// build the menu
       	[aPopUpButton setMenu:[self buildNewPopupMenu:YES]];
@@ -217,7 +213,7 @@ NSString *CommandToolbarItem = @"Command";
 		
 		// text only mode menu
 		{
-			NSMenuItem *menuItem = [[[NSMenuItem alloc] initWithTitle:[toolbarItem label] action:0 keyEquivalent: @""] autorelease];
+			NSMenuItem *menuItem = [[NSMenuItem alloc] initWithTitle:[toolbarItem label] action:0 keyEquivalent: @""];
 			
 			[menuItem setTarget:nil];
 			[menuItem setSubmenu:[self buildNewPopupMenu:NO]];
@@ -259,14 +255,13 @@ NSString *CommandToolbarItem = @"Command";
 {
     if (mToolbar != theToolbar)
     {
-        [mToolbar release];
-        mToolbar = [theToolbar retain];
+        mToolbar = theToolbar;
     }
 }
 
 - (void)setupToolbar:(NSWindow*)window;
 {   
-	[self setToolbar:[[[NSToolbar alloc] initWithIdentifier: NSStringFromClass([self class])] autorelease]];
+	[self setToolbar:[[NSToolbar alloc] initWithIdentifier: NSStringFromClass([self class])]];
     [[self toolbar] setVisible:true];
     [[self toolbar] setDelegate:self];
     [[self toolbar] setAllowsUserCustomization:YES];
@@ -291,19 +286,19 @@ NSString *CommandToolbarItem = @"Command";
     NSMenuItem *tip;
     NSMenu *aMenu;
     
-    aMenu = [[[NSMenu alloc] init] autorelease];
+    aMenu = [[NSMenu alloc] init];
 	
 	if (addDummyItem)
-		[aMenu addItem:[[[NSMenuItem alloc] init] autorelease]];  // dummy item
+		[aMenu addItem:[[NSMenuItem alloc] init]];  // dummy item
 	
     [[iTermController sharedInstance] alternativeMenu: aMenu 
                                               forNode: [[ITAddressBookMgr sharedInstance] rootNode] 
                                                target: [self term]];    
     [aMenu addItem: [NSMenuItem separatorItem]];
-    tip = [[[NSMenuItem alloc] initWithTitle: NTLocalizedStringFromTableInBundle(@"Press Option for New Window",@"iTerm", [NSBundle bundleForClass: [self class]], @"Toolbar Item: New") action:@selector(xyz) keyEquivalent: @""] autorelease];
+    tip = [[NSMenuItem alloc] initWithTitle: NTLocalizedStringFromTableInBundle(@"Press Option for New Window",@"iTerm", [NSBundle bundleForClass: [self class]], @"Toolbar Item: New") action:@selector(xyz) keyEquivalent: @""];
     [tip setKeyEquivalentModifierMask: NSCommandKeyMask];
     [aMenu addItem: tip];
-    tip = [[tip copy] autorelease];
+    tip = [tip copy];
     [tip setTitle:NTLocalizedStringFromTableInBundle(@"Open In New Window",@"iTerm", [NSBundle bundleForClass: [self class]], @"Toolbar Item: New")];
     [tip setKeyEquivalentModifierMask: NSCommandKeyMask | NSAlternateKeyMask];
     [tip setAlternate:YES];
@@ -317,16 +312,16 @@ NSString *CommandToolbarItem = @"Command";
     NSMenuItem *menuItem;
     NSMenu *aMenu;
     
-    aMenu = [[[NSMenu alloc] init] autorelease];
+    aMenu = [[NSMenu alloc] init];
 	
 	if (addDummyItem)
-		[aMenu addItem:[[[NSMenuItem alloc] init] autorelease]];  // dummy item
+		[aMenu addItem:[[NSMenuItem alloc] init]];  // dummy item
 	
-    menuItem = [[[NSMenuItem alloc] initWithTitle:NTLocalizedStringFromTableInBundle(@"Configuration", @"iTerm", [NSBundle bundleForClass: [self class]], @"") action:@selector(showConfigWindow:) keyEquivalent: @""] autorelease];
+    menuItem = [[NSMenuItem alloc] initWithTitle:NTLocalizedStringFromTableInBundle(@"Configuration", @"iTerm", [NSBundle bundleForClass: [self class]], @"") action:@selector(showConfigWindow:) keyEquivalent: @""];
 	[menuItem setTarget:[ITSharedActionHandler sharedInstance]];
     [aMenu addItem: menuItem];
 	
-	menuItem = [[[NSMenuItem alloc] initWithTitle:NTLocalizedStringFromTableInBundle(@"Preferences", @"iTerm", [NSBundle bundleForClass: [self class]], @"") action:@selector(showPreferencesAction:) keyEquivalent: @""] autorelease];
+	menuItem = [[NSMenuItem alloc] initWithTitle:NTLocalizedStringFromTableInBundle(@"Preferences", @"iTerm", [NSBundle bundleForClass: [self class]], @"") action:@selector(showPreferencesAction:) keyEquivalent: @""];
   	[menuItem setTarget:[ITSharedActionHandler sharedInstance]];
 	[aMenu addItem: menuItem];
 	
@@ -346,16 +341,16 @@ NSString *CommandToolbarItem = @"Command";
         return;
 	
     // build a menu representation for text only.
-    item = [[[NSMenuItem alloc] initWithTitle: NTLocalizedStringFromTableInBundle(@"New",@"iTerm", [NSBundle bundleForClass: [self class]], @"Toolbar Item:New") action: nil keyEquivalent: @""] autorelease];
-    aMenu = [[[NSMenu alloc] init] autorelease];
+    item = [[NSMenuItem alloc] initWithTitle: NTLocalizedStringFromTableInBundle(@"New",@"iTerm", [NSBundle bundleForClass: [self class]], @"Toolbar Item:New") action: nil keyEquivalent: @""];
+    aMenu = [[NSMenu alloc] init];
     [[iTermController sharedInstance] alternativeMenu: aMenu 
                                               forNode: [[ITAddressBookMgr sharedInstance] rootNode] 
                                                target: [self term]];    
     [aMenu addItem: [NSMenuItem separatorItem]];
-    tip = [[[NSMenuItem alloc] initWithTitle: NTLocalizedStringFromTableInBundle(@"Press Option for New Window",@"iTerm", [NSBundle bundleForClass: [self class]], @"Toolbar Item: New") action:@selector(xyz) keyEquivalent: @""] autorelease];
+    tip = [[NSMenuItem alloc] initWithTitle: NTLocalizedStringFromTableInBundle(@"Press Option for New Window",@"iTerm", [NSBundle bundleForClass: [self class]], @"Toolbar Item: New") action:@selector(xyz) keyEquivalent: @""];
     [tip setKeyEquivalentModifierMask: NSCommandKeyMask];
     [aMenu addItem: tip];
-    tip = [[tip copy] autorelease];
+    tip = [tip copy];
     [tip setTitle:NTLocalizedStringFromTableInBundle(@"Open In New Window",@"iTerm", [NSBundle bundleForClass: [self class]], @"Toolbar Item: New")];
     [tip setKeyEquivalentModifierMask: NSCommandKeyMask | NSAlternateKeyMask];
     [tip setAlternate:YES];
@@ -406,8 +401,7 @@ NSString *CommandToolbarItem = @"Command";
 {
     if (mTerm != theTerm)
     {
-        [mTerm release];
-        mTerm = [theTerm retain];
+        mTerm = theTerm;
     }
 }
 

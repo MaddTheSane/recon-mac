@@ -39,12 +39,6 @@ static iTermKeyBindingMgr *singleInstance = nil;
 	return (self);
 }
 
-- (void)dealloc
-{
-	[profiles release];
-	[super dealloc];
-}
-
 - (NSDictionary *) profiles
 {
 	return (profiles);
@@ -71,10 +65,8 @@ static iTermKeyBindingMgr *singleInstance = nil;
 			{
 				aMutableDict = [[NSMutableDictionary alloc] initWithDictionary: [sourceDict objectForKey: @"Key Mappings"]];
 				[mappingDict setObject: aMutableDict forKey: @"Key Mappings"];
-				[aMutableDict release];
 			}
 			[profiles setObject: mappingDict forKey: profileName];
-			[mappingDict release];
 			if ([[sourceDict objectForKey: @"Global Profile"] isEqualToString: @"Yes"])
 				foundGlobalProfile = YES;
 		}
@@ -87,7 +79,6 @@ static iTermKeyBindingMgr *singleInstance = nil;
 		[profiles setObject: mappingDict forKey: NTLocalizedStringFromTableInBundle(@"Global",@"iTerm", 
 																					[NSBundle bundleForClass: [self class]], 
 																					@"Key Binding Profiles")];
-		[mappingDict release];
 	}
 }
 
@@ -119,7 +110,6 @@ static iTermKeyBindingMgr *singleInstance = nil;
 			{
 				mappingDict = [[NSMutableDictionary alloc] initWithDictionary: [sourceProfile objectForKey: @"Key Mappings"]];
 				[newProfile setObject: mappingDict forKey: @"Key Mappings"];
-				[mappingDict release];
 			}
 			[newProfile removeObjectForKey: @"Global Profile"];
 		}	
@@ -129,7 +119,6 @@ static iTermKeyBindingMgr *singleInstance = nil;
 		}
 		
 		[profiles setObject: newProfile forKey: aString];
-		[newProfile release];		
 	}
 	else
 		NSBeep();
@@ -338,7 +327,7 @@ static iTermKeyBindingMgr *singleInstance = nil;
 	}		
 	[theKeyString appendString: aString];
 	
-	return ([theKeyString autorelease]);
+	return (theKeyString);
 	
 	
 }
@@ -470,17 +459,15 @@ static iTermKeyBindingMgr *singleInstance = nil;
 	{
 		keyMappings = [[NSMutableDictionary alloc] init];
 		[[profiles objectForKey: profile] setObject: keyMappings forKey: @"Key Mappings"];
-		[keyMappings release];
 	}
 	
 	keyString = [NSString stringWithFormat: @"0x%x-0x%x", hexCode, modifiers];
 	keyBinding = [[NSMutableDictionary alloc] init];
 	[keyBinding setObject: [NSNumber numberWithInt: action] forKey: @"Action"];
 	if ([text length] > 0)
-		[keyBinding setObject:[[text copy] autorelease] forKey: @"Text"];
+		[keyBinding setObject:[text copy] forKey: @"Text"];
 	[keyBinding setObject: [NSNumber numberWithBool:highPriority] forKey: @"Priority"];
 	[keyMappings setObject: keyBinding forKey: keyString];
-	[keyBinding release];
 	
 }
 

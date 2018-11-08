@@ -42,8 +42,6 @@
     [self setParameterPrompt:nil];
     [self setParameterValue:nil];
 	[self setCommandView:nil];
-
-    [super dealloc];
 }
 
 + (ITMiscNibController*)controller:(ITTerminalView*)term;
@@ -52,7 +50,7 @@
 	
 	result->mTerm = term; // not retained
 	
-	return [result autorelease];
+	return result;
 }
 
 - (IBAction)parameterPanelEnd:(id)sender
@@ -62,7 +60,7 @@
 
 - (NSString *)askUserForString:(NSString *)command window:(NSWindow*)window;
 {
-	NSMutableString *completeCommand = [[[NSMutableString alloc] initWithString:command] autorelease];
+	NSMutableString *completeCommand = [[NSMutableString alloc] initWithString:command];
 	NSRange r1, r2, currentRange;
 	
 	while (1)
@@ -109,8 +107,7 @@
 {
     if (mCommandField != theCommandField)
     {
-        [mCommandField release];
-        mCommandField = [theCommandField retain];
+        mCommandField = theCommandField;
     }
 }
 
@@ -126,8 +123,7 @@
 {
     if (mParameterName != theParameterName)
     {
-        [mParameterName release];
-        mParameterName = [theParameterName retain];
+        mParameterName = theParameterName;
     }
 }
 
@@ -143,10 +139,7 @@
 {
     if (mParameterPanel != theParameterPanel)
     {
-        [mParameterPanel release];
-        [mParameterPanel release];  // release twice, it's a top level nib object
-		
-        mParameterPanel = [theParameterPanel retain];
+        mParameterPanel = theParameterPanel;
     }
 }
 
@@ -162,8 +155,7 @@
 {
     if (mParameterPrompt != theParameterPrompt)
     {
-        [mParameterPrompt release];
-        mParameterPrompt = [theParameterPrompt retain];
+        mParameterPrompt = theParameterPrompt;
     }
 }
 
@@ -179,8 +171,7 @@
 {
     if (mParameterValue != theParameterValue)
     {
-        [mParameterValue release];
-        mParameterValue = [theParameterValue retain];
+        mParameterValue = theParameterValue;
     }
 }
 
@@ -221,10 +212,7 @@
 {
     if (mCommandView != theCommandView)
     {
-        [mCommandView release];
-        [mCommandView release];  // release twice, it's a top level nib object
-		
-        mCommandView = [theCommandView retain];
+        mCommandView = theCommandView;
     }
 }
 

@@ -67,7 +67,7 @@
 {
 	self = [super initWithFrame:frame];
 		
-    PTYScroller *aScroller = [[[PTYScroller alloc] init] autorelease];
+    PTYScroller *aScroller = [[PTYScroller alloc] init];
 	[self setVerticalScroller: aScroller];
 	
     [[self verticalScroller] setControlSize:NSSmallControlSize];

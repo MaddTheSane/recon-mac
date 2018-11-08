@@ -74,12 +74,6 @@ static NSString *NoHandler = @"<No Handler>";
 }
 
 
-- (void)dealloc
-{
-	[defaultWordChars release];
-    [super dealloc];
-}
-
 - (void)readPreferences
 {
     prefs = [NSUserDefaults standardUserDefaults];
@@ -97,8 +91,7 @@ static NSString *NoHandler = @"<No Handler>";
 	defaultMaxVertically = [prefs objectForKey:@"MaxVertically"]?[[prefs objectForKey:@"MaxVertically"] boolValue]: YES;
 	defaultUseCompactLabel = [prefs objectForKey:@"UseCompactLabel"]?[[prefs objectForKey:@"UseCompactLabel"] boolValue]: YES;
 	defaultRefreshRate = [prefs objectForKey:@"RefreshRate"]?[[prefs objectForKey:@"RefreshRate"] intValue]: 25;
-	[defaultWordChars release];
-	defaultWordChars = [prefs objectForKey: @"WordCharacters"]?[[prefs objectForKey: @"WordCharacters"] retain]:@"";
+	defaultWordChars = [prefs objectForKey: @"WordCharacters"]?[prefs objectForKey: @"WordCharacters"]:@"";
     defaultOpenBookmark = [prefs objectForKey:@"OpenBookmark"]?[[prefs objectForKey:@"OpenBookmark"] boolValue]: NO;
 	defaultCursorType=[prefs objectForKey:@"CursorType"]?[prefs integerForKey:@"CursorType"]:2;
 	
@@ -163,7 +156,6 @@ static NSString *NoHandler = @"<No Handler>";
 					 forKey:key];
 	}
 	[prefs setObject: tempDict forKey:@"URLHandlers"];
-	[tempDict release];
 
 	[prefs synchronize];
 }
@@ -234,8 +226,7 @@ static NSString *NoHandler = @"<No Handler>";
         defaultMaxVertically = ([maxVertically state] == NSOnState);
         defaultOpenBookmark = ([openBookmark state] == NSOnState);
         defaultRefreshRate = [refreshRate intValue];
-        [defaultWordChars release];
-        defaultWordChars = [[wordChars stringValue] retain];
+        defaultWordChars = [wordChars stringValue];
     }
 }
 
@@ -501,11 +492,13 @@ static NSString *NoHandler = @"<No Handler>";
 		[urlHandlers setObject:[urlHandlerOutline itemAtRow:j] forKey: [urlTypes objectAtIndex: i]];
 		
 #if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_4
+		CFURLRef cfAppURL = NULL;
 		NSURL *appURL = nil;
 		OSStatus err;
 		BOOL set = NO;
 		
-		err = LSGetApplicationForURL((CFURLRef)[NSURL URLWithString:[[urlTypes objectAtIndex: i] stringByAppendingString:@":"]], kLSRolesAll, NULL, (CFURLRef *)&appURL);
+		err = LSGetApplicationForURL((__bridge CFURLRef)[NSURL URLWithString:[[urlTypes objectAtIndex: i] stringByAppendingString:@":"]], kLSRolesAll, NULL, &cfAppURL);
+		appURL = (__bridge NSURL *)cfAppURL;
 		if (err != noErr) {
 			set = NSRunAlertPanel([NSString stringWithFormat:NTLocalizedStringFromTableInBundle(@"iTerm is not the default handler for %@. Would you like to set iTerm as the default handler?", @"iTerm", [NSBundle bundleForClass: [self class]], @"URL Handler"), [urlTypes objectAtIndex: i]],
 								  @"%@",
@@ -522,7 +515,7 @@ static NSString *NoHandler = @"<No Handler>";
 		}
 			
 		if (set) {
-			  LSSetDefaultHandlerForURLScheme ((CFStringRef)[urlTypes objectAtIndex: i],(CFStringRef)[[NSBundle mainBundle] bundleIdentifier]);
+			  LSSetDefaultHandlerForURLScheme ((__bridge CFStringRef)[urlTypes objectAtIndex: i],(__bridge CFStringRef)[[NSBundle mainBundle] bundleIdentifier]);
 		}
 #endif
 	}
@@ -538,7 +531,7 @@ static NSString *NoHandler = @"<No Handler>";
 // NSTextField delegate
 - (void)controlTextDidChange:(NSNotification *)aNotification
 {
-	defaultWordChars = [[wordChars stringValue] retain];
+	defaultWordChars = [wordChars stringValue];
 }
 
 @end

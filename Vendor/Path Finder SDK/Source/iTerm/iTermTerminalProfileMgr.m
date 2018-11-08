@@ -42,12 +42,6 @@ static iTermTerminalProfileMgr *singleInstance = nil;
 	return (self);
 }
 
-- (void)dealloc
-{
-	[profiles release];
-	[super dealloc];
-}
-
 - (NSDictionary *) profiles
 {
 	return (profiles);
@@ -69,8 +63,7 @@ static iTermTerminalProfileMgr *singleInstance = nil;
 			sourceDict = [aDict objectForKey: profileName];
 			mappingDict = [[NSMutableDictionary alloc] initWithDictionary: sourceDict];
 			[profiles setObject: mappingDict forKey: profileName];
-			[mappingDict release];
-		}		
+		}
 	}
     else  // if we don't have any profile, create a default profile
 	{
@@ -83,7 +76,6 @@ static iTermTerminalProfileMgr *singleInstance = nil;
 		
 		aProfile = [[NSMutableDictionary alloc] init];
 		[profiles setObject: aProfile forKey: defaultName];
-		[aProfile release];
 		
 		[aProfile setObject: @"Yes" forKey: @"Default Profile"];
 		
@@ -131,7 +123,6 @@ static iTermTerminalProfileMgr *singleInstance = nil;
 		aMutableDict = [[NSMutableDictionary alloc] initWithDictionary: aProfile];
 		[aMutableDict removeObjectForKey: @"Default Profile"];
 		[profiles setObject: aMutableDict forKey: newProfile];
-		[aMutableDict release];
 	}
 }
 

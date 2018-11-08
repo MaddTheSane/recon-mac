@@ -120,7 +120,6 @@ static int writep(int fds, char *buf, size_t len)
 
 + (void)_processReadThread:(PTYTask *)boss
 {
-	NSAutoreleasePool *arPool = [[NSAutoreleasePool alloc] init];;
     BOOL exitf = NO;
     ssize_t sts;
 	int iterationCount = 0;
@@ -130,12 +129,8 @@ static int writep(int fds, char *buf, size_t len)
     /*
 	 data receive loop
 	 */
-	iterationCount = 0; 
-    while (exitf == NO) 
-	{
-		
-		// periodically refresh our autorelease pool
-		iterationCount++;			
+    while (exitf == NO)
+	@autoreleasepool {
 		
 		FD_ZERO(&rfds);
 		FD_ZERO(&efds);
@@ -188,21 +183,11 @@ static int writep(int fds, char *buf, size_t len)
 			
 		}
 		
-		// periodically refresh our autorelease pool
-		if ((iterationCount % 50) == 0)
-		{
-			[arPool release];
-			arPool = [[NSAutoreleasePool alloc] init];
-			iterationCount = 0;
-		}
-		
     }
 	
 	if (sts >= 0) 
         [boss brokenPipe];
-			
-	[arPool release];
-			
+	
     MPSignalSemaphore(boss->threadEndSemaphore);
 	
 	[NSThread exit];
@@ -238,13 +223,6 @@ static int writep(int fds, char *buf, size_t len)
 
     MPWaitOnSemaphore(threadEndSemaphore, kDurationForever);
     MPDeleteSemaphore(threadEndSemaphore);
-	
-    [TTY release];
-    [PATH release];
-	
-	
-    
-    [super dealloc];
 }
 
 - (void)launchWithPath:(NSString *)progpath
@@ -309,7 +287,7 @@ static int writep(int fds, char *buf, size_t len)
     sts = ioctl(FILDES, TIOCPKT, &one);
     NSParameterAssert(sts >= 0);
 	
-    TTY = [[NSString stringWithUTF8String:ttyname] retain];
+    TTY = [NSString stringWithUTF8String:ttyname];
     NSParameterAssert(TTY != nil);
 	
 	// spawn a thread to do the read task
@@ -359,13 +337,10 @@ static int writep(int fds, char *buf, size_t len)
 
 - (void)readTask:(char *)buf length:(int)length
 {
-	NSData *data;
-
 	if ([self logging])
 	{
-		data = [[NSData alloc] initWithBytes: buf length: length];
+		NSData *data = [[NSData alloc] initWithBytes: buf length: length];
 		[LOG_HANDLE writeData:data];
-		[data release];
 	}
 	
 	// forward the data to our delegate
@@ -451,10 +426,8 @@ static int writep(int fds, char *buf, size_t len)
 
 - (BOOL)loggingStartWithPath:(NSString *)path
 {
-    [LOG_PATH autorelease];
     LOG_PATH = [[path stringByStandardizingPath ] copy];
 	
-    [LOG_HANDLE autorelease];
     LOG_HANDLE = [NSFileHandle fileHandleForWritingAtPath:LOG_PATH];
     if (LOG_HANDLE == nil) {
 		NSFileManager *fm = [NSFileManager defaultManager];
@@ -463,7 +436,6 @@ static int writep(int fds, char *buf, size_t len)
 				  attributes:nil];
 		LOG_HANDLE = [NSFileHandle fileHandleForWritingAtPath:LOG_PATH];
     }
-    [LOG_HANDLE retain];
     [LOG_HANDLE seekToEndOfFile];
 	
     return LOG_HANDLE == nil ? NO:YES;
@@ -473,8 +445,6 @@ static int writep(int fds, char *buf, size_t len)
 {
     [LOG_HANDLE closeFile];
 	
-    [LOG_PATH autorelease];
-    [LOG_HANDLE autorelease];
     LOG_PATH = nil;
     LOG_HANDLE = nil;
 }

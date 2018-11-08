@@ -18,6 +18,7 @@
 #import "ITConfigPanelController.h"
 #import "FindPanelWindowController.h"
 #import "PTYWindow.h"
+#import "PTYTextView.h"
 
 @interface NSWindow (private)
 - (void)setBottomCornerRounded:(BOOL)rounded;

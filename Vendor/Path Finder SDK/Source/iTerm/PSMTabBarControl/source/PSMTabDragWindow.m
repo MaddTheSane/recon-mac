@@ -13,14 +13,14 @@
 
 + (PSMTabDragWindow *)dragWindowWithTabBarCell:(PSMTabBarCell *)cell image:(NSImage *)image styleMask:(unsigned int)styleMask
 {
-	return [[[PSMTabDragWindow alloc] initWithTabBarCell:cell image:image styleMask:styleMask] autorelease];
+	return [[PSMTabDragWindow alloc] initWithTabBarCell:cell image:image styleMask:styleMask];
 }
 
 - (id)initWithTabBarCell:(PSMTabBarCell *)cell image:(NSImage *)image styleMask:(unsigned int)styleMask
 {
 	if ( (self = [super initWithContentRect:NSMakeRect(0, 0, 0, 0) styleMask:styleMask backing:NSBackingStoreBuffered defer:NO]) ) {
-		_cell = [cell retain];
-		_imageView = [[[NSImageView alloc] initWithFrame:NSMakeRect(0, 0, 0, 0)] autorelease];
+		_cell = cell;
+		_imageView = [[NSImageView alloc] initWithFrame:NSMakeRect(0, 0, 0, 0)];
 		[self setContentView:_imageView];
 		[self setLevel:NSStatusWindowLevel];
 		[self setIgnoresMouseEvents:YES];
@@ -42,12 +42,6 @@
 		[self setFrame:windowFrame display:YES];
 	}
 	return self;
-}
-
-- (void)dealloc
-{
-	[_cell release];
-	[super dealloc];
 }
 
 - (NSImage *)image

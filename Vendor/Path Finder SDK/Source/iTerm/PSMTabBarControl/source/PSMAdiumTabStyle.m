@@ -47,21 +47,6 @@
 	_gradientImage = [[NSImage alloc] initByReferencingFile:[[PSMTabBarControl bundle] pathForImageResource:@"AdiumGradient"]];
 }
 
-- (void)dealloc
-{
-	[_closeButton release];
-	[_closeButtonDown release];
-	[_closeButtonOver release];
-	
-	[_addTabButtonImage release];
-	[_addTabButtonPressedImage release];
-	[_addTabButtonRolloverImage release];
-	
-	[_gradientImage release];
-	
-    [super dealloc];
-}
-
 #pragma mark -
 #pragma mark Drawing Style Accessors
 
@@ -309,7 +294,7 @@
 	NSMutableAttributedString *attrStr;
 	NSFontManager *fm = [NSFontManager sharedFontManager];
 #if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_4
-    NSNumberFormatter *nf = [[[NSNumberFormatter alloc] init] autorelease];
+    NSNumberFormatter *nf = [[NSNumberFormatter alloc] init];
     [nf setLocalizesFormat:YES];
     [nf setFormat:@"0"];
     [nf setHasThousandSeparators:YES];
@@ -317,7 +302,7 @@
 #else
     NSString *contents = [NSString stringWithFormat:@"%d", [cell count]];
 #endif
-	attrStr = [[[NSMutableAttributedString alloc] initWithString:contents] autorelease];
+	attrStr = [[NSMutableAttributedString alloc] initWithString:contents];
 	NSRange range = NSMakeRange(0, [contents length]);
 
 	// Add font attribute
@@ -331,7 +316,7 @@
 {
 	NSMutableAttributedString *attrStr;
 	NSString *contents = [cell stringValue];
-	attrStr = [[[NSMutableAttributedString alloc] initWithString:contents] autorelease];
+	attrStr = [[NSMutableAttributedString alloc] initWithString:contents];
 	NSRange range = NSMakeRange(0, [contents length]);
 
 	// Add font attribute
@@ -341,7 +326,7 @@
 	// Paragraph Style for Truncating Long Text
 	static NSMutableParagraphStyle *TruncatingTailParagraphStyle = nil;
 	if (!TruncatingTailParagraphStyle) {
-		TruncatingTailParagraphStyle = [[[NSParagraphStyle defaultParagraphStyle] mutableCopy] retain];
+		TruncatingTailParagraphStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
 		[TruncatingTailParagraphStyle setLineBreakMode:NSLineBreakByTruncatingTail];
 		[TruncatingTailParagraphStyle setAlignment:NSCenterTextAlignment];
 	}
@@ -603,7 +588,6 @@
 	}
 	
 	[NSGraphicsContext restoreGraphicsState];
-	[shadow release];
 	
 	[self drawInteriorWithTabCell:cell inView:[cell controlView]];
 }
@@ -658,7 +642,6 @@
 	[NSGraphicsContext saveGraphicsState];
 	[[NSColor grayColor] set];
 	[shadow set];
-	[shadow release];
 	[[NSGraphicsContext currentContext] setShouldAntialias:NO];
 	[path stroke];
 	[NSGraphicsContext restoreGraphicsState];
@@ -683,13 +666,13 @@
 		labelRect.origin.y += 4.0;
 		NSMutableAttributedString *attrStr;
 		NSString *contents = @"PSMTabBarControl";
-		attrStr = [[[NSMutableAttributedString alloc] initWithString:contents] autorelease];
+		attrStr = [[NSMutableAttributedString alloc] initWithString:contents];
 		NSRange range = NSMakeRange(0, [contents length]);
 		[attrStr addAttribute:NSFontAttributeName value:[NSFont systemFontOfSize:11.0] range:range];
 		NSMutableParagraphStyle *centeredParagraphStyle = nil;
 		
 		if (!centeredParagraphStyle) {
-			centeredParagraphStyle = [[[NSParagraphStyle defaultParagraphStyle] mutableCopy] retain];
+			centeredParagraphStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
 			[centeredParagraphStyle setAlignment:NSCenterTextAlignment];
 		}
 		
@@ -729,12 +712,12 @@
 {
    if ( (self = [super init]) ) {
         if ([aDecoder allowsKeyedCoding]) {
-            _closeButton = [[aDecoder decodeObjectForKey:@"metalCloseButton"] retain];
-            _closeButtonDown = [[aDecoder decodeObjectForKey:@"metalCloseButtonDown"] retain];
-            _closeButtonOver = [[aDecoder decodeObjectForKey:@"metalCloseButtonOver"] retain];
-            _addTabButtonImage = [[aDecoder decodeObjectForKey:@"addTabButtonImage"] retain];
-            _addTabButtonPressedImage = [[aDecoder decodeObjectForKey:@"addTabButtonPressedImage"] retain];
-            _addTabButtonRolloverImage = [[aDecoder decodeObjectForKey:@"addTabButtonRolloverImage"] retain];
+            _closeButton = [aDecoder decodeObjectForKey:@"metalCloseButton"];
+            _closeButtonDown = [aDecoder decodeObjectForKey:@"metalCloseButtonDown"];
+            _closeButtonOver = [aDecoder decodeObjectForKey:@"metalCloseButtonOver"];
+            _addTabButtonImage = [aDecoder decodeObjectForKey:@"addTabButtonImage"];
+            _addTabButtonPressedImage = [aDecoder decodeObjectForKey:@"addTabButtonPressedImage"];
+            _addTabButtonRolloverImage = [aDecoder decodeObjectForKey:@"addTabButtonRolloverImage"];
 			_drawsUnified = [aDecoder decodeBoolForKey:@"drawsUnified"];
 			_drawsRight = [aDecoder decodeBoolForKey:@"drawsRight"];
         }

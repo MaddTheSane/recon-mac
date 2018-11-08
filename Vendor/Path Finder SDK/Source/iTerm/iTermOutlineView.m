@@ -25,10 +25,4 @@
 	[_lock unlock];
 }
 
-- (void)dealloc
-{
-	[_lock release];
-	[super dealloc];
-}
-
 @end

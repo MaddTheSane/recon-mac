@@ -11,9 +11,9 @@
 #import "ITIconStore.h"
 
 @interface ITPopUpButton ()
-@property (nonatomic, retain, null_resettable) NSImage *arrowImage;
+@property (nonatomic, strong, null_resettable) NSImage *arrowImage;
 
-@property (retain) NSImage *contentImage;
+@property (strong) NSImage *contentImage;
 @end
 
 @implementation ITPopUpButton
@@ -27,11 +27,7 @@
 //---------------------------------------------------------- 
 - (void)dealloc
 {
-    [self setArrowImage:nil];
 	[self setContentImage:nil];
-	[self setContentImageID:nil];
-	
-    [super dealloc];
 }
 
 - (void)encodeWithCoder:(NSCoder *)coder 
@@ -100,8 +96,7 @@
 {
     if (mContentImage != theContentImage)
     {
-        [mContentImage release];
-        mContentImage = [theContentImage retain];
+        mContentImage = theContentImage;
 		
 		//[mContentImage setScalesWhenResized:YES];
 		[mContentImage setFlipped:YES];

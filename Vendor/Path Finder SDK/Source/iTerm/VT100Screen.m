@@ -183,10 +183,6 @@ static __inline__ screen_char_t *incrementLinePointer(screen_char_t *buf_start, 
 	[self releaseLock];
 
 	[self setScreenLock:nil];
-	
-    [printToAnsiString release];
-	
-    [super dealloc];
 }
 
 - (NSString *)description
@@ -616,10 +612,10 @@ static __inline__ screen_char_t *incrementLinePointer(screen_char_t *buf_start, 
 			case VT100_ASCIISTRING:
 				// check if we are in print mode
 				if ([self printToAnsi] == YES)
-					[self printStringToAnsi: token.u.string];
+					[self printStringToAnsi: (__bridge NSString *)(token.u.string)];
 				// else display string on screen
 				else
-					[self setString:token.u.string ascii: token.type == VT100_ASCIISTRING];
+					[self setString:(__bridge NSString *)(token.u.string) ascii: token.type == VT100_ASCIISTRING];
 				break;
 			case VT100_UNKNOWNCHAR: break;
 			case VT100_NOTSUPPORT: break;
@@ -784,15 +780,11 @@ static __inline__ screen_char_t *incrementLinePointer(screen_char_t *buf_start, 
 						break;
 					case 5:
 						// allocate a string for the stuff to be printed
-						if (printToAnsiString != nil)
-							[printToAnsiString release];
 						printToAnsiString = [[NSMutableString alloc] init];
 						[self setPrintToAnsi: YES];
 						break;
 					default:
 						//print out the whole screen
-						if (printToAnsiString != nil)
-							[printToAnsiString release];
 						printToAnsiString = nil;
 						[self setPrintToAnsi: NO];
 						printPending = YES;
@@ -801,19 +793,16 @@ static __inline__ screen_char_t *incrementLinePointer(screen_char_t *buf_start, 
 				
 				// XTERM extensions
 			case XTERMCC_WIN_TITLE:
-				if (newWinTitle) [newWinTitle release];
-				newWinTitle = [token.u.string copy];
+				if (newWinTitle) ;
+				newWinTitle = [(__bridge NSString*)token.u.string copy];
 				break;
 			case XTERMCC_WINICON_TITLE:
-				if (newWinTitle) [newWinTitle release];
-				if (newIconTitle) [newIconTitle release];
-					newWinTitle = [token.u.string copy];
-				newIconTitle = [token.u.string copy];
+				newWinTitle = [(__bridge NSString*)token.u.string copy];
+				newIconTitle = [(__bridge NSString*)token.u.string copy];
 				break;
 			case XTERMCC_ICON_TITLE:
 				//[SESSION setName:token.u.string];
-				if (newIconTitle) [newIconTitle release];
-				newIconTitle = [token.u.string copy];
+				newIconTitle = [(__bridge NSString*)token.u.string copy];
 				break;
 			case XTERMCC_INSBLNK: [self insertBlank:token.u.csi.p[0]]; break;
 			case XTERMCC_INSLN: [self insertLines:token.u.csi.p[0]]; break;
@@ -1858,9 +1847,7 @@ static __inline__ screen_char_t *incrementLinePointer(screen_char_t *buf_start, 
 
 - (void)resetChangeTitle
 {
-	[newWinTitle release];
 	newWinTitle = nil;
-	[newIconTitle release];
 	newIconTitle = nil;
 }
 
@@ -1898,7 +1885,6 @@ static __inline__ screen_char_t *incrementLinePointer(screen_char_t *buf_start, 
 			[[SESSION textView] printContent: printToAnsiString];
 		else
 			[[SESSION textView] print: nil];
-		[printToAnsiString release];
 		printToAnsiString = nil;
 		[self setPrintToAnsi: NO];
 		printPending = NO;
@@ -1920,7 +1906,7 @@ static __inline__ screen_char_t *incrementLinePointer(screen_char_t *buf_start, 
 - (NSLock *)screenLock
 {
 	if (!mScreenLock)
-		[self setScreenLock:[[[NSLock alloc] init] autorelease]];
+		[self setScreenLock:[[NSLock alloc] init]];
 	
     return mScreenLock; 
 }
@@ -1928,8 +1914,7 @@ static __inline__ screen_char_t *incrementLinePointer(screen_char_t *buf_start, 
 - (void)setScreenLock:(NSLock *)aScreenLock
 {
     if (mScreenLock != aScreenLock) {
-        [mScreenLock release];
-        mScreenLock = [aScreenLock retain];
+        mScreenLock = aScreenLock;
     }
 }
 

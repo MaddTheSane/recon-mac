@@ -30,29 +30,22 @@
 {
     self = [super init];
     
-    _table = [table retain];
-    _bundle = [bundle retain];
+    _table = table;
+    _bundle = bundle;
     
     return self;
 }
 
-- (void)dealloc;
-{
-    [_table release];
-    [_bundle release];
-    [super dealloc];
-}
-
 + (void)localizeWindow:(NSWindow*)window table:(NSString*)table bundle:(NSBundle*)bundle;
 {
-    ITViewLocalizer* localizer = [[[ITViewLocalizer alloc] initWithTable:table bundle:bundle] autorelease];
+    ITViewLocalizer* localizer = [[ITViewLocalizer alloc] initWithTable:table bundle:bundle];
     
     [localizer localizeWindow:window];
 }
 
 + (void)localizeView:(NSView*)view table:(NSString*)table bundle:(NSBundle*)bundle;
 {
-    ITViewLocalizer* localizer = [[[ITViewLocalizer alloc] initWithTable:table bundle:bundle] autorelease];
+    ITViewLocalizer* localizer = [[ITViewLocalizer alloc] initWithTable:table bundle:bundle];
     
     [localizer localizeView:view];    
 }

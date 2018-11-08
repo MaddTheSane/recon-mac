@@ -24,7 +24,6 @@
 
 	// Instance methods
 - (id)init;
-- (void)dealloc;
 
 - (NSDictionary *) profiles;
 - (void)setProfiles: (NSMutableDictionary *) aDict;

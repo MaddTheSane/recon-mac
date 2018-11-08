@@ -39,7 +39,7 @@ static BOOL addingKBEntry;
 		[[shared window] setDelegate:shared]; // also forces window to load
 	}
 	
-    profileCategories = [[NSArray arrayWithObjects:[NSNumber numberWithInt: 0],[NSNumber numberWithInt: 1],[NSNumber numberWithInt: 2],nil] retain];
+    profileCategories = [NSArray arrayWithObjects:[NSNumber numberWithInt: 0],[NSNumber numberWithInt: 1],[NSNumber numberWithInt: 2],nil];
     return shared;
 }
 
@@ -957,10 +957,9 @@ static BOOL addingKBEntry;
         [profileOutline reloadData];
     else 
 	{
-        id temp = [[[profileMgr profiles] objectForKey: item] retain];
+        id temp = [[profileMgr profiles] objectForKey: item];
         [profileMgr deleteProfileWithName: item];
         [(NSMutableDictionary *)[profileMgr profiles] setObject: temp forKey: object];
-        [temp release];
         [profileOutline reloadData];
         [self selectProfile:object withInCategory: categoryChosen];
     }

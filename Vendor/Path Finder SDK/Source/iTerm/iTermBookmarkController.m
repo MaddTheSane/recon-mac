@@ -58,7 +58,7 @@ static BOOL editingBookmark = NO;
     if ((self = [super init]) == nil)
         return nil;
 	
-	[super initWithWindowNibName: windowNibName];
+	if (!(self = [super initWithWindowNibName: windowNibName])) return nil;
     
 	[[NSNotificationCenter defaultCenter] addObserver: self
                                              selector: @selector(_reloadAddressBook:)
@@ -71,7 +71,6 @@ static BOOL editingBookmark = NO;
 - (void)dealloc
 {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
-    [super dealloc];
 }
 
 - (void)showWindow
@@ -511,8 +510,6 @@ static BOOL editingBookmark = NO;
 			[aDict setObject: [[ITAddressBookMgr sharedInstance] objectForKey: KEY_DESCRIPTION inItem: targetNode] forKey: KEY_DESCRIPTION];
 			[[ITAddressBookMgr sharedInstance] setBookmarkWithData: aDict forNode: targetNode];
 		}
-        
-		[aDict release];
 	}
 	
     id prefs = [NSUserDefaults standardUserDefaults];
