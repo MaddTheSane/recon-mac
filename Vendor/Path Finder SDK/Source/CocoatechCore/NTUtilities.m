@@ -215,7 +215,7 @@ NSString* NSErrorString(OSStatus err)
 	{
 		// Email Address
 		ABMultiValue *emailAddresses = [me valueForProperty:kABEmailProperty];
-		unsigned valueIndex = [emailAddresses indexForIdentifier:[emailAddresses primaryIdentifier]];
+		NSInteger valueIndex = [emailAddresses indexForIdentifier:[emailAddresses primaryIdentifier]];
 		
 		emailAddress = [emailAddresses valueAtIndex:valueIndex];
 	}

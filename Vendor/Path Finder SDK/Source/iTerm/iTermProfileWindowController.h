@@ -18,7 +18,7 @@
 #define TERMINAL_PROFILE_TAB		1
 #define DISPLAY_PROFILE_TAB			2
 
-@interface iTermProfileWindowController : NSWindowController <NSWindowDelegate>
+@interface iTermProfileWindowController : NSWindowController <NSWindowDelegate, NSOutlineViewDataSource, NSOutlineViewDelegate>
 {
     NSUserDefaults *_prefs;
 

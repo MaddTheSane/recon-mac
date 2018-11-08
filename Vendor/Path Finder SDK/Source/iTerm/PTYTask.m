@@ -122,7 +122,7 @@ static int writep(int fds, char *buf, size_t len)
 {
 	NSAutoreleasePool *arPool = [[NSAutoreleasePool alloc] init];;
     BOOL exitf = NO;
-    int sts;
+    ssize_t sts;
 	int iterationCount = 0;
 	char readbuf[4096];
 	fd_set rfds,efds;

@@ -398,7 +398,7 @@ typedef struct
 {
     NSImage* sizedImage = nil;
     NSArray* reps = [self representations];
-    int i, cnt = [reps count];
+    NSInteger i, cnt = [reps count];
     NSImageRep *rep;
     
     for (i=0;i<cnt;i++)
@@ -462,7 +462,7 @@ typedef struct
 - (NSBitmapImageRep*)bitmapImageRepForSize:(int)size;
 {
     NSArray* reps = [self representations];
-    int i, cnt = [reps count];
+    NSInteger i, cnt = [reps count];
     NSBitmapImageRep *rep;
     NSRect destRect = NSMakeRect(0, 0, size, size);
     NSRect srcRect;
@@ -716,7 +716,7 @@ typedef struct
 - (NSImageRep *)imageRepOfClass:(Class)imageRepClass;
 {
     NSArray *representations = [self representations];
-    unsigned int representationIndex, representationCount = [representations count];
+    NSInteger representationIndex, representationCount = [representations count];
     for (representationIndex = 0; representationIndex < representationCount; representationIndex++) {
         NSImageRep *rep = [representations objectAtIndex:representationIndex];
         if ([rep isKindOfClass:imageRepClass]) {
@@ -803,8 +803,8 @@ typedef struct
 #pragma pack(2)
     
     // Default data types.  Here, uint16 is an unsigned integer that has size 2 bytes (16 bits), and uint32 is datatype that has size 4 bytes (32 bits).  You may need to change these depending on your compiler.
-#define uint16 unsigned short
-#define uint32 unsigned int
+#define uint16 uint16_t
+#define uint32 uint32_t
     
 #define BI_RGB 0
 #define BM 19778
@@ -852,10 +852,10 @@ typedef struct
         } [newImage unlockFocus];
     }
     
-    uint32 width = [bitmapImageRep pixelsWide];
-    uint32 height= [bitmapImageRep pixelsHigh];
+    uint32 width = (uint32)[bitmapImageRep pixelsWide];
+    uint32 height= (uint32)[bitmapImageRep pixelsHigh];
     unsigned char *image = [bitmapImageRep bitmapData];
-    unsigned int samplesPerPixel = [bitmapImageRep samplesPerPixel];
+    unsigned int samplesPerPixel = (uint32)[bitmapImageRep samplesPerPixel];
     
     /*
      This function writes out a 24-bit Windows bitmap file that is readable by Microsoft Paint.

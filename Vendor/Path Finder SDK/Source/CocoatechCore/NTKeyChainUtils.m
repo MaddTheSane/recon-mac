@@ -19,9 +19,9 @@
 	SecKeychainItemRef itemRef = nil;
 
 	OSStatus error = SecKeychainFindGenericPassword (NULL,          
-													 strlen([service UTF8String]),          
+													 (UInt32)strlen([service UTF8String]),
 													 [service UTF8String],  
-													 strlen([accountName UTF8String]),             
+													 (UInt32)strlen([accountName UTF8String]),             
 													 [accountName UTF8String],  
 													 &passwordLength,             
 													 &passwordData,     

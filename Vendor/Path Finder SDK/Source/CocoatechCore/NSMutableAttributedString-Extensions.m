@@ -114,7 +114,7 @@ static NSURL* findURL(NSString* string);
 - (void)appendString:(NSString *)string;
 {
     NSDictionary *attributes = nil;
-    unsigned int  length = [self length];
+    NSUInteger  length = [self length];
 	
     if (length)
         attributes = [self attributesAtIndex:length-1 effectiveRange:NULL];
@@ -160,7 +160,7 @@ NSURL* findURL(NSString* string)
 
         if( theRange.location != NSNotFound)
         {
-            int numTrailingChars = ([string length] - NSMaxRange(theRange));
+            NSInteger numTrailingChars = ([string length] - NSMaxRange(theRange));
             
             if (numTrailingChars > 1 && numTrailingChars <= 4)
                 return [NSURL URLWithString:[NSString stringWithFormat:@"mailto:%@", string]];

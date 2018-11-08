@@ -9,8 +9,8 @@
 #import "NTChooseDestinationPanel.h"
 #import "NSSavePanel-NTExtensions.h"
 
-@interface NTChooseDestinationPanel (Private)
-- (void)handleResult:(int)result openPanel:(NSOpenPanel*)openPanel;
+@interface NTChooseDestinationPanel ()
+- (void)handleResult:(NSModalResponse)result openPanel:(NSOpenPanel*)openPanel;
 - (void)startPanel:(NSString*)startPath window:(NSWindow*)window showInvisibleFiles:(BOOL)showInvisibleFiles;
 @end
 
@@ -50,10 +50,6 @@
     [self handleResult:returnCode openPanel:sheet];
 }
 
-@end
-
-@implementation NTChooseDestinationPanel (Private)
-
 - (void)startPanel:(NSString*)startPath window:(NSWindow*)window showInvisibleFiles:(BOOL)inShowInvisibleFiles;
 {
     NSOpenPanel *op = [NSOpenPanel openPanel];
@@ -80,13 +76,13 @@
         }];
     } else
     {
-        int returnCode = [op runModal];
+        NSModalResponse returnCode = [op runModal];
         
         [self handleResult:returnCode openPanel:op];
     }
 }
 
-- (void)handleResult:(int)result openPanel:(NSOpenPanel*)openPanel;
+- (void)handleResult:(NSModalResponse)result openPanel:(NSOpenPanel*)openPanel;
 {
     self.userClickedOK = (result == NSOKButton);
 

@@ -194,8 +194,6 @@
 
 - (BOOL) disableBold;
 - (void)setDisableBold: (BOOL) boldFlag;
-- (BOOL) disableBold;
-- (void)setDisableBold: (BOOL) boldFlag;
 - (void)setColorTable:(int) index highLight:(BOOL)hili color:(NSColor *) c;
 - (int) optionKey;
 

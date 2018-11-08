@@ -55,7 +55,7 @@
     
     if (supermenu)
     {
-        int itemIndex = [supermenu indexOfItemWithSubmenu:menu];
+        NSInteger itemIndex = [supermenu indexOfItemWithSubmenu:menu];
         return (NSMenuItem*)[supermenu itemAtIndex:itemIndex];
     }
     

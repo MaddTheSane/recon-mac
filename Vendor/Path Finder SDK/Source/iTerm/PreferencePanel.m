@@ -159,7 +159,7 @@ static NSString *NoHandler = @"<No Handler>";
 	id key;
    
 	while ((key = [enumerator nextObject])) {
-		[tempDict setObject:[NSNumber numberWithInt:[[ITAddressBookMgr sharedInstance] indexForBookmark:[urlHandlers objectForKey:key]]]
+		[tempDict setObject:[NSNumber numberWithInteger:[[ITAddressBookMgr sharedInstance] indexForBookmark:[urlHandlers objectForKey:key]]]
 					 forKey:key];
 	}
 	[prefs setObject: tempDict forKey:@"URLHandlers"];

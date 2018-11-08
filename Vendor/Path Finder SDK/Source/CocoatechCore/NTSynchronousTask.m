@@ -8,7 +8,7 @@
 
 #import "NTSynchronousTask.h"
 
-@interface NTSynchronousTask (Private)
+@interface NTSynchronousTask ()
 - (void)run:(NSString*)toolPath directory:(NSString*)currentDirectory withArgs:(NSArray*)args input:(NSData*)input;
 
 - (NSTask *)task;
@@ -80,10 +80,6 @@
     
     return result;
 }
-
-@end
-
-@implementation NTSynchronousTask (Private)
 
 - (void)run:(NSString*)toolPath directory:(NSString*)currentDirectory withArgs:(NSArray*)args input:(NSData*)input;
 {

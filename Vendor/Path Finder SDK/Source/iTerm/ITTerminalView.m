@@ -1338,9 +1338,9 @@
 
 - (NSArray*)sessions
 {
-    int n = [[self tabView] numberOfTabViewItems];
+    NSInteger n = [[self tabView] numberOfTabViewItems];
     NSMutableArray *sessions = [NSMutableArray arrayWithCapacity: n];
-    int i;
+    NSInteger i;
     
     for (i= 0; i < n; i++)
         [sessions addObject: [[[self tabView] tabViewItemAtIndex:i] identifier]];

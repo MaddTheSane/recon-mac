@@ -202,7 +202,7 @@
 /*" This method splits any of the original rects that intersect rectToAvoid. Note that the rects array must be a mutable array as it is (potentially) modified by this function. Rects which are not as tall or as wide as minimumSize are removed from the original rect array (or never added, if the splitting operation results in any new rects smaller than the minimum size). The end result is that the rects array consists of rects encompassing the same overall area except for any overlap with rectToAvoid, excluding any rects not of minimumSize. No attempt is made to remove duplicate rects or rects which are subsets of other rects in the array. "*/
 + (void)updateRectsToAvoidRectGivenMinimumSize:(NSMutableArray *)rects rectToAvoid:(NSRect)rectToAvoid minSize:(NSSize)minimumSize;
 {
-    int rectIndex = [rects count];
+    NSInteger rectIndex = [rects count];
 	
     // Very important to iterate over the constraining rects _backwards_, as we will be appending to the constraining rects array and also removing some constraining rects as we iterate over them
     while (rectIndex-- > 0) {
@@ -258,7 +258,7 @@
 /*" This function returns the candidateRect that is closest to sourceRect. The distance used is the distance required to move sourceRect into the candidateRect, rather than simply having the closest approach. "*/
 NSRect NTClosestRectToRect(NSRect sourceRect, NSArray *candidateRects)
 {
-    int rectIndex = [candidateRects count];
+    NSInteger rectIndex = [candidateRects count];
     NSRect closestRect = NSZeroRect;
     if (rectIndex > 0)
 	{

@@ -39,7 +39,7 @@
 
 - (void)setObject:(id)anObject forKeys:(NSArray *)keys;
 {
-    unsigned int keyCount;
+    NSUInteger keyCount;
 	
     keyCount = [keys count];
     while (keyCount--)

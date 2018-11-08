@@ -166,10 +166,10 @@ NTDataBufferAppendCString(NTDataBuffer *dataBuffer, const char *str)
 }
 
 static inline void
-NTDataBufferAppendBytes(NTDataBuffer *dataBuffer, const unsigned char *bytes, unsigned int length)
+NTDataBufferAppendBytes(NTDataBuffer *dataBuffer, const unsigned char *bytes, size_t length)
 {
     unsigned char *ptr;
-    unsigned int byteIndex;
+    size_t byteIndex;
     
     ptr = NTDataBufferGetPointer(dataBuffer, length);
 	
@@ -202,6 +202,7 @@ NTDataBufferAppendBytes(dataBuffer, (unsigned char *)&value, sizeof(cType));	\
 }
 
 NTDataBufferAppendOfType(long int, LongInt, Long)
+NTDataBufferAppendOfType(int, Int, Int)
 NTDataBufferAppendOfType(short int, ShortInt, Short)
 NTDataBufferAppendOfType(unichar, Unichar, Short)
 NTDataBufferAppendOfType(long long int, LongLongInt, LongLong)
@@ -276,9 +277,9 @@ static inline void NTDataBufferAppendCompressedLongLongInt(NTDataBuffer *dataBuf
 }
 
 static inline void
-NTDataBufferAppendHexWithReturnsForBytes(NTDataBuffer *dataBuffer, const unsigned char *bytes, unsigned int length)
+NTDataBufferAppendHexWithReturnsForBytes(NTDataBuffer *dataBuffer, const unsigned char *bytes, size_t length)
 {
-    unsigned int byteIndex;
+    size_t byteIndex;
     
     byteIndex = 0;
     while (byteIndex < length) {

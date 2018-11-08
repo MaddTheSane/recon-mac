@@ -61,4 +61,7 @@
     // pass nil for directory if not needed
 + (BOOL)synchronousTask:(id<NTTaskControllerDelegateProtocol>)delegate toolPath:(NSString*)toolPath directory:(NSString*)currentDirectory withArgs:(NSArray*)args;
 
+- (void)taskOutputAvailable:(NSNotification*)note;
+- (void)taskDidTerminate:(NSNotification*)note;
+
 @end

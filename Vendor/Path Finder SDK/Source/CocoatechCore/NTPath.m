@@ -10,8 +10,8 @@
 #import "NSString-Utilities.h"
 
 @interface NTPath ()
-- (void)setUTF8Path:(const char *)cstr length:(int)length;
-- (void)setFileSystemPath:(const char *)cstr length:(int)length;
+- (void)setUTF8Path:(const char *)cstr length:(size_t)length;
+- (void)setFileSystemPath:(const char *)cstr length:(size_t)length;
 - (void)setPath:(NSString *)thePath;
 - (void)setName:(NSString *)theName;
 @end
@@ -123,7 +123,7 @@
     return mv_name; 
 }
 
-- (void)setUTF8Path:(const char *)cstr length:(int)length;
+- (void)setUTF8Path:(const char *)cstr length:(size_t)length;
 {
     if (mv_UTF8Path)
     {
@@ -139,7 +139,7 @@
     }
 }
 
-- (void)setFileSystemPath:(const char *)cstr length:(int)length;
+- (void)setFileSystemPath:(const char *)cstr length:(size_t)length;
 {
     if (mv_fileSystemPath)
     {

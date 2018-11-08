@@ -34,7 +34,7 @@
 
 @implementation NSMutableArray (MyExtensions)
 
-- (void)insertObjectsFromArray:(NSArray *)array atIndex:(int)index {
+- (void)insertObjectsFromArray:(NSArray *)array atIndex:(NSInteger)index {
     NSObject *entry = nil;
     NSEnumerator *enumerator = [array objectEnumerator];
     while ((entry=[enumerator nextObject])) {
@@ -196,13 +196,13 @@
 }
 
 
-- (void)insertChild:(TreeNode*)child atIndex:(int)index 
+- (void)insertChild:(TreeNode*)child atIndex:(NSInteger)index
 {
     [nodeChildren insertObject:child atIndex:index];
     [child setNodeParent: self];
 }
 
-- (void)insertChildren:(NSArray*)children atIndex:(int)index {
+- (void)insertChildren:(NSArray*)children atIndex:(NSInteger)index {
     [nodeChildren insertObjectsFromArray: children atIndex: index];
     [children makeObjectsPerformSelector:@selector(setNodeParent:) withObject:self];
 }
@@ -217,7 +217,7 @@
 }
 
 - (void)removeChild:(TreeNode*)child {
-    int index = [self indexOfChild: child];
+    NSInteger index = [self indexOfChild: child];
     if (index!=NSNotFound) {
         [self _removeChildrenIdenticalTo: [NSArray arrayWithObject: [self childAtIndex:index]]];
     }
@@ -227,15 +227,15 @@
     [[self nodeParent] removeChild:self];
 }
 
-- (int)indexOfChild:(TreeNode*)child {
+- (NSInteger)indexOfChild:(TreeNode*)child {
     return [nodeChildren indexOfObject:child];
 }
 
-- (int)indexOfChildIdenticalTo:(TreeNode*)child {
+- (NSInteger)indexOfChildIdenticalTo:(TreeNode*)child {
     return [nodeChildren indexOfObjectIdenticalTo:child];
 }
 
-- (int)numberOfChildren {
+- (NSInteger)numberOfChildren {
     return [nodeChildren count];
 }
 
@@ -251,7 +251,7 @@
     return [nodeChildren lastObject];
 }
 
-- (TreeNode*)childAtIndex:(int)index {
+- (TreeNode*)childAtIndex:(NSInteger)index {
     return [nodeChildren objectAtIndex:index];
 }
 
@@ -283,11 +283,11 @@
     [nodeChildren makeObjectsPerformSelector: @selector(recursiveSortChildren)];
 }
 
-- (int) indexForNode:(id)node {
+- (NSInteger) indexForNode:(id)node {
 	return ([[self array] indexOfObject:node]);
 }
 
-- (id)nodeForIndex: (int) index {
+- (id)nodeForIndex: (NSInteger) index {
 	return ([[self array] objectAtIndex:index]);
 }
 

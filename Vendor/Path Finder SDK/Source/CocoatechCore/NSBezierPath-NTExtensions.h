@@ -19,7 +19,7 @@ typedef enum NTTrianglePathDirection
 - (NSBezierPath *)closedPath;
 
 - (void)appendBezierPathWithRoundedRectangle:(NSRect)aRect radius:(CGFloat)radius;
-- (void)appendBezierPathWithRoundedRectangle:(NSRect)aRect topRadius:(CGFloat)topRadius bottomRadius:(float)bottomRadius;
+- (void)appendBezierPathWithRoundedRectangle:(NSRect)aRect topRadius:(CGFloat)topRadius bottomRadius:(CGFloat)bottomRadius;
 - (void)appendBezierPathWithRoundedRectangle:(NSRect)aRect radius:(CGFloat)radius leftSideOnly:(BOOL)leftSideOnly;
 - (void)appendBezierPathWithBottomRoundedCorners:(NSRect)aRect radius:(CGFloat)radius;
 - (void)appendBezierPathWithRoundedRectangle:(NSRect)rect topLeftRadius:(CGFloat)topLeftRadius topRightRadius:(CGFloat)topRightRadius bottomLeftRadius:(CGFloat)bottomLeftRadius bottomRightRadius:(CGFloat)bottomRightRadius;

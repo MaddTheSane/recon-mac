@@ -96,7 +96,7 @@ static BOOL editingBookmark = NO;
 // NSOutlineView delegate methods
 - (void)outlineViewSelectionDidChange: (NSNotification *) aNotification
 {
-	int selectedRow;
+	NSInteger selectedRow;
 	id selectedItem;
 		
 	selectedRow = [bookmarksView selectedRow];
@@ -390,7 +390,7 @@ static BOOL editingBookmark = NO;
 
 - (IBAction)launchSession:(id)sender
 {
-    int selectedRow = [bookmarksView selectedRow];
+    NSInteger selectedRow = [bookmarksView selectedRow];
 	TreeNode *selectedItem;
 	
 	//NSLog(@"selected: %d", [sender selectedSegment]);
@@ -405,14 +405,10 @@ static BOOL editingBookmark = NO;
 	}
 }
 
-@end
-
-@implementation iTermBookmarkController (Private)
-
 - (void)_addBookmarkFolderSheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo
 {
 	TreeNode *parentNode;
-	int selectedRow;
+	NSInteger selectedRow;
 	
 	selectedRow = [bookmarksView selectedRow];
 	
@@ -456,7 +452,7 @@ static BOOL editingBookmark = NO;
 {
 	NSMutableDictionary *aDict;
 	TreeNode *targetNode;
-	int selectedRow;
+	NSInteger selectedRow;
 	NSString *aName, *aCmd, *aPwd, *shortcut;
 	
 	if (returnCode == NSOKButton)

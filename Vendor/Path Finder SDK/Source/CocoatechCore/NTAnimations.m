@@ -55,7 +55,7 @@ NTSINGLETONOBJECT_STORAGE;
 	CAAnimation *anim = [CABasicAnimation animation];
 	anim.duration = .12;
 
-	[anim setDelegate:windowController];
+	[anim setDelegate:(id)windowController];
 	[windowController.window setAnimations:[NSDictionary dictionaryWithObject:anim forKey:@"alphaValue"]];	
 }	
 

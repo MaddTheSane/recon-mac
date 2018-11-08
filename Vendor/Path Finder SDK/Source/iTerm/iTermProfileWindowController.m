@@ -135,7 +135,7 @@ static BOOL addingKBEntry;
 {
 	id profileMgr;
 	
-    int categoryChosen = [addProfileCategory indexOfSelectedItem];
+    NSInteger categoryChosen = [addProfileCategory indexOfSelectedItem];
 
 	if (categoryChosen == KEYBOARD_PROFILE_TAB)
 		profileMgr = [iTermKeyBindingMgr singleInstance];
@@ -168,7 +168,7 @@ static BOOL addingKBEntry;
 
 - (IBAction)profileDuplicate:(id)sender
 {
-    int selectedTabViewItem;
+    NSInteger selectedTabViewItem;
 	id profileMgr;
 	
 	selectedTabViewItem  = [profileTabView indexOfTabViewItem: [profileTabView selectedTabViewItem]];
@@ -273,7 +273,7 @@ static BOOL addingKBEntry;
 - (IBAction)kbEntryEdit:(id)sender
 {
 	int index;
-	int selectedRow = [kbEntryTableView selectedRow];
+	NSInteger selectedRow = [kbEntryTableView selectedRow];
 	
 	NSMutableDictionary *keyMappings;
 	NSArray *allKeys;
@@ -823,7 +823,7 @@ static BOOL addingKBEntry;
 // NSOutlineView delegate methods
 - (void)outlineViewSelectionDidChange: (NSNotification *) aNotification
 {
-	int selectedRow;
+	NSInteger selectedRow;
 	id selectedItem;
 	
     selectedRow = [profileOutline selectedRow];
@@ -855,7 +855,7 @@ static BOOL addingKBEntry;
 
 // NSOutlineView data source methods
 // required
-- (id)outlineView:(NSOutlineView *)ov child:(int)index ofItem:(id)item
+- (id)outlineView:(NSOutlineView *)ov child:(NSInteger)index ofItem:(id)item
 {    
     if (item) {
         id value;
@@ -886,7 +886,7 @@ static BOOL addingKBEntry;
     return [item isKindOfClass:[NSNumber class]];
 }
 
-- (int)outlineView:(NSOutlineView *)ov numberOfChildrenOfItem:(id)item
+- (NSInteger)outlineView:(NSOutlineView *)ov numberOfChildrenOfItem:(id)item
 {
     if (item) 
 	{
@@ -926,7 +926,7 @@ static BOOL addingKBEntry;
     if ([item isKindOfClass:[NSNumber class]])
         return NO;
  
-    int categoryChosen = [profileTabView indexOfTabViewItem: [profileTabView selectedTabViewItem]];
+    NSInteger categoryChosen = [profileTabView indexOfTabViewItem: [profileTabView selectedTabViewItem]];
     
 	if (categoryChosen == KEYBOARD_PROFILE_TAB)
 		return ![[iTermKeyBindingMgr singleInstance] isGlobalProfile:item];
@@ -941,7 +941,7 @@ static BOOL addingKBEntry;
 // Optional method: needed to allow editing.
 - (void)outlineView:(NSOutlineView *)olv setObjectValue:(id)object forTableColumn:(NSTableColumn *)tableColumn byItem:(id)item  
 {
-    int categoryChosen = [profileTabView indexOfTabViewItem: [profileTabView selectedTabViewItem]];
+    NSInteger categoryChosen = [profileTabView indexOfTabViewItem: [profileTabView selectedTabViewItem]];
     id profileMgr;
     
 	if (categoryChosen == KEYBOARD_PROFILE_TAB)
@@ -968,7 +968,7 @@ static BOOL addingKBEntry;
 
 - (void)selectProfile:(NSString *)profile withInCategory: (int) category
 {
-    int i;
+    NSInteger i;
     
     i = [profileOutline rowForItem: [profileCategories objectAtIndex: category]]+1;
     for (;i<[profileOutline numberOfRows] && ![[profileOutline itemAtRow:i] isKindOfClass:[NSNumber class]];i++)
@@ -990,7 +990,7 @@ static BOOL addingKBEntry;
 	{
 		unsigned int modifiers = 0;
 		unsigned int hexCode = 0;
-		int selectedRow = [kbEntryTableView selectedRow];
+		NSInteger selectedRow = [kbEntryTableView selectedRow];
 
 		// if we are editing, we remove the old entry first
 		if (!addingKBEntry && selectedRow>=0)
@@ -1064,7 +1064,7 @@ static BOOL addingKBEntry;
 
 - (void)_deleteProfileSheetDidEnd:(NSWindow *)sheet returnCode:(int)returnCode contextInfo:(void *)contextInfo
 {
-	int selectedTabViewItem;
+	NSInteger selectedTabViewItem;
 	id profileMgr;
 	
 	selectedTabViewItem  = [profileTabView indexOfTabViewItem: [profileTabView selectedTabViewItem]];

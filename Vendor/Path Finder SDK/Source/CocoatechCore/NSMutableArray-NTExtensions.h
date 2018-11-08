@@ -8,17 +8,17 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface NSMutableArray (NTExtensions)
+@interface NSMutableArray<ObjectType> (NTExtensions)
 
 - (void)reverseOrder;
 
 // avoids exception if nil
-- (void)addObjectIf:(id)anObject;
+- (void)addObjectIf:(ObjectType)anObject;
 
-- (void)removeNTProxyObjectIdenticalTo:(id)theObject;
+- (void)removeNTProxyObjectIdenticalTo:(ObjectType)theObject;
 
-- (void)insertObjectsFromArray:(NSArray *)anArray atIndex:(unsigned int)anIndex;
-- (void)insertObject:anObject inArraySortedUsingSelector:(SEL)selector;
-- (unsigned)indexWhereObjectWouldBelong:(id)anObject inArraySortedUsingSelector:(SEL)selector;
+- (void)insertObjectsFromArray:(NSArray<ObjectType> *)anArray atIndex:(NSUInteger)anIndex;
+- (void)insertObject:(ObjectType)anObject inArraySortedUsingSelector:(SEL)selector;
+- (NSUInteger)indexWhereObjectWouldBelong:(ObjectType)anObject inArraySortedUsingSelector:(SEL)selector;
 
 @end

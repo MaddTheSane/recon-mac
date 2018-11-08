@@ -20,7 +20,7 @@
 @class iTermController;
 @class TreeNode;
 
-typedef enum { CURSOR_UNDERLINE, CURSOR_VERTICAL, CURSOR_BOX } ITermCursorType;
+typedef NS_ENUM(NSInteger, ITermCursorType) { CURSOR_UNDERLINE, CURSOR_VERTICAL, CURSOR_BOX };
 
 @interface PreferencePanel : NSWindowController <NSWindowDelegate, NSTextFieldDelegate>
 {
@@ -44,11 +44,11 @@ typedef enum { CURSOR_UNDERLINE, CURSOR_VERTICAL, CURSOR_BOX } ITermCursorType;
     
     NSUserDefaults *prefs;
 
-	int defaultWindowStyle;
+	NSInteger defaultWindowStyle;
     BOOL defaultCopySelection;
 	BOOL defaultPasteFromClipboard;
     BOOL defaultHideTab;
-    int defaultTabViewType;
+    NSInteger defaultTabViewType;
     BOOL defaultPromptOnClose;
     BOOL defaultFocusFollowsMouse;
 	BOOL defaultEnableBonjour;

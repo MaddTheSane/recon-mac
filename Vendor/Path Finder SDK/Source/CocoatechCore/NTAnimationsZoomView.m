@@ -12,7 +12,7 @@
 #import "NSBezierPath-NTExtensions.h"
 #import "CALayer-NTExtensions.h"
 
-@interface NTAnimationsZoomView (Private)
+@interface NTAnimationsZoomView () <CAAnimationDelegate, CALayerDelegate>
 - (void)setImageToLayer;
 - (void)reset;
 - (void)setupLayer;
@@ -70,10 +70,6 @@
 	self.imageLayer.opacity = 0.0;
 }
 
-@end
-
-@implementation NTAnimationsZoomView (CALayerDelegate)
-
 - (id<CAAction>)actionForLayer:(CALayer *)layer forKey:(NSString *)event;
 {	
     if (layer == self.imageLayer)
@@ -87,10 +83,6 @@
 	return nil;
 }
 
-@end
-
-@implementation NTAnimationsZoomView (CAAnimationDelegate)
-
 - (void)animationDidStart:(CAAnimation *)anim;
 {
 	if (![[self window] isVisible])
@@ -102,10 +94,6 @@
 	if ([[self window] isVisible])
 		[self reset];
 }
-
-@end
-
-@implementation NTAnimationsZoomView (Private)
 
 - (void)setImageToLayer;
 {

@@ -13,7 +13,7 @@
 
 - (void)reverseOrder;
 {
-    int i, end, cnt = [self count];
+    NSInteger i, end, cnt = [self count];
     
     end = cnt-1;
     cnt /= 2;
@@ -44,7 +44,7 @@
 	}
 }
 
-- (void)insertObjectsFromArray:(NSArray *)anArray atIndex:(unsigned int)anIndex
+- (void)insertObjectsFromArray:(NSArray *)anArray atIndex:(NSUInteger)anIndex
 {
     [self replaceObjectsInRange:(NSRange){ .location = anIndex, .length = 0 } withObjectsFromArray:anArray];
 }
@@ -60,12 +60,12 @@ static NSComparisonResult compareWithSelectorAndIMP(id obj1, id obj2, void *cont
     return (((struct selectorAndIMP *)context) -> implementation)(obj1, (((struct selectorAndIMP *)context) -> selector), obj2);
 }
 
-- (unsigned)indexWhereObjectWouldBelong:(id)anObject inArraySortedUsingFunction:(NSComparisonResult (*)(id, id, void *))comparator context:(void *)context;
+- (NSUInteger)indexWhereObjectWouldBelong:(id)anObject inArraySortedUsingFunction:(NSComparisonResult (*)(id, id, void *))comparator context:(void *)context;
 {
-    unsigned int low = 0;
-    unsigned int range = 1;
-    unsigned int test = 0;
-    unsigned int count = [self count];
+    NSUInteger low = 0;
+    NSUInteger range = 1;
+    NSUInteger test = 0;
+    NSUInteger count = [self count];
     NSComparisonResult result;
     id compareWith;
     IMP objectAtIndexImp = [self methodForSelector:@selector(objectAtIndex:)];
@@ -89,7 +89,7 @@ static NSComparisonResult compareWithSelectorAndIMP(id obj1, id obj2, void *cont
     return low;
 }
 
-- (unsigned)indexWhereObjectWouldBelong:(id)anObject inArraySortedUsingSelector:(SEL)selector;
+- (NSUInteger)indexWhereObjectWouldBelong:(id)anObject inArraySortedUsingSelector:(SEL)selector;
 {
     struct selectorAndIMP selAndImp;
 	
@@ -102,7 +102,7 @@ static NSComparisonResult compareWithSelectorAndIMP(id obj1, id obj2, void *cont
 /* Assumes the array is already sorted to insert the object quickly in the right place */
 - (void)insertObject:anObject inArraySortedUsingSelector:(SEL)selector;
 {
-    unsigned int objectIndex = [self indexWhereObjectWouldBelong:anObject inArraySortedUsingSelector:selector];
+    NSUInteger objectIndex = [self indexWhereObjectWouldBelong:anObject inArraySortedUsingSelector:selector];
     [self insertObject:anObject atIndex:objectIndex];
 }    
 

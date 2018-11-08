@@ -41,8 +41,8 @@
 
 - (NSBitmapImageRep*)bitmapImageRepForSize:(int)size;
 
-- (BOOL)hasCachedImageRep;
-- (NSImage*)imageWithOnlyCachedImageRep;
+- (BOOL)hasCachedImageRep NS_DEPRECATED_MAC(10_0, 10_6);
+- (NSImage*)imageWithOnlyCachedImageRep NS_DEPRECATED_MAC(10_0, 10_6);
 
 - (NSImage*)imageWithMaxSize:(int)maxSize;
 

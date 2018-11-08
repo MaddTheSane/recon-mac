@@ -22,7 +22,7 @@
 @end
 
 @interface NSMutableArray (MyExtensions)
-- (void)insertObjectsFromArray:(NSArray *)array atIndex:(int)index;
+- (void)insertObjectsFromArray:(NSArray *)array atIndex:(NSInteger)index;
 @end
 
 
@@ -48,19 +48,19 @@
 - (void)setIsLeaf: (BOOL) flag;
 - (BOOL)isGroup;
 
-- (void)insertChild:(TreeNode*)child atIndex:(int)index;
-- (void)insertChildren:(NSArray*)children atIndex:(int)index;
+- (void)insertChild:(TreeNode*)child atIndex:(NSInteger)index;
+- (void)insertChildren:(NSArray*)children atIndex:(NSInteger)index;
 - (void)removeChild:(TreeNode*)child;
 - (void)removeFromParent;
 
-- (int)indexOfChild:(TreeNode*)child;
-- (int)indexOfChildIdenticalTo:(TreeNode*)child;
+- (NSInteger)indexOfChild:(TreeNode*)child;
+- (NSInteger)indexOfChildIdenticalTo:(TreeNode*)child;
 
-- (int)numberOfChildren;
-- (NSArray*)children;
+- (NSInteger)numberOfChildren;
+- (NSArray<TreeNode*>*)children;
 - (TreeNode*)firstChild;
 - (TreeNode*)lastChild;
-- (TreeNode*)childAtIndex:(int)index;
+- (TreeNode*)childAtIndex:(NSInteger)index;
 
 - (BOOL)isDescendantOfNode:(TreeNode*)node;
     // returns YES if 'node' is an ancestor.
@@ -71,8 +71,8 @@
 - (void)recursiveSortChildren;
     // sort children using the compare: method in TreeNodeData
 
-- (int) indexForNode:(id)node;
-- (id)nodeForIndex: (int) index;
+- (NSInteger) indexForNode:(id)node;
+- (id)nodeForIndex: (NSInteger) index;
 
 	// Returns the minimum nodes from 'allNodes' required to cover the nodes in 'allNodes'.
 	// This methods returns an array containing nodes from 'allNodes' such that no node in

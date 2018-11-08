@@ -29,7 +29,7 @@
 {
     self = [super initWithFrame:frame];
 
-    mv_drawingMode = kTileImageMode;
+    mv_drawingMode = NTImageDrawingModeTile;
 	[self setWhiteWhenBackgroundColorIsTransparent:YES];
 	[self setImageOpacity:1.0];
 
@@ -155,7 +155,7 @@
             NSRect rect = [view bounds];
             NSRect scaledRect = rect;
 			
-            if (imageDrawingMode == kScaleImageMode)
+            if (imageDrawingMode == NTImageDrawingModeScale)
             {
                 int tmp;
                 float ratio;
@@ -192,9 +192,9 @@
                 
                 [image drawAtPoint:scaledRect.origin fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:fraction];
             }
-            else if (imageDrawingMode == kTileImageMode)
+            else if (imageDrawingMode == NTImageDrawingModeTile)
                 [image tileInView:view fraction:fraction clipRect:clipRect];
-            else if (imageDrawingMode == kCenterImageMode)
+            else if (imageDrawingMode == NTImageDrawingModeCenter)
             {
                 NSRect rect = [view bounds];
                 NSRect drawRect = NSMakeRect(0,0,imageSize.width, imageSize.height);
