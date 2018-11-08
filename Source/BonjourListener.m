@@ -9,10 +9,10 @@
 
 @interface BonjourListener ()
 
-@property (readwrite, retain) NSNetServiceBrowser *primaryBrowser;
-@property (readwrite, retain) NSNetServiceBrowser *secondaryBrowser;
-@property (readwrite, retain) NSMutableArray *services;
-@property (readwrite, retain) NSDictionary *bonjourDict;
+@property (readwrite, strong) NSNetServiceBrowser *primaryBrowser;
+@property (readwrite, strong) NSNetServiceBrowser *secondaryBrowser;
+@property (readwrite, strong) NSMutableArray *services;
+@property (readwrite, strong) NSDictionary *bonjourDict;
 
 @end
 
@@ -28,9 +28,9 @@
    {   
       NSLog(@"Bonjour!");
       self.services = [NSMutableArray new];
-      self.primaryBrowser = [[NSNetServiceBrowser new] autorelease];
+      self.primaryBrowser = [NSNetServiceBrowser new];
       self.primaryBrowser.delegate = self;
-      self.secondaryBrowser = [[NSNetServiceBrowser new] autorelease];
+      self.secondaryBrowser = [NSNetServiceBrowser new];
       self.secondaryBrowser.delegate = self;
       [self setBonjourDict];
    }   
@@ -38,15 +38,8 @@
    return self;
 }
 
--(void)dealloc {
-   self.primaryBrowser = nil;
-   self.secondaryBrowser = nil;
-   [services release];   
-   [super dealloc];
-}
-
 // -------------------------------------------------------------------------------
-//	search: 
+//   search: 
 // -------------------------------------------------------------------------------
 -(IBAction)search:(id)sender {
 //   NSLog(@"BonjourListener: search");
@@ -76,7 +69,6 @@
    
    if (aBrowser == self.secondaryBrowser)
    {
-      [aService retain];
       aService.delegate = self;
       [aService resolveWithTimeout:60];      
       
@@ -105,7 +97,7 @@
 -(void)netServiceDidResolveAddress:(NSNetService *)service {
 //   NSLog(@"netServiceDidResolveAddress");
    
-   NSMutableDictionary *newService = [[[NSMutableDictionary alloc] init] autorelease];
+   NSMutableDictionary *newService = [[NSMutableDictionary alloc] init];
 
    // We have to unpack the IP Address
    uint8_t name[SOCK_MAXADDRLEN];   
@@ -132,9 +124,9 @@
    
    NSDictionary *txtdict = [NSNetService dictionaryFromTXTRecordData:[service TXTRecordData]];
       
-   NSMutableDictionary *advService = [[[NSMutableDictionary alloc] init] autorelease];   
+   NSMutableDictionary *advService = [[NSMutableDictionary alloc] init];   
    
-   for (id dictKey in [txtdict allKeys])
+   for (__strong id dictKey in [txtdict allKeys])
    {
       NSData *dictValue = [txtdict valueForKey:dictKey];
       NSString *aStr = [[NSString alloc] initWithData:dictValue encoding:NSASCIIStringEncoding]; 

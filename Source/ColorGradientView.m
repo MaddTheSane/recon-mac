@@ -35,9 +35,9 @@
    else {
       // Fill view with a top-down gradient
       // from startingColor to endingColor
-      NSGradient* aGradient = [[[NSGradient alloc]
+      NSGradient* aGradient = [[NSGradient alloc]
                                 initWithStartingColor:startingColor
-                                endingColor:endingColor] autorelease];
+                                endingColor:endingColor];
       [aGradient drawInRect:[self bounds] angle:angle];
    }
 }

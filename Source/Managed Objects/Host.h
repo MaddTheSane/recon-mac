@@ -21,27 +21,27 @@
 {
 }
 
-@property (nonatomic, retain) NSString * macAddress;
-@property (nonatomic, retain) NSString * status;
-@property (nonatomic, retain) NSString * ipIdSequenceClass;
-@property (nonatomic, retain) NSString * distance;
-@property (nonatomic, retain) NSString * statusReason;
-@property (nonatomic, retain) NSString * tcpSequenceIndex;
-@property (nonatomic, retain) NSString * tcpTsSequenceClass;
-@property (nonatomic, retain) NSString * uptimeSeconds;
-@property (nonatomic, retain) NSString * ipv4Address;
-@property (nonatomic, retain) NSString * uptimeLastBoot;
-@property (nonatomic, retain) NSString * tcpSequenceDifficulty;
-@property (nonatomic, retain) NSString * hostname;
-@property (nonatomic, retain) NSNumber * isSelected;
-@property (nonatomic, retain) NSSet* tcpsequencevalues;
-@property (nonatomic, retain) NSSet* osmatches;
-@property (nonatomic, retain) NSSet* ports;
-@property (nonatomic, retain) NSSet* tcptssequencevalues;
-@property (nonatomic, retain) NSSet* notes;
-@property (nonatomic, retain) Session * session;
-@property (nonatomic, retain) NSSet* osclasses;
-@property (nonatomic, retain) NSSet* ipidsequencevalues;
+@property (nonatomic, strong) NSString * macAddress;
+@property (nonatomic, strong) NSString * status;
+@property (nonatomic, strong) NSString * ipIdSequenceClass;
+@property (nonatomic, strong) NSString * distance;
+@property (nonatomic, strong) NSString * statusReason;
+@property (nonatomic, strong) NSString * tcpSequenceIndex;
+@property (nonatomic, strong) NSString * tcpTsSequenceClass;
+@property (nonatomic, strong) NSString * uptimeSeconds;
+@property (nonatomic, strong) NSString * ipv4Address;
+@property (nonatomic, strong) NSString * uptimeLastBoot;
+@property (nonatomic, strong) NSString * tcpSequenceDifficulty;
+@property (nonatomic, strong) NSString * hostname;
+@property (nonatomic, strong) NSNumber * isSelected;
+@property (nonatomic, strong) NSSet* tcpsequencevalues;
+@property (nonatomic, strong) NSSet* osmatches;
+@property (nonatomic, strong) NSSet* ports;
+@property (nonatomic, strong) NSSet* tcptssequencevalues;
+@property (nonatomic, strong) NSSet* notes;
+@property (nonatomic, strong) Session * session;
+@property (nonatomic, strong) NSSet* osclasses;
+@property (nonatomic, strong) NSSet* ipidsequencevalues;
 
 @end
 

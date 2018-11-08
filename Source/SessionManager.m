@@ -70,7 +70,7 @@ static SessionManager *sharedSessionManager = nil;
 
    // Initiate a new session
    Session *newSession =
-   [newSessionController initWithProfile:profile 
+   [newSessionController profile:profile 
                               withTarget:sessionTarget 
                   inManagedObjectContext:[profile managedObjectContext]];
       
@@ -109,7 +109,7 @@ static SessionManager *sharedSessionManager = nil;
     
    // Initiate a new session
    Session *newSession =   
-   [newSessionController initWithSession:session];
+   [newSessionController withSession:session];
 
    // Register to receive notifications from the new Session Controller
    [self registerNotificationsFromSessionController:newSessionController];

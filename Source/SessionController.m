@@ -24,19 +24,19 @@
 @interface SessionController ()
 
    //@property (readwrite, retain) Session *session; 
-   @property (readwrite, retain) NSString *sessionUUID;   
-   @property (readwrite, retain) NSString *sessionDirectory;
-   @property (readwrite, retain) NSString *sessionOutputFile;   
+   @property (readwrite, strong) NSString *sessionUUID;   
+   @property (readwrite, strong) NSString *sessionDirectory;
+   @property (readwrite, strong) NSString *sessionOutputFile;   
 
    @property (readwrite, assign) BOOL hasRun;   
    @property (readwrite, assign) BOOL isRunning;
    @property (readwrite, assign) BOOL deleteAfterAbort;
 
-   @property (readwrite, retain) NSArray *nmapArguments;   
-   @property (readwrite, assign) NmapController *nmapController;
+   @property (readwrite, strong) NSArray *nmapArguments;   
+   @property (readwrite, strong) NmapController *nmapController;
 
-   @property (readwrite, retain) NSTimer *resultsTimer;
-   @property (readwrite, assign) XMLController *xmlController;
+   @property (readwrite, strong) NSTimer *resultsTimer;
+   @property (readwrite, strong) XMLController *xmlController;
 
 @end
 
@@ -82,26 +82,17 @@
    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
    [nc removeObserver:self];
 
-   [session release];
-   [sessionUUID release];   
-   [sessionDirectory release];   
-   [sessionOutputFile release];
    
-   [nmapArguments release];       
-   [nmapController release];
 
    [resultsTimer invalidate];   
-   [resultsTimer release];
-   [xmlController release];
-   [super dealloc];
 }
 
 #pragma mark -
 
 // -------------------------------------------------------------------------------
-//	initWithProfile
+//   initWithProfile
 // -------------------------------------------------------------------------------
-- (Session *)initWithProfile:(Profile *)profile                           
+- (Session *)profile:(Profile *)profile                           
             withTarget:(NSString *)sessionTarget               
 inManagedObjectContext:(NSManagedObjectContext *)context
 {
@@ -129,15 +120,14 @@ inManagedObjectContext:(NSManagedObjectContext *)context
 
    [self initNmapController];   
    
-   [a release];
 
    return session;
 }
 
 // -------------------------------------------------------------------------------
-//	initWithSession: 
+//   withSession: 
 // -------------------------------------------------------------------------------
-- (Session *)initWithSession:(Session *)existingSession
+- (Session *)withSession:(Session *)existingSession
 {
    Profile *profile = [existingSession profile];
    
@@ -152,13 +142,12 @@ inManagedObjectContext:(NSManagedObjectContext *)context
 
    [self initNmapController];   
    
-   [a release];
    
    return session;  
 }
 
 // -------------------------------------------------------------------------------
-//	copyProfile: Return a copy of the profile, filed under the hidden "Saved Sessions" folder
+//   copyProfile: Return a copy of the profile, filed under the hidden "Saved Sessions" folder
 // -------------------------------------------------------------------------------
 - (Profile *)copyProfile:(Profile *)profile
 {   
@@ -181,7 +170,7 @@ inManagedObjectContext:(NSManagedObjectContext *)context
 }
 
 // -------------------------------------------------------------------------------
-//	createSessionDirectory: 
+//   createSessionDirectory: 
 // -------------------------------------------------------------------------------
 - (BOOL)createSessionDirectory:(NSString *)uuid
 {
@@ -192,7 +181,7 @@ inManagedObjectContext:(NSManagedObjectContext *)context
    self.sessionDirectory = [[prefs reconSessionFolder] stringByAppendingPathComponent:uuid];
    self.sessionOutputFile = [sessionDirectory stringByAppendingPathComponent:@"nmap-output.xml"];
    
-	if ([NSFm createDirectoryAtPath:sessionDirectory withIntermediateDirectories:YES attributes:@{} error:NULL] == NO) {
+   if ([NSFm createDirectoryAtPath:sessionDirectory withIntermediateDirectories:YES attributes:@{} error:NULL] == NO) {
       //ANSLog (@"Couldn't create directory!\n");
       // TODO: Notify SessionManager of file creation error
       return NO;
@@ -202,7 +191,7 @@ inManagedObjectContext:(NSManagedObjectContext *)context
 }
 
 // -------------------------------------------------------------------------------
-//	initNmapController: Initialize an Nmap Controller for this Session Controller
+//   initNmapController: Initialize an Nmap Controller for this Session Controller
 // -------------------------------------------------------------------------------
 - (void)initNmapController
 {
@@ -232,7 +221,7 @@ inManagedObjectContext:(NSManagedObjectContext *)context
 }
 
 // -------------------------------------------------------------------------------
-//	startScan
+//   startScan
 // -------------------------------------------------------------------------------
 - (void)startScan
 {      
@@ -245,11 +234,11 @@ inManagedObjectContext:(NSManagedObjectContext *)context
    [session setStatus:@"Running"];
    
    // Setup a timer to read the progress
-   resultsTimer = [[NSTimer scheduledTimerWithTimeInterval:0.8
+   resultsTimer = [NSTimer scheduledTimerWithTimeInterval:0.8
                                              target:self
                                            selector:@selector(readProgress:)
                                            userInfo:nil
-                                            repeats:YES] retain];   
+                                            repeats:YES];   
    
    [nmapController startScan];
 
@@ -259,7 +248,7 @@ inManagedObjectContext:(NSManagedObjectContext *)context
 }
 
 // -------------------------------------------------------------------------------
-//	readProgress: Called by the resultsTimer.  Parses nmap-output.xml for 'taskprogress'
+//   readProgress: Called by the resultsTimer.  Parses nmap-output.xml for 'taskprogress'
 //               to update the status bar in the Sessions Drawer.
 // -------------------------------------------------------------------------------
 - (void)readProgress:(NSTimer *)aTimer
@@ -274,7 +263,6 @@ inManagedObjectContext:(NSManagedObjectContext *)context
       // Create the pipe to read from
       NSPipe *outPipe = [[NSPipe alloc] init];
       [task setStandardOutput:outPipe];
-      [outPipe release];
       
       // Start the process
       [task launch];
@@ -285,7 +273,6 @@ inManagedObjectContext:(NSManagedObjectContext *)context
       
       // Make sure the task terminates normally
       [task waitUntilExit];
-      [task release];
       
       // Convert to a string
       NSString *aString = [[NSString alloc] initWithData:data
@@ -315,12 +302,11 @@ inManagedObjectContext:(NSManagedObjectContext *)context
          }
       }
       
-      [aString release];
    }
 }
 
 // -------------------------------------------------------------------------------
-//	abortScan
+//   abortScan
 // -------------------------------------------------------------------------------
 - (void)abortScan
 {
@@ -330,7 +316,7 @@ inManagedObjectContext:(NSManagedObjectContext *)context
 }
 
 // -------------------------------------------------------------------------------
-//	deleteSession: Remove the current session from Core Data.  Works even if the
+//   deleteSession: Remove the current session from Core Data.  Works even if the
 //                session is currently running.
 // -------------------------------------------------------------------------------
 - (void)deleteSession
@@ -344,7 +330,7 @@ inManagedObjectContext:(NSManagedObjectContext *)context
 #pragma mark Notification center handlers
 
 // -------------------------------------------------------------------------------
-//	successfulRunNotification: NmapController notifies us that the NTask has completed.
+//   successfulRunNotification: NmapController notifies us that the NTask has completed.
 // -------------------------------------------------------------------------------
 - (void)successfulRunNotification: (NSNotification *)notification
 {    
@@ -378,7 +364,7 @@ inManagedObjectContext:(NSManagedObjectContext *)context
 }
 
 // -------------------------------------------------------------------------------
-//	abortedRunNotification: 
+//   abortedRunNotification: 
 // -------------------------------------------------------------------------------
 - (void)abortedRunNotification: (NSNotification *)notification
 {
@@ -404,7 +390,7 @@ inManagedObjectContext:(NSManagedObjectContext *)context
 }
 
 // -------------------------------------------------------------------------------
-//	unsuccessfulRunNotification: 
+//   unsuccessfulRunNotification: 
 // -------------------------------------------------------------------------------
 - (void)unsuccessfulRunNotification:(NSNotification *)notification
 {
@@ -434,15 +420,15 @@ inManagedObjectContext:(NSManagedObjectContext *)context
 }   
 
 // -------------------------------------------------------------------------------
-//	stringWithUUID: Returns a unique identifier for Session.  
+//   stringWithUUID: Returns a unique identifier for Session.  
 //                 This helps avoid conflicts when creating session directories.
 // -------------------------------------------------------------------------------
 + (NSString *)stringWithUUID 
 {
    CFUUIDRef uuidObj = CFUUIDCreate(nil);
-   NSString *uuidString = (NSString*)CFUUIDCreateString(nil, uuidObj);
+   NSString *uuidString = (NSString*)CFBridgingRelease(CFUUIDCreateString(nil, uuidObj));
    CFRelease(uuidObj);
-   return [uuidString autorelease];
+   return uuidString;
 }
 
 @end

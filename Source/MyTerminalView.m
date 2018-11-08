@@ -66,7 +66,7 @@
 	NSDictionary* dict = [[ITAddressBookMgr sharedInstance] defaultBookmarkData];   
 	ITTerminalView* term = [[self subviews] lastObject];
 
-   PTYSession *currentSession = [term currentSession];
+   id currentSession = [term currentSession];
    [currentSession insertText:string];
 }
 

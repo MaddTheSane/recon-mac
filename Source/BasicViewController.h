@@ -14,7 +14,7 @@
 
 @class BonjourListener;
 
-@interface BasicViewController : ManagingViewController <NSMenuItemValidation> {
+@interface BasicViewController : ManagingViewController /*<NSMenuItemValidation>*/ {
 
    // Global outlets
    IBOutlet NSPopUpButton *taskSelectionPopUp;
@@ -40,9 +40,9 @@
    IBOutlet NSScrollView *netstatHostsScrollView;
    IBOutlet NSScrollView *bonjourHostsScrollView;
    
-	NSTask *task;      
-	NSMutableData *standardOutput;
-	NSMutableData *standardError;
+   NSTask *task;      
+   NSMutableData *standardOutput;
+   NSMutableData *standardError;
    
    BonjourListener *bonjourListener;
    NSMutableArray *foundServices;
@@ -50,15 +50,15 @@
 
    IBOutlet NSArrayController *bonjourConnectionsController;
    IBOutlet NSOutlineView *foundServicesOutlineView;
-	NSRect bigFramePosition;
-	NSRect smallFramePosition;
+   NSRect bigFramePosition;
+   NSRect smallFramePosition;
    IBOutlet NSView *hider;
 
    IBOutlet NSView *workspaceBasicContent;   
    IBOutlet NSView *workspaceBasicContentBonjour;   
    IBOutlet NSView *workspaceBasicContentNetstat;     
    
-   IBOutlet NSView *targetBarBasicContent;
+   IBOutlet NSView *__weak targetBarBasicContent;
    
    IBOutlet NSMenu *netstatContextMenu;   
    
@@ -71,20 +71,20 @@
    NSArray *sessionSortDescriptor;           
 }
 
-@property (nonatomic, readwrite, retain)NSMutableArray *connections;
-@property (readwrite, retain)NSMutableArray *foundServices;
+@property (nonatomic, readwrite, strong)NSMutableArray *connections;
+@property (readwrite, strong)NSMutableArray *foundServices;
 @property (readwrite, assign)BOOL autoRefresh;
 @property (readwrite, assign)BOOL resolveHostnames;
 @property (readwrite, assign)BOOL doneRefresh;
 @property (readwrite, assign)BOOL showSpinner;
 
-@property (readonly) NSArray *osSortDescriptor;
-@property (readonly) NSArray *hostSortDescriptor;
-@property (readonly) NSArray *portSortDescriptor;
-@property (readonly) NSArray *profileSortDescriptor;
-@property (readonly) NSArray *sessionSortDescriptor;
+@property (weak, readonly) NSArray *osSortDescriptor;
+@property (weak, readonly) NSArray *hostSortDescriptor;
+@property (weak, readonly) NSArray *portSortDescriptor;
+@property (weak, readonly) NSArray *profileSortDescriptor;
+@property (weak, readonly) NSArray *sessionSortDescriptor;
 
-@property (readonly) NSView *targetBarBasicContent;
+@property (weak, readonly) NSView *targetBarBasicContent;
 
 - (IBAction)launchScan:(id)sender;
 - (IBAction)changeInspectorTask:(id)sender;

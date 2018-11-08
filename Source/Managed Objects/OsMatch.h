@@ -14,10 +14,10 @@
 {
 }
 
-@property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSString * line;
-@property (nonatomic, retain) NSString * accuracy;
-@property (nonatomic, retain) Host * host;
+@property (nonatomic, strong) NSString * name;
+@property (nonatomic, strong) NSString * line;
+@property (nonatomic, strong) NSString * accuracy;
+@property (nonatomic, strong) Host * host;
 
 @end
 

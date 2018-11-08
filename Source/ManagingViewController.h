@@ -13,13 +13,13 @@
    
 }
 
-@property (retain) NSManagedObjectContext *managedObjectContext;
-@property (retain) NSArrayController *sessionsArrayController;
-@property (retain) NSArrayController *profilesArrayController;
+@property (strong) NSManagedObjectContext *managedObjectContext;
+@property (strong) NSArrayController *sessionsArrayController;
+@property (strong) NSArrayController *profilesArrayController;
 
-@property (retain) NSArrayController *notesInHostArrayController;
-@property (retain) NSArrayController *hostsInSessionArrayController;
+@property (strong) NSArrayController *notesInHostArrayController;
+@property (strong) NSArrayController *hostsInSessionArrayController;
 
-@property (retain) NSView *workspacePlaceholder;
+@property (strong) NSView *workspacePlaceholder;
 
 @end

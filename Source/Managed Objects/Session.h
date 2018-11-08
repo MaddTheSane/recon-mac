@@ -15,19 +15,19 @@
 {
 }
 
-@property (nonatomic, retain) NSString * nmapOutputStdout;
-@property (nonatomic, retain) NSString * target;
-@property (nonatomic, retain) NSString * nmapOutputXml;
-@property (nonatomic, retain) NSString * status;
-@property (nonatomic, retain) NSString * nmapOutputStderr;
-@property (nonatomic, retain) NSNumber * hostsDown;
-@property (nonatomic, retain) NSNumber * hostsUp;
-@property (nonatomic, retain) NSString * UUID;
-@property (nonatomic, retain) NSNumber * progress;
-@property (nonatomic, retain) NSDate * date;
-@property (nonatomic, retain) NSNumber * hostsTotal;
-@property (nonatomic, retain) NSSet* hosts;
-@property (nonatomic, retain) Profile * profile;
+@property (nonatomic, strong) NSString * nmapOutputStdout;
+@property (nonatomic, strong) NSString * target;
+@property (nonatomic, strong) NSString * nmapOutputXml;
+@property (nonatomic, strong) NSString * status;
+@property (nonatomic, strong) NSString * nmapOutputStderr;
+@property (nonatomic, strong) NSNumber * hostsDown;
+@property (nonatomic, strong) NSNumber * hostsUp;
+@property (nonatomic, strong) NSString * UUID;
+@property (nonatomic, strong) NSNumber * progress;
+@property (nonatomic, strong) NSDate * date;
+@property (nonatomic, strong) NSNumber * hostsTotal;
+@property (nonatomic, strong) NSSet* hosts;
+@property (nonatomic, strong) Profile * profile;
 
 @end
 

@@ -15,20 +15,20 @@
 {
 }
 
-@property (nonatomic, retain) NSString * state;
-@property (nonatomic, retain) NSNumber * number;
-@property (nonatomic, retain) NSString * serviceMethod;
-@property (nonatomic, retain) NSString * serviceOsType;
-@property (nonatomic, retain) NSString * serviceProduct;
-@property (nonatomic, retain) NSString * stateReasonTTL;
-@property (nonatomic, retain) NSString * serviceDeviceType;
-@property (nonatomic, retain) NSString * stateReason;
-@property (nonatomic, retain) NSString * protocol;
-@property (nonatomic, retain) NSString * serviceName;
-@property (nonatomic, retain) NSString * serviceConf;
-@property (nonatomic, retain) NSString * serviceVersion;
-@property (nonatomic, retain) Host * host;
-@property (nonatomic, retain) NSSet* scripts;
+@property (nonatomic, strong) NSString * state;
+@property (nonatomic, strong) NSNumber * number;
+@property (nonatomic, strong) NSString * serviceMethod;
+@property (nonatomic, strong) NSString * serviceOsType;
+@property (nonatomic, strong) NSString * serviceProduct;
+@property (nonatomic, strong) NSString * stateReasonTTL;
+@property (nonatomic, strong) NSString * serviceDeviceType;
+@property (nonatomic, strong) NSString * stateReason;
+@property (nonatomic, strong) NSString * protocol;
+@property (nonatomic, strong) NSString * serviceName;
+@property (nonatomic, strong) NSString * serviceConf;
+@property (nonatomic, strong) NSString * serviceVersion;
+@property (nonatomic, strong) Host * host;
+@property (nonatomic, strong) NSSet* scripts;
 
 @end
 

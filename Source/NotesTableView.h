@@ -14,6 +14,6 @@
    NSArray *alternatingColors;
 }
 
-@property (retain)NSArray *alternatingColors;
+@property (strong)NSArray *alternatingColors;
 
 @end

@@ -26,7 +26,7 @@
         andRemotePort:(NSString *)rP 
             andStatus:(NSString *)s;
 {
-   [super init];
+   if (!(self = [super init])) return nil;
    
    self.localIP = lIP;
    self.localPort = lP;   
@@ -35,16 +35,6 @@
    self.status = s;
    
    return self;
-}
-
-- (void)dealloc
-{
-   [localIP release];
-   [localPort release];   
-   [remoteIP release];
-   [remotePort release];   
-   [status release];   
-   [super dealloc];
 }
 
 @synthesize localIP;

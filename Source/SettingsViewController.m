@@ -18,7 +18,9 @@
 
 @implementation SettingsViewController 
 
+@synthesize workspaceSettingsContent;
 @synthesize targetBarSettingsContent;
+@synthesize sideBarSettingsContent;
 
 - (id)init 
 {
@@ -35,12 +37,7 @@
    
    
 - (void)awakeFromNib
-{      
-   // NSView retains   
-   [targetBarSettingsContent retain];   
-   [sideBarSettingsContent retain];     
-   [workspaceSettingsContent retain];   
-   
+{
 //   NSPoint point = NSMakePoint(0, 0);
 //   [[workspaceSettingsScrollView contentView] scrollToPoint: point];
 //   [workspaceSettingsScrollView reflectScrolledClipView: [workspaceSettingsScrollView contentView]];   
@@ -56,7 +53,7 @@
 #pragma mark -
 
 // -------------------------------------------------------------------------------
-//	expandProfileView: BEAUTIFIER FUNCTION.  Expand the folders in the Profiles Drawer.
+//   expandProfileView: BEAUTIFIER FUNCTION.  Expand the folders in the Profiles Drawer.
 // -------------------------------------------------------------------------------
 - (void)expandProfileView
 {
@@ -65,7 +62,7 @@
 }
 
 // -------------------------------------------------------------------------------
-//	addProfile: Add a new profile to the Persistent Store.  User-created profiles
+//   addProfile: Add a new profile to the Persistent Store.  User-created profiles
 //             are all stored in an NSTreeController-branch titled "User Profiles".
 // -------------------------------------------------------------------------------
 - (IBAction)addProfile:(id)sender
@@ -96,7 +93,7 @@
 }
 
 // -------------------------------------------------------------------------------
-//	deleteProfile: Delete the currently selected profile from the MOC.
+//   deleteProfile: Delete the currently selected profile from the MOC.
 //                Prevent the user from deleting folders or default profiles.
 // -------------------------------------------------------------------------------
 - (IBAction)deleteProfile:(id)sender
@@ -130,7 +127,7 @@
 }
 
 // -------------------------------------------------------------------------------
-//	addProfileToUserProfiles: Insert a copy of the profile into "User Profiles"
+//   addProfileToUserProfiles: Insert a copy of the profile into "User Profiles"
 // -------------------------------------------------------------------------------
 - (void)addProfileToUserProfiles:(Profile *)profile
 {   
@@ -154,78 +151,78 @@
 #pragma mark Sort Descriptors
 
 // -------------------------------------------------------------------------------
-//	Sort Descriptors for the various table views
+//   Sort Descriptors for the various table views
 // -------------------------------------------------------------------------------
 
 // http://fadeover.org/blog/archives/13
 - (NSArray *)hostSortDescriptor
 {
-	if(hostSortDescriptor == nil){
-		hostSortDescriptor = [NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"ipv4Address" ascending:YES]];
+   if(hostSortDescriptor == nil){
+      hostSortDescriptor = [NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"ipv4Address" ascending:YES]];
    }
    
-	return hostSortDescriptor;
+   return hostSortDescriptor;
 }
 
 - (void)setHostSortDescriptor:(NSArray *)newSortDescriptor
 {
-	hostSortDescriptor = newSortDescriptor;
+   hostSortDescriptor = newSortDescriptor;
 }
 
 - (NSArray *)portSortDescriptor
 {
-	if(portSortDescriptor == nil){
-		portSortDescriptor = [NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"number" ascending:YES]];
+   if(portSortDescriptor == nil){
+      portSortDescriptor = [NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"number" ascending:YES]];
    }
    
-	return portSortDescriptor;
+   return portSortDescriptor;
 }
 
 - (void)setPortSortDescriptor:(NSArray *)newSortDescriptor
 {
-	portSortDescriptor = newSortDescriptor;
+   portSortDescriptor = newSortDescriptor;
 }
 
 - (NSArray *)profileSortDescriptor
 {
-	if(profileSortDescriptor == nil){
-		profileSortDescriptor = [NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES]];
+   if(profileSortDescriptor == nil){
+      profileSortDescriptor = [NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES]];
    }
    
-	return profileSortDescriptor;
+   return profileSortDescriptor;
 }
 
 - (void)setProfileSortDescriptor:(NSArray *)newSortDescriptor
 {
-	profileSortDescriptor = newSortDescriptor;
+   profileSortDescriptor = newSortDescriptor;
 }
 
 - (NSArray *)sessionSortDescriptor
 {
-	if(sessionSortDescriptor == nil){
-		sessionSortDescriptor = [NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO]];
+   if(sessionSortDescriptor == nil){
+      sessionSortDescriptor = [NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO]];
    }
    
-	return sessionSortDescriptor;
+   return sessionSortDescriptor;
 }
 
 - (void)setSessionSortDescriptor:(NSArray *)newSortDescriptor
 {
-	sessionSortDescriptor = newSortDescriptor;
+   sessionSortDescriptor = newSortDescriptor;
 }
 
 - (NSArray *)osSortDescriptor
 {
-	if(osSortDescriptor == nil){
-		osSortDescriptor = [NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"name" ascending:NO]];
+   if(osSortDescriptor == nil){
+      osSortDescriptor = [NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"name" ascending:NO]];
    }
    
-	return osSortDescriptor;
+   return osSortDescriptor;
 }
 
 - (void)setOsSortDescriptor:(NSArray *)newSortDescriptor
 {
-	osSortDescriptor = newSortDescriptor;
+   osSortDescriptor = newSortDescriptor;
 }
 
 @end

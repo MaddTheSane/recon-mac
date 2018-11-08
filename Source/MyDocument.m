@@ -42,22 +42,15 @@
 - (void)dealloc
 {
    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
-   [nc removeObserver:self];   
-   
-   [sessionManager release];
+   [nc removeObserver:self];
    
    [nmapErrorTimer invalidate];
-   [nmapErrorTimer release];
    
    [nmapErrorTimer invalidate];
-   [nmapErrorTimer release];
-   
-   [viewControllers release];   
-   [super dealloc];
 }
 
 // -------------------------------------------------------------------------------
-//	displayName: Override NSPersistentDocument window title
+//   displayName: Override NSPersistentDocument window title
 // -------------------------------------------------------------------------------
 - (NSString *)displayName
 {
@@ -65,7 +58,7 @@
 }
 
 // -------------------------------------------------------------------------------
-//	awakeFromNib: Everything in here was moved to windowControllerDidLoadNib, since
+//   awakeFromNib: Everything in here was moved to windowControllerDidLoadNib, since
 //               awakeFromNib tends to be called after Panels are displayed.
 // -------------------------------------------------------------------------------
 - (void)awakeFromNib
@@ -77,7 +70,7 @@
 }
 
 // -------------------------------------------------------------------------------
-//	windowControllerDidLoadNib: This is where we perform most of the initial app
+//   windowControllerDidLoadNib: This is where we perform most of the initial app
 //                             setup.
 // -------------------------------------------------------------------------------
 - (void)windowControllerDidLoadNib:(NSWindowController *)windowController 
@@ -174,13 +167,12 @@
 
    // We have to patch the responder chain to make sure
    //  the AdvancedViewController menu items validate
-	NSResponder * aNextResponder = [windowController nextResponder];
-	[windowController setNextResponder:vc];
-	[vc setNextResponder:aNextResponder];
+   NSResponder * aNextResponder = [windowController nextResponder];
+   [windowController setNextResponder:vc];
+   [vc setNextResponder:aNextResponder];
    
    [vc setWorkspacePlaceholder:workspacePlaceholder];
    [viewControllers addObject:vc];   
-   [vc release];       
    
    AdvancedViewController *vc1 = [[AdvancedViewController alloc] init];
    [vc1 setManagedObjectContext:[self managedObjectContext]];
@@ -193,10 +185,9 @@
 
    // Patch in the AdvancedViewController
    aNextResponder = [windowController nextResponder];
-	[windowController setNextResponder:vc1];
-	[vc1 setNextResponder:aNextResponder];
+   [windowController setNextResponder:vc1];
+   [vc1 setNextResponder:aNextResponder];
    
-   [vc1 release];
    
    SettingsViewController *vc2 = [[SettingsViewController alloc] init];
    [vc2 setManagedObjectContext:[self managedObjectContext]];
@@ -206,7 +197,6 @@
    [vc2 setHostsInSessionArrayController:hostsInSessionArrayController];
    [vc2 setWorkspacePlaceholder:workspacePlaceholder];
    [viewControllers addObject:vc2];
-   [vc2 release];
    
    //------------------------------------------------------| Set-up Workspace
    
@@ -250,7 +240,7 @@
 #pragma mark First run handlers
 
 // -------------------------------------------------------------------------------
-//	updateSupportFolder: If the user updates the output folder in the Prefs Controller
+//   updateSupportFolder: If the user updates the output folder in the Prefs Controller
 //                      we've gotta relocate the Persistent Store.
 // -------------------------------------------------------------------------------
 - (void)updateSupportFolder:(NSNotification *)notification
@@ -288,7 +278,7 @@
 
 
 // -------------------------------------------------------------------------------
-//	finishFirstRun: BEAUTIFIER FUNCTION.  The Welcome window looks better when the
+//   finishFirstRun: BEAUTIFIER FUNCTION.  The Welcome window looks better when the
 //                 drawers are closed, so we open them after the user dismisses the
 //                 window.
 // -------------------------------------------------------------------------------
@@ -315,7 +305,7 @@
 }
 
 // -------------------------------------------------------------------------------
-//	validateToolbarItem: 
+//   validateToolbarItem: 
 // -------------------------------------------------------------------------------
 - (BOOL)validateToolbarItem:(NSToolbarItem *)theItem
 {
@@ -329,15 +319,15 @@ static float vigourOfShake = 0.01f;
 - (CAKeyframeAnimation *)shakeAnimation:(NSRect)frame
 {
    CAKeyframeAnimation *shakeAnimation = [CAKeyframeAnimation animation];
-	
+   
    CGMutablePathRef shakePath = CGPathCreateMutable();
    CGPathMoveToPoint(shakePath, NULL, NSMinX(frame), NSMinY(frame));
-	int index;
-	for (index = 0; index < numberOfShakes; ++index)
-	{
-		CGPathAddLineToPoint(shakePath, NULL, NSMinX(frame) - frame.size.width * vigourOfShake, NSMinY(frame));
-		CGPathAddLineToPoint(shakePath, NULL, NSMinX(frame) + frame.size.width * vigourOfShake, NSMinY(frame));
-	}
+   int index;
+   for (index = 0; index < numberOfShakes; ++index)
+   {
+      CGPathAddLineToPoint(shakePath, NULL, NSMinX(frame) - frame.size.width * vigourOfShake, NSMinY(frame));
+      CGPathAddLineToPoint(shakePath, NULL, NSMinX(frame) + frame.size.width * vigourOfShake, NSMinY(frame));
+   }
    CGPathCloseSubpath(shakePath);
    shakeAnimation.path = shakePath;
    shakeAnimation.duration = durationOfShake;
@@ -360,7 +350,7 @@ static float vigourOfShake = 0.01f;
 #pragma mark View switch handlers
 
 // -------------------------------------------------------------------------------
-//	segControlClicked: Delete/Play/Add segmented control in the lower-right
+//   segControlClicked: Delete/Play/Add segmented control in the lower-right
 // -------------------------------------------------------------------------------
 - (IBAction)segControlClicked:(id)sender
 {
@@ -517,7 +507,7 @@ static float vigourOfShake = 0.01f;
 #pragma mark -
 #pragma mark SessionManager methods
 // -------------------------------------------------------------------------------
-//	queueSession: Queue up a session using the currently selected Profile.
+//   queueSession: Queue up a session using the currently selected Profile.
 //
 //   http://arstechnica.com/apple/guides/2009/04/cocoa-dev-the-joy-of-nspredicates-and-matching-strings.ars
 // -------------------------------------------------------------------------------
@@ -586,12 +576,11 @@ static float vigourOfShake = 0.01f;
       }
 
       // TODO: Why for thou crasheth?
-      [a release];
    }
 }
 
 // -------------------------------------------------------------------------------
-//	indicateEntryError: Timer helper-function indicating nmap command entry error
+//   indicateEntryError: Timer helper-function indicating nmap command entry error
 // -------------------------------------------------------------------------------
 - (void)indicateEntryError:(NSTimer *)aTimer
 {
@@ -607,7 +596,7 @@ static float vigourOfShake = 0.01f;
 
 
 // -------------------------------------------------------------------------------
-//	dequeueSession: Use current state of the selected Profile and queue a session.
+//   dequeueSession: Use current state of the selected Profile and queue a session.
 // -------------------------------------------------------------------------------
 - (IBAction)dequeueSession:(id)sender 
 {   
@@ -615,7 +604,7 @@ static float vigourOfShake = 0.01f;
 }
 
 // -------------------------------------------------------------------------------
-//	processQueue: Begin processing session queue.
+//   processQueue: Begin processing session queue.
 // -------------------------------------------------------------------------------
 - (IBAction)processQueue:(id)sender
 {  
@@ -623,7 +612,7 @@ static float vigourOfShake = 0.01f;
 }
 
 // -------------------------------------------------------------------------------
-//	addQueuedSessions: When the application loads, previous sessions are loaded
+//   addQueuedSessions: When the application loads, previous sessions are loaded
 //                    from the persistent store.  We have to add queued sessions
 //                    to the Session Manager, so continuity in the user experience
 //                    is maintained.
@@ -684,11 +673,11 @@ static float vigourOfShake = 0.01f;
       MailApplication *mail = 
       [SBApplication applicationWithBundleIdentifier:@"com.apple.mail"];
       MailOutgoingMessage *mailMessage =
-      [[[[mail classForScriptingClass:@"outgoing message"] alloc]
+      [[[mail classForScriptingClass:@"outgoing message"] alloc]
         initWithProperties:[NSDictionary dictionaryWithObjectsAndKeys:
                             subject, @"subject",
                             body, @"content",
-                            nil]] autorelease];
+                            nil]];
       [[mail outgoingMessages] addObject:mailMessage];
       
 //      MailToRecipient *recipient =
@@ -711,11 +700,11 @@ static float vigourOfShake = 0.01f;
          NSString *sessionXMLpath = [savedSessionsDirectory stringByAppendingPathComponent:[a UUID]];
          
          attachment =
-         [[[[mail classForScriptingClass:@"attachment"] alloc]
+         [[[mail classForScriptingClass:@"attachment"] alloc]
            initWithProperties:[NSDictionary dictionaryWithObjectsAndKeys:
                                sessionXMLpath, @"filename",                               
 //                               [a nmapOutputXml], @"filename",
-                               nil]] autorelease];
+                               nil]];
          [[[mailMessage content] attachments] addObject:attachment];
 
       }
@@ -732,7 +721,7 @@ static float vigourOfShake = 0.01f;
 #pragma mark -
 #pragma mark Profiles drawer methods
 // -------------------------------------------------------------------------------
-//	addDefaultProfiles: 
+//   addDefaultProfiles: 
 // -------------------------------------------------------------------------------
 - (void)addDefaultProfiles
 {
@@ -797,7 +786,7 @@ static float vigourOfShake = 0.01f;
 #pragma mark Session Drawer Menu click-handlers
 
 // -------------------------------------------------------------------------------
-//	Session Drawer Menu click-handlers
+//   Session Drawer Menu click-handlers
 // -------------------------------------------------------------------------------
 
 - (Session *)clickedSessionInDrawer
@@ -882,7 +871,7 @@ static float vigourOfShake = 0.01f;
 #pragma mark Table double-click handlers
 
 // -------------------------------------------------------------------------------
-//	Table click handlers
+//   Table click handlers
 // -------------------------------------------------------------------------------
 
 // Sessions Drawer click-handlers
@@ -906,11 +895,11 @@ static float vigourOfShake = 0.01f;
 #pragma mark Menu click-handlers
 
 // -------------------------------------------------------------------------------
-//	Main Menu key-handlers
+//   Main Menu key-handlers
 // -------------------------------------------------------------------------------
 
 // -------------------------------------------------------------------------------
-//	Hands this functionality off to the PrefsController
+//   Hands this functionality off to the PrefsController
 // -------------------------------------------------------------------------------
 
 - (IBAction)setuidNmap:(id)sender
@@ -927,7 +916,7 @@ static float vigourOfShake = 0.01f;
 }
 
 // -------------------------------------------------------------------------------
-//	Menu click handlers
+//   Menu click handlers
 // -------------------------------------------------------------------------------
 
 // Enable/Disable menu depending on context
@@ -1032,7 +1021,6 @@ static float vigourOfShake = 0.01f;
       h.date = [NSDate date];
       h.name = @"New Note";
       [notesInHostArrayController addObject:h];
-      [h release];
       
       // Re-sort (in case the user has sorted a column)
       [notesInHostArrayController rearrangeObjects];
@@ -1115,7 +1103,7 @@ static float vigourOfShake = 0.01f;
 }
 
 // -------------------------------------------------------------------------------
-//	NSDocument functions that we can potentially override
+//   NSDocument functions that we can potentially override
 // -------------------------------------------------------------------------------
 
 - (IBAction)saveDocument:(id)sender
@@ -1140,15 +1128,15 @@ static float vigourOfShake = 0.01f;
 }
 
 //- (void)canCloseDocumentWithDelegate:(id)delegate shouldCloseSelector:(SEL)shouldCloseSelector contextInfo:(void *)contextInfo
-//{	
+//{   
 //
-//	[[self managedObjectContext] commitEditing];
-//	[super canCloseDocumentWithDelegate:delegate shouldCloseSelector:shouldCloseSelector contextInfo:contextInfo];
+//   [[self managedObjectContext] commitEditing];
+//   [super canCloseDocumentWithDelegate:delegate shouldCloseSelector:shouldCloseSelector contextInfo:contextInfo];
 //}
 
 
 // -------------------------------------------------------------------------------
-//	applicationShouldTerminate: Saves the managed object context before close
+//   applicationShouldTerminate: Saves the managed object context before close
 // -------------------------------------------------------------------------------
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender {
    
@@ -1181,7 +1169,7 @@ static float vigourOfShake = 0.01f;
                
                NSInteger alertReturn = NSRunAlertPanel(nil, @"Could not save changes while quitting. Quit anyway?" , @"Quit anyway", @"Cancel", nil);
                if (alertReturn == NSAlertAlternateReturn) {
-                  reply = NSTerminateCancel;	
+                  reply = NSTerminateCancel;   
                }
             }
          }
@@ -1197,7 +1185,7 @@ static float vigourOfShake = 0.01f;
 }
 
 // -------------------------------------------------------------------------------
-//	applicationShouldTerminateAfterLastWindowClosed: Kills application properly
+//   applicationShouldTerminateAfterLastWindowClosed: Kills application properly
 // -------------------------------------------------------------------------------
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)theApplication
 {
@@ -1209,92 +1197,92 @@ static float vigourOfShake = 0.01f;
 #pragma mark Sort Descriptors
 
 // -------------------------------------------------------------------------------
-//	Sort Descriptors for the various table views
+//   Sort Descriptors for the various table views
 // -------------------------------------------------------------------------------
 
 // http://fadeover.org/blog/archives/13
 - (NSArray *)hostSortDescriptor
 {
-	if(hostSortDescriptor == nil){
-		hostSortDescriptor = [NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"ipv4Address" ascending:YES]];
+   if(hostSortDescriptor == nil){
+      hostSortDescriptor = [NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"ipv4Address" ascending:YES]];
    }
    
-	return hostSortDescriptor;
+   return hostSortDescriptor;
 }
 
 - (void)setHostSortDescriptor:(NSArray *)newSortDescriptor
 {
-	hostSortDescriptor = newSortDescriptor;
+   hostSortDescriptor = newSortDescriptor;
 }
 
 - (NSArray *)portSortDescriptor
 {
-	if(portSortDescriptor == nil){
-		portSortDescriptor = [NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"number" ascending:YES]];
+   if(portSortDescriptor == nil){
+      portSortDescriptor = [NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"number" ascending:YES]];
    }
    
-	return portSortDescriptor;
+   return portSortDescriptor;
 }
 
 - (void)setPortSortDescriptor:(NSArray *)newSortDescriptor
 {
-	portSortDescriptor = newSortDescriptor;
+   portSortDescriptor = newSortDescriptor;
 }
 
 - (NSArray *)profileSortDescriptor
 {
-	if(profileSortDescriptor == nil){
-		profileSortDescriptor = [NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"lastAccessDate" ascending:NO]];
+   if(profileSortDescriptor == nil){
+      profileSortDescriptor = [NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"lastAccessDate" ascending:NO]];
    }
    
-	return profileSortDescriptor;
+   return profileSortDescriptor;
 }
 
 - (void)setProfileSortDescriptor:(NSArray *)newSortDescriptor
 {
-	profileSortDescriptor = newSortDescriptor;
+   profileSortDescriptor = newSortDescriptor;
 }
 
 - (NSArray *)sessionSortDescriptor
 {
-	if(sessionSortDescriptor == nil){
-		sessionSortDescriptor = [NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO]];
+   if(sessionSortDescriptor == nil){
+      sessionSortDescriptor = [NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO]];
    }
    
-	return sessionSortDescriptor;
+   return sessionSortDescriptor;
 }
 
 - (void)setSessionSortDescriptor:(NSArray *)newSortDescriptor
 {
-	sessionSortDescriptor = newSortDescriptor;
+   sessionSortDescriptor = newSortDescriptor;
 }
 
 - (NSArray *)osSortDescriptor
 {
-	if(osSortDescriptor == nil){
-		osSortDescriptor = [NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"name" ascending:NO]];
+   if(osSortDescriptor == nil){
+      osSortDescriptor = [NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"name" ascending:NO]];
    }
    
-	return osSortDescriptor;
+   return osSortDescriptor;
 }
 
 - (void)setOsSortDescriptor:(NSArray *)newSortDescriptor
 {
-	osSortDescriptor = newSortDescriptor;
+   osSortDescriptor = newSortDescriptor;
 }
 
 - (NSArray *)notesSortDescriptor
 {
-	if(notesSortDescriptor == nil){
-		notesSortDescriptor = [NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"date" ascending:YES]];
+   if(notesSortDescriptor == nil){
+      notesSortDescriptor = [NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"date" ascending:YES]];
    }
    
-	return notesSortDescriptor;
+   return notesSortDescriptor;
 }
 
 - (void)setNotesSortDescriptor:(NSArray *)newSortDescriptor
 {
-	notesSortDescriptor = newSortDescriptor;
+   notesSortDescriptor = newSortDescriptor;
 }
 
 #pragma mark -

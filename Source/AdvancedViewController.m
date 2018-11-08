@@ -22,6 +22,7 @@
 #import "MyTerminalView.h"
 #import "ColorGradientView.h"
 #import "MyDocument.h"
+#import "NotesTableView.h"
 
 @class NotesTableView;
 
@@ -76,11 +77,7 @@
    [nc addObserver:self
           selector:@selector(controlTextDidEndEditing:)
               name:@"NSControlTextDidEndEditingNotification"
-            object:nil];      
-   
-   [portsInHostView retain];
-   [scriptOutputView retain];
-   [consoleOutputView retain];
+            object:nil];
       
    return self;
 }
@@ -95,7 +92,7 @@
 }
 
 // -------------------------------------------------------------------------------
-//	windowControllerDidLoadNib: This is where we perform most of the initial app
+//   windowControllerDidLoadNib: This is where we perform most of the initial app
 //                             setup.
 // -------------------------------------------------------------------------------
 - (void)awakeFromNib
@@ -120,19 +117,16 @@
    [resultsPortsTableView setTarget:self];
    [resultsPortsTableView setDoubleAction:@selector(resultsPortsTableDoubleClick)];   
    
-   [targetBarAdvancedContent retain];   
-   [sideBarAdvancedContent retain];
-   [workspaceAdvancedContent retain];      
    
    [self createHostsMenu];   
    [self createPortsInHostMenu];
    [self createPortsInSessionMenu];
       
    // Register value transformers
-   id transformer = [[[PathTransformer alloc] init] autorelease];   
+   id transformer = [[PathTransformer alloc] init];   
    [NSValueTransformer setValueTransformer:transformer forName:@"PathTransformer"];   
 
-   transformer = [[[StringToAttribStringTransformer alloc] init] autorelease];   
+   transformer = [[StringToAttribStringTransformer alloc] init];   
    [NSValueTransformer setValueTransformer:transformer forName:@"StringToAttribStringTransformer"];   
    
    // Spiffy-fy labels
@@ -167,8 +161,8 @@
 #pragma mark Beautifiers
 
 - (IBAction)focusInputField:(id)sender {
-	[sessionTarget selectText:self];
-   //	[[sessionTarget currentEditor] setSelectedRange:NSMakeRange([[sessionTarget stringValue] length], 0)];	
+   [sessionTarget selectText:self];
+   //   [[sessionTarget currentEditor] setSelectedRange:NSMakeRange([[sessionTarget stringValue] length], 0)];   
 }
 
 #pragma mark -
@@ -242,7 +236,7 @@
 #pragma mark -
 #pragma mark Interface twiddling handlers
 // -------------------------------------------------------------------------------
-//	segControlClicked: Delete/Play/Add segmented control in the lower-right
+//   segControlClicked: Delete/Play/Add segmented control in the lower-right
 // -------------------------------------------------------------------------------
 - (IBAction)segControlClicked:(id)sender
 {
@@ -265,7 +259,7 @@
 #pragma mark Table click handlers
 
 // -------------------------------------------------------------------------------
-//	createHostsMenu: Create a right-click menu for the hosts Table View.
+//   createHostsMenu: Create a right-click menu for the hosts Table View.
 // -------------------------------------------------------------------------------
 - (void)createHostsMenu
 {
@@ -277,7 +271,6 @@
    
    NSMutableArray *sa = [NSMutableArray arrayWithArray:array];
    [sa sortUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];    
-   [sortDescriptor release];
    
    NSMenuItem *mi = [[NSMenuItem alloc] initWithTitle:@"Queue with"
                                                action:@selector(handleHostsMenuClick:)
@@ -292,14 +285,13 @@
                                            keyEquivalent:@""];
       [mi setTag:10];
       [submenu addItem:mi];
-      [mi release];      
       
    }
    [hostsContextMenu addItem:mi];
 }
 
 // -------------------------------------------------------------------------------
-//	createPortsInHostsMenu: Create a right-click menu for the ports in host Table View.
+//   createPortsInHostsMenu: Create a right-click menu for the ports in host Table View.
 // -------------------------------------------------------------------------------
 - (void)createPortsInHostMenu
 {   
@@ -315,13 +307,12 @@
                                         keyEquivalent:@""];
    [smi setTag:10];
    [submenu addItem:smi];
-   [smi release];      
       
    [portsInHostContextMenu addItem:mi];
 }
 
 // -------------------------------------------------------------------------------
-//	createPortsInHostsMenu: Create a right-click menu for the ports in session Table View.
+//   createPortsInHostsMenu: Create a right-click menu for the ports in session Table View.
 // -------------------------------------------------------------------------------
 - (void)createPortsInSessionMenu
 {   
@@ -337,13 +328,12 @@
                                          keyEquivalent:@""];
    [smi setTag:10];
    [submenu addItem:smi];
-   [smi release];      
    
    [portsInSessionContextMenu addItem:mi];
 }
 
 // -------------------------------------------------------------------------------
-//	handleHostsMenuClick: 
+//   handleHostsMenuClick: 
 // -------------------------------------------------------------------------------
 - (IBAction)handleHostsMenuClick:(id)sender
 {
@@ -394,7 +384,7 @@
 }
 
 // -------------------------------------------------------------------------------
-//	handlePortsInHostMenuClick: 
+//   handlePortsInHostMenuClick: 
 // -------------------------------------------------------------------------------
 - (IBAction)handlePortsInHostMenuClick:(id)sender
 {
@@ -417,7 +407,7 @@
 }
 
 // -------------------------------------------------------------------------------
-//	handlePortsInSessionMenuClick: 
+//   handlePortsInSessionMenuClick: 
 // -------------------------------------------------------------------------------
 - (IBAction)handlePortsInSessionMenuClick:(id)sender
 {
@@ -443,7 +433,7 @@
 #pragma mark Table double-click handlers
 
 // -------------------------------------------------------------------------------
-//	Table click handlers
+//   Table click handlers
 // -------------------------------------------------------------------------------
 - (void)hostsTableDoubleClick
 {
@@ -512,7 +502,7 @@
 #pragma mark Menu validators
 
 // -------------------------------------------------------------------------------
-//	Menu click handlers
+//   Menu click handlers
 // -------------------------------------------------------------------------------
 
 // Enable/Disable menu depending on context
@@ -570,7 +560,7 @@
 #pragma mark Console interaction handlers
 
 // -------------------------------------------------------------------------------
-//	runCommandInNewConsoleTab: Create a new console tab and execute a command in it
+//   runCommandInNewConsoleTab: Create a new console tab and execute a command in it
 // -------------------------------------------------------------------------------
 - (void)runCommandInNewConsoleTab:(NSString *)command
 {
@@ -578,7 +568,7 @@
 }
 
 // -------------------------------------------------------------------------------
-//	addStringToCurrentConsoleTab: Add a string to the current console tab
+//   addStringToCurrentConsoleTab: Add a string to the current console tab
 // -------------------------------------------------------------------------------
 - (void)addStringToCurrentConsoleTab:(NSString *)string
 {
@@ -586,7 +576,7 @@
 }
 
 // -------------------------------------------------------------------------------
-//	receivedStringFromConsole: If the user CMD-clicks a highlighted string in the
+//   receivedStringFromConsole: If the user CMD-clicks a highlighted string in the
 //                            console...
 // -------------------------------------------------------------------------------
 - (void)receivedStringFromConsole:(NSNotification *)notification
@@ -612,7 +602,7 @@
 }
 
 // -------------------------------------------------------------------------------
-//	receivedStringFromConsoleAlternate: If the user ALT-CMD-clicks a highlighted string
+//   receivedStringFromConsoleAlternate: If the user ALT-CMD-clicks a highlighted string
 //                            in the console...
 // -------------------------------------------------------------------------------
 - (void)receivedStringFromConsoleAlternate:(NSNotification *)notification
@@ -647,7 +637,6 @@
    h.date = [NSDate date];
    h.name = @"New Note";
    [notesInHostController addObject:h];
-   [h release];
    
    // Re-sort (in case the user has sorted a column)
    [notesInHostController rearrangeObjects];
@@ -749,9 +738,9 @@
    // This creates a URL string by adding percent escapes. Since the URL is
    // just being used locally, I don't know if this is always necessary,
    // however I thought it would be a good idea to stick to standards.
-   NSURL *url = [NSURL URLWithString:[(NSString*)
-                                      CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)mailtoLink,
-                                                                              NULL, NULL, kCFStringEncodingUTF8) autorelease]];
+   NSURL *url = [NSURL URLWithString:(NSString*)
+                                      CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef)mailtoLink,
+                                                                              NULL, NULL, kCFStringEncodingUTF8))];
    
    // This just opens the URL in the workspace, to be opened up by Mail.app,
    // with data already entered in the subject, to and body fields.
@@ -765,7 +754,7 @@
 }
 
 // -------------------------------------------------------------------------------
-//	mainWindowZoom: 
+//   mainWindowZoom: 
 // -------------------------------------------------------------------------------
 - (void)mainWindowZoom: (NSNotification *)notification
 {    
@@ -785,7 +774,7 @@
 }
 
 // -------------------------------------------------------------------------------
-//	mainWindowUnzoom: 
+//   mainWindowUnzoom: 
 // -------------------------------------------------------------------------------
 - (void)mainWindowUnzoom: (NSNotification *)notification
 {    
@@ -841,92 +830,92 @@
 #pragma mark Sort Descriptors
 
 // -------------------------------------------------------------------------------
-//	Sort Descriptors for the various table views
+//   Sort Descriptors for the various table views
 // -------------------------------------------------------------------------------
 
 // http://fadeover.org/blog/archives/13
 - (NSArray *)hostSortDescriptor
 {
-	if(hostSortDescriptor == nil){
-		hostSortDescriptor = [NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"ipv4Address" ascending:YES]];
+   if(hostSortDescriptor == nil){
+      hostSortDescriptor = [NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"ipv4Address" ascending:YES]];
    }
    
-	return hostSortDescriptor;
+   return hostSortDescriptor;
 }
 
 - (void)setHostSortDescriptor:(NSArray *)newSortDescriptor
 {
-	hostSortDescriptor = newSortDescriptor;
+   hostSortDescriptor = newSortDescriptor;
 }
 
 - (NSArray *)portSortDescriptor
 {
-	if(portSortDescriptor == nil){
-		portSortDescriptor = [NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"number" ascending:YES]];
+   if(portSortDescriptor == nil){
+      portSortDescriptor = [NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"number" ascending:YES]];
    }
    
-	return portSortDescriptor;
+   return portSortDescriptor;
 }
 
 - (void)setPortSortDescriptor:(NSArray *)newSortDescriptor
 {
-	portSortDescriptor = newSortDescriptor;
+   portSortDescriptor = newSortDescriptor;
 }
 
 - (NSArray *)profileSortDescriptor
 {
-	if(profileSortDescriptor == nil){
-		profileSortDescriptor = [NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"lastAccessDate" ascending:NO]];
+   if(profileSortDescriptor == nil){
+      profileSortDescriptor = [NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"lastAccessDate" ascending:NO]];
    }
    
-	return profileSortDescriptor;
+   return profileSortDescriptor;
 }
 
 - (void)setProfileSortDescriptor:(NSArray *)newSortDescriptor
 {
-	profileSortDescriptor = newSortDescriptor;
+   profileSortDescriptor = newSortDescriptor;
 }
 
 - (NSArray *)sessionSortDescriptor
 {
-	if(sessionSortDescriptor == nil){
-		sessionSortDescriptor = [NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO]];
+   if(sessionSortDescriptor == nil){
+      sessionSortDescriptor = [NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO]];
    }
    
-	return sessionSortDescriptor;
+   return sessionSortDescriptor;
 }
 
 - (void)setSessionSortDescriptor:(NSArray *)newSortDescriptor
 {
-	sessionSortDescriptor = newSortDescriptor;
+   sessionSortDescriptor = newSortDescriptor;
 }
 
 - (NSArray *)osSortDescriptor
 {
-	if(osSortDescriptor == nil){
-		osSortDescriptor = [NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"name" ascending:NO]];
+   if(osSortDescriptor == nil){
+      osSortDescriptor = [NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"name" ascending:NO]];
    }
    
-	return osSortDescriptor;
+   return osSortDescriptor;
 }
 
 - (void)setOsSortDescriptor:(NSArray *)newSortDescriptor
 {
-	osSortDescriptor = newSortDescriptor;
+   osSortDescriptor = newSortDescriptor;
 }
 
 - (NSArray *)notesSortDescriptor
 {
-	if(notesSortDescriptor == nil){
-		notesSortDescriptor = [NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"date" ascending:YES]];
+   if(notesSortDescriptor == nil){
+      notesSortDescriptor = [NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"date" ascending:YES]];
    }
    
-	return notesSortDescriptor;
+   return notesSortDescriptor;
 }
 
 - (void)setNotesSortDescriptor:(NSArray *)newSortDescriptor
 {
-	notesSortDescriptor = newSortDescriptor;
+   notesSortDescriptor = newSortDescriptor;
 }
 
 

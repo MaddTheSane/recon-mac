@@ -18,8 +18,8 @@
 }
 
 // Define the variables as properties
-@property(nonatomic, retain) NSColor *startingColor;
-@property(nonatomic, retain) NSColor *endingColor;
+@property(nonatomic, strong) NSColor *startingColor;
+@property(nonatomic, strong) NSColor *endingColor;
 @property(assign) int angle;
 
 @end

@@ -19,35 +19,35 @@
 
 @interface ArgumentListGenerator : NSObject {
 
-   NSDictionary *nmapArgsBool;   
-   NSDictionary *nmapArgsString;
+   NSDictionary *__weak nmapArgsBool;   
+   NSDictionary *__weak nmapArgsString;
    
    // Dictionary for reverse lookups
-   NSDictionary *nmapArgsBoolReverse;   
-   NSDictionary *nmapArgsStringReverse;   
+   NSDictionary *__weak nmapArgsBoolReverse;   
+   NSDictionary *__weak nmapArgsStringReverse;   
    
-   NSDictionary *nmapArgsTcpString;
-   NSDictionary *nmapArgsNonTcpString;
-   NSDictionary *nmapArgsTimingString;
+   NSDictionary *__weak nmapArgsTcpString;
+   NSDictionary *__weak nmapArgsNonTcpString;
+   NSDictionary *__weak nmapArgsTimingString;
 
-   NSDictionary *nmapArgsTcpStringReverse;
-   NSDictionary *nmapArgsNonTcpStringReverse;
-   NSDictionary *nmapArgsTimingStringReverse;   
+   NSDictionary *__weak nmapArgsTcpStringReverse;
+   NSDictionary *__weak nmapArgsNonTcpStringReverse;
+   NSDictionary *__weak nmapArgsTimingStringReverse;   
 }
 
-@property (readwrite, assign) NSDictionary *nmapArgsBool;
-@property (readwrite, assign) NSDictionary *nmapArgsString;
+@property (readwrite, weak) NSDictionary *nmapArgsBool;
+@property (readwrite, weak) NSDictionary *nmapArgsString;
 
-@property (readwrite, assign) NSDictionary *nmapArgsBoolReverse;
-@property (readwrite, assign) NSDictionary *nmapArgsStringReverse;
+@property (readwrite, weak) NSDictionary *nmapArgsBoolReverse;
+@property (readwrite, weak) NSDictionary *nmapArgsStringReverse;
 
-@property (readwrite, assign) NSDictionary *nmapArgsTcpString;
-@property (readwrite, assign) NSDictionary *nmapArgsNonTcpString;
-@property (readwrite, assign) NSDictionary *nmapArgsTimingString;
+@property (readwrite, weak) NSDictionary *nmapArgsTcpString;
+@property (readwrite, weak) NSDictionary *nmapArgsNonTcpString;
+@property (readwrite, weak) NSDictionary *nmapArgsTimingString;
 
-@property (readwrite, assign) NSDictionary *nmapArgsTcpStringReverse;
-@property (readwrite, assign) NSDictionary *nmapArgsNonTcpStringReverse;
-@property (readwrite, assign) NSDictionary *nmapArgsTimingStringReverse;
+@property (readwrite, weak) NSDictionary *nmapArgsTcpStringReverse;
+@property (readwrite, weak) NSDictionary *nmapArgsNonTcpStringReverse;
+@property (readwrite, weak) NSDictionary *nmapArgsTimingStringReverse;
 
 - (NSArray *) convertProfileToArgs:(Profile *)profile 
                         withTarget:(NSString *)target 

@@ -7,6 +7,7 @@
 //
 
 #import "ArgumentListGenerator.h"
+#import "Profile.h"
 
 
 @implementation ArgumentListGenerator
@@ -153,15 +154,10 @@
    return self;
 }
 
-- (void)dealloc
-{
-   [super dealloc];
-}
-
 #pragma mark -
 
 // -------------------------------------------------------------------------------
-//	convertProfileToArgs
+//   convertProfileToArgs
 // -------------------------------------------------------------------------------
 - (NSArray *) convertProfileToArgs:(Profile *)profile 
                         withTarget:(NSString *)target 
@@ -182,7 +178,7 @@
    NSNumber *numYes = [NSNumber numberWithInt:0];
 
    // Array to store generated argument list
-   NSMutableArray *nmapArgs = [[[NSMutableArray alloc] init] autorelease];
+   NSMutableArray *nmapArgs = [[NSMutableArray alloc] init];
 
    // First iterate through boolean arguments
    for (NSString *dictKey in nmapArgsBool)
@@ -227,7 +223,7 @@
    }   
    
    // -------------------------------------------------------------------------------
-   //	These are hard-coded dictionaries for the popups.  HACKY CODE!  
+   //   These are hard-coded dictionaries for the popups.  HACKY CODE!  
    // -------------------------------------------------------------------------------
    
    dictValue = [profile valueForKey:@"tcpScanTag"];
@@ -244,7 +240,7 @@
    
    
    // -------------------------------------------------------------------------------
-   //	/END hacky code...
+   //   /END hacky code...
    // -------------------------------------------------------------------------------
    
    // Finally add XML output location and target(s)
@@ -272,7 +268,7 @@
 }
 
 // -------------------------------------------------------------------------------
-//	areFlagsValid: 
+//   areFlagsValid: 
 // -------------------------------------------------------------------------------
 - (BOOL)areFlagsValid:(NSArray *)argArray
 {
@@ -296,7 +292,7 @@
 }
 
 // -------------------------------------------------------------------------------
-//	populateProfile
+//   populateProfile
 // -------------------------------------------------------------------------------
 - (void)populateProfile:(Profile *)profile withArgString:(NSArray *)argArray
 {

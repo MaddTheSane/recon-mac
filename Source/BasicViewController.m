@@ -28,12 +28,12 @@
 
 @interface BasicViewController ()
 
-   @property (readwrite, retain) NSTask *task;   
+   @property (readwrite, strong) NSTask *task;   
 
-   @property (readwrite, retain) NSMutableData *standardOutput;
-   @property (readwrite, retain) NSMutableData *standardError;
+   @property (readwrite, strong) NSMutableData *standardOutput;
+   @property (readwrite, strong) NSMutableData *standardError;
 
-   @property (readwrite, retain)BonjourListener *bonjourListener;
+   @property (readwrite, strong)BonjourListener *bonjourListener;
 
 @end
 
@@ -81,15 +81,6 @@
    return self;
 }
 
-- (void)dealloc
-{
-   [task release];
-   
-   [connections release];
-   [foundServices release];
-   
-   [super dealloc];
-}
 
 - (void)awakeFromNib
 {
@@ -97,14 +88,13 @@
    [autoRefreshButton setEnabled:FALSE];
    [resolveHostnamesButton setEnabled:FALSE];   
    
-   [targetBarBasicContent retain];   
    [self createNetstatMenu];   
 }
 
 #pragma mark -
 
 // -------------------------------------------------------------------------------
-//	launchScan: 
+//   launchScan: 
 // -------------------------------------------------------------------------------
 - (IBAction)launchScan:(id)sender
 {
@@ -153,7 +143,7 @@
 }
 
 // -------------------------------------------------------------------------------
-//	changeInspectorTask: 
+//   changeInspectorTask: 
 // -------------------------------------------------------------------------------
 - (IBAction)changeInspectorTask:(id)sender
 {
@@ -210,7 +200,7 @@
 #pragma mark Blah
 
 // -------------------------------------------------------------------------------
-//	searchLocalNetwork: Wrapper-function for Quick Scan-ing local subnet
+//   searchLocalNetwork: Wrapper-function for Quick Scan-ing local subnet
 // -------------------------------------------------------------------------------
 - (IBAction)searchLocalNetwork:(id)sender
 {
@@ -283,7 +273,6 @@
    // Create the pipe to read from
    NSPipe *outPipe = [[NSPipe alloc] init];
    [localTask setStandardOutput:outPipe];
-   [outPipe release];
    
    // Start the process
    [localTask launch];
@@ -294,11 +283,10 @@
    
    // Make sure the localTask terminates normally
    [localTask waitUntilExit];
-   [localTask release];
    
    // Convert to a string
-   NSString *defaultIp = [[[NSString alloc] initWithData:data
-                                                encoding:NSUTF8StringEncoding] autorelease];
+   NSString *defaultIp = [[NSString alloc] initWithData:data
+                                                encoding:NSUTF8StringEncoding];
    
    defaultIp = [defaultIp stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
    
@@ -325,7 +313,7 @@
 }
 
 // -------------------------------------------------------------------------------
-//	cidrForInterface: Gets the CIDR for the passed IP address 
+//   cidrForInterface: Gets the CIDR for the passed IP address 
 //   TODO: Doing this the lazy way using ifconfig, fix this!!!
 // -------------------------------------------------------------------------------
 - (int)cidrForInterface:(NSString *)ifName 
@@ -340,7 +328,6 @@
    // Create the pipe to read from
    NSPipe *outPipe = [[NSPipe alloc] init];
    [localTask setStandardOutput:outPipe];
-   [outPipe release];
    
    // Start the process
    [localTask launch];
@@ -351,7 +338,6 @@
    
    // Make sure the localTask terminates normally
    [localTask waitUntilExit];
-   [localTask release];
 
    // Convert to a string
    NSString *aString = [[NSString alloc] initWithData:data
@@ -376,7 +362,7 @@ int bitcount (unsigned int n)
 }
 
 // -------------------------------------------------------------------------------
-//	setConnections: 
+//   setConnections: 
 // -------------------------------------------------------------------------------
 - (void)setConnections:(NSMutableArray *)a
 {
@@ -385,8 +371,6 @@ int bitcount (unsigned int n)
    if (a == connections)
       return;
    
-   [a retain];
-   [connections release];
    connections = a;
 }
 
@@ -403,13 +387,13 @@ int bitcount (unsigned int n)
 }
 
 // -------------------------------------------------------------------------------
-//	refreshConnectionsList: TODO: This ain't thread-safe.  Fix this.
+//   refreshConnectionsList: TODO: This ain't thread-safe.  Fix this.
 // -------------------------------------------------------------------------------
 - (IBAction)refreshConnectionsList:(id)sender
 {   
    self.doneRefresh = NO;
       
-   self.task = [[[NSTask alloc] init] autorelease];
+   self.task = [[NSTask alloc] init];
    
    [task setLaunchPath:@"/bin/tcsh"];      
    if (self.resolveHostnames == NO)
@@ -419,8 +403,8 @@ int bitcount (unsigned int n)
    [task setStandardOutput:[NSPipe pipe]];
    [task setStandardError:[NSPipe pipe]];   
    
-   self.standardOutput = [[[NSMutableData alloc] init] autorelease];
-   self.standardError = [[[NSMutableData alloc] init] autorelease];
+   self.standardOutput = [[NSMutableData alloc] init];
+   self.standardError = [[NSMutableData alloc] init];
    
    NSFileHandle *standardOutputFile = [[task standardOutput] fileHandleForReading];
    NSFileHandle *standardErrorFile = [[task standardError] fileHandleForReading];
@@ -451,13 +435,13 @@ int bitcount (unsigned int n)
 // Accessor for the data object
 - (NSData *)standardOutputData
 {
-	return self.standardOutput;
+   return self.standardOutput;
 }
 
 // Accessor for the data object
 - (NSData *)standardErrorData
 {
-	return self.standardError;
+   return self.standardError;
 }
 
 // Reads standard out into the standardOutput data object.
@@ -485,7 +469,7 @@ int bitcount (unsigned int n)
 }
 
 // -------------------------------------------------------------------------------
-//	terminatedNotification: Called by NTask when Nmap has returned.
+//   terminatedNotification: Called by NTask when Nmap has returned.
 // -------------------------------------------------------------------------------
 - (void)terminatedNotification:(NSNotification *)notification
 {
@@ -499,10 +483,9 @@ int bitcount (unsigned int n)
    
    // Write the Nmap stdout and stderr buffers out to disk
    NSString *aString =
-   [[[NSString alloc]
+   [[NSString alloc]
      initWithData:[self standardOutputData]
-     encoding:NSUTF8StringEncoding]
-    autorelease];
+     encoding:NSUTF8StringEncoding];
       
    NSArray *line = [aString componentsSeparatedByString:@"\n"];
    NSInteger lineLength = [line count] - 1;
@@ -597,13 +580,13 @@ int bitcount (unsigned int n)
 #pragma mark Bonjour Listener
 
 // -------------------------------------------------------------------------------
-//	foundBonjourServices: 
+//   foundBonjourServices: 
 // -------------------------------------------------------------------------------
 - (void)foundBonjourServices:(NSNotification *)notification
 {
    NSLog(@"InspectorController: found services");
 
-   NSMutableDictionary *newService = [[notification object] retain];
+   NSMutableDictionary *newService = [notification object];
    
    NSString *key = [NSString stringWithFormat:@"%@ on %@", 
                     [newService objectForKey:@"Long_Type"], [newService objectForKey:@"Name"]];                    
@@ -612,7 +595,7 @@ int bitcount (unsigned int n)
    
    [foundServicesOutlineView reloadData];
    
-	[[SPGrowlController sharedGrowlController] 
+   [[SPGrowlController sharedGrowlController] 
     notifyWithTitle:@"Found Bonjour Service" 
     description:[NSString stringWithFormat: @"Type: %@\nIP Address: %@", [newService objectForKey:@"Long_Type"], [newService objectForKey:@"IP_Address"]] 
     notificationName:@"Connected"];  
@@ -638,7 +621,7 @@ int bitcount (unsigned int n)
 #pragma mark Table click handlers
 
 // -------------------------------------------------------------------------------
-//	createNetstatMenu: 
+//   createNetstatMenu: 
 // -------------------------------------------------------------------------------
 - (void)createNetstatMenu
 {
@@ -650,7 +633,6 @@ int bitcount (unsigned int n)
    
    NSMutableArray *sa = [NSMutableArray arrayWithArray:array];
    [sa sortUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];    
-   [sortDescriptor release];
    
    NSMenuItem *mi = [[NSMenuItem alloc] initWithTitle:@"Queue with"
                                                action:@selector(handleNetstatMenuClick:)
@@ -665,14 +647,13 @@ int bitcount (unsigned int n)
                                            keyEquivalent:@""];
       [mi setTag:10];
       [submenu addItem:mi];
-      [mi release];      
       
    }
    [netstatContextMenu addItem:mi];
 }
 
 // -------------------------------------------------------------------------------
-//	handleNetstatMenuClick: 
+//   handleNetstatMenuClick: 
 // -------------------------------------------------------------------------------
 - (IBAction)handleNetstatMenuClick:(id)sender
 {
@@ -739,78 +720,78 @@ int bitcount (unsigned int n)
 #pragma mark Sort Descriptors
 
 // -------------------------------------------------------------------------------
-//	Sort Descriptors for the various table views
+//   Sort Descriptors for the various table views
 // -------------------------------------------------------------------------------
 
 // http://fadeover.org/blog/archives/13
 - (NSArray *)hostSortDescriptor
 {
-	if(hostSortDescriptor == nil){
-		hostSortDescriptor = @[[[NSSortDescriptor alloc] initWithKey:@"ipv4Address" ascending:YES]];
+   if(hostSortDescriptor == nil){
+      hostSortDescriptor = @[[[NSSortDescriptor alloc] initWithKey:@"ipv4Address" ascending:YES]];
    }
    
-	return hostSortDescriptor;
+   return hostSortDescriptor;
 }
 
 - (void)setHostSortDescriptor:(NSArray *)newSortDescriptor
 {
-	hostSortDescriptor = newSortDescriptor;
+   hostSortDescriptor = newSortDescriptor;
 }
 
 - (NSArray *)portSortDescriptor
 {
-	if(portSortDescriptor == nil){
-		portSortDescriptor = @[[[NSSortDescriptor alloc] initWithKey:@"number" ascending:YES]];
+   if(portSortDescriptor == nil){
+      portSortDescriptor = @[[[NSSortDescriptor alloc] initWithKey:@"number" ascending:YES]];
    }
    
-	return portSortDescriptor;
+   return portSortDescriptor;
 }
 
 - (void)setPortSortDescriptor:(NSArray *)newSortDescriptor
 {
-	portSortDescriptor = newSortDescriptor;
+   portSortDescriptor = newSortDescriptor;
 }
 
 - (NSArray *)profileSortDescriptor
 {
-	if(profileSortDescriptor == nil){
-		profileSortDescriptor = @[[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES]];
+   if(profileSortDescriptor == nil){
+      profileSortDescriptor = @[[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES]];
    }
    
-	return profileSortDescriptor;
+   return profileSortDescriptor;
 }
 
 - (void)setProfileSortDescriptor:(NSArray *)newSortDescriptor
 {
-	profileSortDescriptor = newSortDescriptor;
+   profileSortDescriptor = newSortDescriptor;
 }
 
 - (NSArray *)sessionSortDescriptor
 {
-	if(sessionSortDescriptor == nil){
-		sessionSortDescriptor = @[[[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO]];
+   if(sessionSortDescriptor == nil){
+      sessionSortDescriptor = @[[[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO]];
    }
    
-	return sessionSortDescriptor;
+   return sessionSortDescriptor;
 }
 
 - (void)setSessionSortDescriptor:(NSArray *)newSortDescriptor
 {
-	sessionSortDescriptor = newSortDescriptor;
+   sessionSortDescriptor = newSortDescriptor;
 }
 
 - (NSArray *)osSortDescriptor
 {
-	if(osSortDescriptor == nil){
-		osSortDescriptor = @[[[NSSortDescriptor alloc] initWithKey:@"name" ascending:NO]];
+   if(osSortDescriptor == nil){
+      osSortDescriptor = @[[[NSSortDescriptor alloc] initWithKey:@"name" ascending:NO]];
    }
    
-	return osSortDescriptor;
+   return osSortDescriptor;
 }
 
 - (void)setOsSortDescriptor:(NSArray *)newSortDescriptor
 {
-	osSortDescriptor = newSortDescriptor;
+   osSortDescriptor = newSortDescriptor;
 }
 
 @end

@@ -8,7 +8,7 @@
    NSDictionary *bonjourDict;
 }
 
-@property (readonly, retain) NSMutableArray *services;
+@property (readonly, strong) NSMutableArray *services;
 
 - (void)setBonjourDict;
 -(IBAction)search:(id)sender;

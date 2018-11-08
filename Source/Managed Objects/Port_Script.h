@@ -14,9 +14,9 @@
 {
 }
 
-@property (nonatomic, retain) NSString * id;
-@property (nonatomic, retain) NSString * output;
-@property (nonatomic, retain) Port * port;
+@property (nonatomic, strong) NSString * id;
+@property (nonatomic, strong) NSString * output;
+@property (nonatomic, strong) Port * port;
 
 @end
 

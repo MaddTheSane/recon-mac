@@ -11,12 +11,12 @@
 @interface NmapController ()
 
    @property (readwrite, assign) BOOL hasRun;
-   @property (readwrite, retain) NSTask *task;   
+   @property (readwrite, strong) NSTask *task;   
 
-   @property (readwrite, assign) NSMutableData *standardOutput;
-   @property (readwrite, assign) NSMutableData *standardError;
+   @property (readwrite, strong) NSMutableData *standardOutput;
+   @property (readwrite, strong) NSMutableData *standardError;
 
-   @property (readwrite, retain) NSString *outputFilePath;
+   @property (readwrite, strong) NSString *outputFilePath;
 
 @end
 
@@ -30,7 +30,7 @@
 @synthesize hasRun;
 
 // -------------------------------------------------------------------------------
-//	initWithNmapBinary
+//   initWithNmapBinary
 // -------------------------------------------------------------------------------
 - (id) initWithNmapBinary:(NSString *)nmapBinary 
                  withArgs:(NSArray *)nmapArgs 
@@ -80,19 +80,12 @@
 {   
    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
    [nc removeObserver:self];
-      
-   [standardOutput release];
-   [standardError release];
-   [outputFilePath release];   
-   [task release];
-   
-   [super dealloc];
 }
 
 #pragma mark -
 
 // -------------------------------------------------------------------------------
-//	isRunning: Directly return status of task.
+//   isRunning: Directly return status of task.
 // -------------------------------------------------------------------------------
 - (BOOL) isRunning
 {
@@ -100,7 +93,7 @@
 }
 
 // -------------------------------------------------------------------------------
-//	startScan:
+//   startScan:
 // -------------------------------------------------------------------------------
 - (void) startScan
 {
@@ -121,7 +114,7 @@
 }
 
 // -------------------------------------------------------------------------------
-//	abortScan: If task running, abort and send a successfulAbort notification.
+//   abortScan: If task running, abort and send a successfulAbort notification.
 //            If task not running, assume its already completed and fake the notification.
 // -------------------------------------------------------------------------------
 - (void)abortScan
@@ -143,13 +136,13 @@
 // Accessor for the data object
 - (NSData *)standardOutputData
 {
-	return self.standardOutput;
+   return self.standardOutput;
 }
 
 // Accessor for the data object
 - (NSData *)standardErrorData
 {
-	return self.standardError;
+   return self.standardError;
 }
 
 // Reads standard out into the standardOutput data object.
@@ -170,21 +163,19 @@
 
 
 // -------------------------------------------------------------------------------
-//	writeNmapOutputToFile: Write task stdout and stderr to disk.
+//   writeNmapOutputToFile: Write task stdout and stderr to disk.
 // -------------------------------------------------------------------------------
 - (BOOL)writeNmapOutputToFile
 {
    // Write the Nmap stdout and stderr buffers out to disk
    NSString *outputString =
-   [[[NSString alloc]
+   [[NSString alloc]
      initWithData:[self standardOutputData]
-     encoding:NSUTF8StringEncoding]
-    autorelease];
+     encoding:NSUTF8StringEncoding];
    NSString *errorString =   
-   [[[NSString alloc]
+   [[NSString alloc]
      initWithData:[self standardErrorData]
-     encoding:NSUTF8StringEncoding]
-    autorelease];
+     encoding:NSUTF8StringEncoding];
       
    NSError *error;
    NSString *standardOutPath = [outputFilePath stringByAppendingPathComponent:@"nmap-stdout.txt"];
@@ -204,7 +195,7 @@
 #pragma mark Notification center handlers
 
 // -------------------------------------------------------------------------------
-//	terminatedNotification: Called by NTask when Nmap has returned.
+//   terminatedNotification: Called by NTask when Nmap has returned.
 // -------------------------------------------------------------------------------
 - (void)terminatedNotification:(NSNotification *)notification
 {

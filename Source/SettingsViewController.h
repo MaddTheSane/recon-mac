@@ -12,9 +12,9 @@
 
 @interface SettingsViewController : ManagingViewController {
    
-   IBOutlet NSView *workspaceSettingsContent;   
-   IBOutlet NSView *targetBarSettingsContent; 
-   IBOutlet NSView *sideBarSettingsContent;
+   NSView *workspaceSettingsContent;   
+   NSView *targetBarSettingsContent;
+   NSView *sideBarSettingsContent;
    
    IBOutlet NSScrollView *workspaceSettingsScrollView;   
    
@@ -36,13 +36,15 @@
    IBOutlet NSMenu *profilesContextMenu;
 }
 
-@property (readonly) NSArray *osSortDescriptor;
-@property (readonly) NSArray *hostSortDescriptor;
-@property (readonly) NSArray *portSortDescriptor;
-@property (readonly) NSArray *profileSortDescriptor;
-@property (readonly) NSArray *sessionSortDescriptor;
+@property (weak, readonly) NSArray *osSortDescriptor;
+@property (weak, readonly) NSArray *hostSortDescriptor;
+@property (weak, readonly) NSArray *portSortDescriptor;
+@property (weak, readonly) NSArray *profileSortDescriptor;
+@property (weak, readonly) NSArray *sessionSortDescriptor;
 
-@property (readonly) NSView *targetBarSettingsContent;
+@property (strong) IBOutlet NSView *workspaceSettingsContent;
+@property (strong) IBOutlet NSView *targetBarSettingsContent;
+@property (strong) IBOutlet NSView *sideBarSettingsContent;
 
 - (void)expandProfileView;
 - (IBAction)addProfile:(id)sender;

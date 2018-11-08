@@ -11,25 +11,12 @@
 
 @synthesize workspacePlaceholder; 
 
-- (void)dealloc
-{
-   [managedObjectContext release];
-   [sessionsArrayController release];
-   [profilesArrayController release];  
-   [notesInHostArrayController release];
-   [hostsInSessionArrayController release];
-   
-   [workspacePlaceholder release];
-   
-   [super dealloc];
-}
-
 - (void)keyDown:(NSEvent *)anEvent
 {
-//	unsigned int modflag = [anEvent modifierFlags];
+//   unsigned int modflag = [anEvent modifierFlags];
 //   unsigned short keycode = [anEvent keyCode];
 //      
-//	if ([anEvent type] == NSKeyDown)
+//   if ([anEvent type] == NSKeyDown)
 //   {
 //      if ((modflag & NSCommandKeyMask) && (keycode == 37))
 //         [NSApp sendAction:@selector(focusInputField:) to:nil from:self];

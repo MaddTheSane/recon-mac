@@ -14,8 +14,8 @@
 {
 }
 
-@property (nonatomic, retain) NSString * value;
-@property (nonatomic, retain) Host * host;
+@property (nonatomic, strong) NSString * value;
+@property (nonatomic, strong) Host * host;
 
 @end
 

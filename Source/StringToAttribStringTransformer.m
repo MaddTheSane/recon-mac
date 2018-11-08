@@ -18,7 +18,7 @@
 
 + (BOOL)allowsReverseTransformation
 {
-	return YES;
+   return YES;
 }
 
 
@@ -31,7 +31,7 @@
    if(value == nil)
       return nil;
    
-   NSAttributedString* attribString = [[[NSAttributedString alloc] initWithString:(NSString*)value] autorelease];
+   NSAttributedString* attribString = [[NSAttributedString alloc] initWithString:(NSString*)value];
    return attribString;
 }
 
@@ -41,10 +41,10 @@
  */
 - (id)reverseTransformedValue:(id)value
 {
-	if(value==nil)
-		return nil;
-	
-	return [(NSAttributedString*)value string];
+   if(value==nil)
+      return nil;
+   
+   return [(NSAttributedString*)value string];
 }
 
 @end

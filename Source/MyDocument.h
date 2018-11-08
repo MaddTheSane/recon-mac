@@ -34,7 +34,7 @@ extern NSString * const BAFSavedSessionsDirectory;
    IBOutlet NSWindow *mainWindow;
 
    IBOutlet NSView *targetBarPlaceholder;
-   IBOutlet NSView *workspacePlaceholder;   
+   IBOutlet NSView *__weak workspacePlaceholder;   
    IBOutlet NSView *notesSideBarPlaceholder;
    
    IBOutlet NSView *notesSideBarContent;
@@ -90,14 +90,14 @@ extern NSString * const BAFSavedSessionsDirectory;
    NSRect standardWindowRect;
 }
 
-@property (readonly) NSArray *osSortDescriptor;
-@property (readonly) NSArray *hostSortDescriptor;
-@property (readonly) NSArray *portSortDescriptor;
-@property (readonly) NSArray *profileSortDescriptor;
-@property (readonly) NSArray *sessionSortDescriptor;
-@property (readonly) NSArray *notesSortDescriptor;
+@property (weak, readonly) NSArray *osSortDescriptor;
+@property (weak, readonly) NSArray *hostSortDescriptor;
+@property (weak, readonly) NSArray *portSortDescriptor;
+@property (weak, readonly) NSArray *profileSortDescriptor;
+@property (weak, readonly) NSArray *sessionSortDescriptor;
+@property (weak, readonly) NSArray *notesSortDescriptor;
 
-@property (readonly) NSView *workspacePlaceholder;
+@property (weak, readonly) NSView *workspacePlaceholder;
 
 - (IBAction)toggleFullScreen:(id)sender;
 - (BOOL)windowShouldZoom:(NSWindow *)window toFrame:(NSRect)proposedFrame;

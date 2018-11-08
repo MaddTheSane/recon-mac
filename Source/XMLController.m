@@ -20,18 +20,18 @@
 
 @interface XMLController ()
 
-   @property (readwrite, retain) NSXMLParser *addressParser;
-   @property (readwrite, retain) NSMutableString *currentStringValue;
+   @property (readwrite, strong) NSXMLParser *addressParser;
+   @property (readwrite, strong) NSMutableString *currentStringValue;
 
 // Temporary MOC
-   @property (readwrite,assign) NSManagedObjectContext *temporaryContext;
+   @property (readwrite,strong) NSManagedObjectContext *temporaryContext;
 
 // Managed objects that we populate
-   @property (readwrite, retain) Session *currentSession;
-   @property (readwrite, retain) Host *currentHost;
-   @property (readwrite, retain) Port *currentPort;
-   @property (readwrite, retain) OsClass *currentOsClass;
-   @property (readwrite, retain) OsMatch *currentOsMatch;   
+   @property (readwrite, strong) Session *currentSession;
+   @property (readwrite, strong) Host *currentHost;
+   @property (readwrite, strong) Port *currentPort;
+   @property (readwrite, strong) OsClass *currentOsClass;
+   @property (readwrite, strong) OsMatch *currentOsMatch;   
 
 // State-machine helper flags
    @property (readwrite, assign) BOOL inRunstats;   
@@ -59,23 +59,10 @@
    return self;
 }
 
-- (void)dealloc
-{
-   [addressParser release];
-   [currentStringValue release];
-   [temporaryContext release];
-   [currentSession release];
-   [currentHost release];
-   [currentPort release];
-   [currentOsClass release];
-   [currentOsMatch release];
-   [super dealloc];
-}
-
 #pragma mark -
 
 // -------------------------------------------------------------------------------
-//	parseXMLFile: Parse Nmap output into a temporary managed object context.  If
+//   parseXMLFile: Parse Nmap output into a temporary managed object context.  If
 //               no errors occur, merge new context with persistent store.
 // -------------------------------------------------------------------------------
 - (void)parseXMLFile:(NSString *)pathToFile inSession:(Session *)session
@@ -106,8 +93,8 @@
    self.currentSession = (Session *)[temporaryContext objectWithID:objectID];
       
    // Cache the Host entity to optimize for looong scan outputs
-   hostEntity = [[NSEntityDescription entityForName:@"Host"                 
-                            inManagedObjectContext:temporaryContext] retain];
+   hostEntity = [NSEntityDescription entityForName:@"Host"                 
+                            inManagedObjectContext:temporaryContext];
    
    BOOL success = [addressParser parse]; 
    
@@ -375,7 +362,7 @@
 }
 
 // -------------------------------------------------------------------------------
-//	parser:foundCharacters:
+//   parser:foundCharacters:
 // -------------------------------------------------------------------------------
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string 
 {   
@@ -389,14 +376,14 @@
 }
 
 // -------------------------------------------------------------------------------
-//	parser:didEndElement:namespaceURI:
+//   parser:didEndElement:namespaceURI:
 // -------------------------------------------------------------------------------
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName 
 {
 //   //ANSLog(@"XMLParser: endElement: %@", elementName);
    
    if ( [elementName isEqualToString:@"host"] ) {
-      [self.currentHost release];
+      self.currentHost;
       self.currentHost = nil;
       
       return;
