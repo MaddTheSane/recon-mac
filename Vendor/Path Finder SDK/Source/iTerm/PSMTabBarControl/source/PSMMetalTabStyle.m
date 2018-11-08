@@ -599,6 +599,7 @@
             [centeredParagraphStyle setAlignment:NSCenterTextAlignment];
         }
         [attrStr addAttribute:NSParagraphStyleAttributeName value:centeredParagraphStyle range:range];
+		[centeredParagraphStyle release];
         [attrStr drawInRect:labelRect];
         return;
     }

@@ -101,6 +101,7 @@ static float vigourOfShake = 0.05f;
 	}
     CGPathCloseSubpath(shakePath);
     shakeAnimation.path = shakePath;
+    CGPathRelease(shakePath);
     shakeAnimation.duration = durationOfShake;
     return shakeAnimation;
 }

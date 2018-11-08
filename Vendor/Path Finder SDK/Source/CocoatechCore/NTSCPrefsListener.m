@@ -88,8 +88,10 @@ NTSINGLETONOBJECT_STORAGE;
 			SCDynamicStoreSetNotificationKeys(store, NULL, patterns);
 			
 			CFRunLoopSourceRef rls = SCDynamicStoreCreateRunLoopSource(NULL, store, 0);
-			if (rls)
+            if (rls) {
 				CFRunLoopAddSource(CFRunLoopGetCurrent(), rls, kCFRunLoopCommonModes);
+                CFRelease(rls);
+            }
 			
 			CFRelease(patterns);
 		}

@@ -36,11 +36,12 @@ static NSString *SCRIPT_DIRECTORY = @"~/Library/Application Support/iTerm/Script
 
 static NSInteger _compareEncodingByLocalizedName(id a, id b, void *unused);
 
-@interface iTermController (Private)
+@interface iTermController ()
 - (ITTerminalView*)launchBookmark: (NSDictionary *) bookmarkData
 			inTerminal: (ITTerminalView *) theTerm
 		   withCommand: (NSString *)command
 			   withURL: (NSString *)url;
+- (ITTerminalView *) newSessionsInWindow:(ITTerminalView *) terminal forNode:(TreeNode*)theNode NS_RETURNS_NOT_RETAINED;
 @end
 
 @implementation iTermController
@@ -324,10 +325,6 @@ static NSInteger _compareEncodingByLocalizedName(id a, id b, void *unused);
 {
     return ([[[self currentTerminal] currentSession] textView]);
 }
-
-@end
-
-@implementation iTermController (Private)
 
 - (ITTerminalView*)launchBookmark: (NSDictionary *) bookmarkData
 			inTerminal: (ITTerminalView *) theTerm

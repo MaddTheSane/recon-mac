@@ -200,8 +200,8 @@ typedef struct screen_char_t
 - (int)newWidth;
 - (int)newHeight;
 - (void)resetChangeSize;
-- (NSString *) newWinTitle;
-- (NSString *) newIconTitle;
+- (NSString *) newWinTitle NS_RETURNS_NOT_RETAINED;
+- (NSString *) newIconTitle NS_RETURNS_NOT_RETAINED;
 - (void)resetChangeTitle;
 - (void)updateBell;
 - (void)setBell;

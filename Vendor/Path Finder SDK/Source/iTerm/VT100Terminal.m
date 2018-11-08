@@ -1267,9 +1267,7 @@ static VT100TCC decode_string(unsigned char *datap,
 {
     int i;
     
-    if ([super init] == nil)
-		return nil;
-	
+	if (self = [super init]) {
     ENCODING = NSASCIIStringEncoding;
 	total_stream_length = STANDARD_STREAM_SIZE;
     STREAM = malloc(total_stream_length);
@@ -1311,6 +1309,7 @@ static VT100TCC decode_string(unsigned char *datap,
     streamOffset = 0;
 	
     numLock = YES;
+	}
 	
     return self;
 }

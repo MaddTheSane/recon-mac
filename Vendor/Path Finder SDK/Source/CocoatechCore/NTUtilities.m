@@ -384,6 +384,7 @@ NSString* NSErrorString(OSStatus err)
 			{
 				stringRef = SCDynamicStoreKeyCreateNetworkInterfaceEntity(NULL, kSCDynamicStoreDomainState, (CFStringRef)interfaceName, kSCEntNetIPv4);
 				dictRef = SCDynamicStoreCopyValue(store, stringRef);
+				CFRelease(stringRef);
 				
 				NSArray* ipAddresses = nil;
 				if (dictRef)

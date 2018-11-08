@@ -163,6 +163,7 @@ static NSString *NoHandler = @"<No Handler>";
 					 forKey:key];
 	}
 	[prefs setObject: tempDict forKey:@"URLHandlers"];
+	[tempDict release];
 
 	[prefs synchronize];
 }

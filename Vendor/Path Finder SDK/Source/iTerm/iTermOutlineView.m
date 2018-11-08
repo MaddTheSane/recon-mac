@@ -13,8 +13,9 @@
 
 - (id)init
 {
+	self = [super init];
 	_lock = [[NSLock alloc] init];
-	return [super init];
+	return self;
 }
 	
 - (void)reloadData

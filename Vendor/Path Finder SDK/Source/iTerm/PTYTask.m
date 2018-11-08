@@ -210,8 +210,7 @@ static int writep(int fds, char *buf, size_t len)
 
 - (id)init
 {
-    if ([super init] == nil)
-		return nil;
+	if (self = [super init]) {
 	
     PID = (pid_t)-1;
     STATUS = 0;
@@ -224,7 +223,7 @@ static int writep(int fds, char *buf, size_t len)
     
     // allocate a semaphore to coordinate with thread
 	MPCreateBinarySemaphore(&threadEndSemaphore);
-	
+	}
 	
     return self;
 }

@@ -124,7 +124,7 @@ NTSINGLETONOBJECT_STORAGE;
 - (BOOL)playBezelSoundEffect;
 {
 	CFPreferencesAppSynchronize(kCFPreferencesCurrentApplication);
-	NSNumber* result = (NSNumber*) CFPreferencesCopyAppValue(CFSTR("com.apple.sound.beep.feedback"), kCFPreferencesCurrentApplication);
+	NSNumber* result = CFBridgingRelease(CFPreferencesCopyAppValue(CFSTR("com.apple.sound.beep.feedback"), kCFPreferencesCurrentApplication));
 	
 	if (result)
 		return [result boolValue];
@@ -136,7 +136,7 @@ NTSINGLETONOBJECT_STORAGE;
 - (BOOL)playSoundEffects;
 {
 	CFPreferencesAppSynchronize(kCFPreferencesCurrentApplication);
-	NSNumber* result = (NSNumber*) CFPreferencesCopyAppValue(CFSTR("com.apple.sound.uiaudio.enabled"), kCFPreferencesCurrentApplication);
+	NSNumber* result = CFBridgingRelease(CFPreferencesCopyAppValue(CFSTR("com.apple.sound.uiaudio.enabled"), kCFPreferencesCurrentApplication));
 	
 	if (result)
 		return [result boolValue];
