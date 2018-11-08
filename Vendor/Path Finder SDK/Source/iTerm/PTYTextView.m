@@ -451,7 +451,6 @@ static int cacheSize;
 	int loop;
 	for (loop=0;loop<cacheSize;loop++)
     {
-		charImages[loop].image;
 		charImages[loop].image=nil;
     }
 }

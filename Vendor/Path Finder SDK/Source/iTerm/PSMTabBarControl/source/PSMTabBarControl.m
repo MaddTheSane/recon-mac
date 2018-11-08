@@ -16,8 +16,9 @@
 #import "PSMUnifiedTabStyle.h"
 #import "PSMAdiumTabStyle.h"
 #import "PSMTabDragAssistant.h"
+#import "PTYSession.h"
 
-@interface PSMTabBarControl (Private)
+@interface PSMTabBarControl ()
 // characteristics
 - (float)availableCellWidth;
 - (NSRect)genericCellRect;
@@ -46,7 +47,6 @@
     // actions
 - (void)overflowMenuAction:(id)sender;
 - (void)closeTabClick:(id)sender;
-- (void)tabClick:(id)sender;
 - (void)tabNothing:(id)sender;
 - (void)frameDidChange:(NSNotification *)notification;
 - (void)windowDidMove:(NSNotification *)aNotification;

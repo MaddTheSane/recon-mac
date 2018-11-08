@@ -302,7 +302,7 @@
 
     if (!showsBaselineSeparator || [cell state] == NSOnState)
 	{
-        if ([[cell controlView] tabLocation] == PSMTab_TopTab) 
+        if ([(PSMTabBarControl*)[cell controlView] tabLocation] == PSMTab_TopTab) 
         {
             // selected tab
             NSRect aRect = NSMakeRect(cellFrame.origin.x+0.5, cellFrame.origin.y, cellFrame.size.width-1.0, cellFrame.size.height+1.5);

@@ -15,6 +15,5 @@
 
 - (id)init;
 - (void)reloadData;
-- (void)dealloc;
 
 @end

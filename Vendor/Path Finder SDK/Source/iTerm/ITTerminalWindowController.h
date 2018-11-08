@@ -26,3 +26,9 @@
 - (NSDrawer *)drawer;
 
 @end
+
+@interface ITTerminalWindowController (Actions)
+
+- (IBAction)toggleBookmarksView:(id)sender;
+- (IBAction)printDocument:(id)sender;
+@end

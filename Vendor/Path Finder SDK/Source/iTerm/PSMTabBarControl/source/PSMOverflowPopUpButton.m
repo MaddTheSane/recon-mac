@@ -75,7 +75,7 @@
 		_animationTimer = [NSTimer scheduledTimerWithTimeInterval:TIMER_INTERVAL target:self selector:@selector(animateStep:) userInfo:nil repeats:YES];
 		[[NSRunLoop currentRunLoop] addTimer:_animationTimer forMode:NSEventTrackingRunLoopMode];
 	} else {
-		[_animationTimer invalidate], _animationTimer = nil;
+		[_animationTimer invalidate]; _animationTimer = nil;
 	}
 	
 	[super setHidden:value];
@@ -99,7 +99,7 @@
 			_animationTimer = [NSTimer scheduledTimerWithTimeInterval:TIMER_INTERVAL target:self selector:@selector(animateStep:) userInfo:nil repeats:YES];
 			[[NSRunLoop currentRunLoop] addTimer:_animationTimer forMode:NSEventTrackingRunLoopMode];
 		} else {
-			[_animationTimer invalidate], _animationTimer = nil;
+			[_animationTimer invalidate]; _animationTimer = nil;
 		}
 	}
 }

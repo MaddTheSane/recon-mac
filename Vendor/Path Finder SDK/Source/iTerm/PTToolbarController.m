@@ -19,6 +19,7 @@
 #import "ITPopUpButton.h"
 #import "ITIconStore.h"
 #import "ITSharedActionHandler.h"
+#import "ITTerminalWindowController.h"
 
 NSString *NewToolbarItem = @"New";
 NSString *BookmarksToolbarItem = @"Bookmarks";
@@ -26,7 +27,7 @@ NSString *CloseToolbarItem = @"Close";
 NSString *SettingsToolbarItem = @"Settings";
 NSString *CommandToolbarItem = @"Command";
 
-@interface PTToolbarController (Private)
+@interface PTToolbarController ()
 - (void)setupToolbar:(NSWindow*)window;
 - (void)buildToolbarItemPopUpMenu:(NSToolbarItem *)toolbarItem;
 - (NSMenu*)buildNewPopupMenu:(BOOL)addDummyItem;
@@ -36,8 +37,7 @@ NSString *CommandToolbarItem = @"Command";
 - (NSToolbar *)toolbar;
 - (void)setToolbar:(NSToolbar *)theToolbar;
 
-- (ITTerminalView *)term;
-- (void)setTerm:(ITTerminalView *)theTerm;
+@property (strong) ITTerminalView *term;
 @end
 
 @implementation PTToolbarController
@@ -239,10 +239,6 @@ NSString *CommandToolbarItem = @"Command";
     return toolbarItem;
 }
 
-@end
-
-@implementation PTToolbarController (Private)
-
 //---------------------------------------------------------- 
 //  toolbar 
 //---------------------------------------------------------- 
@@ -392,18 +388,7 @@ NSString *CommandToolbarItem = @"Command";
 //---------------------------------------------------------- 
 //  term 
 //---------------------------------------------------------- 
-- (ITTerminalView *)term
-{
-    return mTerm; 
-}
-
-- (void)setTerm:(ITTerminalView *)theTerm
-{
-    if (mTerm != theTerm)
-    {
-        mTerm = theTerm;
-    }
-}
+@synthesize term=mTerm;
 
 @end
 

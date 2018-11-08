@@ -39,48 +39,32 @@
 // creation/destruction
 - (id)initWithControlView:(PSMTabBarControl *)controlView;
 - (id)initPlaceholderWithFrame:(NSRect)frame expanded:(BOOL)value inControlView:(PSMTabBarControl *)controlView;
-- (void)dealloc;
 
 // accessors
-- (id)controlView;
-- (void)setControlView:(id)view;
-- (NSTrackingRectTag)closeButtonTrackingTag;
-- (void)setCloseButtonTrackingTag:(NSTrackingRectTag)tag;
-- (NSTrackingRectTag)cellTrackingTag;
-- (void)setCellTrackingTag:(NSTrackingRectTag)tag;
-- (float)width;
-- (NSRect)frame;
-- (void)setFrame:(NSRect)rect;
+@property NSTrackingRectTag closeButtonTrackingTag;
+@property NSTrackingRectTag cellTrackingTag;
+@property (readonly) CGFloat width;
+@property NSRect frame;
 - (void)setStringValue:(NSString *)aString;
-- (NSSize)stringSize;
+@property (readonly) NSSize stringSize;
 - (NSAttributedString *)attributedStringValue;
-- (int)tabState;
-- (void)setTabState:(int)state;
+@property int tabState;
 - (NSProgressIndicator *)indicator;
-- (BOOL)isInOverflowMenu;
-- (void)setIsInOverflowMenu:(BOOL)value;
-- (BOOL)closeButtonPressed;
-- (void)setCloseButtonPressed:(BOOL)value;
-- (BOOL)closeButtonOver;
-- (void)setCloseButtonOver:(BOOL)value;
-- (BOOL)hasCloseButton;
-- (void)setHasCloseButton:(BOOL)set;
-- (void)setCloseButtonSuppressed:(BOOL)suppress;
-- (BOOL)isCloseButtonSuppressed;
-- (BOOL)hasIcon;
-- (void)setHasIcon:(BOOL)value;
-- (int)count;
-- (void)setCount:(int)value;
-- (BOOL)isPlaceholder;
-- (void)setIsPlaceholder:(BOOL)value;
-- (int)currentStep;
-- (void)setCurrentStep:(int)value;
+@property BOOL isInOverflowMenu;
+@property BOOL closeButtonPressed;
+@property BOOL closeButtonOver;
+@property BOOL hasCloseButton;
+@property (getter=isCloseButtonSuppressed) BOOL closeButtonSuppressed;
+@property (nonatomic) BOOL hasIcon;
+@property (nonatomic) int count;
+@property BOOL isPlaceholder;
+@property (nonatomic) int currentStep;
 
 // component attributes
 - (NSRect)indicatorRectForFrame:(NSRect)cellFrame;
 - (NSRect)closeButtonRectForFrame:(NSRect)cellFrame;
-- (float)minimumWidthOfCell;
-- (float)desiredWidthOfCell;
+- (CGFloat)minimumWidthOfCell;
+- (CGFloat)desiredWidthOfCell;
 
 // drawing
 - (void)drawWithFrame:(NSRect)cellFrame inView:(NSView *)controlView;
@@ -97,8 +81,7 @@
 - (id)initWithCoder:(NSCoder *)aDecoder;
 
 // iTerm add-on
-- (NSColor *)labelColor;
-- (void)setLabelColor:(NSColor *)aColor;
+@property (strong) NSColor *labelColor;
 
 @end
 

@@ -793,7 +793,6 @@ static __inline__ screen_char_t *incrementLinePointer(screen_char_t *buf_start, 
 				
 				// XTERM extensions
 			case XTERMCC_WIN_TITLE:
-				if (newWinTitle) ;
 				newWinTitle = [(__bridge NSString*)token.u.string copy];
 				break;
 			case XTERMCC_WINICON_TITLE:

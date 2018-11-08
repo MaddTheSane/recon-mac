@@ -203,7 +203,7 @@
 	[[self drawer] toggle: sender];	
 }
 
-- (void)printDocument:(id)sender;
+- (IBAction)printDocument:(id)sender;
 {
 	[(NSView*)[[self window] firstResponder] print:sender];
 }

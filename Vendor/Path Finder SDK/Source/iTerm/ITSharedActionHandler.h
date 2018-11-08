@@ -14,5 +14,8 @@
 }
 
 + (ITSharedActionHandler*)sharedInstance;
+- (IBAction)showConfigWindow:(id)sender;
+- (IBAction)showPreferencesAction:(id)sender;
+- (IBAction)showProfilesAction:(id)sender;
 
 @end

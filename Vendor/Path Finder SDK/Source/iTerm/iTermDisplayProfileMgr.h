@@ -48,7 +48,6 @@
 
 // Instance methods
 - (id)init;
-- (void)dealloc;
 
 - (NSMutableDictionary *)profiles;
 - (void)setProfiles: (NSMutableDictionary *) aDict;
@@ -90,7 +89,7 @@
 
 @end
 
-@interface iTermDisplayProfileMgr (Private)
+@interface iTermDisplayProfileMgr ()
 
 - (float) _floatValueForKey: (NSString *) key inProfile: (NSString *) profileName;
 - (void)_setFloatValue: (float) fval forKey: (NSString *) key inProfile: (NSString *) profileName;

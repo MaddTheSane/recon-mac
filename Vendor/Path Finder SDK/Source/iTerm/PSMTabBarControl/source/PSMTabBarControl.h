@@ -179,6 +179,7 @@ enum {
 - (void)removeTabForCell:(PSMTabBarCell *)cell;
 - (void)setLabelColor:(NSColor *)aColor forTabViewItem:(NSTabViewItem *) tabViewItem;
 
+- (void)tabClick:(id)sender;
 @end
 
 

@@ -545,10 +545,6 @@ static iTermDisplayProfileMgr *singleInstance = nil;
 	[self _setIntValue: bFlag forKey: @"Disable Bold" inProfile: profileName];
 }
 
-@end
-
-@implementation iTermDisplayProfileMgr (Private)
-
 - (float) _floatValueForKey: (NSString *) key inProfile: (NSString *) profileName
 {
 	NSDictionary *aProfile;

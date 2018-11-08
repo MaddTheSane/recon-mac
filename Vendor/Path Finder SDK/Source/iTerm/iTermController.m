@@ -199,7 +199,7 @@ static NSInteger _compareEncodingByLocalizedName(id a, id b, void *unused);
 	NSMutableArray *tmp = [NSMutableArray array];
 	
 	for (p = [NSString availableStringEncodings]; *p; ++p)
-		[tmp addObject:[NSNumber numberWithUnsignedInt:*p]];
+		[tmp addObject:[NSNumber numberWithUnsignedInteger:*p]];
 	[tmp sortUsingFunction: _compareEncodingByLocalizedName context:NULL];
 	
 	return (tmp);
@@ -350,8 +350,8 @@ static NSInteger _compareEncodingByLocalizedName(id a, id b, void *unused);
 // Comparator for sorting encodings
 static NSInteger _compareEncodingByLocalizedName(id a, id b, void *unused)
 {
-	NSString *sa = [NSString localizedNameOfStringEncoding: [a unsignedIntValue]];
-	NSString *sb = [NSString localizedNameOfStringEncoding: [b unsignedIntValue]];
+	NSString *sa = [NSString localizedNameOfStringEncoding: [a unsignedIntegerValue]];
+	NSString *sb = [NSString localizedNameOfStringEncoding: [b unsignedIntegerValue]];
 	return [sa caseInsensitiveCompare: sb];
 }
 

@@ -12,7 +12,7 @@
 #import "PSMProgressIndicator.h"
 #import "PSMTabDragAssistant.h"
 
-@interface PSMTabBarControl (Private)
+@interface PSMTabBarControl ()
 - (void)update;
 - (void)update:(BOOL)animate;
 @end
@@ -76,64 +76,25 @@
 #pragma mark -
 #pragma mark Accessors
 
-- (id)controlView
-{
-    return _controlView;
-}
+@synthesize closeButtonTrackingTag=_closeButtonTrackingTag;
+@synthesize cellTrackingTag=_cellTrackingTag;
 
-- (void)setControlView:(id)view
-{
-    // no retain release pattern, as this simply switches a tab to another view.
-    _controlView = view;
-}
-
-- (NSTrackingRectTag)closeButtonTrackingTag
-{
-    return _closeButtonTrackingTag;
-}
-
-- (void)setCloseButtonTrackingTag:(NSTrackingRectTag)tag
-{
-    _closeButtonTrackingTag = tag;
-}
-
-- (NSTrackingRectTag)cellTrackingTag
-{
-    return _cellTrackingTag;
-}
-
-- (void)setCellTrackingTag:(NSTrackingRectTag)tag
-{
-    _cellTrackingTag = tag;
-}
-
-- (float)width
+- (CGFloat)width
 {
     return _frame.size.width;
 }
 
-- (NSRect)frame
-{
-    return _frame;
-}
-
-- (void)setFrame:(NSRect)rect
-{
-    _frame = rect;
-}
+@synthesize frame=_frame;
 
 - (void)setStringValue:(NSString *)aString
 {
     [super setStringValue:aString];
     _stringSize = [[self attributedStringValue] size];
     // need to redisplay now - binding observation was too quick.
-    [_controlView update:[[self controlView] automaticallyAnimates]];
+    [_controlView update:[(PSMTabBarControl*)[self controlView] automaticallyAnimates]];
 }
 
-- (NSSize)stringSize
-{
-    return _stringSize;
-}
+@synthesize stringSize=_stringSize;
 
 - (NSAttributedString *)attributedStringValue
 {
@@ -146,107 +107,36 @@
     return aString;
 }
 
-- (int)tabState
-{
-    return _tabState;
-}
-
-- (void)setTabState:(int)state
-{
-    _tabState = state;
-}
+@synthesize tabState=_tabState;
 
 - (NSProgressIndicator *)indicator
 { 
     return _indicator;
 }
 
-- (BOOL)isInOverflowMenu
-{
-    return _isInOverflowMenu;
-}
-
-- (void)setIsInOverflowMenu:(BOOL)value
-{
-    _isInOverflowMenu = value;
-}
-
-- (BOOL)closeButtonPressed
-{
-    return _closeButtonPressed;
-}
-
-- (void)setCloseButtonPressed:(BOOL)value
-{
-    _closeButtonPressed = value;
-}
-
-- (BOOL)closeButtonOver
-{
-    return _closeButtonOver;
-}
-
-- (void)setCloseButtonOver:(BOOL)value
-{
-    _closeButtonOver = value;
-}
-
-- (BOOL)hasCloseButton
-{
-    return _hasCloseButton;
-}
-
-- (void)setHasCloseButton:(BOOL)set;
-{
-    _hasCloseButton = set;
-}
-
-- (void)setCloseButtonSuppressed:(BOOL)suppress;
-{
-    _isCloseButtonSuppressed = suppress;
-}
-
-- (BOOL)isCloseButtonSuppressed;
-{
-    return _isCloseButtonSuppressed;
-}
-
-- (BOOL)hasIcon
-{
-    return _hasIcon;
-}
+@synthesize isInOverflowMenu=_isInOverflowMenu;
+@synthesize closeButtonPressed=_closeButtonPressed;
+@synthesize closeButtonOver=_closeButtonOver;
+@synthesize hasCloseButton=_hasCloseButton;
+@synthesize closeButtonSuppressed=_isCloseButtonSuppressed;
+@synthesize hasIcon=_hasIcon;
 
 - (void)setHasIcon:(BOOL)value
 {
     _hasIcon = value;
-    [_controlView update:[[self controlView] automaticallyAnimates]]; // binding notice is too fast
+    [_controlView update:[(PSMTabBarControl*)[self controlView] automaticallyAnimates]]; // binding notice is too fast
 }
 
-- (int)count
-{
-    return _count;
-}
+@synthesize count=_count;
 
 - (void)setCount:(int)value
 {
     _count = value;
-    [_controlView update:[[self controlView] automaticallyAnimates]]; // binding notice is too fast
+    [_controlView update:[(PSMTabBarControl*)[self controlView] automaticallyAnimates]]; // binding notice is too fast
 }
 
-- (BOOL)isPlaceholder
-{
-    return _isPlaceholder;
-}
-
-- (void)setIsPlaceholder:(BOOL)value;
-{
-    _isPlaceholder = value;
-}
-
-- (int)currentStep
-{
-    return _currentStep;
-}
+@synthesize isPlaceholder=_isPlaceholder;
+@synthesize currentStep=_currentStep;
 
 - (void)setCurrentStep:(int)value
 {
@@ -265,7 +155,7 @@
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
     // the progress indicator, label, icon, or count has changed - redraw the control view
-    [_controlView update:[[self controlView] automaticallyAnimates]];
+    [_controlView update:[(PSMTabBarControl*)[self controlView] automaticallyAnimates]];
 }
 
 #pragma mark -
@@ -273,22 +163,22 @@
 
 - (NSRect)indicatorRectForFrame:(NSRect)cellFrame
 {
-    return [(id <PSMTabStyle>)[(PSMTabBarControl*)_controlView style] indicatorRectForTabCell:self];
+    return [(id <PSMTabStyle>)[(PSMTabBarControl*)self.controlView style] indicatorRectForTabCell:self];
 }
 
 - (NSRect)closeButtonRectForFrame:(NSRect)cellFrame
 {
-    return [(id <PSMTabStyle>)[(PSMTabBarControl*)_controlView style] closeButtonRectForTabCell:self];
+    return [(id <PSMTabStyle>)[(PSMTabBarControl*)self.controlView style] closeButtonRectForTabCell:self];
 }
 
-- (float)minimumWidthOfCell
+- (CGFloat)minimumWidthOfCell
 {
-    return [(id <PSMTabStyle>)[(PSMTabBarControl*)_controlView style] minimumWidthOfTabCell:self];
+    return [(id <PSMTabStyle>)[(PSMTabBarControl*)self.controlView style] minimumWidthOfTabCell:self];
 }
 
-- (float)desiredWidthOfCell
+- (CGFloat)desiredWidthOfCell
 {
-    return [(id <PSMTabStyle>)[(PSMTabBarControl*)_controlView style] desiredWidthOfTabCell:self];
+    return [(id <PSMTabStyle>)[(PSMTabBarControl*)self.controlView style] desiredWidthOfTabCell:self];
 }  
 
 #pragma mark -
@@ -428,10 +318,10 @@
 	if ([attribute isEqualToString: NSAccessibilityRoleAttribute]) {
 		attributeValue = NSAccessibilityButtonRole;
 	} else if ([attribute isEqualToString: NSAccessibilityHelpAttribute]) {
-		if ([[[self controlView] delegate] respondsToSelector:@selector(accessibilityStringForTabView:objectCount:)]) {
+		if ([[(PSMTabBarControl*)[self controlView] delegate] respondsToSelector:@selector(accessibilityStringForTabView:objectCount:)]) {
 			attributeValue = [NSString stringWithFormat:@"%@, %i %@", [self stringValue],
 																		[self count],
-																		[[[self controlView] delegate] accessibilityStringForTabView:[[self controlView] tabView] objectCount:[self count]]];
+																		[[(PSMTabBarControl*)[self controlView] delegate] accessibilityStringForTabView:[(PSMTabBarControl*)[self controlView] tabView] objectCount:[self count]]];
 		} else {
 			attributeValue = [self stringValue];
 		}
@@ -481,16 +371,6 @@
 #pragma mark -
 #pragma mark iTerm Add-on
 
-- (NSColor *)labelColor
-{
-    return _labelColor;
-}
-
-- (void)setLabelColor:(NSColor *)aColor
-{
-    if (_labelColor != aColor) {
-        _labelColor = aColor ? aColor : nil;
-    }
-}
+@synthesize labelColor=_labelColor;
 
 @end

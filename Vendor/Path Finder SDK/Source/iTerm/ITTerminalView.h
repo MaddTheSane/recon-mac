@@ -156,5 +156,8 @@
 - (NSRect)windowWillUseStandardFrame:(NSRect)defaultFrame;
 @end
 
-
-
+@interface ITTerminalView (Actions)
+- (IBAction)closeTabAction:(id)sender;
+- (void)newSessionInTabAtIndex:(id)sender;
+- (void)newSessionInWindowAtIndex:(id)sender;
+@end

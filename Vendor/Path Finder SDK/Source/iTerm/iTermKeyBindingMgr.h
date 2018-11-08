@@ -92,7 +92,6 @@
 
 // Instance methods
 - (id)init;
-- (void)dealloc;
 
 - (NSDictionary *) profiles;
 - (void)setProfiles: (NSMutableDictionary *) aDict;
@@ -131,7 +130,7 @@
 
 @end
 
-@interface iTermKeyBindingMgr (Private)
+@interface iTermKeyBindingMgr ()
 - (int) _actionForKeyCode: (unichar)keyCode 
 				modifiers: (unsigned int) keyModifiers
 			 highPriority: (BOOL *) highPriority
