@@ -15,7 +15,6 @@
 	NSImage* mArrowImage;
 }
 
-- (NSString *)contentImageID;
-- (void)setContentImageID:(NSString *)theContentImageID;
+@property (copy) NSString *contentImageID;
 
 @end

@@ -10,12 +10,10 @@
 #import "ITIconStore.h"
 #import "ITIconStore.h"
 
-@interface ITPopUpButton (Private)
-- (NSImage *)arrowImage;
-- (void)setArrowImage:(NSImage *)theArrowImage;
+@interface ITPopUpButton ()
+@property (nonatomic, retain, null_resettable) NSImage *arrowImage;
 
-- (NSImage *)contentImage;
-- (void)setContentImage:(NSImage *)theContentImage;
+@property (retain) NSImage *contentImage;
 @end
 
 @implementation ITPopUpButton
@@ -52,19 +50,7 @@
 //---------------------------------------------------------- 
 //  contentImageID 
 //---------------------------------------------------------- 
-- (NSString *)contentImageID
-{
-    return mContentImageID; 
-}
-
-- (void)setContentImageID:(NSString *)theContentImageID
-{
-    if (mContentImageID != theContentImageID)
-    {
-        [mContentImageID release];
-        mContentImageID = [theContentImageID retain];
-    }
-}
+@synthesize contentImageID=mContentImageID;
 
 - (void)drawRect:(__unused NSRect)rect;
 {
@@ -86,10 +72,6 @@
 	[[self arrowImage] drawInRect:arrowRect fromRect:fromRect operation:NSCompositeSourceOver fraction:1];
 }
 
-@end
-
-@implementation ITPopUpButton (Private)
-
 //---------------------------------------------------------- 
 //  contentImage 
 //---------------------------------------------------------- 
@@ -103,9 +85,7 @@
 		{
 			NSBundle *thisBundle = [NSBundle bundleForClass: [self class]];
 
-			NSString* imagePath = [thisBundle pathForResource:@"newwin"
-											 ofType:@"icns"];
-			image = [[[NSImage alloc] initByReferencingFile: imagePath] autorelease];
+			image = [thisBundle imageForResource:@"newwin"];
 		}
 		else
 			image = [[ITIconStore sharedInstance] image:@"GenericPreferencesIcon"];
@@ -129,6 +109,8 @@
     }
 }
 
+@synthesize contentImage=mContentImage;
+
 //---------------------------------------------------------- 
 //  arrowImage 
 //---------------------------------------------------------- 
@@ -140,13 +122,6 @@
     return mArrowImage; 
 }
 
-- (void)setArrowImage:(NSImage *)theArrowImage
-{
-    if (mArrowImage != theArrowImage)
-    {
-        [mArrowImage release];
-        mArrowImage = [theArrowImage retain];
-    }
-}
+@synthesize arrowImage=mArrowImage;
 
 @end
