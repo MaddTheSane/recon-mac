@@ -102,9 +102,9 @@
 - (NSString *) globalProfileName;
 - (void)addProfileWithName: (NSString *) aString copyProfile: (NSString *) profileName;
 - (void)deleteProfileWithName: (NSString *) aString;
-- (int) numberOfEntriesInProfile: (NSString *) profileName;
+- (NSInteger) numberOfEntriesInProfile: (NSString *) profileName;
 
-- (int) optionKeyForProfile:(NSString *) profileName;
+- (NSInteger) optionKeyForProfile:(NSString *) profileName;
 - (void)setOptionKey: (int) option forProfile:(NSString *) profileName;
 
 - (void)addEntryForKeyCode: (unsigned int) hexCode 

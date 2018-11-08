@@ -134,7 +134,7 @@
 // NSOutlineView doubleclick action
 - (IBAction)doubleClickedOnBookmarksView:(id)sender
 {
-	int selectedRow = [[self bookmarksView] selectedRow];
+	NSInteger selectedRow = [[self bookmarksView] selectedRow];
 	TreeNode *selectedItem;
 	
 	if (selectedRow < 0)

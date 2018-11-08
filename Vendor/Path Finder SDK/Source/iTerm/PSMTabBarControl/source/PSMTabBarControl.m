@@ -837,11 +837,11 @@
 	[self _removeCellTrackingRects];
 	
     // calculate number of cells to fit in control and cell widths
-	int i, cellCount = [_cells count];
-    float availableWidth = [self availableCellWidth], currentOrigin = 0;
+	NSInteger i, cellCount = [_cells count];
+    CGFloat availableWidth = [self availableCellWidth], currentOrigin = 0;
     NSMutableArray *newWidths = [NSMutableArray arrayWithCapacity:cellCount];
-    int numberOfVisibleCells = ([self orientation] == PSMTabBarHorizontalOrientation) ? 1 : 0;
-    float totalOccupiedWidth = 0.0;
+    NSInteger numberOfVisibleCells = ([self orientation] == PSMTabBarHorizontalOrientation) ? 1 : 0;
+    CGFloat totalOccupiedWidth = 0.0;
 	NSRect cellRect = [self genericCellRect];
 	
 	if ([self orientation] == PSMTabBarVerticalOrientation) {
@@ -891,53 +891,53 @@
 				if (_sizeCellsToFit) {
 					int neededWidth = width - (totalOccupiedWidth - availableWidth); //the amount of space needed to fit the next cell in
 					// can I squeeze it in without violating min cell width?
-					int widthIfAllMin = (numberOfVisibleCells + 1) * _cellMinWidth;
+					NSInteger widthIfAllMin = (numberOfVisibleCells + 1) * _cellMinWidth;
 					
 					if ((width + widthIfAllMin) <= availableWidth) {
 						// squeeze - distribute needed sacrifice among all cells
-						int q;
+						NSInteger q;
 						for (q = (i - 1); q >= 0; q--) {
-							int desiredReduction = (int)neededWidth / (q + 1);
+							NSInteger desiredReduction = (NSInteger)neededWidth / (q + 1);
 							if (([[newWidths objectAtIndex:q] floatValue] - desiredReduction) < _cellMinWidth) {
-								int actualReduction = (int)[[newWidths objectAtIndex:q] floatValue] - _cellMinWidth;
-								[newWidths replaceObjectAtIndex:q withObject:[NSNumber numberWithFloat:_cellMinWidth]];
+								NSInteger actualReduction = (NSInteger)[[newWidths objectAtIndex:q] floatValue] - _cellMinWidth;
+								[newWidths replaceObjectAtIndex:q withObject:@(_cellMinWidth)];
 								neededWidth -= actualReduction;
 							} else {
-								int newCellWidth = (int)[[newWidths objectAtIndex:q] floatValue] - desiredReduction;
+								NSInteger newCellWidth = (NSInteger)[[newWidths objectAtIndex:q] floatValue] - desiredReduction;
 								[newWidths replaceObjectAtIndex:q withObject:[NSNumber numberWithFloat:newCellWidth]];
 								neededWidth -= desiredReduction;
 							}
 						}
 						
-						int totalWidth = [[newWidths valueForKeyPath:@"@sum.intValue"] intValue];
-						int thisWidth = width - neededWidth; //width the last cell would want
+						NSInteger totalWidth = [[newWidths valueForKeyPath:@"@sum.integerValue"] integerValue];
+						NSInteger thisWidth = width - neededWidth; //width the last cell would want
 						
 						//append a final cell if there is enough room, otherwise stretch all the cells out to fully fit the bar
 						if (availableWidth - totalWidth > thisWidth) {
-							[newWidths addObject:[NSNumber numberWithFloat:thisWidth]];
+							[newWidths addObject:@(thisWidth)];
 							numberOfVisibleCells++;
 							totalWidth += thisWidth;
 						}
 						
 						if (totalWidth < availableWidth) {
-							int leftoverWidth = availableWidth - totalWidth;
-							int q;
+							NSInteger leftoverWidth = availableWidth - totalWidth;
+							NSInteger q;
 							
 							for (q = i - 1; q >= 0; q--) {
-								int desiredAddition = (int)leftoverWidth / (q + 1);
-								int newCellWidth = (int)[[newWidths objectAtIndex:q] floatValue] + desiredAddition;
+								NSInteger desiredAddition = (NSInteger)leftoverWidth / (q + 1);
+								NSInteger newCellWidth = (NSInteger)[[newWidths objectAtIndex:q] floatValue] + desiredAddition;
 								[newWidths replaceObjectAtIndex:q withObject:[NSNumber numberWithFloat:newCellWidth]];
 								leftoverWidth -= desiredAddition;
 							}
 						}
 					} else {
 						// stretch - distribute leftover room among cells
-						int leftoverWidth = availableWidth - totalOccupiedWidth + width;
-						int q;
+						NSInteger leftoverWidth = availableWidth - totalOccupiedWidth + width;
+						NSInteger q;
 						
 						for (q = i - 1; q >= 0; q--) {
-							int desiredAddition = (int)leftoverWidth / (q + 1);
-							int newCellWidth = (int)[[newWidths objectAtIndex:q] floatValue] + desiredAddition;
+							NSInteger desiredAddition = (NSInteger)leftoverWidth / (q + 1);
+							NSInteger newCellWidth = (NSInteger)[[newWidths objectAtIndex:q] floatValue] + desiredAddition;
 							[newWidths replaceObjectAtIndex:q withObject:[NSNumber numberWithFloat:newCellWidth]];
 							leftoverWidth -= desiredAddition;
 						}
@@ -968,9 +968,9 @@
 					
 					break; // done assigning widths; remaining cells go in overflow menu
 				} else {
-					int revisedWidth = availableWidth / (i + 1);
+					NSInteger revisedWidth = availableWidth / (i + 1);
 					if (revisedWidth >= _cellMinWidth) {
-						int q;
+						NSInteger q;
 						totalOccupiedWidth = 0;
 						for (q = 0; q < [newWidths count]; q++) {
 							[newWidths replaceObjectAtIndex:q withObject:[NSNumber numberWithFloat:revisedWidth]];
@@ -1032,7 +1032,7 @@
 {
 	// size all cells appropriately and create tracking rects
     // nuke old tracking rects
-    int i, cellCount = [_cells count];
+    NSInteger i, cellCount = [_cells count];
     for (i = 0; i < cellCount; i++) {
         id cell = [_cells objectAtIndex:i];
         [[NSNotificationCenter defaultCenter] removeObserver:cell];
@@ -1054,8 +1054,8 @@
 - (void)_animateCells:(NSTimer *)timer
 {
 	NSArray *targetWidths = [timer userInfo];
-	int i, numberOfVisibleCells = [targetWidths count];
-	float totalChange = 0.0f;
+	NSInteger i, numberOfVisibleCells = [targetWidths count];
+	CGFloat totalChange = 0.0f;
 	BOOL updated = NO;
 	
 	if ([_cells count] > 0) {
@@ -1133,7 +1133,7 @@
 - (NSMenu *)_setupCells:(NSArray *)newWidths
 {
 	NSRect cellRect = [self genericCellRect];
-	int i, cellCount = [_cells count], numberOfVisibleCells = [newWidths count];
+	NSInteger i, cellCount = [_cells count], numberOfVisibleCells = [newWidths count];
 	NSMenu *overflowMenu = nil;
 	
 	// Set up cells with frames and rects
@@ -1494,6 +1494,17 @@
 - (void)draggedImage:(NSImage *)image movedTo:(NSPoint)screenPoint
 {
 	[[PSMTabDragAssistant sharedDragAssistant] draggingMovedTo:screenPoint];
+}
+
+- (NSDragOperation)draggingSession:(NSDraggingSession *)session sourceOperationMaskForDraggingContext:(NSDraggingContext)context
+{
+    BOOL isLocal = context == NSDraggingContextWithinApplication;
+    return (isLocal ? NSDragOperationMove : NSDragOperationNone);
+}
+
+- (BOOL)ignoreModifierKeysForDraggingSession:(NSDraggingSession *)session
+{
+    return YES;
 }
 
 // NSDraggingDestination
@@ -2017,7 +2028,7 @@
         return nil;
     }
     
-    int i, cnt = [_cells count];
+    NSInteger i, cnt = [_cells count];
     for (i = 0; i < cnt; i++) {
         PSMTabBarCell *cell = [_cells objectAtIndex:i];
         
@@ -2033,7 +2044,7 @@
 
 - (PSMTabBarCell *)lastVisibleTab
 {
-    int i, cellCount = [_cells count];
+    NSInteger i, cellCount = [_cells count];
     for (i = 0; i < cellCount; i++){
         if ([[_cells objectAtIndex:i] isInOverflowMenu])
             return [_cells objectAtIndex:(i-1)];
@@ -2043,7 +2054,7 @@
 
 - (NSInteger)numberOfVisibleTabs
 {
-    int i, cellCount = [_cells count];
+    NSInteger i, cellCount = [_cells count];
     for (i = 0; i < cellCount; i++){
         if ([[_cells objectAtIndex:i] isInOverflowMenu])
             return i+1;

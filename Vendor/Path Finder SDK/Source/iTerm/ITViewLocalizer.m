@@ -75,13 +75,13 @@
 - (void)localizeView:(NSView*)inView;
 {
     NSArray *subviews = [inView subviews];
-    int x, xcnt = [subviews count];
+    NSInteger x, xcnt = [subviews count];
     
     for (x=0;x<xcnt;x++)
     {
         id view = [subviews objectAtIndex:x];
         NSArray* items;
-        int i, cnt;
+        NSInteger i, cnt;
         NSTabViewItem* tabViewItem;
         
         if ([view isKindOfClass:[NSButton class]])

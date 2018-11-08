@@ -505,14 +505,14 @@ int bitcount (unsigned int n)
     autorelease];
       
    NSArray *line = [aString componentsSeparatedByString:@"\n"];
-   int lineLength = [line count] - 1;
+   NSInteger lineLength = [line count] - 1;
    
    NetstatConnection *c = nil;
    NSMutableArray *a = [[NSMutableArray alloc] init];
    
    if (self.resolveHostnames == NO)
    {
-      for (int i = 0; i < lineLength; i++)
+      for (NSInteger i = 0; i < lineLength; i++)
       {
          // Perl, how I miss thee...
          NSArray *p = [[line objectAtIndex:i] componentsSeparatedByString:@" "];

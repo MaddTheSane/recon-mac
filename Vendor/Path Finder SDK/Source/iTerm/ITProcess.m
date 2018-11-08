@@ -327,7 +327,8 @@ ITGetMachTaskEvents(task_t task, int *faults, int *pageins, int *cow_faults, int
 	int mib[4] = { CTL_KERN, KERN_PROC, name, value };
 	struct kinfo_proc *info;
 	size_t length;
-	int level, count, i;
+	NSInteger count, i;
+    int level;
 	
 	// KERN_PROC_ALL has 3 elements, all others have 4
 	level = name == KERN_PROC_ALL ? 3 : 4;
@@ -483,20 +484,20 @@ ITGetMachTaskEvents(task_t task, int *faults, int *pageins, int *cow_faults, int
 		// extract environment variables from the argument list
 		if (argumentCount >= 0) {
 			// we're using the newer sysctl selector, so use the argument count (less one for the command argument)
-			int i;
+			NSInteger i;
 			for (i = [args count] - 1; i >= (argumentCount - 1); i--) {
 				NSString *string = [args objectAtIndex:i];
-				int index = [string rangeOfString:@"="].location;
+				NSInteger index = [string rangeOfString:@"="].location;
 				if (index != NSNotFound)
 					[env setObject:[string substringFromIndex:index + 1] forKey:[string substringToIndex:index]];
 			}
 			args = [args subarrayWithRange:NSMakeRange(0, i + 1)];
 		} else {
 			// we're using the older sysctl selector, so we just guess by looking for an '=' in the argument
-			int i;
+			NSInteger i;
 			for (i = [args count] - 1; i >= 0; i--) {
 				NSString *string = [args objectAtIndex:i];
-				int index = [string rangeOfString:@"="].location;
+				NSInteger index = [string rangeOfString:@"="].location;
 				if (index == NSNotFound)
 					break;
 				[env setObject:[string substringFromIndex:index + 1] forKey:[string substringToIndex:index]];
@@ -591,7 +592,7 @@ ITGetMachTaskEvents(task_t task, int *faults, int *pageins, int *cow_faults, int
 + (NSArray *)processesForCommand:(NSString *)comm {
 	NSArray *all = [self allProcesses];
 	NSMutableArray *result = [NSMutableArray array];
-	int i, count = [all count];
+	NSInteger i, count = [all count];
 	for (i = 0; i < count; i++)
 		if ([[[all objectAtIndex:i] command] isEqualToString:comm])
 			[result addObject:[all objectAtIndex:i]];

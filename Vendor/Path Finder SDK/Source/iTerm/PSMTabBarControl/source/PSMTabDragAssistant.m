@@ -177,7 +177,7 @@ static PSMTabDragAssistant *sharedDragAssistant = nil;
     [cell setHighlighted:NO];
     NSSize offset = NSZeroSize;
     [pboard declareTypes:[NSArray arrayWithObjects:@"PSMTabBarControlItemPBType", nil] owner: nil];
-    [pboard setString:[[NSNumber numberWithInt:[[control cells] indexOfObject:cell]] stringValue] forType:@"PSMTabBarControlItemPBType"];
+    [pboard setString:[@([[control cells] indexOfObject:cell]) stringValue] forType:@"PSMTabBarControlItemPBType"];
     _animationTimer = [NSTimer scheduledTimerWithTimeInterval:(1.0/30.0) target:self selector:@selector(animateDrag:) userInfo:nil repeats:YES];
 	
 	[[NSNotificationCenter defaultCenter] postNotificationName:PSMTabDragDidBeginNotification object:nil];
@@ -312,7 +312,7 @@ static PSMTabDragAssistant *sharedDragAssistant = nil;
 - (void)performDragOperation
 {
     // move cell
-	int destinationIndex = [[[self destinationTabBar] cells] indexOfObject:[self targetCell]];
+	NSInteger destinationIndex = [[[self destinationTabBar] cells] indexOfObject:[self targetCell]];
 	
 	//there is the slight possibility of the targetCell now being set properly, so avoid errors
 	if (destinationIndex >= [[[self destinationTabBar] cells] count])  {
@@ -499,7 +499,7 @@ static PSMTabDragAssistant *sharedDragAssistant = nil;
 
 - (void)fadeInDragWindow:(NSTimer *)timer
 {
-	float value = [_dragViewWindow alphaValue];
+	CGFloat value = [_dragViewWindow alphaValue];
 	if (value >= kPSMTabDragWindowAlpha || _dragTabWindow == nil) {
 		[timer invalidate];
 		_fadeTimer = nil;
@@ -511,7 +511,7 @@ static PSMTabDragAssistant *sharedDragAssistant = nil;
 
 - (void)fadeOutDragWindow:(NSTimer *)timer
 {
-	float value = [_dragViewWindow alphaValue];
+	CGFloat value = [_dragViewWindow alphaValue];
 	if (value <= 0.0) {
 		[_dragViewWindow setAlphaValue:0.0];
 		[_dragTabWindow setAlphaValue:kPSMTabDragWindowAlpha];
@@ -543,8 +543,8 @@ static PSMTabDragAssistant *sharedDragAssistant = nil;
 {
     BOOL removeFlag = YES;
     NSMutableArray *cells = [control cells];
-    int i, cellCount = [cells count];
-    float position = [control orientation] == PSMTabBarHorizontalOrientation ? [[control style] leftMarginForTabBarControl] : [[control style] topMarginForTabBarControl];
+    NSInteger i, cellCount = [cells count];
+    CGFloat position = [control orientation] == PSMTabBarHorizontalOrientation ? [[control style] leftMarginForTabBarControl] : [[control style] topMarginForTabBarControl];
     
     // identify target cell
     // mouse at beginning of tabs
@@ -637,7 +637,7 @@ static PSMTabDragAssistant *sharedDragAssistant = nil;
     // called upon first drag - must distribute placeholders
     [self distributePlaceholdersInTabBar:control];
     // replace dragged cell with a placeholder, and clean up surrounding cells
-    int cellIndex = [[control cells] indexOfObject:cell];
+    NSInteger cellIndex = [[control cells] indexOfObject:cell];
     PSMTabBarCell *pc = [[[PSMTabBarCell alloc] initPlaceholderWithFrame:[[self draggedCell] frame] expanded:YES inControlView:control] autorelease];
     [[control cells] replaceObjectAtIndex:cellIndex withObject:pc];
     [[control cells] removeObjectAtIndex:(cellIndex + 1)];
@@ -647,7 +647,7 @@ static PSMTabDragAssistant *sharedDragAssistant = nil;
 
 - (void)distributePlaceholdersInTabBar:(PSMTabBarControl *)control
 {
-    int i, numVisibleTabs = [control numberOfVisibleTabs];
+    NSInteger i, numVisibleTabs = [control numberOfVisibleTabs];
     for (i = 0; i < numVisibleTabs; i++){
         PSMTabBarCell *pc = [[[PSMTabBarCell alloc] initPlaceholderWithFrame:[[self draggedCell] frame] expanded:NO inControlView:control] autorelease];
         [[control cells] insertObject:pc atIndex:(2 * i)];
@@ -663,7 +663,7 @@ static PSMTabDragAssistant *sharedDragAssistant = nil;
 
 - (void)removeAllPlaceholdersFromTabBar:(PSMTabBarControl *)control
 {
-    int i, cellCount = [[control cells] count];
+    NSInteger i, cellCount = [[control cells] count];
     for (i = (cellCount - 1); i >= 0; i--){
         PSMTabBarCell *cell = [[control cells] objectAtIndex:i];
         if ([cell isPlaceholder])

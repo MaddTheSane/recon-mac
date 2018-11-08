@@ -499,7 +499,7 @@ static NSColor *deadStateColor;
 		}
 		else
 		{
-			int max = [keystr length];
+			NSInteger max = [keystr length];
 			NSData *data=nil;
 			
 			if (max!=1||[keystr characterAtIndex:0] > 0x7f)

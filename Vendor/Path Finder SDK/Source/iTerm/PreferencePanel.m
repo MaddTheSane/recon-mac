@@ -404,12 +404,12 @@ static NSString *NoHandler = @"<No Handler>";
 }
 
 // NSTableView data source
-- (int) numberOfRowsInTableView: (NSTableView *)aTableView
+- (NSInteger) numberOfRowsInTableView: (NSTableView *)aTableView
 {
 	return [urlTypes count];
 }
 
-- (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(int)rowIndex
+- (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
 {
     //NSLog(@"%s: %@", __PRETTY_FUNCTION__, aTableView);
     
@@ -419,7 +419,7 @@ static NSString *NoHandler = @"<No Handler>";
 // NSTableView delegate
 - (void)tableViewSelectionDidChange:(NSNotification *)aNotification
 {
-	int i;
+	NSInteger i;
 	
     //NSLog(@"%s", __PRETTY_FUNCTION__);
 	if ((i=[urlTable selectedRow])<0) 
@@ -443,7 +443,7 @@ static NSString *NoHandler = @"<No Handler>";
 
 // NSOutlineView data source methods
 // required
-- (id)outlineView:(NSOutlineView *)ov child:(int)index ofItem:(id)item
+- (id)outlineView:(NSOutlineView *)ov child:(NSInteger)index ofItem:(id)item
 {
     //NSLog(@"%s", __PRETTY_FUNCTION__);
 	if (item)
@@ -463,7 +463,7 @@ static NSString *NoHandler = @"<No Handler>";
 		return [[ITAddressBookMgr sharedInstance] isExpandable: item];
 }
 
-- (int)outlineView:(NSOutlineView *)ov numberOfChildrenOfItem:(id)item
+- (NSInteger)outlineView:(NSOutlineView *)ov numberOfChildrenOfItem:(id)item
 {
     //NSLog(@"%s: ov = 0x%x; item = 0x%x; numChildren: %d", __PRETTY_FUNCTION__, ov, item,
 	//	  [[ITAddressBookMgr sharedInstance] numberOfChildrenOfItem: item]);
@@ -490,7 +490,7 @@ static NSString *NoHandler = @"<No Handler>";
 
 - (IBAction)connectURL:(id)sender
 {
-	int i, j;
+	NSInteger i, j;
 
 	if ((i=[urlTable selectedRow])<0 ||(j=[urlHandlerOutline selectedRow])<0) return;
 	if (!j) { // No Handler

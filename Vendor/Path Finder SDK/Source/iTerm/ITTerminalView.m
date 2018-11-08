@@ -261,7 +261,7 @@
 - (void)closeSession: (PTYSession*) aSession
 {	
     NSTabViewItem *aTabViewItem;
-	int numberOfSessions;
+	NSInteger numberOfSessions;
     	
     if ([[self tabView] indexOfTabViewItemWithIdentifier: aSession] == NSNotFound)
         return;
@@ -616,7 +616,7 @@
 - (void)setAntiAlias: (BOOL) bAntiAlias
 {
 	PTYSession *aSession;
-	int i, cnt = [[self tabView] numberOfTabViewItems];
+	NSInteger i, cnt = [[self tabView] numberOfTabViewItems];
 	
 	antiAlias = bAntiAlias;
 	
@@ -666,7 +666,7 @@
 {
    NSLog(@"ITTerminalView: useTransparency");
    
-	int n = [[self tabView] numberOfTabViewItems];
+	NSInteger n = [[self tabView] numberOfTabViewItems];
 	
 	if (n)
 		return [(PTYTextView*)[[[[self tabView] tabViewItemAtIndex:0] identifier] textView] useTransparency];
@@ -676,8 +676,8 @@
 
 - (void)setUseTransparency: (BOOL) flag
 {	
-	int n = [[self tabView] numberOfTabViewItems];
-	int i;
+	NSInteger n = [[self tabView] numberOfTabViewItems];
+	NSInteger i;
 	for (i=0;i<n;i++) {
 		[(PTYTextView*)[[[[self tabView] tabViewItemAtIndex:i] identifier] textView] setUseTransparency:flag];
 	}
@@ -991,8 +991,7 @@
         viewImage = [[[NSImage alloc] initWithSize:contentFrame.size] autorelease];
         NSImage *textviewImage = [[[NSImage alloc] initWithSize:viewRect.size] autorelease];
         
-        [textviewImage setFlipped: YES];
-        [textviewImage lockFocus];
+        [textviewImage lockFocusFlipped:YES];
         //draw the background flipped, which is actually the right way up
         [(PTYTextView*)[[tabViewItem identifier] textView] setForceUpdate: YES];
         [(PTYTextView*)[[tabViewItem identifier] textView] drawRect: viewRect];
@@ -1751,7 +1750,7 @@
 {
 	// had to check for key window, this is sent to first reponder, which can screw up if a panel is in front
 	if ([[self window] isKeyWindow])
-		[outResult setObject:[NSNumber numberWithInt:[[self sessions] count]] forKey:@"numTabs"];
+		[outResult setObject:@([[self sessions] count]) forKey:@"numTabs"];
 }
 
 - (void)newTabAction:(id)sender;

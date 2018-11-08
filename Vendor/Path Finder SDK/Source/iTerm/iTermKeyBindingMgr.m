@@ -143,7 +143,7 @@ static iTermKeyBindingMgr *singleInstance = nil;
 	}
 }
 
-- (int) numberOfEntriesInProfile: (NSString *) profileName
+- (NSInteger) numberOfEntriesInProfile: (NSString *) profileName
 {
 	NSDictionary *keyMappings;
 	
@@ -626,7 +626,7 @@ static iTermKeyBindingMgr *singleInstance = nil;
 	}
 }
 
-- (int) optionKeyForProfile:(NSString *) profileName
+- (NSInteger) optionKeyForProfile:(NSString *) profileName
 {
 	// SNG used different pref
 	return [[NSUserDefaults standardUserDefaults] boolForKey:@"optionKeyIsMeta"];

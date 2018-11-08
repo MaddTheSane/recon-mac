@@ -1041,7 +1041,7 @@ static float vigourOfShake = 0.01f;
       NSArray *a = [notesInHostArrayController arrangedObjects];
       
       // Find the object just added
-      int row = [a indexOfObjectIdenticalTo:h];
+      NSInteger row = [a indexOfObjectIdenticalTo:h];
       
       // Begin the edit in the first column
       [notesTableView editColumn:0

@@ -22,7 +22,7 @@
 
 typedef NS_ENUM(NSInteger, ITermCursorType) { CURSOR_UNDERLINE, CURSOR_VERTICAL, CURSOR_BOX };
 
-@interface PreferencePanel : NSWindowController <NSWindowDelegate, NSTextFieldDelegate>
+@interface PreferencePanel : NSWindowController <NSWindowDelegate, NSTextFieldDelegate, NSTableViewDataSource, NSOutlineViewDataSource>
 {
 	IBOutlet NSPopUpButton *windowStyle;
 	IBOutlet NSPopUpButton *tabPosition;

@@ -64,7 +64,6 @@
 	NSSize arrowSize = arrowRect.size;
 	
     result = [[[NSImage alloc] initWithSize:arrowSize] autorelease];
-    [result setFlipped:NO];
     
     [result lockFocus];
 	{

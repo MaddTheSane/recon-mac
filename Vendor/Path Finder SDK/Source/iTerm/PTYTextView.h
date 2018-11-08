@@ -36,7 +36,7 @@ typedef struct
 	
 enum { SELECT_CHAR, SELECT_WORD, SELECT_LINE };
 
-@interface PTYTextView : NSView <NSTextInput>
+@interface PTYTextView : NSView <NSTextInput, NSDraggingDestination>
 {
     // This is a flag to let us know whether we are handling this
     // particular drag and drop operation. We are using it because
@@ -232,16 +232,6 @@ enum { SELECT_CHAR, SELECT_WORD, SELECT_LINE };
 - (void)setTransparency: (float) fVal;
 - (BOOL) useTransparency;
 - (void)setUseTransparency: (BOOL) flag;
-
-//
-// Drag and Drop methods for our text view
-//
-- (unsigned int) draggingEntered: (id<NSDraggingInfo>) sender;
-- (unsigned int) draggingUpdated: (id<NSDraggingInfo>) sender;
-- (void)draggingExited: (id<NSDraggingInfo>) sender;
-- (BOOL) prepareForDragOperation: (id<NSDraggingInfo>) sender;
-- (BOOL) performDragOperation: (id<NSDraggingInfo>) sender;
-- (void)concludeDragOperation: (id<NSDraggingInfo>) sender;
 
 // Cursor control
 - (void)resetCursorRects;

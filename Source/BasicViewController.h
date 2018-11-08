@@ -14,7 +14,7 @@
 
 @class BonjourListener;
 
-@interface BasicViewController : ManagingViewController {
+@interface BasicViewController : ManagingViewController <NSMenuItemValidation> {
 
    // Global outlets
    IBOutlet NSPopUpButton *taskSelectionPopUp;
@@ -106,7 +106,6 @@ int bitcount (unsigned int n);
 
 - (void)createNetstatMenu;
 - (IBAction)handleNetstatMenuClick:(id)sender;
-- (BOOL)validateMenuItem:(NSMenuItem *)menuItem;
 - (void)menuNeedsUpdate:(NSMenu *)menu;
 
 @end

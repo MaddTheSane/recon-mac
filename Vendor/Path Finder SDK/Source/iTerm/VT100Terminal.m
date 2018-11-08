@@ -1244,7 +1244,7 @@ static VT100TCC decode_string(unsigned char *datap,
             autorelease];
 		
 		if (result.u.string==nil) {
-            int i;
+            NSInteger i;
             for (i=*rmlen-1;i>=0&&!result.u.string;i--) {
 				datap[i]=UNKNOWN;
 				result.u.string = [[[NSString alloc] initWithBytes:datap length:*rmlen encoding:encoding] autorelease];

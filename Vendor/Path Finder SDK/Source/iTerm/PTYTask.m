@@ -266,7 +266,7 @@ static int writep(int fds, char *buf, size_t len)
     PID = forkpty(&FILDES, ttyname, &term, &win);
     if (PID == (pid_t)0) {
 		const char *path = [[progpath stringByStandardizingPath] UTF8String];
-		int max = args == nil ? 0: [args count];
+		NSInteger max = args == nil ? 0: [args count];
 		const char *argv[max + 2];
 		
 		argv[0] = path;
@@ -282,7 +282,7 @@ static int writep(int fds, char *buf, size_t len)
 		
 		if (env != nil ) {
 			NSArray *keys = [env allKeys];
-			int i, max = [keys count];
+			NSInteger i, max = [keys count];
 			for (i = 0; i < max; ++i) {
 				NSString *key, *value;
 				key = [keys objectAtIndex:i];

@@ -26,7 +26,7 @@ extern NSString * const BAFReconHasRun;
 extern NSString * const BAFNmapBinaryLocation;
 extern NSString * const BAFSavedSessionsDirectory;
 
-@interface MyDocument : NSPersistentDocument {
+@interface MyDocument : NSPersistentDocument <NSApplicationDelegate> {
 
    NSMutableArray *viewControllers;   
    

@@ -265,10 +265,10 @@
    if ( [elementName isEqualToString:@"hosts"] ) {
       if (inRunstats == TRUE) 
       {
-         [currentSession setHostsUp:[NSNumber numberWithInt:[[attributeDict objectForKey:@"up"] integerValue]]];
-         [currentSession setHostsDown:[NSNumber numberWithInt:[[attributeDict objectForKey:@"down"] integerValue]]];
-         [currentSession setHostsTotal:[NSNumber numberWithInt:[[attributeDict objectForKey:@"total"] integerValue]]];            
-         self.inRunstats = FALSE;          
+         [currentSession setHostsUp:[NSNumber numberWithInteger:[[attributeDict objectForKey:@"up"] integerValue]]];
+         [currentSession setHostsDown:[NSNumber numberWithInteger:[[attributeDict objectForKey:@"down"] integerValue]]];
+         [currentSession setHostsTotal:[NSNumber numberWithInteger:[[attributeDict objectForKey:@"total"] integerValue]]];
+         self.inRunstats = FALSE;
       }
       
       return;

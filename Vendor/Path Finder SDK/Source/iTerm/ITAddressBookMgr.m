@@ -144,7 +144,7 @@ static TreeNode *defaultBookmark = nil;
 - (NSDictionary *) bookmarks
 {
 	NSDictionary *aDict;
-	int anIndex;
+	NSInteger anIndex;
 	
 	//NSLog(@"%s", __PRETTY_FUNCTION__);
 	

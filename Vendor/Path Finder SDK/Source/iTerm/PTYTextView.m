@@ -1080,7 +1080,7 @@ static int cacheSize;
 		VT100Terminal *terminal = [[self screen] terminal];
 		PTYTask *task = [[self screen] shellTask];
 		
-		int bnum = [event buttonNumber];
+		NSInteger bnum = [event buttonNumber];
 		if (bnum == 2) bnum = 1;
 		
 		switch ([terminal mouseMode]) {
@@ -1948,20 +1948,20 @@ static int cacheSize;
 //
 // Called when our drop area is entered
 //
-- (unsigned int) draggingEntered:(id <NSDraggingInfo>)sender
+- (NSDragOperation) draggingEntered:(id <NSDraggingInfo>)sender
 {
     // Always say YES; handle failure later.
     bExtendedDragNDrop = YES;
     
-    return bExtendedDragNDrop;
+    return bExtendedDragNDrop ? NSDragOperationCopy : 0;
 }
 
 //
 // Called when the dragged object is moved within our drop area
 //
-- (unsigned int) draggingUpdated:(id <NSDraggingInfo>)sender
+- (NSDragOperation) draggingUpdated:(id <NSDraggingInfo>)sender
 {
-    unsigned int iResult;
+    NSDragOperation iResult;
     
     // Let's see if our parent NSTextView knows what to do
     iResult = [super draggingUpdated: sender];
@@ -2129,7 +2129,7 @@ static int cacheSize;
 {
 	NSRect visibleRect;
 	int lineOffset, numLines;
-	int type = sender ? [sender tag] : 0;
+	NSInteger type = sender ? [sender tag] : 0;
 	
 	switch (type)
 	{
@@ -2911,7 +2911,7 @@ static int cacheSize;
         if (!c || !(isnumber(c) || isalpha(c) || strchr(urlSet, c))) break;
 		startx = x1; starty = y1;
 		x1--;
-		if (x1<0) y1--, x1=w-1;
+        if (x1<0) {y1--; x1=w-1;}
     }
     if (startx == -1) return nil;
 	
@@ -2921,7 +2921,7 @@ static int cacheSize;
         if (!c || !(isnumber(c) || isalpha(c) || strchr(urlSet, c))) break;
 		endx = x2; endy = y2;
 		x2++;
-		if (x2>=w) y2++, x2=0;
+        if (x2>=w) {y2++; x2=0;}
     }
     
 	return ([self contentFromX:startx Y:starty ToX:endx Y:endy pad: YES]);
@@ -2972,7 +2972,7 @@ static int cacheSize;
 	if (direction) {
 		x1 = X -1;
 		y1 = Y;
-		if (x1<0) y1--, x1=w-1;
+        if (x1<0) {y1--; x1=w-1;}
 		for (;x1>=0&&y1>=0;) {
 			c = [self _getCharacterAtX:x1 Y:y1];
 			if (c == sameParenthesis) level++;
@@ -2981,7 +2981,7 @@ static int cacheSize;
 				if (level<0) break;
 			}
 			x1--;
-			if (x1<0) y1--, x1=w-1;
+            if (x1<0) {y1--; x1=w-1;}
 		}
 		if (level<0) {
 			startX = x1;
@@ -2997,7 +2997,7 @@ static int cacheSize;
 	else {
 		x1 = X +1;
 		y1 = Y;
-		if (x1>=w) y1++, x1=0;
+        if (x1>=w) {y1++; x1=0;}
 		
 		for (;x1<w&&y1<h;) {
 			c = [self _getCharacterAtX:x1 Y:y1];
@@ -3007,7 +3007,7 @@ static int cacheSize;
 				if (level<0) break;
 			}
 			x1++;
-			if (x1>=w) y1++, x1=0;
+            if (x1>=w) {y1++; x1=0;}
 		}
 		if (level<0) {
 			startX = X;
@@ -3255,7 +3255,7 @@ static int cacheSize;
 - (void)_dragText: (NSString *) aString forEvent: (NSEvent *) theEvent
 {
 	NSImage *anImage;
-	int length;
+	NSInteger length;
 	NSString *tmpString;
 	NSPasteboard *pboard;
 	NSArray *pbtypes;

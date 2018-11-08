@@ -7,6 +7,7 @@
 //
 
 #import "NTSynchronousTask.h"
+#import "NTTaskController.h"
 
 @interface NTSynchronousTask ()
 - (void)run:(NSString*)toolPath directory:(NSString*)currentDirectory withArgs:(NSArray*)args input:(NSData*)input;
