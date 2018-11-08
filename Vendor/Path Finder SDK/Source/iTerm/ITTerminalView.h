@@ -30,8 +30,8 @@
 	int mCharWidth;
 	int mCharHeight;
 	
-	float charHorizontalSpacingMultiplier;
-	float charVerticalSpacingMultiplier;
+	CGFloat charHorizontalSpacingMultiplier;
+	CGFloat charVerticalSpacingMultiplier;
 	
     NSFont *FONT, *NAFONT;
 	
@@ -47,12 +47,12 @@
 + (ITTerminalView*)view:(NSDictionary *)entry;
 
 - (void)setupSession: (PTYSession *) aSession title: (NSString *)title;
-- (void)insertSession: (PTYSession *) aSession atIndex: (int) index;
+- (void)insertSession: (PTYSession *) aSession atIndex: (NSInteger) index;
 - (void)closeSession: (PTYSession*) aSession;
 - (IBAction)previousSession:(id)sender;
 - (IBAction)nextSession:(id)sender;
 - (PTYSession *) currentSession;
-- (int) currentSessionIndex;
+- (NSInteger) currentSessionIndex;
 - (NSString *) currentSessionName;
 - (void)setCurrentSessionName: (NSString *) theSessionName;
 
@@ -74,8 +74,7 @@
 - (float) smallerSizeForSize: (float) aSize;
 - (NSFont *) font;
 - (NSFont *) nafont;
-- (BOOL) antiAlias;
-- (void)setAntiAlias: (BOOL) bAntiAlias;
+@property (nonatomic) BOOL antiAlias;
 
 - (void)setCharSizeUsingFont: (NSFont *)font;
 - (int)width;
@@ -87,8 +86,8 @@
 - (int)charHeight;
 - (void)setCharHeight:(int)theCharHeight;
 
-- (float) charSpacingVertical;
-- (float) charSpacingHorizontal;
+@property (readonly) CGFloat charSpacingVertical;
+@property (readonly) CGFloat charSpacingHorizontal;
 - (BOOL) useTransparency;
 - (void)setUseTransparency: (BOOL) flag;
 
@@ -111,8 +110,8 @@
 - (NSMenu *)tabView:(NSTabView *)aTabView menuForTabViewItem:(NSTabViewItem *)tabViewItem;
 
 // NSTabView
-- (PTYTabView *)tabView;
-- (PSMTabBarControl *)tabBarControl;
+@property (readonly, strong) PTYTabView *tabView;
+@property (readonly, nonatomic, strong) PSMTabBarControl *tabBarControl;
 
 - (void)moveTabToNewWindowContextualMenuAction:(id)sender;
 - (void)setLabelColor: (NSColor *) color forTabViewItem: tabViewItem;
@@ -134,11 +133,11 @@
 			  withURL:(NSString*)url;
 
 - (void)appendSession:(PTYSession *)object;
-- (void)removeFromSessionsAtIndex:(unsigned)index;
+- (void)removeFromSessionsAtIndex:(NSUInteger)index;
 - (NSArray*)sessions;
 - (void)addInSessions:(PTYSession *)object;
 - (void)insertInSessions:(PTYSession *)object;
-- (void)insertInSessions:(PTYSession *)object atIndex:(unsigned)index;
+- (void)insertInSessions:(PTYSession *)object atIndex:(NSUInteger)index;
 @end
 
 @interface ITTerminalView (ScriptingSupport)

@@ -55,6 +55,7 @@
 
 - (IBAction)showPrefWindow:(id)sender;
 - (IBAction)showBookmarkWindow:(id)sender;
+- (void)newTabAction:(id)sender;
 
 // Notifications
 - (void)reloadMenus: (NSNotification *) aNotification;

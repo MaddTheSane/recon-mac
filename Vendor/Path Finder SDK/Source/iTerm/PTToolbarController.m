@@ -34,8 +34,7 @@ NSString *CommandToolbarItem = @"Command";
 - (NSMenu*)buildConfigPopupMenu:(BOOL)addDummyItem;
 - (NSToolbarItem*)toolbarItemWithIdentifier:(NSString*)identifier;
 
-- (NSToolbar *)toolbar;
-- (void)setToolbar:(NSToolbar *)theToolbar;
+@property (strong) NSToolbar *toolbar;
 
 @property (strong) ITTerminalView *term;
 @end
@@ -242,18 +241,7 @@ NSString *CommandToolbarItem = @"Command";
 //---------------------------------------------------------- 
 //  toolbar 
 //---------------------------------------------------------- 
-- (NSToolbar *)toolbar
-{
-    return mToolbar; 
-}
-
-- (void)setToolbar:(NSToolbar *)theToolbar
-{
-    if (mToolbar != theToolbar)
-    {
-        mToolbar = theToolbar;
-    }
-}
+@synthesize toolbar=mToolbar;
 
 - (void)setupToolbar:(NSWindow*)window;
 {   

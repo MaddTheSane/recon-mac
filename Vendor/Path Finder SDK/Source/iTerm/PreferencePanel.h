@@ -22,7 +22,7 @@
 
 typedef NS_ENUM(NSInteger, ITermCursorType) { CURSOR_UNDERLINE, CURSOR_VERTICAL, CURSOR_BOX };
 
-@interface PreferencePanel : NSWindowController <NSWindowDelegate, NSTextFieldDelegate, NSTableViewDataSource, NSOutlineViewDataSource>
+@interface PreferencePanel : NSWindowController <NSWindowDelegate, NSTextFieldDelegate, NSTableViewDataSource, NSOutlineViewDataSource, NSTableViewDelegate, NSOutlineViewDelegate>
 {
 	IBOutlet NSPopUpButton *windowStyle;
 	IBOutlet NSPopUpButton *tabPosition;
@@ -48,7 +48,7 @@ typedef NS_ENUM(NSInteger, ITermCursorType) { CURSOR_UNDERLINE, CURSOR_VERTICAL,
     BOOL defaultCopySelection;
 	BOOL defaultPasteFromClipboard;
     BOOL defaultHideTab;
-    NSInteger defaultTabViewType;
+    NSTabViewType defaultTabViewType;
     BOOL defaultPromptOnClose;
     BOOL defaultFocusFollowsMouse;
 	BOOL defaultEnableBonjour;
@@ -75,14 +75,11 @@ typedef NS_ENUM(NSInteger, ITermCursorType) { CURSOR_UNDERLINE, CURSOR_VERTICAL,
 
 - (void)run;
 
-- (BOOL) copySelection;
-- (void)setCopySelection: (BOOL) flag;
-- (BOOL) pasteFromClipboard;
-- (void)setPasteFromClipboard: (BOOL) flag;
+@property BOOL copySelection;
+@property BOOL pasteFromClipboard;
 - (BOOL) hideTab;
-- (NSTabViewType) tabViewType;
+@property NSTabViewType tabViewType;
 - (int) windowStyle;
-- (void)setTabViewType: (NSTabViewType) type;
 - (BOOL) promptOnClose;
 - (BOOL) focusFollowsMouse;
 - (BOOL) enableBonjour;
@@ -92,17 +89,17 @@ typedef NS_ENUM(NSInteger, ITermCursorType) { CURSOR_UNDERLINE, CURSOR_VERTICAL,
 - (BOOL) openBookmark;
 - (int)  refreshRate;
 - (NSString *) wordChars;
-- (ITermCursorType) cursorType;
+@property (readonly) ITermCursorType cursorType;
 - (TreeNode *) handlerBookmarkForURL:(NSString *)url;
 
 // Hidden preferences
 - (BOOL) useUnevenTabs;
-- (int) minTabWidth;
-- (int) minCompactTabWidth;
-- (int) optimumTabWidth;
-- (float) strokeWidth;
-- (float) boldStrokeWidth;
-- (int) cacheSize;
+- (NSInteger) minTabWidth;
+- (NSInteger) minCompactTabWidth;
+- (NSInteger) optimumTabWidth;
+- (CGFloat) strokeWidth;
+- (CGFloat) boldStrokeWidth;
+- (NSInteger) cacheSize;
 - (NSString *) searchCommand;
 
 @end

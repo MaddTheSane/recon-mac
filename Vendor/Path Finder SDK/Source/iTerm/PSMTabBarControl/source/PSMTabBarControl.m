@@ -257,11 +257,6 @@
 @synthesize tabView;
 @synthesize style;
 
-- (id<PSMTabStyle>)style
-{
-    return style;
-}
-
 - (NSString *)styleName
 {
     return [style name];
@@ -303,10 +298,7 @@
     [self setStyle:newStyle];
 }
 
-- (PSMTabBarOrientation)orientation
-{
-	return _orientation;
-}
+@synthesize orientation=_orientation;
 
 - (void)setOrientation:(PSMTabBarOrientation)value
 {
@@ -322,10 +314,7 @@
 	}
 }
 
-- (BOOL)canCloseOnlyTab
-{
-    return _canCloseOnlyTab;
-}
+@synthesize canCloseOnlyTab=_canCloseOnlyTab;
 
 - (void)setCanCloseOnlyTab:(BOOL)value
 {
@@ -335,10 +324,7 @@
     }
 }
 
-- (BOOL)disableTabClose
-{
-	return _disableTabClose;
-}
+@synthesize disableTabClose=_disableTabClose;
 
 - (void)setDisableTabClose:(BOOL)value
 {
@@ -346,10 +332,7 @@
 	[self update:_automaticallyAnimates];
 }
 
-- (BOOL)hideForSingleTab
-{
-    return _hideForSingleTab;
-}
+@synthesize hideForSingleTab=_hideForSingleTab;
 
 - (void)setHideForSingleTab:(BOOL)value
 {
@@ -357,10 +340,7 @@
     [self update];
 }
 
-- (BOOL)showAddTabButton
-{
-    return _showAddTabButton;
-}
+@synthesize showAddTabButton=_showAddTabButton;
 
 - (void)setShowAddTabButton:(BOOL)value
 {
@@ -368,43 +348,31 @@
     [self update];
 }
 
-- (int)cellMinWidth
-{
-    return _cellMinWidth;
-}
+@synthesize cellMinWidth=_cellMinWidth;
 
-- (void)setCellMinWidth:(int)value
+- (void)setCellMinWidth:(NSInteger)value
 {
     _cellMinWidth = value;
     [self update:_automaticallyAnimates];
 }
 
-- (int)cellMaxWidth
-{
-    return _cellMaxWidth;
-}
+@synthesize cellMaxWidth=_cellMaxWidth;
 
-- (void)setCellMaxWidth:(int)value
+- (void)setCellMaxWidth:(NSInteger)value
 {
     _cellMaxWidth = value;
     [self update:_automaticallyAnimates];
 }
 
-- (int)cellOptimumWidth
-{
-    return _cellOptimumWidth;
-}
+@synthesize cellOptimumWidth=_cellOptimumWidth;
 
-- (void)setCellOptimumWidth:(int)value
+- (void)setCellOptimumWidth:(NSInteger)value
 {
     _cellOptimumWidth = value;
     [self update:_automaticallyAnimates];
 }
 
-- (BOOL)sizeCellsToFit
-{
-    return _sizeCellsToFit;
-}
+@synthesize sizeCellsToFit=_sizeCellsToFit;
 
 - (void)setSizeCellsToFit:(BOOL)value
 {
@@ -412,10 +380,7 @@
     [self update:_automaticallyAnimates];
 }
 
-- (BOOL)useOverflowMenu
-{
-    return _useOverflowMenu;
-}
+@synthesize useOverflowMenu=_useOverflowMenu;
 
 - (void)setUseOverflowMenu:(BOOL)value
 {
@@ -423,30 +388,10 @@
     [self update];
 }
 
-- (PSMRolloverButton *)addTabButton
-{
-    return _addTabButton;
-}
-
-- (PSMOverflowPopUpButton *)overflowPopUpButton
-{
-    return _overflowPopUpButton;
-}
-
-- (int)tabLocation
-{
-    return _tabLocation;
-}
-
-- (void)setTabLocation:(int)value
-{
-    _tabLocation = value;
-}
-
-- (BOOL)allowsBackgroundTabClosing
-{
-	return _allowsBackgroundTabClosing;
-}
+@synthesize addTabButton=_addTabButton;
+@synthesize overflowPopUpButton=_overflowPopUpButton;
+@synthesize tabLocation=_tabLocation;
+@synthesize allowsBackgroundTabClosing=_allowsBackgroundTabClosing;
 
 - (void)setAllowsBackgroundTabClosing:(BOOL)value
 {
@@ -454,35 +399,9 @@
 	[self update];
 }
 
-- (BOOL)allowsResizing
-{
-	return _allowsResizing;
-}
-
-- (void)setAllowsResizing:(BOOL)value
-{
-	_allowsResizing = value;
-}
-
-- (BOOL)selectsTabsOnMouseDown
-{
-	return _selectsTabsOnMouseDown;
-}
-
-- (void)setSelectsTabsOnMouseDown:(BOOL)value
-{
-	_selectsTabsOnMouseDown = value;
-}
-
-- (BOOL)automaticallyAnimates
-{
-	return _automaticallyAnimates;
-}
-
-- (void)setAutomaticallyAnimates:(BOOL)value
-{
-	_automaticallyAnimates = value;
-}
+@synthesize allowsResizing=_allowsResizing;
+@synthesize selectsTabsOnMouseDown=_selectsTabsOnMouseDown;
+@synthesize automaticallyAnimates=_automaticallyAnimates;
 
 #pragma mark -
 #pragma mark Functionality
@@ -1863,7 +1782,7 @@
         [aCoder encodeObject:_overflowPopUpButton forKey:@"PSMoverflowPopUpButton"];
         [aCoder encodeObject:_addTabButton forKey:@"PSMaddTabButton"];
         [aCoder encodeObject:style forKey:@"PSMstyle"];
-		[aCoder encodeInt:_orientation forKey:@"PSMorientation"];
+		[aCoder encodeInteger:_orientation forKey:@"PSMorientation"];
         [aCoder encodeBool:_canCloseOnlyTab forKey:@"PSMcanCloseOnlyTab"];
 		[aCoder encodeBool:_disableTabClose forKey:@"PSMdisableTabClose"];
         [aCoder encodeBool:_hideForSingleTab forKey:@"PSMhideForSingleTab"];
@@ -1872,9 +1791,9 @@
 		[aCoder encodeBool:_selectsTabsOnMouseDown forKey:@"PSMselectsTabsOnMouseDown"];
         [aCoder encodeBool:_showAddTabButton forKey:@"PSMshowAddTabButton"];
         [aCoder encodeBool:_sizeCellsToFit forKey:@"PSMsizeCellsToFit"];
-        [aCoder encodeInt:_cellMinWidth forKey:@"PSMcellMinWidth"];
-        [aCoder encodeInt:_cellMaxWidth forKey:@"PSMcellMaxWidth"];
-        [aCoder encodeInt:_cellOptimumWidth forKey:@"PSMcellOptimumWidth"];
+        [aCoder encodeInteger:_cellMinWidth forKey:@"PSMcellMinWidth"];
+        [aCoder encodeInteger:_cellMaxWidth forKey:@"PSMcellMaxWidth"];
+        [aCoder encodeInteger:_cellOptimumWidth forKey:@"PSMcellOptimumWidth"];
         [aCoder encodeInt:_currentStep forKey:@"PSMcurrentStep"];
         [aCoder encodeBool:_isHidden forKey:@"PSMisHidden"];
         [aCoder encodeBool:_hideIndicators forKey:@"PSMhideIndicators"];
@@ -1898,7 +1817,7 @@
             _overflowPopUpButton = [aDecoder decodeObjectForKey:@"PSMoverflowPopUpButton"];
             _addTabButton = [aDecoder decodeObjectForKey:@"PSMaddTabButton"];
             style = [aDecoder decodeObjectForKey:@"PSMstyle"];
-			_orientation = [aDecoder decodeIntForKey:@"PSMorientation"];
+			_orientation = [aDecoder decodeIntegerForKey:@"PSMorientation"];
             _canCloseOnlyTab = [aDecoder decodeBoolForKey:@"PSMcanCloseOnlyTab"];
 			_disableTabClose = [aDecoder decodeBoolForKey:@"PSMdisableTabClose"];
             _hideForSingleTab = [aDecoder decodeBoolForKey:@"PSMhideForSingleTab"];
@@ -1907,9 +1826,9 @@
 			_selectsTabsOnMouseDown = [aDecoder decodeBoolForKey:@"PSMselectsTabsOnMouseDown"];
             _showAddTabButton = [aDecoder decodeBoolForKey:@"PSMshowAddTabButton"];
             _sizeCellsToFit = [aDecoder decodeBoolForKey:@"PSMsizeCellsToFit"];
-            _cellMinWidth = [aDecoder decodeIntForKey:@"PSMcellMinWidth"];
-            _cellMaxWidth = [aDecoder decodeIntForKey:@"PSMcellMaxWidth"];
-            _cellOptimumWidth = [aDecoder decodeIntForKey:@"PSMcellOptimumWidth"];
+            _cellMinWidth = [aDecoder decodeIntegerForKey:@"PSMcellMinWidth"];
+            _cellMaxWidth = [aDecoder decodeIntegerForKey:@"PSMcellMaxWidth"];
+            _cellOptimumWidth = [aDecoder decodeIntegerForKey:@"PSMcellOptimumWidth"];
             _currentStep = [aDecoder decodeIntForKey:@"PSMcurrentStep"];
             _isHidden = [aDecoder decodeBoolForKey:@"PSMisHidden"];
             _hideIndicators = [aDecoder decodeBoolForKey:@"PSMhideIndicators"];

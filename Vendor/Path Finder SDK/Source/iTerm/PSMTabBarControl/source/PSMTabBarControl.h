@@ -39,10 +39,10 @@
 @protocol PSMTabStyle;
 @protocol TabBarControlDelegate;
 
-typedef enum {
+typedef NS_ENUM(NSInteger, PSMTabBarOrientation) {
 	PSMTabBarHorizontalOrientation,
 	PSMTabBarVerticalOrientation
-} PSMTabBarOrientation;
+};
 
 typedef NS_OPTIONS(UInt32, PSMTabState) {
     PSMTab_SelectedMask             = 1 << 1,
@@ -54,7 +54,7 @@ typedef NS_OPTIONS(UInt32, PSMTabState) {
     PSMTab_PositionSingleMask       = 1 << 7
 };
 
-enum {
+typedef NS_ENUM(NSInteger, PSMTabLocation) {
     PSMTab_TopTab           = 0,
     PSMTab_BottomTab		= 1
 };
@@ -63,7 +63,7 @@ enum {
 {    
     // control basics
     NSMutableArray              *_cells;                    // the cells that draw the tabs
-    IBOutlet NSTabView          *tabView;                   // the tab view being navigated
+    NSTabView          			*tabView;                   // the tab view being navigated
     PSMOverflowPopUpButton      *_overflowPopUpButton;      // for too many tabs
     PSMRolloverButton           *_addTabButton;
     
@@ -79,7 +79,7 @@ enum {
 	PSMTabBarOrientation		_orientation;
 	BOOL						_automaticallyAnimates;
 	NSTimer						*_animationTimer;
-	float						_animationDelta;
+	CGFloat						_animationDelta;
 	
 	// behavior
 	BOOL						_allowsBackgroundTabClosing;
@@ -90,15 +90,15 @@ enum {
 	BOOL						_resizing;
 	
     // cell width
-    int                         _cellMinWidth;
-    int                         _cellMaxWidth;
-    int                         _cellOptimumWidth;
+    NSInteger                   _cellMinWidth;
+    NSInteger                   _cellMaxWidth;
+    NSInteger                   _cellOptimumWidth;
     
     // animation for hide/show
     int                         _currentStep;
     BOOL                        _isHidden;
     BOOL                        _hideIndicators;
-    IBOutlet id                 partnerView;                // gets resized when hide/show
+    id                 			partnerView;                // gets resized when hide/show
     BOOL                        _awakenedFromNib;
 	int							_tabBarWidth;
     
@@ -108,67 +108,46 @@ enum {
 	BOOL						_closeClicked;
     
     // MVC help
-    IBOutlet id<TabBarControlDelegate> delegate;
+    __weak id<TabBarControlDelegate> delegate;
     
     // orientation, top or bottom
-    int                         _tabLocation;
-    
+    PSMTabLocation              _tabLocation;
 }
 
 // control characteristics
 + (NSBundle *)bundle;
 
 // control configuration
-@property PSMTabBarOrientation orientation;
-- (PSMTabBarOrientation)orientation;
-- (void)setOrientation:(PSMTabBarOrientation)value;
-- (BOOL)canCloseOnlyTab;
-- (void)setCanCloseOnlyTab:(BOOL)value;
-- (BOOL)disableTabClose;
-- (void)setDisableTabClose:(BOOL)value;
-@property (strong) id<PSMTabStyle> style;
-- (id<PSMTabStyle>)style;
-- (void)setStyle:(id <PSMTabStyle>)newStyle;
+@property (nonatomic) PSMTabBarOrientation orientation;
+@property (nonatomic) BOOL canCloseOnlyTab;
+@property (nonatomic) BOOL disableTabClose;
+@property (nonatomic, strong) id<PSMTabStyle> style;
 @property (weak, setter=setStyleNamed:) NSString *styleName;
-- (BOOL)hideForSingleTab;
-- (void)setHideForSingleTab:(BOOL)value;
-- (BOOL)showAddTabButton;
-- (void)setShowAddTabButton:(BOOL)value;
-- (int)cellMinWidth;
-- (void)setCellMinWidth:(int)value;
-- (int)cellMaxWidth;
-- (void)setCellMaxWidth:(int)value;
-- (int)cellOptimumWidth;
-- (void)setCellOptimumWidth:(int)value;
-- (BOOL)sizeCellsToFit;
-- (void)setSizeCellsToFit:(BOOL)value;
-- (BOOL)useOverflowMenu;
-- (void)setUseOverflowMenu:(BOOL)value;
-- (BOOL)allowsBackgroundTabClosing;
-- (void)setAllowsBackgroundTabClosing:(BOOL)value;
-- (BOOL)allowsResizing;
-- (void)setAllowsResizing:(BOOL)value;
-- (BOOL)selectsTabsOnMouseDown;
-- (void)setSelectsTabsOnMouseDown:(BOOL)value;
-- (BOOL)automaticallyAnimates;
-- (void)setAutomaticallyAnimates:(BOOL)value;
-- (int)tabLocation;
-- (void)setTabLocation:(int)value;
+@property (nonatomic) BOOL hideForSingleTab;
+@property (nonatomic) BOOL showAddTabButton;
+@property (nonatomic) NSInteger cellMinWidth;
+@property (nonatomic) NSInteger cellMaxWidth;
+@property (nonatomic) NSInteger cellOptimumWidth;
+@property (nonatomic) BOOL sizeCellsToFit;
+@property (nonatomic) BOOL useOverflowMenu;
+@property (nonatomic) BOOL allowsBackgroundTabClosing;
+@property BOOL allowsResizing;
+@property BOOL selectsTabsOnMouseDown;
+@property BOOL automaticallyAnimates;
+@property PSMTabLocation tabLocation;
 
 // accessors
-@property (strong) NSTabView *tabView;
-- (id<TabBarControlDelegate>)delegate;
-- (void)setDelegate:(id<TabBarControlDelegate>)object;
-@property  id<TabBarControlDelegate> delegate;
-@property (strong) id partnerView;
+@property (strong) IBOutlet NSTabView *tabView;
+@property (weak) IBOutlet id<TabBarControlDelegate> delegate;
+@property (strong) IBOutlet id partnerView;
 
 // the buttons
-- (PSMRolloverButton *)addTabButton;
-- (PSMOverflowPopUpButton *)overflowPopUpButton;
+@property (readonly, strong) PSMRolloverButton *addTabButton;
+@property (readonly, strong) PSMOverflowPopUpButton *overflowPopUpButton;
 
 // tab information
 - (NSMutableArray *)representedTabViewItems;
-- (NSInteger)numberOfVisibleTabs;
+@property (readonly) NSInteger numberOfVisibleTabs;
 
 // special effects
 - (void)hideTabBar:(BOOL)hide animate:(BOOL)animate;
@@ -219,13 +198,13 @@ enum {
 - (NSString *)tabView:(NSTabView *)aTabView toolTipForTabViewItem:(NSTabViewItem *)tabViewItem;
 
 //accessibility
-- (NSString *)accessibilityStringForTabView:(NSTabView *)aTabView objectCount:(int)objectCount;
+- (NSString *)accessibilityStringForTabView:(NSTabView *)aTabView objectCount:(NSInteger)objectCount;
 
 - (void)tabView:(NSTabView *)tabView willSelectTabViewItem:(NSTabViewItem *)tabViewItem;
 - (void)tabView:(NSTabView *)tabView didSelectTabViewItem:(NSTabViewItem *)tabViewItem;
 - (void)tabView:(NSTabView *)tabView willRemoveTabViewItem:(NSTabViewItem *)tabViewItem;
 - (void)tabView:(NSTabView *)tabView willAddTabViewItem:(NSTabViewItem *)tabViewItem;
-- (void)tabView:(NSTabView *)tabView willInsertTabViewItem:(NSTabViewItem *)tabViewItem atIndex:(int) index;
+- (void)tabView:(NSTabView *)tabView willInsertTabViewItem:(NSTabViewItem *)tabViewItem atIndex:(NSInteger) index;
 - (void)tabViewDidChangeNumberOfTabViewItems:(NSTabView *)tabView;
 
 // iTerm add-on

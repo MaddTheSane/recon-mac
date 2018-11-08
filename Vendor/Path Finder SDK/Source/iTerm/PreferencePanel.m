@@ -81,18 +81,18 @@ static NSString *NoHandler = @"<No Handler>";
 	defaultWindowStyle=[prefs objectForKey:@"WindowStyle"]?[prefs integerForKey:@"WindowStyle"]:0;
     defaultTabViewType=[prefs objectForKey:@"TabViewType"]?[prefs integerForKey:@"TabViewType"]:0;
     if (defaultTabViewType>1) defaultTabViewType = 0;
-    defaultCopySelection=[prefs objectForKey:@"CopySelection"]?[[prefs objectForKey:@"CopySelection"] boolValue]:YES;
-	defaultPasteFromClipboard=[prefs objectForKey:@"PasteFromClipboard"]?[[prefs objectForKey:@"PasteFromClipboard"] boolValue]:YES;
-    defaultHideTab=[prefs objectForKey:@"HideTab"]?[[prefs objectForKey:@"HideTab"] boolValue]: NO;
-    defaultPromptOnClose = [prefs objectForKey:@"PromptOnClose"]?[[prefs objectForKey:@"PromptOnClose"] boolValue]: NO;
-    defaultFocusFollowsMouse = [prefs objectForKey:@"FocusFollowsMouse"]?[[prefs objectForKey:@"FocusFollowsMouse"] boolValue]: NO;
-	defaultEnableBonjour = [prefs objectForKey:@"EnableRendezvous"]?[[prefs objectForKey:@"EnableRendezvous"] boolValue]: YES;
-	defaultCmdSelection = [prefs objectForKey:@"CommandSelection"]?[[prefs objectForKey:@"CommandSelection"] boolValue]: YES;
+    defaultCopySelection=[prefs objectForKey:@"CopySelection"]?[prefs boolForKey:@"CopySelection"]:YES;
+	defaultPasteFromClipboard=[prefs objectForKey:@"PasteFromClipboard"]?[prefs boolForKey:@"PasteFromClipboard"]:YES;
+    defaultHideTab=[prefs objectForKey:@"HideTab"]?[prefs boolForKey:@"HideTab"]: NO;
+    defaultPromptOnClose = [prefs objectForKey:@"PromptOnClose"]?[prefs boolForKey:@"PromptOnClose"]: NO;
+    defaultFocusFollowsMouse = [prefs objectForKey:@"FocusFollowsMouse"]?[prefs boolForKey:@"FocusFollowsMouse"]: NO;
+	defaultEnableBonjour = [prefs objectForKey:@"EnableRendezvous"]?[prefs boolForKey:@"EnableRendezvous"]: YES;
+	defaultCmdSelection = [prefs objectForKey:@"CommandSelection"]?[prefs boolForKey:@"CommandSelection"]: YES;
 	defaultMaxVertically = [prefs objectForKey:@"MaxVertically"]?[[prefs objectForKey:@"MaxVertically"] boolValue]: YES;
-	defaultUseCompactLabel = [prefs objectForKey:@"UseCompactLabel"]?[[prefs objectForKey:@"UseCompactLabel"] boolValue]: YES;
-	defaultRefreshRate = [prefs objectForKey:@"RefreshRate"]?[[prefs objectForKey:@"RefreshRate"] intValue]: 25;
-	defaultWordChars = [prefs objectForKey: @"WordCharacters"]?[prefs objectForKey: @"WordCharacters"]:@"";
-    defaultOpenBookmark = [prefs objectForKey:@"OpenBookmark"]?[[prefs objectForKey:@"OpenBookmark"] boolValue]: NO;
+	defaultUseCompactLabel = [prefs objectForKey:@"UseCompactLabel"]?[prefs boolForKey:@"UseCompactLabel"]: YES;
+	defaultRefreshRate = [prefs objectForKey:@"RefreshRate"]?[prefs integerForKey:@"RefreshRate"]: 25;
+	defaultWordChars = [prefs stringForKey: @"WordCharacters"]?:@"";
+    defaultOpenBookmark = [prefs objectForKey:@"OpenBookmark"]?[prefs boolForKey:@"OpenBookmark"]: NO;
 	defaultCursorType=[prefs objectForKey:@"CursorType"]?[prefs integerForKey:@"CursorType"]:2;
 	
 	NSArray *urlArray;
@@ -248,40 +248,15 @@ static NSString *NoHandler = @"<No Handler>";
 
 // accessors for preferences
 
-- (BOOL) copySelection
-{
-    return (defaultCopySelection);
-}
-
-- (void)setCopySelection: (BOOL) flag
-{
-	defaultCopySelection = flag;
-}
-
-- (BOOL) pasteFromClipboard
-{
-	return (defaultPasteFromClipboard);
-}
-
-- (void)setPasteFromClipboard: (BOOL) flag
-{
-	defaultPasteFromClipboard = flag;
-}
+@synthesize copySelection=defaultCopySelection;
+@synthesize pasteFromClipboard=defaultPasteFromClipboard;
 
 - (BOOL) hideTab
 {
     return (defaultHideTab);
 }
 
-- (void)setTabViewType: (NSTabViewType) type
-{
-    defaultTabViewType = type;
-}
-
-- (NSTabViewType) tabViewType
-{
-    return (defaultTabViewType);
-}
+@synthesize tabViewType=defaultTabViewType;
 
 - (int) windowStyle
 {
@@ -335,10 +310,7 @@ static NSString *NoHandler = @"<No Handler>";
 	return (defaultWordChars);
 }
 
-- (ITermCursorType) cursorType
-{
-	return defaultCursorType;
-}
+@synthesize cursorType=defaultCursorType;
 
 // The following are preferences with no UI, but accessible via "defaults read/write"
 // examples:
@@ -351,42 +323,42 @@ static NSString *NoHandler = @"<No Handler>";
 
 - (BOOL) useUnevenTabs
 {
-    return [prefs objectForKey:@"UseUnevenTabs"]?[[prefs objectForKey:@"UseUnevenTabs"] boolValue]:NO;
+    return [prefs objectForKey:@"UseUnevenTabs"]?[prefs boolForKey:@"UseUnevenTabs"]:NO;
 }
 
-- (int) minTabWidth
+- (NSInteger) minTabWidth
 {
-    return [prefs objectForKey:@"MinTabWidth"]?[[prefs objectForKey:@"MinTabWidth"] intValue]:75;
+    return [prefs objectForKey:@"MinTabWidth"]?[prefs integerForKey:@"MinTabWidth"]:75;
 }
 
-- (int) minCompactTabWidth
+- (NSInteger) minCompactTabWidth
 {
-    return [prefs objectForKey:@"MinCompactTabWidth"]?[[prefs objectForKey:@"MinCompactTabWidth"] intValue]:60;
+    return [prefs objectForKey:@"MinCompactTabWidth"]?[prefs integerForKey:@"MinCompactTabWidth"]:60;
 }
 
-- (int) optimumTabWidth
+- (NSInteger) optimumTabWidth
 {
-    return [prefs objectForKey:@"OptimumTabWidth"]?[[prefs objectForKey:@"OptimumTabWidth"] intValue]:175;
+    return [prefs objectForKey:@"OptimumTabWidth"]?[prefs integerForKey:@"OptimumTabWidth"]:175;
 }
 
-- (float) strokeWidth
+- (CGFloat) strokeWidth
 {
-    return [prefs objectForKey:@"StrokeWidth"]?[[prefs objectForKey:@"StrokeWidth"] floatValue]:0;
+    return [prefs objectForKey:@"StrokeWidth"]?[prefs doubleForKey:@"StrokeWidth"]:0;
 }
 
-- (float) boldStrokeWidth
+- (CGFloat) boldStrokeWidth
 {
-    return [prefs objectForKey:@"BoldStrokeWidth"]?[[prefs objectForKey:@"BoldStrokeWidth"] floatValue]:-2;
+    return [prefs objectForKey:@"BoldStrokeWidth"]?[prefs doubleForKey:@"BoldStrokeWidth"]:-2;
 }
 
-- (int) cacheSize
+- (NSInteger) cacheSize
 {
-    return [prefs objectForKey:@"CacheSize"]?[[prefs objectForKey:@"CacheSize"] intValue]:2048;
+    return [prefs objectForKey:@"CacheSize"]?[prefs integerForKey:@"CacheSize"]:2048;
 }
 
 - (NSString *) searchCommand
 {
-	return [prefs objectForKey:@"SearchCommand"]?[prefs objectForKey:@"SearchCommand"]:@"http://google.com/search?q=%@";
+	return [prefs stringForKey:@"SearchCommand"]?:@"http://google.com/search?q=%@";
 }
 
 // URL handler stuff
@@ -533,11 +505,6 @@ static NSString *NoHandler = @"<No Handler>";
 {
 	defaultWordChars = [wordChars stringValue];
 }
-
-@end
-
-
-@implementation PreferencePanel (Private)
 
 - (void)_reloadURLHandlers: (NSNotification *) aNotification
 {

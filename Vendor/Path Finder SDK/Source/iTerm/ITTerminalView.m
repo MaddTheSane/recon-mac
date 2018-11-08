@@ -49,9 +49,8 @@
 #import "ITSharedActionHandler.h"
 #import "PSMRolloverButton.h"
 
-@interface ITTerminalView (Private)
-- (BOOL)beingResized;
-- (void)setBeingResized:(BOOL)flag;
+@interface ITTerminalView ()
+@property BOOL beingResized;
 
 - (BOOL)askUserToCloseTab:(PTYSession*)session;
 - (NSArray*)runningProcesses:(PTYSession*)session;
@@ -62,10 +61,10 @@
 				  height:(float) height
 				   lines:(float) lines;
 
-- (ITMiscNibController *)nibController;
+@property (nonatomic, strong, null_resettable) ITMiscNibController *nibController;
 - (void)setNibController:(ITMiscNibController *)theNibController;
 
-- (BOOL)initialized;
+@property BOOL initialized;
 - (void)setInitialized:(BOOL)flag;
 @end
 
@@ -73,9 +72,16 @@
 
 @end
 
-@interface ITTerminalView (hidden)
-- (void)setTabView:(PTYTabView *)theTabView;
-- (void)setTabBarControl:(PSMTabBarControl *)theTabBarControl;
+@interface ITTerminalView (PrivateActions)
+- (void)closeTabContextualMenuAction:(id)sender;
+- (void)newTabAction:(id)sender;
+@end
+
+
+// hidden
+@interface ITTerminalView ()
+@property (readwrite, strong) PTYTabView *tabView;
+@property (readwrite, nonatomic, strong) PSMTabBarControl *tabBarControl;
 @end
 
 @implementation ITTerminalView
@@ -105,10 +111,11 @@
 // Utility
 + (void) breakDown:(NSString *)cmdl cmdPath: (NSString **) cmd cmdArgs: (NSArray **) path
 {
-    int i,j,k,qf,slen;
+    int i,j,k,qf;
     char tmp[100];
     const char *s;
     NSMutableArray *p;
+	size_t slen;
     
     p=[[NSMutableArray alloc] init];
     
@@ -233,7 +240,7 @@
     }
 }
 
-- (void)insertSession: (PTYSession *) aSession atIndex: (int) index
+- (void)insertSession: (PTYSession *) aSession atIndex: (NSInteger) index
 {
     NSTabViewItem *aTabViewItem;
 	
@@ -325,7 +332,7 @@
     return [[[self tabView] selectedTabViewItem] identifier];
 }
 
-- (int) currentSessionIndex
+- (NSInteger) currentSessionIndex
 {
     return ([[self tabView] indexOfTabViewItem:[[self tabView] selectedTabViewItem]]);
 }
@@ -428,15 +435,9 @@
     mCharHeight = theCharHeight;
 }
 
-- (float) charSpacingHorizontal
-{
-	return (charHorizontalSpacingMultiplier);
-}
+@synthesize charSpacingHorizontal=charHorizontalSpacingMultiplier;
 
-- (float) charSpacingVertical
-{
-	return (charVerticalSpacingMultiplier);
-}
+@synthesize charSpacingVertical=charVerticalSpacingMultiplier;
 
 - (void)setWindowSize
 {    		
@@ -606,10 +607,7 @@
 	[self setCharSizeUsingFont: FONT];
 }
 
-- (BOOL) antiAlias
-{
-	return (antiAlias);
-}
+@synthesize antiAlias;
 
 - (void)setAntiAlias: (BOOL) bAntiAlias
 {
@@ -702,9 +700,9 @@
 - (void)sendInputToAllSessions: (NSData *) data
 {
 	PTYSession *aSession;
-    int i;
+    NSInteger i;
     
-    int n = [[self tabView] numberOfTabViewItems];    
+    NSInteger n = [[self tabView] numberOfTabViewItems];
     for (i=0; i<n; i++)
     {
         aSession = [[[self tabView] tabViewItemAtIndex: i] identifier];
@@ -854,7 +852,7 @@
     [self tabView: tabView willInsertTabViewItem: tabViewItem atIndex: [tabView numberOfTabViewItems]];
 }
 
-- (void)tabView:(NSTabView *)tabView willInsertTabViewItem:(NSTabViewItem *)tabViewItem atIndex: (int) index
+- (void)tabView:(NSTabView *)tabView willInsertTabViewItem:(NSTabViewItem *)tabViewItem atIndex: (NSInteger) index
 { 
     [[tabViewItem identifier] setParent: self];
 }
@@ -1134,26 +1132,12 @@
 //---------------------------------------------------------- 
 //  tabView 
 //---------------------------------------------------------- 
-- (PTYTabView *)tabView
-{
-    return mTabView; 
-}
-
-- (void)setTabView:(PTYTabView *)theTabView
-{
-    if (mTabView != theTabView)
-    {
-        mTabView = theTabView;
-    }
-}
+@synthesize tabView=mTabView;
 
 //---------------------------------------------------------- 
 //  tabBarControl 
 //---------------------------------------------------------- 
-- (PSMTabBarControl *)tabBarControl
-{
-    return mTabBarControl; 
-}
+@synthesize tabBarControl=mTabBarControl;
 
 - (void)setTabBarControl:(PSMTabBarControl *)theTabBarControl
 {
@@ -1407,13 +1391,13 @@
     [self insertInSessions: object atIndex:[[self tabView] numberOfTabViewItems]];
 }
 
-- (void)insertInSessions:(PTYSession *)object atIndex:(unsigned)index
+- (void)insertInSessions:(PTYSession *)object atIndex:(NSUInteger)index
 {
     [self setupSession: object title: nil];
     [self insertSession: object atIndex: index];
 }
 
-- (void)removeFromSessionsAtIndex:(unsigned)index
+- (void)removeFromSessionsAtIndex:(NSUInteger)index
 {
     if (index < [[self tabView] numberOfTabViewItems])
     {
@@ -1487,10 +1471,6 @@
     return YES;
 }
 
-@end
-
-@implementation ITTerminalView (Private)
-
 - (NSFont *) _getMaxFont:(NSFont* ) font 
 				  height:(float) height
 				   lines:(float) lines
@@ -1524,39 +1504,17 @@
     return mNibController; 
 }
 
-- (void)setNibController:(ITMiscNibController *)theNibController
-{
-    if (mNibController != theNibController)
-    {
-        mNibController = theNibController;
-    }
-}
+@synthesize nibController=mNibController;
 
 //---------------------------------------------------------- 
 //  initialized 
 //---------------------------------------------------------- 
-- (BOOL)initialized
-{
-    return mInitialized;
-}
-
-- (void)setInitialized:(BOOL)flag
-{
-    mInitialized = flag;
-}
+@synthesize initialized=mInitialized;
 
 //---------------------------------------------------------- 
 //  beingResized 
 //---------------------------------------------------------- 
-- (BOOL)beingResized
-{
-    return mBeingResized;
-}
-
-- (void)setBeingResized:(BOOL)flag
-{
-    mBeingResized = flag;
-}
+@synthesize beingResized=mBeingResized;
 
 - (void)setupView:(NSDictionary *)entry;
 {	
@@ -1570,7 +1528,7 @@
     [[self tabView] setAutoresizingMask: NSViewWidthSizable|NSViewHeightSizable];
 	[[self tabView] setAutoresizesSubviews: YES];
     [[self tabView] setAllowsTruncatedLabels: NO];
-    [[self tabView] setControlSize: NSSmallControlSize];
+    [[self tabView] setControlSize: NSControlSizeSmall];
 	[[self tabView] setTabViewType: NSNoTabsNoBorder];
 	
     // Add to the window
@@ -1700,10 +1658,6 @@
 						   NSLocalizedStringFromTableInBundle(@"Cancel",@"iTerm", [NSBundle bundleForClass: [self class]], @"Cancel")
 						   , nil, message);
 }
-
-@end
-
-@implementation ITTerminalView (Resize)
 
 - (NSRect)windowWillUseStandardFrame:(NSRect)defaultFrame
 {	
