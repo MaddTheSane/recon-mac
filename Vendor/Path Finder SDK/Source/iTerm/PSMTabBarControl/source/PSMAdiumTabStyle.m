@@ -36,15 +36,15 @@
 
 - (void)loadImages
 {
-	_closeButton = [[NSImage alloc] initByReferencingFile:[[PSMTabBarControl bundle] pathForImageResource:@"AquaTabClose_Front"]];
-	_closeButtonDown = [[NSImage alloc] initByReferencingFile:[[PSMTabBarControl bundle] pathForImageResource:@"AquaTabClose_Front_Pressed"]];
-	_closeButtonOver = [[NSImage alloc] initByReferencingFile:[[PSMTabBarControl bundle] pathForImageResource:@"AquaTabClose_Front_Rollover"]];
+	_closeButton = [[PSMTabBarControl bundle] imageForResource:@"AquaTabClose_Front"];
+	_closeButtonDown = [[PSMTabBarControl bundle] imageForResource:@"AquaTabClose_Front_Pressed"];
+	_closeButtonOver = [[PSMTabBarControl bundle] imageForResource:@"AquaTabClose_Front_Rollover"];
 	
-	_addTabButtonImage = [[NSImage alloc] initByReferencingFile:[[PSMTabBarControl bundle] pathForImageResource:@"AquaTabNew"]];
-    _addTabButtonPressedImage = [[NSImage alloc] initByReferencingFile:[[PSMTabBarControl bundle] pathForImageResource:@"AquaTabNewPressed"]];
-    _addTabButtonRolloverImage = [[NSImage alloc] initByReferencingFile:[[PSMTabBarControl bundle] pathForImageResource:@"AquaTabNewRollover"]];
+	_addTabButtonImage = [[PSMTabBarControl bundle] imageForResource:@"AquaTabNew"];
+    _addTabButtonPressedImage = [[PSMTabBarControl bundle] imageForResource:@"AquaTabNewPressed"];
+    _addTabButtonRolloverImage = [[PSMTabBarControl bundle] imageForResource:@"AquaTabNewRollover"];
 	
-	_gradientImage = [[NSImage alloc] initByReferencingFile:[[PSMTabBarControl bundle] pathForImageResource:@"AdiumGradient"]];
+	_gradientImage = [[PSMTabBarControl bundle] imageForResource:@"AdiumGradient"];
 }
 
 #pragma mark -

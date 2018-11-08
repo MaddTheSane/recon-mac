@@ -32,13 +32,13 @@
 {
     if ((self = [super init]))
     {
-        unifiedCloseButton = [[NSImage alloc] initByReferencingFile:[[PSMTabBarControl bundle] pathForImageResource:@"AquaTabClose_Front"]];
-        unifiedCloseButtonDown = [[NSImage alloc] initByReferencingFile:[[PSMTabBarControl bundle] pathForImageResource:@"AquaTabClose_Front_Pressed"]];
-        unifiedCloseButtonOver = [[NSImage alloc] initByReferencingFile:[[PSMTabBarControl bundle] pathForImageResource:@"AquaTabClose_Front_Rollover"]];
+        unifiedCloseButton = [[PSMTabBarControl bundle] imageForResource:@"AquaTabClose_Front"];
+        unifiedCloseButtonDown = [[PSMTabBarControl bundle] imageForResource:@"AquaTabClose_Front_Pressed"];
+        unifiedCloseButtonOver = [[PSMTabBarControl bundle] imageForResource:@"AquaTabClose_Front_Rollover"];
         
-        _addTabButtonImage = [[NSImage alloc] initByReferencingFile:[[PSMTabBarControl bundle] pathForImageResource:@"AquaTabNew"]];
-        _addTabButtonPressedImage = [[NSImage alloc] initByReferencingFile:[[PSMTabBarControl bundle] pathForImageResource:@"AquaTabNewPressed"]];
-        _addTabButtonRolloverImage = [[NSImage alloc] initByReferencingFile:[[PSMTabBarControl bundle] pathForImageResource:@"AquaTabNewRollover"]];
+        _addTabButtonImage = [[PSMTabBarControl bundle] imageForResource:@"AquaTabNew"];
+        _addTabButtonPressedImage = [[PSMTabBarControl bundle] imageForResource:@"AquaTabNewPressed"];
+        _addTabButtonRolloverImage = [[PSMTabBarControl bundle] imageForResource:@"AquaTabNewRollover"];
     
 		leftMargin = 5.0;
 	}

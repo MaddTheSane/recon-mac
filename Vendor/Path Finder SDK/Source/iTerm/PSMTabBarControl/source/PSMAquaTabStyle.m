@@ -35,31 +35,31 @@
 - (void)loadImages
 {
     // Aqua Tabs Images
-    aquaTabBg = [[NSImage alloc] initByReferencingFile:[[PSMTabBarControl bundle] pathForImageResource:@"AquaTabsBackground"]];
+    aquaTabBg = [[[PSMTabBarControl bundle] imageForResource:@"AquaTabsBackground"] copy];
     [aquaTabBg setFlipped:YES];
     
-    aquaTabBgDown = [[NSImage alloc] initByReferencingFile:[[PSMTabBarControl bundle] pathForImageResource:@"AquaTabsDown"]];
+    aquaTabBgDown = [[[PSMTabBarControl bundle] imageForResource:@"AquaTabsDown"] copy];
     [aquaTabBgDown setFlipped:YES];
     
-    aquaTabBgDownGraphite = [[NSImage alloc] initByReferencingFile:[[PSMTabBarControl bundle] pathForImageResource:@"AquaTabsDownGraphite"]];
+    aquaTabBgDownGraphite = [[[PSMTabBarControl bundle] imageForResource:@"AquaTabsDownGraphite"] copy];
     [aquaTabBgDown setFlipped:YES];
     
-    aquaTabBgDownNonKey = [[NSImage alloc] initByReferencingFile:[[PSMTabBarControl bundle] pathForImageResource:@"AquaTabsDownNonKey"]];
+    aquaTabBgDownNonKey = [[[PSMTabBarControl bundle] imageForResource:@"AquaTabsDownNonKey"] copy];
     [aquaTabBgDown setFlipped:YES];
     
-    aquaDividerDown = [[NSImage alloc] initByReferencingFile:[[PSMTabBarControl bundle] pathForImageResource:@"AquaTabsSeparatorDown"]];
+    aquaDividerDown = [[[PSMTabBarControl bundle] imageForResource:@"AquaTabsSeparatorDown"] copy];
     [aquaDivider setFlipped:NO];
     
-    aquaDivider = [[NSImage alloc] initByReferencingFile:[[PSMTabBarControl bundle] pathForImageResource:@"AquaTabsSeparator"]];
+    aquaDivider = [[[PSMTabBarControl bundle] imageForResource:@"AquaTabsSeparator"] copy];
     [aquaDivider setFlipped:NO];
     
-    aquaCloseButton = [[NSImage alloc] initByReferencingFile:[[PSMTabBarControl bundle] pathForImageResource:@"AquaTabClose_Front"]];
-    aquaCloseButtonDown = [[NSImage alloc] initByReferencingFile:[[PSMTabBarControl bundle] pathForImageResource:@"AquaTabClose_Front_Pressed"]];
-    aquaCloseButtonOver = [[NSImage alloc] initByReferencingFile:[[PSMTabBarControl bundle] pathForImageResource:@"AquaTabClose_Front_Rollover"]];
+    aquaCloseButton = [[PSMTabBarControl bundle] imageForResource:@"AquaTabClose_Front"];
+    aquaCloseButtonDown = [[PSMTabBarControl bundle] imageForResource:@"AquaTabClose_Front_Pressed"];
+    aquaCloseButtonOver = [[PSMTabBarControl bundle] imageForResource:@"AquaTabClose_Front_Rollover"];
     
-    _addTabButtonImage = [[NSImage alloc] initByReferencingFile:[[PSMTabBarControl bundle] pathForImageResource:@"AquaTabNew"]];
-    _addTabButtonPressedImage = [[NSImage alloc] initByReferencingFile:[[PSMTabBarControl bundle] pathForImageResource:@"AquaTabNewPressed"]];
-    _addTabButtonRolloverImage = [[NSImage alloc] initByReferencingFile:[[PSMTabBarControl bundle] pathForImageResource:@"AquaTabNewRollover"]];
+    _addTabButtonImage = [[PSMTabBarControl bundle] imageForResource:@"AquaTabNew"];
+    _addTabButtonPressedImage = [[PSMTabBarControl bundle] imageForResource:@"AquaTabNewPressed"];
+    _addTabButtonRolloverImage = [[PSMTabBarControl bundle] imageForResource:@"AquaTabNewRollover"];
 }
 
 #pragma mark -

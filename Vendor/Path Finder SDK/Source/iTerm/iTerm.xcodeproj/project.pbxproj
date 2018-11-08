@@ -44,6 +44,7 @@
 		20C6679D0B67026F00533B48 /* Tree.h in Headers */ = {isa = PBXBuildFile; fileRef = 20C6679C0B67026F00533B48 /* Tree.h */; };
 		20C6679F0B67027D00533B48 /* VT100Screen.h in Headers */ = {isa = PBXBuildFile; fileRef = 20C6679E0B67027D00533B48 /* VT100Screen.h */; };
 		551213C42194C9AB00A1631D /* Framework.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 551213C32194C9AB00A1631D /* Framework.xcassets */; };
+		556DBF802194F4540041A561 /* images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 556DBF7E2194F0960041A561 /* images.xcassets */; };
 		874206050564168A00CFC3F1 /* PTToolbarController.h in Headers */ = {isa = PBXBuildFile; fileRef = 2076B15704E8817300000106 /* PTToolbarController.h */; };
 		874206060564168A00CFC3F1 /* ITAddressBookMgr.h in Headers */ = {isa = PBXBuildFile; fileRef = 20E74F4804E9089700000106 /* ITAddressBookMgr.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		874206070564168A00CFC3F1 /* ITViewLocalizer.h in Headers */ = {isa = PBXBuildFile; fileRef = 20B8892A04E9342100000106 /* ITViewLocalizer.h */; };
@@ -99,28 +100,6 @@
 		DD02574D09CB9399008F320C /* PSMTabBarControl.h in Headers */ = {isa = PBXBuildFile; fileRef = DD02573209CB9398008F320C /* PSMTabBarControl.h */; };
 		DD02574E09CB9399008F320C /* PSMTabBarControl.m in Sources */ = {isa = PBXBuildFile; fileRef = DD02573309CB9398008F320C /* PSMTabBarControl.m */; };
 		DD02575409CB9399008F320C /* PSMTabStyle.h in Headers */ = {isa = PBXBuildFile; fileRef = DD02573909CB9398008F320C /* PSMTabStyle.h */; };
-		DD02577409CB93C2008F320C /* AquaTabClose_Front.tif in Resources */ = {isa = PBXBuildFile; fileRef = DD02575809CB93C2008F320C /* AquaTabClose_Front.tif */; };
-		DD02577509CB93C2008F320C /* AquaTabClose_Front_Pressed.tif in Resources */ = {isa = PBXBuildFile; fileRef = DD02575909CB93C2008F320C /* AquaTabClose_Front_Pressed.tif */; };
-		DD02577609CB93C2008F320C /* AquaTabClose_Front_Rollover.tif in Resources */ = {isa = PBXBuildFile; fileRef = DD02575A09CB93C2008F320C /* AquaTabClose_Front_Rollover.tif */; };
-		DD02577709CB93C2008F320C /* AquaTabNew.png in Resources */ = {isa = PBXBuildFile; fileRef = DD02575B09CB93C2008F320C /* AquaTabNew.png */; };
-		DD02577809CB93C2008F320C /* AquaTabNewPressed.png in Resources */ = {isa = PBXBuildFile; fileRef = DD02575C09CB93C2008F320C /* AquaTabNewPressed.png */; };
-		DD02577909CB93C2008F320C /* AquaTabNewRollover.png in Resources */ = {isa = PBXBuildFile; fileRef = DD02575D09CB93C2008F320C /* AquaTabNewRollover.png */; };
-		DD02577A09CB93C2008F320C /* AquaTabsBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = DD02575E09CB93C2008F320C /* AquaTabsBackground.png */; };
-		DD02577B09CB93C2008F320C /* AquaTabsDown.png in Resources */ = {isa = PBXBuildFile; fileRef = DD02575F09CB93C2008F320C /* AquaTabsDown.png */; };
-		DD02577C09CB93C2008F320C /* AquaTabsDownGraphite.png in Resources */ = {isa = PBXBuildFile; fileRef = DD02576009CB93C2008F320C /* AquaTabsDownGraphite.png */; };
-		DD02577D09CB93C2008F320C /* AquaTabsDownNonKey.png in Resources */ = {isa = PBXBuildFile; fileRef = DD02576109CB93C2008F320C /* AquaTabsDownNonKey.png */; };
-		DD02577E09CB93C2008F320C /* AquaTabsSeparator.png in Resources */ = {isa = PBXBuildFile; fileRef = DD02576209CB93C2008F320C /* AquaTabsSeparator.png */; };
-		DD02577F09CB93C2008F320C /* AquaTabsSeparatorDown.png in Resources */ = {isa = PBXBuildFile; fileRef = DD02576309CB93C2008F320C /* AquaTabsSeparatorDown.png */; };
-		DD02578209CB93C2008F320C /* overflowImage.tiff in Resources */ = {isa = PBXBuildFile; fileRef = DD02576609CB93C2008F320C /* overflowImage.tiff */; };
-		DD02578309CB93C2008F320C /* overflowImagePressed.tif in Resources */ = {isa = PBXBuildFile; fileRef = DD02576709CB93C2008F320C /* overflowImagePressed.tif */; };
-		DD02578409CB93C2008F320C /* pi.png in Resources */ = {isa = PBXBuildFile; fileRef = DD02576809CB93C2008F320C /* pi.png */; };
-		DD02578509CB93C2008F320C /* TabClose_Front.tif in Resources */ = {isa = PBXBuildFile; fileRef = DD02576909CB93C2008F320C /* TabClose_Front.tif */; };
-		DD02578609CB93C2008F320C /* TabClose_Front_Pressed.tif in Resources */ = {isa = PBXBuildFile; fileRef = DD02576A09CB93C2008F320C /* TabClose_Front_Pressed.tif */; };
-		DD02578709CB93C2008F320C /* TabClose_Front_Rollover.tif in Resources */ = {isa = PBXBuildFile; fileRef = DD02576B09CB93C2008F320C /* TabClose_Front_Rollover.tif */; };
-		DD02578A09CB93C2008F320C /* TabNewMetal.png in Resources */ = {isa = PBXBuildFile; fileRef = DD02576E09CB93C2008F320C /* TabNewMetal.png */; };
-		DD02578B09CB93C2008F320C /* TabNewMetalPressed.png in Resources */ = {isa = PBXBuildFile; fileRef = DD02576F09CB93C2008F320C /* TabNewMetalPressed.png */; };
-		DD02578C09CB93C2008F320C /* TabNewMetalRollover.png in Resources */ = {isa = PBXBuildFile; fileRef = DD02577009CB93C2008F320C /* TabNewMetalRollover.png */; };
-		DD02578D09CB93C2008F320C /* Warning.png in Resources */ = {isa = PBXBuildFile; fileRef = DD02577109CB93C2008F320C /* Warning.png */; };
 		DD46BAC605FD689F00027283 /* iTermDisplayProfileMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = DD46BAC405FD689F00027283 /* iTermDisplayProfileMgr.m */; };
 		DD8EC83106095CDA0085A27D /* Tree.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8EC82F06095CDA0085A27D /* Tree.m */; };
 		DDB79A9B0612BBBF00EAE159 /* Profiles.plist in Resources */ = {isa = PBXBuildFile; fileRef = DDB79A9A0612BBBF00EAE159 /* Profiles.plist */; };
@@ -268,6 +247,7 @@
 		20E74F4904E9089700000106 /* ITAddressBookMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITAddressBookMgr.m; sourceTree = "<group>"; };
 		551213C32194C9AB00A1631D /* Framework.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Framework.xcassets; sourceTree = "<group>"; };
 		55597E0F1C811D590080944E /* Common.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Common.xcconfig; path = ../Configurations/Common.xcconfig; sourceTree = "<group>"; };
+		556DBF7E2194F0960041A561 /* images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = images.xcassets; sourceTree = "<group>"; };
 		870BCD84047070AC0073D10E /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/FindPanel.xib; sourceTree = "<group>"; };
 		870EAAB604325A880073D10E /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/PreferencePanel.xib; sourceTree = "<group>"; };
 		8723EDED04EAADBB0073D10E /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/ITConfigPanel.xib; sourceTree = "<group>"; };
@@ -292,28 +272,6 @@
 		DD02573209CB9398008F320C /* PSMTabBarControl.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PSMTabBarControl.h; sourceTree = "<group>"; };
 		DD02573309CB9398008F320C /* PSMTabBarControl.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = PSMTabBarControl.m; sourceTree = "<group>"; };
 		DD02573909CB9398008F320C /* PSMTabStyle.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = PSMTabStyle.h; sourceTree = "<group>"; };
-		DD02575809CB93C2008F320C /* AquaTabClose_Front.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = AquaTabClose_Front.tif; sourceTree = "<group>"; };
-		DD02575909CB93C2008F320C /* AquaTabClose_Front_Pressed.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = AquaTabClose_Front_Pressed.tif; sourceTree = "<group>"; };
-		DD02575A09CB93C2008F320C /* AquaTabClose_Front_Rollover.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = AquaTabClose_Front_Rollover.tif; sourceTree = "<group>"; };
-		DD02575B09CB93C2008F320C /* AquaTabNew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AquaTabNew.png; sourceTree = "<group>"; };
-		DD02575C09CB93C2008F320C /* AquaTabNewPressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AquaTabNewPressed.png; sourceTree = "<group>"; };
-		DD02575D09CB93C2008F320C /* AquaTabNewRollover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AquaTabNewRollover.png; sourceTree = "<group>"; };
-		DD02575E09CB93C2008F320C /* AquaTabsBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AquaTabsBackground.png; sourceTree = "<group>"; };
-		DD02575F09CB93C2008F320C /* AquaTabsDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AquaTabsDown.png; sourceTree = "<group>"; };
-		DD02576009CB93C2008F320C /* AquaTabsDownGraphite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AquaTabsDownGraphite.png; sourceTree = "<group>"; };
-		DD02576109CB93C2008F320C /* AquaTabsDownNonKey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AquaTabsDownNonKey.png; sourceTree = "<group>"; };
-		DD02576209CB93C2008F320C /* AquaTabsSeparator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AquaTabsSeparator.png; sourceTree = "<group>"; };
-		DD02576309CB93C2008F320C /* AquaTabsSeparatorDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AquaTabsSeparatorDown.png; sourceTree = "<group>"; };
-		DD02576609CB93C2008F320C /* overflowImage.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = overflowImage.tiff; sourceTree = "<group>"; };
-		DD02576709CB93C2008F320C /* overflowImagePressed.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = overflowImagePressed.tif; sourceTree = "<group>"; };
-		DD02576809CB93C2008F320C /* pi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pi.png; sourceTree = "<group>"; };
-		DD02576909CB93C2008F320C /* TabClose_Front.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = TabClose_Front.tif; sourceTree = "<group>"; };
-		DD02576A09CB93C2008F320C /* TabClose_Front_Pressed.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = TabClose_Front_Pressed.tif; sourceTree = "<group>"; };
-		DD02576B09CB93C2008F320C /* TabClose_Front_Rollover.tif */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = TabClose_Front_Rollover.tif; sourceTree = "<group>"; };
-		DD02576E09CB93C2008F320C /* TabNewMetal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TabNewMetal.png; sourceTree = "<group>"; };
-		DD02576F09CB93C2008F320C /* TabNewMetalPressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TabNewMetalPressed.png; sourceTree = "<group>"; };
-		DD02577009CB93C2008F320C /* TabNewMetalRollover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TabNewMetalRollover.png; sourceTree = "<group>"; };
-		DD02577109CB93C2008F320C /* Warning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Warning.png; sourceTree = "<group>"; };
 		DD46BAC405FD689F00027283 /* iTermDisplayProfileMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iTermDisplayProfileMgr.m; sourceTree = "<group>"; };
 		DD4BAB7C0470C44C00A8A065 /* FindPanelWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindPanelWindowController.m; sourceTree = "<group>"; };
 		DD57633005653C2E00F1905E /* iTerm_Framework.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = iTerm_Framework.plist; sourceTree = "<group>"; };
@@ -601,7 +559,7 @@
 			isa = PBXGroup;
 			children = (
 				DD02571E09CB9398008F320C /* source */,
-				DD02575509CB93C2008F320C /* images */,
+				556DBF7E2194F0960041A561 /* images.xcassets */,
 			);
 			path = PSMTabBarControl;
 			sourceTree = "<group>";
@@ -636,35 +594,6 @@
 				DD02573909CB9398008F320C /* PSMTabStyle.h */,
 			);
 			path = source;
-			sourceTree = "<group>";
-		};
-		DD02575509CB93C2008F320C /* images */ = {
-			isa = PBXGroup;
-			children = (
-				DD02575809CB93C2008F320C /* AquaTabClose_Front.tif */,
-				DD02575909CB93C2008F320C /* AquaTabClose_Front_Pressed.tif */,
-				DD02575A09CB93C2008F320C /* AquaTabClose_Front_Rollover.tif */,
-				DD02575B09CB93C2008F320C /* AquaTabNew.png */,
-				DD02575C09CB93C2008F320C /* AquaTabNewPressed.png */,
-				DD02575D09CB93C2008F320C /* AquaTabNewRollover.png */,
-				DD02575E09CB93C2008F320C /* AquaTabsBackground.png */,
-				DD02575F09CB93C2008F320C /* AquaTabsDown.png */,
-				DD02576009CB93C2008F320C /* AquaTabsDownGraphite.png */,
-				DD02576109CB93C2008F320C /* AquaTabsDownNonKey.png */,
-				DD02576209CB93C2008F320C /* AquaTabsSeparator.png */,
-				DD02576309CB93C2008F320C /* AquaTabsSeparatorDown.png */,
-				DD02576609CB93C2008F320C /* overflowImage.tiff */,
-				DD02576709CB93C2008F320C /* overflowImagePressed.tif */,
-				DD02576809CB93C2008F320C /* pi.png */,
-				DD02576909CB93C2008F320C /* TabClose_Front.tif */,
-				DD02576A09CB93C2008F320C /* TabClose_Front_Pressed.tif */,
-				DD02576B09CB93C2008F320C /* TabClose_Front_Rollover.tif */,
-				DD02576E09CB93C2008F320C /* TabNewMetal.png */,
-				DD02576F09CB93C2008F320C /* TabNewMetalPressed.png */,
-				DD02577009CB93C2008F320C /* TabNewMetalRollover.png */,
-				DD02577109CB93C2008F320C /* Warning.png */,
-			);
-			path = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -836,31 +765,10 @@
 				8742060C0564168A00CFC3F1 /* Misc.xib in Resources */,
 				8742061B0564168A00CFC3F1 /* PreferencePanel.xib in Resources */,
 				8742061C0564168A00CFC3F1 /* FindPanel.xib in Resources */,
+				556DBF802194F4540041A561 /* images.xcassets in Resources */,
 				8742061D0564168A00CFC3F1 /* ITConfigPanel.xib in Resources */,
 				DDB79A9B0612BBBF00EAE159 /* Profiles.plist in Resources */,
-				DD02577409CB93C2008F320C /* AquaTabClose_Front.tif in Resources */,
-				DD02577509CB93C2008F320C /* AquaTabClose_Front_Pressed.tif in Resources */,
-				DD02577609CB93C2008F320C /* AquaTabClose_Front_Rollover.tif in Resources */,
-				DD02577709CB93C2008F320C /* AquaTabNew.png in Resources */,
-				DD02577809CB93C2008F320C /* AquaTabNewPressed.png in Resources */,
-				DD02577909CB93C2008F320C /* AquaTabNewRollover.png in Resources */,
-				DD02577A09CB93C2008F320C /* AquaTabsBackground.png in Resources */,
 				551213C42194C9AB00A1631D /* Framework.xcassets in Resources */,
-				DD02577B09CB93C2008F320C /* AquaTabsDown.png in Resources */,
-				DD02577C09CB93C2008F320C /* AquaTabsDownGraphite.png in Resources */,
-				DD02577D09CB93C2008F320C /* AquaTabsDownNonKey.png in Resources */,
-				DD02577E09CB93C2008F320C /* AquaTabsSeparator.png in Resources */,
-				DD02577F09CB93C2008F320C /* AquaTabsSeparatorDown.png in Resources */,
-				DD02578209CB93C2008F320C /* overflowImage.tiff in Resources */,
-				DD02578309CB93C2008F320C /* overflowImagePressed.tif in Resources */,
-				DD02578409CB93C2008F320C /* pi.png in Resources */,
-				DD02578509CB93C2008F320C /* TabClose_Front.tif in Resources */,
-				DD02578609CB93C2008F320C /* TabClose_Front_Pressed.tif in Resources */,
-				DD02578709CB93C2008F320C /* TabClose_Front_Rollover.tif in Resources */,
-				DD02578A09CB93C2008F320C /* TabNewMetal.png in Resources */,
-				DD02578B09CB93C2008F320C /* TabNewMetalPressed.png in Resources */,
-				DD02578C09CB93C2008F320C /* TabNewMetalRollover.png in Resources */,
-				DD02578D09CB93C2008F320C /* Warning.png in Resources */,
 				F6B078900ADDF1BE00F4BB37 /* Bookmarks.xib in Resources */,
 				F6B07D990ADE1B9B00F4BB37 /* ProfilesWindow.xib in Resources */,
 			);

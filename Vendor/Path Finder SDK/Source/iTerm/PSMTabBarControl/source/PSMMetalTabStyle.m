@@ -26,13 +26,13 @@
 - (id)init
 {
     if ( (self = [super init]) ) {
-        metalCloseButton = [[NSImage alloc] initByReferencingFile:[[PSMTabBarControl bundle] pathForImageResource:@"TabClose_Front"]];
-        metalCloseButtonDown = [[NSImage alloc] initByReferencingFile:[[PSMTabBarControl bundle] pathForImageResource:@"TabClose_Front_Pressed"]];
-        metalCloseButtonOver = [[NSImage alloc] initByReferencingFile:[[PSMTabBarControl bundle] pathForImageResource:@"TabClose_Front_Rollover"]];
+        metalCloseButton = [[PSMTabBarControl bundle] imageForResource:@"TabClose_Front"];
+        metalCloseButtonDown = [[PSMTabBarControl bundle] imageForResource:@"TabClose_Front_Pressed"];
+        metalCloseButtonOver = [[PSMTabBarControl bundle] imageForResource:@"TabClose_Front_Rollover"];
         
-        _addTabButtonImage = [[NSImage alloc] initByReferencingFile:[[PSMTabBarControl bundle] pathForImageResource:@"TabNewMetal"]];
-        _addTabButtonPressedImage = [[NSImage alloc] initByReferencingFile:[[PSMTabBarControl bundle] pathForImageResource:@"TabNewMetalPressed"]];
-        _addTabButtonRolloverImage = [[NSImage alloc] initByReferencingFile:[[PSMTabBarControl bundle] pathForImageResource:@"TabNewMetalRollover"]];
+        _addTabButtonImage = [[PSMTabBarControl bundle] imageForResource:@"TabNewMetal"];
+        _addTabButtonPressedImage = [[PSMTabBarControl bundle] imageForResource:@"TabNewMetalPressed"];
+        _addTabButtonRolloverImage = [[PSMTabBarControl bundle] imageForResource:@"TabNewMetalRollover"];
 		
 		_objectCountStringAttributes = [[NSDictionary alloc] initWithObjectsAndKeys:[[NSFontManager sharedFontManager] convertFont:[NSFont fontWithName:@"Helvetica" size:11.0] toHaveTrait:NSBoldFontMask], NSFontAttributeName,
 																					[[NSColor whiteColor] colorWithAlphaComponent:0.85], NSForegroundColorAttributeName,
