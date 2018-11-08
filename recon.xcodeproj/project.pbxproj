@@ -20,7 +20,7 @@
 		8C2DAC971037A9FC0053FACE /* HostNote.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C2DAC961037A9FC0053FACE /* HostNote.m */; };
 		8C3D26F9102E26E80007B87E /* PathTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C3D26F8102E26E80007B87E /* PathTransformer.m */; };
 		8C4163861010D6310066A4F8 /* BWToolkitFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C4163851010D6310066A4F8 /* BWToolkitFramework.framework */; };
-		8C4163891010D6340066A4F8 /* BWToolkitFramework.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 8C4163851010D6310066A4F8 /* BWToolkitFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		8C4163891010D6340066A4F8 /* BWToolkitFramework.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 8C4163851010D6310066A4F8 /* BWToolkitFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8C55E41F100524A5002F5013 /* NSTask+OneLineTasksWithOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C55E41E100524A5002F5013 /* NSTask+OneLineTasksWithOutput.m */; };
 		8C55E43810052E72002F5013 /* SessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C55E43710052E72002F5013 /* SessionManager.m */; };
 		8C5613BE103628F00030B321 /* ColorGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C5613BD103628F00030B321 /* ColorGradientView.m */; };
@@ -37,7 +37,7 @@
 		8C79E889100117BF00A4648B /* Port.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C79E884100117BF00A4648B /* Port.m */; };
 		8C79E88A100117BF00A4648B /* Session.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C79E886100117BF00A4648B /* Session.m */; };
 		8C79F2EE10033DF200A4648B /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C79F2ED10033DF200A4648B /* Growl.framework */; };
-		8C79F2F810033E3C00A4648B /* Growl.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 8C79F2ED10033DF200A4648B /* Growl.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		8C79F2F810033E3C00A4648B /* Growl.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 8C79F2ED10033DF200A4648B /* Growl.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8C79F30B10033EF200A4648B /* SPGrowlController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C79F30A10033EF200A4648B /* SPGrowlController.m */; };
 		8C79F4C81003E3BA00A4648B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8C79F4C41003E3BA00A4648B /* MainMenu.xib */; };
 		8C79F4C91003E3BA00A4648B /* Growl Registration Ticket.growlRegDict in Resources */ = {isa = PBXBuildFile; fileRef = 8C79F4C51003E3BA00A4648B /* Growl Registration Ticket.growlRegDict */; };
@@ -254,11 +254,6 @@
 		1058C7A8FEA54F5311CA2CBB /* Other Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */,
-				8CC32788100CDCA700483939 /* Security.framework */,
-				8CB29082102CCF54004A577E /* WebKit.framework */,
-				8CD980E41024BFA200492108 /* Quartz.framework */,
-				8CD980E51024BFA200492108 /* QuartzCore.framework */,
 				2A37F4C5FDCFA73011CA2CEA /* Foundation.framework */,
 				7788DA0506752A1600599AAD /* CoreData.framework */,
 				2A37F4C4FDCFA73011CA2CEA /* AppKit.framework */,
@@ -333,6 +328,11 @@
 		2A37F4C3FDCFA73011CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */,
+				8CC32788100CDCA700483939 /* Security.framework */,
+				8CB29082102CCF54004A577E /* WebKit.framework */,
+				8CD980E41024BFA200492108 /* Quartz.framework */,
+				8CD980E51024BFA200492108 /* QuartzCore.framework */,
 				8C77C64D103A33F1003D6589 /* ScriptingBridge.framework */,
 				55597E131C811E700080944E /* CocoatechCore.framework */,
 				55597E141C811E700080944E /* CocoaTechStrings.framework */,
