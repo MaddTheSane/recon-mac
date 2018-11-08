@@ -20,7 +20,7 @@
 	
 	result.cellBackgroundStyle = theBackGroundStyle;
 	
-	return [result autorelease];
+	return result;
 }
 
 - (id)initWithFrame:(NSRect)frame;

@@ -18,13 +18,12 @@
 	
 	result.object = theObject;
 	
-	return [result autorelease];
+	return result;
 }
 
 - (void)dealloc;
 {
 	self.object = nil;
-	[super dealloc];
 }
 
 @end

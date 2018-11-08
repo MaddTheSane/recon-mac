@@ -14,12 +14,12 @@
 // not very efficient, but useful when your not dealing with a mutable array and need to make an ocasional change
 - (NSArray*)arrayByReplacingObjectAtIndex:(NSInteger)index withObject:(id)newItem;
 {
-	NSMutableArray *result = [NSMutableArray arrayWithArray:self];
-	
-	if (index >= 0 && index < [result count])
-		[result replaceObjectAtIndex:index withObject:newItem];
-	
-	return result;
+    NSMutableArray *result = [NSMutableArray arrayWithArray:self];
+    
+    if (index >= 0 && index < [result count])
+        [result replaceObjectAtIndex:index withObject:newItem];
+    
+    return result;
 }
 
 - (NSArray *)arrayByRemovingObjectIdenticalTo:(id)anObject;
@@ -28,10 +28,10 @@
     
     if (![self containsObject:anObject])
         return [NSArray arrayWithArray:self];
-	
+    
     filteredArray = [NSMutableArray arrayWithArray:self];
     [filteredArray removeObjectIdenticalTo:anObject];
-	
+    
     return [NSArray arrayWithArray:filteredArray];
 }
 
@@ -41,94 +41,92 @@
     
     if (![self containsObject:anObject])
         return [NSArray arrayWithArray:self];
-	
+    
     filteredArray = [NSMutableArray arrayWithArray:self];
     [filteredArray removeObject:anObject];
-	
+    
     return [NSArray arrayWithArray:filteredArray];
 }
 
 - (NSArray*)arrayByRemovingDuplicates;  // returns same pointer if no changes needed
 {
-	NSMutableOrderedSet* set = [NSMutableOrderedSet orderedSetWithCapacity:self.count];
-	BOOL foundDuplicates = NO;
-	
-	for (id obj in self)
-	{
-		if ([set containsObject:obj])
-			foundDuplicates = YES;
-		else
-			[set addObject:obj];
-	}
-	
-	if (foundDuplicates)
-		return [set array];
-	
-	return self;
+    NSMutableOrderedSet* set = [NSMutableOrderedSet orderedSetWithCapacity:self.count];
+    BOOL foundDuplicates = NO;
+    
+    for (id obj in self)
+    {
+        if ([set containsObject:obj])
+            foundDuplicates = YES;
+        else
+            [set addObject:obj];
+    }
+    
+    if (foundDuplicates)
+        return [set array];
+    
+    return self;
 }
 
 - (BOOL)validInsertIndex:(NSUInteger)index;
 {
-	if (index < 0)
-		return NO;
-	
-	if (index > [self count])  // = count is OK for insert
-		return NO;
-	
-	return YES;	
+    if (index < 0)
+        return NO;
+    
+    if (index > [self count])  // = count is OK for insert
+        return NO;
+    
+    return YES;    
 }
 
 - (BOOL)validIndex:(NSUInteger)index;
 {
-	if (index < 0)
-		return NO;
-	
-	if (index >= [self count])
-		return NO;
-	
-	return YES;
+    if (index < 0)
+        return NO;
+    
+    if (index >= [self count])
+        return NO;
+    
+    return YES;
 }
 
 - (id)safeObjectAtIndex:(NSUInteger)index;
 {
-	if ([self validIndex:index])
-		return [self objectAtIndex:index];
-	
-	return nil;
+    if ([self validIndex:index])
+        return [self objectAtIndex:index];
+    
+    return nil;
 }
 
 - (NSArray *)arrayByAddingObjectToFront:(id)anObject;
 {
-	if (anObject)
-		return [[NSArray arrayWithObject:anObject] arrayByAddingObjectsFromArray:self];
-	
-	return self;
+    if (anObject)
+        return [[NSArray arrayWithObject:anObject] arrayByAddingObjectsFromArray:self];
+    
+    return self;
 }
 
 - (NSMutableArray *)deepMutableCopy;
 {
     NSMutableArray *newArray;
     NSUInteger objectIndex, count;
-	
+    
     count = [self count];
-    newArray = [[NSMutableArray allocWithZone:[self zone]] initWithCapacity:count];
+    newArray = [[NSMutableArray allocWithZone:nil] initWithCapacity:count];
     for (objectIndex = 0; objectIndex < count; objectIndex++) {
         id anObject;
-		
+        
         anObject = [self objectAtIndex:objectIndex];
         if ([anObject respondsToSelector:@selector(deepMutableCopy)]) {
             anObject = [anObject deepMutableCopy];
             [newArray addObject:anObject];
-            [anObject release];
         } else if ([anObject respondsToSelector:@selector(mutableCopy)]) {
             anObject = [anObject mutableCopy];
             [newArray addObject:anObject];
-            [anObject release];
         } else {
             [newArray addObject:anObject];
         }
     }
-	
+    
     return newArray;
 }
 
@@ -138,11 +136,11 @@
     NSUInteger count;
     
     count = [self count];
-    newArray = [[[NSMutableArray allocWithZone:[self zone]] initWithCapacity:count] autorelease];
+    newArray = [[NSMutableArray allocWithZone:nil] initWithCapacity:count];
     while (count--) {
         [newArray addObject:[self objectAtIndex:count]];
     }
-	
+    
     return newArray;
 }
 
@@ -156,66 +154,66 @@
 {
     NSMutableArray *result;
     NSUInteger objectIndex, count;
-	
+    
     result = [NSMutableArray array];
     for (objectIndex = 0, count = [self count]; objectIndex < count; objectIndex++) {
         id singleObject;
         id selectorResult;
-		
+        
         singleObject = [self objectAtIndex:objectIndex];
         selectorResult = [singleObject performSelector:aSelector withObject:anObject];
-		
+        
         if (selectorResult)
             [result addObject:selectorResult];
     }
-	
+    
     return result;
 }
 
 // used in tabView, we want to reorder the "tab array" while preserving the selection
 + (BOOL)moveSource:(NSUInteger*)ioSrcIndex 
-			toDest:(NSUInteger*)ioDestIndex
-		 selection:(NSUInteger*)ioSelectionIndex;
+            toDest:(NSUInteger*)ioDestIndex
+         selection:(NSUInteger*)ioSelectionIndex;
 {
-	NSUInteger srcIndex = *ioSrcIndex;
-	NSUInteger destIndex = *ioDestIndex;
-	NSUInteger selection = *ioSelectionIndex;
-	
-	// do nothing if same location
-	if (srcIndex == destIndex)
-		return NO;
-	
-	if (srcIndex < destIndex)
-	{
-		if (srcIndex == destIndex-1)
-			return NO;
-	}
-	
-	if (selection == srcIndex)
-	{
-		selection = destIndex;
-		
-		if (srcIndex < destIndex)
-			selection--;
-	}
-	else
-	{
-		if (srcIndex > selection && destIndex <= selection)
-			selection++;
-		else if (srcIndex < selection && destIndex > selection)
-			selection--;
-	}
-	
-	// adjust destination if less than source
-	if (srcIndex < destIndex)
-		destIndex--;
-	
-	// set all out values
-	*ioSrcIndex = srcIndex;
-	*ioDestIndex = destIndex;
-	*ioSelectionIndex = selection;
-	
-	return YES;
-}	
+    NSUInteger srcIndex = *ioSrcIndex;
+    NSUInteger destIndex = *ioDestIndex;
+    NSUInteger selection = *ioSelectionIndex;
+    
+    // do nothing if same location
+    if (srcIndex == destIndex)
+        return NO;
+    
+    if (srcIndex < destIndex)
+    {
+        if (srcIndex == destIndex-1)
+            return NO;
+    }
+    
+    if (selection == srcIndex)
+    {
+        selection = destIndex;
+        
+        if (srcIndex < destIndex)
+            selection--;
+    }
+    else
+    {
+        if (srcIndex > selection && destIndex <= selection)
+            selection++;
+        else if (srcIndex < selection && destIndex > selection)
+            selection--;
+    }
+    
+    // adjust destination if less than source
+    if (srcIndex < destIndex)
+        destIndex--;
+    
+    // set all out values
+    *ioSrcIndex = srcIndex;
+    *ioDestIndex = destIndex;
+    *ioSelectionIndex = selection;
+    
+    return YES;
+}    
 
 @end

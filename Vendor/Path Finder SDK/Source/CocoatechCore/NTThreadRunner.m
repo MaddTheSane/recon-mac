@@ -11,11 +11,11 @@
 #import "NSThread-NTExtensions.h"
 
 @interface NTThreadRunnerParam ()
-@property (readwrite, assign) NTThreadRunner *runner;
+@property (readwrite, weak) NTThreadRunner *runner;
 @end
 
 @interface NTThreadRunner ()
-@property (assign) id<NTThreadRunnerDelegateProtocol> delegate;
+@property (weak) id<NTThreadRunnerDelegateProtocol> delegate;
 @property (readwrite, retain) NTThreadHelper *threadHelper;
 
 @property float priority;
@@ -33,8 +33,6 @@
 	
 	[self setThreadHelper:nil];
 	[self setParam:nil];
-
-	[super dealloc];
 }
 
 - (void)clearDelegate; // also kills the thread
@@ -63,7 +61,7 @@
 		
 	[NSThread detachNewThreadSelector:@selector(threadProc:) toTarget:result withObject:param];
 	
-	return [result autorelease];
+	return result;
 }
 
 //---------------------------------------------------------- 
@@ -73,7 +71,7 @@
 
 - (void)threadProc:(NTThreadRunnerParam*)param;
 {
-	NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
+    @autoreleasepool {
 	
 	[NSThread setThreadPriority:[self priority]];
 	
@@ -82,7 +80,7 @@
 	
 	[[self threadHelper] setComplete:YES];
 
-	[pool release];
+    }
 }
 
 - (void)mainThreadCallback;
@@ -95,8 +93,7 @@
     if (mv_param != theParam) {
 		[mv_param setRunner:nil];
 		
-        [mv_param release];
-        mv_param = [theParam retain];
+        mv_param = theParam;
 		
 		[mv_param setRunner:self];
     }
@@ -118,14 +115,6 @@
 // ------------------------------------------------------------------------------------
 
 @implementation NTThreadRunnerParam 
-
-- (void)dealloc;
-{
-	// threadRunner is cleared by the owning thread runner, it's not retained
-	// [self setThreadRunner:nil];
-	
-	[super dealloc];
-}
 
 //---------------------------------------------------------- 
 //  threadRunner 

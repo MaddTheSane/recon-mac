@@ -32,16 +32,6 @@
     return self;
 }
 
-//---------------------------------------------------------- 
-// dealloc
-//---------------------------------------------------------- 
-- (void)dealloc
-{
-    [self setPath:nil];
-    [self setTarget:nil];
-    [super dealloc];
-}
-
 + (void)openFile:(NSString*)startPath window:(NSWindow*)window target:(id)target selector:(SEL)inSelector fileType:(ChooseFileTypeEnum)fileType;
 {
 	[self openFile:startPath window:window target:target selector:inSelector fileType:fileType showInvisibleFiles:NO];
@@ -87,7 +77,7 @@
 	// send out the selector
 	[[self target] performSelector:[self selector] withObject:self];
 	
-    [self autorelease];
+    //[self autorelease];
 }
 
 - (void)startPanel:(NSString*)startPath window:(NSWindow*)window fileType:(ChooseFileTypeEnum)fileType showInvisibleFiles:(BOOL)showInvisibleFiles;
@@ -131,7 +121,7 @@
         // send out the selector
         [[self target] performSelector:[self selector] withObject:self];
         
-        [self autorelease];
+        //[self autorelease];
     }
 }
 

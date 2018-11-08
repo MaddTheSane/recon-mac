@@ -22,14 +22,12 @@
 	[result setFontSize:kDefaultMenuFontSize];
 	[result setIconSize:kDefaultMenuIconSize];
 
-	return [result autorelease];
+	return result;
 }
 
 - (void)dealloc;
 {
 	[self setDelegate:nil];
-	
-	[super dealloc];	
 }
 
 - (id)copyWithZone:(NSZone *)zone;

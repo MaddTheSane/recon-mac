@@ -17,7 +17,7 @@
 
 @interface NTThreadRunner : NSObject
 {
-	id<NTThreadRunnerDelegateProtocol> mv_delegate;
+	__weak id<NTThreadRunnerDelegateProtocol> mv_delegate;
 	
 	float mv_priority;
 	
@@ -40,13 +40,13 @@
 
 @interface NTThreadRunnerParam : NSObject
 {
-	NTThreadRunner* mv_runner;
+	__weak NTThreadRunner* mv_runner;
 }
 
 //! must subclass to do work
 - (BOOL)doThreadProc;
 
-@property (readonly, assign) NTThreadRunner *runner;
+@property (readonly, weak) NTThreadRunner *runner;
 @property (readonly, assign) NTThreadHelper *helper;
 
 @property (readonly, assign) id<NTThreadRunnerDelegateProtocol> delegate;

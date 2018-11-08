@@ -120,7 +120,7 @@
     result = [[NSData alloc] initWithBytes:*handle length:GetHandleSize(handle)];
     HUnlock(handle);
 	
-    return [result autorelease];
+    return result;
 }
 
 - (Handle)carbonHandle;
@@ -191,7 +191,7 @@ XX,XX,XX,XX, XX,XX,XX,XX, XX,XX,XX,XX, XX,XX,XX,XX,
 
 + (id)dataWithBase64String:(NSString *)base64String;
 {
-    return [[[self alloc] initWithBase64String:base64String] autorelease];
+    return [[self alloc] initWithBase64String:base64String];
 }
 
 - initWithBase64String:(NSString *)base64String;
@@ -257,11 +257,10 @@ XX,XX,XX,XX, XX,XX,XX,XX, XX,XX,XX,XX, XX,XX,XX,XX,
         }
     }
 	
-    decodedData = [NTDataBufferData(buffer) retain];
+    decodedData = NTDataBufferData(buffer);
     NTDataBufferRelease(buffer);
 	
     returnValue = [self initWithData:decodedData];
-    [decodedData release];
 	
     return returnValue;
 }

@@ -21,7 +21,7 @@
 // a tool can be run synchonously or asynchronously
 @interface NTTaskController : NSObject
 {
-    id<NTTaskControllerDelegateProtocol> mDelegate;
+    __weak id<NTTaskControllerDelegateProtocol> mDelegate;
 
     NSTask *_task;
     NSPipe *_outputPipe;

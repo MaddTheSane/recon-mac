@@ -33,17 +33,6 @@
     return self;
 }
 
-//---------------------------------------------------------- 
-// dealloc
-//---------------------------------------------------------- 
-- (void) dealloc
-{
-    self.path = nil;
-    self.contextInfo = nil;
-    self.target = nil;
-    [super dealloc];
-}
-
 + (void)chooseDestination:(NSString*)startPath window:(NSWindow*)window target:(id)target selector:(SEL)inSelector contextInfo:(id)contextInfo;
 {
 	[self chooseDestination:startPath window:window target:target selector:inSelector contextInfo:contextInfo showInvisibleFiles:NO];
@@ -110,7 +99,7 @@
     // send out the selector
     [NSApp sendAction:self.selector to:self.target from:self];
 	
-	[self autorelease];
+	//[self autorelease];
 }
 
 @end

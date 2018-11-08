@@ -16,7 +16,7 @@
 
 @interface NTSpaceKeyPoll : NSObject 
 {
-	id <NTSpaceKeyPollDelegate> delegate;
+	__weak id <NTSpaceKeyPollDelegate> delegate;
 	BOOL spaceDown;
 	NTSimpleTimer* timer;
 	unsigned timerCount;
@@ -24,7 +24,7 @@
 	NSDate* startDate;  // safety, if we are running longer than x seconds, just kill us, maybe it wasn't stopped properly
 }
 
-@property (assign) id <NTSpaceKeyPollDelegate> delegate;  // not retained, must clear
+@property (weak) id <NTSpaceKeyPollDelegate> delegate;  // not retained, must clear
 @property (assign) BOOL spaceDown;
 @property (assign) unsigned timerCount;
 @property (retain) NTSimpleTimer* timer;

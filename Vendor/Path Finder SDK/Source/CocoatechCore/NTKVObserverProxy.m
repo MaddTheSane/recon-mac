@@ -14,24 +14,22 @@
 
 + (NTKVObserverProxy*)proxy:(id<NTKVObserverProxyDelegateProtocol>)theDelegate;
 {
-	NTKVObserverProxy* result = [[NTKVObserverProxy alloc] init];
-	
-	result.delegate = theDelegate;
-	
-	return [result autorelease];
+    NTKVObserverProxy* result = [[NTKVObserverProxy alloc] init];
+    
+    result.delegate = theDelegate;
+    
+    return result;
 }
 
 - (void)dealloc;
 {
-	if (self.delegate)
-		[NSException raise:@"must call xx.delegate=nil before releasing" format:@"%@", NSStringFromClass([self class])];
-
-	[super dealloc];
+    if (self.delegate)
+        [NSException raise:@"must call xx.delegate=nil before releasing" format:@"%@", NSStringFromClass([self class])];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context;
 {
-	[self.delegate observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+    [self.delegate observeValueForKeyPath:keyPath ofObject:object change:change context:context];
 }
 
 @end

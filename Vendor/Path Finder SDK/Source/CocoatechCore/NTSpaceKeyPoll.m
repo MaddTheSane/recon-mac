@@ -27,7 +27,7 @@
 	
 	result.delegate = theDelegate;
 	
-	return [result autorelease];
+	return result;
 }
 
 //---------------------------------------------------------- 
@@ -41,8 +41,6 @@
 	[self.timer clearDelegate];
 	self.timer = nil;
 	self.startDate = nil;
-	
-    [super dealloc];
 }
 
 - (void)start;

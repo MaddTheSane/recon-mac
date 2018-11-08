@@ -35,7 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (NSMutableArray *)deepMutableCopy;
 - (NSArray *)arrayByPerformingSelector:(SEL)aSelector;
-- (NSArray *)arrayByPerformingSelector:(SEL)aSelector withObject:(id)anObject;
+- (NSArray *)arrayByPerformingSelector:(SEL)aSelector withObject:(nullable id)anObject;
 
 - (NSArray<ObjectType> *)reversedArray;
 

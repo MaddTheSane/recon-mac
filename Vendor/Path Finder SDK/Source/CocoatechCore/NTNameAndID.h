@@ -19,7 +19,7 @@
 - (instancetype)init;
 
 @property (readonly) int identifier;
-@property (readonly, retain) NSNumber *identifierNumber;
+@property (readonly, strong) NSNumber *identifierNumber;
 @property (readonly, copy) NSString *name;
 
 @end

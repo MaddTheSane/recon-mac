@@ -15,7 +15,7 @@
 - (void)setNotifications;
 - (void)finished;
 
-@property (assign) id<NTTaskControllerDelegateProtocol> delegate;
+@property (weak) id<NTTaskControllerDelegateProtocol> delegate;
 @end
 
 @implementation NTTaskController
@@ -26,7 +26,7 @@
 {
 	NTTaskController* result = [[NTTaskController alloc] initWithTaskDelegate:delegate];
 	
-	return [result autorelease];
+	return result;
 }
 
 // tools like "tar" send their progress info through stderr, gnutar send output through stdout
@@ -66,14 +66,6 @@
     [self stopTask];
 	
     self.outputCache = nil;
-	[mv_modes release];
-		
-	[_task release];
-	[_inputPipe release];
-    [_outputPipe release];
-    [_errorPipe release];
-
-    [super dealloc];
 }
 
 - (void)clearDelegate;
@@ -89,7 +81,7 @@
 - (void)runTask:(BOOL)sync toolPath:(NSString*)toolPath directory:(NSString*)currentDirectory withArgs:(NSArray*)args input:(NSData*)input;
 {
 	// the delegate can delete us while we are sending it the finished method
-	[self retain];
+    __strong id aSelf = self;
 	
 	NS_DURING;
 	{
@@ -157,14 +149,14 @@
 	NS_HANDLER;
 	NS_ENDHANDLER;
 	
-	[self release];
+	(void)aSelf;
 }
 
 + (BOOL)synchronousTask:(id<NTTaskControllerDelegateProtocol>)delegate toolPath:(NSString*)toolPath directory:(NSString*)currentDirectory withArgs:(NSArray*)args;
 {
+    BOOL result=NO;
 	// we need this wacky pool here, otherwise we run out of pipes, the pipes are internally autoreleased
-	NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-	BOOL result=NO;
+    @autoreleasepool {
 	
 	NS_DURING
 	{
@@ -175,12 +167,11 @@
 		result = [task taskResult];
 		
 		[task clearDelegate];
-		[task release];
-	}	
+	}
 	NS_HANDLER;
 	NS_ENDHANDLER;
 	
-	[pool release];
+    }
 	
     return result;
 }
@@ -303,25 +294,25 @@
 - (void)taskOutputAvailable:(NSNotification*)note
 {
 	// the delegate can delete us while we are sending it the finished method
-	[self retain];
-	
+    __strong id aSelf = self;
+
 	NS_DURING;
 	{
 		NSData* output = [[note userInfo] objectForKey:NSFileHandleNotificationDataItem];
 		
-		BOOL gotData = [self processOutput:output];
+		BOOL gotData = [aSelf processOutput:output];
 		if (gotData)
 		{
-			if (![self readTilEndOfFile])
+			if (![aSelf readTilEndOfFile])
 				[[note object] readInBackgroundAndNotifyForModes:mv_modes];
 			else	
-				[self finished];
+				[aSelf finished];
 		}
 	}
 	NS_HANDLER;
 	NS_ENDHANDLER;
 	
-	[self release];
+	(void)aSelf;
 }
 
 - (void)taskErrorsAvailable:(NSNotification*)note

@@ -16,23 +16,13 @@
 @synthesize bitmapContext;
 @synthesize locked;
 
-//---------------------------------------------------------- 
-// dealloc
-//---------------------------------------------------------- 
-- (void) dealloc
-{
-    self.bitmapImageRep = nil;
-    self.bitmapContext = nil;
-    [super dealloc];
-}
-
 + (NTImageMaker*)maker:(NSSize)size;
 {
 	NTImageMaker* result = [[NTImageMaker alloc] init];
 	
 	[result setSize:size];
 	
-	return [result autorelease];
+	return result;
 }
 
 - (void)lockFocus;
@@ -43,17 +33,17 @@
 	{
 		self.locked = YES;
 		
-		[self setBitmapImageRep:[[[NSBitmapImageRep alloc] initWithBitmapDataPlanes:NULL 
-																		 pixelsWide:[self size].width
-																		 pixelsHigh:[self size].height 
-																	  bitsPerSample:8 
-																	samplesPerPixel:4
-																		   hasAlpha:YES 
-																		   isPlanar:NO
-																	 colorSpaceName:NSCalibratedRGBColorSpace 
-																	   bitmapFormat:0
-																		bytesPerRow:0
-																	   bitsPerPixel:0] autorelease]];
+		[self setBitmapImageRep:[[NSBitmapImageRep alloc] initWithBitmapDataPlanes:NULL
+                                                                        pixelsWide:[self size].width
+                                                                        pixelsHigh:[self size].height
+                                                                     bitsPerSample:8
+                                                                   samplesPerPixel:4
+                                                                          hasAlpha:YES
+                                                                          isPlanar:NO
+                                                                    colorSpaceName:NSCalibratedRGBColorSpace
+                                                                      bitmapFormat:0
+                                                                       bytesPerRow:0
+                                                                      bitsPerPixel:0]];
 		
 		// Clear the NSBitmapImageRep.
 		unsigned char *bitmapData = [[self bitmapImageRep] bitmapData];
@@ -94,7 +84,7 @@
 		[NSGraphicsContext restoreGraphicsState];	
 		
 		// create NSImage and return it
-		result = [[[NSImage alloc] initWithSize:[self size]] autorelease];
+		result = [[NSImage alloc] initWithSize:[self size]];
 		[result addRepresentation:[self bitmapImageRep]];
 		
 		[result setTemplate:template];
@@ -106,7 +96,7 @@
 - (NSBitmapImageRep*)imageRep;  // same one added to image in unlockFocus
 {
 	// a rep can't exist in more than one image, so copy it
-	return [[[self bitmapImageRep] copy] autorelease];
+	return [[self bitmapImageRep] copy];
 }
 
 @end

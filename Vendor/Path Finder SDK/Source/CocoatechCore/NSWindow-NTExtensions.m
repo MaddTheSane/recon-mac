@@ -299,7 +299,7 @@ NSNotificationName const kNTSetDefaultFirstResponderNotification = @"NTSetDefaul
 // added to be compatible with the beginSheet hack in NTApplication.m taken from OmniAppKit
 - (id)copyWithZone:(NSZone *)zone;
 {
-    return [self retain];
+    return self;
 }
 
 

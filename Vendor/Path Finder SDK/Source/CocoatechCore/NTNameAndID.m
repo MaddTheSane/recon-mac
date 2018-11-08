@@ -11,7 +11,7 @@
 // =================================================================
 
 @interface NTNameAndID ()
-@property (readwrite, retain) NSNumber *identifierNumber;
+@property (readwrite, strong) NSNumber *identifierNumber;
 @property (readwrite, copy) NSString *name;
 @end
 
@@ -29,15 +29,7 @@
     [result setIdentifierNumber:@(identifier)];
     [result setName:name];
 	
-    return [result autorelease];
-}
-
-- (void)dealloc;
-{
-    [self setName:nil];
-	[self setIdentifierNumber:nil];
-	
-    [super dealloc];
+    return result;
 }
 
 //---------------------------------------------------------- 

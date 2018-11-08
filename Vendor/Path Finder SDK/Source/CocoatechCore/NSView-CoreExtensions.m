@@ -230,7 +230,7 @@
 	{		
 		if ([button isSwitchButton])
 		{
-			NSMutableAttributedString* attrString = [[[button attributedTitle] mutableCopy] autorelease];
+			NSMutableAttributedString* attrString = [[button attributedTitle] mutableCopy];
 			
 			[attrString addAttribute:NSBackgroundColorAttributeName value:backColor range:NSMakeRange(0, [attrString length])];
 			
@@ -301,7 +301,6 @@
 - (void)removeOneView:(NSView**)view;
 {
 	[*view removeFromSuperviewWithoutNeedingDisplay];
-	[*view release];
 	*view = nil;
 }
 

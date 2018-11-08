@@ -15,17 +15,17 @@
 - (void)setEnabled:(BOOL)enabled;
 {
     [super setEnabled:enabled];
-	
-	[self setStringValue:[self stringValue]];
+    
+    [self setStringValue:[self stringValue]];
 }
 
 - (void)setStringValue:(NSString*)value;
 {
-	[super setStringValue:value];
-	
-	NSMutableAttributedString* mString = [[[NSMutableAttributedString alloc] initWithAttributedString:[self attributedStringValue]] autorelease];
-	[mString addAttribute:NSForegroundColorAttributeName value:(([self isEnabled]) ? [NSColor controlTextColor] : [NSColor disabledControlTextColor]) range:NSMakeRange(0, [mString length])];
-	[self setAttributedStringValue:mString];
+    [super setStringValue:value];
+    
+    NSMutableAttributedString* mString = [[NSMutableAttributedString alloc] initWithAttributedString:[self attributedStringValue]];
+    [mString addAttribute:NSForegroundColorAttributeName value:(([self isEnabled]) ? [NSColor controlTextColor] : [NSColor disabledControlTextColor]) range:NSMakeRange(0, [mString length])];
+    [self setAttributedStringValue:mString];
 }
 
 @end

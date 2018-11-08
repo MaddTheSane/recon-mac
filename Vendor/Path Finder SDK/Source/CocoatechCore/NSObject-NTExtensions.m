@@ -18,7 +18,7 @@
 {
 	id result = [[self class] new];
 	
-	return [result autorelease];
+	return result;
 }
 
 + (NSBundle *)bundle;
@@ -62,16 +62,14 @@
 // the object retained by the call could be your self, and any calls after this would crash
 - (void)safeCancelPreviousPerformRequests;
 {
-	[self retain];
-	[NSObject cancelPreviousPerformRequestsWithTarget:self];
-	[self autorelease];
+    __strong id aSelf = self;
+	[NSObject cancelPreviousPerformRequestsWithTarget:aSelf];
 }
 
 - (void)safeCancelPreviousPerformRequestsWithSelector:(SEL)aSelector object:(id)anArgument;
 {
-	[self retain];
-	[NSObject cancelPreviousPerformRequestsWithTarget:self selector:aSelector object:anArgument];
-	[self autorelease];
+    __strong id aSelf = self;
+	[NSObject cancelPreviousPerformRequestsWithTarget:aSelf selector:aSelector object:anArgument];
 }
 
 @end

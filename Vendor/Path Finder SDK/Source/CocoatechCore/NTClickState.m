@@ -16,23 +16,17 @@
     if (self = [super init]) {
         _handled = NO;
         _renameOnMouseUpIndex = -1;
-        _event = [event retain];
+        _event = event;
     }
     
     return self;
-}
-
-- (void)dealloc;
-{
-    [_event release];
-    [super dealloc];
 }
 
 + (NTClickState*)clickState:(NSEvent*)event;
 {
     id result = [[NTClickState alloc] initWithEvent:event];
 
-    return [result autorelease];
+    return result;
 }
 
 @synthesize event=_event;

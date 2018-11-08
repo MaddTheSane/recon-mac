@@ -22,8 +22,8 @@
 	
 	result.delegate = theDelegate;
 	
-	CATransition* one = [[[[result.delegate animationDelegateView:result] animationForKey:@"frameSize"] copy] autorelease];
-	CATransition* two = [[[[result.delegate animationDelegateView:result] animationForKey:@"frameOrigin"] copy] autorelease];
+	CATransition* one = [[[result.delegate animationDelegateView:result] animationForKey:@"frameSize"] copy];
+	CATransition* two = [[[result.delegate animationDelegateView:result] animationForKey:@"frameOrigin"] copy];
 	
 	[one setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
 	[two setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
@@ -31,7 +31,7 @@
 	[two setDelegate:result];
 	[result setAnimations:[NSDictionary dictionaryWithObjectsAndKeys:one, @"frameSize", two, @"frameOrigin", nil]];	
 	
-	return [result autorelease];
+	return result;
 }
 
 - (void)clearDelegate;
@@ -49,9 +49,6 @@
 {
 	if (self.delegate)
 		[NSException raise:@"must clearDelegate before releasing" format:@"%@", NSStringFromClass([self class])];
-	
-    self.animations = nil;
-    [super dealloc];
 }
 
 - (void)animationDidStart:(CAAnimation *)anim;

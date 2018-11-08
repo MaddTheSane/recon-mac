@@ -52,14 +52,6 @@
 - (void)dealloc
 {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
-
-	[self setDimmedImage:nil];
-	[self setNormalImage:nil];
-	[self setMouseOverImage:nil];
-	[self setClickedImage:nil];
-    [self setMenu:nil];
-
-    [super dealloc];
 }
 
 - (void)windowStateChangedNotification:(NSNotification*)notification
@@ -90,7 +82,7 @@
 	
     [result buildButton:image mouseOverImage:mouseOverImage dimmedImage:dimmedImage];
     
-    return [result autorelease];
+    return result;
 }
 
 - (void)drawRect:(NSRect)rect
@@ -153,7 +145,6 @@
 - (void)setMouseOverImage:(NSImage *)theMouseOverImage
 {
     if (mMouseOverImage != theMouseOverImage) {
-        [mMouseOverImage release];
         mMouseOverImage = [theMouseOverImage copy];
 		
 		[mMouseOverImage setTemplate:NO];  // prevent from drawing black
@@ -210,7 +201,6 @@
 														  owner:self
 													   userInfo:nil];
     [self addTrackingArea:area];
-    [area release];
 }
 
 - (void)mouseEntered:(NSEvent *)event

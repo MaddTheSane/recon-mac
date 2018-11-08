@@ -20,27 +20,17 @@
 {
 	NTGradientDraw *result = [[NTGradientDraw alloc] init];
 	
-	[result setGradient:[[[NSGradient alloc] initWithStartingColor:startingColor endingColor:endingColor] autorelease]];
+	[result setGradient:[[NSGradient alloc] initWithStartingColor:startingColor endingColor:endingColor]];
 						 
-	return [result autorelease];
-}
-
-//---------------------------------------------------------- 
-// dealloc
-//---------------------------------------------------------- 
-- (void)dealloc
-{
-    self.gradient = nil;
-	
-    [super dealloc];
+	return result;
 }
 
 + (NTGradientDraw*)sharedBackgroundGradient;
 {
 	static NTGradientDraw* shared = nil;
 	if (!shared)
-		shared = [[NTGradientDraw gradientWithStartColor:[NSColor colorWithDeviceWhite:0.94 alpha:1.0] 
-												endColor:[NSColor colorWithDeviceWhite:0.86 alpha:1.0]] retain];
+		shared = [NTGradientDraw gradientWithStartColor:[NSColor colorWithDeviceWhite:0.94 alpha:1.0]
+                                               endColor:[NSColor colorWithDeviceWhite:0.86 alpha:1.0]];
 	return shared;
 }	
 
@@ -52,14 +42,14 @@
 	if (dimmed)
 	{
 		if (!dim)
-			dim = [[NTGradientDraw gradientWithStartColor:[NSColor colorWithDeviceWhite:0.88 alpha:1.0] 
-												 endColor:[NSColor colorWithDeviceWhite:0.76 alpha:1.0]] retain];
+			dim = [NTGradientDraw gradientWithStartColor:[NSColor colorWithDeviceWhite:0.88 alpha:1.0]
+                                                endColor:[NSColor colorWithDeviceWhite:0.76 alpha:1.0]];
 		return dim;		
 	}
 	
 	if (!normal)
-		normal = [[NTGradientDraw gradientWithStartColor:[NSColor colorWithDeviceWhite:0.86 alpha:1.0] 
-												endColor:[NSColor colorWithDeviceWhite:0.62 alpha:1.0]] retain];
+		normal = [NTGradientDraw gradientWithStartColor:[NSColor colorWithDeviceWhite:0.86 alpha:1.0]
+                                               endColor:[NSColor colorWithDeviceWhite:0.62 alpha:1.0]];
 	return normal;
 }	
 
@@ -71,14 +61,14 @@
 	if (dimmed)
 	{
 		if (!dim)
-			dim = [[NTGradientDraw gradientWithStartColor:[NSColor colorWithDeviceWhite:0.72 alpha:1.0] 
-												 endColor:[NSColor colorWithDeviceWhite:0.66 alpha:1.0]] retain];
+			dim = [NTGradientDraw gradientWithStartColor:[NSColor colorWithDeviceWhite:0.72 alpha:1.0]
+                                                endColor:[NSColor colorWithDeviceWhite:0.66 alpha:1.0]];
 		return dim;		
 	}
 	
 	if (!normal)
-		normal = [[NTGradientDraw gradientWithStartColor:[NSColor colorWithDeviceWhite:0.68 alpha:1.0] 
-												endColor:[NSColor colorWithDeviceWhite:0.52 alpha:1.0]] retain];
+		normal = [NTGradientDraw gradientWithStartColor:[NSColor colorWithDeviceWhite:0.68 alpha:1.0]
+                                               endColor:[NSColor colorWithDeviceWhite:0.52 alpha:1.0]];
 	return normal;
 }
 
@@ -90,14 +80,14 @@
 	if (dimmed)
 	{
 		if (!dim)
-			dim = [[NTGradientDraw gradientWithStartColor:[NSColor colorWithDeviceWhite:0.68 alpha:1.0] 
-												 endColor:[NSColor colorWithDeviceWhite:0.64 alpha:1.0]] retain];
+			dim = [NTGradientDraw gradientWithStartColor:[NSColor colorWithDeviceWhite:0.68 alpha:1.0]
+                                                endColor:[NSColor colorWithDeviceWhite:0.64 alpha:1.0]];
 		return dim;		
 	}
 	
 	if (!normal)
-		normal = [[NTGradientDraw gradientWithStartColor:[NSColor colorWithDeviceWhite:0.65 alpha:1.0] 
-												endColor:[NSColor colorWithDeviceWhite:0.50 alpha:1.0]] retain];
+		normal = [NTGradientDraw gradientWithStartColor:[NSColor colorWithDeviceWhite:0.65 alpha:1.0]
+                                               endColor:[NSColor colorWithDeviceWhite:0.50 alpha:1.0]];
 	return normal;	
 }
 
@@ -152,7 +142,7 @@
 {
 	static NTGradientDraw* shared = nil;
 	if (!shared)
-		shared = [[NTGradientDraw gradientWithStartColor:[NSColor colorWithCalibratedWhite:1 alpha:1] endColor:[NSColor colorWithCalibratedWhite:.95 alpha:1]] retain];
+		shared = [NTGradientDraw gradientWithStartColor:[NSColor colorWithCalibratedWhite:1 alpha:1] endColor:[NSColor colorWithCalibratedWhite:.95 alpha:1]];
 	return shared;
 }	
 

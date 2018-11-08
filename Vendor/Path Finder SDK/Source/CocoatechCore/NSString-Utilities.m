@@ -14,7 +14,7 @@ typedef NSString*(* string_IMP)(id,SEL,...);
 
 + (id)stringWithMacOSRomanString:(const char *)nullTerminatedCString;
 {
-	return [[[NSString alloc] initWithBytes:nullTerminatedCString length:strlen(nullTerminatedCString) encoding:NSMacOSRomanStringEncoding] autorelease];
+	return [[NSString alloc] initWithBytes:nullTerminatedCString length:strlen(nullTerminatedCString) encoding:NSMacOSRomanStringEncoding];
 }
 
 + (NSString*)stringWithPString:(Str255)pString;
@@ -59,16 +59,14 @@ typedef NSString*(* string_IMP)(id,SEL,...);
 	CFStringRef stringRef = FSCreateStringFromHFSUniStr(nil, hfsString);
     
 	// this name contains "/" characters, must convert to ":"
-	NSString* result = [(NSString*)stringRef slashToColon];
-	
-	CFRelease(stringRef);
+    NSString* result = [(NSString*)CFBridgingRelease(stringRef) slashToColon];
 	
     return result;
 }
 
 - (void)HFSUniStr255:(out HFSUniStr255*)hfsString
 {
-	FSGetHFSUniStrFromString((CFStringRef)self, hfsString);
+    FSGetHFSUniStrFromString((__bridge CFStringRef)self, hfsString);
 }
 
 - (NSString*)stringByReplacing:(NSString *)value with:(NSString *)newValue;
@@ -97,14 +95,14 @@ typedef NSString*(* string_IMP)(id,SEL,...);
 
 + (id)stringWithBytes:(const void *)bytes length:(NSInteger)len encoding:(NSStringEncoding)encoding;
 {
-	return [[[NSString alloc] initWithBytes:bytes length:len encoding:encoding] autorelease];
+	return [[self alloc] initWithBytes:bytes length:len encoding:encoding];
 }
 
 + (id)stringWithUTF8String:(const void *)bytes length:(NSInteger)length;
 {
-	NSString *result = [[NSString alloc] initWithBytes:bytes length:length encoding:NSUTF8StringEncoding];
+	NSString *result = [[self alloc] initWithBytes:bytes length:length encoding:NSUTF8StringEncoding];
 
-	return [result autorelease];
+	return result;
 }
 
 - (BOOL)stringContainsValueFromArray:(NSArray *)theValues
@@ -285,8 +283,7 @@ typedef NSString*(* string_IMP)(id,SEL,...);
 {
     CFStringRef (stringRef) = CFURLCreateStringByAddingPercentEscapes(NULL, (CFStringRef) self, NULL, NULL, kCFStringEncodingUTF8);
 
-    NSString *result = [NSString stringWithString:(NSString*)stringRef];
-    CFRelease(stringRef);
+    NSString *result = CFBridgingRelease(stringRef);
     
     return result;
 }
@@ -306,9 +303,7 @@ typedef NSString*(* string_IMP)(id,SEL,...);
         if (hfsRef)
         {
             // copy into an autoreleased NSString
-            hfsPath = [NSString stringWithString:(NSString*)hfsRef];
-
-            CFRelease(hfsRef);
+            hfsPath = CFBridgingRelease(hfsRef);
         }
 
         CFRelease(fileURL);
@@ -331,7 +326,7 @@ typedef NSString*(* string_IMP)(id,SEL,...);
 		if (hfsRef)
 		{
 			// copy into an autoreleased NSString
-			hfsPath = [NSString stringWithString:CFBridgingRelease(hfsRef)];
+			hfsPath = CFBridgingRelease(hfsRef);
 		}
 		
 		CFRelease(fileURL);
@@ -354,8 +349,7 @@ typedef NSString*(* string_IMP)(id,SEL,...);
 
         if (posixRef)
         {
-            // copy into an autoreleased NSString
-            posixPath = [NSString stringWithString:CFBridgingRelease(posixRef)];
+            posixPath = CFBridgingRelease(posixRef);
         }
 
         CFRelease(fileURL);
@@ -371,7 +365,7 @@ typedef NSString*(* string_IMP)(id,SEL,...);
 	if (r.location == NSNotFound) 
 		return self;
 	
-	NSMutableString *result = [[self mutableCopy] autorelease];
+	NSMutableString *result = [self mutableCopy];
 	do
 	{
 		[result replaceCharactersInRange:r withString:@""];
@@ -387,14 +381,14 @@ typedef NSString*(* string_IMP)(id,SEL,...);
     static NSCharacterSet *newlineCharacterSet = nil;
     
     if (newlineCharacterSet == nil)
-        newlineCharacterSet = [[NSCharacterSet characterSetWithCharactersInString:@"\r\n"] retain];
+        newlineCharacterSet = [NSCharacterSet characterSetWithCharactersInString:@"\r\n"];
     
     return [self stringByRemovingCharactersInCharacterSet:newlineCharacterSet];
 }
 
 + (NSString *)stringWithData:(NSData *)data encoding:(NSStringEncoding)encoding;
 {
-    return [[[self alloc] initWithData:data encoding:encoding] autorelease];
+    return [[self alloc] initWithData:data encoding:encoding];
 }
 
 - (NSString*)stringByTrimmingWhiteSpace;
@@ -408,14 +402,14 @@ typedef NSString*(* string_IMP)(id,SEL,...);
 	
     aRange = [self rangeOfString:prefix options:NSAnchoredSearch];
     if ((aRange.length == 0) || (aRange.location != 0))
-        return [[self retain] autorelease];
+        return self;
     return [self substringFromIndex:aRange.location + aRange.length];
 }
 
 - (NSString *)stringByRemovingSuffix:(NSString *)suffix;
 {
     if (![self hasSuffix:suffix])
-        return [[self retain] autorelease];
+        return self;
     return [self substringToIndex:[self length] - [suffix length]];
 }
 
@@ -661,10 +655,10 @@ typedef NSString*(* string_IMP)(id,SEL,...);
 
 - (NSString*)stringPairInStringsFileFormat:(NSString*)right addNewLine:(BOOL)addNewLine;
 {
-	self = [self stringInStringsFileFormat];
+	NSString *aself = [self stringInStringsFileFormat];
 	right = [right stringInStringsFileFormat];
 	
-	return [NSString stringWithFormat:@"\"%@\" = \"%@\";%@", self, right, (addNewLine) ? @"\n": @""];
+	return [NSString stringWithFormat:@"\"%@\" = \"%@\";%@", aself, right, (addNewLine) ? @"\n": @""];
 }
 
 // a unique string

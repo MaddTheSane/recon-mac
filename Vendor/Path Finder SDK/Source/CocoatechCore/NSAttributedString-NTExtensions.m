@@ -17,7 +17,7 @@
 	{
 		NSAttributedString* result = [[NSAttributedString alloc] initWithString:inString attributes:attributes];
 		
-		return [result autorelease];
+		return result;
 	}
 	
 	return nil;

@@ -17,14 +17,14 @@
 	{
 		static NSColor* shared = nil;
 		if (!shared)
-			shared = [[NSColor colorWithCalibratedWhite:.55 alpha:1.0] retain];
+			shared = [NSColor colorWithCalibratedWhite:.55 alpha:1.0];
 		
 		return shared;
 	}
 	
     static NSColor* shared = nil;
     if (!shared)
-		shared = [[NSColor colorWithCalibratedWhite:.3 alpha:1.0] retain];
+		shared = [NSColor colorWithCalibratedWhite:.3 alpha:1.0];
     
     return shared;
 }
@@ -35,14 +35,14 @@
 	{
 		static NSColor* shared = nil;
 		if (!shared)
-			shared = [[NSColor colorWithCalibratedWhite:.7 alpha:1.0] retain];
+			shared = [NSColor colorWithCalibratedWhite:.7 alpha:1.0];
 		
 		return shared;
 	}
 	
     static NSColor* shared = nil;
     if (!shared)
-		shared = [[NSColor colorWithCalibratedWhite:.42 alpha:1.0] retain];
+		shared = [NSColor colorWithCalibratedWhite:.42 alpha:1.0];
     
     return shared;
 }
@@ -53,14 +53,14 @@
 	{
 		static NSColor* shared = nil;
 		if (!shared)
-			shared = [[NSColor colorWithCalibratedWhite:1 alpha:.05] retain];
+			shared = [NSColor colorWithCalibratedWhite:1 alpha:.05];
 		
 		return shared;		
 	}
 	
 	static NSColor* shared = nil;
     if (!shared)
-        shared = [[NSColor colorWithCalibratedWhite:1 alpha:.26] retain];
+        shared = [NSColor colorWithCalibratedWhite:1 alpha:.26];
     
     return shared;    	
 }
@@ -71,14 +71,14 @@
 	{
 		static NSColor* shared = nil;
 		if (!shared)
-			shared = [[NSColor colorWithCalibratedWhite:1 alpha:.05] retain];
+			shared = [NSColor colorWithCalibratedWhite:1 alpha:.05];
 		
 		return shared;		
 	}
 	
 	static NSColor* shared = nil;
     if (!shared)
-        shared = [[NSColor colorWithCalibratedWhite:1 alpha:.1] retain];
+        shared = [NSColor colorWithCalibratedWhite:1 alpha:.1];
     
     return shared;    	
 }	
@@ -114,7 +114,7 @@
     static NSColor* shared = nil;
     
     if (!shared)
-        shared = [[NSColor colorWithCalibratedWhite:.600 alpha:1.0] retain];
+        shared = [NSColor colorWithCalibratedWhite:.600 alpha:1.0];
     
     return shared;
 }
@@ -125,14 +125,14 @@
 	{
 		static NSColor* shared = nil;
 		if (!shared)
-			shared = [[NSColor colorWithCalibratedWhite:.75 alpha:1.0] retain];
+			shared = [NSColor colorWithCalibratedWhite:.75 alpha:1.0];
 		
 		return shared;
 	}
 	
     static NSColor* shared = nil;
     if (!shared)
-		shared = [[NSColor colorWithCalibratedWhite:.47 alpha:1.0] retain];
+		shared = [NSColor colorWithCalibratedWhite:.47 alpha:1.0];
     
     return shared;
 }
@@ -143,7 +143,7 @@
 	static NSColor* shared = nil;
     
     if (!shared)
-        shared = [[NSColor colorWithCalibratedRed:.898 green:.925 blue:.973 alpha:1.0] retain];
+        shared = [NSColor colorWithCalibratedRed:.898 green:.925 blue:.973 alpha:1.0];
     
     return shared;    
 }
@@ -153,7 +153,7 @@
 	static NSColor* shared = nil;
     
     if (!shared)
-        shared = [[NSColor colorWithCalibratedRed:.808 green:.867 blue:.976 alpha:1.0] retain];
+        shared = [NSColor colorWithCalibratedRed:.808 green:.867 blue:.976 alpha:1.0];
     
     return shared;    
 }
@@ -165,7 +165,7 @@
 		static NSColor* shared = nil;
 		
 		if (!shared)
-			shared = [[NSColor colorWithCalibratedRed:.91 green:.91 blue:.91 alpha:1] retain];
+			shared = [NSColor colorWithCalibratedRed:.91 green:.91 blue:.91 alpha:1];
 		
 		return shared;    
 	}
@@ -173,7 +173,7 @@
 	static NSColor* shared = nil;
     
     if (!shared)
-        shared = [[NSColor colorWithCalibratedRed:.820 green:.843 blue:.886 alpha:1] retain];
+        shared = [NSColor colorWithCalibratedRed:.820 green:.843 blue:.886 alpha:1];
     
     return shared;    
 }
@@ -183,7 +183,7 @@
 	static NSColor* shared = nil;
     
     if (!shared)
-        shared = [[NSColor colorWithCalibratedWhite:1 alpha:.5] retain];
+        shared = [NSColor colorWithCalibratedWhite:1 alpha:.5];
     
     return shared;    
 }
@@ -193,7 +193,7 @@
 	static NSColor* shared = nil;
     
     if (!shared)
-        shared = [[NSColor colorWithCalibratedWhite:.90 alpha:1] retain];
+        shared = [NSColor colorWithCalibratedWhite:.90 alpha:1];
     
     return shared;    
 }

@@ -378,7 +378,7 @@
     static NSImage* shared=nil;
     
     if (!shared)
-        shared = [[self gridImage:NSMakeRect(0, 0, 128, 128)] retain];
+        shared = [self gridImage:NSMakeRect(0, 0, 128, 128)];
     
     [shared tileInRect:rect isFlipped:isFlipped operation:NSCompositeSourceOver fraction:.05];
 }
@@ -391,7 +391,7 @@
 
 + (NSBezierPath*)newPath;
 {
-    NSBezierPath *path = [[[NSBezierPath alloc] init] autorelease];
+    NSBezierPath *path = [[NSBezierPath alloc] init];
     [path setLineWidth:1];
     [path setFlatness:.001];
     

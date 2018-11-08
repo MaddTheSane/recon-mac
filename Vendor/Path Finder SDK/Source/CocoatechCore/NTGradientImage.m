@@ -34,20 +34,7 @@ static const int kImageWidth = 10;
 	[result setColor:color];
 	[result setBackColor:backColor];
 	
-	return [result autorelease];	
-}
-
-//---------------------------------------------------------- 
-// dealloc
-//---------------------------------------------------------- 
-- (void)dealloc
-{
-    [self setGradient:nil];
-    [self setColor:nil];
-    [self setBackColor:nil];
-	[self setImage:nil];
-
-    [super dealloc];
+	return result;
 }
 
 - (void)drawInRect:(NSRect)rect rotation:(CGFloat)rotation;
@@ -109,8 +96,7 @@ static const int kImageWidth = 10;
 - (void)setGradient:(NTGradient *)theGradient
 {
     if (mv_gradient != theGradient) {
-        [mv_gradient release];
-        mv_gradient = [theGradient retain];
+        mv_gradient = theGradient;
 		
 		// reset image
 		[self setImage:nil];
@@ -125,8 +111,7 @@ static const int kImageWidth = 10;
 - (void)setColor:(NSColor *)theColor
 {
     if (mv_color != theColor) {
-        [mv_color release];
-        mv_color = [theColor retain];
+        mv_color = theColor;
 		
 		// reset image
 		[self setImage:nil];
@@ -141,8 +126,7 @@ static const int kImageWidth = 10;
 - (void)setBackColor:(NSColor *)theBackColor
 {
     if (mBackColor != theBackColor) {
-        [mBackColor release];
-        mBackColor = [theBackColor retain];
+        mBackColor = theBackColor;
 		
 		// reset image
 		[self setImage:nil];

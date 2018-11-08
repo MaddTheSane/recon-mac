@@ -43,7 +43,7 @@
 
 	[result setupLayer];
 	
-	return [result autorelease];
+	return result;
 }
 
 //---------------------------------------------------------- 
@@ -60,7 +60,6 @@
     self.transformAnimation = nil;
 	
     self.opacityAnimation = nil;
-    [super dealloc];
 }
 
 - (void)animate;
@@ -117,7 +116,7 @@
 	[CATransaction begin];
 	[CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions];
 	
-	self.imageLayer.contents = (id)imageRef;
+    self.imageLayer.contents = (__bridge id)imageRef;
 	
 	if (imageRef)
 		CFRelease(imageRef);

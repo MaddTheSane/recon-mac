@@ -28,9 +28,9 @@ static void alphaGradient(void *info, const CGFloat *in, CGFloat *out);
     self = [super init];
     
     _flip = flip;
-	_type = type;
-	_alphaOnly = alphaOnly;
-	
+    _type = type;
+    _alphaOnly = alphaOnly;
+    
     switch (type)
     {
         case kNTLightGradient:
@@ -40,30 +40,30 @@ static void alphaGradient(void *info, const CGFloat *in, CGFloat *out);
             _amountChange = .15;
             break;
         case kNTHeavyGradient:
-			_amountChange = .20;
-			break;
-		case kHeaderGradient:
+            _amountChange = .20;
+            break;
+        case kHeaderGradient:
             _amountChange = .30;
-			break;
+            break;
         default:
             _amountChange = .20;
             break;
     }
-	    
-	_startPoint = CGPointMake(0, 0);
+        
+    _startPoint = CGPointMake(0, 0);
     _endPoint = CGPointMake(0, 1);
-	
+    
     _colorSpace = CGColorSpaceCreateDeviceRGB();
     _numComponents = CGColorSpaceGetNumberOfComponents(_colorSpace);
     
-    _function = [self createFunction:type];	
-	
+    _function = [self createFunction:type];    
+    
     return self;
 }
 
 - (id)initWithType:(NTGradientType)type flip:(BOOL)flip;
 {
-	return [self initWithType:type alphaOnly:NO flip:flip];
+    return [self initWithType:type alphaOnly:NO flip:flip];
 }
 
 - (id)init;
@@ -81,15 +81,11 @@ static void alphaGradient(void *info, const CGFloat *in, CGFloat *out);
     
     if (_colorSpace)
         CGColorSpaceRelease(_colorSpace);
-    
-    [_color release];
-    
-    [super dealloc];
 }
 
 - (void)fillRect:(NSRect)rect withColor:(NSColor*)color;
 {
-	SGS;
+    SGS;
     [self setColor:color];
     
     [self drawGradientInRect:rect];
@@ -125,8 +121,7 @@ static void alphaGradient(void *info, const CGFloat *in, CGFloat *out);
     
     if (setColor)
     {
-        [_color release];
-        _color = [color retain];
+        _color = color;
 
         // fill in the color array for the shading callback
         NSColor *rgbColor = [_color colorUsingColorSpaceName:NSDeviceRGBColorSpace];
@@ -136,8 +131,8 @@ static void alphaGradient(void *info, const CGFloat *in, CGFloat *out);
         _colorArray[2] = [rgbColor blueComponent];
         _colorArray[3] = [rgbColor alphaComponent];
         
-		if (_type != kHeaderGradient && !_alphaOnly)
-			[self modifyColorBeforeShading];
+        if (_type != kHeaderGradient && !_alphaOnly)
+            [self modifyColorBeforeShading];
 
         // delete any existing shader
         if (_shading)
@@ -150,26 +145,26 @@ static void alphaGradient(void *info, const CGFloat *in, CGFloat *out);
 
 - (CGFunctionRef)createFunction:(NTGradientType)type;
 {
-	CGFloat domain[2] = { 0, 1 };
+    CGFloat domain[2] = { 0, 1 };
     CGFloat range[10] = { 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 };
-	CGFunctionEvaluateCallback function;
-	
-	if (_alphaOnly)
-	{
-		if (type == kHeaderGradient)
-			function = &alphaHeaderGradient;
-		else
-			function = &alphaGradient;
-	}
-	else
-	{
-		if (type == kHeaderGradient)
-			function = &headerGradient;
-		else
-			function = &standardGradient;
-	}
-	
-	CGFunctionCallbacks callbacks = { 0, function, NULL };
+    CGFunctionEvaluateCallback function;
+    
+    if (_alphaOnly)
+    {
+        if (type == kHeaderGradient)
+            function = &alphaHeaderGradient;
+        else
+            function = &alphaGradient;
+    }
+    else
+    {
+        if (type == kHeaderGradient)
+            function = &headerGradient;
+        else
+            function = &standardGradient;
+    }
+    
+    CGFunctionCallbacks callbacks = { 0, function, NULL };
                 
     // add one to _numComponents for the alpha
     return CGFunctionCreate((void*)self, 1, domain, _numComponents+1, range, &callbacks);
@@ -237,7 +232,7 @@ static void alphaGradient(void *info, const CGFloat *in, CGFloat *out);
 
 static void standardGradient(void *info, const CGFloat *in, CGFloat *out)
 {    
-    NTGradientFill* gradientObj = (NTGradientFill*)info;
+    NTGradientFill* gradientObj = (__bridge NTGradientFill*)info;
     int numComponents = gradientObj->_numComponents;
     const CGFloat *c = gradientObj->_colorArray;
     CGFloat amountChange = gradientObj->_amountChange;
@@ -245,18 +240,18 @@ static void standardGradient(void *info, const CGFloat *in, CGFloat *out)
     CGFloat inValue = *in;
     if (gradientObj->_flip)
         inValue = 1.0 - inValue;
-	
+    
     int i;
     for (i=0;i<numComponents;i++)
     {
         CGFloat newV, multiplier;
         
         newV = c[i];
-		
+        
         if (inValue < .5)
         {
             multiplier = 1.0 - (inValue*2);
-			
+            
             newV += (multiplier * amountChange);
         }
         else if (inValue > .5)
@@ -275,7 +270,7 @@ static void standardGradient(void *info, const CGFloat *in, CGFloat *out)
 
 static void headerGradient(void *info, const CGFloat *in, CGFloat *out)
 {    
-    NTGradientFill* gradientObj = (NTGradientFill*)info;
+    NTGradientFill* gradientObj = (__bridge NTGradientFill*)info;
     int numComponents = gradientObj->_numComponents;
     const CGFloat *c = gradientObj->_colorArray;
     CGFloat multiplier, amountChange = gradientObj->_amountChange;
@@ -283,21 +278,21 @@ static void headerGradient(void *info, const CGFloat *in, CGFloat *out)
     CGFloat inValue = *in;
     if (gradientObj->_flip)
         inValue = 1.0 - inValue;
-	
+    
     int i;
     for (i=0;i<numComponents;i++)
     {
         CGFloat newV = c[i];
-		
-		if (inValue < .5)
-			newV -= (inValue * .1);
-		else
-		{
-			multiplier = 1.0 - inValue;
-		
-			newV -= (multiplier * amountChange);
+        
+        if (inValue < .5)
+            newV -= (inValue * .1);
+        else
+        {
+            multiplier = 1.0 - inValue;
+        
+            newV -= (multiplier * amountChange);
         }
-						
+                        
         *out++ = newV;
     }
     
@@ -307,7 +302,7 @@ static void headerGradient(void *info, const CGFloat *in, CGFloat *out)
 
 static void alphaHeaderGradient(void *info, const CGFloat *in, CGFloat *out)
 {    
-    NTGradientFill* gradientObj = (NTGradientFill*)info;
+    NTGradientFill* gradientObj = (__bridge NTGradientFill*)info;
     int numComponents = gradientObj->_numComponents;
     const CGFloat *c = gradientObj->_colorArray;
     CGFloat multiplier, amountChange = gradientObj->_amountChange;
@@ -315,28 +310,28 @@ static void alphaHeaderGradient(void *info, const CGFloat *in, CGFloat *out)
     CGFloat inValue = *in;
     if (gradientObj->_flip)
         inValue = 1.0 - inValue;
-	
+    
     int i;
     for (i=0;i<numComponents;i++)
         *out++ = c[i];
     
     // set alpha
-	CGFloat newA = gradientObj->_colorArray[3];
-	if (inValue < .5)
-		newA += (inValue * .1);
-	else
-	{
-		multiplier = 1.0 - inValue;
-		
-		newA += (multiplier * amountChange);
-	}
-	
+    CGFloat newA = gradientObj->_colorArray[3];
+    if (inValue < .5)
+        newA += (inValue * .1);
+    else
+    {
+        multiplier = 1.0 - inValue;
+        
+        newA += (multiplier * amountChange);
+    }
+    
     *out = newA;
 }
 
 static void alphaGradient(void *info, const CGFloat *in, CGFloat *out)
 {    
-    NTGradientFill* gradientObj = (NTGradientFill*)info;
+    NTGradientFill* gradientObj = (__bridge NTGradientFill*)info;
     int numComponents = gradientObj->_numComponents;
     const CGFloat *c = gradientObj->_colorArray;
     CGFloat multiplier, amountChange = gradientObj->_amountChange;
@@ -344,26 +339,26 @@ static void alphaGradient(void *info, const CGFloat *in, CGFloat *out)
     CGFloat inValue = *in;
     if (gradientObj->_flip)
         inValue = 1.0 - inValue;
-	
+    
     int i;
     for (i=0;i<numComponents;i++)
         *out++ = c[i];
     
     // set alpha
-	CGFloat newA = gradientObj->_colorArray[3];
-	
-	if (inValue < .5)
-	{
-		multiplier = 1.0 - (inValue*2);
-		
-		newA += (multiplier * amountChange);
-	}
-	else if (inValue > .5)
-	{
-		multiplier = ((inValue - .5) * 2);
-		
-		newA -= (multiplier * amountChange);
-	}
-	
-	*out = newA;
+    CGFloat newA = gradientObj->_colorArray[3];
+    
+    if (inValue < .5)
+    {
+        multiplier = 1.0 - (inValue*2);
+        
+        newA += (multiplier * amountChange);
+    }
+    else if (inValue > .5)
+    {
+        multiplier = ((inValue - .5) * 2);
+        
+        newA -= (multiplier * amountChange);
+    }
+    
+    *out = newA;
 }

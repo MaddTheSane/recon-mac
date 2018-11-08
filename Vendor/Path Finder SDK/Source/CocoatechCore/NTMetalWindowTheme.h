@@ -13,17 +13,17 @@
 @interface NTMetalWindowTheme : NSObject 
 {
     BOOL mFlat;
-	NSWindow* mWindow; // window not retained
-	
-	NSColor* mDefaultBackgroundColor;
-	NSRect mLastWindowRect;
-	
-	NTGradientDraw* gradient;
-	NSColor* backgroundColor;
+    NSWindow* mWindow; // window not retained
+    
+    NSColor* mDefaultBackgroundColor;
+    NSRect mLastWindowRect;
+    
+    NTGradientDraw* gradient;
+    NSColor* backgroundColor;
 }
 
-@property (retain) NTGradientDraw* gradient;
-@property (retain) NSColor* backgroundColor;
+@property (strong) NTGradientDraw* gradient;
+@property (strong) NSColor* backgroundColor;
 
 + (NTMetalWindowTheme*)theme:(NSWindow*)window;
 

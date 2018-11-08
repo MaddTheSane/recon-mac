@@ -30,15 +30,15 @@
 @implementation NTSimpleTimer
 
 + (NTSimpleTimer*)timer:(NSTimeInterval)interval message:(NSString*)message delegate:(id<NTSimpleTimerProtocol>)delegate repeats:(BOOL)repeats;
-{	
+{    
     NTSimpleTimer* result = [[NTSimpleTimer alloc] init];
   
-	[result setDelegate:delegate];
-	[result setMessage:message];
-	[result setInterval:interval];
-	[result setRepeats:repeats];
-	    
-    return [result autorelease];
+    [result setDelegate:delegate];
+    [result setMessage:message];
+    [result setInterval:interval];
+    [result setRepeats:repeats];
+        
+    return result;
 }
 
 //---------------------------------------------------------- 
@@ -46,23 +46,22 @@
 //---------------------------------------------------------- 
 - (void)dealloc
 {
-	if ([self delegate])
-		[NSException raise:@"must call clearDelegate" format:@"%@", NSStringFromClass([self class])];
+    if ([self delegate])
+        [NSException raise:@"must call clearDelegate" format:@"%@", NSStringFromClass([self class])];
 
     [self setTimer:nil];
     [self setMessage:nil];
-    [super dealloc];
 }
 
 - (void)clearDelegate;
 {
-	[self setDelegate:nil];
-	[self stop];
+    [self setDelegate:nil];
+    [self stop];
 }
 
 - (void)stop;
 {
-	[self setTimer:nil];
+    [self setTimer:nil];
 }
 
 - (BOOL)isRunning;
@@ -123,10 +122,9 @@
 - (void)setTimer:(NSTimer *)theTimer
 {
     if (mTimer != theTimer) {
-		[mTimer invalidate];
+        [mTimer invalidate];
 
-        [mTimer release];
-        mTimer = [theTimer retain];
+        mTimer = theTimer;
     }
 }
 
@@ -154,8 +152,7 @@
 - (void)setMessage:(NSString *)theMessage
 {
     if (mMessage != theMessage) {
-        [mMessage release];
-        mMessage = [theMessage retain];
+        mMessage = theMessage;
     }
 }
 

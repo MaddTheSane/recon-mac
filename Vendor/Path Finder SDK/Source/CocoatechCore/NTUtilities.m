@@ -35,7 +35,7 @@ static kern_return_t GetMACAddress(io_iterator_t intfIterator, UInt8 *MACAddress
             [systemVersion objectForKey:@"ProductName"],
             [systemVersion objectForKey:@"ProductVersion"],
             [systemVersion objectForKey:@"ProductBuildVersion"],
-			(CFByteOrderGetCurrent() == CFByteOrderBigEndian) ? @"PPC" : @"i386"];
+            (CFByteOrderGetCurrent() == CFByteOrderBigEndian) ? @"PPC" : @"i386"];
     }
 
     return @"Unknown";
@@ -43,7 +43,7 @@ static kern_return_t GetMACAddress(io_iterator_t intfIterator, UInt8 *MACAddress
 
 + (NSString*)OSVersionString;
 {
-    NSDictionary *systemVersion = [NSDictionary dictionaryWithContentsOfFile:@"/System/Library/CoreServices/SystemVersion.plist"];
+	NSDictionary *systemVersion = [NSDictionary dictionaryWithContentsOfFile:@"/System/Library/CoreServices/SystemVersion.plist"];
 	
 	return [systemVersion objectForKey:@"ProductVersion"];
 }
@@ -74,45 +74,45 @@ static kern_return_t GetMACAddress(io_iterator_t intfIterator, UInt8 *MACAddress
 + (NSNumber*)applicationVersionAsNumber;
 {
 	NSString* s = [self applicationVersion];
-		
+
 	return [NSNumber numberWithInt:[self versionStringToInt:s]];
 }
 
 + (NSString*)applicationVersion;
 {
     NSBundle *bundle = [NSBundle mainBundle];
-	
+    
     if (bundle)
     {
         NSDictionary *dict = [bundle infoDictionary];
         if (dict)
         {
             NSString* version = [dict objectForKey:@"CFBundleShortVersionString"];
-			
+            
             if (version && [version length])
                 return version;
         }
     }
-	
+    
     return @"?.??";
 }
 
 + (NSString*)applicationBuild;
 {
     NSBundle *bundle = [NSBundle mainBundle];
-	
+    
     if (bundle)
     {
         NSDictionary *dict = [bundle infoDictionary];
         if (dict)
         {
             NSString* version = [dict objectForKey:@"CFBundleVersion"];
-			
+            
             if (version && [version length])
                 return version;
         }
     }
-	
+    
     return @"";
 }
 
@@ -135,8 +135,7 @@ static kern_return_t GetMACAddress(io_iterator_t intfIterator, UInt8 *MACAddress
 	name = SCDynamicStoreCopyComputerName(NULL,NULL);
 	if (name)
 	{
-		computerName=[NSString stringWithString:(NSString*)name];
-		CFRelease(name);
+		computerName=CFBridgingRelease(name);
 	}
 	
 	return computerName;
@@ -153,7 +152,7 @@ void NSLogErr(NSString* title, OSStatus err)
 }
 
 NSString* NSErrorString(OSStatus err)
-{	
+{
 	const char* errStr;
 	NSString *result = @"";
 	
@@ -197,7 +196,7 @@ NSString* NSErrorString(OSStatus err)
 	OSErr err = MacGetCurrentProcess(&psn);
 	if (!err)
 	{
-		NSDictionary* dict = (NSDictionary*) ProcessInformationCopyDictionary(&psn, kProcessDictionaryIncludeAllInformationMask);
+		NSDictionary* dict = (NSDictionary*) CFBridgingRelease(ProcessInformationCopyDictionary(&psn, kProcessDictionaryIncludeAllInformationMask));
 		
 		if (dict)
 			result = [NSString stringWithString:[dict objectForKey:@"FileCreator"]];
@@ -215,22 +214,22 @@ NSString* NSErrorString(OSStatus err)
 	if (me)
 	{
 		// Email Address
-		ABMultiValue *emailAddresses = [me valueForProperty:kABEmailProperty];				
+		ABMultiValue *emailAddresses = [me valueForProperty:kABEmailProperty];
 		unsigned valueIndex = [emailAddresses indexForIdentifier:[emailAddresses primaryIdentifier]];
 		
 		emailAddress = [emailAddresses valueAtIndex:valueIndex];
 	}
-		
+
 	return emailAddress;
 }
 
 + (BOOL)runningOnTiger;
 {
 	static int shared=-1;
-
+	
 	if (shared == -1)
 		shared = ([self osVersionIsAtLeast:0x1040] && ![self runningOnLeopard]) ? 1:0;
-
+	
 	return (shared == 1);
 }
 
@@ -270,16 +269,16 @@ NSString* NSErrorString(OSStatus err)
 	if (len > 0)
 	{
 		while (len < 4)
-		{	
+		{
 			stringValue = [stringValue stringByAppendingString:@" "];
 			
 			len = [stringValue length];
 		}
 		
-		result = UTGetOSTypeFromString((CFStringRef) stringValue);
+		result = UTGetOSTypeFromString((__bridge CFStringRef) stringValue);
 	}
 	
-    return result;
+	return result;
 }
 
 + (BOOL)runningInDebugger;
@@ -301,7 +300,7 @@ NSString* NSErrorString(OSStatus err)
 		
 		result = ((info.kp_proc.p_flag & P_TRACED) == P_TRACED) ? 1: 0;
 	}
-		
+
 	return (result == 1);
 }
 
@@ -329,27 +328,24 @@ NSString* NSErrorString(OSStatus err)
 			}
 			else {
 				shared = [NSString stringWithFormat:@"%02x:%02x:%02x:%02x:%02x:%02x",
-					MACAddress[0], MACAddress[1], MACAddress[2], MACAddress[3], MACAddress[4], MACAddress[5]];
+						  MACAddress[0], MACAddress[1], MACAddress[2], MACAddress[3], MACAddress[4], MACAddress[5]];
 			}
 		}
 		
 		(void) IOObjectRelease(intfIterator);	// Release the iterator.
-		
-		// retain it
-		shared = [shared retain];
 	}
 	
-    return shared;
+	return shared;
 }
 
 + (NSString*)ipAddress:(NSString**)outInterface;
 {
 	NSString* interface = nil;
 	NSString* ipAddress = nil;
-    NSArray *interfaces=nil;
+	NSArray *interfaces=nil;
 	CFPropertyListRef dictRef;
 	
-    SCDynamicStoreRef store = SCDynamicStoreCreate(NULL, (CFStringRef)[[NSProcessInfo processInfo] processName], NULL, NULL);
+	SCDynamicStoreRef store = SCDynamicStoreCreate(NULL, (CFStringRef)[[NSProcessInfo processInfo] processName], NULL, NULL);
 	if (store)
 	{
 		CFStringRef interfacesKey = SCDynamicStoreKeyCreateNetworkInterface(NULL, kSCDynamicStoreDomainState);
@@ -359,42 +355,41 @@ NSString* NSErrorString(OSStatus err)
 			
 			if (dictRef)
 			{
-				interfaces = [[[(NSDictionary*)dictRef objectForKey:(NSString *)kSCDynamicStorePropNetInterfaces] retain] autorelease];
+				interfaces = [(__bridge NSDictionary*)dictRef objectForKey:(NSString *)kSCDynamicStorePropNetInterfaces];
 				CFRelease(dictRef);
 			}
 			
 			CFRelease(interfacesKey);
 		}
-				
-		for (NSString* interfaceName in interfaces) 
-		{			
+		
+		for (NSString* interfaceName in interfaces)
+		{
 			CFStringRef stringRef = SCDynamicStoreKeyCreateNetworkInterfaceEntity(NULL, kSCDynamicStoreDomainState, (CFStringRef)interfaceName, kSCEntNetLink);
 			NSString* linkKey = nil;
 			
 			if (stringRef)
 			{
-				linkKey = [NSString stringWithString:(NSString*)stringRef];
-				CFRelease(stringRef);
+				linkKey = CFBridgingRelease(stringRef);
 			}
-				
+			
 			NSNumber *activeValue = nil;
 			dictRef = SCDynamicStoreCopyValue(store, (CFStringRef)linkKey);
 			if (dictRef)
 			{
-				activeValue = [[[(NSDictionary*)dictRef objectForKey:(NSString *)kSCPropNetLinkActive] retain] autorelease];
+				activeValue = [(__bridge NSDictionary*)dictRef objectForKey:(NSString *)kSCPropNetLinkActive];
 				CFRelease(dictRef);
 			}
 			
 			if ([activeValue boolValue])
-			{			
+			{
 				stringRef = SCDynamicStoreKeyCreateNetworkInterfaceEntity(NULL, kSCDynamicStoreDomainState, (CFStringRef)interfaceName, kSCEntNetIPv4);
 				dictRef = SCDynamicStoreCopyValue(store, stringRef);
 				
 				NSArray* ipAddresses = nil;
 				if (dictRef)
 				{
-					ipAddresses = [[[(NSDictionary*)dictRef objectForKey:(NSString *)kSCPropNetIPv4Addresses] retain] autorelease];
-
+					ipAddresses = [(__bridge NSDictionary*)dictRef objectForKey:(NSString *)kSCPropNetIPv4Addresses];
+					
 					CFRelease(dictRef);
 				}
 				
@@ -425,12 +420,12 @@ NSString* NSErrorString(OSStatus err)
 	NSInteger tag=0;
 	
 	if ([[NSFileManager defaultManager] fileExistsAtPath:path])
-	{		
+	{
 		[[NSWorkspace sharedWorkspace] performFileOperation:NSWorkspaceRecycleOperation
-													 source:[path stringByDeletingLastPathComponent] 
-												destination:@"" 
-													  files:[NSArray arrayWithObject:[path lastPathComponent]] 
-														tag:&tag];	
+													 source:[path stringByDeletingLastPathComponent]
+												destination:@""
+													  files:[NSArray arrayWithObject:[path lastPathComponent]]
+														tag:&tag];
 		
 		if (tag < 0)
 			NSLog(@"move to trash failed: %ld path: %@", (long)tag, path);
@@ -452,7 +447,7 @@ NSString* NSErrorString(OSStatus err)
 // releasing the iterator after the caller is done with it.
 static kern_return_t FindEthernetInterfaces(io_iterator_t *matchingServices)
 {
-    kern_return_t		kernResult; 
+    kern_return_t			kernResult;
     CFMutableDictionaryRef	matchingDict;
     CFMutableDictionaryRef	propertyMatchDict;
     
@@ -460,10 +455,10 @@ static kern_return_t FindEthernetInterfaces(io_iterator_t *matchingServices)
     // IOServiceMatching is a convenience function to create a dictionary with the key kIOProviderClassKey and 
     // the specified value.
     matchingDict = IOServiceMatching(kIOEthernetInterfaceClass);
-	
+    
     // Note that another option here would be:
     // matchingDict = IOBSDMatching("en0");
-	
+    
     if (NULL == matchingDict) {
         NSLog(@"IOServiceMatching returned a NULL dictionary.\n");
     }
@@ -488,11 +483,11 @@ static kern_return_t FindEthernetInterfaces(io_iterator_t *matchingServices)
         // order to have IOServiceGetMatchingServices consider the kIOPrimaryInterface property, we must
         // add that property to a separate dictionary and then add that to our matching dictionary
         // specifying kIOPropertyMatchKey.
-		
+        
         propertyMatchDict = CFDictionaryCreateMutable(kCFAllocatorDefault, 0,
-													  &kCFTypeDictionaryKeyCallBacks,
-													  &kCFTypeDictionaryValueCallBacks);
-		
+                                                      &kCFTypeDictionaryKeyCallBacks,
+                                                      &kCFTypeDictionaryValueCallBacks);
+        
         if (NULL == propertyMatchDict) {
             NSLog(@"CFDictionaryCreateMutable returned a NULL dictionary.\n");
         }
@@ -516,7 +511,7 @@ static kern_return_t FindEthernetInterfaces(io_iterator_t *matchingServices)
     if (KERN_SUCCESS != kernResult) {
         NSLog(@"IOServiceGetMatchingServices returned 0x%08x\n", kernResult);
     }
-	
+    
     return kernResult;
 }
 
@@ -525,58 +520,58 @@ static kern_return_t FindEthernetInterfaces(io_iterator_t *matchingServices)
 // In this sample the iterator should contain just the primary interface.
 static kern_return_t GetMACAddress(io_iterator_t intfIterator, UInt8 *MACAddress, UInt8 bufferSize)
 {
-    io_object_t		intfService;
-    io_object_t		controllerService;
-    kern_return_t	kernResult = KERN_FAILURE;
-    
-    // Make sure the caller provided enough buffer space. Protect against buffer overflow problems.
+	io_object_t		intfService;
+	io_object_t		controllerService;
+	kern_return_t	kernResult = KERN_FAILURE;
+	
+	// Make sure the caller provided enough buffer space. Protect against buffer overflow problems.
 	if (bufferSize < kIOEthernetAddressSize) {
 		return kernResult;
 	}
 	
 	// Initialize the returned address
-    bzero(MACAddress, bufferSize);
-    
-    // IOIteratorNext retains the returned object, so release it when we're done with it.
-    while ((intfService = IOIteratorNext(intfIterator)))
-    {
-        CFTypeRef	MACAddressAsCFData;        
+	bzero(MACAddress, bufferSize);
+	
+	// IOIteratorNext retains the returned object, so release it when we're done with it.
+	while ((intfService = IOIteratorNext(intfIterator)))
+	{
+		CFTypeRef	MACAddressAsCFData;
 		
-        // IONetworkControllers can't be found directly by the IOServiceGetMatchingServices call, 
-        // since they are hardware nubs and do not participate in driver matching. In other words,
-        // registerService() is never called on them. So we've found the IONetworkInterface and will 
-        // get its parent controller by asking for it specifically.
-        
-        // IORegistryEntryGetParentEntry retains the returned object, so release it when we're done with it.
-        kernResult = IORegistryEntryGetParentEntry(intfService,
+		// IONetworkControllers can't be found directly by the IOServiceGetMatchingServices call,
+		// since they are hardware nubs and do not participate in driver matching. In other words,
+		// registerService() is never called on them. So we've found the IONetworkInterface and will
+		// get its parent controller by asking for it specifically.
+		
+		// IORegistryEntryGetParentEntry retains the returned object, so release it when we're done with it.
+		kernResult = IORegistryEntryGetParentEntry(intfService,
 												   kIOServicePlane,
 												   &controllerService);
 		
-        if (KERN_SUCCESS != kernResult) {
-            NSLog(@"IORegistryEntryGetParentEntry returned 0x%08x\n", kernResult);
-        }
-        else {
-            // Retrieve the MAC address property from the I/O Registry in the form of a CFData
-            MACAddressAsCFData = IORegistryEntryCreateCFProperty(controllerService,
+		if (KERN_SUCCESS != kernResult) {
+			NSLog(@"IORegistryEntryGetParentEntry returned 0x%08x\n", kernResult);
+		}
+		else {
+			// Retrieve the MAC address property from the I/O Registry in the form of a CFData
+			MACAddressAsCFData = IORegistryEntryCreateCFProperty(controllerService,
 																 CFSTR(kIOMACAddress),
 																 kCFAllocatorDefault,
 																 0);
-            if (MACAddressAsCFData) {
-                CFShow(MACAddressAsCFData); // for display purposes only; output goes to stderr
-                
-                // Get the raw bytes of the MAC address from the CFData
-                CFDataGetBytes(MACAddressAsCFData, CFRangeMake(0, kIOEthernetAddressSize), MACAddress);
-                CFRelease(MACAddressAsCFData);
-            }
+			if (MACAddressAsCFData) {
+				CFShow(MACAddressAsCFData); // for display purposes only; output goes to stderr
+				
+				// Get the raw bytes of the MAC address from the CFData
+				CFDataGetBytes(MACAddressAsCFData, CFRangeMake(0, kIOEthernetAddressSize), MACAddress);
+				CFRelease(MACAddressAsCFData);
+			}
 			
-            // Done with the parent Ethernet controller object so we release it.
-            (void) IOObjectRelease(controllerService);
-        }
-        
-        // Done with the Ethernet interface object so we release it.
-        (void) IOObjectRelease(intfService);
-    }
+			// Done with the parent Ethernet controller object so we release it.
+			(void) IOObjectRelease(controllerService);
+		}
+		
+		// Done with the Ethernet interface object so we release it.
+		(void) IOObjectRelease(intfService);
+	}
 	
-    return kernResult;
+	return kernResult;
 }
 

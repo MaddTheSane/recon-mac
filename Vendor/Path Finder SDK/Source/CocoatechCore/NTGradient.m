@@ -52,28 +52,28 @@ typedef enum NTGradientFunctionID
 {
 	NTGradient *result = [[NTGradient alloc] init:flip buttonGradient:NTGradient_buttonFunctionID];
 	
-	return [result autorelease];
+	return result;
 }
 
 + (NTGradient*)labelGradient:(BOOL)flip;
 {
 	NTGradient *result = [[NTGradient alloc] init:flip buttonGradient:NTGradient_labelFunctionID];
 	
-	return [result autorelease];
+	return result;
 }
 
 + (NTGradient*)smoothGradient:(BOOL)flip;
 {
 	NTGradient *result = [[NTGradient alloc] init:flip buttonGradient:NTGradient_smoothFunctionID];
 	
-	return [result autorelease];
+	return result;
 }
 
 + (NTGradient*)tubeGradient:(BOOL)flip;
 {
 	NTGradient *result = [[NTGradient alloc] init:flip buttonGradient:NTGradient_tubeFunctionID];
 	
-	return [result autorelease];
+	return result;
 }
 
 - (void)dealloc;
@@ -86,10 +86,6 @@ typedef enum NTGradientFunctionID
     
     if (_colorSpace)
         CGColorSpaceRelease(_colorSpace);
-    
-    [_color release];
-    
-    [super dealloc];
 }
 
 - (void)fillRect:(NSRect)rect withColor:(NSColor*)color;
@@ -156,8 +152,7 @@ typedef enum NTGradientFunctionID
     
     if (setColor)
     {
-        [_color release];
-        _color = [color retain];
+        _color = color;
 
         // fill in the color array for the shading callback
         NSColor *rgbColor = [_color colorUsingColorSpaceName:NSDeviceRGBColorSpace];
@@ -231,7 +226,7 @@ typedef enum NTGradientFunctionID
 
 static void smoothGradientFunction(void *info, const CGFloat *in, CGFloat *out)
 {    
-    NTGradient* gradientObj = (NTGradient*)info;
+    NTGradient* gradientObj = (__bridge NTGradient*)info;
     int numComponents = gradientObj->_numComponents;
     const float *c = gradientObj->_colorArray;
     
@@ -253,7 +248,7 @@ static void smoothGradientFunction(void *info, const CGFloat *in, CGFloat *out)
 
 static void tubeGradientFunction(void *info, const CGFloat *in, CGFloat *out)
 {    
-    NTGradient* gradientObj = (NTGradient*)info;
+    NTGradient* gradientObj = (__bridge NTGradient*)info;
     int numComponents = gradientObj->_numComponents;
     const float *c = gradientObj->_colorArray;
     
@@ -278,7 +273,7 @@ static void tubeGradientFunction(void *info, const CGFloat *in, CGFloat *out)
 
 static void buttonGradientFunction(void *info, const CGFloat *in, CGFloat *out)
 {    
-    NTGradient* gradientObj = (NTGradient*)info;
+    NTGradient* gradientObj = (__bridge NTGradient*)info;
     int numComponents = gradientObj->_numComponents;
     const float *c = gradientObj->_colorArray;
     
@@ -303,7 +298,7 @@ static void buttonGradientFunction(void *info, const CGFloat *in, CGFloat *out)
 
 static void labelGradientFunction(void *info, const CGFloat *in, CGFloat *out)
 {    
-    NTGradient* gradientObj = (NTGradient*)info;
+    NTGradient* gradientObj = (__bridge NTGradient*)info;
     int numComponents = gradientObj->_numComponents;
     const float *c = gradientObj->_colorArray;
     

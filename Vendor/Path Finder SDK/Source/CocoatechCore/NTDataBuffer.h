@@ -11,26 +11,26 @@
 #import <stdio.h>
 
 typedef struct {
-    /*" The full contents of the buffer "*/
-    NSMutableData  *data;
+    /*! The full contents of the buffer */
+    CFMutableDataRef data;
     
-    /*" The current pointer of the data object "*/
+    /*! The current pointer of the data object */
     unsigned char         *buffer;
     
-    /*" The current start of the writable area "*/
+    /*! The current start of the writable area */
     unsigned char         *writeStart;
     
-    /*" The end of the buffer (buffer + bufferSize) "*/
+    /*! The end of the buffer (buffer + bufferSize) */
     unsigned char         *bufferEnd;
     
-    /*" The endianness in which to write host data types "*/
+    /*! The endianness in which to write host data types */
     CFByteOrder     byteOrder;
 } NTDataBuffer;
 
 static inline void
 NTDataBufferInit(NTDataBuffer *dataBuffer)
 {
-    dataBuffer->data = [[NSMutableData alloc] init];
+    dataBuffer->data = CFDataCreateMutable(NULL, 1);
     dataBuffer->buffer = NULL;
     dataBuffer->writeStart = NULL;
     dataBuffer->bufferEnd = NULL;
@@ -40,7 +40,7 @@ NTDataBufferInit(NTDataBuffer *dataBuffer)
 static inline void
 NTDataBufferRelease(NTDataBuffer *dataBuffer)
 {
-    [dataBuffer->data release];
+    CFRelease(dataBuffer->data);
     dataBuffer->data = nil;
     dataBuffer->buffer = NULL;
     dataBuffer->writeStart = NULL;
@@ -72,8 +72,8 @@ NTDataBufferSetCapacity(NTDataBuffer *dataBuffer, size_t capacity)
     size_t occupied;
 	
     occupied = NTDataBufferSpaceOccupied(dataBuffer);
-    [dataBuffer->data setLength: capacity];
-    dataBuffer->buffer = (unsigned char *)[dataBuffer->data mutableBytes];
+    [(__bridge NSMutableData*)dataBuffer->data setLength: capacity];
+    dataBuffer->buffer = (unsigned char *)[(__bridge NSMutableData*)dataBuffer->data mutableBytes];
     dataBuffer->writeStart = dataBuffer->buffer + occupied;
     dataBuffer->bufferEnd  = dataBuffer->buffer + capacity;
 }
@@ -90,7 +90,7 @@ NTDataBufferData(NTDataBuffer *dataBuffer)
     // For backwards compatibility (and just doing what the caller expects)
     // this must size the buffer to the expected size.
     NTDataBufferSizeToFit(dataBuffer);
-    return dataBuffer->data;
+    return (__bridge NSData *)(dataBuffer->data);
 }
 
 // Backwards compatibility

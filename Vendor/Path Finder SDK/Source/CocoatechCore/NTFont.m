@@ -21,7 +21,7 @@
 
 	[result setNormal:font];
 
-    return [result autorelease];
+    return result;
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder;
@@ -41,23 +41,11 @@
 	return self;
 }
 
-//---------------------------------------------------------- 
-// dealloc
-//---------------------------------------------------------- 
-- (void) dealloc
-{
-    self.normal = nil;
-    self.bold = nil;
-    self.italic = nil;
-    self.boldItalic = nil;
-    [super dealloc];
-}
-
 // override to build lazily
 - (NSFont*)bold;
 {
     if (bold == nil)
-        bold = [[[NSFontManager sharedFontManager] convertFont:[self normal] toHaveTrait:NSBoldFontMask] retain];
+        bold = [[NSFontManager sharedFontManager] convertFont:[self normal] toHaveTrait:NSBoldFontMask];
 
     return bold;
 }
@@ -66,7 +54,7 @@
 - (NSFont*)italic;
 {
     if (italic == nil)
-        italic = [[[NSFontManager sharedFontManager] convertFont:[self normal] toHaveTrait:NSItalicFontMask] retain];
+        italic = [[NSFontManager sharedFontManager] convertFont:[self normal] toHaveTrait:NSItalicFontMask];
 
     return italic;
 }
@@ -75,7 +63,7 @@
 - (NSFont*)boldItalic;
 {
     if (boldItalic == nil)
-        boldItalic = [[[NSFontManager sharedFontManager] convertFont:[self italic] toHaveTrait:NSBoldFontMask] retain];
+        boldItalic = [[NSFontManager sharedFontManager] convertFont:[self italic] toHaveTrait:NSBoldFontMask];
 
     return boldItalic;
 }

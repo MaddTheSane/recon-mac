@@ -204,7 +204,7 @@
     static NSImage* shared = nil;
     
     if (!shared)
-		shared = [[self popupArrowImage:[[NTColorSet standardSet] colorForKey:kNTCS_blackImage] small:NO direction:kTrianglePointingRightDirection] retain];    
+		shared = [self popupArrowImage:[[NTColorSet standardSet] colorForKey:kNTCS_blackImage] small:NO direction:kTrianglePointingRightDirection];
     
     return shared;
 }
@@ -214,7 +214,7 @@
     static NSImage* shared = nil;
     
     if (!shared)
-		shared = [[self popupArrowImage:[[NTColorSet standardSet] colorForKey:kNTCS_blackImage] small:YES direction:kTrianglePointingRightDirection] retain];    
+		shared = [self popupArrowImage:[[NTColorSet standardSet] colorForKey:kNTCS_blackImage] small:YES direction:kTrianglePointingRightDirection];
     
     return shared;
 }
@@ -224,7 +224,7 @@
     static NSImage* shared = nil;
     
     if (!shared)
-		shared = [[self popupArrowImage:[[NTColorSet standardSet] colorForKey:kNTCS_blackImage]] retain];    
+		shared = [self popupArrowImage:[[NTColorSet standardSet] colorForKey:kNTCS_blackImage]];
     
     return shared;
 }
@@ -234,7 +234,7 @@
     static NSImage* shared = nil;
     
     if (!shared)
-		shared = [[self popupArrowImage:[NSColor colorWithCalibratedWhite:0 alpha:.6]] retain];    
+		shared = [self popupArrowImage:[NSColor colorWithCalibratedWhite:0 alpha:.6]];
     
     return shared;
 }
@@ -244,7 +244,7 @@
     static NSImage* shared = nil;
     
     if (!shared)
-		shared = [[self popupArrowImage:[[NTColorSet standardSet] colorForKey:kNTCS_blackImage] small:YES] retain];    
+		shared = [self popupArrowImage:[[NTColorSet standardSet] colorForKey:kNTCS_blackImage] small:YES];
     
     return shared;
 }
@@ -292,7 +292,7 @@
 			boxRect.size.width = smokeStackWidth;
 			NSRectFill(boxRect);
 			
-			sHomeImage = [[imageMaker unlockFocus] retain];
+			sHomeImage = [imageMaker unlockFocus];
 		}
 	}
 	
@@ -331,7 +331,7 @@
 		
 		[imageMaker lockFocus];
 		[attrString drawAtPoint:NSMakePoint(0, offset)];
-		shared = [[imageMaker unlockFocus:YES] retain];
+		shared = [imageMaker unlockFocus:YES];
 	}
 	
 	return [shared coloredImage:color];
@@ -342,7 +342,7 @@
     static NSImage* shared=nil;
     
     if (!shared)
-        shared = [[[NSBundle bundleForClass:self] imageWithName:@"NTChevron.tiff" inDirectory:@"images"] retain];
+        shared = [[NSBundle bundleForClass:self] imageForResource:@"images/NTChevron"];
     
     return shared;
 }
@@ -352,7 +352,7 @@
     static NSImage* shared=nil;
     
     if (!shared)
-		shared = [[[[NSImage imageNamed:NSImageNameActionTemplate] sizeIcon:13] coloredImage:[[NTColorSet standardSet] colorForKey:kNTCS_blackImage]] retain];
+		shared = [[[NSImage imageNamed:NSImageNameActionTemplate] sizeIcon:13] coloredImage:[[NTColorSet standardSet] colorForKey:kNTCS_blackImage]];
     
     return shared;
 }

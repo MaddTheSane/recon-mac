@@ -61,7 +61,7 @@
     if (color)
 		[result setShadowColor:color];
     
-    return [result autorelease];    
+    return result;    
 }
 
 @end

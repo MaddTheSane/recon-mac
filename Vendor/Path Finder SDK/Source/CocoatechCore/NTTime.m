@@ -30,7 +30,7 @@
 	result->mv_tv = tv;
 	result->mv_tz = tz;
 	
-	return [result autorelease];
+	return result;
 }
 
 + (NTTime*)timeWithTimespec:(struct timespec*)ts;
@@ -45,7 +45,7 @@
 	result->mv_tv = tv;
 	result->mv_tz = tz;
 	
-	return [result autorelease];	
+	return result;	
 }
 
 - (NSComparisonResult)compare:(NTTime *)right;

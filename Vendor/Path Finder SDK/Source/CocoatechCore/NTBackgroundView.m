@@ -36,16 +36,6 @@
     return self;
 }
 
-- (void)dealloc;
-{
-    [mv_backImage release];
-    [mv_backColor release];
-	
-	[self setImagePath:nil];
-	
-    [super dealloc];
-}
-
 - (BOOL)isOpaque;
 {
     // we are only opaque if our backcolor has an alpha component or an image
@@ -106,12 +96,11 @@
 {
 	if (image != mv_backImage)
 	{
-		[mv_backImage autorelease];
 		mv_backImage = nil;
 		
 		if ([image isValid])
 		{
-			mv_backImage = [image retain];
+			mv_backImage = image;
 			
 			//[mv_backImage setScalesWhenResized:YES];
 		}
@@ -265,9 +254,7 @@
 									  image:image 
 								   fraction:fraction
 						   imageDrawingMode:imageDrawingMode];
-			
-			[image release];
-		}
+        }
 	}
 }
 

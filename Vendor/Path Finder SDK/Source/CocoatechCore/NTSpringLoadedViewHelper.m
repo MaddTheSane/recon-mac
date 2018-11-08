@@ -32,7 +32,7 @@
 	[helper setDelegate:delegate];
 	helper.spaceKeyPoll = [NTSpaceKeyPoll poll:helper];
 
-	return [helper autorelease];
+	return helper;
 }
 
 //---------------------------------------------------------- 
@@ -45,8 +45,6 @@
 
 	self.spaceKeyPoll.delegate = nil;
 	self.spaceKeyPoll = nil;
-
-    [super dealloc];
 }
 
 - (void)clearDelegate;

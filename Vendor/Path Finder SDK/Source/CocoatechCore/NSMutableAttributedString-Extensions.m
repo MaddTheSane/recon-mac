@@ -14,7 +14,7 @@ static NSURL* findURL(NSString* string);
 
 + (NSMutableAttributedString*)string;
 {
-	return [[[NSMutableAttributedString alloc] init] autorelease];
+	return [[NSMutableAttributedString alloc] init];
 }
 
 - (void)detectURLs:(NSColor*)linkColor
@@ -54,10 +54,10 @@ static NSURL* findURL(NSString* string);
 - (void)appendImage:(NSImage*)image;
 {
     static unsigned unique = 0;  // Cocoa can work correctly if the the name is the same, but this may make it faster
-    NSFileWrapper* fileWrapper = [[[NSFileWrapper alloc] initRegularFileWithContents:[image TIFFRepresentation]] autorelease];
+    NSFileWrapper* fileWrapper = [[NSFileWrapper alloc] initRegularFileWithContents:[image TIFFRepresentation]];
     [fileWrapper setPreferredFilename:[NSString stringWithFormat:@"icon%u.tiff", unique++]];
 
-    NSTextAttachment *attachment = [[[NSTextAttachment alloc] initWithFileWrapper:fileWrapper] autorelease]; 
+    NSTextAttachment *attachment = [[NSTextAttachment alloc] initWithFileWrapper:fileWrapper];
         
     [(NSTextAttachmentCell*) [attachment attachmentCell] setImage:image];
     
@@ -68,12 +68,12 @@ static NSURL* findURL(NSString* string);
 {
 	NSMutableAttributedString* result = [[NSMutableAttributedString alloc] initWithString:inString attributes:attributes];
 	
-	return [result autorelease];
+	return result;
 }
 
 + (NSMutableAttributedString*)stringWithWordURL:(NSURL*)theURL;
 {
-	NSMutableAttributedString *result = [[[NSMutableAttributedString alloc] init] autorelease];
+	NSMutableAttributedString *result = [[NSMutableAttributedString alloc] init];
 	NSMutableDictionary *options = [NSMutableDictionary dictionary];
 	
 	[result beginEditing];
@@ -108,7 +108,6 @@ static NSURL* findURL(NSString* string);
 	
     append = [[NSAttributedString alloc] initWithString:string attributes:attributes];
     [self appendAttributedString:append];
-    [append release];
 }
 
 /*" Appends the given string to the receiver, using the attributes of the last character in the receiver for the new characters.  If the receiver is empty, the appended string has no attributes. "*/

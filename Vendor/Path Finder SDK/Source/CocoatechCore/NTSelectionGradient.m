@@ -28,21 +28,7 @@
 {
 	NTSelectionGradient* result = [[NTSelectionGradient alloc] init];
 	
-	return [result autorelease];
-}
-
-//---------------------------------------------------------- 
-// dealloc
-//---------------------------------------------------------- 
-- (void) dealloc
-{
-    self.aquaGradient = nil;
-    self.aquaLineColor = nil;
-    self.graphiteGradient = nil;
-    self.graphiteLineColor = nil;
-    self.dimmedGradient = nil;
-    self.dimmedLineColor = nil;
-    [super dealloc];
+	return result;
 }
 
 - (void)drawGradientInRect:(NSRect)frame 

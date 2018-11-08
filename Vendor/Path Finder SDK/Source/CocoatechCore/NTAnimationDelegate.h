@@ -18,11 +18,11 @@
 
 @interface NTAnimationDelegate : NSObject 
 {
-	id<NTAnimationDelegateProtocol> delegate;
+	__weak id<NTAnimationDelegateProtocol> delegate;
 	NSDictionary* animations;
 }
 
-@property (assign) id<NTAnimationDelegateProtocol> delegate;  // not retained, but clear delegate before releasing
+@property (weak) id<NTAnimationDelegateProtocol> delegate;  // not retained, but clear delegate before releasing
 @property (retain) NSDictionary* animations;
 
 + (NTAnimationDelegate*)animationDelegate:(id<NTAnimationDelegateProtocol>)theDelegate;

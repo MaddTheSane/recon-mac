@@ -19,9 +19,6 @@
 	{
 		@synchronized(self) {
 			result = [self objectForKey:aKey];
-			
-			// for thread safety
-			result = [[result retain] autorelease];
 		}
 	}
 	

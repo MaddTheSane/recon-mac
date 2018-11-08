@@ -31,7 +31,7 @@ static int kWindowSize = 400;
 	[result setImageView:[NTAnimationsZoomView view:[(NSView*)[result contentView] bounds]]];
 	[[result contentView] addSubview:[result imageView]];
 	
-    return [result autorelease];
+    return result;
 }
 
 - (void)zoomImage:(NSImage*)image atPoint:(NSPoint)point;
@@ -40,15 +40,6 @@ static int kWindowSize = 400;
 
 	[self.imageView setImage:image];
 	[self.imageView animate];
-}
-
-//---------------------------------------------------------- 
-// dealloc
-//---------------------------------------------------------- 
-- (void)dealloc
-{
-    self.imageView = nil;
-    [super dealloc];
 }
 
 @end

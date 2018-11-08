@@ -30,7 +30,6 @@
     self.target = nil;
     self.contextInfo = nil;
     self.resultPath = nil;
-    [super dealloc];
 }
 
 + (void)chooseSavePath:(NSString*)startPath sheetWindow:(NSWindow*)sheetWindow target:(id)target selector:(SEL)inSelector contextInfo:(id)contextInfo;
@@ -91,7 +90,7 @@
 
 	[NSApp sendAction:self.selector to:self.target from:self];
 	
-	[self autorelease];
+	//[self autorelease];
 }
 
 @end

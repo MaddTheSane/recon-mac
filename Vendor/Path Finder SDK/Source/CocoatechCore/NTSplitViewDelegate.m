@@ -50,7 +50,7 @@
 	[result setMaxCoordinate:20];
 	[result setMinCoordinate:20];
 	
-	return [result autorelease];
+	return result;
 }
 
 //---------------------------------------------------------- 
@@ -61,7 +61,6 @@
 	if ([self delegate])
 		[NSException raise:@"must call clearDelegate" format:@"%@", NSStringFromClass([self class])];
 	
-    [super dealloc];
 }
 
 - (void)clearDelegate;

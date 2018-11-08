@@ -24,7 +24,7 @@
 	[result setEditable:NO];
 	[result setImageScaling:NSImageScaleNone];
 	
-	return [result autorelease];
+	return result;
 }
 
 - (NSView *)hitTest:(NSPoint)aPoint

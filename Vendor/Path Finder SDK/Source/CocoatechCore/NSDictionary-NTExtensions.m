@@ -70,11 +70,9 @@
         if ([anObject respondsToSelector:@selector(deepMutableCopy)]) {
             anObject = [anObject deepMutableCopy];
             [newDictionary setObject:anObject forKey:aKey];
-            [anObject release];
         } else if ([anObject conformsToProtocol:@protocol(NSMutableCopying)]) {
             anObject = [anObject mutableCopy];
             [newDictionary setObject:anObject forKey:aKey];
-            [anObject release];
         }
     }
 	

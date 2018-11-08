@@ -19,7 +19,7 @@
 	
 	result.pointer = thePointer;
 	
-	return [result autorelease];
+	return result;
 }
 
 @end

@@ -22,7 +22,7 @@
 	[result setDateStyle:theDateStyle];
 	[result setTimeStyle:theTimeStyle];
 			
-	return [result autorelease];
+	return result;
 }
 
 @end

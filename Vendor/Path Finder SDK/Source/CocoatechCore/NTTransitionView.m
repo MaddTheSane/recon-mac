@@ -31,23 +31,23 @@
 	[theNewView setFrame:theFrame];
 	
 	// make images of the views
-	result.imageView = [[[NSImageView alloc] initWithFrame:theFrame] autorelease];
+	result.imageView = [[NSImageView alloc] initWithFrame:theFrame];
 	[result.imageView setImage:[theView viewImage:NSZeroRect]];
 	
-	result.newImageView = [[[NSImageView alloc] initWithFrame:theFrame] autorelease];
+	result.newImageView = [[NSImageView alloc] initWithFrame:theFrame];
 	[result.newImageView setImage:[theNewView viewImage:NSZeroRect]];
 
 	[result addSubview:result.imageView];
 	
 	[result setWantsLayer:YES];
-	CATransition* theTransition = [[[CATransition alloc] init] autorelease];
+	CATransition* theTransition = [[CATransition alloc] init];
 	[theTransition setType:kCATransitionFade];
 	[theTransition setSubtype:kCATransitionFromRight];
 	theTransition.delegate = result;
 	[theTransition setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
 	[result setAnimations:[NSDictionary dictionaryWithObjectsAndKeys:theTransition, @"subviews", nil]];
 	
-	return [result autorelease];
+	return result;
 }
 
 - (BOOL)isOpaque;
@@ -77,8 +77,6 @@
 	
     self.imageView = nil;
     self.newImageView = nil;
-	
-    [super dealloc];
 }
 
 - (void)animationDidStop:(CAAnimation *)animation finished:(BOOL)flag 

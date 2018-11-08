@@ -10,7 +10,7 @@
 
 @interface NTLazyMenu : NSMenu <NSCopying>
 {
-	id mv_target;
+	__unsafe_unretained id mv_target;
 	SEL mv_action;
 	
 	unsigned mv_buildID;

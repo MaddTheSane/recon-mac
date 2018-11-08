@@ -21,7 +21,7 @@
 	CATextLayer *result = [self layer];
 	[result setString:string];
 
-	result.font = [NSFont boldSystemFontOfSize:size];
+    result.font = (__bridge CFTypeRef _Nullable)([NSFont boldSystemFontOfSize:size]);
 	[result setFontSize:size];
 	
 	return result;

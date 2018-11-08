@@ -30,8 +30,6 @@
 	self.model = nil;
 	self.slider = nil;
 	self.sliderView = nil;
-	
-	[super dealloc];
 }
 
 + (NTSliderMenuItem*)menuItem:(id)theModel;
@@ -40,18 +38,18 @@
 	
 	result.model = theModel;
 	
-	result.slider = [[[NTMenuSlider alloc] initWithFrame:NSMakeRect(0, 0, 20, 20)] autorelease];
+	result.slider = [[NTMenuSlider alloc] initWithFrame:NSMakeRect(0, 0, 20, 20)];
 	[[result.slider cell] setControlSize:NSSmallControlSize];
 	[result.slider setMinValue:-1];
 	[result.slider setMaxValue:1];
 		
-	result.sliderView = [[[NTSliderGradientView alloc] initWithFrame:NSMakeRect(0, 0, 320, kSliderViewHeight)] autorelease];
+	result.sliderView = [[NTSliderGradientView alloc] initWithFrame:NSMakeRect(0, 0, 320, kSliderViewHeight)];
 	
 	// two image views to show small to large
 	NSImageView* small, *large;
 	
-	small = [[[NSImageView alloc] initWithFrame:NSZeroRect] autorelease];
-	large = [[[NSImageView alloc] initWithFrame:NSZeroRect] autorelease];
+	small = [[NSImageView alloc] initWithFrame:NSZeroRect];
+	large = [[NSImageView alloc] initWithFrame:NSZeroRect];
 	[[small cell] setBackgroundStyle:NSBackgroundStyleRaised];
 	[[large cell] setBackgroundStyle:NSBackgroundStyleRaised];
 	
@@ -74,7 +72,7 @@
 	
 	[result registerKeyPath];
 
-	return [result autorelease];
+	return result;
 }
 
 @end

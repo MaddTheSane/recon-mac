@@ -30,11 +30,11 @@
 		203446400D6F623E000B5495 /* NSAnimationContext-NTExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 2034463E0D6F623E000B5495 /* NSAnimationContext-NTExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		203446410D6F623E000B5495 /* NSAnimationContext-NTExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2034463F0D6F623E000B5495 /* NSAnimationContext-NTExtensions.m */; };
 		204012600BCC758900102A61 /* NTTableHeaderImages.h in Headers */ = {isa = PBXBuildFile; fileRef = 2040125E0BCC758900102A61 /* NTTableHeaderImages.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		204012610BCC758900102A61 /* NTTableHeaderImages.m in Sources */ = {isa = PBXBuildFile; fileRef = 2040125F0BCC758900102A61 /* NTTableHeaderImages.m */; };
+		204012610BCC758900102A61 /* NTTableHeaderImages.m in Sources */ = {isa = PBXBuildFile; fileRef = 2040125F0BCC758900102A61 /* NTTableHeaderImages.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		204012820BCC762A00102A61 /* NTAquaButtonCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 204012800BCC762A00102A61 /* NTAquaButtonCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		204012830BCC762A00102A61 /* NTAquaButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 204012810BCC762A00102A61 /* NTAquaButtonCell.m */; };
 		204020AE0B95616700131CDE /* NTAlertPanel.h in Headers */ = {isa = PBXBuildFile; fileRef = 204020AC0B95616700131CDE /* NTAlertPanel.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		204020AF0B95616700131CDE /* NTAlertPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 204020AD0B95616700131CDE /* NTAlertPanel.m */; };
+		204020AF0B95616700131CDE /* NTAlertPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 204020AD0B95616700131CDE /* NTAlertPanel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2048619A0D7CEB5B0083D964 /* NTStringView.h in Headers */ = {isa = PBXBuildFile; fileRef = 204861980D7CEB5B0083D964 /* NTStringView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2048619B0D7CEB5B0083D964 /* NTStringView.m in Sources */ = {isa = PBXBuildFile; fileRef = 204861990D7CEB5B0083D964 /* NTStringView.m */; };
 		204A62600D441E8200B6EB88 /* NSNumber-NTExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 204A625E0D441E8200B6EB88 /* NSNumber-NTExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -42,7 +42,7 @@
 		204CEC170ADCB0F200B25AD4 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 204CEC150ADCB0F200B25AD4 /* AddressBook.framework */; };
 		204CEC180ADCB0F200B25AD4 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 204CEC160ADCB0F200B25AD4 /* IOKit.framework */; };
 		204CEE0E0ADCBC5C00B25AD4 /* NTSizeFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 204CEE0C0ADCBC5C00B25AD4 /* NTSizeFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		204CEE0F0ADCBC5C00B25AD4 /* NTSizeFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 204CEE0D0ADCBC5C00B25AD4 /* NTSizeFormatter.m */; };
+		204CEE0F0ADCBC5C00B25AD4 /* NTSizeFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 204CEE0D0ADCBC5C00B25AD4 /* NTSizeFormatter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		204CEE5F0ADCBDAF00B25AD4 /* NTSimpleAlert.h in Headers */ = {isa = PBXBuildFile; fileRef = 204CEE5D0ADCBDAF00B25AD4 /* NTSimpleAlert.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		204CEE600ADCBDAF00B25AD4 /* NTSimpleAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 204CEE5E0ADCBDAF00B25AD4 /* NTSimpleAlert.m */; };
 		204CEFA00ADCC36A00B25AD4 /* NTGeometry.h in Headers */ = {isa = PBXBuildFile; fileRef = 204CEF9E0ADCC36A00B25AD4 /* NTGeometry.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -68,7 +68,7 @@
 		205CEA730EB9353500F13171 /* NTSelectionGradient.h in Headers */ = {isa = PBXBuildFile; fileRef = 205CEA710EB9353500F13171 /* NTSelectionGradient.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		205CEA740EB9353500F13171 /* NTSelectionGradient.m in Sources */ = {isa = PBXBuildFile; fileRef = 205CEA720EB9353500F13171 /* NTSelectionGradient.m */; };
 		20631EBD0DE266E800AFE50A /* NTHotKeyManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 20631EBB0DE266E800AFE50A /* NTHotKeyManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		20631EBE0DE266E800AFE50A /* NTHotKeyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 20631EBC0DE266E800AFE50A /* NTHotKeyManager.m */; };
+		20631EBE0DE266E800AFE50A /* NTHotKeyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 20631EBC0DE266E800AFE50A /* NTHotKeyManager.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2064CAFE0EDB8A9400DCD342 /* NSDateFormatter-NTExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 2064CAFC0EDB8A9400DCD342 /* NSDateFormatter-NTExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2064CAFF0EDB8A9400DCD342 /* NSDateFormatter-NTExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2064CAFD0EDB8A9400DCD342 /* NSDateFormatter-NTExtensions.m */; };
 		2064CB7F0EDB985700DCD342 /* NSLayoutManager-NTExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 2064CB7D0EDB985700DCD342 /* NSLayoutManager-NTExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -76,7 +76,7 @@
 		2064CBEB0EDBA01C00DCD342 /* NSFont-NTExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 2064CBE90EDBA01C00DCD342 /* NSFont-NTExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2064CBEC0EDBA01C00DCD342 /* NSFont-NTExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2064CBEA0EDBA01C00DCD342 /* NSFont-NTExtensions.m */; };
 		206C76E90DA6C49D0026B17F /* NTTemplateButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 206C76E70DA6C49D0026B17F /* NTTemplateButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		206C76EA0DA6C49D0026B17F /* NTTemplateButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 206C76E80DA6C49D0026B17F /* NTTemplateButton.m */; };
+		206C76EA0DA6C49D0026B17F /* NTTemplateButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 206C76E80DA6C49D0026B17F /* NTTemplateButton.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		20753FC30D1B3AF10015B9BA /* NTSplitViewDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 20753FC10D1B3AF10015B9BA /* NTSplitViewDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		20753FC40D1B3AF10015B9BA /* NTSplitViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 20753FC20D1B3AF10015B9BA /* NTSplitViewDelegate.m */; };
 		207E966A0DC7B80D00D0CC4E /* NTClickState.h in Headers */ = {isa = PBXBuildFile; fileRef = 207E96680DC7B80D00D0CC4E /* NTClickState.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -101,11 +101,11 @@
 		2094C9CF0BCDB339007D1E6E /* NSTabView-NTExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 2094C9CD0BCDB339007D1E6E /* NSTabView-NTExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2094C9D00BCDB339007D1E6E /* NSTabView-NTExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2094C9CE0BCDB339007D1E6E /* NSTabView-NTExtensions.m */; };
 		209551150EC9313F001FA347 /* NTPasteboardHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 209551130EC9313F001FA347 /* NTPasteboardHelper.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		209551160EC9313F001FA347 /* NTPasteboardHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 209551140EC9313F001FA347 /* NTPasteboardHelper.m */; };
+		209551160EC9313F001FA347 /* NTPasteboardHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 209551140EC9313F001FA347 /* NTPasteboardHelper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2095521E0EC93FED001FA347 /* NTWindowCascade.h in Headers */ = {isa = PBXBuildFile; fileRef = 2095521C0EC93FED001FA347 /* NTWindowCascade.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2095521F0EC93FED001FA347 /* NTWindowCascade.m in Sources */ = {isa = PBXBuildFile; fileRef = 2095521D0EC93FED001FA347 /* NTWindowCascade.m */; };
 		209552270EC940D9001FA347 /* CFArray-NTExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 209552250EC940D9001FA347 /* CFArray-NTExtensions.h */; };
-		209552280EC940D9001FA347 /* CFArray-NTExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 209552260EC940D9001FA347 /* CFArray-NTExtensions.m */; };
+		209552280EC940D9001FA347 /* CFArray-NTExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 209552260EC940D9001FA347 /* CFArray-NTExtensions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		209556400EC966EC001FA347 /* NTDataBuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = 2095563E0EC966EC001FA347 /* NTDataBuffer.h */; };
 		209556410EC966EC001FA347 /* NTDataBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2095563F0EC966EC001FA347 /* NTDataBuffer.m */; };
 		209556D90EC96D60001FA347 /* NTObjcRuntimeTools.h in Headers */ = {isa = PBXBuildFile; fileRef = 209556D70EC96D60001FA347 /* NTObjcRuntimeTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -136,11 +136,11 @@
 		209E3E650ADC9CAE00DC888E /* NSThread-NTExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 209E3E4C0ADC9CAE00DC888E /* NSThread-NTExtensions.m */; };
 		209E3E660ADC9CAE00DC888E /* NTCoreMacros.h in Headers */ = {isa = PBXBuildFile; fileRef = 209E3E4D0ADC9CAE00DC888E /* NTCoreMacros.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		209E3E690ADC9CAE00DC888E /* NTDateFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 209E3E500ADC9CAE00DC888E /* NTDateFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		209E3E6A0ADC9CAE00DC888E /* NTDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 209E3E510ADC9CAE00DC888E /* NTDateFormatter.m */; };
+		209E3E6A0ADC9CAE00DC888E /* NTDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 209E3E510ADC9CAE00DC888E /* NTDateFormatter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		209E3E6D0ADC9CAE00DC888E /* NTGlobalPreferences.h in Headers */ = {isa = PBXBuildFile; fileRef = 209E3E540ADC9CAE00DC888E /* NTGlobalPreferences.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		209E3E6E0ADC9CAE00DC888E /* NTGlobalPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 209E3E550ADC9CAE00DC888E /* NTGlobalPreferences.m */; };
+		209E3E6E0ADC9CAE00DC888E /* NTGlobalPreferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 209E3E550ADC9CAE00DC888E /* NTGlobalPreferences.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		209E3E6F0ADC9CAE00DC888E /* NTSingletonObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 209E3E560ADC9CAE00DC888E /* NTSingletonObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		209E3E700ADC9CAE00DC888E /* NTSingletonObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 209E3E570ADC9CAE00DC888E /* NTSingletonObject.m */; };
+		209E3E700ADC9CAE00DC888E /* NTSingletonObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 209E3E570ADC9CAE00DC888E /* NTSingletonObject.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		209E3E710ADC9CAE00DC888E /* NTTaskController.h in Headers */ = {isa = PBXBuildFile; fileRef = 209E3E580ADC9CAE00DC888E /* NTTaskController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		209E3E720ADC9CAE00DC888E /* NTTaskController.m in Sources */ = {isa = PBXBuildFile; fileRef = 209E3E590ADC9CAE00DC888E /* NTTaskController.m */; };
 		209E3E7B0ADC9CDD00DC888E /* CocoatechCore.h in Headers */ = {isa = PBXBuildFile; fileRef = 209E3E7A0ADC9CDD00DC888E /* CocoatechCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -151,7 +151,7 @@
 		209E3F870ADC9EE700DC888E /* NTNameAndID.h in Headers */ = {isa = PBXBuildFile; fileRef = 209E3F850ADC9EE700DC888E /* NTNameAndID.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		209E3F880ADC9EE700DC888E /* NTNameAndID.m in Sources */ = {isa = PBXBuildFile; fileRef = 209E3F860ADC9EE700DC888E /* NTNameAndID.m */; };
 		209E3F9E0ADC9F3F00DC888E /* NTUsersAndGroups.h in Headers */ = {isa = PBXBuildFile; fileRef = 209E3F9C0ADC9F3F00DC888E /* NTUsersAndGroups.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		209E3F9F0ADC9F3F00DC888E /* NTUsersAndGroups.m in Sources */ = {isa = PBXBuildFile; fileRef = 209E3F9D0ADC9F3F00DC888E /* NTUsersAndGroups.m */; };
+		209E3F9F0ADC9F3F00DC888E /* NTUsersAndGroups.m in Sources */ = {isa = PBXBuildFile; fileRef = 209E3F9D0ADC9F3F00DC888E /* NTUsersAndGroups.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		209E3FBD0ADCA34300DC888E /* NSMenu-NTExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 209E3FB90ADCA34300DC888E /* NSMenu-NTExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		209E3FBE0ADCA34300DC888E /* NSMenu-NTExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 209E3FBA0ADCA34300DC888E /* NSMenu-NTExtensions.m */; };
 		209E3FBF0ADCA34300DC888E /* NSMenuItem-NTExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 209E3FBB0ADCA34300DC888E /* NSMenuItem-NTExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -191,7 +191,7 @@
 		20B79A320DDD39E400A3D6BB /* CATextLayer-NTExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B79A300DDD39E400A3D6BB /* CATextLayer-NTExtensions.m */; };
 		20B79B090DDD3E0F00A3D6BB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20B79B080DDD3E0F00A3D6BB /* QuartzCore.framework */; };
 		20BF00D70E2DD249008D723C /* NTSCPrefsListener.h in Headers */ = {isa = PBXBuildFile; fileRef = 20BF00D50E2DD249008D723C /* NTSCPrefsListener.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		20BF00D80E2DD249008D723C /* NTSCPrefsListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BF00D60E2DD249008D723C /* NTSCPrefsListener.m */; };
+		20BF00D80E2DD249008D723C /* NTSCPrefsListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BF00D60E2DD249008D723C /* NTSCPrefsListener.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		20BF75E70D28C33600ADA999 /* NSDrawer-NTExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 20BF75E50D28C33600ADA999 /* NSDrawer-NTExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		20BF75E80D28C33600ADA999 /* NSDrawer-NTExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BF75E60D28C33600ADA999 /* NSDrawer-NTExtensions.m */; };
 		20C10B0B0A3F6D9A00291B79 /* CocoaTechStrings.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20C10B0A0A3F6D9900291B79 /* CocoaTechStrings.framework */; };
@@ -208,7 +208,7 @@
 		20D7ED130B5EFBA8006F4452 /* NTEnablingTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = 20D7ED110B5EFBA8006F4452 /* NTEnablingTextField.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		20D7ED140B5EFBA8006F4452 /* NTEnablingTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 20D7ED120B5EFBA8006F4452 /* NTEnablingTextField.m */; };
 		20DBC4530D2B212E0030C890 /* NTAnimations.h in Headers */ = {isa = PBXBuildFile; fileRef = 20DBC44F0D2B212E0030C890 /* NTAnimations.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		20DBC4540D2B212E0030C890 /* NTAnimations.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DBC4500D2B212E0030C890 /* NTAnimations.m */; };
+		20DBC4540D2B212E0030C890 /* NTAnimations.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DBC4500D2B212E0030C890 /* NTAnimations.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		20DBC4550D2B212E0030C890 /* NTAnimationsWindow.h in Headers */ = {isa = PBXBuildFile; fileRef = 20DBC4510D2B212E0030C890 /* NTAnimationsWindow.h */; };
 		20DBC4560D2B212E0030C890 /* NTAnimationsWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 20DBC4520D2B212E0030C890 /* NTAnimationsWindow.m */; };
 		20DBC4810D2B254F0030C890 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20DBC4800D2B254F0030C890 /* Quartz.framework */; };
@@ -433,7 +433,7 @@
 		209E400B0ADCA4C500DC888E /* NTThreadRunner.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = NTThreadRunner.h; sourceTree = "<group>"; };
 		209E400C0ADCA4C500DC888E /* NTThreadRunner.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = NTThreadRunner.m; sourceTree = "<group>"; };
 		209E41BA0ADCB02D00DC888E /* NTUtilities.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = NTUtilities.h; sourceTree = "<group>"; };
-		209E41BB0ADCB02D00DC888E /* NTUtilities.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = NTUtilities.m; sourceTree = "<group>"; };
+		209E41BB0ADCB02D00DC888E /* NTUtilities.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = NTUtilities.m; sourceTree = "<group>"; usesTabs = 1; };
 		20A111AC0D6E1E1A0088BDB6 /* NSAttributedString-NTExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString-NTExtensions.h"; sourceTree = "<group>"; };
 		20A111AD0D6E1E1A0088BDB6 /* NSAttributedString-NTExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString-NTExtensions.m"; sourceTree = "<group>"; };
 		20A111AE0D6E1E1A0088BDB6 /* NSMutableAttributedString-Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableAttributedString-Extensions.h"; sourceTree = "<group>"; };
@@ -1266,6 +1266,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -1288,6 +1289,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;

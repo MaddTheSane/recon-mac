@@ -35,8 +35,8 @@
 		
 	if (image)
 	{
-		NSMenu* menu = [[[NSMenu alloc] init] autorelease];
-		NSMenuItem* menuItem = [[[NSMenuItem alloc] initWithTitle:@"" action:0 keyEquivalent:@""] autorelease];
+		NSMenu* menu = [[NSMenu alloc] init];
+		NSMenuItem* menuItem = [[NSMenuItem alloc] initWithTitle:@"" action:0 keyEquivalent:@""];
 		
 		[menuItem setImage:image];
 		
@@ -46,7 +46,7 @@
 	else if (title)
 		[result addItemWithTitle:title];
 	
-    return [result autorelease];
+    return result;
 }
 
 //---------------------------------------------------------- 
@@ -55,8 +55,6 @@
 - (void)dealloc
 {
 	self.alternateMenu = nil;
-	
-    [super dealloc];
 }
 
 - (BOOL)mouseDownCanMoveWindow;

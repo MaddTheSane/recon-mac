@@ -34,7 +34,6 @@
 
     self.delegate = nil;
     self.displayedFont = nil;
-    [super dealloc];
 }
 
 // override
@@ -42,8 +41,7 @@
 {
     if (displayedFont != theDisplayedFont)
     {
-        [displayedFont release];
-        displayedFont = [theDisplayedFont retain];
+        displayedFont = theDisplayedFont;
 		
 		if (![self image])
 			[self setTitle:[displayedFont displayString]];

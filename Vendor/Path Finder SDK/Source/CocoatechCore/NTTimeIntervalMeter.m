@@ -25,15 +25,7 @@
 	
 	result.successiveInterval = successiveInterval;
 	
-	return [result autorelease];
-}
-
-//---------------------------------------------------------- 
-// dealloc
-//---------------------------------------------------------- 
-- (void) dealloc
-{
-    [super dealloc];
+	return result;
 }
 
 - (NSTimeInterval)update;

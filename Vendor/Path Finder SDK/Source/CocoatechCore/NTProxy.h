@@ -10,7 +10,7 @@
 
 @interface NTProxy : NSObject 
 {
-	id object;
+	__unsafe_unretained id object;
 }
 
 @property (assign) id object;  // not retained

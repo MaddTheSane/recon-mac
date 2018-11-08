@@ -34,7 +34,7 @@
 	if (color)
 		[attributes setObject:color forKey:NSForegroundColorAttributeName];
 
-	[self setAttributedTitle:[[[NSAttributedString alloc] initWithString:[self title] attributes:attributes] autorelease]];
+	[self setAttributedTitle:[[NSAttributedString alloc] initWithString:[self title] attributes:attributes]];
 }
 
 + (NSFont*)defaultMenuItemFont;
@@ -43,7 +43,7 @@
 	
 	// [NSFont menuFontOfSize:0] used for popups, need to use that in that case
 	if (!shared)
-		shared = [[NSFont menuBarFontOfSize:0] retain]; // zero is default, but doesn't work, should be 14
+		shared = [NSFont menuBarFontOfSize:0]; // zero is default, but doesn't work, should be 14
 	
 	return shared;
 }
