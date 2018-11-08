@@ -1158,7 +1158,7 @@ static int cacheSize;
 		VT100Terminal *terminal = [[self screen] terminal];
 		PTYTask *task = [[self screen] shellTask];
 		
-		int bnum = [event buttonNumber];
+		NSInteger bnum = [event buttonNumber];
 		if (bnum == 2) bnum = 1;
 		
 		switch ([terminal mouseMode]) {

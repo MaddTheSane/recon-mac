@@ -630,7 +630,7 @@
 				DD02571E09CB9398008F320C /* source */,
 				DD02575509CB93C2008F320C /* images */,
 			);
-			name = PSMTabBarControl;
+			path = PSMTabBarControl;
 			sourceTree = "<group>";
 		};
 		DD02571E09CB9398008F320C /* source */ = {
@@ -662,8 +662,7 @@
 				DD02572709CB9398008F320C /* PSMMetalTabStyle.m */,
 				DD02573909CB9398008F320C /* PSMTabStyle.h */,
 			);
-			name = source;
-			path = PSMTabBarControl/source;
+			path = source;
 			sourceTree = "<group>";
 		};
 		DD02575509CB93C2008F320C /* images */ = {
@@ -692,8 +691,7 @@
 				DD02577009CB93C2008F320C /* TabNewMetalRollover.png */,
 				DD02577109CB93C2008F320C /* Warning.png */,
 			);
-			name = images;
-			path = PSMTabBarControl/images;
+			path = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1071,15 +1069,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/build\"",
-				);
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = iTerm_Prefix.pch;
@@ -1096,15 +1090,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/build\"",
-				);
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = iTerm_Prefix.pch;
