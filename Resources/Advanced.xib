@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9532"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="AdvancedViewController">
@@ -42,7 +43,7 @@
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <customObject id="-3" userLabel="Application"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="105620" userLabel="Main - Target Bar - Advanced Content">
             <rect key="frame" x="0.0" y="0.0" width="594" height="36"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
@@ -61,7 +62,7 @@
                     </connections>
                 </comboBox>
                 <button verticalHuggingPriority="750" id="107010">
-                    <rect key="frame" x="584" y="3" width="10" height="25"/>
+                    <rect key="frame" x="584.5" y="3" width="10" height="25"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                     <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" alignment="center" controlSize="mini" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="107011">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
@@ -112,23 +113,23 @@
                                                     <rect key="frame" x="0.0" y="-1" width="173" height="211"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <clipView key="contentView" id="KoC-Zf-Pdx">
-                                                        <rect key="frame" x="1" y="23" width="171" height="187"/>
+                                                        <rect key="frame" x="1" y="0.0" width="171" height="210"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="14" headerView="106032" id="106031">
-                                                                <rect key="frame" x="0.0" y="0.0" width="171" height="187"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="180" height="187"/>
                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                 <size key="intercellSpacing" width="3" height="2"/>
                                                                 <color key="backgroundColor" red="0.83845966999999999" green="0.86725372000000001" blue="0.89795917000000003" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <color key="gridColor" red="0.12755101999999999" green="0.12755101999999999" blue="0.12755101999999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <tableColumns>
-                                                                    <tableColumn editable="NO" width="1" minWidth="1" maxWidth="3.4028229999999999e+38" id="106766">
+                                                                    <tableColumn editable="NO" width="10" minWidth="1" maxWidth="3.4028229999999999e+38" id="106766">
                                                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="right">
                                                                             <font key="font" metaFont="smallSystem"/>
                                                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                                             <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                                         </tableHeaderCell>
-                                                                        <imageCell key="dataCell" controlSize="small" refusesFirstResponder="YES" alignment="left" imageScaling="axesIndependently" id="106768"/>
+                                                                        <imageCell key="dataCell" controlSize="small" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="106768"/>
                                                                     </tableColumn>
                                                                     <tableColumn editable="NO" width="164" minWidth="40" maxWidth="1000" id="106033">
                                                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Hosts">
@@ -153,18 +154,17 @@
                                                                 </connections>
                                                             </tableView>
                                                         </subviews>
-                                                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </clipView>
-                                                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="106030">
+                                                    <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="106030">
                                                         <rect key="frame" x="-100" y="-100" width="149" height="15"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                     </scroller>
-                                                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="106029">
+                                                    <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="106029">
                                                         <rect key="frame" x="157" y="17" width="15" height="89"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                     </scroller>
                                                     <tableHeaderView key="headerView" id="106032">
-                                                        <rect key="frame" x="0.0" y="0.0" width="171" height="23"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="180" height="23"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                     </tableHeaderView>
                                                     <connections>
@@ -181,7 +181,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="173" height="268"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <clipView key="contentView" id="CfU-bd-Mct">
-                                                        <rect key="frame" x="1" y="23" width="171" height="244"/>
+                                                        <rect key="frame" x="1" y="0.0" width="171" height="267"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                         <subviews>
                                                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="14" headerView="106042" id="106041">
@@ -213,13 +213,12 @@
                                                                 </connections>
                                                             </tableView>
                                                         </subviews>
-                                                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </clipView>
-                                                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="106040">
+                                                    <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="106040">
                                                         <rect key="frame" x="-100" y="-100" width="149" height="15"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                     </scroller>
-                                                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="106039">
+                                                    <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="106039">
                                                         <rect key="frame" x="157" y="17" width="15" height="90"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                     </scroller>
@@ -647,7 +646,7 @@
                                                                             <rect key="frame" x="-1" y="20" width="572" height="108"/>
                                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                             <clipView key="contentView" id="GS7-lm-Jf7">
-                                                                                <rect key="frame" x="1" y="23" width="570" height="84"/>
+                                                                                <rect key="frame" x="1" y="0.0" width="570" height="107"/>
                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                                 <subviews>
                                                                                     <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" alternatingRowBackgroundColors="YES" columnSelection="YES" autosaveColumns="NO" headerView="106855" id="106854">
@@ -743,13 +742,12 @@
                                                                                         </connections>
                                                                                     </tableView>
                                                                                 </subviews>
-                                                                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                             </clipView>
-                                                                            <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="106853">
+                                                                            <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="106853">
                                                                                 <rect key="frame" x="1" y="70" width="555" height="15"/>
                                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                             </scroller>
-                                                                            <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="106852">
+                                                                            <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="106852">
                                                                                 <rect key="frame" x="556" y="17" width="15" height="53"/>
                                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                             </scroller>
@@ -819,7 +817,7 @@
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                                                     <subviews>
                                                                         <button verticalHuggingPriority="750" id="106900" customClass="BWAnchoredButton">
-                                                                            <rect key="frame" x="31" y="-1" width="32" height="24"/>
+                                                                            <rect key="frame" x="31.5" y="-1" width="32" height="24"/>
                                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                             <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSRemoveTemplate" imagePosition="only" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="106903" customClass="BWAnchoredButtonCell">
                                                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -831,7 +829,7 @@
                                                                             </connections>
                                                                         </button>
                                                                         <button verticalHuggingPriority="750" id="106901" customClass="BWAnchoredButton">
-                                                                            <rect key="frame" x="0.0" y="-1" width="32" height="24"/>
+                                                                            <rect key="frame" x="0.5" y="-1" width="32" height="24"/>
                                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                             <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSAddTemplate" imagePosition="overlaps" alignment="center" controlSize="small" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="106902" customClass="BWAnchoredButtonCell">
                                                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -853,7 +851,7 @@
                                                                     <rect key="frame" x="0.0" y="21" width="174" height="215"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <clipView key="contentView" id="ick-fh-BmW">
-                                                                        <rect key="frame" x="1" y="23" width="172" height="191"/>
+                                                                        <rect key="frame" x="1" y="0.0" width="172" height="214"/>
                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                         <subviews>
                                                                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" headerView="106896" id="106895" customClass="NotesTableView">
@@ -882,13 +880,12 @@
                                                                                 </tableColumns>
                                                                             </tableView>
                                                                         </subviews>
-                                                                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                     </clipView>
-                                                                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="106894">
+                                                                    <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="106894">
                                                                         <rect key="frame" x="1" y="0.0" width="175" height="14"/>
                                                                         <autoresizingMask key="autoresizingMask"/>
                                                                     </scroller>
-                                                                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="106893">
+                                                                    <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="106893">
                                                                         <rect key="frame" x="174" y="17" width="15" height="70"/>
                                                                         <autoresizingMask key="autoresizingMask"/>
                                                                     </scroller>
@@ -913,15 +910,17 @@
                                                                         <rect key="frame" x="1" y="1" width="172" height="241"/>
                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                         <subviews>
-                                                                            <textView focusRingType="none" importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="106890">
+                                                                            <textView focusRingType="none" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" usesRuler="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="106890">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="172" height="241"/>
                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                                                <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                                                 <color key="backgroundColor" red="0.97254907999999995" green="0.94901966999999998" blue="0.71764707999999999" alpha="1" colorSpace="deviceRGB"/>
                                                                                 <size key="minSize" width="172" height="241"/>
                                                                                 <size key="maxSize" width="958" height="10000000"/>
                                                                                 <attributedString key="textStorage">
                                                                                     <fragment content="L">
                                                                                         <attributes>
+                                                                                            <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                                                             <font key="NSFont" size="12" name="Courier"/>
                                                                                             <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                                                                                 <tabStops>
@@ -1027,8 +1026,6 @@
                                                                                     </fragment>
                                                                                 </attributedString>
                                                                                 <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                                                <size key="minSize" width="172" height="241"/>
-                                                                                <size key="maxSize" width="958" height="10000000"/>
                                                                                 <connections>
                                                                                     <binding destination="106969" name="attributedString" keyPath="selection.text" id="107032">
                                                                                         <dictionary key="options">
@@ -1041,11 +1038,11 @@
                                                                         </subviews>
                                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     </clipView>
-                                                                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="106889">
+                                                                    <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="106889">
                                                                         <rect key="frame" x="1" y="249" width="196" height="15"/>
                                                                         <autoresizingMask key="autoresizingMask"/>
                                                                     </scroller>
-                                                                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="106888">
+                                                                    <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="106888">
                                                                         <rect key="frame" x="197" y="1" width="15" height="248"/>
                                                                         <autoresizingMask key="autoresizingMask"/>
                                                                     </scroller>
@@ -1105,15 +1102,11 @@
                         <real value="250"/>
                     </holdingPriorities>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="colorIsEnabled">
-                            <bool key="value" value="NO"/>
-                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="colorIsEnabled" value="NO"/>
                         <userDefinedRuntimeAttribute type="number" keyPath="collapsiblePopupSelection">
                             <integer key="value" value="0"/>
                         </userDefinedRuntimeAttribute>
-                        <userDefinedRuntimeAttribute type="number" keyPath="dividerCanCollapse">
-                            <bool key="value" value="NO"/>
-                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="dividerCanCollapse" value="NO"/>
                         <userDefinedRuntimeAttribute type="color" keyPath="color">
                             <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         </userDefinedRuntimeAttribute>
@@ -1132,7 +1125,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="497" height="295"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="a4I-3D-VZ3">
-                        <rect key="frame" x="1" y="23" width="495" height="271"/>
+                        <rect key="frame" x="1" y="0.0" width="495" height="294"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" headerView="105960" id="105961">
@@ -1245,13 +1238,12 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </clipView>
-                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="105962">
+                    <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="105962">
                         <rect key="frame" x="1" y="279" width="480" height="15"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
-                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="105963">
+                    <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="105963">
                         <rect key="frame" x="481" y="17" width="15" height="262"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
@@ -1270,7 +1262,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="497" height="295"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="da0-RI-Goz">
-                        <rect key="frame" x="1" y="23" width="495" height="271"/>
+                        <rect key="frame" x="1" y="0.0" width="495" height="294"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" headerView="106716" id="106717">
@@ -1332,13 +1324,12 @@
                                 </tableColumns>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </clipView>
-                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="106718">
+                    <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="106718">
                         <rect key="frame" x="1" y="264" width="492" height="15"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
-                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="106719">
+                    <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="106719">
                         <rect key="frame" x="493" y="17" width="15" height="247"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
@@ -1361,7 +1352,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="497" height="295"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="NWA-N8-YZl">
-                        <rect key="frame" x="1" y="23" width="495" height="271"/>
+                        <rect key="frame" x="1" y="0.0" width="495" height="294"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnSelection="YES" autosaveColumns="NO" headerView="106787" id="106786">
@@ -1456,13 +1447,12 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </clipView>
-                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="106785">
+                    <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="106785">
                         <rect key="frame" x="1" y="279" width="480" height="15"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
-                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="106784">
+                    <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="106784">
                         <rect key="frame" x="481" y="17" width="15" height="262"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
@@ -1618,9 +1608,9 @@
                 <string>text</string>
             </declaredKeys>
             <connections>
-                <binding destination="100427" name="contentSet" keyPath="selection.notes" id="107001"/>
                 <binding destination="-2" name="managedObjectContext" keyPath="managedObjectContext" id="107004"/>
                 <binding destination="-2" name="sortDescriptors" keyPath="notesSortDescriptor" id="107009"/>
+                <binding destination="100427" name="contentSet" keyPath="selection.notes" id="107001"/>
             </connections>
         </arrayController>
         <arrayController id="105414" userLabel="IPIdSeq in Host">
@@ -1734,12 +1724,12 @@
                 <string>port.number</string>
             </declaredKeys>
             <connections>
+                <binding destination="-2" name="sortDescriptors" keyPath="portSortDescriptor" id="103141"/>
                 <binding destination="100427" name="contentSet" keyPath="selection.ports" id="100520">
                     <dictionary key="options">
                         <bool key="NSRaisesForNotApplicableKeys" value="NO"/>
                     </dictionary>
                 </binding>
-                <binding destination="-2" name="sortDescriptors" keyPath="portSortDescriptor" id="103141"/>
             </connections>
         </arrayController>
         <arrayController mode="entity" entityName="Port_Script" preservesSelection="NO" selectsInsertedObjects="NO" avoidsEmptySelection="NO" clearsFilterPredicateOnInsertion="NO" id="105418" userLabel="Scripts in Port">
@@ -1772,8 +1762,8 @@
                 <string>name</string>
             </declaredKeys>
             <connections>
-                <binding destination="100427" name="contentSet" keyPath="selection.osmatches" id="105366"/>
                 <binding destination="-2" name="sortDescriptors" keyPath="osSortDescriptor" id="106705"/>
+                <binding destination="100427" name="contentSet" keyPath="selection.osmatches" id="105366"/>
             </connections>
         </arrayController>
         <arrayController mode="entity" entityName="Profile" fetchPredicateFormat="parent != nil AND (parent.name == &quot;Defaults&quot; OR parent.name == &quot;User Profiles&quot;)" automaticallyPreparesContent="YES" preservesSelection="NO" selectsInsertedObjects="NO" clearsFilterPredicateOnInsertion="NO" id="106545" userLabel="Profiles">
@@ -1784,17 +1774,17 @@
                 <string>sessionTarget</string>
             </declaredKeys>
             <connections>
-                <binding destination="-2" name="contentArray" keyPath="profilesArrayController.arrangedObjects" id="106546"/>
                 <binding destination="-2" name="managedObjectContext" keyPath="managedObjectContext" id="106706"/>
-                <binding destination="-2" name="selectionIndexes" keyPath="profilesArrayController.selectionIndexes" id="106547"/>
                 <binding destination="-2" name="sortDescriptors" keyPath="profileSortDescriptor" previousBinding="106547" id="106548"/>
+                <binding destination="-2" name="contentArray" keyPath="profilesArrayController.arrangedObjects" id="106546"/>
+                <binding destination="-2" name="selectionIndexes" keyPath="profilesArrayController.selectionIndexes" id="106547"/>
             </connections>
         </arrayController>
     </objects>
     <resources>
         <image name="NSAddTemplate" width="11" height="11"/>
-        <image name="NSEveryone" width="32" height="32"/>
-        <image name="NSIconViewTemplate" width="10" height="10"/>
+        <image name="NSEveryone" width="128" height="128"/>
+        <image name="NSIconViewTemplate" width="14" height="10"/>
         <image name="NSListViewTemplate" width="14" height="10"/>
         <image name="NSRemoveTemplate" width="11" height="11"/>
         <image name="NSRightFacingTriangleTemplate" width="9" height="12"/>
