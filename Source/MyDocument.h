@@ -9,8 +9,8 @@
 
 #import <Cocoa/Cocoa.h>
 #import "PrefsController.h"
-#import <BWToolkitFramework/BWSplitView.h>
-#import <BWToolkitFramework/BWAnchoredButton.h>
+#import <BWTK/BWSplitView.h>
+#import <BWTK/BWAnchoredButton.h>
 
 #import "ManagingViewController.h"
 #import "BasicViewController.h"

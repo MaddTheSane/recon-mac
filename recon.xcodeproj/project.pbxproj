@@ -12,6 +12,8 @@
 		55B1E5691C824F2B003EA816 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55B1E5681C824F2B003EA816 /* Images.xcassets */; };
 		55D1E1432192D56600A6002B /* CocoatechCore.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 55597E131C811E700080944E /* CocoatechCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		55D1E1442192D56B00A6002B /* CocoaTechStrings.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 55597E141C811E700080944E /* CocoaTechStrings.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		55FF9792219619750082191B /* BWTK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55FF978E219619440082191B /* BWTK.framework */; };
+		55FF9793219619750082191B /* BWTK.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 55FF978E219619440082191B /* BWTK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		775BDEF1067A8BF0009058FE /* MyDocument.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 775BDEF0067A8BF0009058FE /* MyDocument.xcdatamodel */; };
 		775DFF38067A968500C5B868 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
 		8C014C82102D58F900FEEBB7 /* MyTerminalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C014C81102D58F900FEEBB7 /* MyTerminalView.m */; };
@@ -19,8 +21,6 @@
 		8C2DAAE81037767F0053FACE /* StringToAttribStringTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C2DAAE71037767F0053FACE /* StringToAttribStringTransformer.m */; };
 		8C2DAC971037A9FC0053FACE /* HostNote.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C2DAC961037A9FC0053FACE /* HostNote.m */; };
 		8C3D26F9102E26E80007B87E /* PathTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C3D26F8102E26E80007B87E /* PathTransformer.m */; };
-		8C4163861010D6310066A4F8 /* BWToolkitFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C4163851010D6310066A4F8 /* BWToolkitFramework.framework */; };
-		8C4163891010D6340066A4F8 /* BWToolkitFramework.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 8C4163851010D6310066A4F8 /* BWToolkitFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8C55E41F100524A5002F5013 /* NSTask+OneLineTasksWithOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C55E41E100524A5002F5013 /* NSTask+OneLineTasksWithOutput.m */; };
 		8C55E43810052E72002F5013 /* SessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C55E43710052E72002F5013 /* SessionManager.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		8C5613BE103628F00030B321 /* ColorGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8C5613BD103628F00030B321 /* ColorGradientView.m */; };
@@ -84,6 +84,34 @@
 /* End PBXBuildRule section */
 
 /* Begin PBXContainerItemProxy section */
+		55FF978B219619440082191B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 55FF9784219619440082191B /* BWToolkit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C7534CD51325BC4A002EF382;
+			remoteInfo = BWToolkit;
+		};
+		55FF978D219619440082191B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 55FF9784219619440082191B /* BWToolkit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C7DE52F01325C29F009F7FA7;
+			remoteInfo = BWTK;
+		};
+		55FF978F219619440082191B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 55FF9784219619440082191B /* BWToolkit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C7DE52F11325C29F009F7FA7;
+			remoteInfo = BWTKMAS;
+		};
+		55FF9794219619750082191B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 55FF9784219619440082191B /* BWToolkit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 53DF68FC067E5B5A0090B5B0;
+			remoteInfo = BWTK;
+		};
 		8C3D2B60102FABD60007B87E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8C3D2B50102FABD60007B87E /* iTerm.xcodeproj */;
@@ -116,8 +144,8 @@
 			files = (
 				55D1E1442192D56B00A6002B /* CocoaTechStrings.framework in Copy Frameworks */,
 				55D1E1432192D56600A6002B /* CocoatechCore.framework in Copy Frameworks */,
+				55FF9793219619750082191B /* BWTK.framework in Copy Frameworks */,
 				55597E171C811E760080944E /* iTerm.framework in Copy Frameworks */,
-				8C4163891010D6340066A4F8 /* BWToolkitFramework.framework in Copy Frameworks */,
 				8C79F2F810033E3C00A4648B /* Growl.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
@@ -138,6 +166,7 @@
 		55597E131C811E700080944E /* CocoatechCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CocoatechCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		55597E141C811E700080944E /* CocoaTechStrings.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CocoaTechStrings.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		55B1E5681C824F2B003EA816 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		55FF9784219619440082191B /* BWToolkit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BWToolkit.xcodeproj; path = Vendor/bwtoolkit/BWToolkit.xcodeproj; sourceTree = "<group>"; };
 		775BDEF0067A8BF0009058FE /* MyDocument.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = MyDocument.xcdatamodel; sourceTree = "<group>"; };
 		7788DA0506752A1600599AAD /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		8C014C80102D58F900FEEBB7 /* MyTerminalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTerminalView.h; sourceTree = "<group>"; };
@@ -151,7 +180,6 @@
 		8C3D26F7102E26E80007B87E /* PathTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PathTransformer.h; sourceTree = "<group>"; };
 		8C3D26F8102E26E80007B87E /* PathTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PathTransformer.m; sourceTree = "<group>"; };
 		8C3D2B50102FABD60007B87E /* iTerm.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = iTerm.xcodeproj; path = "Vendor/Path Finder SDK/Source/iTerm/iTerm.xcodeproj"; sourceTree = "<group>"; };
-		8C4163851010D6310066A4F8 /* BWToolkitFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BWToolkitFramework.framework; path = Frameworks/BWToolkitFramework.framework; sourceTree = "<group>"; };
 		8C55E41E100524A5002F5013 /* NSTask+OneLineTasksWithOutput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTask+OneLineTasksWithOutput.m"; sourceTree = "<group>"; };
 		8C55E43610052E72002F5013 /* SessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SessionManager.h; sourceTree = "<group>"; };
 		8C55E43710052E72002F5013 /* SessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SessionManager.m; sourceTree = "<group>"; };
@@ -231,8 +259,8 @@
 				775DFF38067A968500C5B868 /* Cocoa.framework in Frameworks */,
 				8C79F2EE10033DF200A4648B /* Growl.framework in Frameworks */,
 				8CC32789100CDCA700483939 /* Security.framework in Frameworks */,
-				8C4163861010D6310066A4F8 /* BWToolkitFramework.framework in Frameworks */,
 				8CD980E61024BFA200492108 /* Quartz.framework in Frameworks */,
+				55FF9792219619750082191B /* BWTK.framework in Frameworks */,
 				8CD980E71024BFA200492108 /* QuartzCore.framework in Frameworks */,
 				8CB29083102CCF54004A577E /* WebKit.framework in Frameworks */,
 				8C77C64E103A33F1003D6589 /* ScriptingBridge.framework in Frameworks */,
@@ -245,7 +273,6 @@
 		1058C7A6FEA54F5311CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8C4163851010D6310066A4F8 /* BWToolkitFramework.framework */,
 				8C79F2ED10033DF200A4648B /* Growl.framework */,
 			);
 			name = "Linked Frameworks";
@@ -272,6 +299,7 @@
 		2A37F4AAFDCFA73011CA2CEA /* nmapX-coredata */ = {
 			isa = PBXGroup;
 			children = (
+				55FF9784219619440082191B /* BWToolkit.xcodeproj */,
 				8C3D2B50102FABD60007B87E /* iTerm.xcodeproj */,
 				2A37F4ABFDCFA73011CA2CEA /* Classes */,
 				E1B74B1A0667B4A90069E3BA /* Models */,
@@ -340,6 +368,16 @@
 				1058C7A8FEA54F5311CA2CBB /* Other Frameworks */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		55FF9785219619440082191B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				55FF978C219619440082191B /* BWToolkit.ibplugin */,
+				55FF978E219619440082191B /* BWTK.framework */,
+				55FF9790219619440082191B /* BWTKMAS.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		8C126DAF1037EA3900654B65 /* XIBs */ = {
@@ -517,6 +555,7 @@
 			);
 			dependencies = (
 				8C3D2C26102FAC990007B87E /* PBXTargetDependency */,
+				55FF9795219619750082191B /* PBXTargetDependency */,
 			);
 			name = Recon;
 			productInstallPath = "$(HOME)/Applications";
@@ -543,6 +582,10 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = 55FF9785219619440082191B /* Products */;
+					ProjectRef = 55FF9784219619440082191B /* BWToolkit.xcodeproj */;
+				},
+				{
 					ProductGroup = 8C3D2B51102FABD60007B87E /* Products */;
 					ProjectRef = 8C3D2B50102FABD60007B87E /* iTerm.xcodeproj */;
 				},
@@ -555,6 +598,27 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		55FF978C219619440082191B /* BWToolkit.ibplugin */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = BWToolkit.ibplugin;
+			remoteRef = 55FF978B219619440082191B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		55FF978E219619440082191B /* BWTK.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = BWTK.framework;
+			remoteRef = 55FF978D219619440082191B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		55FF9790219619440082191B /* BWTKMAS.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = BWTKMAS.framework;
+			remoteRef = 55FF978F219619440082191B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		8C3D2B61102FABD60007B87E /* iTerm.app */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.application;
@@ -638,6 +702,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		55FF9795219619750082191B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = BWTK;
+			targetProxy = 55FF9794219619750082191B /* PBXContainerItemProxy */;
+		};
 		8C3D2C26102FAC990007B87E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "iTerm Framework";

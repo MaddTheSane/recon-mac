@@ -1,0 +1,3 @@
+[submodule "Vendor/bwtoolkit"]
+	path = Vendor/bwtoolkit
+	url = https://github.com/MaddTheSane/bwtoolkit.git

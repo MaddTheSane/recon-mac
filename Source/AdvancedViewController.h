@@ -9,7 +9,7 @@
 #import "ManagingViewController.h"
 #import "NSManagedObjectContext-helper.h"
 
-#import <BWToolkitFramework/BWSplitView.h>
+#import <BWTK/BWSplitView.h>
 
 #import <WebKit/WebKit.h>
 
