@@ -1410,45 +1410,10 @@ static VT100TCC decode_string(unsigned char *datap,
 	[SCREEN reset];
 }
 
-- (BOOL)trace
-{
-    return TRACE;
-}
-
-- (void)setTrace:(BOOL)flag
-{
-    TRACE = flag;
-}
-
-- (BOOL)strictAnsiMode
-{
-    return (strictAnsiMode);
-}
-
-- (void)setStrictAnsiMode: (BOOL)flag
-{
-    strictAnsiMode = flag;
-}
-
-- (BOOL)allowColumnMode
-{
-    return (allowColumnMode);
-}
-
-- (void)setAllowColumnMode: (BOOL)flag
-{
-    allowColumnMode = flag;
-}
-
-- (NSStringEncoding)encoding
-{
-    return ENCODING;
-}
-
-- (void)setEncoding:(NSStringEncoding)encoding
-{
-    ENCODING = encoding;
-}
+@synthesize trace=TRACE;
+@synthesize strictAnsiMode;
+@synthesize allowColumnMode;
+@synthesize encoding=ENCODING;
 
 - (void)cleanStream
 {
@@ -1457,11 +1422,11 @@ static VT100TCC decode_string(unsigned char *datap,
 	[streamLock unlock];
 }
 
-- (void)putStreamData:(char *)data length: (int)length
+- (void)putStreamData:(char *)data length: (NSInteger)length
 {
 	[streamLock lock];
 	if (current_stream_length + length > total_stream_length) {
-		int n = (length + current_stream_length) / STANDARD_STREAM_SIZE;
+		NSInteger n = (length + current_stream_length) / STANDARD_STREAM_SIZE;
 		
 		total_stream_length += n*STANDARD_STREAM_SIZE;
 		STREAM = reallocf(STREAM, total_stream_length);

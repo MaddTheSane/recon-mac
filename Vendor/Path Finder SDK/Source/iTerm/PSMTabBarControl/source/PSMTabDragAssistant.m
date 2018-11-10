@@ -50,75 +50,13 @@ static PSMTabDragAssistant *sharedDragAssistant = nil;
 #pragma mark -
 #pragma mark Accessors
 
-- (PSMTabBarControl *)sourceTabBar
-{
-    return _sourceTabBar;
-}
-
-- (void)setSourceTabBar:(PSMTabBarControl *)tabBar
-{
-    _sourceTabBar = tabBar;
-}
-
-- (PSMTabBarControl *)destinationTabBar
-{
-    return _destinationTabBar;
-}
-
-- (void)setDestinationTabBar:(PSMTabBarControl *)tabBar
-{
-    _destinationTabBar = tabBar;
-}
-
-- (PSMTabBarCell *)draggedCell
-{
-    return _draggedCell;
-}
-
-- (void)setDraggedCell:(PSMTabBarCell *)cell
-{
-    _draggedCell = cell;
-}
-
-- (int)draggedCellIndex
-{
-    return _draggedCellIndex;
-}
-
-- (void)setDraggedCellIndex:(int)value
-{
-    _draggedCellIndex = value;
-}
-
-- (BOOL)isDragging
-{
-    return _isDragging;
-}
-
-- (void)setIsDragging:(BOOL)value
-{
-    _isDragging = value;
-}
-
-- (NSPoint)currentMouseLoc
-{
-    return _currentMouseLoc;
-}
-
-- (void)setCurrentMouseLoc:(NSPoint)point
-{
-    _currentMouseLoc = point;
-}
-
-- (PSMTabBarCell *)targetCell
-{
-    return _targetCell;
-}
-
-- (void)setTargetCell:(PSMTabBarCell *)cell
-{
-    _targetCell = cell;
-}
+@synthesize sourceTabBar=_sourceTabBar;
+@synthesize destinationTabBar=_destinationTabBar;
+@synthesize draggedCell=_draggedCell;
+@synthesize draggedCellIndex=_draggedCellIndex;
+@synthesize isDragging=_isDragging;
+@synthesize currentMouseLoc=_currentMouseLoc;
+@synthesize targetCell=_targetCell;
 
 #pragma mark -
 #pragma mark Functionality
@@ -658,7 +596,7 @@ static PSMTabDragAssistant *sharedDragAssistant = nil;
         [aCoder encodeObject:_destinationTabBar forKey:@"destinationTabBar"];
         [aCoder encodeObject:_participatingTabBars forKey:@"participatingTabBars"];
         [aCoder encodeObject:_draggedCell forKey:@"draggedCell"];
-        [aCoder encodeInt:_draggedCellIndex forKey:@"draggedCellIndex"];
+        [aCoder encodeInteger:_draggedCellIndex forKey:@"draggedCellIndex"];
         [aCoder encodeBool:_isDragging forKey:@"isDragging"];
         [aCoder encodeObject:_animationTimer forKey:@"animationTimer"];
         [aCoder encodeObject:_sineCurveWidths forKey:@"sineCurveWidths"];
@@ -675,7 +613,7 @@ static PSMTabDragAssistant *sharedDragAssistant = nil;
             _destinationTabBar = [aDecoder decodeObjectForKey:@"destinationTabBar"];
             _participatingTabBars = [aDecoder decodeObjectForKey:@"participatingTabBars"];
             _draggedCell = [aDecoder decodeObjectForKey:@"draggedCell"];
-            _draggedCellIndex = [aDecoder decodeIntForKey:@"draggedCellIndex"];
+            _draggedCellIndex = [aDecoder decodeIntegerForKey:@"draggedCellIndex"];
             _isDragging = [aDecoder decodeBoolForKey:@"isDragging"];
             _animationTimer = [aDecoder decodeObjectForKey:@"animationTimer"];
             _sineCurveWidths = [aDecoder decodeObjectForKey:@"sineCurveWidths"];

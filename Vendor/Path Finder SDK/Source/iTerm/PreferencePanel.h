@@ -79,7 +79,7 @@ typedef NS_ENUM(NSInteger, ITermCursorType) { CURSOR_UNDERLINE, CURSOR_VERTICAL,
 @property BOOL pasteFromClipboard;
 - (BOOL) hideTab;
 @property NSTabViewType tabViewType;
-- (int) windowStyle;
+@property (readonly) NSInteger windowStyle;
 - (BOOL) promptOnClose;
 - (BOOL) focusFollowsMouse;
 - (BOOL) enableBonjour;

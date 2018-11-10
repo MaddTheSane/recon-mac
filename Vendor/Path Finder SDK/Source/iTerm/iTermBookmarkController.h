@@ -53,14 +53,14 @@
 - (IBAction)launchSession:(id)sender;
 @end
 
-@interface iTermBookmarkController (Private)
+@interface iTermBookmarkController ()
 
 - (void)_addBookmarkFolderSheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo;
 - (void)_deleteBookmarkSheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo;
 - (void)_editBookmarkSheetDidEnd:(NSWindow *)sheet returnCode:(NSInteger)returnCode contextInfo:(void *)contextInfo;
 - (NSArray*) _draggedNodes;
 - (NSArray *) _selectedNodes;
-- (void)_performDropOperation:(id <NSDraggingInfo>)info onNode:(TreeNode*)parentNode atIndex:(int)childIndex;
+- (void)_performDropOperation:(id <NSDraggingInfo>)info onNode:(TreeNode*)parentNode atIndex:(NSInteger)childIndex;
 - (void)_loadProfiles;
 
 @end

@@ -257,11 +257,7 @@ static NSString *NoHandler = @"<No Handler>";
 }
 
 @synthesize tabViewType=defaultTabViewType;
-
-- (int) windowStyle
-{
-	return (defaultWindowStyle);
-}
+@synthesize windowStyle=defaultWindowStyle;
 
 - (BOOL)promptOnClose
 {

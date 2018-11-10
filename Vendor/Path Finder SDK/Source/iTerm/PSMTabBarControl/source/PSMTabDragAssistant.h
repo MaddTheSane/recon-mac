@@ -24,7 +24,7 @@
     PSMTabBarControl            *_destinationTabBar;
     NSMutableSet                *_participatingTabBars;
     PSMTabBarCell               *_draggedCell;
-    int                         _draggedCellIndex;   // for snap back
+    NSInteger                   _draggedCellIndex;   // for snap back
     BOOL                        _isDragging;
 	
 	// Support for dragging into new windows
@@ -43,20 +43,13 @@
 + (PSMTabDragAssistant *)sharedDragAssistant;
 
 // Accessors
-- (PSMTabBarControl *)sourceTabBar;
-- (void)setSourceTabBar:(PSMTabBarControl *)tabBar;
-- (PSMTabBarControl *)destinationTabBar;
-- (void)setDestinationTabBar:(PSMTabBarControl *)tabBar;
-- (PSMTabBarCell *)draggedCell;
-- (void)setDraggedCell:(PSMTabBarCell *)cell;
-- (int)draggedCellIndex;
-- (void)setDraggedCellIndex:(int)value;
-- (BOOL)isDragging;
-- (void)setIsDragging:(BOOL)value;
-- (NSPoint)currentMouseLoc;
-- (void)setCurrentMouseLoc:(NSPoint)point;
-- (PSMTabBarCell *)targetCell;
-- (void)setTargetCell:(PSMTabBarCell *)cell;
+@property (strong) PSMTabBarControl *sourceTabBar;
+@property (strong) PSMTabBarControl *destinationTabBar;
+@property (strong) PSMTabBarCell *draggedCell;
+@property NSInteger draggedCellIndex;
+@property BOOL isDragging;
+@property NSPoint currentMouseLoc;
+@property (strong) PSMTabBarCell *targetCell;
 
 // Functionality
 - (void)startDraggingCell:(PSMTabBarCell *)cell fromTabBar:(PSMTabBarControl *)control withMouseDownEvent:(NSEvent *)event;

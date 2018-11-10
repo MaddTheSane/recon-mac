@@ -34,8 +34,8 @@
 
 static SInt32 systemVersion;
 static NSCursor* textViewCursor =  nil;
-static float strokeWidth, boldStrokeWidth;
-static int cacheSize;
+static CGFloat strokeWidth, boldStrokeWidth;
+static NSInteger cacheSize;
 
 @implementation CharCache
 
@@ -44,7 +44,7 @@ static int cacheSize;
 //
 // private methods
 //
-@interface PTYTextView (Private)
+@interface PTYTextView ()
 - (NSRect)previousViewRect;
 - (void)setPreviousViewRect:(NSRect)thePreviousViewRect;
 
@@ -2084,8 +2084,12 @@ static int cacheSize;
     //[aSavePanel setRequiredFileType: @""];
     
     // Run the save panel as a sheet
-    [aSavePanel beginSheetModalForWindow:self.window completionHandler:^(NSInteger result) {
-		[self _savePanelDidEnd:aSavePanel returnCode:result contextInfo:CFBridgingRetain(aData)];
+    [aSavePanel beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse result) {
+		if (result == NSOKButton) {
+			if ( ![aData writeToURL: [aSavePanel URL] atomically: YES] ) {
+				NSBeep();
+			}
+		}
     }];
 }
 
@@ -2277,12 +2281,12 @@ static int cacheSize;
 }
 
 // transparency
-- (float) transparency
+- (CGFloat) transparency
 {
 	return (transparency);
 }
 
-- (void)setTransparency: (float) fVal
+- (void)setTransparency: (CGFloat) fVal
 {
 	transparency = fVal;
 	[self setForceUpdate:YES];
@@ -2308,7 +2312,7 @@ static int cacheSize;
 {
 	//NSLog(@"%s: %@, %@", __PRETTY_FUNCTION__, sendType, returnType);
 	
-	if (sendType != nil && [sendType isEqualToString: NSStringPboardType])
+	if (sendType != nil && [sendType isEqualToString: NSPasteboardTypeString])
 		return (self);
 	
 	return ([super validRequestorForSendType: sendType returnType: returnType]);
@@ -2322,8 +2326,8 @@ static int cacheSize;
     copyString=[self selectedText];
     
     if (copyString && [copyString length]>0) {
-        [pboard declareTypes: [NSArray arrayWithObject: NSStringPboardType] owner: self];
-        [pboard setString: copyString forType: NSStringPboardType];
+        [pboard declareTypes: [NSArray arrayWithObject: NSPasteboardTypeString] owner: self];
+        [pboard setString: copyString forType: NSPasteboardTypeString];
 		return (YES);
     }
 	
@@ -2339,12 +2343,12 @@ static int cacheSize;
 //---------------------------------------------------------- 
 //  lineHeight 
 //---------------------------------------------------------- 
-- (float)lineHeight
+- (CGFloat)lineHeight
 {
     return mLineHeight;
 }
 
-- (void)setLineHeight:(float)theLineHeight
+- (void)setLineHeight:(CGFloat)theLineHeight
 {
     mLineHeight = theLineHeight;
 }
@@ -2352,12 +2356,12 @@ static int cacheSize;
 //---------------------------------------------------------- 
 //  charWidth 
 //---------------------------------------------------------- 
-- (float)charWidth
+- (CGFloat)charWidth
 {
     return mCharWidth;
 }
 
-- (void)setCharWidth:(float)theCharWidth
+- (void)setCharWidth:(CGFloat)theCharWidth
 {
     mCharWidth = theCharWidth;
 }
@@ -2365,12 +2369,12 @@ static int cacheSize;
 //---------------------------------------------------------- 
 //  charWidthWithoutSpacing 
 //---------------------------------------------------------- 
-- (float)charWidthWithoutSpacing
+- (CGFloat)charWidthWithoutSpacing
 {
     return mCharWidthWithoutSpacing;
 }
 
-- (void)setCharWidthWithoutSpacing:(float)theCharWidthWithoutSpacing
+- (void)setCharWidthWithoutSpacing:(CGFloat)theCharWidthWithoutSpacing
 {
     mCharWidthWithoutSpacing = theCharWidthWithoutSpacing;
 }
@@ -2378,12 +2382,12 @@ static int cacheSize;
 //---------------------------------------------------------- 
 //  charHeightWithoutSpacing 
 //---------------------------------------------------------- 
-- (float)charHeightWithoutSpacing
+- (CGFloat)charHeightWithoutSpacing
 {
     return mCharHeightWithoutSpacing;
 }
 
-- (void)setCharHeightWithoutSpacing:(float)theCharHeightWithoutSpacing
+- (void)setCharHeightWithoutSpacing:(CGFloat)theCharHeightWithoutSpacing
 {
     mCharHeightWithoutSpacing = theCharHeightWithoutSpacing;
 }
@@ -2401,60 +2405,9 @@ static int cacheSize;
     mNumberOfLines = theNumberOfLines;
 }
 
-@end
-
-@implementation PTYTextView (Actions)
-
-// probably should get taken out when  WebView is fixed.
-- (IBAction)performFindPanelAction:(id)sender;
-{
-	NSMenuItem* item = sender;
-	
-	if ([item isKindOfClass:[NSMenuItem class]])
-	{
-		switch ([sender tag])
-		{
-			case NSFindPanelActionShowFindPanel:
-				[[FindPanelWindowController sharedInstance] showWindow:nil];
-				break;
-			case NSFindPanelActionNext:
-				[[FindCommandHandler sharedInstance] findNext];
-				break;
-			case NSFindPanelActionPrevious:
-				[[FindCommandHandler sharedInstance] findPrevious];
-				break;
-			case NSFindPanelActionReplaceAll:
-				break;
-			case NSFindPanelActionReplace:
-				break;
-			case NSFindPanelActionReplaceAndFind:
-				break;
-			case NSFindPanelActionSetFindString:
-				[[FindCommandHandler sharedInstance] findWithSelection];
-				break;
-			case NSFindPanelActionReplaceAllInSelection:
-				break;
-			case NSFindPanelActionSelectAll:
-				break;
-			case NSFindPanelActionSelectAllInSelection:
-				break;
-		}
-	}
-	else
-		NSLog(@"-[%@ %@]", [self className], NSStringFromSelector(_cmd));
-}
-
-- (IBAction)centerSelectionInVisibleArea:(id)sender
-{
-    [[FindCommandHandler sharedInstance] jumpToSelection];
-}
-
-@end
-
 //
 // private methods
 //
-@implementation PTYTextView (Private)
 
 //---------------------------------------------------------- 
 //  previousWindowSize 
@@ -3286,3 +3239,50 @@ static int cacheSize;
 
 @end
 
+@implementation PTYTextView (Actions)
+
+// probably should get taken out when  WebView is fixed.
+- (IBAction)performFindPanelAction:(id)sender;
+{
+	NSMenuItem* item = sender;
+	
+	if ([item isKindOfClass:[NSMenuItem class]])
+	{
+		switch ([sender tag])
+		{
+			case NSFindPanelActionShowFindPanel:
+				[[FindPanelWindowController sharedInstance] showWindow:nil];
+				break;
+			case NSFindPanelActionNext:
+				[[FindCommandHandler sharedInstance] findNext];
+				break;
+			case NSFindPanelActionPrevious:
+				[[FindCommandHandler sharedInstance] findPrevious];
+				break;
+			case NSFindPanelActionReplaceAll:
+				break;
+			case NSFindPanelActionReplace:
+				break;
+			case NSFindPanelActionReplaceAndFind:
+				break;
+			case NSFindPanelActionSetFindString:
+				[[FindCommandHandler sharedInstance] findWithSelection];
+				break;
+			case NSFindPanelActionReplaceAllInSelection:
+				break;
+			case NSFindPanelActionSelectAll:
+				break;
+			case NSFindPanelActionSelectAllInSelection:
+				break;
+		}
+	}
+	else
+		NSLog(@"-[%@ %@]", [self className], NSStringFromSelector(_cmd));
+}
+
+- (IBAction)centerSelectionInVisibleArea:(id)sender
+{
+	[[FindCommandHandler sharedInstance] jumpToSelection];
+}
+
+@end

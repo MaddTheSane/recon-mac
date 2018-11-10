@@ -28,12 +28,12 @@
 @interface PTYSession : NSResponder
 {        
     // Owning tab view item
-    NSTabViewItem *tabViewItem;
+    __weak NSTabViewItem *tabViewItem;
 	
     // tty device
     NSString *tty;
     
-    ITTerminalView *parent;  // parent controller
+    __weak ITTerminalView *parent;  // parent controller
     NSString *name;
 	NSString *defaultName;
     NSString *windowTitle;
@@ -53,7 +53,7 @@
     BOOL autoClose;
     BOOL doubleWidth;
 	BOOL xtermMouseReporting;
-    int bell;
+    BOOL bell;
 
     NSDictionary *addressBookEntry;
     
@@ -88,8 +88,8 @@
 - (void)readTask:(char *)buf length:(NSInteger)length;
 - (void)brokenPipe;
 
-- (PTYTextView *)textView;
-- (PTYScrollView *)scrollView;
+@property (readonly, strong) PTYTextView *textView;
+@property (readonly, strong) PTYScrollView *scrollView;
 
 // PTYTextView
 - (BOOL)hasKeyMappingForEvent: (NSEvent *) event highPriority: (BOOL) priority;
@@ -121,49 +121,32 @@
 - (void)menuForEvent:(NSEvent *)theEvent menu: (NSMenu *) theMenu;
 
 // get/set methods
-- (ITTerminalView *) parent;
-- (void)setParent: (ITTerminalView *) theParent;
-- (NSTabViewItem *) tabViewItem;
-- (void)setTabViewItem: (NSTabViewItem *) theTabViewItem;
-- (NSString *) name;
-- (void)setName: (NSString *) theName;
-- (NSString *) defaultName;
-- (void)setDefaultName: (NSString *) theName;
+@property (weak) ITTerminalView *parent;
+@property (weak) NSTabViewItem *tabViewItem;
+@property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSString *defaultName;
 - (NSString *) uniqueID;
 - (void)setUniqueID: (NSString *)uniqueID;
-- (NSString *) windowTitle;
-- (void)setWindowTitle: (NSString *) theTitle;
-- (PTYTask *) SHELL;
-- (void)setSHELL: (PTYTask *) theSHELL;
-- (VT100Terminal *) TERMINAL;
-- (void)setTERMINAL: (VT100Terminal *) theTERMINAL;
-- (NSString *) TERM_VALUE;
-- (void)setTERM_VALUE: (NSString *) theTERM_VALUE;
-- (VT100Screen *) SCREEN;
-- (void)setSCREEN: (VT100Screen *) theSCREEN;
+@property (nonatomic, copy) NSString *windowTitle;
+@property (strong) PTYTask *SHELL;
+@property (strong) VT100Terminal *TERMINAL;
+@property (nonatomic, copy) NSString *TERM_VALUE;
+@property (strong) VT100Screen *SCREEN;
 - (NSView *) view;
-- (NSStringEncoding) encoding;
-- (void)setEncoding:(NSStringEncoding)encoding;
-- (BOOL) antiIdle;
-- (int) antiCode;
-- (void)setAntiIdle:(BOOL)set;
-- (void)setAntiCode:(int)code;
-- (BOOL) autoClose;
-- (void)setAutoClose:(BOOL)set;
-- (BOOL) doubleWidth;
-- (void)setDoubleWidth:(BOOL)set;
-- (BOOL) xtermMouseReporting;
-- (void)setXtermMouseReporting:(BOOL)set;
-- (NSDictionary *) addressBookEntry;
-- (void)setAddressBookEntry:(NSDictionary*) entry;
+@property NSStringEncoding encoding;
+@property BOOL antiIdle;
+@property int antiCode;
+@property BOOL autoClose;
+@property BOOL doubleWidth;
+@property BOOL xtermMouseReporting;
+@property (copy) NSDictionary *addressBookEntry;
 - (int) number;
 - (int) objectCount;
 - (int) realObjectCount;
 - (void)setObjectCount:(int)value;
 - (NSString *) tty;
 - (NSString *) contents;
-- (NSImage *) icon;
-- (void)setIcon: (NSImage *) anIcon;
+@property (strong) NSImage *icon;
 - (NSNumber*)ttyPID;
 
 - (void)clearBuffer;
@@ -172,39 +155,27 @@
 - (void)logStart;
 - (void)logStartWithPath:(NSString *)path;
 - (void)logStop;
-- (NSColor *) foregroundColor;
-- (void)setForegroundColor:(NSColor*) color;
-- (NSColor *) backgroundColor;
-- (void)setBackgroundColor:(NSColor*) color;
-- (NSColor *) selectionColor;
-- (void)setSelectionColor: (NSColor *) color;
-- (NSColor *) boldColor;
-- (void)setBoldColor:(NSColor*) color;
-- (NSColor *) cursorColor;
-- (void)setCursorColor:(NSColor*) color;
-- (NSColor *) selectedTextColor;
-- (void)setSelectedTextColor: (NSColor *) aColor;
-- (NSColor *) cursorTextColor;
-- (void)setCursorTextColor: (NSColor *) aColor;
-- (float) transparency;
-- (void)setTransparency:(float)transparency;
+@property (strong) NSColor *foregroundColor;
+@property (strong) NSColor *backgroundColor;
+@property (strong) NSColor *selectionColor;
+@property (strong) NSColor *boldColor;
+@property (strong) NSColor *cursorColor;
+@property (strong) NSColor *selectedTextColor;
+@property (strong) NSColor *cursorTextColor;
+@property CGFloat transparency;
 
-- (BOOL)useTransparency;
-- (void)setUseTransparency:(BOOL)useTransparency;
+@property BOOL useTransparency;
 
-- (BOOL) disableBold;
-- (void)setDisableBold: (BOOL) boldFlag;
+@property BOOL disableBold;
 - (void)setColorTable:(int) index highLight:(BOOL)hili color:(NSColor *) c;
 - (int) optionKey;
 
 // Session status
 - (void)resetStatus;
-- (BOOL)exited;
+@property (readonly) BOOL exited;
 - (void)setLabelAttribute;
-- (BOOL)bell;
-- (void)setBell: (BOOL) flag;
-- (BOOL)isProcessing;
-- (void)setIsProcessing: (BOOL) aFlag;
+@property (nonatomic) BOOL bell;
+@property BOOL isProcessing;
 
 - (void)runCommand: (NSString *)command;
 

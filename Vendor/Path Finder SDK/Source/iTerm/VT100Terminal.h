@@ -121,17 +121,17 @@
 typedef struct {
     int type;
     unsigned char *position;
-    int length;
-    union {
-	CFStringRef string;
-	unsigned char code;
-	struct {
-	    int p[VT100CSIPARAM_MAX];
-	    int count;
-	    BOOL question;
-		int modifier;
-	} csi;
-    } u;
+    size_t length;
+	union {
+		CFStringRef string;
+		unsigned char code;
+		struct {
+			int p[VT100CSIPARAM_MAX];
+			int count;
+			BOOL question;
+			int modifier;
+		} csi;
+	} u;
 } VT100TCC;
 
 // character attributes
@@ -309,7 +309,7 @@ typedef NS_ENUM(NSInteger, mouseMode) {
 @property NSStringEncoding encoding;
 
 - (void)cleanStream;
-- (void)putStreamData:(char *)data length: (int)length;
+- (void)putStreamData:(char *)data length: (NSInteger)length;
 - (VT100TCC)getNextToken;
 
 - (void)reset;

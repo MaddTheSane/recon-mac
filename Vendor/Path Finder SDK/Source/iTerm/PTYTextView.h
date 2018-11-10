@@ -71,10 +71,10 @@ enum { SELECT_CHAR, SELECT_WORD, SELECT_LINE };
 	NSRect mPreviousViewRect;
 	
     // geometry
-	float mLineHeight;
-	float mCharWidth;
-	float mCharWidthWithoutSpacing;
-	float mCharHeightWithoutSpacing;
+	CGFloat mLineHeight;
+	CGFloat mCharWidth;
+	CGFloat mCharWidthWithoutSpacing;
+	CGFloat mCharHeightWithoutSpacing;
 	int mNumberOfLines;
     
     NSFont *font;
@@ -89,7 +89,7 @@ enum { SELECT_CHAR, SELECT_WORD, SELECT_LINE };
 	NSColor* cursorTextColor;
 	
 	// transparency
-	float transparency;
+	CGFloat transparency;
     BOOL useTransparency;
 	
     // data source
@@ -198,17 +198,17 @@ enum { SELECT_CHAR, SELECT_WORD, SELECT_LINE };
 - (id)delegate;
 - (void)setDelegate:(id)delegate;
 
-- (float)lineHeight;
-- (void)setLineHeight:(float)theLineHeight;
+- (CGFloat)lineHeight;
+- (void)setLineHeight:(CGFloat)theLineHeight;
 
-- (float)charWidth;
-- (void)setCharWidth:(float)theCharWidth;
+- (CGFloat)charWidth;
+- (void)setCharWidth:(CGFloat)theCharWidth;
 
-- (float)charWidthWithoutSpacing;
-- (void)setCharWidthWithoutSpacing:(float)theCharWidthWithoutSpacing;
+- (CGFloat)charWidthWithoutSpacing;
+- (void)setCharWidthWithoutSpacing:(CGFloat)theCharWidthWithoutSpacing;
 
-- (float)charHeightWithoutSpacing;
-- (void)setCharHeightWithoutSpacing:(float)theCharHeightWithoutSpacing;
+- (CGFloat)charHeightWithoutSpacing;
+- (void)setCharHeightWithoutSpacing:(CGFloat)theCharHeightWithoutSpacing;
 
 - (int)numberOfLines;
 - (void)setNumberOfLines:(int)theNumberOfLines;
@@ -227,8 +227,8 @@ enum { SELECT_CHAR, SELECT_WORD, SELECT_LINE };
 - (void)deselect;
 
 // transparency
-- (float) transparency;
-- (void)setTransparency: (float) fVal;
+- (CGFloat) transparency;
+- (void)setTransparency: (CGFloat) fVal;
 - (BOOL) useTransparency;
 - (void)setUseTransparency: (BOOL) flag;
 
@@ -245,8 +245,8 @@ enum { SELECT_CHAR, SELECT_WORD, SELECT_LINE };
 - (void)scrollToSelection;
 
     // Save method
-- (void)saveDocumentAs:(id)sender;
-- (void)print:(id)sender;
+- (IBAction)saveDocumentAs:(id)sender;
+- (IBAction)print:(id)sender;
 - (void)printContent: (NSString *) aString;
 
 // Find method

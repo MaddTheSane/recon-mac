@@ -33,13 +33,13 @@
 
 #define DEBUG_KEYDOWNDUMP     0
 
-@interface PTYSession (Private)
+@interface PTYSession ()
 - (void)_updateTimerTick:(NSTimer *)aTimer;
 @end
 
-@interface PTYSession (hidden)
-- (void)setScrollView:(PTYScrollView *)theScrollView;
-- (void)setTextView:(PTYTextView *)theTextView;
+@interface PTYSession ()
+@property (readwrite, strong) PTYTextView *textView;
+@property (readwrite, strong) PTYScrollView *scrollView;
 @end
 
 @implementation PTYSession
@@ -322,7 +322,7 @@ static NSColor *deadStateColor;
 {
     unsigned char *send_str = NULL;
     unsigned char *dataPtr = NULL;
-    int dataLength = 0;
+    size_t dataLength = 0;
     size_t send_strlen = 0;
     int send_pchr = -1;
 	int keyBindingAction;
@@ -819,10 +819,7 @@ static NSColor *deadStateColor;
     [self setBell:NO];
 }
 
-- (BOOL) bell
-{
-    return bell;
-}
+@synthesize bell;
 
 - (void)setBell: (BOOL) flag
 {
@@ -835,15 +832,7 @@ static NSColor *deadStateColor;
     }
 }
 
-- (BOOL) isProcessing
-{
-	return (isProcessing);
-}
-
-- (void)setIsProcessing: (BOOL) aFlag
-{
-	isProcessing = aFlag;
-}
+@synthesize isProcessing;
 
 - (void)setPreferencesFromAddressBookEntry: (NSDictionary *) aePrefs
 {    
@@ -926,15 +915,7 @@ static NSColor *deadStateColor;
 		[[self parent] menuForEvent:theEvent menu: theMenu];    
 }
 
-- (ITTerminalView *) parent
-{
-    return (parent);
-}
-
-- (void)setParent: (ITTerminalView *) theParent
-{
-    parent = theParent; // don't retain parent. parent retains self.
-}
+@synthesize parent;
 
 - (NSTabViewItem *) tabViewItem
 {
@@ -956,10 +937,7 @@ static NSColor *deadStateColor;
     NSLog(@"Not allowed to set unique ID");
 }
 
-- (NSString *) defaultName
-{
-    return (defaultName);
-}
+@synthesize defaultName;
 
 - (void)setDefaultName: (NSString *) theName
 {
@@ -979,10 +957,7 @@ static NSColor *deadStateColor;
 	defaultName = theName;
 }
 
-- (NSString *) name
-{
-    return (name);
-}
+@synthesize name;
 
 - (void)setName: (NSString *) theName
 {
@@ -999,20 +974,17 @@ static NSColor *deadStateColor;
     if (!theName)
 		theName = NTLocalizedStringFromTableInBundle(@"Untitled",@"iTerm", [NSBundle bundleForClass: [self class]], @"Profiles");
 	
-	name = theName;
+	name = [theName copy];
 	// sync the window title if it is not set to something else
 	if ([self windowTitle] == nil)
-		[self setWindowTitle: theName];
+		[self setWindowTitle: name];
    
 	
 	[tabViewItem setLabel: name];
 	[self setBell: NO];
 }
 
-- (NSString *) windowTitle
-{
-    return (windowTitle);
-}
+@synthesize windowTitle;
 
 - (void)setWindowTitle: (NSString *) theTitle
 {
@@ -1022,52 +994,23 @@ static NSColor *deadStateColor;
     
     if (theTitle != nil)
     {
-		windowTitle = theTitle;
+		windowTitle = [theTitle copy];
 		if ([[self parent] currentSession] == self)
-            [[self parent] setWindowTitle: theTitle];
+            [[self parent] setWindowTitle: windowTitle];
     }
 }
 
-- (PTYTask *) SHELL
-{
-    return (SHELL);
-}
-
-- (void)setSHELL: (PTYTask *) theSHELL
-{
-    SHELL = theSHELL;
-}
-
-- (VT100Terminal *) TERMINAL
-{
-    return (TERMINAL);
-}
-
-- (void)setTERMINAL: (VT100Terminal *) theTERMINAL
-{
-    TERMINAL = theTERMINAL;
-}
-
-- (NSString *) TERM_VALUE
-{
-    return (TERM_VALUE);
-}
+@synthesize SHELL;
+@synthesize TERMINAL;
+@synthesize TERM_VALUE;
 
 - (void)setTERM_VALUE: (NSString *) theTERM_VALUE
 {
-    TERM_VALUE = theTERM_VALUE;
-    [TERMINAL setTermType: theTERM_VALUE];
+    TERM_VALUE = [theTERM_VALUE copy];
+    [TERMINAL setTermType: TERM_VALUE];
 }
 
-- (VT100Screen *) SCREEN
-{
-    return (SCREEN);
-}
-
-- (void)setSCREEN: (VT100Screen *) theSCREEN
-{
-    SCREEN = theSCREEN;
-}
+@synthesize SCREEN;
 
 - (NSView *) view
 {
@@ -1111,15 +1054,7 @@ static NSColor *deadStateColor;
     objectCount = value;
 }
 
-- (NSImage *) icon
-{
-	return (icon);
-}
-
-- (void)setIcon: (NSImage *) anIcon
-{
-	icon = anIcon;
-}
+@synthesize icon;
 
 - (NSString *) contents
 {
@@ -1216,12 +1151,12 @@ static NSColor *deadStateColor;
 
 // Changes transparency
 
-- (float)transparency
+- (CGFloat)transparency
 {
     return ([[self textView] transparency]);
 }
 
-- (void)setTransparency:(float)transparency
+- (void)setTransparency:(CGFloat)transparency
 {
     // set transparency of background image
     [[self scrollView] setTransparency: transparency];
@@ -1244,35 +1179,9 @@ static NSColor *deadStateColor;
     [[self textView] setColorTable:index highLight:hili color:c];
 }
 
-- (BOOL) antiIdle
-{
-    return antiIdle;
-}
-
-- (int) antiCode
-{
-    return ai_code;
-}
-
-- (void)setAntiIdle:(BOOL)set
-{
-    antiIdle=set;
-}
-
-- (void)setAntiCode:(int)code
-{
-    ai_code=code;
-}
-
-- (BOOL) autoClose
-{
-    return autoClose;
-}
-
-- (void)setAutoClose:(BOOL)set
-{
-    autoClose=set;
-}
+@synthesize antiIdle;
+@synthesize antiCode;
+@synthesize autoClose;
 
 - (BOOL) disableBold
 {
@@ -1284,25 +1193,8 @@ static NSColor *deadStateColor;
 	[[self textView] setDisableBold: boldFlag];
 }
 
-- (BOOL) doubleWidth
-{
-    return doubleWidth;
-}
-
-- (void)setDoubleWidth:(BOOL)set
-{
-    doubleWidth=set;
-}
-
-- (BOOL) xtermMouseReporting
-{
-	return xtermMouseReporting;
-}
-
-- (void)setXtermMouseReporting:(BOOL)set
-{
-	xtermMouseReporting = set;
-}
+@synthesize doubleWidth;
+@synthesize xtermMouseReporting;
 
 - (BOOL) logging
 {
@@ -1351,10 +1243,7 @@ static NSColor *deadStateColor;
     newOutput = NO;
 }
 
-- (BOOL)exited
-{
-    return EXIT;
-}
+@synthesize exited=EXIT;
 
 - (int) optionKey
 {
@@ -1366,15 +1255,7 @@ static NSColor *deadStateColor;
 	return ([[iTermKeyBindingMgr singleInstance] optionKeyForProfile:kbProfile]);
 }
 
-- (void)setAddressBookEntry:(NSDictionary*) entry
-{
-    addressBookEntry = entry;
-}
-
-- (NSDictionary *)addressBookEntry
-{
-    return addressBookEntry;
-}
+@synthesize addressBookEntry;
 
 - (void)runCommand: (NSString *)command
 {
@@ -1469,38 +1350,12 @@ static NSColor *deadStateColor;
 //---------------------------------------------------------- 
 //  scrollView 
 //---------------------------------------------------------- 
-- (PTYScrollView *)scrollView
-{
-    return mScrollView; 
-}
-
-- (void)setScrollView:(PTYScrollView *)theScrollView
-{
-    if (mScrollView != theScrollView)
-    {
-        mScrollView = theScrollView;
-    }
-}
+@synthesize scrollView=mScrollView;
 
 //---------------------------------------------------------- 
 //  textView 
 //---------------------------------------------------------- 
-- (PTYTextView *)textView
-{
-    return mTextView; 
-}
-
-- (void)setTextView:(PTYTextView *)theTextView
-{
-    if (mTextView != theTextView)
-    {
-        mTextView = theTextView;
-    }
-}
-
-@end
-
-@implementation PTYSession (Private)
+@synthesize textView=mTextView;
 
 // this is only used for non keyboard events
 - (void)_processWriteDataThread: (NSData *) data

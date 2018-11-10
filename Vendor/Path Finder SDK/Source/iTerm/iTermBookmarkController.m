@@ -542,7 +542,7 @@ static BOOL editingBookmark = NO;
 	return draggedNodes; 
 }
 
-- (void)_performDropOperation:(id <NSDraggingInfo>)info onNode:(TreeNode*)parentNode atIndex:(int)childIndex 
+- (void)_performDropOperation:(id <NSDraggingInfo>)info onNode:(TreeNode*)parentNode atIndex:(NSInteger)childIndex 
 {
     // Helper method to insert dropped data into the model. 
     NSPasteboard * pboard = [info draggingPasteboard];
