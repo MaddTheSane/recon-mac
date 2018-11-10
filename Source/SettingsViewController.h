@@ -27,20 +27,20 @@
    IBOutlet NSTreeController *profilesTreeController;
    
    // Sort-descriptors for the various table views
-   NSArray *osSortDescriptor;
-   NSArray *hostSortDescriptor;
-   NSArray *portSortDescriptor;   
-   NSArray *profileSortDescriptor;      
-   NSArray *sessionSortDescriptor;        
+   NSArray<NSSortDescriptor*> *osSortDescriptor;
+   NSArray<NSSortDescriptor*> *hostSortDescriptor;
+   NSArray<NSSortDescriptor*> *portSortDescriptor;
+   NSArray<NSSortDescriptor*> *profileSortDescriptor;
+   NSArray<NSSortDescriptor*> *sessionSortDescriptor;        
    
    IBOutlet NSMenu *profilesContextMenu;
 }
 
-@property (weak, readonly) NSArray *osSortDescriptor;
-@property (weak, readonly) NSArray *hostSortDescriptor;
-@property (weak, readonly) NSArray *portSortDescriptor;
-@property (weak, readonly) NSArray *profileSortDescriptor;
-@property (weak, readonly) NSArray *sessionSortDescriptor;
+@property (nonatomic, copy, readonly) NSArray<NSSortDescriptor*> *osSortDescriptor;
+@property (nonatomic, copy, readonly) NSArray<NSSortDescriptor*> *hostSortDescriptor;
+@property (nonatomic, copy, readonly) NSArray<NSSortDescriptor*> *portSortDescriptor;
+@property (nonatomic, copy, readonly) NSArray<NSSortDescriptor*> *profileSortDescriptor;
+@property (nonatomic, copy, readonly) NSArray<NSSortDescriptor*> *sessionSortDescriptor;
 
 @property (strong) IBOutlet NSView *workspaceSettingsContent;
 @property (strong) IBOutlet NSView *targetBarSettingsContent;

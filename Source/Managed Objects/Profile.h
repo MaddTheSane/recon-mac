@@ -120,8 +120,8 @@
 @property (nonatomic, strong) NSNumber * disableRandom;
 @property (nonatomic, strong) NSNumber * extraOptions;
 @property (nonatomic, strong) NSNumber * setNetworkInterface;
-@property (nonatomic, strong) NSSet* sessions;
-@property (nonatomic, strong) NSSet* children;
+@property (nonatomic, strong) NSSet<Session *>* sessions;
+@property (nonatomic, strong) NSSet<Profile*>* children;
 @property (nonatomic, strong) Profile * parent;
 
 @end
@@ -130,13 +130,13 @@
 @interface Profile (CoreDataGeneratedAccessors)
 - (void)addSessionsObject:(Session *)value;
 - (void)removeSessionsObject:(Session *)value;
-- (void)addSessions:(NSSet *)value;
-- (void)removeSessions:(NSSet *)value;
+- (void)addSessions:(NSSet<Session *> *)value;
+- (void)removeSessions:(NSSet<Session *> *)value;
 
 - (void)addChildrenObject:(Profile *)value;
 - (void)removeChildrenObject:(Profile *)value;
-- (void)addChildren:(NSSet *)value;
-- (void)removeChildren:(NSSet *)value;
+- (void)addChildren:(NSSet<Profile*> *)value;
+- (void)removeChildren:(NSSet<Profile*> *)value;
 
 @end
 

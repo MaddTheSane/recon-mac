@@ -58,7 +58,7 @@
    IBOutlet NSView *workspaceBasicContentBonjour;   
    IBOutlet NSView *workspaceBasicContentNetstat;     
    
-   IBOutlet NSView *__weak targetBarBasicContent;
+   NSView *__weak targetBarBasicContent;
    
    IBOutlet NSMenu *netstatContextMenu;   
    
@@ -78,13 +78,13 @@
 @property (readwrite, assign)BOOL doneRefresh;
 @property (readwrite, assign)BOOL showSpinner;
 
-@property (weak, readonly) NSArray *osSortDescriptor;
-@property (weak, readonly) NSArray *hostSortDescriptor;
-@property (weak, readonly) NSArray *portSortDescriptor;
-@property (weak, readonly) NSArray *profileSortDescriptor;
-@property (weak, readonly) NSArray *sessionSortDescriptor;
+@property (nonatomic, readonly, copy) NSArray *osSortDescriptor;
+@property (nonatomic, readonly, copy) NSArray *hostSortDescriptor;
+@property (nonatomic, readonly, copy) NSArray *portSortDescriptor;
+@property (nonatomic, readonly, copy) NSArray *profileSortDescriptor;
+@property (nonatomic, readonly, copy) NSArray *sessionSortDescriptor;
 
-@property (weak, readonly) NSView *targetBarBasicContent;
+@property (weak) IBOutlet NSView *targetBarBasicContent;
 
 - (IBAction)launchScan:(id)sender;
 - (IBAction)changeInspectorTask:(id)sender;

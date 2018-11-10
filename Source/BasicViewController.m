@@ -35,6 +35,12 @@
 
    @property (readwrite, strong)BonjourListener *bonjourListener;
 
+@property (nonatomic, readwrite, copy) NSArray *osSortDescriptor;
+@property (nonatomic, readwrite, copy) NSArray *hostSortDescriptor;
+@property (nonatomic, readwrite, copy) NSArray *portSortDescriptor;
+@property (nonatomic, readwrite, copy) NSArray *profileSortDescriptor;
+@property (nonatomic, readwrite, copy) NSArray *sessionSortDescriptor;
+
 @end
 
 @implementation BasicViewController
@@ -53,6 +59,12 @@
 @synthesize foundServices;
 
 @synthesize targetBarBasicContent;
+
+@synthesize osSortDescriptor;
+@synthesize hostSortDescriptor;
+@synthesize portSortDescriptor;
+@synthesize profileSortDescriptor;
+@synthesize sessionSortDescriptor;
 
 - (id)init 
 {
@@ -588,8 +600,8 @@ int bitcount (unsigned int n)
 
    NSMutableDictionary *newService = [notification object];
    
-   NSString *key = [NSString stringWithFormat:@"%@ on %@", 
-                    [newService objectForKey:@"Long_Type"], [newService objectForKey:@"Name"]];                    
+   //NSString *key = [NSString stringWithFormat:@"%@ on %@",
+   //                 [newService objectForKey:@"Long_Type"], [newService objectForKey:@"Name"]];                    
 
    [bonjourConnectionsController addObject:newService];
    
@@ -704,17 +716,17 @@ int bitcount (unsigned int n)
 }
 
 // Enable/Disable menu depending on context
-//- (BOOL)validateMenuItem:(NSMenuItem *)menuItem
-//{
+- (BOOL)validateMenuItem:(NSMenuItem *)menuItem
+{
 //   NSLog(@"ASD");
-//   return YES;
-//}   
-//
+   return YES;
+}
+
 // Handle context menu clicks in Sessions TableView
-//- (void)menuNeedsUpdate:(NSMenu *)menu 
-//{
+- (void)menuNeedsUpdate:(NSMenu *)menu
+{
 //   NSLog(@"Aasdf");   
-//}   
+}
 
 #pragma mark -
 #pragma mark Sort Descriptors
@@ -733,11 +745,6 @@ int bitcount (unsigned int n)
    return hostSortDescriptor;
 }
 
-- (void)setHostSortDescriptor:(NSArray *)newSortDescriptor
-{
-   hostSortDescriptor = newSortDescriptor;
-}
-
 - (NSArray *)portSortDescriptor
 {
    if(portSortDescriptor == nil){
@@ -745,11 +752,6 @@ int bitcount (unsigned int n)
    }
    
    return portSortDescriptor;
-}
-
-- (void)setPortSortDescriptor:(NSArray *)newSortDescriptor
-{
-   portSortDescriptor = newSortDescriptor;
 }
 
 - (NSArray *)profileSortDescriptor
@@ -761,11 +763,6 @@ int bitcount (unsigned int n)
    return profileSortDescriptor;
 }
 
-- (void)setProfileSortDescriptor:(NSArray *)newSortDescriptor
-{
-   profileSortDescriptor = newSortDescriptor;
-}
-
 - (NSArray *)sessionSortDescriptor
 {
    if(sessionSortDescriptor == nil){
@@ -775,11 +772,6 @@ int bitcount (unsigned int n)
    return sessionSortDescriptor;
 }
 
-- (void)setSessionSortDescriptor:(NSArray *)newSortDescriptor
-{
-   sessionSortDescriptor = newSortDescriptor;
-}
-
 - (NSArray *)osSortDescriptor
 {
    if(osSortDescriptor == nil){
@@ -787,11 +779,6 @@ int bitcount (unsigned int n)
    }
    
    return osSortDescriptor;
-}
-
-- (void)setOsSortDescriptor:(NSArray *)newSortDescriptor
-{
-   osSortDescriptor = newSortDescriptor;
 }
 
 @end

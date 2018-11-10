@@ -26,21 +26,32 @@
 
 @class NotesTableView;
 
+@interface AdvancedViewController ()
+@property (nonatomic, copy, readwrite) NSArray<NSSortDescriptor*> *osSortDescriptor;
+@property (nonatomic, copy, readwrite) NSArray<NSSortDescriptor*> *hostSortDescriptor;
+@property (nonatomic, copy, readwrite) NSArray<NSSortDescriptor*> *portSortDescriptor;
+@property (nonatomic, copy, readwrite) NSArray<NSSortDescriptor*> *profileSortDescriptor;
+@property (nonatomic, copy, readwrite) NSArray<NSSortDescriptor*> *sessionSortDescriptor;
+@property (nonatomic, copy, readwrite) NSArray<NSSortDescriptor*> *notesSortDescriptor;
+@end
+
 @implementation AdvancedViewController
 
 @synthesize targetBarAdvancedContent;
 @synthesize consoleOutputView;
+@synthesize osSortDescriptor;
+@synthesize hostSortDescriptor;
+@synthesize portSortDescriptor;
+@synthesize profileSortDescriptor;
+@synthesize sessionSortDescriptor;
+@synthesize notesSortDescriptor;
 
 - (id)init 
 {
-   if (self = [super init])
+   if (self = [super initWithNibName:@"Advanced"
+                              bundle:nil])
    {
-      if (![super initWithNibName:@"Advanced"
-                           bundle:nil]) {
-         return nil;
-      }
-      [self setTitle:@"Advanced"];      
-   }   
+      [self setTitle:@"Advanced"];
    
    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
    [nc addObserver:self
@@ -78,7 +89,8 @@
           selector:@selector(controlTextDidEndEditing:)
               name:@"NSControlTextDidEndEditingNotification"
             object:nil];
-      
+   }
+   
    return self;
 }
 
@@ -486,6 +498,11 @@
          [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:url]];
          break;
          
+      case 443:
+         url = [NSString stringWithFormat:@"https://%@", [selectedHost ipv4Address]];
+         [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:url]];
+         break;
+         
       case 139:
       case 445:
          url = [NSString stringWithFormat:@"smb://%@", [selectedHost ipv4Address]];
@@ -729,11 +746,10 @@
    // I use the %@ formatting string to add the contents of the lastResult and
    // songData objects to the body of the message. You should change these to
    // whatever information you want to include in the body.
-   NSString* mailtoLink = [NSString
-                           stringWithFormat:@"mailto:sam@flexistentialist.org?subject=iScrobbler \
+   NSString* mailtoLink = @"mailto:sam@flexistentialist.org?subject=iScrobbler \
                            Bug Report&body=--Please explain the circumstances of the bug \
                            here--\nThanks for contributing!\n\nResult Data \
-                           Dump:\n\n"];
+                           Dump:\n\n";
    
    // This creates a URL string by adding percent escapes. Since the URL is
    // just being used locally, I don't know if this is always necessary,
@@ -761,7 +777,7 @@
    // If we are zooming to fullscreen
    
    // Resize hosts sidebar
-   NSMutableDictionary *minValues = [NSMutableDictionary dictionaryWithObject:[NSNumber numberWithInt:170] forKey:[NSNumber numberWithInt:0]];
+   NSMutableDictionary *minValues = [NSMutableDictionary dictionaryWithObject:@170 forKey:@0];
    [mainSplitView setMinValues:minValues];
    [mainSplitView setPosition:170 ofDividerAtIndex:0];
 
@@ -781,7 +797,7 @@
    // If we are zooming to fullscreen
    
    // Resize hosts sidebar
-   NSMutableDictionary *minValues = [NSMutableDictionary dictionaryWithObject:[NSNumber numberWithInt:120] forKey:[NSNumber numberWithInt:0]];
+   NSMutableDictionary *minValues = [NSMutableDictionary dictionaryWithObject:@120 forKey:@0];
    [mainSplitView setMinValues:minValues];
    [mainSplitView setPosition:120 ofDividerAtIndex:0];
 
@@ -843,11 +859,6 @@
    return hostSortDescriptor;
 }
 
-- (void)setHostSortDescriptor:(NSArray *)newSortDescriptor
-{
-   hostSortDescriptor = newSortDescriptor;
-}
-
 - (NSArray *)portSortDescriptor
 {
    if(portSortDescriptor == nil){
@@ -855,11 +866,6 @@
    }
    
    return portSortDescriptor;
-}
-
-- (void)setPortSortDescriptor:(NSArray *)newSortDescriptor
-{
-   portSortDescriptor = newSortDescriptor;
 }
 
 - (NSArray *)profileSortDescriptor
@@ -871,11 +877,6 @@
    return profileSortDescriptor;
 }
 
-- (void)setProfileSortDescriptor:(NSArray *)newSortDescriptor
-{
-   profileSortDescriptor = newSortDescriptor;
-}
-
 - (NSArray *)sessionSortDescriptor
 {
    if(sessionSortDescriptor == nil){
@@ -883,11 +884,6 @@
    }
    
    return sessionSortDescriptor;
-}
-
-- (void)setSessionSortDescriptor:(NSArray *)newSortDescriptor
-{
-   sessionSortDescriptor = newSortDescriptor;
 }
 
 - (NSArray *)osSortDescriptor
@@ -899,11 +895,6 @@
    return osSortDescriptor;
 }
 
-- (void)setOsSortDescriptor:(NSArray *)newSortDescriptor
-{
-   osSortDescriptor = newSortDescriptor;
-}
-
 - (NSArray *)notesSortDescriptor
 {
    if(notesSortDescriptor == nil){
@@ -912,11 +903,5 @@
    
    return notesSortDescriptor;
 }
-
-- (void)setNotesSortDescriptor:(NSArray *)newSortDescriptor
-{
-   notesSortDescriptor = newSortDescriptor;
-}
-
 
 @end

@@ -27,7 +27,7 @@
                  withArgs:(NSArray *)nmapArgs 
        withOutputFilePath:(NSString *)outputFilePath;
 
-- (BOOL) isRunning;
+@property (readonly, getter=isRunning) BOOL running;
 - (void) startScan;
 - (void) abortScan;
 

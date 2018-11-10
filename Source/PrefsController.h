@@ -32,7 +32,7 @@
 @property (readonly,retain) NSString *nmapBinary;
 @property (readonly,retain) NSString *supportDirectory;
 
-+ (PrefsController *)sharedPrefsController;
+@property (class, readonly, retain) PrefsController *sharedPrefsController;
 
 - (void)displayWelcomeWindow;
 

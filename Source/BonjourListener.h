@@ -5,7 +5,7 @@
    NSNetServiceBrowser *primaryBrowser;
    NSNetServiceBrowser *secondaryBrowser;
    NSMutableArray *services;   
-   NSDictionary *bonjourDict;
+   NSDictionary<NSString*,NSString*> *bonjourDict;
 }
 
 @property (readonly, strong) NSMutableArray *services;

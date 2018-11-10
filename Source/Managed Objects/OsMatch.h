@@ -11,8 +11,6 @@
 @class Host;
 
 @interface OsMatch :  NSManagedObject  
-{
-}
 
 @property (nonatomic, strong) NSString * name;
 @property (nonatomic, strong) NSString * line;

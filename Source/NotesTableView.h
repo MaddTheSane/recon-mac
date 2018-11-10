@@ -11,9 +11,9 @@
 
 @interface NotesTableView : NSTableView {
 
-   NSArray *alternatingColors;
+   NSArray<NSColor*> *alternatingColors;
 }
 
-@property (strong)NSArray *alternatingColors;
+@property (copy) NSArray<NSColor*> *alternatingColors;
 
 @end

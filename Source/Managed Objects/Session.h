@@ -26,7 +26,7 @@
 @property (nonatomic, strong) NSNumber * progress;
 @property (nonatomic, strong) NSDate * date;
 @property (nonatomic, strong) NSNumber * hostsTotal;
-@property (nonatomic, strong) NSSet* hosts;
+@property (nonatomic, strong) NSSet<Host*>* hosts;
 @property (nonatomic, strong) Profile * profile;
 
 @end
@@ -35,8 +35,8 @@
 @interface Session (CoreDataGeneratedAccessors)
 - (void)addHostsObject:(Host *)value;
 - (void)removeHostsObject:(Host *)value;
-- (void)addHosts:(NSSet *)value;
-- (void)removeHosts:(NSSet *)value;
+- (void)addHosts:(NSSet<Host*> *)value;
+- (void)removeHosts:(NSSet<Host*> *)value;
 
 @end
 

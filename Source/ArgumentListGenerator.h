@@ -17,43 +17,27 @@
 
 @class Profile;
 
-@interface ArgumentListGenerator : NSObject {
+@interface ArgumentListGenerator : NSObject
 
-   NSDictionary *__weak nmapArgsBool;   
-   NSDictionary *__weak nmapArgsString;
-   
-   // Dictionary for reverse lookups
-   NSDictionary *__weak nmapArgsBoolReverse;   
-   NSDictionary *__weak nmapArgsStringReverse;   
-   
-   NSDictionary *__weak nmapArgsTcpString;
-   NSDictionary *__weak nmapArgsNonTcpString;
-   NSDictionary *__weak nmapArgsTimingString;
+@property (readwrite, copy) NSDictionary<NSString*,NSString*> *nmapArgsBool;
+@property (readwrite, copy) NSDictionary<NSString*,NSString*> *nmapArgsString;
 
-   NSDictionary *__weak nmapArgsTcpStringReverse;
-   NSDictionary *__weak nmapArgsNonTcpStringReverse;
-   NSDictionary *__weak nmapArgsTimingStringReverse;   
-}
+@property (readwrite, copy) NSDictionary<NSString*,NSString*> *nmapArgsBoolReverse;
+@property (readwrite, copy) NSDictionary<NSString*,NSString*> *nmapArgsStringReverse;
 
-@property (readwrite, weak) NSDictionary *nmapArgsBool;
-@property (readwrite, weak) NSDictionary *nmapArgsString;
+@property (readwrite, copy) NSDictionary<NSString*,NSString*> *nmapArgsTcpString;
+@property (readwrite, copy) NSDictionary<NSString*,NSString*> *nmapArgsNonTcpString;
+@property (readwrite, copy) NSDictionary<NSString*,NSString*> *nmapArgsTimingString;
 
-@property (readwrite, weak) NSDictionary *nmapArgsBoolReverse;
-@property (readwrite, weak) NSDictionary *nmapArgsStringReverse;
+@property (readwrite, copy) NSDictionary<NSString*,NSString*> *nmapArgsTcpStringReverse;
+@property (readwrite, copy) NSDictionary<NSString*,NSString*> *nmapArgsNonTcpStringReverse;
+@property (readwrite, copy) NSDictionary<NSString*,NSString*> *nmapArgsTimingStringReverse;
 
-@property (readwrite, weak) NSDictionary *nmapArgsTcpString;
-@property (readwrite, weak) NSDictionary *nmapArgsNonTcpString;
-@property (readwrite, weak) NSDictionary *nmapArgsTimingString;
+- (NSArray<NSString*> *) convertProfileToArgs:(Profile *)profile
+                                   withTarget:(NSString *)target 
+                               withOutputFile:(NSString*)nmapOutput;
 
-@property (readwrite, weak) NSDictionary *nmapArgsTcpStringReverse;
-@property (readwrite, weak) NSDictionary *nmapArgsNonTcpStringReverse;
-@property (readwrite, weak) NSDictionary *nmapArgsTimingStringReverse;
-
-- (NSArray *) convertProfileToArgs:(Profile *)profile 
-                        withTarget:(NSString *)target 
-                     withOutputFile:(NSString*)nmapOutput;
-
-- (BOOL)areFlagsValid:(NSArray *)argArray;
-- (void)populateProfile:(Profile *)profile withArgString:(NSArray *)argArray;
+- (BOOL)areFlagsValid:(NSArray<NSString*> *)argArray;
+- (void)populateProfile:(Profile *)profile withArgString:(NSArray<NSString*> *)argArray;
 
 @end

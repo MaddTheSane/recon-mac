@@ -34,14 +34,14 @@
 @property (nonatomic, strong) NSString * tcpSequenceDifficulty;
 @property (nonatomic, strong) NSString * hostname;
 @property (nonatomic, strong) NSNumber * isSelected;
-@property (nonatomic, strong) NSSet* tcpsequencevalues;
-@property (nonatomic, strong) NSSet* osmatches;
-@property (nonatomic, strong) NSSet* ports;
-@property (nonatomic, strong) NSSet* tcptssequencevalues;
-@property (nonatomic, strong) NSSet* notes;
+@property (nonatomic, strong) NSSet<TcpSeqValue*>* tcpsequencevalues;
+@property (nonatomic, strong) NSSet<OsMatch*>* osmatches;
+@property (nonatomic, strong) NSSet<Port*>* ports;
+@property (nonatomic, strong) NSSet<TcpTsSeqValue*>* tcptssequencevalues;
+@property (nonatomic, strong) NSSet<HostNote*>* notes;
 @property (nonatomic, strong) Session * session;
-@property (nonatomic, strong) NSSet* osclasses;
-@property (nonatomic, strong) NSSet* ipidsequencevalues;
+@property (nonatomic, strong) NSSet<OsClass*>* osclasses;
+@property (nonatomic, strong) NSSet<IpIdSeqValue*>* ipidsequencevalues;
 
 @end
 
@@ -49,38 +49,38 @@
 @interface Host (CoreDataGeneratedAccessors)
 - (void)addTcpsequencevaluesObject:(TcpSeqValue *)value;
 - (void)removeTcpsequencevaluesObject:(TcpSeqValue *)value;
-- (void)addTcpsequencevalues:(NSSet *)value;
-- (void)removeTcpsequencevalues:(NSSet *)value;
+- (void)addTcpsequencevalues:(NSSet<TcpSeqValue*> *)value;
+- (void)removeTcpsequencevalues:(NSSet<TcpSeqValue*> *)value;
 
 - (void)addOsmatchesObject:(OsMatch *)value;
 - (void)removeOsmatchesObject:(OsMatch *)value;
-- (void)addOsmatches:(NSSet *)value;
-- (void)removeOsmatches:(NSSet *)value;
+- (void)addOsmatches:(NSSet<OsMatch*> *)value;
+- (void)removeOsmatches:(NSSet<OsMatch*> *)value;
 
 - (void)addPortsObject:(Port *)value;
 - (void)removePortsObject:(Port *)value;
-- (void)addPorts:(NSSet *)value;
-- (void)removePorts:(NSSet *)value;
+- (void)addPorts:(NSSet<Port*> *)value;
+- (void)removePorts:(NSSet<Port*> *)value;
 
 - (void)addTcptssequencevaluesObject:(TcpTsSeqValue *)value;
 - (void)removeTcptssequencevaluesObject:(TcpTsSeqValue *)value;
-- (void)addTcptssequencevalues:(NSSet *)value;
-- (void)removeTcptssequencevalues:(NSSet *)value;
+- (void)addTcptssequencevalues:(NSSet<TcpTsSeqValue*> *)value;
+- (void)removeTcptssequencevalues:(NSSet<TcpTsSeqValue*> *)value;
 
 - (void)addNotesObject:(HostNote *)value;
 - (void)removeNotesObject:(HostNote *)value;
-- (void)addNotes:(NSSet *)value;
-- (void)removeNotes:(NSSet *)value;
+- (void)addNotes:(NSSet<HostNote*> *)value;
+- (void)removeNotes:(NSSet<HostNote*> *)value;
 
 - (void)addOsclassesObject:(OsClass *)value;
 - (void)removeOsclassesObject:(OsClass *)value;
-- (void)addOsclasses:(NSSet *)value;
-- (void)removeOsclasses:(NSSet *)value;
+- (void)addOsclasses:(NSSet<OsClass*> *)value;
+- (void)removeOsclasses:(NSSet<OsClass*> *)value;
 
 - (void)addIpidsequencevaluesObject:(IpIdSeqValue *)value;
 - (void)removeIpidsequencevaluesObject:(IpIdSeqValue *)value;
-- (void)addIpidsequencevalues:(NSSet *)value;
-- (void)removeIpidsequencevalues:(NSSet *)value;
+- (void)addIpidsequencevalues:(NSSet<IpIdSeqValue*> *)value;
+- (void)removeIpidsequencevalues:(NSSet<IpIdSeqValue*> *)value;
 
 @end
 

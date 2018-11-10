@@ -10,17 +10,18 @@
 #import <Cocoa/Cocoa.h>
 
 
+IB_DESIGNABLE
 @interface ColorGradientView : NSView
 {
    NSColor *startingColor;
    NSColor *endingColor;
-   int angle;
+   CGFloat angle;
 }
 
 // Define the variables as properties
-@property(nonatomic, strong) NSColor *startingColor;
-@property(nonatomic, strong) NSColor *endingColor;
-@property(assign) int angle;
+@property(nonatomic, strong) IBInspectable NSColor *startingColor;
+@property(nonatomic, strong) IBInspectable NSColor *endingColor;
+@property(assign) IBInspectable CGFloat angle;
 
 @end
 

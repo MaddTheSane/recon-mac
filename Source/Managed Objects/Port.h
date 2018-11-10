@@ -28,7 +28,7 @@
 @property (nonatomic, strong) NSString * serviceConf;
 @property (nonatomic, strong) NSString * serviceVersion;
 @property (nonatomic, strong) Host * host;
-@property (nonatomic, strong) NSSet* scripts;
+@property (nonatomic, strong) NSSet<Port_Script*>* scripts;
 
 @end
 
@@ -36,8 +36,8 @@
 @interface Port (CoreDataGeneratedAccessors)
 - (void)addScriptsObject:(Port_Script *)value;
 - (void)removeScriptsObject:(Port_Script *)value;
-- (void)addScripts:(NSSet *)value;
-- (void)removeScripts:(NSSet *)value;
+- (void)addScripts:(NSSet<Port_Script*> *)value;
+- (void)removeScripts:(NSSet<Port_Script*> *)value;
 
 @end
 

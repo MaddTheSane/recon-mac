@@ -90,11 +90,11 @@
 #pragma mark -
 
 // -------------------------------------------------------------------------------
-//   initWithProfile
+//   setUpProfile
 // -------------------------------------------------------------------------------
-- (Session *)profile:(Profile *)profile                           
-            withTarget:(NSString *)sessionTarget               
-inManagedObjectContext:(NSManagedObjectContext *)context
+- (Session *)setUpProfile:(Profile *)profile                           
+               withTarget:(NSString *)sessionTarget
+   inManagedObjectContext:(NSManagedObjectContext *)context
 {
 //   NSLog(@"SessionController: initWithProfile!");
    
@@ -125,9 +125,9 @@ inManagedObjectContext:(NSManagedObjectContext *)context
 }
 
 // -------------------------------------------------------------------------------
-//   withSession: 
+//   setUpSession: 
 // -------------------------------------------------------------------------------
-- (Session *)withSession:(Session *)existingSession
+- (Session *)setUpSession:(Session *)existingSession
 {
    Profile *profile = [existingSession profile];
    

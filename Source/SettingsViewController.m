@@ -16,21 +16,32 @@
 
 #import "NSManagedObjectContext-helper.h"
 
+@interface SettingsViewController ()
+@property (nonatomic, copy, readwrite) NSArray *osSortDescriptor;
+@property (nonatomic, copy, readwrite) NSArray *hostSortDescriptor;
+@property (nonatomic, copy, readwrite) NSArray *portSortDescriptor;
+@property (nonatomic, copy, readwrite) NSArray *profileSortDescriptor;
+@property (nonatomic, copy, readwrite) NSArray *sessionSortDescriptor;
+
+@end
+
 @implementation SettingsViewController 
 
 @synthesize workspaceSettingsContent;
 @synthesize targetBarSettingsContent;
 @synthesize sideBarSettingsContent;
+@synthesize hostSortDescriptor;
+@synthesize portSortDescriptor;
+@synthesize profileSortDescriptor;
+@synthesize sessionSortDescriptor;
+@synthesize osSortDescriptor;
 
 - (id)init 
 {
-   if (self = [super init])
+   if (self = [super initWithNibName:@"Settings"
+                              bundle:nil])
    {
-      if (![super initWithNibName:@"Settings"
-                           bundle:nil]) {
-         return nil;
-      }
-      [self setTitle:@"Settings"];      
+      [self setTitle:@"Settings"];
    }   
    return self;
 }
@@ -164,11 +175,6 @@
    return hostSortDescriptor;
 }
 
-- (void)setHostSortDescriptor:(NSArray *)newSortDescriptor
-{
-   hostSortDescriptor = newSortDescriptor;
-}
-
 - (NSArray *)portSortDescriptor
 {
    if(portSortDescriptor == nil){
@@ -176,11 +182,6 @@
    }
    
    return portSortDescriptor;
-}
-
-- (void)setPortSortDescriptor:(NSArray *)newSortDescriptor
-{
-   portSortDescriptor = newSortDescriptor;
 }
 
 - (NSArray *)profileSortDescriptor
@@ -192,11 +193,6 @@
    return profileSortDescriptor;
 }
 
-- (void)setProfileSortDescriptor:(NSArray *)newSortDescriptor
-{
-   profileSortDescriptor = newSortDescriptor;
-}
-
 - (NSArray *)sessionSortDescriptor
 {
    if(sessionSortDescriptor == nil){
@@ -206,11 +202,6 @@
    return sessionSortDescriptor;
 }
 
-- (void)setSessionSortDescriptor:(NSArray *)newSortDescriptor
-{
-   sessionSortDescriptor = newSortDescriptor;
-}
-
 - (NSArray *)osSortDescriptor
 {
    if(osSortDescriptor == nil){
@@ -218,11 +209,6 @@
    }
    
    return osSortDescriptor;
-}
-
-- (void)setOsSortDescriptor:(NSArray *)newSortDescriptor
-{
-   osSortDescriptor = newSortDescriptor;
 }
 
 @end

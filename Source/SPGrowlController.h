@@ -29,7 +29,7 @@
 @interface SPGrowlController : NSObject <GrowlApplicationBridgeDelegate>
 
 // Singleton controller
-+ (SPGrowlController *)sharedGrowlController;
+@property (class, readonly, strong) SPGrowlController *sharedGrowlController;
 
 // Post notification
 - (void)notifyWithTitle:(NSString *)title 

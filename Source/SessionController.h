@@ -51,13 +51,13 @@
 @property (readonly, assign) BOOL hasRun;
 @property (readonly, assign) BOOL isRunning;
 @property (readwrite, strong) Session *session;
-@property (readonly, strong) NSString *sessionUUID;
+@property (readonly, copy) NSString *sessionUUID;
 
-- (Session *)profile:(Profile *)profile 
-                   withTarget:(NSString *)sessionTarget     
-      inManagedObjectContext:(NSManagedObjectContext *)context;
+- (Session *)setUpProfile:(Profile *)profile 
+               withTarget:(NSString *)sessionTarget     
+   inManagedObjectContext:(NSManagedObjectContext *)context;
 
-- (Session *)withSession:(Session *)existingSession;
+- (Session *)setUpSession:(Session *)existingSession;
 
 - (Profile *)copyProfile:(Profile *)profile;
 - (BOOL)createSessionDirectory:(NSString *)uuid;

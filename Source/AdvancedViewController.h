@@ -20,7 +20,7 @@
 @interface AdvancedViewController : ManagingViewController {
 
    IBOutlet NSView *workspaceAdvancedContent;   
-   IBOutlet NSView *__weak targetBarAdvancedContent;   
+   NSView *__weak targetBarAdvancedContent;
    IBOutlet NSView *sideBarAdvancedContent;   
    
    IBOutlet NSView *outputPlaceholder;
@@ -28,7 +28,7 @@
    
    IBOutlet NSView *portsInHostView;
    IBOutlet NSView *scriptOutputView;
-   IBOutlet MyTerminalView *__weak consoleOutputView;
+   MyTerminalView *__weak consoleOutputView;
    IBOutlet NSView *hostsInSessionView;
    
    // Various Results Outlets
@@ -55,12 +55,12 @@
    IBOutlet NSArrayController *osesInSessionController;
       
    // Sort-descriptors for the various table views
-   NSArray *osSortDescriptor;
-   NSArray *hostSortDescriptor;
-   NSArray *portSortDescriptor;   
-   NSArray *profileSortDescriptor;     
-   NSArray *sessionSortDescriptor; 
-   NSArray *notesSortDescriptor;  
+   NSArray<NSSortDescriptor*> *osSortDescriptor;
+   NSArray<NSSortDescriptor*> *hostSortDescriptor;
+   NSArray<NSSortDescriptor*> *portSortDescriptor;
+   NSArray<NSSortDescriptor*> *profileSortDescriptor;
+   NSArray<NSSortDescriptor*> *sessionSortDescriptor;
+   NSArray<NSSortDescriptor*> *notesSortDescriptor;
 
    IBOutlet ColorGradientView *notesGradientView;
    
@@ -82,16 +82,16 @@
 
 }
 
-@property (weak, readonly) NSArray *osSortDescriptor;
-@property (weak, readonly) NSArray *hostSortDescriptor;
-@property (weak, readonly) NSArray *portSortDescriptor;
-@property (weak, readonly) NSArray *profileSortDescriptor;
-@property (weak, readonly) NSArray *sessionSortDescriptor;
-@property (weak, readonly) NSArray *notesSortDescriptor;
+@property (nonatomic, copy, readonly) NSArray<NSSortDescriptor*> *osSortDescriptor;
+@property (nonatomic, copy, readonly) NSArray<NSSortDescriptor*> *hostSortDescriptor;
+@property (nonatomic, copy, readonly) NSArray<NSSortDescriptor*> *portSortDescriptor;
+@property (nonatomic, copy, readonly) NSArray<NSSortDescriptor*> *profileSortDescriptor;
+@property (nonatomic, copy, readonly) NSArray<NSSortDescriptor*> *sessionSortDescriptor;
+@property (nonatomic, copy, readonly) NSArray<NSSortDescriptor*> *notesSortDescriptor;
 
-@property (weak, readonly) NSView *targetBarAdvancedContent;
+@property (weak) IBOutlet NSView *targetBarAdvancedContent;
 
-@property (weak, readonly) MyTerminalView *consoleOutputView;
+@property (weak) IBOutlet MyTerminalView *consoleOutputView;
 
 -(IBAction)submitEmailBugReport:(id)sender;
 
