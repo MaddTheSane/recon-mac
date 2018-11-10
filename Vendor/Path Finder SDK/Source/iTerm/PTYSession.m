@@ -85,7 +85,7 @@ static NSColor *deadStateColor;
     NSParameterAssert(SHELL != nil && TERMINAL != nil && SCREEN != nil);	
 	
 	// allocate a semaphore to coordinate UI update
-	MPCreateBinarySemaphore(&updateSemaphore);
+	updateSemaphore = dispatch_semaphore_create(0);
 	
     return (self);
 }
@@ -93,7 +93,7 @@ static NSColor *deadStateColor;
 - (void)dealloc
 {
 	// release the data processing semaphore
-	MPDeleteSemaphore(updateSemaphore);
+	dispatch_release(updateSemaphore);
 
 	
     SHELL = nil;
@@ -124,7 +124,7 @@ static NSColor *deadStateColor;
 
 - (NSNumber*)ttyPID;
 {
-	return [NSNumber numberWithInt:[[self SHELL] pid]];
+	return @([[self SHELL] pid]);
 }
 
 // Session specific methods
@@ -271,7 +271,7 @@ static NSColor *deadStateColor;
 			}
 			else {
 				while ([SCREEN changeSize] != NO_CHANGE || [SCREEN printPending]) {
-					MPWaitOnSemaphore(updateSemaphore, kDurationForever);
+					dispatch_semaphore_wait(updateSemaphore, DISPATCH_TIME_FOREVER);
 				}
 				
 				[SCREEN putToken:token];
@@ -636,7 +636,7 @@ static NSColor *deadStateColor;
 {
     NSData *data;
     NSMutableString *mstring;
-    int i, max;
+    NSInteger i, max;
 	
 	if (EXIT) return;
 
@@ -916,16 +916,7 @@ static NSColor *deadStateColor;
 }
 
 @synthesize parent;
-
-- (NSTabViewItem *) tabViewItem
-{
-    return (tabViewItem);
-}
-
-- (void)setTabViewItem: (NSTabViewItem *) theTabViewItem
-{
-    tabViewItem = theTabViewItem;
-}
+@synthesize tabViewItem;
 
 - (NSString *) uniqueID
 {
@@ -1035,24 +1026,21 @@ static NSColor *deadStateColor;
 // I think Applescript needs this method; need to check
 - (int) number
 {
-    return ([[tabViewItem tabView] indexOfTabViewItem: tabViewItem]);
+    return (int)([[tabViewItem tabView] indexOfTabViewItem: tabViewItem]);
 }
 
-- (int) objectCount
+- (NSInteger) objectCount
 {
     return ([[PreferencePanel sharedInstance] useCompactLabel]?0:objectCount);
 }
 
 // This one is for purposes other than PSMTabBarControl
-- (int) realObjectCount
+- (NSInteger) realObjectCount
 {
     return (objectCount);
 }
 
-- (void)setObjectCount:(int)value
-{
-    objectCount = value;
-}
+@synthesize objectCount;
 
 @synthesize icon;
 
@@ -1337,7 +1325,7 @@ static NSColor *deadStateColor;
 
 - (void)signalUpdateSemaphore
 {
-	MPSignalSemaphore(updateSemaphore);
+	dispatch_semaphore_signal(updateSemaphore);
 }
 
 // Notification
@@ -1396,7 +1384,7 @@ static NSColor *deadStateColor;
 	else {
 		if ([SCREEN printPending]) {
 			[SCREEN doPrint];
-			MPSignalSemaphore(updateSemaphore);
+			dispatch_semaphore_signal(updateSemaphore);
 		}
 		
 		[SCREEN acquireLock];
@@ -1425,13 +1413,13 @@ static NSColor *deadStateColor;
 				// [parent resizeWindow:[SCREEN newWidth] height:[SCREEN newHeight]];
 				[SCREEN resetChangeSize];
 				// signal the UI updating thread
-				MPSignalSemaphore(updateSemaphore);
+				dispatch_semaphore_signal(updateSemaphore);
 				break;
 			case CHANGE_PIXEL:
 				// [parent resizeWindowToPixelsWidth:[SCREEN newWidth] height:[SCREEN newHeight]];
 				[SCREEN resetChangeSize];
 				// signal the UI updating thread
-				MPSignalSemaphore(updateSemaphore);
+				dispatch_semaphore_signal(updateSemaphore);
 				break;
 		}
 		

@@ -24,9 +24,9 @@
 @interface SessionController ()
 
    //@property (readwrite, retain) Session *session; 
-   @property (readwrite, strong) NSString *sessionUUID;   
-   @property (readwrite, strong) NSString *sessionDirectory;
-   @property (readwrite, strong) NSString *sessionOutputFile;   
+   @property (readwrite, copy) NSString *sessionUUID;   
+   @property (readwrite, copy) NSString *sessionDirectory;
+   @property (readwrite, copy) NSString *sessionOutputFile;   
 
    @property (readwrite, assign) BOOL hasRun;   
    @property (readwrite, assign) BOOL isRunning;

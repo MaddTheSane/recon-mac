@@ -36,7 +36,7 @@
     BOOL hasOutput;
     BOOL firstOutput;
 
-    MPSemaphoreID threadEndSemaphore;
+    dispatch_semaphore_t threadEndSemaphore;
 }
 
 - (id)init;

@@ -18,7 +18,7 @@
 
 @class PTYSession, PTYTabView, ITTerminalWindowController, ITMiscNibController, iTermController, PTToolbarController, PSMTabBarControl;
 
-@interface ITTerminalView : NSView
+@interface ITTerminalView : NSView <NSTabViewDelegate, NSOutlineViewDelegate>
 {
     /// tab view
     PTYTabView *mTabView;
@@ -53,8 +53,7 @@
 - (IBAction)nextSession:(id)sender;
 - (PTYSession *) currentSession;
 - (NSInteger) currentSessionIndex;
-- (NSString *) currentSessionName;
-- (void)setCurrentSessionName: (NSString *) theSessionName;
+@property (copy) NSString *currentSessionName;
 
 - (void)updateCurretSessionProfiles;
 
@@ -68,32 +67,26 @@
 - (void)setWindowTitle;
 - (void)setWindowTitle: (NSString *)title;
 - (void)setFont:(NSFont *)font nafont:(NSFont *)nafont;
-- (void)setCharacterSpacingHorizontal: (float) horizontal vertical: (float) vertical;
+- (void)setCharacterSpacingHorizontal: (CGFloat) horizontal vertical: (CGFloat) vertical;
 - (void)changeFontSize: (BOOL) increase;
-- (float) largerSizeForSize: (float) aSize;
-- (float) smallerSizeForSize: (float) aSize;
-- (NSFont *) font;
-- (NSFont *) nafont;
+- (CGFloat) largerSizeForSize: (CGFloat) aSize;
+- (CGFloat) smallerSizeForSize: (CGFloat) aSize;
+@property (readonly, strong) NSFont *font;
+@property (readonly, strong) NSFont *nafont;
 @property (nonatomic) BOOL antiAlias;
 
 - (void)setCharSizeUsingFont: (NSFont *)font;
-- (int)width;
-- (void)setWidth:(int)theWidth;
-- (int)height;
-- (void)setHeight:(int)theHeight;
-- (int)charWidth;
-- (void)setCharWidth:(int)theCharWidth;
-- (int)charHeight;
-- (void)setCharHeight:(int)theCharHeight;
+@property int width;
+@property int height;
+@property int charWidth;
+@property int charHeight;
 
 @property (readonly) CGFloat charSpacingVertical;
 @property (readonly) CGFloat charSpacingHorizontal;
-- (BOOL) useTransparency;
-- (void)setUseTransparency: (BOOL) flag;
+@property BOOL useTransparency;
 
 // controls which sessions see key events
-- (BOOL) sendInputToAllSessions;
-- (void)setSendInputToAllSessions: (BOOL) flag;
+@property (nonatomic) BOOL sendInputToAllSessions;
 - (IBAction)toggleInputToAllSessions:(id)sender;
 - (void)sendInputToAllSessions: (NSData *) data;
 
@@ -105,8 +98,7 @@
 
 // Contextual menu
 - (void)menuForEvent:(NSEvent *)theEvent menu: (NSMenu *) theMenu;
-- (BOOL) suppressContextualMenu;
-- (void)setSuppressContextualMenu: (BOOL) aBool;
+@property BOOL suppressContextualMenu;
 - (NSMenu *)tabView:(NSTabView *)aTabView menuForTabViewItem:(NSTabViewItem *)tabViewItem;
 
 // NSTabView
@@ -134,7 +126,7 @@
 
 - (void)appendSession:(PTYSession *)object;
 - (void)removeFromSessionsAtIndex:(NSUInteger)index;
-- (NSArray*)sessions;
+@property (readonly, copy) NSArray<PTYSession*> *sessions;
 - (void)addInSessions:(PTYSession *)object;
 - (void)insertInSessions:(PTYSession *)object;
 - (void)insertInSessions:(PTYSession *)object atIndex:(NSUInteger)index;

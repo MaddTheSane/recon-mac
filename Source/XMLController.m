@@ -383,7 +383,6 @@
 //   //ANSLog(@"XMLParser: endElement: %@", elementName);
    
    if ( [elementName isEqualToString:@"host"] ) {
-      self.currentHost;
       self.currentHost = nil;
       
       return;

@@ -47,7 +47,7 @@ static NSInteger cacheSize;
 @interface PTYTextView ()
 @property NSRect previousViewRect;
 
-- (NSSize)previousWindowSize;
+@property NSSize previousWindowSize;
 - (void)setPreviousWindowSize:(NSSize)thePreviousWindowSize;
 
 - (NSDragOperation) _checkForSupportedDragTypes:(id <NSDraggingInfo>) sender;
@@ -65,7 +65,7 @@ static NSInteger cacheSize;
 - (NSString *) _getURLForX: (int) x y: (int) y;
 - (void)_renderChar:(NSImage *)image withChar:(unichar) carac withColor:(NSColor*)color withBGColor:(NSColor*)color withFont:(NSFont*)aFont bold:(int)bold;
 - (NSImage *) _getCharImage:(unichar) code color:(unsigned int)fg bgColor:(unsigned int)bg doubleWidth:(BOOL) dw;
-- (void)_drawCharacter:(unichar)c fgColor:(int)fg bgColor:(int)bg AtX:(float)X Y:(float)Y doubleWidth:(BOOL) dw;
+- (void)_drawCharacter:(unichar)c fgColor:(int)fg bgColor:(int)bg AtX:(CGFloat)X Y:(CGFloat)Y doubleWidth:(BOOL) dw;
 - (BOOL) _isBlankLine: (int) y;
 - (void)_openURL: (NSString *) aURLString;
 - (void)_clearCacheForColor:(int)colorIndex;
@@ -1955,7 +1955,7 @@ static NSInteger cacheSize;
 //
 - (BOOL) performDragOperation:(id <NSDraggingInfo>)sender
 {
-    unsigned int dragOperation;
+    NSDragOperation dragOperation;
     BOOL bResult = NO;
     PTYSession *delegate = [self delegate];
 	
@@ -2233,9 +2233,14 @@ static NSInteger cacheSize;
     int x=[[self screen] cursorX]-1;
     
     NSRect rect=NSMakeRect(x*[self charWidth]+MARGIN,(y+[[self screen] numberOfLines] - [[self screen] height]+1)*[self lineHeight],[self charWidth]*theRange.length,[self lineHeight]);
+	NSRect rect1=rect;
     //NSLog(@"(%f,%f)",rect.origin.x,rect.origin.y);
-    rect.origin=[[self window] convertBaseToScreen:[self convertPoint:rect.origin toView:nil]];
+    rect=[[self window] convertRectToScreen:[self convertRect:rect toView:nil]];
     //NSLog(@"(%f,%f)",rect.origin.x,rect.origin.y);
+	if (!NSEqualSizes(rect.size, rect1.size)) {
+		NSLog(@"Different sizes");
+	}
+	rect.size = rect1.size;
     
     return rect;
 }
@@ -2393,6 +2398,7 @@ static NSInteger cacheSize;
 //---------------------------------------------------------- 
 //  previousWindowSize 
 //---------------------------------------------------------- 
+@synthesize previousWindowSize=mPreviousWindowSize;
 - (NSSize)previousWindowSize
 {
     return mPreviousWindowSize;
@@ -2406,22 +2412,14 @@ static NSInteger cacheSize;
 //---------------------------------------------------------- 
 //  previousViewRect 
 //---------------------------------------------------------- 
-- (NSRect)previousViewRect
-{
-    return mPreviousViewRect;
-}
-
-- (void)setPreviousViewRect:(NSRect)thePreviousViewRect
-{
-    mPreviousViewRect = thePreviousViewRect;
-}
+@synthesize previousViewRect=mPreviousViewRect;
 
 - (void)_renderChar:(NSImage *)image withChar:(unichar) carac withColor:(NSColor*)color withBGColor:(NSColor*)bgColor withFont:(NSFont*)aFont bold:(int)bold
 {
 	NSString  *crap;
 	NSDictionary *attrib;
 	NSFont *theFont;
-	float sw;
+	CGFloat sw;
 	BOOL renderBold;
 	
 	//NSLog(@"%s: drawing char %c", __PRETTY_FUNCTION__, carac);
@@ -2452,21 +2450,11 @@ static NSInteger cacheSize;
         sw = antiAlias ? strokeWidth:0;
     }
 	
-	if (systemVersion >= 0x00001030 && sw)
-	{
 		attrib=[NSDictionary dictionaryWithObjectsAndKeys:
 			theFont, NSFontAttributeName,
 			color, NSForegroundColorAttributeName,
-			[NSNumber numberWithFloat: sw], @"NSStrokeWidth",
+			@(sw), NSStrokeWidthAttributeName,
 			nil];
-	}
-	else
-	{
-		attrib=[NSDictionary dictionaryWithObjectsAndKeys:
-			theFont, NSFontAttributeName,
-			color, NSForegroundColorAttributeName,
-			nil];		
-	}
 	
 	crap = [NSString stringWithCharacters:&carac length:1];		
 	[image lockFocus];
@@ -2489,8 +2477,8 @@ static NSInteger cacheSize;
 #define  CELLSIZE (cacheSize/256)
 - (NSImage *) _getCharImage:(unichar) code color:(unsigned int)fg bgColor:(unsigned int)bg doubleWidth:(BOOL) dw
 {
-	int i;
-	int j;
+	long i;
+	long j;
 	NSImage *image;
 	unsigned int c = fg;
 	unsigned short int seed[3];
@@ -2534,7 +2522,7 @@ static NSInteger cacheSize;
 	}
 	else if (j>=CELLSIZE) {
 		// NSLog(@"new char, but cache full (%d, %d, %d)", code, c, i);
-		int t=1;
+		long t=1;
 		for (j=2; j<=CELLSIZE; j++) {	//find a least used one, and replace it with new char
 			if (charImages[i-j].count < charImages[i-t].count) t = j;
 		}
@@ -2564,7 +2552,7 @@ static NSInteger cacheSize;
 	
 }
 
-- (void)_drawCharacter:(unichar)c fgColor:(int)fg bgColor:(int)bg AtX:(float)X Y:(float)Y doubleWidth:(BOOL) dw
+- (void)_drawCharacter:(unichar)c fgColor:(int)fg bgColor:(int)bg AtX:(CGFloat)X Y:(CGFloat)Y doubleWidth:(BOOL) dw
 {
 	NSImage *image;
 	BOOL noBg = bg==-1 || (bg & SELECTION_MASK);
@@ -3170,7 +3158,7 @@ static NSInteger cacheSize;
     [anImage unlockFocus];
 	
 	// get the pasteboard
-    pboard = [NSPasteboard pasteboardWithName:NSPasteboardNameDrag];
+    pboard = [NSPasteboard pasteboardWithName:NSDragPboard];
 	
     // Declare the types and put our tabViewItem on the pasteboard
     pbtypes = [NSArray arrayWithObjects: NSPasteboardTypeString, nil];

@@ -49,7 +49,7 @@
 #import "ITSharedActionHandler.h"
 #import "PSMRolloverButton.h"
 
-@interface ITTerminalView ()
+@interface ITTerminalView () <TabBarControlDelegate>
 @property BOOL beingResized;
 
 - (BOOL)askUserToCloseTab:(PTYSession*)session;
@@ -58,18 +58,14 @@
 - (void)setupView:(NSDictionary *)entry;
 
 - (NSFont *) _getMaxFont:(NSFont* ) font 
-				  height:(float) height
-				   lines:(float) lines;
+				  height:(CGFloat) height
+				   lines:(CGFloat) lines;
 
 @property (nonatomic, strong, null_resettable) ITMiscNibController *nibController;
 - (void)setNibController:(ITMiscNibController *)theNibController;
 
 @property BOOL initialized;
 - (void)setInitialized:(BOOL)flag;
-@end
-
-@interface ITTerminalView () <TabBarControlDelegate>
-
 @end
 
 @interface ITTerminalView (PrivateActions)
@@ -386,57 +382,24 @@
 //---------------------------------------------------------- 
 //  width 
 //---------------------------------------------------------- 
-- (int)width
-{
-    return mWidth;
-}
-
-- (void)setWidth:(int)theWidth
-{
-    mWidth = theWidth;
-}
+@synthesize width=mWidth;
 
 //---------------------------------------------------------- 
 //  height 
 //---------------------------------------------------------- 
-- (int)height
-{
-    return mHeight;
-}
-
-- (void)setHeight:(int)theHeight
-{
-    mHeight = theHeight;
-}
+@synthesize height=mHeight;
 
 //---------------------------------------------------------- 
 //  charWidth 
 //---------------------------------------------------------- 
-- (int)charWidth
-{
-    return mCharWidth;
-}
-
-- (void)setCharWidth:(int)theCharWidth
-{
-    mCharWidth = theCharWidth;
-}
+@synthesize charWidth=mCharWidth;
 
 //---------------------------------------------------------- 
 //  charHeight 
 //---------------------------------------------------------- 
-- (int)charHeight
-{
-    return mCharHeight;
-}
-
-- (void)setCharHeight:(int)theCharHeight
-{
-    mCharHeight = theCharHeight;
-}
+@synthesize charHeight=mCharHeight;
 
 @synthesize charSpacingHorizontal=charHorizontalSpacingMultiplier;
-
 @synthesize charSpacingVertical=charVerticalSpacingMultiplier;
 
 - (void)setWindowSize
@@ -554,7 +517,7 @@
 		[self setFont: newAsciiFont nafont: newNonAsciiFont];
 }
 
-- (float) largerSizeForSize: (float) aSize 
+- (CGFloat) largerSizeForSize: (CGFloat) aSize
     /*" Given a font size of aSize, return the next larger size.   Uses the 
     same list of font sizes as presented in the font panel. "*/ 
 {
@@ -577,7 +540,7 @@
     return 288.0; 
 } 
 
-- (float) smallerSizeForSize: (float) aSize 
+- (CGFloat) smallerSizeForSize: (CGFloat) aSize
     /*" Given a font size of aSize, return the next smaller size.   Uses 
     the same list of font sizes as presented in the font panel. "*/
 {
@@ -600,7 +563,7 @@
     return 8.0; 
 } 
 
-- (void)setCharacterSpacingHorizontal: (float) horizontal vertical: (float) vertical
+- (void)setCharacterSpacingHorizontal: (CGFloat) horizontal vertical: (CGFloat) vertical
 {
 	charHorizontalSpacingMultiplier = horizontal;
 	charVerticalSpacingMultiplier = vertical;
@@ -639,15 +602,8 @@
     }
 }
 
-- (NSFont *) font
-{
-	return FONT;
-}
-
-- (NSFont *) nafont
-{
-	return NAFONT;
-}
+@synthesize font=FONT;
+@synthesize nafont=NAFONT;
 
 - (void)reset:(id)sender
 {
@@ -711,10 +667,7 @@
     }    
 }
 
-- (BOOL) sendInputToAllSessions
-{
-    return (sendInputToAllSessions);
-}
+@synthesize sendInputToAllSessions;
 
 - (void)setSendInputToAllSessions: (BOOL) flag
 {
@@ -735,15 +688,7 @@
 }
 
 // Contextual menu
-- (BOOL) suppressContextualMenu
-{
-	return (suppressContextualMenu);
-}
-
-- (void)setSuppressContextualMenu: (BOOL) aBool
-{
-	suppressContextualMenu = aBool;
-}
+@synthesize suppressContextualMenu;
 
 - (void)menuForEvent:(NSEvent *)theEvent menu: (NSMenu *) theMenu
 {
@@ -1472,10 +1417,10 @@
 }
 
 - (NSFont *) _getMaxFont:(NSFont* ) font 
-				  height:(float) height
-				   lines:(float) lines
+				  height:(CGFloat) height
+				   lines:(CGFloat) lines
 {
-	float newSize = [font pointSize], newHeight;
+	CGFloat newSize = [font pointSize], newHeight;
 	NSFont *newfont=nil;
 	
 	do {

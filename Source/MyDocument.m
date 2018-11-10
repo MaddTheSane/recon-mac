@@ -1422,5 +1422,9 @@ static float vigourOfShake = 0.01f;
    return YES;
 }
 
+- (void)zoom:(id)sender
+{
+   //?
+}
 
 @end

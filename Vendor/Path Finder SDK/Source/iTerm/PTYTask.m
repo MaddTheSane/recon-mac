@@ -187,7 +187,7 @@ static ssize_t writep(int fds, char *buf, size_t len)
 	if (sts >= 0) 
         [boss brokenPipe];
 	
-    MPSignalSemaphore(boss->threadEndSemaphore);
+	dispatch_semaphore_signal(boss->threadEndSemaphore);
 	
 	[NSThread exit];
 }
@@ -206,7 +206,7 @@ static ssize_t writep(int fds, char *buf, size_t len)
     hasOutput = NO;
     
     // allocate a semaphore to coordinate with thread
-	MPCreateBinarySemaphore(&threadEndSemaphore);
+		threadEndSemaphore = dispatch_semaphore_create(0);
 	}
 	
     return self;
@@ -220,8 +220,8 @@ static ssize_t writep(int fds, char *buf, size_t len)
 	if (FILDES >= 0)
 		close(FILDES);
 
-    MPWaitOnSemaphore(threadEndSemaphore, kDurationForever);
-    MPDeleteSemaphore(threadEndSemaphore);
+	dispatch_semaphore_wait(threadEndSemaphore, DISPATCH_TIME_FOREVER);
+	dispatch_release(threadEndSemaphore);
 }
 
 - (void)launchWithPath:(NSString *)progpath
@@ -330,7 +330,7 @@ static ssize_t writep(int fds, char *buf, size_t len)
 {
     const void *datap = [data bytes];
     size_t len = [data length];
-    int sts;
+    ssize_t sts;
     	
     sts = writep(FILDES, (char *)datap, len);
     if (sts < 0 ) {

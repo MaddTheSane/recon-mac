@@ -125,7 +125,7 @@ enum { SELECT_CHAR, SELECT_WORD, SELECT_LINE };
 	BOOL keyIsARepeat;
 }
 
-+ (NSCursor *) textViewCursor;
+@property (class, readonly, strong) NSCursor *textViewCursor;
 - (id)initWithFrame: (NSRect) aRect;
 - (void)dealloc;
 - (BOOL)isFlipped;
@@ -150,24 +150,22 @@ enum { SELECT_CHAR, SELECT_WORD, SELECT_LINE };
 - (NSString *) selectedText;
 - (NSString *) selectedTextWithPad: (BOOL) pad;
 - (NSString *) content;
-- (void)copy:(id)sender;
-- (void)paste:(id)sender;
-- (void)pasteSelection:(id)sender;
+- (IBAction)copy:(id)sender;
+- (IBAction)paste:(id)sender;
+- (IBAction)pasteSelection:(id)sender;
 - (BOOL)validateMenuItem:(NSMenuItem *)item;
-- (void)changeFont:(id)sender;
+- (IBAction)changeFont:(id)sender;
 - (NSMenu *)menuForEvent:(NSEvent *)theEvent;
-- (void)browse:(id)sender;
-- (void)searchInBrowser:(id)sender;
-- (void)mail:(id)sender;
+- (IBAction)browse:(id)sender;
+- (IBAction)searchInBrowser:(id)sender;
+- (IBAction)mail:(id)sender;
 
 //get/set methods
 - (NSFont *)font;
 - (NSFont *)nafont;
 - (void)setFont:(NSFont*)aFont nafont:(NSFont*)naFont;
-- (BOOL) antiAlias;
-- (void)setAntiAlias: (BOOL) antiAliasFlag;
-- (BOOL) disableBold;
-- (void)setDisableBold: (BOOL) boldFlag;
+@property BOOL antiAlias;
+@property BOOL disableBold;
 @property BOOL blinkingCursor;
 
 //color stuff
@@ -196,16 +194,16 @@ enum { SELECT_CHAR, SELECT_WORD, SELECT_LINE };
 - (id)delegate;
 - (void)setDelegate:(id)delegate;
 
-- (CGFloat)lineHeight;
+@property CGFloat lineHeight;
 - (void)setLineHeight:(CGFloat)theLineHeight;
 
-- (CGFloat)charWidth;
+@property CGFloat charWidth;
 - (void)setCharWidth:(CGFloat)theCharWidth;
 
-- (CGFloat)charWidthWithoutSpacing;
+@property CGFloat charWidthWithoutSpacing;
 - (void)setCharWidthWithoutSpacing:(CGFloat)theCharWidthWithoutSpacing;
 
-- (CGFloat)charHeightWithoutSpacing;
+@property CGFloat charHeightWithoutSpacing;
 - (void)setCharHeightWithoutSpacing:(CGFloat)theCharHeightWithoutSpacing;
 
 - (int)numberOfLines;
@@ -225,19 +223,17 @@ enum { SELECT_CHAR, SELECT_WORD, SELECT_LINE };
 - (void)deselect;
 
 // transparency
-- (CGFloat) transparency;
-- (void)setTransparency: (CGFloat) fVal;
-- (BOOL) useTransparency;
-- (void)setUseTransparency: (BOOL) flag;
+@property CGFloat transparency;
+@property BOOL useTransparency;
 
 // Cursor control
 - (void)resetCursorRects;
 
 // Scrolling control
-- (void)scrollLineUp:(id)sender;
-- (void)scrollLineDown:(id)sender;
-- (void)scrollPageUp:(id)sender;
-- (void)scrollPageDown:(id)sender;
+- (IBAction)scrollLineUp:(id)sender;
+- (IBAction)scrollLineDown:(id)sender;
+- (IBAction)scrollPageUp:(id)sender;
+- (IBAction)scrollPageDown:(id)sender;
 - (void)scrollHome;
 - (void)scrollEnd;
 - (void)scrollToSelection;
@@ -254,10 +250,10 @@ enum { SELECT_CHAR, SELECT_WORD, SELECT_LINE };
 - (void)insertText:(id)aString;
 - (void)setMarkedText:(id)aString selectedRange:(NSRange)selRange;
 - (void)unmarkText;
-- (BOOL)hasMarkedText;
-- (NSRange)markedRange;
-- (NSRange)selectedRange;
-- (NSArray *)validAttributesForMarkedText;
+@property (readonly) BOOL hasMarkedText;
+@property (readonly) NSRange markedRange;
+@property (readonly) NSRange selectedRange;
+- (NSArray<NSAttributedStringKey> *)validAttributesForMarkedText;
 - (NSAttributedString *)attributedSubstringFromRange:(NSRange)theRange;
 - (void)doCommandBySelector:(SEL)aSelector;
 - (unsigned int)characterIndexForPoint:(NSPoint)thePoint;
@@ -266,7 +262,7 @@ enum { SELECT_CHAR, SELECT_WORD, SELECT_LINE };
 
 	// service stuff
 - (id)validRequestorForSendType:(NSString *)sendType returnType:(NSString *)returnType;
-- (BOOL)writeSelectionToPasteboard:(NSPasteboard *)pboard types:(NSArray *)types;
+- (BOOL)writeSelectionToPasteboard:(NSPasteboard *)pboard types:(NSArray<NSPasteboardType> *)types;
 - (BOOL)readSelectionFromPasteboard:(NSPasteboard *)pboard;	
 
 - (void)resetCharCache;

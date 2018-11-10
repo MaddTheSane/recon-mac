@@ -25,7 +25,7 @@
 @class ITTerminalView;
 @class iTermController;
 
-@interface PTYSession : NSResponder
+@interface PTYSession : NSResponder <NSTextViewDelegate>
 {        
     // Owning tab view item
     __weak NSTabViewItem *tabViewItem;
@@ -59,13 +59,13 @@
     
     // Status reporting
     struct timeval lastInput, lastOutput, lastUpdate, lastBlink;
-    int objectCount;
+    NSInteger objectCount;
 	NSImage *icon;
 	BOOL isProcessing;
     BOOL newOutput;
 		
 	// semaphore to coordinate updating UI
-	MPSemaphoreID	updateSemaphore;
+	dispatch_semaphore_t	updateSemaphore;
 	
 	// update timer stuff
 	NSTimer *updateTimer;
@@ -97,18 +97,18 @@
 - (BOOL)willHandleEvent: (NSEvent *) theEvent;
 - (BOOL)handleEvent: (NSEvent *) theEvent;
 - (void)insertText:(NSString *)string;
-- (void)insertNewline:(id)sender;
-- (void)insertTab:(id)sender;
-- (void)moveUp:(id)sender;
-- (void)moveDown:(id)sender;
-- (void)moveLeft:(id)sender;
-- (void)moveRight:(id)sender;
-- (void)pageUp:(id)sender;
-- (void)pageDown:(id)sender;
-- (void)paste:(id)sender;
+- (IBAction)insertNewline:(id)sender;
+- (IBAction)insertTab:(id)sender;
+- (IBAction)moveUp:(id)sender;
+- (IBAction)moveDown:(id)sender;
+- (IBAction)moveLeft:(id)sender;
+- (IBAction)moveRight:(id)sender;
+- (IBAction)pageUp:(id)sender;
+- (IBAction)pageDown:(id)sender;
+- (IBAction)paste:(id)sender;
 - (void)pasteString: (NSString *) aString;
-- (void)deleteBackward:(id)sender;
-- (void)deleteForward:(id)sender;
+- (IBAction)deleteBackward:(id)sender;
+- (IBAction)deleteForward:(id)sender;
 - (void)textViewDidChangeSelection: (NSNotification *) aNotification;
 - (void)textViewResized: (NSNotification *) aNotification;
 - (void)tabViewWillRedraw: (NSNotification *) aNotification;
@@ -125,7 +125,7 @@
 @property (weak) NSTabViewItem *tabViewItem;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *defaultName;
-- (NSString *) uniqueID;
+@property (readonly, copy) NSString *uniqueID;
 - (void)setUniqueID: (NSString *)uniqueID;
 @property (nonatomic, copy) NSString *windowTitle;
 @property (strong) PTYTask *SHELL;
@@ -140,14 +140,13 @@
 @property BOOL doubleWidth;
 @property BOOL xtermMouseReporting;
 @property (copy) NSDictionary *addressBookEntry;
-- (int) number;
-- (int) objectCount;
-- (int) realObjectCount;
-- (void)setObjectCount:(int)value;
-- (NSString *) tty;
-- (NSString *) contents;
+@property (readonly) int number;
+@property (nonatomic) NSInteger objectCount;
+@property (readonly) NSInteger realObjectCount;
+@property (readonly, copy) NSString *tty;
+@property (readonly, copy) NSString *contents;
 @property (strong) NSImage *icon;
-- (NSNumber*)ttyPID;
+@property (readonly) NSNumber *ttyPID;
 
 - (void)clearBuffer;
 - (void)clearScrollbackBuffer;
