@@ -1168,7 +1168,7 @@ static NSColor *deadStateColor;
 }
 
 @synthesize antiIdle;
-@synthesize antiCode;
+@synthesize antiCode=ai_code;
 @synthesize autoClose;
 
 - (BOOL) disableBold

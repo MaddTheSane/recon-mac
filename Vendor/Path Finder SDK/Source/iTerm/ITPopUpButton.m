@@ -84,7 +84,7 @@
 			image = [thisBundle imageForResource:@"newwin"];
 		}
 		else
-			image = [[ITIconStore sharedInstance] image:@"GenericPreferencesIcon"];
+			image = [NSImage imageNamed:NSImageNamePreferencesGeneral];
 		
 		[self setContentImage:image];
 	}

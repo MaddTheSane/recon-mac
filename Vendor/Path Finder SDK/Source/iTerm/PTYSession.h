@@ -48,7 +48,7 @@
     
     // anti-idle
     BOOL antiIdle;
-    char ai_code;
+    int ai_code;
 
     BOOL autoClose;
     BOOL doubleWidth;

@@ -1955,73 +1955,73 @@ static NSInteger cacheSize;
 //
 - (BOOL) performDragOperation:(id <NSDraggingInfo>)sender
 {
-    NSDragOperation dragOperation;
-    BOOL bResult = NO;
-    PTYSession *delegate = [self delegate];
+	NSDragOperation dragOperation;
+	BOOL bResult = NO;
+	PTYSession *delegate = [self delegate];
 	
-    // If parent class does not know how to deal with this drag type, check if we do.
-    if (bExtendedDragNDrop)
-    {
-        NSPasteboard *pb = [sender draggingPasteboard];
-        NSArray *propertyList;
-        NSString *aString;
-        int i;
-        
-        dragOperation = [self _checkForSupportedDragTypes: sender];
-        
-        switch (dragOperation)
-        {
-            case NSDragOperationCopy:
-                // Check for simple strings first
-                aString = [pb stringForType:NSPasteboardTypeString];
-                if (aString != nil)
-                {
-                    if ([delegate respondsToSelector:@selector(pasteString:)])
-                        [delegate pasteString: aString];
-                }
-                    
-                    // Check for file names
-                    propertyList = [pb propertyListForType: NSFilenamesPboardType];
-                for (i = 0; i < [propertyList count]; i++)
-                {
-                    
-                    // Ignore text clippings
-                    NSString *filename = (NSString*)[propertyList objectAtIndex: i]; // this contains the POSIX path to a file
-                    NSDictionary *filenamesAttributes = [[NSFileManager defaultManager] attributesOfItemAtPath:filename error:nil];
-                    if (([filenamesAttributes fileHFSTypeCode] == 'clpt' &&
-                         [filenamesAttributes fileHFSCreatorCode] == 'MACS') ||
-                        [[filename pathExtension] isEqualToString:@"textClipping"] == YES)
-                    {
-                        continue;
-                    }
-                    
-                    // Just paste the file names into the shell after escaping special characters.
-                    if ([delegate respondsToSelector:@selector(pasteString:)])
-                    {
-                        NSMutableString *aMutableString;
-                        
-                        aMutableString = [[NSMutableString alloc] initWithString: (NSString*)[propertyList objectAtIndex: i]];
-                        // get rid of special characters
-                        [aMutableString replaceOccurrencesOfString: @"\\" withString: @"\\\\" options: 0 range: NSMakeRange(0, [aMutableString length])];
-                        [aMutableString replaceOccurrencesOfString: @" " withString: @"\\ " options: 0 range: NSMakeRange(0, [aMutableString length])];
-                        [aMutableString replaceOccurrencesOfString: @"(" withString: @"\\(" options: 0 range: NSMakeRange(0, [aMutableString length])];
-                        [aMutableString replaceOccurrencesOfString: @")" withString: @"\\)" options: 0 range: NSMakeRange(0, [aMutableString length])];
-                        [aMutableString replaceOccurrencesOfString: @"\"" withString: @"\\\"" options: 0 range: NSMakeRange(0, [aMutableString length])];
-	[aMutableString replaceOccurrencesOfString: @"&" withString: @"\\&" options: 0 range: NSMakeRange(0, [aMutableString length])];
-	[aMutableString replaceOccurrencesOfString: @"'" withString: @"\\'" options: 0 range: NSMakeRange(0, [aMutableString length])];
-
-	[delegate pasteString: aMutableString];
-	[delegate pasteString: @" "];
-                    }
-
-                }
-	bResult = YES;
-	break;				
-        }
-
-    }
-
-    return bResult;
+	// If parent class does not know how to deal with this drag type, check if we do.
+	if (bExtendedDragNDrop)
+	{
+		NSPasteboard *pb = [sender draggingPasteboard];
+		NSArray *propertyList;
+		NSString *aString;
+		int i;
+		
+		dragOperation = [self _checkForSupportedDragTypes: sender];
+		
+		switch (dragOperation)
+		{
+			case NSDragOperationCopy:
+				// Check for simple strings first
+				aString = [pb stringForType:NSPasteboardTypeString];
+				if (aString != nil)
+				{
+					if ([delegate respondsToSelector:@selector(pasteString:)])
+						[delegate pasteString: aString];
+				}
+				
+				// Check for file names
+				propertyList = [pb propertyListForType: NSFilenamesPboardType];
+				for (i = 0; i < [propertyList count]; i++)
+				{
+					
+					// Ignore text clippings
+					NSString *filename = (NSString*)[propertyList objectAtIndex: i]; // this contains the POSIX path to a file
+					NSDictionary *filenamesAttributes = [[NSFileManager defaultManager] attributesOfItemAtPath:filename error:nil];
+					if (([filenamesAttributes fileHFSTypeCode] == 'clpt' &&
+						 [filenamesAttributes fileHFSCreatorCode] == 'MACS') ||
+						[[filename pathExtension] isEqualToString:@"textClipping"] == YES)
+					{
+						continue;
+					}
+					
+					// Just paste the file names into the shell after escaping special characters.
+					if ([delegate respondsToSelector:@selector(pasteString:)])
+					{
+						NSMutableString *aMutableString;
+						
+						aMutableString = [[NSMutableString alloc] initWithString: (NSString*)[propertyList objectAtIndex: i]];
+						// get rid of special characters
+						[aMutableString replaceOccurrencesOfString: @"\\" withString: @"\\\\" options: 0 range: NSMakeRange(0, [aMutableString length])];
+						[aMutableString replaceOccurrencesOfString: @" " withString: @"\\ " options: 0 range: NSMakeRange(0, [aMutableString length])];
+						[aMutableString replaceOccurrencesOfString: @"(" withString: @"\\(" options: 0 range: NSMakeRange(0, [aMutableString length])];
+						[aMutableString replaceOccurrencesOfString: @")" withString: @"\\)" options: 0 range: NSMakeRange(0, [aMutableString length])];
+						[aMutableString replaceOccurrencesOfString: @"\"" withString: @"\\\"" options: 0 range: NSMakeRange(0, [aMutableString length])];
+						[aMutableString replaceOccurrencesOfString: @"&" withString: @"\\&" options: 0 range: NSMakeRange(0, [aMutableString length])];
+						[aMutableString replaceOccurrencesOfString: @"'" withString: @"\\'" options: 0 range: NSMakeRange(0, [aMutableString length])];
+						
+						[delegate pasteString: aMutableString];
+						[delegate pasteString: @" "];
+					}
+					
+				}
+				bResult = YES;
+				break;				
+		}
+		
+	}
+	
+	return bResult;
 }
 
 //
