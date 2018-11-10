@@ -29,9 +29,7 @@
 
 - (NSImage*)image:(NSString*)identifier;
 {
-	NSString* path = [self iconFromSystemIconsBundleWithName:identifier];
-	
-	return [[NSImage alloc] initWithContentsOfFile:path];
+	return [[self coreTypesBundle] imageForResource:identifier];
 }
 
 - (void)dealloc;
