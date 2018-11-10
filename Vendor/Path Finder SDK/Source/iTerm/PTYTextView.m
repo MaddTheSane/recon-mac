@@ -45,13 +45,12 @@ static NSInteger cacheSize;
 // private methods
 //
 @interface PTYTextView ()
-- (NSRect)previousViewRect;
-- (void)setPreviousViewRect:(NSRect)thePreviousViewRect;
+@property NSRect previousViewRect;
 
 - (NSSize)previousWindowSize;
 - (void)setPreviousWindowSize:(NSSize)thePreviousWindowSize;
 
-- (unsigned int) _checkForSupportedDragTypes:(id <NSDraggingInfo>) sender;
+- (NSDragOperation) _checkForSupportedDragTypes:(id <NSDraggingInfo>) sender;
 - (void)_savePanelDidEnd: (NSSavePanel *) theSavePanel returnCode: (NSInteger) theReturnCode contextInfo: (void *) theContextInfo;
 
 - (void)_scrollToLine:(int)line;
@@ -111,14 +110,14 @@ static NSInteger cacheSize;
 
 - (id)initWithFrame: (NSRect) aRect
 {
-    self = [super initWithFrame: aRect];
+	if (self = [super initWithFrame: aRect]) {
     
     [self setMarkedTextAttributes:
         [NSDictionary dictionaryWithObjectsAndKeys:
             [NSColor yellowColor], NSBackgroundColorAttributeName,
             [NSColor blackColor], NSForegroundColorAttributeName,
             font, NSFontAttributeName,
-            [NSNumber numberWithInt:2],NSUnderlineStyleAttributeName,
+            @(NSUnderlineStyleThick),NSUnderlineStyleAttributeName,
             NULL]];
 	CURSOR=YES;
 	lastFindX = startX = -1;
@@ -129,7 +128,7 @@ static NSInteger cacheSize;
 	// register for drag and drop
 	[self registerForDraggedTypes: [NSArray arrayWithObjects:
         NSFilenamesPboardType,
-        NSStringPboardType,
+        NSPasteboardTypeString,
         nil]];
 	
 	// init the cache
@@ -142,7 +141,7 @@ static NSInteger cacheSize;
 	[self setCharWidth:12];
 	
     oldCursorX = oldCursorY = -1;
-	
+	}
     return (self);
 }
 
@@ -223,26 +222,8 @@ static NSInteger cacheSize;
 	[self setNeedsDisplay: YES];
 }
 
-
-- (BOOL) blinkingCursor
-{
-	return (blinkingCursor);
-}
-
-- (void)setBlinkingCursor: (BOOL) bFlag
-{
-	blinkingCursor = bFlag;
-}
-
-- (NSDictionary*) markedTextAttributes
-{
-    return markedTextAttributes;
-}
-
-- (void)setMarkedTextAttributes: (NSDictionary *) attr
-{
-    markedTextAttributes=attr;
-}
+@synthesize blinkingCursor;
+@synthesize markedTextAttributes;
 
 - (void)setFGColor:(NSColor*)color
 {
@@ -1799,8 +1780,8 @@ static NSInteger cacheSize;
     copyString=[self selectedText];
     
     if (copyString && [copyString length]>0) {
-        [pboard declareTypes: [NSArray arrayWithObject: NSStringPboardType] owner: self];
-        [pboard setString: copyString forType: NSStringPboardType];
+        [pboard declareTypes: [NSArray arrayWithObject: NSPasteboardTypeString] owner: self];
+        [pboard setString: copyString forType: NSPasteboardTypeString];
     }
 }
 
@@ -1825,7 +1806,7 @@ static NSInteger cacheSize;
         NSPasteboard *pboard = [NSPasteboard generalPasteboard];
         
         // Check if there is a string type on the pasteboard
-        return ([pboard stringForType:NSStringPboardType] != nil);
+        return ([pboard stringForType:NSPasteboardTypeString] != nil);
     }
     else if ([item action ] == @selector(cut:))
         return NO;
@@ -1992,7 +1973,7 @@ static NSInteger cacheSize;
         {
             case NSDragOperationCopy:
                 // Check for simple strings first
-                aString = [pb stringForType:NSStringPboardType];
+                aString = [pb stringForType:NSPasteboardTypeString];
                 if (aString != nil)
                 {
                     if ([delegate respondsToSelector:@selector(pasteString:)])
@@ -2936,17 +2917,17 @@ static NSInteger cacheSize;
 	
 }
 
-- (unsigned int) _checkForSupportedDragTypes:(id <NSDraggingInfo>) sender
+- (NSDragOperation) _checkForSupportedDragTypes:(id <NSDraggingInfo>) sender
 {
     NSString *sourceType;
-    BOOL iResult;
+    NSDragOperation iResult;
     
     iResult = NSDragOperationNone;
     
     // We support the FileName drag type for attching files
     sourceType = [[sender draggingPasteboard] availableTypeFromArray: [NSArray arrayWithObjects:
         NSFilenamesPboardType,
-        NSStringPboardType,
+        NSPasteboardTypeString,
         nil]];
     
     if (sourceType)
@@ -3181,7 +3162,7 @@ static NSInteger cacheSize;
 	anImage = [[NSImage alloc] initWithSize: imageSize];
     [anImage lockFocus];
 	if ([aString length] > 15)
-		tmpString = [NSString stringWithFormat: @"%@...", [aString substringWithRange: NSMakeRange(0, 12)]];
+		tmpString = [NSString stringWithFormat: @"%@…", [aString substringWithRange: NSMakeRange(0, 12)]];
 	else
 		tmpString = [aString substringWithRange: NSMakeRange(0, length)];
 	
@@ -3189,12 +3170,12 @@ static NSInteger cacheSize;
     [anImage unlockFocus];
 	
 	// get the pasteboard
-    pboard = [NSPasteboard pasteboardWithName:NSDragPboard];
+    pboard = [NSPasteboard pasteboardWithName:NSPasteboardNameDrag];
 	
     // Declare the types and put our tabViewItem on the pasteboard
-    pbtypes = [NSArray arrayWithObjects: NSStringPboardType, nil];
+    pbtypes = [NSArray arrayWithObjects: NSPasteboardTypeString, nil];
     [pboard declareTypes: pbtypes owner: self];
-    [pboard setString: aString forType: NSStringPboardType];
+    [pboard setString: aString forType: NSPasteboardTypeString];
 	
     // tell our app not switch windows (currently not working)
     [NSApp preventWindowOrdering];

@@ -24,7 +24,6 @@
 		205034470B76ED1400AFF542 /* ITSharedActionHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 205034450B76ED1400AFF542 /* ITSharedActionHandler.h */; };
 		205034480B76ED1400AFF542 /* ITSharedActionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 205034460B76ED1400AFF542 /* ITSharedActionHandler.m */; };
 		20616FD10B69D16300342BC2 /* MyTerminalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20616FCF0B69D16300342BC2 /* MyTerminalView.m */; };
-		20616FD20B69D16300342BC2 /* MyTerminalView.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 20616FD00B69D16300342BC2 /* MyTerminalView.h */; };
 		206C9AD90B673A34002128A0 /* ITTerminalWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = 206C9AD70B673A34002128A0 /* ITTerminalWindowController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		206C9ADA0B673A34002128A0 /* ITTerminalWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 206C9AD80B673A34002128A0 /* ITTerminalWindowController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		206C9B450B673FB3002128A0 /* ITMiscNibController.h in Headers */ = {isa = PBXBuildFile; fileRef = 206C9B430B673FB3002128A0 /* ITMiscNibController.h */; };
@@ -185,7 +184,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				8742069F0564170000CFC3F1 /* iTerm.framework in CopyFiles */,
-				20616FD20B69D16300342BC2 /* MyTerminalView.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,46 +371,6 @@
 			name = Classes;
 			sourceTree = "<group>";
 		};
-		0464AB15006CD2EC7F000001 /* Headers */ = {
-			isa = PBXGroup;
-			children = (
-				208448DD0BD4B351001446EA /* ITProcess.h */,
-				2005EF490B73E42500CBF08D /* ITPopUpButton.h */,
-				20616FD00B69D16300342BC2 /* MyTerminalView.h */,
-				206C9B430B673FB3002128A0 /* ITMiscNibController.h */,
-				2005EF540B73E5DB00CBF08D /* ITIconStore.h */,
-				20C6678C0B6701ED00533B48 /* charmaps.h */,
-				20C6678E0B6701F700533B48 /* FindPanelWindowController.h */,
-				206C9AD70B673A34002128A0 /* ITTerminalWindowController.h */,
-				20C667920B67020E00533B48 /* iTermController.h */,
-				20C6679A0B67025000533B48 /* iTermTerminalProfileMgr.h */,
-				20C6679E0B67027D00533B48 /* VT100Screen.h */,
-				205034450B76ED1400AFF542 /* ITSharedActionHandler.h */,
-				F6B0770E0ADDB7D400F4BB37 /* iTermBookmarkController.h */,
-				20C6679C0B67026F00533B48 /* Tree.h */,
-				20C667960B67023000533B48 /* iTermKeyBindingMgr.h */,
-				20C667980B67023F00533B48 /* iTermProfileWindowController.h */,
-				20C667940B67022100533B48 /* iTermDisplayProfileMgr.h */,
-				20E74F4804E9089700000106 /* ITAddressBookMgr.h */,
-				20B8891904E924CD00000106 /* ITConfigPanelController.h */,
-				F673323F0AED82E5003D786E /* iTermOutlineView.h */,
-				20B8892A04E9342100000106 /* ITViewLocalizer.h */,
-				20147B990B6702D8004D8B48 /* PTYScrollView.h */,
-				20147B9A0B6702D8004D8B48 /* PTYSession.h */,
-				20147B9B0B6702D8004D8B48 /* PTYTabView.h */,
-				20147B9C0B6702D8004D8B48 /* PTYTask.h */,
-				20147B9D0B6702D8004D8B48 /* PTYTextView.h */,
-				20147B9E0B6702D8004D8B48 /* PTYWindow.h */,
-				20147B9F0B6702D8004D8B48 /* VT100Terminal.h */,
-				20147BAF0B670351004D8B48 /* NSStringITerm.h */,
-				20147BB00B670351004D8B48 /* PreferencePanel.h */,
-				20147BB10B670351004D8B48 /* ITTerminalView.h */,
-				20147BB20B670351004D8B48 /* VT100Terminal.h */,
-				2076B15704E8817300000106 /* PTToolbarController.h */,
-			);
-			name = Headers;
-			sourceTree = "<group>";
-		};
 		0464AB22006CD2EC7F000001 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -464,10 +422,14 @@
 		201484B80B67132F004D8B48 /* Terminal View */ = {
 			isa = PBXGroup;
 			children = (
+				20147BB10B670351004D8B48 /* ITTerminalView.h */,
 				FBD0AD0A0337A5B701F955DB /* ITTerminalView.m */,
-				F5E533B403B2959201A8A066 /* PTYTabView.m */,
-				E8CF7561026DDA6303A80106 /* PTYTextView.m */,
+				20147B9A0B6702D8004D8B48 /* PTYSession.h */,
 				F52ED8DD037F0A7D01A8A066 /* PTYSession.m */,
+				20147B9B0B6702D8004D8B48 /* PTYTabView.h */,
+				F5E533B403B2959201A8A066 /* PTYTabView.m */,
+				20147B9D0B6702D8004D8B48 /* PTYTextView.h */,
+				E8CF7561026DDA6303A80106 /* PTYTextView.m */,
 			);
 			name = "Terminal View";
 			sourceTree = "<group>";
@@ -475,12 +437,18 @@
 		201484BB0B671349004D8B48 /* Terminal Window */ = {
 			isa = PBXGroup;
 			children = (
-				F56B230B03A1B36701A8A066 /* PTYWindow.m */,
-				206C9AD80B673A34002128A0 /* ITTerminalWindowController.m */,
-				2076B15804E8817300000106 /* PTToolbarController.m */,
-				2005EF4A0B73E42500CBF08D /* ITPopUpButton.m */,
+				2005EF540B73E5DB00CBF08D /* ITIconStore.h */,
 				2005EF550B73E5DB00CBF08D /* ITIconStore.m */,
+				2005EF490B73E42500CBF08D /* ITPopUpButton.h */,
+				2005EF4A0B73E42500CBF08D /* ITPopUpButton.m */,
+				205034450B76ED1400AFF542 /* ITSharedActionHandler.h */,
 				205034460B76ED1400AFF542 /* ITSharedActionHandler.m */,
+				206C9AD70B673A34002128A0 /* ITTerminalWindowController.h */,
+				206C9AD80B673A34002128A0 /* ITTerminalWindowController.m */,
+				2076B15704E8817300000106 /* PTToolbarController.h */,
+				2076B15804E8817300000106 /* PTToolbarController.m */,
+				20147B9E0B6702D8004D8B48 /* PTYWindow.h */,
+				F56B230B03A1B36701A8A066 /* PTYWindow.m */,
 			);
 			name = "Terminal Window";
 			sourceTree = "<group>";
@@ -504,25 +472,42 @@
 		206042C40B66FDEE00FD2068 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
-				E8A66F030272453F03A80106 /* iTermController.m */,
+				20DD50B70B6C2B4800BF94CB /* Panels */,
 				201484B80B67132F004D8B48 /* Terminal View */,
 				201484BB0B671349004D8B48 /* Terminal Window */,
-				20DD50B70B6C2B4800BF94CB /* Panels */,
-				F67332400AED82E5003D786E /* iTermOutlineView.m */,
-				206C9B440B673FB3002128A0 /* ITMiscNibController.m */,
-				DD46BAC405FD689F00027283 /* iTermDisplayProfileMgr.m */,
-				DDDB7ABD05D7736600E197C2 /* iTermKeyBindingMgr.m */,
-				F658C86C06054425000A13D5 /* iTermTerminalProfileMgr.m */,
+				20C6678C0B6701ED00533B48 /* charmaps.h */,
+				20E74F4804E9089700000106 /* ITAddressBookMgr.h */,
 				20E74F4904E9089700000106 /* ITAddressBookMgr.m */,
-				20B8892B04E9342100000106 /* ITViewLocalizer.m */,
-				E8E901A202743CA303A80106 /* NSStringITerm.m */,
+				20C667920B67020E00533B48 /* iTermController.h */,
+				E8A66F030272453F03A80106 /* iTermController.m */,
+				20C667940B67022100533B48 /* iTermDisplayProfileMgr.h */,
+				DD46BAC405FD689F00027283 /* iTermDisplayProfileMgr.m */,
+				20C667960B67023000533B48 /* iTermKeyBindingMgr.h */,
+				DDDB7ABD05D7736600E197C2 /* iTermKeyBindingMgr.m */,
+				F673323F0AED82E5003D786E /* iTermOutlineView.h */,
+				F67332400AED82E5003D786E /* iTermOutlineView.m */,
+				20C6679A0B67025000533B48 /* iTermTerminalProfileMgr.h */,
+				F658C86C06054425000A13D5 /* iTermTerminalProfileMgr.m */,
+				206C9B430B673FB3002128A0 /* ITMiscNibController.h */,
+				206C9B440B673FB3002128A0 /* ITMiscNibController.m */,
+				208448DD0BD4B351001446EA /* ITProcess.h */,
 				208448DE0BD4B352001446EA /* ITProcess.m */,
+				20B8892A04E9342100000106 /* ITViewLocalizer.h */,
+				20B8892B04E9342100000106 /* ITViewLocalizer.m */,
+				20616FD00B69D16300342BC2 /* MyTerminalView.h */,
+				20147BAF0B670351004D8B48 /* NSStringITerm.h */,
+				E8E901A202743CA303A80106 /* NSStringITerm.m */,
+				20147B990B6702D8004D8B48 /* PTYScrollView.h */,
 				E8CF755F026DDA6303A80106 /* PTYScrollView.m */,
+				20147B9C0B6702D8004D8B48 /* PTYTask.h */,
 				E8CF7560026DDA6303A80106 /* PTYTask.m */,
+				20C6679C0B67026F00533B48 /* Tree.h */,
 				DD8EC82F06095CDA0085A27D /* Tree.m */,
+				20C6679E0B67027D00533B48 /* VT100Screen.h */,
 				E8CF7562026DDA6303A80106 /* VT100Screen.m */,
+				20147BB20B670351004D8B48 /* VT100Terminal.h */,
 				E8CF7563026DDA6303A80106 /* VT100Terminal.m */,
-				0464AB15006CD2EC7F000001 /* Headers */,
+				20147B9F0B6702D8004D8B48 /* VT100Terminal.h */,
 			);
 			name = Framework;
 			sourceTree = "<group>";
@@ -546,11 +531,16 @@
 		20DD50B70B6C2B4800BF94CB /* Panels */ = {
 			isa = PBXGroup;
 			children = (
-				F6B0770F0ADDB7D400F4BB37 /* iTermBookmarkController.m */,
-				FB019DE103670C6501F955DB /* PreferencePanel.m */,
-				20B8891A04E924CD00000106 /* ITConfigPanelController.m */,
+				20C6678E0B6701F700533B48 /* FindPanelWindowController.h */,
 				DD4BAB7C0470C44C00A8A065 /* FindPanelWindowController.m */,
+				20B8891904E924CD00000106 /* ITConfigPanelController.h */,
+				20B8891A04E924CD00000106 /* ITConfigPanelController.m */,
+				F6B0770E0ADDB7D400F4BB37 /* iTermBookmarkController.h */,
+				F6B0770F0ADDB7D400F4BB37 /* iTermBookmarkController.m */,
+				20C667980B67023F00533B48 /* iTermProfileWindowController.h */,
 				8787B0D805FD160F00901149 /* iTermProfileWindowController.m */,
+				20147BB00B670351004D8B48 /* PreferencePanel.h */,
+				FB019DE103670C6501F955DB /* PreferencePanel.m */,
 			);
 			name = Panels;
 			sourceTree = "<group>";

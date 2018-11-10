@@ -60,7 +60,7 @@ enum { SELECT_CHAR, SELECT_WORD, SELECT_LINE };
     BOOL IM_INPUT_INSERT;
     NSRange IM_INPUT_SELRANGE;
     NSRange IM_INPUT_MARKEDRANGE;
-    NSDictionary *markedTextAttributes;
+    NSDictionary<NSAttributedStringKey,id> *markedTextAttributes;
     NSAttributedString *markedText;
 	
     BOOL CURSOR;
@@ -168,8 +168,7 @@ enum { SELECT_CHAR, SELECT_WORD, SELECT_LINE };
 - (void)setAntiAlias: (BOOL) antiAliasFlag;
 - (BOOL) disableBold;
 - (void)setDisableBold: (BOOL) boldFlag;
-- (BOOL) blinkingCursor;
-- (void)setBlinkingCursor: (BOOL) bFlag;
+@property BOOL blinkingCursor;
 
 //color stuff
 - (NSColor *) defaultFGColor;
@@ -189,8 +188,7 @@ enum { SELECT_CHAR, SELECT_WORD, SELECT_LINE };
 - (void)setSelectedTextColor: (NSColor *) aColor;
 - (void)setCursorTextColor:(NSColor*) color;
 
-- (NSDictionary*) markedTextAttributes;
-- (void)setMarkedTextAttributes: (NSDictionary *) attr;
+@property (copy) NSDictionary<NSAttributedStringKey,id> *markedTextAttributes;
 
 - (VT100Screen *)screen;
 - (void)setScreen:(VT100Screen *)theScreen;
