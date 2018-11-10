@@ -236,15 +236,15 @@
 {
 	NSRect cellFrame = [(id <PSMTabStyle>)[(PSMTabBarControl*)self.controlView style] dragRectForTabCell:self orientation:[(PSMTabBarControl*)self.controlView orientation]];
 	//NSRect cellFrame = [self frame];
+	NSSize scaledSize = [self.controlView convertSizeToBacking:cellFrame.size];
 	
-    [self.controlView lockFocus];
-    NSBitmapImageRep *rep = [[NSBitmapImageRep alloc] initWithFocusedViewRect:cellFrame];
-    [self.controlView unlockFocus];
+	NSBitmapImageRep *rep = [[NSBitmapImageRep alloc] initWithBitmapDataPlanes:NULL pixelsWide:ceil(scaledSize.width) pixelsHigh:ceil(scaledSize.height) bitsPerSample:8 samplesPerPixel:4 hasAlpha:YES isPlanar:NO colorSpaceName:NSDeviceRGBColorSpace bytesPerRow:0 bitsPerPixel:32];
+	[self.controlView cacheDisplayInRect:cellFrame toBitmapImageRep:rep];
     NSImage *image = [[NSImage alloc] initWithSize:[rep size]];
     [image addRepresentation:rep];
     NSImage *returnImage = [[NSImage alloc] initWithSize:[rep size]];
     [returnImage lockFocus];
-    [image drawAtPoint:NSMakePoint(0.0, 0.0) fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
+    [image drawAtPoint:NSZeroPoint fromRect:NSZeroRect operation:NSCompositeSourceOver fraction:1.0];
     [returnImage unlockFocus];
     if (![[self indicator] isHidden]){
         NSImage *pi = [[PSMTabBarControl bundle] imageForResource:@"pi"];

@@ -870,11 +870,11 @@
         // grabs whole tabview image
         viewImage = [[NSImage alloc] initWithSize:contentFrame.size];
         NSImage *tabViewImage = [[NSImage alloc] init];
+		NSSize scaledSize = [textview convertSizeToBacking:viewRect.size];
 
-        [textview lockFocus];
-        NSBitmapImageRep *tabviewRep = [[NSBitmapImageRep alloc] initWithFocusedViewRect:viewRect];
+        NSBitmapImageRep *tabviewRep = [[NSBitmapImageRep alloc] initWithBitmapDataPlanes:NULL pixelsWide:ceil(scaledSize.width) pixelsHigh:ceil(scaledSize.height) bitsPerSample:8 samplesPerPixel:4 hasAlpha:YES isPlanar:NO colorSpaceName:NSDeviceRGBColorSpace bytesPerRow:0 bitsPerPixel:32];
+		[textview cacheDisplayInRect:viewRect toBitmapImageRep:tabviewRep];
         [tabViewImage addRepresentation:tabviewRep];
-        [textview unlockFocus];
 
         [viewImage lockFocus];
         //viewRect.origin.x += 10;
