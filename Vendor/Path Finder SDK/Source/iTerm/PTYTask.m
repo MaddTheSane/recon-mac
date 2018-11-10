@@ -71,13 +71,13 @@ static void setup_tty_param(struct termios *term,
     win->ws_ypixel = 0;
 }
 
-static int writep(int fds, char *buf, size_t len)
+static ssize_t writep(int fds, char *buf, size_t len)
 {
-    int wrtlen = len;
-    int result = 0;
-    int sts = 0;
+    ssize_t wrtlen = len;
+    ssize_t result = 0;
+    ssize_t sts = 0;
     char *tmpPtr = buf;
-    int chunk;
+    ssize_t chunk;
     struct timeval tv;
     fd_set wfds,efds;
 	
@@ -122,7 +122,6 @@ static int writep(int fds, char *buf, size_t len)
 {
     BOOL exitf = NO;
     ssize_t sts;
-	int iterationCount = 0;
 	char readbuf[4096];
 	fd_set rfds,efds;
 	
@@ -296,10 +295,7 @@ static int writep(int fds, char *buf, size_t len)
 						   withObject:self];
 }
 
-- (BOOL) hasOutput
-{
-    return (hasOutput);
-}
+@synthesize hasOutput;
 
 - (void)setHasOutput: (BOOL) flag
 {
@@ -308,25 +304,8 @@ static int writep(int fds, char *buf, size_t len)
 		[self setFirstOutput: flag];
 }
 
-- (BOOL) firstOutput
-{
-    return (firstOutput);
-}
-
-- (void)setFirstOutput: (BOOL) flag
-{
-    firstOutput = flag;
-}
-
-- (void)setDelegate:(id)object
-{
-    DELEGATEOBJECT = object;
-}
-
-- (id)delegate
-{
-    return DELEGATEOBJECT;
-}
+@synthesize firstOutput;
+@synthesize delegate=DELEGATEOBJECT;
 
 - (void)doIdleTasks
 {
@@ -335,7 +314,7 @@ static int writep(int fds, char *buf, size_t len)
     }
 }
 
-- (void)readTask:(char *)buf length:(int)length
+- (void)readTask:(char *)buf length:(NSInteger)length
 {
 	if ([self logging])
 	{
@@ -387,10 +366,7 @@ static int writep(int fds, char *buf, size_t len)
 	}
 }
 
-- (pid_t)pid
-{
-    return PID;
-}
+@synthesize pid=PID;
 
 - (int)wait
 {
@@ -409,20 +385,9 @@ static int writep(int fds, char *buf, size_t len)
     [self wait];
 }
 
-- (int)status
-{
-    return STATUS;
-}
-
-- (NSString *)tty
-{
-    return TTY;
-}
-
-- (NSString *)path
-{
-    return PATH;
-}
+@synthesize status=STATUS;
+@synthesize tty=TTY;
+@synthesize path=PATH;
 
 - (BOOL)loggingStartWithPath:(NSString *)path
 {

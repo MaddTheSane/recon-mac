@@ -27,7 +27,7 @@
     pid_t PID;
     int FILDES;
     int STATUS;
-    id DELEGATEOBJECT;
+    __weak id DELEGATEOBJECT;
     NSString *TTY;
     NSString *PATH;
 
@@ -48,28 +48,25 @@
 		 width:(int)width
 		height:(int)height;
 
-- (void)setDelegate:(id)object;
-- (id)delegate;
+@property (weak) id delegate;
 
 - (void)doIdleTasks;
-- (void)readTask:(char *)buf length:(int)length;
+- (void)readTask:(char *)buf length:(NSInteger)length;
 - (void)writeTask:(NSData *)data;
 - (void)brokenPipe;
 - (void)sendSignal:(int)signo;
 - (void)setWidth:(int)width height:(int)height;
-- (pid_t)pid;
+@property (readonly) pid_t pid;
 - (int)wait;
 - (void)stop;
-- (int)status;
-- (NSString *)tty;
-- (NSString *)path;
+@property (readonly) int status;
+@property (readonly, copy) NSString *tty;
+@property (readonly, copy) NSString *path;
 - (BOOL)loggingStartWithPath:(NSString *)path;
 - (void)loggingStop;
-- (BOOL)logging;
-- (BOOL) hasOutput;
-- (void)setHasOutput: (BOOL) flag;
-- (BOOL) firstOutput;
-- (void)setFirstOutput: (BOOL) flag;
+@property (readonly) BOOL logging;
+@property (nonatomic) BOOL hasOutput;
+@property BOOL firstOutput;
 
 - (NSString *)description;
 

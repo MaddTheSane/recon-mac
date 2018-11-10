@@ -18,3 +18,5 @@ GCC_WARN_UNINITIALIZED_AUTOS = YES
 
 // bundles must have globals
 STRIP_STYLE = non-global
+
+DEBUG_INFORMATION_FORMAT = dwarf-with-dsym

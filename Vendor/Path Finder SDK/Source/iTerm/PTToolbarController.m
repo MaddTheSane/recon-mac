@@ -102,18 +102,13 @@ NSString *CommandToolbarItem = @"Command";
 {
     NSToolbarItem *toolbarItem = [[NSToolbarItem alloc] initWithItemIdentifier: itemIdent];
     NSBundle *thisBundle = [NSBundle bundleForClass: [self class]];
-    NSString *imagePath;
-    NSImage *anImage;
-    
+	
     if ([itemIdent isEqual: CloseToolbarItem]) 
     {
         [toolbarItem setLabel: NTLocalizedStringFromTableInBundle(@"Close",@"iTerm", thisBundle, @"Toolbar Item: Close Session")];
         [toolbarItem setPaletteLabel: NTLocalizedStringFromTableInBundle(@"Close",@"iTerm", thisBundle, @"Toolbar Item: Close Session")];
         [toolbarItem setToolTip: NTLocalizedStringFromTableInBundle(@"Close the current session",@"iTerm", thisBundle, @"Toolbar Item Tip: Close")];
-        imagePath = [thisBundle pathForResource:@"close"
-                                         ofType:@"png"];
-        anImage = [[NSImage alloc] initByReferencingFile: imagePath];
-        [toolbarItem setImage: anImage];
+        [toolbarItem setImage: [thisBundle imageForResource:@"close"]];
         [toolbarItem setTarget:nil];
         [toolbarItem setAction: @selector(closeTabAction:)];
     }
@@ -168,10 +163,7 @@ NSString *CommandToolbarItem = @"Command";
         [toolbarItem setLabel: NTLocalizedStringFromTableInBundle(@"Bookmarks",@"iTerm", thisBundle, @"Toolbar Item: Bookmarks") ];
         [toolbarItem setPaletteLabel: NTLocalizedStringFromTableInBundle(@"Bookmarks",@"iTerm", thisBundle, @"Toolbar Item: Bookmarks") ];
         [toolbarItem setToolTip: NTLocalizedStringFromTableInBundle(@"Bookmarks",@"iTerm", thisBundle, @"Toolbar Item Tip: Bookmarks")];
-        imagePath = [thisBundle pathForResource:@"addressbook"
-                                         ofType:@"png"];
-        anImage = [[NSImage alloc] initByReferencingFile: imagePath];
-        [toolbarItem setImage: anImage];
+        [toolbarItem setImage: [thisBundle imageForResource:@"addressbook"]];
         [toolbarItem setTarget: nil];
         [toolbarItem setAction: @selector(toggleBookmarksView:)];
     } 	

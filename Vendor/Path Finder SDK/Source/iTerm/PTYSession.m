@@ -114,11 +114,9 @@ static NSColor *deadStateColor;
 	if (!shared)
 	{
 		NSBundle *thisBundle;
-		NSString *imagePath;
 		
 		thisBundle = [NSBundle bundleForClass:[self class]];	
-		imagePath = [thisBundle pathForResource:@"important" ofType:@"png"];
-		shared = [[NSImage alloc] initByReferencingFile: imagePath];	
+		shared = [thisBundle imageForResource:@"important"];
 	}
 	
 	return shared;
@@ -252,7 +250,7 @@ static NSColor *deadStateColor;
     }
 }
 
-- (void)readTask:(char *)buf length:(int)length
+- (void)readTask:(char *)buf length:(NSInteger)length
 {
 	if (buf == NULL || EXIT)
         return;
