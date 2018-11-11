@@ -11,7 +11,7 @@
 @class iTermController;
 @class TreeNode;
 
-@interface iTermBookmarkController : NSWindowController <NSOutlineViewDataSource, NSWindowDelegate> {
+@interface iTermBookmarkController : NSWindowController <NSOutlineViewDataSource, NSOutlineViewDelegate, NSWindowDelegate> {
     NSUserDefaults *_prefs;
 
 	// Bookmark stuff

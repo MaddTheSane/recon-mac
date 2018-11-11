@@ -77,16 +77,16 @@ typedef NS_ENUM(NSInteger, ITermCursorType) { CURSOR_UNDERLINE, CURSOR_VERTICAL,
 
 @property BOOL copySelection;
 @property BOOL pasteFromClipboard;
-- (BOOL) hideTab;
+@property (readonly) BOOL hideTab;
 @property NSTabViewType tabViewType;
 @property (readonly) NSInteger windowStyle;
-- (BOOL) promptOnClose;
-- (BOOL) focusFollowsMouse;
-- (BOOL) enableBonjour;
-- (BOOL) cmdSelection;
-- (BOOL) maxVertically;
-- (BOOL) useCompactLabel;
-- (BOOL) openBookmark;
+@property (readonly) BOOL promptOnClose;
+@property (readonly) BOOL focusFollowsMouse;
+@property (readonly) BOOL enableBonjour;
+@property (readonly) BOOL cmdSelection;
+@property (readonly) BOOL maxVertically;
+@property (readonly) BOOL useCompactLabel;
+@property (readonly) BOOL openBookmark;
 - (int)  refreshRate;
 - (NSString *) wordChars;
 @property (readonly) ITermCursorType cursorType;

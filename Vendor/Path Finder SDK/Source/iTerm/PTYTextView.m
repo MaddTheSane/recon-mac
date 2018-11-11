@@ -2017,6 +2017,9 @@ static NSInteger cacheSize;
 				}
 				bResult = YES;
 				break;				
+
+				default:
+				break;
 		}
 		
 	}

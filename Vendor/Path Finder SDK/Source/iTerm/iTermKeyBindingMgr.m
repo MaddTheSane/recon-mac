@@ -694,9 +694,6 @@ static iTermKeyBindingMgr *singleInstance = nil;
 	return (retCode);
 }
 
-@end
-
-@implementation iTermKeyBindingMgr (Private)
 - (int) _actionForKeyCode: (unichar)keyCode modifiers: (unsigned int) keyModifiers highPriority: (BOOL *) highPriority text: (NSString **) text profile: (NSString *)profile
 {
 	NSDictionary *keyMappings;

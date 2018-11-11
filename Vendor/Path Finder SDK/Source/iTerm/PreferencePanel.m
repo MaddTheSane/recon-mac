@@ -26,6 +26,9 @@ static float versionNumber;
 static NSString *NoHandler = @"<No Handler>";
 
 @implementation PreferencePanel
+{
+	NSArray *nibObjects;
+}
 
 + (PreferencePanel*)sharedInstance;
 {
@@ -169,9 +172,12 @@ static NSString *NoHandler = @"<No Handler>";
 {
 	
 	// load nib if we haven't already
-	if ([self window] == nil)
-		[self initWithWindowNibName: @"PreferencePanel"];
-			    	
+	if ([self window] == nil) {
+		NSArray *tlo;
+		[[NSBundle bundleForClass:[PreferencePanel class]] loadNibNamed:@"PreferencePanel" owner:self topLevelObjects:&tlo];
+		nibObjects = tlo;
+	}
+	
 	[[self window] setDelegate: self]; // also forces window to load
 	[wordChars setDelegate: self];
 	
@@ -250,49 +256,16 @@ static NSString *NoHandler = @"<No Handler>";
 
 @synthesize copySelection=defaultCopySelection;
 @synthesize pasteFromClipboard=defaultPasteFromClipboard;
-
-- (BOOL) hideTab
-{
-    return (defaultHideTab);
-}
-
+@synthesize hideTab=defaultHideTab;
 @synthesize tabViewType=defaultTabViewType;
 @synthesize windowStyle=defaultWindowStyle;
-
-- (BOOL)promptOnClose
-{
-    return (defaultPromptOnClose);
-}
-
-- (BOOL) focusFollowsMouse
-{
-    return (defaultFocusFollowsMouse);
-}
-
-- (BOOL) enableBonjour
-{
-	return (defaultEnableBonjour);
-}
-
-- (BOOL) cmdSelection
-{
-	return (defaultCmdSelection);
-}
-
-- (BOOL) maxVertically
-{
-	return (defaultMaxVertically);
-}
-
-- (BOOL) useCompactLabel
-{
-	return (defaultUseCompactLabel);
-}
-
-- (BOOL) openBookmark
-{
-	return (defaultOpenBookmark);
-}
+@synthesize promptOnClose=defaultPromptOnClose;
+@synthesize focusFollowsMouse=defaultFocusFollowsMouse;
+@synthesize enableBonjour=defaultEnableBonjour;
+@synthesize cmdSelection=defaultCmdSelection;
+@synthesize maxVertically=defaultMaxVertically;
+@synthesize useCompactLabel=defaultUseCompactLabel;
+@synthesize openBookmark=defaultOpenBookmark;
 
 - (int) refreshRate
 {

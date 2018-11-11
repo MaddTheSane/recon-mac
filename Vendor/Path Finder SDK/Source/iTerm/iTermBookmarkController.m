@@ -22,6 +22,9 @@ static BOOL editingBookmark = NO;
 #define DEBUG_OBJALLOC 0
 
 @implementation iTermBookmarkController
+{
+	NSArray *nibObjects;
+}
 
 + (iTermBookmarkController*)sharedInstance
 {
@@ -76,8 +79,11 @@ static BOOL editingBookmark = NO;
 - (void)showWindow
 {
 	// load nib if we haven't already
-	if ([self window] == nil)
-        [self initWithWindowNibName: @"Bookmarks"];
+	if ([self window] == nil) {
+		NSArray *tlo;
+		[[NSBundle bundleForClass:[iTermBookmarkController class]] loadNibNamed:@"Bookmarks" owner:self topLevelObjects:&tlo];
+		nibObjects = tlo;
+	}
 
     [bookmarksView setDoubleAction: @selector(editBookmark:)];	
     
