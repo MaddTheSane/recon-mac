@@ -858,7 +858,7 @@ static BOOL addingKBEntry;
 - (id)outlineView:(NSOutlineView *)ov child:(NSInteger)index ofItem:(id)item
 {    
     if (item) {
-        id value;
+        id value = @"";
         NSEnumerator *enumerator;
 
         switch ([item intValue]) {
@@ -875,7 +875,7 @@ static BOOL addingKBEntry;
         while ((value = [enumerator nextObject]) && index>0) 
             index--;
         
-        return value;
+		return value ?: @"";
     }
     else
         return [profileCategories objectAtIndex:index];

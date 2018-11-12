@@ -654,9 +654,7 @@
                         <real value="250"/>
                     </holdingPriorities>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="number" keyPath="colorIsEnabled">
-                            <bool key="value" value="NO"/>
-                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="colorIsEnabled" value="NO"/>
                         <userDefinedRuntimeAttribute type="number" keyPath="collapsiblePopupSelection">
                             <integer key="value" value="0"/>
                         </userDefinedRuntimeAttribute>

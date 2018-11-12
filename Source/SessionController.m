@@ -60,8 +60,7 @@
 
 - (id)init
 {
-   if (![super init])
-      return nil;
+   if (self = [super init]) {
    
    // Generate a unique identifier for this controller
    self.sessionUUID = [SessionController stringWithUUID];
@@ -71,6 +70,7 @@
    self.deleteAfterAbort = FALSE;   
    
    self.xmlController = [[XMLController alloc] init];
+   }
    return self;
 }
 

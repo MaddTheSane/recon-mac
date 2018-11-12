@@ -68,12 +68,9 @@
 
 - (id)init 
 {
-   if (self = [super init])
+   if (self = [super initWithNibName:@"Basic"
+                              bundle:nil])
    {
-      if (![super initWithNibName:@"Basic"
-                           bundle:nil]) {
-         return nil;
-      }
       [self setTitle:@"Basic"];      
       
       self.connections = [[NSMutableArray alloc] init];             

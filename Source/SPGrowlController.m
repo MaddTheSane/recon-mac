@@ -36,7 +36,7 @@ static SPGrowlController *sharedGrowlController = nil;
 {
 
      if (sharedGrowlController == nil) {
-         [[self alloc] init];
+         sharedGrowlController = [[self alloc] init];
      }
 
     

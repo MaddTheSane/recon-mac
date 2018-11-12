@@ -38,7 +38,7 @@ static SessionManager *sharedSessionManager = nil;
 - (id)init
 {
    if ((self = [super init])) {   
-      self.sessionControllerQueue = [[NSMutableDictionary alloc] init];       
+      self.sessionControllerQueue = [NSMutableDictionary dictionary];       
       self.processingQueue = FALSE;
    }
    
@@ -50,6 +50,7 @@ static SessionManager *sharedSessionManager = nil;
    [[NSNotificationCenter defaultCenter] removeObserver:self];   
    
    [sessionControllerQueue release];
+   [sessionsArrayController release];
    [super dealloc];
 }
 
