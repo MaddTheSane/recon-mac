@@ -37,7 +37,6 @@
 + (iTermBookmarkController*)sharedInstance;
 
 - (id)initWithWindowNibName: (NSString *) windowNibName;
-- (void)dealloc;
 
 - (void)showWindow;
 
@@ -51,6 +50,7 @@
 - (IBAction)editBookmark:(id)sender;
 - (IBAction)setDefaultSession:(id)sender;
 - (IBAction)launchSession:(id)sender;
+- (void)outlineViewSelectionDidChange: (NSNotification *) aNotification;
 @end
 
 @interface iTermBookmarkController ()

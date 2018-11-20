@@ -66,7 +66,7 @@
 - (NSString*)stringByEncryptingString;
 
 - (BOOL)FSRef:(FSRef*)fsRef createFileIfNecessary:(BOOL)createFile API_DEPRECATED("Not supported", macos(10.0,10.9));
-- (BOOL)FSSpec:(FSSpec*)fsSpec createFileIfNecessary:(BOOL)createFile API_DEPRECATED("Not supported", macos(10.0,10.9));
+- (BOOL)FSSpec:(FSSpec*)fsSpec createFileIfNecessary:(BOOL)createFile API_DEPRECATED("Not supported", macos(10.0,10.4));
 
 - (NSString*)URLEncodedString;
 

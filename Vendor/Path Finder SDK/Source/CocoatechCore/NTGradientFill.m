@@ -233,7 +233,7 @@ static void alphaGradient(void *info, const CGFloat *in, CGFloat *out);
 static void standardGradient(void *info, const CGFloat *in, CGFloat *out)
 {    
     NTGradientFill* gradientObj = (__bridge NTGradientFill*)info;
-    int numComponents = gradientObj->_numComponents;
+    NSInteger numComponents = gradientObj->_numComponents;
     const CGFloat *c = gradientObj->_colorArray;
     CGFloat amountChange = gradientObj->_amountChange;
     
@@ -271,7 +271,7 @@ static void standardGradient(void *info, const CGFloat *in, CGFloat *out)
 static void headerGradient(void *info, const CGFloat *in, CGFloat *out)
 {    
     NTGradientFill* gradientObj = (__bridge NTGradientFill*)info;
-    int numComponents = gradientObj->_numComponents;
+    NSInteger numComponents = gradientObj->_numComponents;
     const CGFloat *c = gradientObj->_colorArray;
     CGFloat multiplier, amountChange = gradientObj->_amountChange;
     
@@ -303,7 +303,7 @@ static void headerGradient(void *info, const CGFloat *in, CGFloat *out)
 static void alphaHeaderGradient(void *info, const CGFloat *in, CGFloat *out)
 {    
     NTGradientFill* gradientObj = (__bridge NTGradientFill*)info;
-    int numComponents = gradientObj->_numComponents;
+    NSInteger numComponents = gradientObj->_numComponents;
     const CGFloat *c = gradientObj->_colorArray;
     CGFloat multiplier, amountChange = gradientObj->_amountChange;
     
@@ -332,7 +332,7 @@ static void alphaHeaderGradient(void *info, const CGFloat *in, CGFloat *out)
 static void alphaGradient(void *info, const CGFloat *in, CGFloat *out)
 {    
     NTGradientFill* gradientObj = (__bridge NTGradientFill*)info;
-    int numComponents = gradientObj->_numComponents;
+    NSInteger numComponents = gradientObj->_numComponents;
     const CGFloat *c = gradientObj->_colorArray;
     CGFloat multiplier, amountChange = gradientObj->_amountChange;
     

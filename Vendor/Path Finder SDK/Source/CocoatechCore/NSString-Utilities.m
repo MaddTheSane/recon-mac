@@ -186,7 +186,7 @@ typedef NSString*(* string_IMP)(id,SEL,...);
     NSUInteger start, end, contentsEnd;
 
     // getLineStart can throw exceptions
-    NS_DURING
+    @try {
 
         // must parse out the lines, more than one line will be returned
         while (NSMaxRange(range) <= length)
@@ -214,11 +214,11 @@ typedef NSString*(* string_IMP)(id,SEL,...);
             }
         }
 
-        NS_HANDLER
-            ;
-        NS_ENDHANDLER
-
-        return result;
+    } @catch (NSException *localException) {
+        ;
+    }
+    
+    return result;
 }
 
 - (NSString*)getFirstLine;
@@ -609,7 +609,7 @@ typedef NSString*(* string_IMP)(id,SEL,...);
 - (NSString*)stringByDeletingPercentEscapes;
 {
     // returns nil if fails, we don't want this behavior
-    NSString* result = [self stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString* result = [self stringByRemovingPercentEncoding];
     
     if (result)
         return result;
@@ -631,26 +631,26 @@ typedef NSString*(* string_IMP)(id,SEL,...);
 
 - (NSString*)stringInStringsFileFormat;
 {
-	NSString *result = self;
+	NSMutableString *result = [self mutableCopy];
 	
-	result = [result stringByReplacing:@"\r" with:@"\\n"];
-	result = [result stringByReplacing:@"\n" with:@"\\n"];
-	result = [result stringByReplacing:@"\t" with:@"\\t"];
-	result = [result stringByReplacing:@"\"" with:@"\\\""];
+	[result replace:@"\r" with:@"\\n"];
+	[result replace:@"\n" with:@"\\n"];
+	[result replace:@"\t" with:@"\\t"];
+	[result replace:@"\"" with:@"\\\""];
 
-	return result;
+	return [result copy];
 }
 
 - (NSString*)stringFromStringsFileFormat;
 {
-	NSString *result = self;
-	
-	result = [result stringByReplacing:@"\\n"  with:@"\n"];
-	result = [result stringByReplacing:@"\\r"  with:@"\n"];
-	result = [result stringByReplacing:@"\\t"  with:@"\t"];
-	result = [result stringByReplacing:@"\\\""  with:@"\""];
+    NSMutableString *result = [self mutableCopy];
 
-	return result;
+	[result replace:@"\\n"  with:@"\n"];
+	[result replace:@"\\r"  with:@"\n"];
+	[result replace:@"\\t"  with:@"\t"];
+	[result replace:@"\\\"" with:@"\""];
+
+	return [result copy];
 }
 
 - (NSString*)stringPairInStringsFileFormat:(NSString*)right addNewLine:(BOOL)addNewLine;
