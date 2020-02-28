@@ -158,6 +158,7 @@
 		2A37F4C4FDCFA73011CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		2A37F4C5FDCFA73011CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		32DBCF750370BD2300C91783 /* recon_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.h; path = recon_Prefix.pch; sourceTree = "<group>"; };
+		5505E0D52409CA55002339C7 /* NSTask+OneLineTasksWithOutput.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSTask+OneLineTasksWithOutput.h"; sourceTree = "<group>"; };
 		55597E131C811E700080944E /* CocoatechCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CocoatechCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		55597E141C811E700080944E /* CocoaTechStrings.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CocoaTechStrings.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		55B1E5681C824F2B003EA816 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -519,6 +520,7 @@
 				8C79F30A10033EF200A4648B /* SPGrowlController.m */,
 				8C7E9C731014D34E00762319 /* NSManagedObjectContext-helper.h */,
 				8CC73CFD102290F100296388 /* NSManagedObjectContext-helper.m */,
+				5505E0D52409CA55002339C7 /* NSTask+OneLineTasksWithOutput.h */,
 				8C55E41E100524A5002F5013 /* NSTask+OneLineTasksWithOutput.m */,
 			);
 			name = "Shared Objects";

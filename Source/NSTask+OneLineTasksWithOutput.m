@@ -14,6 +14,8 @@
 
 #import "NSTask+OneLineTasksWithOutput.h"
 
+NSErrorDomain const RMOneLineTasksErrorDomain = @"com.apple.NSTask.OneLineTasksWithOutput";
+
 @interface TaskOutputReader :NSObject
 {
    NSMutableData *standardOutput;
@@ -229,8 +231,8 @@
    {
       *error =
          [NSError
-            errorWithDomain:@"com.apple.NSTask.OneLineTasksWithOutput"
-            code:kNSTaskLaunchFailed
+            errorWithDomain:RMOneLineTasksErrorDomain
+            code:RMOneLineTaskErrorLaunchFailed
             userInfo:
                [NSDictionary
                   dictionaryWithObject:[exception reason]
@@ -248,8 +250,8 @@
       {
          *error =
             [NSError
-               errorWithDomain:@"com.apple.NSTask.OneLineTasksWithOutput"
-               code:kNSTaskProcessOutputError
+               errorWithDomain:RMOneLineTasksErrorDomain
+               code:RMOneLineTaskErrorProcessOutput
                userInfo:
                   [NSDictionary
                      dictionaryWithObject:errorString
@@ -309,7 +311,7 @@
    OSErr processError =
       AuthorizationExecuteWithPrivileges(
          [authorization authorizationRef],
-         [processPath UTF8String],
+         [processPath fileSystemRepresentation],
          kAuthorizationFlagDefaults,
          (char *const *)argv,
          &processOutput);
@@ -324,7 +326,7 @@
       {
          *error =
             [NSError
-               errorWithDomain:@"com.apple.NSTask.OneLineTasksWithOutput"
+               errorWithDomain:NSOSStatusErrorDomain
                code:processError
                userInfo:nil];
       }
