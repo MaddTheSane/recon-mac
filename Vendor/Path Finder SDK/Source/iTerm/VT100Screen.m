@@ -92,9 +92,8 @@ static __inline__ screen_char_t *incrementLinePointer(screen_char_t *buf_start, 
 }
 
 
-@interface VT100Screen (Private)
-- (NSLock *)screenLock;
-- (void)setScreenLock:(NSLock *)aScreenLock;
+@interface VT100Screen ()
+@property (nonatomic, strong, null_resettable) NSLock *screenLock;
 
 - (screen_char_t *) _getLineAtIndex: (int) anIndex fromLine: (screen_char_t *) aLine;
 - (screen_char_t *) _getDefaultLineWithWidth: (int) width;
@@ -612,10 +611,10 @@ static __inline__ screen_char_t *incrementLinePointer(screen_char_t *buf_start, 
 			case VT100_ASCIISTRING:
 				// check if we are in print mode
 				if ([self printToAnsi] == YES)
-					[self printStringToAnsi: (__bridge NSString *)(token.u.string)];
+					[self printStringToAnsi: token.u.string];
 				// else display string on screen
 				else
-					[self setString:(__bridge NSString *)(token.u.string) ascii: token.type == VT100_ASCIISTRING];
+					[self setString:token.u.string ascii: token.type == VT100_ASCIISTRING];
 				break;
 			case VT100_UNKNOWNCHAR: break;
 			case VT100_NOTSUPPORT: break;
@@ -793,15 +792,15 @@ static __inline__ screen_char_t *incrementLinePointer(screen_char_t *buf_start, 
 				
 				// XTERM extensions
 			case XTERMCC_WIN_TITLE:
-				newWinTitle = [(__bridge NSString*)token.u.string copy];
+				newWinTitle = [token.u.string copy];
 				break;
 			case XTERMCC_WINICON_TITLE:
-				newWinTitle = [(__bridge NSString*)token.u.string copy];
-				newIconTitle = [(__bridge NSString*)token.u.string copy];
+				newWinTitle = [token.u.string copy];
+				newIconTitle = [token.u.string copy];
 				break;
 			case XTERMCC_ICON_TITLE:
 				//[SESSION setName:token.u.string];
-				newIconTitle = [(__bridge NSString*)token.u.string copy];
+				newIconTitle = [token.u.string copy];
 				break;
 			case XTERMCC_INSBLNK: [self insertBlank:token.u.csi.p[0]]; break;
 			case XTERMCC_INSLN: [self insertLines:token.u.csi.p[0]]; break;
@@ -1895,10 +1894,6 @@ static __inline__ screen_char_t *incrementLinePointer(screen_char_t *buf_start, 
 	return [NSString isDoubleWidthCharacter:c encoding:[TERMINAL encoding]];
 }
 
-@end
-
-@implementation VT100Screen (Private)
-
 //---------------------------------------------------------- 
 //  screenLock 
 //---------------------------------------------------------- 
@@ -1910,12 +1905,7 @@ static __inline__ screen_char_t *incrementLinePointer(screen_char_t *buf_start, 
     return mScreenLock; 
 }
 
-- (void)setScreenLock:(NSLock *)aScreenLock
-{
-    if (mScreenLock != aScreenLock) {
-        mScreenLock = aScreenLock;
-    }
-}
+@synthesize screenLock=mScreenLock;
 
 // gets line offset by specified index from specified line poiner; accounts for buffer wrap
 - (screen_char_t *) _getLineAtIndex: (int) anIndex fromLine: (screen_char_t *) aLine

@@ -31,7 +31,7 @@ typedef NS_ENUM(NSInteger, NTGradientType)
 	
     @public
     // values used in callback for speed we don't want to call a method, just access the data from the object pointer
-    int _numComponents;
+    NSInteger _numComponents;
     CGFloat _colorArray[4];
     BOOL _flip;
 	NTGradientType _type;

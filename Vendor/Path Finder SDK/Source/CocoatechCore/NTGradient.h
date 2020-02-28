@@ -19,8 +19,8 @@
     CGPoint _endPoint;
     NSColor* _color;
 	
-	int _numComponents;
-    float _colorArray[4];
+	NSInteger _numComponents;
+    CGFloat _colorArray[4];
     BOOL _flip;
 }
 
