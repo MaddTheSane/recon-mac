@@ -9,11 +9,9 @@
 #import <Cocoa/Cocoa.h>
 
 
-@interface ITSharedActionHandler : NSObject {
+@interface ITSharedActionHandler : NSObject
 
-}
-
-+ (ITSharedActionHandler*)sharedInstance;
+@property (class, readonly, strong) ITSharedActionHandler *sharedInstance;
 - (IBAction)showConfigWindow:(id)sender;
 - (IBAction)showPreferencesAction:(id)sender;
 - (IBAction)showProfilesAction:(id)sender;

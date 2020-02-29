@@ -214,7 +214,7 @@
 		206719FF0BFE72FF00757734 /* CocoaTechStrings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CocoaTechStrings.xcodeproj; path = ../CocoatechStrings/CocoaTechStrings.xcodeproj; sourceTree = SOURCE_ROOT; };
 		206C9AD70B673A34002128A0 /* ITTerminalWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITTerminalWindowController.h; sourceTree = "<group>"; };
 		206C9AD80B673A34002128A0 /* ITTerminalWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITTerminalWindowController.m; sourceTree = "<group>"; };
-		206C9B430B673FB3002128A0 /* ITMiscNibController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITMiscNibController.h; sourceTree = "<group>"; };
+		206C9B430B673FB3002128A0 /* ITMiscNibController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ITMiscNibController.h; sourceTree = "<group>"; usesTabs = 0; };
 		206C9B440B673FB3002128A0 /* ITMiscNibController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITMiscNibController.m; sourceTree = "<group>"; };
 		2076B15704E8817300000106 /* PTToolbarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTToolbarController.h; sourceTree = "<group>"; };
 		2076B15804E8817300000106 /* PTToolbarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTToolbarController.m; sourceTree = "<group>"; };
@@ -231,7 +231,7 @@
 		20B8892B04E9342100000106 /* ITViewLocalizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ITViewLocalizer.m; sourceTree = "<group>"; };
 		20C6678C0B6701ED00533B48 /* charmaps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = charmaps.h; sourceTree = "<group>"; };
 		20C6678E0B6701F700533B48 /* FindPanelWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindPanelWindowController.h; sourceTree = "<group>"; };
-		20C667900B67020000533B48 /* iTerm.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = iTerm.h; sourceTree = "<group>"; };
+		20C667900B67020000533B48 /* iTerm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTerm.h; sourceTree = "<group>"; };
 		20C667920B67020E00533B48 /* iTermController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTermController.h; sourceTree = "<group>"; };
 		20C667940B67022100533B48 /* iTermDisplayProfileMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTermDisplayProfileMgr.h; sourceTree = "<group>"; };
 		20C667960B67023000533B48 /* iTermKeyBindingMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTermKeyBindingMgr.h; sourceTree = "<group>"; };
@@ -458,12 +458,12 @@
 			children = (
 				E813FB7D0297522703A80106 /* MainMenu.xib */,
 				20D5CC6304E7AA0500000106 /* iTermApplicationDelegate.h */,
-				20C667900B67020000533B48 /* iTerm.h */,
-				20788CF10BE129A60013A705 /* iTerm_Prefix.pch */,
-				DDF0FD63062916F70080EF74 /* iTermApplication.h */,
-				E8CF757F026DDAD703A80106 /* main.m */,
-				DDF0FD64062916F70080EF74 /* iTermApplication.m */,
 				20D5CC6404E7AA0500000106 /* iTermApplicationDelegate.m */,
+				20788CF10BE129A60013A705 /* iTerm_Prefix.pch */,
+				E8CF757F026DDAD703A80106 /* main.m */,
+				DDF0FD63062916F70080EF74 /* iTermApplication.h */,
+				DDF0FD64062916F70080EF74 /* iTermApplication.m */,
+				20616FD00B69D16300342BC2 /* MyTerminalView.h */,
 				20616FCF0B69D16300342BC2 /* MyTerminalView.m */,
 			);
 			name = Application;
@@ -472,6 +472,7 @@
 		206042C40B66FDEE00FD2068 /* Framework */ = {
 			isa = PBXGroup;
 			children = (
+				20C667900B67020000533B48 /* iTerm.h */,
 				20DD50B70B6C2B4800BF94CB /* Panels */,
 				201484B80B67132F004D8B48 /* Terminal View */,
 				201484BB0B671349004D8B48 /* Terminal Window */,
@@ -494,7 +495,6 @@
 				208448DE0BD4B352001446EA /* ITProcess.m */,
 				20B8892A04E9342100000106 /* ITViewLocalizer.h */,
 				20B8892B04E9342100000106 /* ITViewLocalizer.m */,
-				20616FD00B69D16300342BC2 /* MyTerminalView.h */,
 				20147BAF0B670351004D8B48 /* NSStringITerm.h */,
 				E8E901A202743CA303A80106 /* NSStringITerm.m */,
 				20147B990B6702D8004D8B48 /* PTYScrollView.h */,

@@ -55,7 +55,7 @@
 	fromRect.origin = NSZeroPoint;
 	
 	toRect.origin.x += 2;
-	[[self contentImage] drawInRect:toRect fromRect:fromRect operation:NSCompositeSourceOver fraction:1];
+	[[self contentImage] drawInRect:toRect fromRect:fromRect operation:NSCompositeSourceOver fraction:1 respectFlipped:YES hints:nil];
 	
 	NSRect arrowRect = [self bounds];
 	NSSize arrowSize = [[self arrowImage] size];
@@ -99,7 +99,6 @@
         mContentImage = theContentImage;
 		
 		//[mContentImage setScalesWhenResized:YES];
-		[mContentImage setFlipped:YES];
 		[mContentImage setSize:[self bounds].size];
     }
 }

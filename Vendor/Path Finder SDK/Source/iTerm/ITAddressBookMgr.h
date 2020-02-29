@@ -26,7 +26,7 @@
 #define KEY_BONJOUR_GROUP			@"Bonjour Group"
 #define KEY_BONJOUR_SERVICE			@"Bonjour Service"
 #define KEY_BONJOUR_SERVICE_ADDRESS  @"Bonjour Service Address"
-
+extern NSNotificationName const ITReloadAddressBookNotification;
 
 @class TreeNode;
 

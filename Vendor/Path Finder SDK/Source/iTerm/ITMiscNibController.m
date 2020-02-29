@@ -10,9 +10,8 @@
 #import "ITTerminalView.h"
 #import "ITAddressBookMgr.h"
 
-@interface ITMiscNibController (Private)
-- (id)commandView;
-- (void)setCommandView:(id)theCommandView;
+@interface ITMiscNibController ()
+@property (strong) IBOutlet NSView *commandView;
 @end
 
 @implementation ITMiscNibController
@@ -98,82 +97,27 @@
 //---------------------------------------------------------- 
 //  commandField 
 //---------------------------------------------------------- 
-- (id)commandField
-{
-    return mCommandField; 
-}
-
-- (void)setCommandField:(id)theCommandField
-{
-    if (mCommandField != theCommandField)
-    {
-        mCommandField = theCommandField;
-    }
-}
+@synthesize commandField=mCommandField;
 
 //---------------------------------------------------------- 
 //  parameterName 
 //---------------------------------------------------------- 
-- (id)parameterName
-{
-    return mParameterName; 
-}
-
-- (void)setParameterName:(id)theParameterName
-{
-    if (mParameterName != theParameterName)
-    {
-        mParameterName = theParameterName;
-    }
-}
+@synthesize parameterName=mParameterName;
 
 //---------------------------------------------------------- 
 //  parameterPanel 
 //---------------------------------------------------------- 
-- (id)parameterPanel
-{
-    return mParameterPanel; 
-}
-
-- (void)setParameterPanel:(id)theParameterPanel
-{
-    if (mParameterPanel != theParameterPanel)
-    {
-        mParameterPanel = theParameterPanel;
-    }
-}
+@synthesize parameterPanel=mParameterPanel;
 
 //---------------------------------------------------------- 
 //  parameterPrompt 
 //---------------------------------------------------------- 
-- (id)parameterPrompt
-{
-    return mParameterPrompt; 
-}
-
-- (void)setParameterPrompt:(id)theParameterPrompt
-{
-    if (mParameterPrompt != theParameterPrompt)
-    {
-        mParameterPrompt = theParameterPrompt;
-    }
-}
+@synthesize parameterPrompt=mParameterPrompt;
 
 //---------------------------------------------------------- 
 //  parameterValue 
 //---------------------------------------------------------- 
-- (id)parameterValue
-{
-    return mParameterValue; 
-}
-
-- (void)setParameterValue:(id)theParameterValue
-{
-    if (mParameterValue != theParameterValue)
-    {
-        mParameterValue = theParameterValue;
-    }
-}
+@synthesize parameterValue=mParameterValue;
 
 - (void)controlTextDidEndEditing:(NSNotification *)aNotification
 {
@@ -189,32 +133,17 @@
 			[mTerm runCommand:command];
 			break;
 		case 17: // Tab key
-			[mTerm addNewSession: [[ITAddressBookMgr sharedInstance] defaultBookmarkData] withCommand:[self commandField] withURL:nil];
+			[mTerm addNewSession: [[ITAddressBookMgr sharedInstance] defaultBookmarkData] withCommand:[self commandField].stringValue withURL:nil];
 			break;
 		default:
 			break;
 	}
 }
 
-@end
-
-@implementation ITMiscNibController (Private)
-
-//---------------------------------------------------------- 
+//----------------------------------------------------------
 //  commandView 
 //---------------------------------------------------------- 
-- (id)commandView
-{
-    return mCommandView; 
-}
-
-- (void)setCommandView:(id)theCommandView
-{
-    if (mCommandView != theCommandView)
-    {
-        mCommandView = theCommandView;
-    }
-}
+@synthesize commandView=mCommandView;
 
 @end
 

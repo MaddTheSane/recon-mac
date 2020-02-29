@@ -27,6 +27,7 @@
 #define SAFENODE(n) 		((TreeNode*)((n)?(n):(bookmarks)))
 
 static NSString* ADDRESS_BOOK_FILE = @"~/Library/Application Support/iTerm/AddressBook";
+NSNotificationName const ITReloadAddressBookNotification = @"iTermReloadAddressBook";
 
 
 static __unsafe_unretained TreeNode *defaultBookmark = nil;
@@ -199,7 +200,7 @@ static __unsafe_unretained TreeNode *defaultBookmark = nil;
 	[SAFENODE(item) setNodeData: aDict];
 	
 	// Post a notification for all listeners that bookmarks have changed
-	[[NSNotificationCenter defaultCenter] postNotificationName: @"iTermReloadAddressBook" object: nil userInfo: nil];    		
+	[[NSNotificationCenter defaultCenter] postNotificationName: ITReloadAddressBookNotification object: nil userInfo: nil];
 }
 
 - (void)addFolder: (NSString *) folderName toNode: (TreeNode *) aNode
@@ -220,7 +221,7 @@ static __unsafe_unretained TreeNode *defaultBookmark = nil;
 	[targetNode insertChild: childNode atIndex: [targetNode numberOfChildren]];
 	
 	// Post a notification for all listeners that bookmarks have changed
-	[[NSNotificationCenter defaultCenter] postNotificationName: @"iTermReloadAddressBook" object: nil userInfo: nil];    		
+	[[NSNotificationCenter defaultCenter] postNotificationName: ITReloadAddressBookNotification object: nil userInfo: nil];
 }
 
 - (void)addBookmarkWithData: (NSDictionary *) data toNode: (TreeNode *) aNode;
@@ -243,7 +244,7 @@ static __unsafe_unretained TreeNode *defaultBookmark = nil;
 	
 
 	// Post a notification for all listeners that bookmarks have changed
-	[[NSNotificationCenter defaultCenter] postNotificationName: @"iTermReloadAddressBook" object: nil userInfo: nil];    		
+	[[NSNotificationCenter defaultCenter] postNotificationName: ITReloadAddressBookNotification object: nil userInfo: nil];
 }
 
 - (void)setBookmarkWithData: (NSDictionary *) data forNode: (TreeNode *) aNode
@@ -255,14 +256,14 @@ static __unsafe_unretained TreeNode *defaultBookmark = nil;
 	[SAFENODE(aNode) setNodeData: aDict];
 	
 	// Post a notification for all listeners that bookmarks have changed
-	[[NSNotificationCenter defaultCenter] postNotificationName: @"iTermReloadAddressBook" object: nil userInfo: nil];    		
+	[[NSNotificationCenter defaultCenter] postNotificationName: ITReloadAddressBookNotification object: nil userInfo: nil];
 }
 
 - (void)deleteBookmarkNode: (TreeNode *) aNode
 {
 	[aNode removeFromParent];
 	// Post a notification for all listeners that bookmarks have changed
-	[[NSNotificationCenter defaultCenter] postNotificationName: @"iTermReloadAddressBook" object: nil userInfo: nil];    		
+	[[NSNotificationCenter defaultCenter] postNotificationName: ITReloadAddressBookNotification object: nil userInfo: nil];
 }
 
 - (TreeNode *) rootNode
@@ -472,7 +473,7 @@ static __unsafe_unretained TreeNode *defaultBookmark = nil;
 		[bonjourGroup removeFromParent];
 	
 	// Post a notification for all listeners that bookmarks have changed
-	[[NSNotificationCenter defaultCenter] postNotificationName: @"iTermReloadAddressBook" object: nil userInfo: nil];    		
+	[[NSNotificationCenter defaultCenter] postNotificationName: ITReloadAddressBookNotification object: nil userInfo: nil];
 
 	
 }
@@ -544,7 +545,7 @@ static __unsafe_unretained TreeNode *defaultBookmark = nil;
 		[bonjourServices removeObject: sender];
 	
 	// Post a notification for all listeners that bookmarks have changed
-	[[NSNotificationCenter defaultCenter] postNotificationName: @"iTermReloadAddressBook" object: nil userInfo: nil];    	
+	[[NSNotificationCenter defaultCenter] postNotificationName: ITReloadAddressBookNotification object: nil userInfo: nil];    	
 		
 }
 

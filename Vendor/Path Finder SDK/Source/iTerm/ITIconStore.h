@@ -8,19 +8,21 @@
 
 #import <Cocoa/Cocoa.h>
 
+NS_ASSUME_NONNULL_BEGIN
 
 @interface ITIconStore : NSObject
 {
 	NSBundle * mCoreTypesBundle;
 }
 
-+ (ITIconStore*)sharedInstance;
+@property (readonly, class, strong) ITIconStore *sharedInstance;
 
 // GenericPreferencesIcon for example
-- (NSImage*)image:(NSString*)identifier;
+- (nullable NSImage*)image:(NSString*)identifier;
 
-- (NSImage*)popupArrowImage:(NSColor*)color 
+- (NSImage*)popupArrowImage:(NSColor*)color
 					  small:(BOOL)small;
 
 @end
 
+NS_ASSUME_NONNULL_END

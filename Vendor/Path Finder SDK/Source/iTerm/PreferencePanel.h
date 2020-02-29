@@ -65,7 +65,7 @@ typedef NS_ENUM(NSInteger, ITermCursorType) { CURSOR_UNDERLINE, CURSOR_VERTICAL,
 	NSMutableDictionary *urlHandlers;
 }
 
-+ (PreferencePanel*)sharedInstance;
+@property (class, readonly, strong) PreferencePanel *sharedInstance;
 
 - (void)readPreferences;
 - (void)savePreferences;

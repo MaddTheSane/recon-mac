@@ -19,11 +19,9 @@
 #import <Cocoa/Cocoa.h>
 
 @interface PTYWindow : NSWindow 
-{
-}
 
-- initWithContentRect:(NSRect)contentRect 
-            styleMask:(unsigned int)aStyle 
-	      backing:(NSBackingStoreType)bufferingType 
-		defer:(BOOL)flag;
+- (id)initWithContentRect:(NSRect)contentRect
+				styleMask:(NSWindowStyleMask)aStyle
+				  backing:(NSBackingStoreType)bufferingType 
+					defer:(BOOL)flag;
 @end

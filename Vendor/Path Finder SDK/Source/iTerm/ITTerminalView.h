@@ -18,6 +18,8 @@
 
 @class PTYSession, PTYTabView, ITTerminalWindowController, ITMiscNibController, iTermController, PTToolbarController, PSMTabBarControl;
 
+extern NSNotificationName const ITNumberOfSessionsDidChangeNotification;
+
 @interface ITTerminalView : NSView <NSTabViewDelegate, NSOutlineViewDelegate>
 {
     /// tab view
@@ -59,10 +61,10 @@
 
 - (void)startProgram:(NSString *)program;
 - (void)startProgram:(NSString *)program
-           arguments:(NSArray *)prog_argv;
+           arguments:(NSArray<NSString*> *)prog_argv;
 - (void)startProgram:(NSString *)program
-                  arguments:(NSArray *)prog_argv
-                environment:(NSDictionary *)prog_env;
+		   arguments:(NSArray<NSString*> *)prog_argv
+		 environment:(NSDictionary<NSString*,NSString*> *)prog_env;
 - (void)setWindowSize;
 - (void)setWindowTitle;
 - (void)setWindowTitle: (NSString *)title;

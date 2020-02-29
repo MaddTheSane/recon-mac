@@ -49,6 +49,8 @@
 #import "ITSharedActionHandler.h"
 #import "PSMRolloverButton.h"
 
+NSString * const ITNumberOfSessionsDidChangeNotification = @"iTermNumberOfSessionsDidChange";
+
 @interface ITTerminalView () <TabBarControlDelegate>
 @property BOOL beingResized;
 
@@ -987,7 +989,7 @@
         [aSession setObjectCount:i+1];
     }        
 			
-	[[NSNotificationCenter defaultCenter] postNotificationName: @"iTermNumberOfSessionsDidChange" object: self userInfo: nil];		
+	[[NSNotificationCenter defaultCenter] postNotificationName: ITNumberOfSessionsDidChangeNotification object: self userInfo: nil];		
 	//[[self tabBarControl] update];
 }
 

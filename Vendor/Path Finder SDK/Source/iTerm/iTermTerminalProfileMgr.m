@@ -95,12 +95,9 @@ static iTermTerminalProfileMgr *singleInstance = nil;
 - (NSString *) defaultProfileName
 {
 	NSDictionary *aProfile;
-	NSEnumerator *keyEnumerator;
-	NSString *aKey, *aProfileName;
+	NSString *aProfileName = nil;
 	
-	keyEnumerator = [profiles keyEnumerator];
-	aProfileName = nil;
-	while ((aKey = [keyEnumerator nextObject]))
+	for (NSString *aKey in profiles)
 	{
 		aProfile = [profiles objectForKey: aKey];
 		if ([self isDefaultProfile: aKey])

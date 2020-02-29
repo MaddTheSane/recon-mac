@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15705" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15705"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="ITMiscNibController">
@@ -20,24 +21,22 @@
         <window title="Session Parameter" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="351" userLabel="Session Parameter" customClass="NSPanel">
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="241" y="886" width="347" height="142"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1578"/>
+            <rect key="contentRect" x="241" y="886" width="347" height="179"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" id="352">
-                <rect key="frame" x="0.0" y="0.0" width="347" height="142"/>
+                <rect key="frame" x="0.0" y="0.0" width="334" height="179"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textField verticalHuggingPriority="750" id="354">
-                        <rect key="frame" x="107" y="68" width="220" height="22"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="354">
+                        <rect key="frame" x="107" y="49" width="207" height="21"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" drawsBackground="YES" id="374">
                             <font key="font" metaFont="system"/>
-                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <button verticalHuggingPriority="750" id="356">
-                        <rect key="frame" x="216" y="12" width="117" height="32"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="356">
+                        <rect key="frame" x="261" y="13" width="59" height="32"/>
                         <buttonCell key="cell" type="push" title="OK" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="376">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -49,23 +48,24 @@ DQ
                             <action selector="parameterPanelEnd:" target="-2" id="359"/>
                         </connections>
                     </button>
-                    <textField verticalHuggingPriority="750" id="355">
-                        <rect key="frame" x="104" y="80" width="247" height="55"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                    <textField horizontalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="355">
+                        <rect key="frame" x="104" y="102" width="212" height="57"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="This session requires you to enter:" id="375">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <imageView id="357">
-                        <rect key="frame" x="20" y="58" width="79" height="77"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                    <imageView translatesAutoresizingMaskIntoConstraints="NO" id="357">
+                        <rect key="frame" x="20" y="82" width="79" height="77"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="79" id="Qxe-G7-0iI"/>
+                            <constraint firstAttribute="height" constant="77" id="xyF-7A-7XJ"/>
+                        </constraints>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" animates="YES" imageScaling="axesIndependently" image="iTerm" id="377"/>
                     </imageView>
-                    <textField verticalHuggingPriority="750" id="353">
-                        <rect key="frame" x="104" y="98" width="226" height="19"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="353">
+                        <rect key="frame" x="104" y="78" width="213" height="16"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Name" id="373">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -73,18 +73,36 @@ DQ
                         </textFieldCell>
                     </textField>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="356" secondAttribute="bottom" constant="20" symbolic="YES" id="56U-Ku-IlE"/>
+                    <constraint firstAttribute="trailing" secondItem="354" secondAttribute="trailing" constant="20" symbolic="YES" id="8oo-zQ-yUf"/>
+                    <constraint firstItem="357" firstAttribute="leading" secondItem="352" secondAttribute="leading" constant="20" symbolic="YES" id="B63-P9-Con"/>
+                    <constraint firstItem="357" firstAttribute="top" secondItem="352" secondAttribute="top" constant="20" symbolic="YES" id="B6Q-Wj-K90"/>
+                    <constraint firstItem="356" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="352" secondAttribute="leading" constant="20" symbolic="YES" id="GVf-vJ-w36"/>
+                    <constraint firstItem="353" firstAttribute="centerX" secondItem="354" secondAttribute="centerX" id="HFW-rT-SjV"/>
+                    <constraint firstItem="354" firstAttribute="leading" secondItem="357" secondAttribute="trailing" constant="8" symbolic="YES" id="JTF-I3-Bmj"/>
+                    <constraint firstItem="353" firstAttribute="top" secondItem="355" secondAttribute="bottom" constant="8" symbolic="YES" id="Shz-13-uO4"/>
+                    <constraint firstItem="354" firstAttribute="trailing" secondItem="356" secondAttribute="trailing" id="aqx-Uf-czq"/>
+                    <constraint firstAttribute="trailing" secondItem="355" secondAttribute="trailing" constant="20" symbolic="YES" id="axg-jv-D2l"/>
+                    <constraint firstItem="355" firstAttribute="leading" secondItem="357" secondAttribute="trailing" constant="7" id="bd2-MW-5uH"/>
+                    <constraint firstItem="353" firstAttribute="leading" secondItem="355" secondAttribute="leading" id="hrJ-ms-QqE"/>
+                    <constraint firstItem="357" firstAttribute="top" secondItem="355" secondAttribute="top" id="kXu-Iv-m6d"/>
+                    <constraint firstItem="354" firstAttribute="top" secondItem="353" secondAttribute="bottom" constant="8" symbolic="YES" id="myW-Yx-CEF"/>
+                    <constraint firstItem="356" firstAttribute="top" secondItem="354" secondAttribute="bottom" constant="8" symbolic="YES" id="nXg-2w-lrb"/>
+                </constraints>
             </view>
+            <point key="canvasLocation" x="138.5" y="165.5"/>
         </window>
         <customView id="365" userLabel="View">
             <rect key="frame" x="0.0" y="0.0" width="126" height="22"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
-                <textField verticalHuggingPriority="750" id="366">
+                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="366">
                     <rect key="frame" x="0.0" y="0.0" width="126" height="22"/>
                     <autoresizingMask key="autoresizingMask"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" bezelStyle="round" id="378">
                         <font key="font" metaFont="system"/>
-                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                     <connections>
@@ -92,6 +110,7 @@ DQ
                     </connections>
                 </textField>
             </subviews>
+            <point key="canvasLocation" x="139" y="309"/>
         </customView>
     </objects>
     <resources>

@@ -44,7 +44,7 @@
 }
 
 // Class methods
-+ (id)singleInstance;
+@property (class, readonly, strong) iTermDisplayProfileMgr *singleInstance;
 
 // Instance methods
 - (id)init;
@@ -54,7 +54,7 @@
 - (void)addProfileWithName: (NSString *) newProfile copyProfile: (NSString *) sourceProfile;
 - (void)deleteProfileWithName: (NSString *) profileName;
 - (BOOL) isDefaultProfile: (NSString *) profileName;
-- (NSString *) defaultProfileName;
+@property (readonly, copy) NSString *defaultProfileName;
 
 
 - (NSColor *) color: (int) type forProfile:(NSString *) profileName;

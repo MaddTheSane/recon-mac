@@ -70,7 +70,7 @@ static NSString *NoHandler = @"<No Handler>";
 
 	[[NSNotificationCenter defaultCenter] addObserver: self
 									 selector: @selector(_reloadURLHandlers:)
-										 name: @"iTermReloadAddressBook"
+										 name: ITReloadAddressBookNotification
 									   object: nil];	
 
 	return (self);

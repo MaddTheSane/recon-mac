@@ -21,10 +21,8 @@
 @class TreeNode;
 
 @interface iTermController : NSObject
-{
-}
 
-+ (iTermController*)sharedInstance;
+@property (class, readonly, strong) iTermController *sharedInstance NS_SWIFT_NAME(shared);
 
 // this only looks at terminal windows, not embedded views, should probably look at first responders, but doesn't do that now
 - (ITTerminalView *)currentTerminal;

@@ -8,11 +8,10 @@
 
 #import "ITIconStore.h"
 
-@interface ITIconStore (Private)
+@interface ITIconStore ()
 - (NSString*)iconFromSystemIconsBundleWithName:(NSString*)iconName;
 
-- (NSBundle *)coreTypesBundle;
-- (void)setCoreTypesBundle:(NSBundle *)theCoreTypesBundle;
+@property (nonatomic, strong) NSBundle *coreTypesBundle;
 @end
 
 @implementation ITIconStore
@@ -32,16 +31,10 @@
 	return [[self coreTypesBundle] imageForResource:identifier];
 }
 
-- (void)dealloc;
-{
-	[self setCoreTypesBundle:nil];
-}
-
-- (NSImage*)popupArrowImage:(NSColor*)color 
+- (NSImage*)popupArrowImage:(NSColor*)color
 					  small:(BOOL)small;
 {
     NSImage *result;
-	NSBezierPath *linePath;
 	int height=0, width=0;
 	
 	if (small)
@@ -63,7 +56,7 @@
     
     [result lockFocus];
 	{
-		linePath = [NSBezierPath bezierPath];
+		NSBezierPath *linePath = [NSBezierPath bezierPath];
 		[linePath moveToPoint:NSMakePoint(NSMinX(arrowRect), NSMinY(arrowRect))];
 		[linePath lineToPoint:NSMakePoint(NSMidX(arrowRect), NSMaxY(arrowRect))];
 		[linePath lineToPoint:NSMakePoint(NSMaxX(arrowRect), NSMinY(arrowRect))];			
@@ -78,26 +71,17 @@
     return result;    
 }
 
-@end
-
-@implementation ITIconStore (Private)
-
-//---------------------------------------------------------- 
+//----------------------------------------------------------
 //  coreTypesBundle 
 //---------------------------------------------------------- 
+@synthesize coreTypesBundle=mCoreTypesBundle;
+
 - (NSBundle *)coreTypesBundle
 {
 	if (!mCoreTypesBundle)
 		[self setCoreTypesBundle:[NSBundle bundleWithPath:@"/System/Library/CoreServices/CoreTypes.bundle"]];
 	
     return mCoreTypesBundle; 
-}
-
-- (void)setCoreTypesBundle:(NSBundle *)theCoreTypesBundle
-{
-    if (mCoreTypesBundle != theCoreTypesBundle) {
-        mCoreTypesBundle = theCoreTypesBundle;
-    }
 }
 
 - (NSString*)iconFromSystemIconsBundleWithName:(NSString*)iconName;

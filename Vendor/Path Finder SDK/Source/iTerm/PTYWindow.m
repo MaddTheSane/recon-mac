@@ -20,10 +20,10 @@
 
 @implementation PTYWindow
 
-- initWithContentRect:(NSRect)contentRect
-	    styleMask:(unsigned int)aStyle
-	      backing:(NSBackingStoreType)bufferingType 
-		defer:(BOOL)flag
+- (id)initWithContentRect:(NSRect)contentRect
+				styleMask:(NSWindowStyleMask)aStyle
+				  backing:(NSBackingStoreType)bufferingType 
+					defer:(BOOL)flag
 {	
     if ((self = [super initWithContentRect:contentRect
 				 styleMask:aStyle

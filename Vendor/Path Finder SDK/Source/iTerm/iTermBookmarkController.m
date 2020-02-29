@@ -65,7 +65,7 @@ static BOOL editingBookmark = NO;
     
 	[[NSNotificationCenter defaultCenter] addObserver: self
                                              selector: @selector(_reloadAddressBook:)
-                                                 name: @"iTermReloadAddressBook"
+                                                 name: ITReloadAddressBookNotification
                                                object: nil];	
     
     return self;
@@ -578,7 +578,7 @@ static BOOL editingBookmark = NO;
     [prefs synchronize];
     
 	// Post a notification for all listeners that bookmarks have changed
-	[[NSNotificationCenter defaultCenter] postNotificationName: @"iTermReloadAddressBook" object: nil userInfo: nil];    		
+	[[NSNotificationCenter defaultCenter] postNotificationName: ITReloadAddressBookNotification object: nil userInfo: nil];
     
 }
 

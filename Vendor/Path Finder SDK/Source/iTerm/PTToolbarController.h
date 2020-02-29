@@ -14,11 +14,11 @@
 
 #import <Cocoa/Cocoa.h>
 
-extern NSString *NewToolbarItem;
-extern NSString *ABToolbarItem;
-extern NSString *CloseToolbarItem;
-extern NSString *SettingsToolbarItem;
-extern NSString *CommandToolbarItem;
+extern NSToolbarItemIdentifier const NewToolbarItem;
+extern NSToolbarItemIdentifier const ABToolbarItem;
+extern NSToolbarItemIdentifier const CloseToolbarItem;
+extern NSToolbarItemIdentifier const SettingsToolbarItem;
+extern NSToolbarItemIdentifier const CommandToolbarItem;
 
 @class ITTerminalView;
 

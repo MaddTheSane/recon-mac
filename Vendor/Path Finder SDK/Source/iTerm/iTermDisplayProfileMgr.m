@@ -116,15 +116,12 @@ static iTermDisplayProfileMgr *singleInstance = nil;
 
 - (NSString *) defaultProfileName
 {
-	NSDictionary *aProfile;
-	NSEnumerator *keyEnumerator;
-	NSString *aKey, *aProfileName;
+	NSString *aProfileName = nil;
 	
-	keyEnumerator = [profiles keyEnumerator];
 	aProfileName = nil;
-	while ((aKey = [keyEnumerator nextObject]))
+	for (NSString *aKey in profiles)
 	{
-		aProfile = [profiles objectForKey: aKey];
+		//NSDictionary *aProfile = [profiles objectForKey: aKey];
 		if ([self isDefaultProfile: aKey])
 		{
 			aProfileName = aKey;

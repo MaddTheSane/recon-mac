@@ -294,7 +294,7 @@
 	
 	[[NSNotificationCenter defaultCenter] addObserver: self
 											 selector: @selector(_reloadAddressBook:)
-												 name: @"iTermReloadAddressBook"
+												 name: ITReloadAddressBookNotification
 											   object: nil];	
 	
 	[[self window] setFrame:NSMakeRect(0,0,612, 792) display:NO];

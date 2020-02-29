@@ -158,12 +158,12 @@ static BOOL usingAutoLaunchScript = NO;
 
     [[NSNotificationCenter defaultCenter] addObserver: self
                                              selector: @selector(buildAddressBookMenu:)
-                                                 name: @"iTermReloadAddressBook"
+                                                 name: ITReloadAddressBookNotification
                                                object: nil];
 
     [[NSNotificationCenter defaultCenter] addObserver: self
                                              selector: @selector(buildSessionSubmenu:)
-                                                 name: @"iTermNumberOfSessionsDidChange"
+                                                 name: ITNumberOfSessionsDidChangeNotification
                                                object: nil];
         
 	[[NSAppleEventManager sharedAppleEventManager] setEventHandler:self andSelector:@selector(getUrl:withReplyEvent:) forEventClass:kInternetEventClass andEventID:kAEGetURL];

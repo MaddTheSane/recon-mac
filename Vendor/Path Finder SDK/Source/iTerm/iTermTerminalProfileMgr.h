@@ -20,7 +20,7 @@
 }
 
 // Class methods
-+ (id)singleInstance;
+@property (class, readonly, strong) iTermTerminalProfileMgr *singleInstance;
 
 	// Instance methods
 - (id)init;
@@ -30,7 +30,7 @@
 - (void)addProfileWithName: (NSString *) newProfile copyProfile: (NSString *) sourceProfile;
 - (void)deleteProfileWithName: (NSString *) profileName;
 - (BOOL) isDefaultProfile: (NSString *) profileName;
-- (NSString *) defaultProfileName;
+@property (readonly, copy) NSString *defaultProfileName;
 
 
 - (NSString *) typeForProfile:(NSString *) profileName;

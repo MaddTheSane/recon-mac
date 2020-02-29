@@ -21,11 +21,11 @@
 #import "ITSharedActionHandler.h"
 #import "ITTerminalWindowController.h"
 
-NSString *NewToolbarItem = @"New";
-NSString *BookmarksToolbarItem = @"Bookmarks";
-NSString *CloseToolbarItem = @"Close";
-NSString *SettingsToolbarItem = @"Settings";
-NSString *CommandToolbarItem = @"Command";
+NSString *const NewToolbarItem = @"New";
+NSString *const BookmarksToolbarItem = @"Bookmarks";
+NSString *const CloseToolbarItem = @"Close";
+NSString *const SettingsToolbarItem = @"Settings";
+NSString *const CommandToolbarItem = @"Command";
 
 @interface PTToolbarController ()
 - (void)setupToolbar:(NSWindow*)window;
@@ -50,7 +50,7 @@ NSString *CommandToolbarItem = @"Command";
     // Add ourselves as an observer for notifications to reload the addressbook.
     [[NSNotificationCenter defaultCenter] addObserver: self
                                              selector: @selector(reloadAddressBookMenu:)
-                                                 name: @"iTermReloadAddressBook"
+                                                 name: ITReloadAddressBookNotification
                                                object: nil];
     
     [self setupToolbar:window];

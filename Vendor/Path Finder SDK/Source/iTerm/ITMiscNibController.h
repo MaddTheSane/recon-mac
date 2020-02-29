@@ -11,33 +11,28 @@
 @class ITTerminalView;
 
 @interface ITMiscNibController : NSObject {
-	ITTerminalView* mTerm;  // not retained
+    __unsafe_unretained ITTerminalView* mTerm;  // not retained
 	
-    IBOutlet id mCommandField;
-    IBOutlet id mParameterName;
-    IBOutlet id mParameterPanel;
-    IBOutlet id mParameterPrompt;
-    IBOutlet id mParameterValue;
-    IBOutlet id mCommandView;
+    NSTextField *mCommandField;
+    NSTextField *mParameterName;
+    NSPanel *mParameterPanel;
+    NSTextField *mParameterPrompt;
+    NSTextField *mParameterValue;
+    NSView *mCommandView;
 }
 
 + (ITMiscNibController*)controller:(ITTerminalView*)term;
 
 - (NSString *)askUserForString:(NSString *)command window:(NSWindow*)window;
 
-- (id)commandField;
-- (void)setCommandField:(id)theCommandField;
+@property (strong) IBOutlet NSTextField *commandField;
 
-- (id)parameterName;
-- (void)setParameterName:(id)theParameterName;
+@property (strong) IBOutlet NSTextField *parameterName;
 
-- (id)parameterPanel;
-- (void)setParameterPanel:(id)theParameterPanel;
+@property (strong) IBOutlet NSPanel *parameterPanel;
 
-- (id)parameterPrompt;
-- (void)setParameterPrompt:(id)theParameterPrompt;
+@property (strong) IBOutlet NSTextField *parameterPrompt;
 
-- (id)parameterValue;
-- (void)setParameterValue:(id)theParameterValue;
+@property (strong) IBOutlet NSTextField *parameterValue;
 
 @end
