@@ -10,9 +10,7 @@
 
 @class Port;
 
-@interface Port_Script :  NSManagedObject  
-{
-}
+@interface Port_Script: NSManagedObject
 
 @property (nonatomic, strong) NSString * id;
 @property (nonatomic, strong) NSString * output;

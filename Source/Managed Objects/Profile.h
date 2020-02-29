@@ -10,9 +10,7 @@
 
 @class Session;
 
-@interface Profile :  NSManagedObject  
-{
-}
+@interface Profile: NSManagedObject
 
 @property (nonatomic, strong) NSString * scanDelayString;
 @property (nonatomic, strong) NSNumber * icmpTimeStamp;

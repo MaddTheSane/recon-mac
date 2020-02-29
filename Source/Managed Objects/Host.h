@@ -18,8 +18,6 @@
 @class IpIdSeqValue;
 
 @interface Host :  NSManagedObject  
-{
-}
 
 @property (nonatomic, strong) NSString * macAddress;
 @property (nonatomic, strong) NSString * status;

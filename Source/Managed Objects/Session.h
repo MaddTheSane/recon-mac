@@ -12,8 +12,6 @@
 @class Profile;
 
 @interface Session :  NSManagedObject  
-{
-}
 
 @property (nonatomic, strong) NSString * nmapOutputStdout;
 @property (nonatomic, strong) NSString * target;

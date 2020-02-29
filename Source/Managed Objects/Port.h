@@ -12,8 +12,6 @@
 @class Port_Script;
 
 @interface Port :  NSManagedObject  
-{
-}
 
 @property (nonatomic, strong) NSString * state;
 @property (nonatomic, strong) NSNumber * number;

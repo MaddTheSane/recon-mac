@@ -9,8 +9,6 @@
 #import <Cocoa/Cocoa.h>
 
 
-@interface PathTransformer : NSValueTransformer {
-
-}
+@interface PathTransformer : NSValueTransformer
 
 @end
