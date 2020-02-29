@@ -314,10 +314,10 @@ typedef NS_ENUM(NSInteger, mouseMode) {
 
 - (void)reset;
 
-- (NSData *)keyArrowUp:(unsigned int)modflag;
-- (NSData *)keyArrowDown:(unsigned int)modflag;
-- (NSData *)keyArrowLeft:(unsigned int)modflag;
-- (NSData *)keyArrowRight:(unsigned int)modflag;
+- (NSData *)keyArrowUp:(NSEventModifierFlags)modflag;
+- (NSData *)keyArrowDown:(NSEventModifierFlags)modflag;
+- (NSData *)keyArrowLeft:(NSEventModifierFlags)modflag;
+- (NSData *)keyArrowRight:(NSEventModifierFlags)modflag;
 - (NSData *)keyInsert;
 - (NSData *)keyHome;
 - (NSData *)keyDelete;
@@ -329,9 +329,9 @@ typedef NS_ENUM(NSInteger, mouseMode) {
 - (NSData *)keyPFn: (int) n;
 - (NSData *)keypadData: (unichar) unicode keystr: (NSString *) keystr;
 
-- (NSData *)mousePress: (int)button withModifiers: (unsigned int)modflag atX: (int)x Y: (int)y;
+- (NSData *)mousePress: (int)button withModifiers: (NSEventModifierFlags)modflag atX: (int)x Y: (int)y;
 - (NSData *)mouseReleaseAtX: (int)x Y: (int)y;
-- (NSData *)mouseMotion: (int)button withModifiers: (unsigned int)modflag atX: (int)x Y: (int)y;
+- (NSData *)mouseMotion: (int)button withModifiers: (NSEventModifierFlags)modflag atX: (int)x Y: (int)y;
 
 - (BOOL)lineMode;
 - (BOOL)cursorMode;

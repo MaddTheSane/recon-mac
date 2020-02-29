@@ -195,16 +195,12 @@ enum { SELECT_CHAR, SELECT_WORD, SELECT_LINE };
 - (void)setDelegate:(id)delegate;
 
 @property CGFloat lineHeight;
-- (void)setLineHeight:(CGFloat)theLineHeight;
 
 @property CGFloat charWidth;
-- (void)setCharWidth:(CGFloat)theCharWidth;
 
 @property CGFloat charWidthWithoutSpacing;
-- (void)setCharWidthWithoutSpacing:(CGFloat)theCharWidthWithoutSpacing;
 
 @property CGFloat charHeightWithoutSpacing;
-- (void)setCharHeightWithoutSpacing:(CGFloat)theCharHeightWithoutSpacing;
 
 - (int)numberOfLines;
 - (void)setNumberOfLines:(int)theNumberOfLines;

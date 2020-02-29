@@ -147,7 +147,7 @@ static iTermKeyBindingMgr *singleInstance = nil;
 		return (0);
 }
 
-- (NSString *) keyCombinationAtIndex: (int) index inProfile: (NSString *) profile
+- (NSString *) keyCombinationAtIndex: (NSInteger) index inProfile: (NSString *) profile
 {
 	NSMutableDictionary *keyMappings;
 	NSArray *allKeys;
@@ -332,7 +332,7 @@ static iTermKeyBindingMgr *singleInstance = nil;
 	
 }
 
-- (NSString *) actionForKeyCombinationAtIndex: (int) index inProfile: (NSString *) profile
+- (NSString *) actionForKeyCombinationAtIndex: (NSInteger) index inProfile: (NSString *) profile
 {
 	NSMutableDictionary *keyMappings;
 	NSArray *allKeys;
@@ -440,8 +440,8 @@ static iTermKeyBindingMgr *singleInstance = nil;
 
 
 - (void)addEntryForKeyCode: (unsigned int) hexCode 
-				  modifiers: (unsigned int) modifiers
-					 action: (unsigned int) action
+				  modifiers: (NSEventModifierFlags) modifiers
+					 action: (NSInteger) action
 			   highPriority: (BOOL) highPriority
 					   text: (NSString *) text
 					profile: (NSString *) profile
@@ -461,9 +461,9 @@ static iTermKeyBindingMgr *singleInstance = nil;
 		[[profiles objectForKey: profile] setObject: keyMappings forKey: @"Key Mappings"];
 	}
 	
-	keyString = [NSString stringWithFormat: @"0x%x-0x%x", hexCode, modifiers];
+	keyString = [NSString stringWithFormat: @"0x%x-0x%lx", hexCode, (unsigned long)modifiers];
 	keyBinding = [[NSMutableDictionary alloc] init];
-	[keyBinding setObject: [NSNumber numberWithInt: action] forKey: @"Action"];
+	[keyBinding setObject: @(action) forKey: @"Action"];
 	if ([text length] > 0)
 		[keyBinding setObject:[text copy] forKey: @"Text"];
 	[keyBinding setObject: [NSNumber numberWithBool:highPriority] forKey: @"Priority"];
@@ -472,15 +472,15 @@ static iTermKeyBindingMgr *singleInstance = nil;
 }
 
 - (void)addEntryForKey: (unsigned int) key 
-			  modifiers: (unsigned int) modifiers
-				 action: (unsigned int) action
+			  modifiers: (NSEventModifierFlags) modifiers
+				 action: (NSInteger) action
 		   highPriority: (BOOL) highPriority
 				   text: (NSString *) text
 				profile: (NSString *) profile
 {
 	//NSLog(@"%s", __PRETTY_FUNCTION__);
 	
-	unsigned int keyModifiers;
+	NSEventModifierFlags keyModifiers;
 	unichar keyUnicode;
 	
 	keyModifiers = modifiers;
@@ -598,7 +598,7 @@ static iTermKeyBindingMgr *singleInstance = nil;
 		
 }
 
-- (void)deleteEntryAtIndex: (int) index inProfile: (NSString *) profile
+- (void)deleteEntryAtIndex: (NSInteger) index inProfile: (NSString *) profile
 {
 	NSMutableDictionary *keyMappings;
 	NSArray *allKeys;
@@ -624,16 +624,16 @@ static iTermKeyBindingMgr *singleInstance = nil;
 		aProfile = [profiles objectForKey: profileName];
 	else
 		aProfile = [self globalProfile];
-	return ([[aProfile objectForKey: @"Option Key"] intValue]);
+	return ([[aProfile objectForKey: @"Option Key"] integerValue]);
 }
 
-- (void)setOptionKey: (int) option forProfile:(NSString *) profileName
+- (void)setOptionKey: (NSInteger) option forProfile:(NSString *) profileName
 {
 	NSMutableDictionary *aProfile;
 	
 	//NSLog(@"%s: profile = %@; option = %d", __PRETTY_FUNCTION__, profileName, option);
 	aProfile = [profiles objectForKey: profileName];
-	[aProfile setObject: [NSNumber numberWithInt: option] forKey: @"Option Key"];
+	[aProfile setObject: [NSNumber numberWithInteger: option] forKey: @"Option Key"];
 }
 
 - (NSDictionary *) globalProfile
@@ -671,7 +671,7 @@ static iTermKeyBindingMgr *singleInstance = nil;
 	return [self globalProfileName];
 }
 
-- (int) actionForKeyCode: (unichar)keyCode modifiers: (unsigned int) keyModifiers highPriority: (BOOL *) highPriority text: (NSString **) text profile: (NSString *)profile
+- (int) actionForKeyCode: (unichar)keyCode modifiers: (NSEventModifierFlags) keyModifiers highPriority: (BOOL *) highPriority text: (NSString **) text profile: (NSString *)profile
 {
 	int retCode = -1;
 	NSString *globalProfile;
@@ -694,13 +694,13 @@ static iTermKeyBindingMgr *singleInstance = nil;
 	return (retCode);
 }
 
-- (int) _actionForKeyCode: (unichar)keyCode modifiers: (unsigned int) keyModifiers highPriority: (BOOL *) highPriority text: (NSString **) text profile: (NSString *)profile
+- (int) _actionForKeyCode: (unichar)keyCode modifiers: (NSEventModifierFlags) keyModifiers highPriority: (BOOL *) highPriority text: (NSString **) text profile: (NSString *)profile
 {
 	NSDictionary *keyMappings;
 	NSString *keyString;
 	NSDictionary *theKeyMapping;
 	int retCode = -1;
-	unsigned int theModifiers;
+	NSEventModifierFlags theModifiers;
 	
 	if (profile == nil)
 	{
@@ -725,7 +725,7 @@ static iTermKeyBindingMgr *singleInstance = nil;
 	if (keyCode >= NSUpArrowFunctionKey && keyCode <= NSRightArrowFunctionKey)
 		theModifiers |= NSNumericPadKeyMask;
 	
-	keyString = [NSString stringWithFormat: @"0x%x-0x%x", keyCode, theModifiers];
+	keyString = [NSString stringWithFormat: @"0x%x-0x%lx", keyCode, (unsigned long)theModifiers];
 	theKeyMapping = [keyMappings objectForKey: keyString];
 	if (theKeyMapping == nil)
 	{

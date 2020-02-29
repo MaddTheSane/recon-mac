@@ -18,7 +18,7 @@
 #define TERMINAL_PROFILE_TAB		1
 #define DISPLAY_PROFILE_TAB			2
 
-@interface iTermProfileWindowController : NSWindowController <NSWindowDelegate, NSOutlineViewDataSource, NSOutlineViewDelegate>
+@interface iTermProfileWindowController : NSWindowController <NSWindowDelegate, NSOutlineViewDataSource, NSOutlineViewDelegate, NSTableViewDataSource>
 {
     NSUserDefaults *_prefs;
 
@@ -147,7 +147,7 @@
 - (IBAction)terminalSetXtermMouseReporting:(id)sender;
 - (IBAction)terminalSetAppendTitle:(id)sender;
 
-- (void)selectProfile:(NSString *)profile withInCategory: (int) category;
+- (void)selectProfile:(NSString *)profile withInCategory: (NSInteger) category;
 
 @end
 

@@ -167,7 +167,7 @@
 
 @property BOOL disableBold;
 - (void)setColorTable:(int) index highLight:(BOOL)hili color:(NSColor *) c;
-- (int) optionKey;
+- (NSInteger) optionKey;
 
 // Session status
 - (void)resetStatus;

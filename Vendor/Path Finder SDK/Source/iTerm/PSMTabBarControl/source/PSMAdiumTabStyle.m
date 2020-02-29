@@ -50,61 +50,33 @@
 #pragma mark -
 #pragma mark Drawing Style Accessors
 
-- (BOOL)drawsUnified
-{
-	return _drawsUnified;
-}
-
-- (void)setDrawsUnified:(BOOL)value
-{
-	_drawsUnified = value;
-}
-
-- (BOOL)drawsRight
-{
-	return _drawsRight;
-}
-
-- (void)setDrawsRight:(BOOL)value
-{
-	_drawsRight = value;
-}
+@synthesize drawsUnified=_drawsUnified;
+@synthesize drawsRight=_drawsRight;
 
 #pragma mark -
 #pragma mark Control Specific
 
-- (float)leftMarginForTabBarControl
+- (CGFloat)leftMarginForTabBarControl
 {
-    return 3.0f;
+    return 3.0;
 }
 
-- (float)rightMarginForTabBarControl
+- (CGFloat)rightMarginForTabBarControl
 {
-    return [tabBar useOverflowMenu] ? 24.0f : 3.0f;
+    return [tabBar useOverflowMenu] ? 24.0 : 3.0;
 }
 
-- (float)topMarginForTabBarControl
+- (CGFloat)topMarginForTabBarControl
 {
-	return 10.0f;
+	return 10.0;
 }
 
 #pragma mark -
 #pragma mark Add Tab Button
 
-- (NSImage *)addTabButtonImage
-{
-    return _addTabButtonImage;
-}
-
-- (NSImage *)addTabButtonPressedImage
-{
-    return _addTabButtonPressedImage;
-}
-
-- (NSImage *)addTabButtonRolloverImage
-{
-    return _addTabButtonRolloverImage;
-}
+@synthesize addTabButtonImage=_addTabButtonImage;
+@synthesize addTabButtonPressedImage=_addTabButtonPressedImage;
+@synthesize addTabButtonRolloverImage=_addTabButtonRolloverImage;
 
 #pragma mark -
 #pragma mark Cell Specific
@@ -194,7 +166,7 @@
 		return NSZeroRect;
 	}
 
-	float countWidth = [[self attributedObjectCountValueForTabCell:cell] size].width;
+	CGFloat countWidth = [[self attributedObjectCountValueForTabCell:cell] size].width;
 	countWidth += (2 * kPSMAdiumObjectCounterRadius - 6.0);
 	
 	if (countWidth < kPSMAdiumCounterMinWidth) {
@@ -213,9 +185,9 @@
 	return result;
 }
 
-- (float)minimumWidthOfTabCell:(PSMTabBarCell *)cell
+- (CGFloat)minimumWidthOfTabCell:(PSMTabBarCell *)cell
 {
-	float resultWidth = 0.0;
+	CGFloat resultWidth = 0.0;
 
 	// left margin
 	resultWidth = MARGIN_X;
@@ -249,9 +221,9 @@
 	return ceil(resultWidth);
 }
 
-- (float)desiredWidthOfTabCell:(PSMTabBarCell *)cell
+- (CGFloat)desiredWidthOfTabCell:(PSMTabBarCell *)cell
 {
-	float resultWidth = 0.0;
+	CGFloat resultWidth = 0.0;
 
 	// left margin
 	resultWidth = MARGIN_X;
@@ -341,7 +313,7 @@
 - (void)drawInteriorWithTabCell:(PSMTabBarCell *)cell inView:(NSView*)controlView
 {
 	NSRect cellFrame = [cell frame];
-	float labelPosition = cellFrame.origin.x + MARGIN_X;
+	CGFloat labelPosition = cellFrame.origin.x + MARGIN_X;
 	
 	//draw the close button and icon combined
 	if ([cell hasCloseButton] && ![cell isCloseButtonSuppressed]) {

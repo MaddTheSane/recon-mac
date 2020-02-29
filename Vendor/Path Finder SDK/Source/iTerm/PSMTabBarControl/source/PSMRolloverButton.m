@@ -61,7 +61,7 @@
 	[self setImage:_usualImage];
 
 	NSPoint mouse = [NSEvent mouseLocation];
-	mouse = [[self window] convertScreenToBase:mouse];
+	mouse = [[self window] convertPointFromScreen:mouse];
 	mouse = [self convertPoint:mouse fromView:nil];
 	
 	BOOL mouseInsideNow = NSMouseInRect(mouse, [self bounds], [self isFlipped]);

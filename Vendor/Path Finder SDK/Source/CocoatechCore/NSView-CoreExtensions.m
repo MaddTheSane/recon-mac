@@ -36,7 +36,7 @@
 - (BOOL)mouseInRectNow;
 {
 	NSPoint mouse = [NSEvent mouseLocation];
-	mouse = [[self window] convertScreenToBase:mouse];
+	mouse = [[self window] convertPointFromScreen:mouse];
 	mouse = [self convertPoint:mouse fromView:nil];
 	
 	return (NSMouseInRect(mouse, [self bounds], [self isFlipped]));

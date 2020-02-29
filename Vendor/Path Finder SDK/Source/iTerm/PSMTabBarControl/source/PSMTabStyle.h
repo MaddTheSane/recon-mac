@@ -16,17 +16,17 @@ Protocol to be observed by all style delegate objects.  These objects handle the
 @protocol PSMTabStyle <NSObject>
 
 // identity
-- (NSString *)name;
+@property (readonly, copy) NSString *name;
 
 // control specific parameters
-- (float)leftMarginForTabBarControl;
-- (float)rightMarginForTabBarControl;
-- (float)topMarginForTabBarControl;
+@property (readonly) CGFloat leftMarginForTabBarControl;
+@property (readonly) CGFloat rightMarginForTabBarControl;
+@property (readonly) CGFloat topMarginForTabBarControl;
 
 // add tab button
-- (NSImage *)addTabButtonImage;
-- (NSImage *)addTabButtonPressedImage;
-- (NSImage *)addTabButtonRolloverImage;
+@property (readonly, retain) NSImage *addTabButtonImage;
+@property (readonly, retain) NSImage *addTabButtonPressedImage;
+@property (readonly, retain) NSImage *addTabButtonRolloverImage;
 
 // cell specific parameters
 - (NSRect)dragRectForTabCell:(PSMTabBarCell *)cell orientation:(PSMTabBarOrientation)orientation;
@@ -34,8 +34,8 @@ Protocol to be observed by all style delegate objects.  These objects handle the
 - (NSRect)iconRectForTabCell:(PSMTabBarCell *)cell;
 - (NSRect)indicatorRectForTabCell:(PSMTabBarCell *)cell;
 - (NSRect)objectCounterRectForTabCell:(PSMTabBarCell *)cell;
-- (float)minimumWidthOfTabCell:(PSMTabBarCell *)cell;
-- (float)desiredWidthOfTabCell:(PSMTabBarCell *)cell;
+- (CGFloat)minimumWidthOfTabCell:(PSMTabBarCell *)cell;
+- (CGFloat)desiredWidthOfTabCell:(PSMTabBarCell *)cell;
 
 // cell values
 - (NSAttributedString *)attributedObjectCountValueForTabCell:(PSMTabBarCell *)cell;
@@ -50,6 +50,6 @@ Protocol to be observed by all style delegate objects.  These objects handle the
 
 @interface PSMTabBarControl (StyleAccessors)
 
-- (NSMutableArray *)cells;
+- (NSMutableArray<PSMTabBarCell *> *)cells;
 
 @end

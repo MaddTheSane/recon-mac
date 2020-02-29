@@ -88,7 +88,7 @@
 }
 
 // Class methods
-+ (id)singleInstance;
+@property (class, readonly, retain) iTermKeyBindingMgr *singleInstance;
 
 // Instance methods
 - (id)init;
@@ -104,26 +104,26 @@
 - (NSInteger) numberOfEntriesInProfile: (NSString *) profileName;
 
 - (NSInteger) optionKeyForProfile:(NSString *) profileName;
-- (void)setOptionKey: (int) option forProfile:(NSString *) profileName;
+- (void)setOptionKey: (NSInteger) option forProfile:(NSString *) profileName;
 
 - (void)addEntryForKeyCode: (unsigned int) hexCode 
-				  modifiers: (unsigned int) modifiers
-					 action: (unsigned int) action
+				  modifiers: (NSEventModifierFlags) modifiers
+					 action: (NSInteger) action
 			   highPriority: (BOOL) highPriority
 					   text: (NSString *) text
 					profile: (NSString *) profile;
 - (void)addEntryForKey: (unsigned int) key 
-				  modifiers: (unsigned int) modifiers
-					 action: (unsigned int) action
+				  modifiers: (NSEventModifierFlags) modifiers
+					 action: (NSInteger) action
 			   highPriority: (BOOL) highPriority
 					   text: (NSString *) text
 				    profile: (NSString *) profile;
-- (void)deleteEntryAtIndex: (int) index inProfile: (NSString *) profile;
+- (void)deleteEntryAtIndex: (NSInteger) index inProfile: (NSString *) profile;
 
-- (NSString *) keyCombinationAtIndex: (int) index inProfile: (NSString *) profile;
-- (NSString *) actionForKeyCombinationAtIndex: (int) index inProfile: (NSString *) profile;
+- (NSString *) keyCombinationAtIndex: (NSInteger) index inProfile: (NSString *) profile;
+- (NSString *) actionForKeyCombinationAtIndex: (NSInteger) index inProfile: (NSString *) profile;
 - (int) actionForKeyCode: (unichar)keyCode 
-			   modifiers: (unsigned int) keyModifiers 
+			   modifiers: (NSEventModifierFlags) keyModifiers
 			highPriority: (BOOL *) highPriority
 					text: (NSString **) text 
 				 profile: (NSString *)profile;
@@ -132,7 +132,7 @@
 
 @interface iTermKeyBindingMgr ()
 - (int) _actionForKeyCode: (unichar)keyCode 
-				modifiers: (unsigned int) keyModifiers
+				modifiers: (NSEventModifierFlags) keyModifiers
 			 highPriority: (BOOL *) highPriority
 					 text: (NSString **) text 
 				  profile: (NSString *)profile;

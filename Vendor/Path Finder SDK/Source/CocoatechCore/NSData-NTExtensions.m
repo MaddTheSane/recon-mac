@@ -14,9 +14,6 @@
 
 @implementation NSData (NTExtensions)
 
-/* An MD5 hash is 16 bytes long. There isn't a define for this in md5.h; but it can't ever change, anyway (unless we go to a non-8-bit byte) */
-#define MD5_SIGNATURE_LENGTH 16
-
 - (NSData *)md5Signature;
 {
     __block CC_MD5_CTX md5context;
@@ -60,7 +57,7 @@
 			[decompressed increaseLengthBy: half_length];
 		
 		strm.next_out = [decompressed mutableBytes] + strm.total_out;
-		strm.avail_out = [decompressed length] - strm.total_out;
+		strm.avail_out = (uInt)([decompressed length] - strm.total_out);
 		
 		// Inflate another chunk.
 		status = inflate (&strm, Z_SYNC_FLUSH);

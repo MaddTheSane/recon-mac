@@ -513,7 +513,7 @@ static BOOL addingKBEntry;
 }
 
 // NSTableView data source
-- (int) numberOfRowsInTableView: (NSTableView *)aTableView
+- (NSInteger) numberOfRowsInTableView: (NSTableView *)aTableView
 {
 	if ([[[iTermKeyBindingMgr singleInstance] profiles] count] == 0 || selectedProfile == nil)
 		return (0);
@@ -521,7 +521,7 @@ static BOOL addingKBEntry;
 	return([[iTermKeyBindingMgr singleInstance] numberOfEntriesInProfile: selectedProfile]);
 }
 
-- (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(int)rowIndex
+- (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex
 {    
     if ([[aTableColumn identifier] intValue] ==  0)
 	{
@@ -965,7 +965,7 @@ static BOOL addingKBEntry;
     }
 }
 
-- (void)selectProfile:(NSString *)profile withInCategory: (int) category
+- (void)selectProfile:(NSString *)profile withInCategory: (NSInteger) category
 {
     NSInteger i;
     
@@ -1037,7 +1037,7 @@ static BOOL addingKBEntry;
 {
 	id profileMgr;
 	
-    int categoryChosen = [addProfileCategory indexOfSelectedItem];
+    NSInteger categoryChosen = [addProfileCategory indexOfSelectedItem];
     
     if (categoryChosen == KEYBOARD_PROFILE_TAB)
 		profileMgr = [iTermKeyBindingMgr singleInstance];

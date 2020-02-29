@@ -8,19 +8,16 @@
 
 #import "NTAlertPanel.h"
 
-@interface NTAlertPanel (Private)
-- (SEL)selector;
-- (void)setSelector:(SEL)theSelector;
+@interface NTAlertPanel ()
+@property (readwrite) SEL selector;
 
-- (id)target;
-- (void)setTarget:(id)theTarget;
+@property (readwrite, retain) id target;
 
-- (void)setContextInfo:(id)theContextInfo;
+@property (readwrite, retain) id contextInfo;
 
-- (NSAlert *)alert;
-- (void)setAlert:(NSAlert *)theAlert;
+@property (readwrite, nonatomic, retain) NSAlert *alert;
 
-- (void)setResultCode:(int)theResultCode;
+@property (readwrite) NSModalResponse resultCode;
 
 - (void)start:(NSAlertStyle)style
 		title:(NSString*)title 
@@ -184,82 +181,33 @@ enableEscOnOther:enableEscOnOther];
 //---------------------------------------------------------- 
 //  contextInfo 
 //---------------------------------------------------------- 
-- (id)contextInfo
-{
-    return mContextInfo; 
-}
+@synthesize contextInfo=mContextInfo;
 
 //---------------------------------------------------------- 
 //  resultCode 
 //---------------------------------------------------------- 
-- (int)resultCode
-{
-    return mResultCode;
-}
-
-@end
-
-@implementation NTAlertPanel (Private)
+@synthesize resultCode=mResultCode;
 
 //---------------------------------------------------------- 
 //  selector 
 //---------------------------------------------------------- 
-- (SEL)selector
-{
-    return mSelector;
-}
-
-- (void)setSelector:(SEL)theSelector
-{
-    mSelector = theSelector;
-}
+@synthesize selector=mSelector;
 
 //---------------------------------------------------------- 
 //  target 
 //---------------------------------------------------------- 
-- (id)target
-{
-    return mTarget; 
-}
-
-- (void)setTarget:(id)theTarget
-{
-    if (mTarget != theTarget) {
-        [mTarget release];
-        mTarget = [theTarget retain];
-    }
-}
-
-- (void)setContextInfo:(id)theContextInfo
-{
-    if (mContextInfo != theContextInfo) {
-        [mContextInfo release];
-        mContextInfo = [theContextInfo retain];
-    }
-}
+@synthesize target=mTarget;
 
 //---------------------------------------------------------- 
 //  alert 
 //---------------------------------------------------------- 
+@synthesize alert=mAlert;
 - (NSAlert *)alert
 {
 	if (!mAlert)
 		[self setAlert:[[[NSAlert alloc] init] autorelease]];
 	
     return mAlert; 
-}
-
-- (void)setAlert:(NSAlert *)theAlert
-{
-    if (mAlert != theAlert) {
-        [mAlert release];
-        mAlert = [theAlert retain];
-    }
-}
-
-- (void)setResultCode:(int)theResultCode
-{
-    mResultCode = theResultCode;
 }
 
 - (void)start:(NSAlertStyle)style

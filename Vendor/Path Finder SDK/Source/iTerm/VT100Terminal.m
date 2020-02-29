@@ -1523,7 +1523,7 @@ static VT100TCC decode_string(unsigned char *datap,
     return result;
 }
 
-- (NSData *)keyArrowUp:(unsigned int)modflag
+- (NSData *)keyArrowUp:(NSEventModifierFlags)modflag
 {
     if (key_strings[TERMINFO_KEY_UP]) {
         return [NSData dataWithBytes:key_strings[TERMINFO_KEY_UP]
@@ -1551,7 +1551,7 @@ static VT100TCC decode_string(unsigned char *datap,
     }
 }
 
-- (NSData *)keyArrowDown:(unsigned int)modflag
+- (NSData *)keyArrowDown:(NSEventModifierFlags)modflag
 {
     if (key_strings[TERMINFO_KEY_DOWN]) {
         return [NSData dataWithBytes:key_strings[TERMINFO_KEY_DOWN]
@@ -1579,7 +1579,7 @@ static VT100TCC decode_string(unsigned char *datap,
     }
 }
 
-- (NSData *)keyArrowLeft:(unsigned int)modflag
+- (NSData *)keyArrowLeft:(NSEventModifierFlags)modflag
 {
     if (key_strings[TERMINFO_KEY_LEFT]) {
         return [NSData dataWithBytes:key_strings[TERMINFO_KEY_LEFT]
@@ -1607,7 +1607,7 @@ static VT100TCC decode_string(unsigned char *datap,
     }
 }
 
-- (NSData *)keyArrowRight:(unsigned int)modflag
+- (NSData *)keyArrowRight:(NSEventModifierFlags)modflag
 {
     if (key_strings[TERMINFO_KEY_RIGHT]) {
         return [NSData dataWithBytes:key_strings[TERMINFO_KEY_RIGHT]
@@ -1864,7 +1864,7 @@ else {
     return (theData);
 }
 
-- (NSData *)mousePress: (int)button withModifiers: (unsigned int)modflag atX: (int)x Y: (int)y
+- (NSData *)mousePress: (int)button withModifiers: (NSEventModifierFlags)modflag atX: (int)x Y: (int)y
 {
 	static char buf[7];
 	char cb;
@@ -1887,7 +1887,7 @@ else {
 	return [NSData dataWithBytes: buf length: strlen(buf)];
 }
 
-- (NSData *)mouseMotion: (int)button withModifiers: (unsigned int)modflag atX: (int)x Y: (int)y
+- (NSData *)mouseMotion: (int)button withModifiers: (NSEventModifierFlags)modflag atX: (int)x Y: (int)y
 {
 	static char buf[7];
 	char cb;

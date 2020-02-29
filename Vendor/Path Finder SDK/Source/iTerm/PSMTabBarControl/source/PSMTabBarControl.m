@@ -20,7 +20,7 @@
 
 @interface PSMTabBarControl ()
 // characteristics
-- (float)availableCellWidth;
+- (CGFloat)availableCellWidth;
 - (NSRect)genericCellRect;
 
     // constructor/destructor
@@ -78,9 +78,9 @@
     return bundle;
 }
 
-- (float)availableCellWidth
+- (CGFloat)availableCellWidth
 {
-    float width = [self frame].size.width;
+    CGFloat width = [self frame].size.width;
     width = width - [style leftMarginForTabBarControl] - [style rightMarginForTabBarControl] - _resizeAreaCompensation;
     return width;
 }
@@ -502,7 +502,7 @@
     if (!animate)
         _currentStep = (int)kPSMHideAnimationSteps;
     
-    float partnerOriginalSize, partnerOriginalOrigin, myOriginalSize, myOriginalOrigin, partnerTargetSize, partnerTargetOrigin, myTargetSize, myTargetOrigin;
+    CGFloat partnerOriginalSize, partnerOriginalOrigin, myOriginalSize, myOriginalOrigin, partnerTargetSize, partnerTargetOrigin, myTargetSize, myTargetOrigin;
     
     // target values for partner
     if ([self orientation] == PSMTabBarHorizontalOrientation) {
@@ -641,10 +641,10 @@
     // moves the frame of the tab bar and window (or partner view) linearly to hide or show the tab bar
     NSRect myFrame = [self frame];
 	NSDictionary *userInfo = [timer userInfo];
-    float myCurrentOrigin = ([[userInfo objectForKey:@"myOriginalOrigin"] floatValue] + (([[userInfo objectForKey:@"myTargetOrigin"] floatValue] - [[userInfo objectForKey:@"myOriginalOrigin"] floatValue]) * (_currentStep/kPSMHideAnimationSteps)));
-    float myCurrentSize = ([[userInfo objectForKey:@"myOriginalSize"] floatValue] + (([[userInfo objectForKey:@"myTargetSize"] floatValue] - [[userInfo objectForKey:@"myOriginalSize"] floatValue]) * (_currentStep/kPSMHideAnimationSteps)));
-    float partnerCurrentOrigin = ([[userInfo objectForKey:@"partnerOriginalOrigin"] floatValue] + (([[userInfo objectForKey:@"partnerTargetOrigin"] floatValue] - [[userInfo objectForKey:@"partnerOriginalOrigin"] floatValue]) * (_currentStep/kPSMHideAnimationSteps)));
-    float partnerCurrentSize = ([[userInfo objectForKey:@"partnerOriginalSize"] floatValue] + (([[userInfo objectForKey:@"partnerTargetSize"] floatValue] - [[userInfo objectForKey:@"partnerOriginalSize"] floatValue]) * (_currentStep/kPSMHideAnimationSteps)));
+    CGFloat myCurrentOrigin = ([[userInfo objectForKey:@"myOriginalOrigin"] doubleValue] + (([[userInfo objectForKey:@"myTargetOrigin"] doubleValue] - [[userInfo objectForKey:@"myOriginalOrigin"] doubleValue]) * (_currentStep/kPSMHideAnimationSteps)));
+    CGFloat myCurrentSize = ([[userInfo objectForKey:@"myOriginalSize"] doubleValue] + (([[userInfo objectForKey:@"myTargetSize"] doubleValue] - [[userInfo objectForKey:@"myOriginalSize"] doubleValue]) * (_currentStep/kPSMHideAnimationSteps)));
+    CGFloat partnerCurrentOrigin = ([[userInfo objectForKey:@"partnerOriginalOrigin"] doubleValue] + (([[userInfo objectForKey:@"partnerTargetOrigin"] doubleValue] - [[userInfo objectForKey:@"partnerOriginalOrigin"] doubleValue]) * (_currentStep/kPSMHideAnimationSteps)));
+    CGFloat partnerCurrentSize = ([[userInfo objectForKey:@"partnerOriginalSize"] doubleValue] + (([[userInfo objectForKey:@"partnerTargetSize"] doubleValue] - [[userInfo objectForKey:@"partnerOriginalSize"] doubleValue]) * (_currentStep/kPSMHideAnimationSteps)));
     
 	NSRect myNewFrame;
 	if ([self orientation] == PSMTabBarHorizontalOrientation) {
@@ -754,7 +754,7 @@
 	
     for (i = 0; i < cellCount; i++) {
         PSMTabBarCell *cell = [_cells objectAtIndex:i];
-        float width;
+        CGFloat width;
         
         // supress close button? 
         if ( (cellCount == 1 && [self canCloseOnlyTab] == NO) || ([self disableTabClose] == YES) ) {
@@ -785,8 +785,8 @@
 					[newWidths removeAllObjects];
 					
 					for (j = 0; j < cellCount; j++) {
-						float desiredWidth = [[_cells objectAtIndex:j] desiredWidthOfCell];
-						[newWidths addObject:[NSNumber numberWithFloat:(desiredWidth < averageWidth && [self sizeCellsToFit]) ? desiredWidth : averageWidth]];
+						CGFloat desiredWidth = [[_cells objectAtIndex:j] desiredWidthOfCell];
+						[newWidths addObject:@((desiredWidth < averageWidth && [self sizeCellsToFit]) ? desiredWidth : averageWidth)];
 					}
 					break;
 				}
@@ -802,13 +802,13 @@
 						NSInteger q;
 						for (q = (i - 1); q >= 0; q--) {
 							NSInteger desiredReduction = (NSInteger)neededWidth / (q + 1);
-							if (([[newWidths objectAtIndex:q] floatValue] - desiredReduction) < _cellMinWidth) {
-								NSInteger actualReduction = (NSInteger)[[newWidths objectAtIndex:q] floatValue] - _cellMinWidth;
+							if (([[newWidths objectAtIndex:q] doubleValue] - desiredReduction) < _cellMinWidth) {
+								NSInteger actualReduction = (NSInteger)[[newWidths objectAtIndex:q] doubleValue] - _cellMinWidth;
 								[newWidths replaceObjectAtIndex:q withObject:@(_cellMinWidth)];
 								neededWidth -= actualReduction;
 							} else {
-								NSInteger newCellWidth = (NSInteger)[[newWidths objectAtIndex:q] floatValue] - desiredReduction;
-								[newWidths replaceObjectAtIndex:q withObject:[NSNumber numberWithFloat:newCellWidth]];
+								NSInteger newCellWidth = (NSInteger)[[newWidths objectAtIndex:q] doubleValue] - desiredReduction;
+								[newWidths replaceObjectAtIndex:q withObject:[NSNumber numberWithDouble:newCellWidth]];
 								neededWidth -= desiredReduction;
 							}
 						}
@@ -829,8 +829,8 @@
 							
 							for (q = i - 1; q >= 0; q--) {
 								NSInteger desiredAddition = (NSInteger)leftoverWidth / (q + 1);
-								NSInteger newCellWidth = (NSInteger)[[newWidths objectAtIndex:q] floatValue] + desiredAddition;
-								[newWidths replaceObjectAtIndex:q withObject:[NSNumber numberWithFloat:newCellWidth]];
+								NSInteger newCellWidth = (NSInteger)[[newWidths objectAtIndex:q] doubleValue] + desiredAddition;
+								[newWidths replaceObjectAtIndex:q withObject:[NSNumber numberWithDouble:newCellWidth]];
 								leftoverWidth -= desiredAddition;
 							}
 						}
@@ -841,7 +841,7 @@
 						
 						for (q = i - 1; q >= 0; q--) {
 							NSInteger desiredAddition = (NSInteger)leftoverWidth / (q + 1);
-							NSInteger newCellWidth = (NSInteger)[[newWidths objectAtIndex:q] floatValue] + desiredAddition;
+							NSInteger newCellWidth = (NSInteger)[[newWidths objectAtIndex:q] doubleValue] + desiredAddition;
 							[newWidths replaceObjectAtIndex:q withObject:[NSNumber numberWithFloat:newCellWidth]];
 							leftoverWidth -= desiredAddition;
 						}
@@ -855,16 +855,16 @@
 						[newWidths removeAllObjects];
 						totalOccupiedWidth = 0;
 						
-						cellWidth = [NSNumber numberWithFloat:[cell1 desiredWidthOfCell] < availableWidth * 0.5f ? [cell1 desiredWidthOfCell] : availableWidth * 0.5f];
+						cellWidth = [NSNumber numberWithDouble:[cell1 desiredWidthOfCell] < availableWidth * 0.5 ? [cell1 desiredWidthOfCell] : availableWidth * 0.5];
 						[newWidths addObject:cellWidth];
-						totalOccupiedWidth += [cellWidth floatValue];
+						totalOccupiedWidth += [cellWidth doubleValue];
 						
-						cellWidth = [NSNumber numberWithFloat:[cell2 desiredWidthOfCell] < (availableWidth - totalOccupiedWidth) ? [cell2 desiredWidthOfCell] : (availableWidth - totalOccupiedWidth)];
+						cellWidth = [NSNumber numberWithDouble:[cell2 desiredWidthOfCell] < (availableWidth - totalOccupiedWidth) ? [cell2 desiredWidthOfCell] : (availableWidth - totalOccupiedWidth)];
 						[newWidths addObject:cellWidth];
-						totalOccupiedWidth += [cellWidth floatValue];
+						totalOccupiedWidth += [cellWidth doubleValue];
 						
 						if (totalOccupiedWidth < availableWidth) {
-							[newWidths replaceObjectAtIndex:0 withObject:[NSNumber numberWithFloat:availableWidth - [cellWidth floatValue]]];
+							[newWidths replaceObjectAtIndex:0 withObject:@(availableWidth - [cellWidth doubleValue])];
 						}
 						
 						numberOfVisibleCells = 2;
@@ -970,7 +970,7 @@
 			cellFrame.origin.x += totalChange;
 			
 			if (i < numberOfVisibleCells) {
-				float target = [[targetWidths objectAtIndex:i] floatValue];
+				CGFloat target = [[targetWidths objectAtIndex:i] doubleValue];
 				
 				if (fabs(cellFrame.size.width - target) < _animationDelta) {
 					cellFrame.size.width = target;
@@ -1025,7 +1025,7 @@
 			cellRect.origin.x += NSWidth([self genericCellRect])+4;
 		} else {
 			cellRect.origin.x = 0;
-			cellRect.origin.y = [[newWidths lastObject] floatValue];
+			cellRect.origin.y = [[newWidths lastObject] doubleValue];
 		}
 		
 		[self _setupAddTabButton:cellRect];
@@ -1047,10 +1047,10 @@
         if (i < numberOfVisibleCells) {
             // set cell frame
 			if ([self orientation] == PSMTabBarHorizontalOrientation) {
-				cellRect.size.width = [[newWidths objectAtIndex:i] floatValue];
+				cellRect.size.width = [[newWidths objectAtIndex:i] doubleValue];
 			} else {
 				cellRect.size.width = [self frame].size.width;
-				cellRect.origin.y = [[newWidths objectAtIndex:i] floatValue];
+				cellRect.origin.y = [[newWidths objectAtIndex:i] doubleValue];
 				cellRect.origin.x = 0;
 			}
             [cell setFrame:cellRect];
@@ -1059,7 +1059,7 @@
             
             // close button tracking rect
             if ([cell hasCloseButton] && ([[cell representedObject] isEqualTo:[tabView selectedTabViewItem]] || [self allowsBackgroundTabClosing])) {
-				NSPoint mousePoint = [self convertPoint:[[self window] convertScreenToBase:[NSEvent mouseLocation]] fromView:nil];
+				NSPoint mousePoint = [self convertPoint:[[self window] convertPointFromScreen:[NSEvent mouseLocation]] fromView:nil];
 				NSRect closeRect = [cell closeButtonRectForFrame:cellRect];
 				
 				//add the tracking rect for the close button highlight
@@ -1122,7 +1122,7 @@
             }
             
             // next...
-            cellRect.origin.x += [[newWidths objectAtIndex:i] floatValue];
+            cellRect.origin.x += [[newWidths objectAtIndex:i] doubleValue];
             
         } else {
             // set up menu items
@@ -1272,7 +1272,7 @@
 	
 	if (_resizing) { 
 		NSRect frame = [self frame];
-		float resizeAmount = [theEvent deltaX];
+		CGFloat resizeAmount = [theEvent deltaX];
 		if ((currentPoint.x > frame.size.width && resizeAmount > 0) || (currentPoint.x < frame.size.width && resizeAmount < 0)) {
 			[[NSCursor resizeLeftRightCursor] push];
 			
@@ -1307,9 +1307,9 @@
 			return;
 		}
 		
-		float dx = fabs(currentPoint.x - trackingStartPoint.x);
-		float dy = fabs(currentPoint.y - trackingStartPoint.y);
-		float distance = sqrt(dx * dx + dy * dy);
+		CGFloat dx = fabs(currentPoint.x - trackingStartPoint.x);
+		CGFloat dy = fabs(currentPoint.y - trackingStartPoint.y);
+		CGFloat distance = sqrt(dx * dx + dy * dy);
 		
 		if (distance >= 10 && !_didDrag && ![[PSMTabDragAssistant sharedDragAssistant] isDragging] &&
 				[self delegate] && [[self delegate] respondsToSelector:@selector(tabView:shouldDragTabViewItem:fromTabBar:)] &&
@@ -1379,11 +1379,6 @@
 }
 
 // NSDraggingSource
-- (NSDragOperation)draggingSourceOperationMaskForLocal:(BOOL)isLocal
-{
-    return (isLocal ? NSDragOperationMove : NSDragOperationNone);
-}
-
 - (BOOL)ignoreModifierKeysWhileDragging
 {
     return YES;
@@ -1472,7 +1467,7 @@
     return YES;
 }
 
-- (void)draggedImage:(NSImage *)anImage endedAt:(NSPoint)aPoint operation:(NSDragOperation)operation
+-(void)draggingSession:(NSDraggingSession *)session endedAtPoint:(NSPoint)aPoint operation:(NSDragOperation)operation
 {
 	[[PSMTabDragAssistant sharedDragAssistant] draggedImageEndedAt:aPoint operation:operation];
 }

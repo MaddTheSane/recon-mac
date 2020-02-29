@@ -692,8 +692,8 @@
 
 - (void)menuForEvent:(NSEvent *)theEvent menu: (NSMenu *) theMenu
 {
-    unsigned int modflag = 0;
-    int nextIndex;
+    NSEventModifierFlags modflag = 0;
+    NSInteger nextIndex;
 	NSMenuItem *aMenuItem;
     	
     if (theMenu == nil || suppressContextualMenu)

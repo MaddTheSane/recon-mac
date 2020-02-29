@@ -289,7 +289,7 @@ static NSColor *deadStateColor;
 
 - (BOOL) hasKeyMappingForEvent: (NSEvent *) event highPriority: (BOOL) priority
 {
-    unsigned int modflag;
+    NSEventModifierFlags modflag;
     unsigned short keycode;
     NSString *keystr;
     NSString *unmodkeystr;
@@ -329,7 +329,7 @@ static NSColor *deadStateColor;
 	NSString *keyBindingText;
 	BOOL priority;
     
-    unsigned int modflag;
+    NSEventModifierFlags modflag;
     unsigned short keycode;
     NSString *keystr;
     NSString *unmodkeystr;
@@ -1233,7 +1233,7 @@ static NSColor *deadStateColor;
 
 @synthesize exited=EXIT;
 
-- (int) optionKey
+- (NSInteger) optionKey
 {
 	NSString *kbProfile;
 	

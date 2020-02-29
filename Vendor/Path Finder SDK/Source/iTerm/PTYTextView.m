@@ -959,7 +959,7 @@ static NSInteger cacheSize;
     NSInputManager *imana = [NSInputManager currentInputManager];
     BOOL IMEnable = [imana wantsToInterpretAllKeystrokes];
     id delegate = [self delegate];
-	unsigned int modflag = [event modifierFlags];
+	NSEventModifierFlags modflag = [event modifierFlags];
     BOOL prev = [self hasMarkedText];
 	
 	keyIsARepeat = [event isARepeat];
@@ -2332,54 +2332,22 @@ static NSInteger cacheSize;
 //---------------------------------------------------------- 
 //  lineHeight 
 //---------------------------------------------------------- 
-- (CGFloat)lineHeight
-{
-    return mLineHeight;
-}
-
-- (void)setLineHeight:(CGFloat)theLineHeight
-{
-    mLineHeight = theLineHeight;
-}
+@synthesize lineHeight=mLineHeight;
 
 //---------------------------------------------------------- 
 //  charWidth 
 //---------------------------------------------------------- 
-- (CGFloat)charWidth
-{
-    return mCharWidth;
-}
-
-- (void)setCharWidth:(CGFloat)theCharWidth
-{
-    mCharWidth = theCharWidth;
-}
+@synthesize charWidth=mCharWidth;
 
 //---------------------------------------------------------- 
 //  charWidthWithoutSpacing 
 //---------------------------------------------------------- 
-- (CGFloat)charWidthWithoutSpacing
-{
-    return mCharWidthWithoutSpacing;
-}
-
-- (void)setCharWidthWithoutSpacing:(CGFloat)theCharWidthWithoutSpacing
-{
-    mCharWidthWithoutSpacing = theCharWidthWithoutSpacing;
-}
+@synthesize charWidthWithoutSpacing=mCharWidthWithoutSpacing;
 
 //---------------------------------------------------------- 
 //  charHeightWithoutSpacing 
 //---------------------------------------------------------- 
-- (CGFloat)charHeightWithoutSpacing
-{
-    return mCharHeightWithoutSpacing;
-}
-
-- (void)setCharHeightWithoutSpacing:(CGFloat)theCharHeightWithoutSpacing
-{
-    mCharHeightWithoutSpacing = theCharHeightWithoutSpacing;
-}
+@synthesize charHeightWithoutSpacing=mCharHeightWithoutSpacing;
 
 //---------------------------------------------------------- 
 //  numberOfLines 

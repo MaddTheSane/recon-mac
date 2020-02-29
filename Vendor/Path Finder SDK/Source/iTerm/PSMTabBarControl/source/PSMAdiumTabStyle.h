@@ -23,10 +23,8 @@
 
 - (void)loadImages;
 
-- (BOOL)drawsUnified;
-- (void)setDrawsUnified:(BOOL)value;
-- (BOOL)drawsRight;
-- (void)setDrawsRight:(BOOL)value;
+@property BOOL drawsUnified;
+@property BOOL drawsRight;
 
 - (void)drawInteriorWithTabCell:(PSMTabBarCell *)cell inView:(NSView*)controlView;
 

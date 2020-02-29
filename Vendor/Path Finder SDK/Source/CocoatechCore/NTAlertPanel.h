@@ -15,7 +15,7 @@
 	id mContextInfo;
 	NSAlert *mAlert;
 	
-	int mResultCode;
+	NSModalResponse mResultCode;
 }
 
 + (void)show:(NSAlertStyle)style
@@ -62,10 +62,10 @@ enableEscOnOther:(BOOL)enableEscOnOther
 	  window:(NSWindow*)window; // buttons default to OK/Cancel
 
 	// NSAlertFirstButtonReturn, NSAlertSecondButtonReturn, NSAlertThirdButtonReturn
-- (int)resultCode;
+@property (readonly) NSModalResponse resultCode;
 
 	// when your action gets called, the sender of the action is a NTAlertPanel, get your context info here
-- (id)contextInfo;
+@property (readonly, retain) id contextInfo;
 
 @end
 

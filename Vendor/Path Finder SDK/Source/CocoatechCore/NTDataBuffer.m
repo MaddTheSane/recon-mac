@@ -36,7 +36,7 @@ void NTDataBufferAppendXMLQuotedString(NTDataBuffer *dataBuffer, CFStringRef str
 {
     const unsigned char *source;
     unsigned char *dest, *ptr;
-    unsigned int characterIndex, characterCount;
+    CFIndex characterIndex, characterCount;
         
     characterCount = CFStringGetLength(string);
 	
