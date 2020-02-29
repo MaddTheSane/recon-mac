@@ -93,8 +93,8 @@ enum { SELECT_CHAR, SELECT_WORD, SELECT_LINE };
     BOOL useTransparency;
 	
     // data source
-    VT100Screen *mScreen;
-    id _delegate;
+    __weak VT100Screen *mScreen;
+    __weak id _delegate;
 	
     //selection
     int startX, startY, endX, endY;
@@ -161,38 +161,29 @@ enum { SELECT_CHAR, SELECT_WORD, SELECT_LINE };
 - (IBAction)mail:(id)sender;
 
 //get/set methods
-- (NSFont *)font;
-- (NSFont *)nafont;
+@property (readonly, strong) NSFont *font;
+@property (readonly, strong) NSFont *nafont;
 - (void)setFont:(NSFont*)aFont nafont:(NSFont*)naFont;
-@property BOOL antiAlias;
-@property BOOL disableBold;
+@property (nonatomic) BOOL antiAlias;
+@property (nonatomic) BOOL disableBold;
 @property BOOL blinkingCursor;
 
 //color stuff
-- (NSColor *) defaultFGColor;
-- (NSColor *) defaultBGColor;
-- (NSColor *) defaultBoldColor;
+@property (nonatomic, strong, getter=defaultFGColor) NSColor *FGColor;
+@property (nonatomic, strong, getter=defaultBGColor) NSColor *BGColor;
+@property (nonatomic, strong, getter=defaultBoldColor) NSColor *boldColor;
 - (NSColor *) colorForCode:(unsigned int) index;
-- (NSColor *) selectionColor;
-- (NSColor *) defaultCursorColor;
-- (NSColor *) selectedTextColor;
-- (NSColor *) cursorTextColor;
-- (void)setFGColor:(NSColor*)color;
-- (void)setBGColor:(NSColor*)color;
-- (void)setBoldColor:(NSColor*)color;
+@property (nonatomic, strong) NSColor *selectionColor;
+@property (nonatomic, strong, getter=defaultCursorColor) NSColor *cursorColor;
+@property (nonatomic, strong) NSColor *selectedTextColor;
+@property (nonatomic, strong) NSColor *cursorTextColor;
 - (void)setColorTable:(int) index highLight:(BOOL)hili color:(NSColor *) c;
-- (void)setSelectionColor: (NSColor *) aColor;
-- (void)setCursorColor:(NSColor*) color;
-- (void)setSelectedTextColor: (NSColor *) aColor;
-- (void)setCursorTextColor:(NSColor*) color;
 
 @property (copy) NSDictionary<NSAttributedStringKey,id> *markedTextAttributes;
 
-- (VT100Screen *)screen;
-- (void)setScreen:(VT100Screen *)theScreen;
+@property (nonatomic, weak) VT100Screen *screen;
 
-- (id)delegate;
-- (void)setDelegate:(id)delegate;
+@property (weak) id delegate;
 
 @property CGFloat lineHeight;
 
@@ -208,8 +199,7 @@ enum { SELECT_CHAR, SELECT_WORD, SELECT_LINE };
 - (void)refresh;
 - (void)setFrameSize: (NSSize) aSize;
 
-- (BOOL)forceUpdate;
-- (void)setForceUpdate:(BOOL)flag;
+@property BOOL forceUpdate;
 
 - (void)showCursor;
 - (void)hideCursor;

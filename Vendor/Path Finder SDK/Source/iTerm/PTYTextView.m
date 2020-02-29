@@ -196,10 +196,7 @@ static NSInteger cacheSize;
     return YES;
 }
 
-- (BOOL) antiAlias
-{
-    return (antiAlias);
-}
+@synthesize antiAlias;
 
 - (void)setAntiAlias: (BOOL) antiAliasFlag
 {
@@ -209,10 +206,7 @@ static NSInteger cacheSize;
 	[self setNeedsDisplay: YES];
 }
 
-- (BOOL) disableBold
-{
-	return (disableBold);
-}
+@synthesize disableBold;
 
 - (void)setDisableBold: (BOOL) boldFlag
 {
@@ -225,6 +219,8 @@ static NSInteger cacheSize;
 @synthesize blinkingCursor;
 @synthesize markedTextAttributes;
 
+@synthesize FGColor=defaultFGColor;
+
 - (void)setFGColor:(NSColor*)color
 {
     defaultFGColor=color;
@@ -233,6 +229,8 @@ static NSInteger cacheSize;
 	[self setNeedsDisplay: YES];
 	// reset our default character attributes    
 }
+
+@synthesize BGColor=defaultBGColor;
 
 - (void)setBGColor:(NSColor*)color
 {
@@ -244,6 +242,8 @@ static NSInteger cacheSize;
 	[self setNeedsDisplay: YES];
 }
 
+@synthesize boldColor=defaultBoldColor;
+
 - (void)setBoldColor: (NSColor*)color
 {
     defaultBoldColor=color;
@@ -252,12 +252,16 @@ static NSInteger cacheSize;
 	[self setNeedsDisplay: YES];
 }
 
+@synthesize cursorColor=defaultCursorColor;
+
 - (void)setCursorColor: (NSColor*)color
 {
     defaultCursorColor=color;
 	[self setForceUpdate:YES];
 	[self setNeedsDisplay: YES];
 }
+
+@synthesize selectedTextColor;
 
 - (void)setSelectedTextColor: (NSColor *) aColor
 {
@@ -269,6 +273,8 @@ static NSInteger cacheSize;
 	[self setNeedsDisplay: YES];
 }
 
+@synthesize cursorTextColor;
+
 - (void)setCursorTextColor:(NSColor*) aColor
 {
 	cursorTextColor = aColor;
@@ -276,36 +282,6 @@ static NSInteger cacheSize;
 	
 	[self setForceUpdate:YES];
 	[self setNeedsDisplay: YES];
-}
-
-- (NSColor *) cursorTextColor
-{
-	return (cursorTextColor);
-}
-
-- (NSColor *) selectedTextColor
-{
-	return (selectedTextColor);
-}
-
-- (NSColor *) defaultFGColor
-{
-    return defaultFGColor;
-}
-
-- (NSColor *) defaultBGColor
-{
-	return defaultBGColor;
-}
-
-- (NSColor *) defaultBoldColor
-{
-    return defaultBoldColor;
-}
-
-- (NSColor *) defaultCursorColor
-{
-    return defaultCursorColor;
 }
 
 - (void)setColorTable:(int) index highLight:(BOOL)hili color:(NSColor *) c
@@ -371,10 +347,7 @@ static NSInteger cacheSize;
     
 }
 
-- (NSColor *) selectionColor
-{
-    return selectionColor;
-}
+@synthesize selectionColor;
 
 - (void)setSelectionColor: (NSColor *) aColor
 {    
@@ -384,15 +357,8 @@ static NSInteger cacheSize;
 }
 
 
-- (NSFont *)font
-{
-    return font;
-}
-
-- (NSFont *)nafont
-{
-    return nafont;
-}
+@synthesize font;
+@synthesize nafont;
 
 - (void)setFont:(NSFont*)aFont nafont:(NSFont *)naFont;
 {    
@@ -439,10 +405,7 @@ static NSInteger cacheSize;
 //---------------------------------------------------------- 
 //  screen 
 //---------------------------------------------------------- 
-- (VT100Screen *)screen
-{
-    return mScreen; 
-}
+@synthesize screen=mScreen;
 
 - (void)setScreen:(VT100Screen *)theScreen
 {
@@ -456,28 +419,12 @@ static NSInteger cacheSize;
 	}
 }
 
-- (id)delegate
-{
-    return _delegate;
-}
-
-- (void)setDelegate:(id)aDelegate
-{
-    _delegate = aDelegate;
-}    
+@synthesize delegate=_delegate;
 
 //---------------------------------------------------------- 
 //  forceUpdate 
 //---------------------------------------------------------- 
-- (BOOL)forceUpdate
-{
-    return mForceUpdate;
-}
-
-- (void)setForceUpdate:(BOOL)flag
-{
-    mForceUpdate = flag;
-}
+@synthesize forceUpdate=mForceUpdate;
 
 // We override this method since both refresh and window resize can conflict resulting in this happening twice
 // So we do not allow the size to be set larger than what the data source can fill
@@ -656,7 +603,7 @@ static NSInteger cacheSize;
 	NSColor *aColor;
 	char  *dirty = NULL;
 	BOOL need_draw;
-	float curX, curY;
+	CGFloat curX, curY;
 	unsigned int bgcode = 0, fgcode = 0;
 	int y1, x1;
 	BOOL double_width;
@@ -666,7 +613,7 @@ static NSInteger cacheSize;
 	BOOL hasBGImage = NO;
 	BOOL fillBG = NO;
 	
-	float trans = useTransparency ? 1.0 - transparency : 1.0;
+	CGFloat trans = useTransparency ? 1.0 - transparency : 1.0;
     
     if ([self lineHeight] <= 0)
         return;
@@ -849,7 +796,7 @@ static NSInteger cacheSize;
 	y1=[[self screen] cursorY]-1;
 	
 	//draw cursor	
-	float cursorWidth, cursorHeight;				
+	CGFloat cursorWidth, cursorHeight;
 				
 	if ([self charWidth] < [self charWidthWithoutSpacing])
 		cursorWidth = [self charWidth];
